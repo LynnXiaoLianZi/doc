@@ -1,0 +1,154 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Root of a Function in an Interval &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="root-of-a-function-in-an-interval">
+<span id="rootoffunction"></span><h1>Root of a Function in an Interval</h1>
+<p>The file “<code class="docutils literal"><span class="pre">froot.fis</span></code>” contains a <span class="codename">FISH</span> function that calculates the root of a function <span class="math">\(f(x)\)</span>, known to lie in the interval [a, b], using Brent’s method algorithm (Press et al. 1986).</p>
+<p>The <span class="codename">FISH</span> function <code class="docutils literal"><span class="pre">func</span></code> must be specified. It returns the value of <span class="math">\(f\)</span> for the argument <span class="math">\(x\)</span> defined by <code class="docutils literal"><span class="pre">c_x</span></code>. The interval bounds <span class="math">\(a\)</span> and <span class="math">\(b\)</span> are assigned using <code class="docutils literal"><span class="pre">c_x1</span></code> and <code class="docutils literal"><span class="pre">c_x2</span></code>, respectively. The root, returned as <code class="docutils literal"><span class="pre">froot</span></code>, is refined until its accuracy is <code class="docutils literal"><span class="pre">tol</span></code>.</p>
+<p>The following is a plot of the function <span class="math">\(f(x) = tan x−x\)</span> and marks its root located in the interval <span class="math">\([π/2 , 3π/2]\)</span>.</p>
+<p><em>Reference</em></p>
+<p>Press, W. H., et al. <span class="bi">Numerical Recipes: The Art of Scientific Computing (FORTRAN Version).</span> Cambridge: Cambridge University Press (1986).</p>
+<p><strong>Data File:</strong> <code class="docutils literal"><span class="pre">froot.dat</span></code></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model title</span><span class="n"> </span><span class="s">&#39;   Root of a function in an interval&#39;</span>
+<span class="nb">program call</span><span class="n"> </span><span class="s">&#39;froot.fis&#39;</span>
+<span class="nb">fish define</span><span class="ni"> func</span>
+<span class="ni">   func </span><span class="p">=</span><span class="ni"> </span><span class="k">math.tan</span><span class="p">(</span><span class="ni">c_x0</span><span class="p">)</span><span class="ni"> </span><span class="o">-</span><span class="ni"> c_x0</span>
+<span class="nb">end</span>
+<span class="c">;</span>
+<span class="nb">fish define</span><span class="ni"> itis_root</span>
+<span class="c">;  find the root of function func</span>
+<span class="c">;  in the interval ] pi/2, 3pi/2 [</span>
+<span class="c">;  with accuracy tol</span>
+<span class="ni">   c_x1 </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1.01</span><span class="ni"> </span><span class="o">*</span><span class="ni"> </span><span class="k">math.pi</span><span class="o">/</span><span class="m m-Double">2.</span>
+<span class="ni">   c_x2 </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0.99</span><span class="ni"> </span><span class="o">*</span><span class="ni"> </span><span class="m m-Double">3.</span><span class="o">*</span><span class="k">math.pi</span><span class="o">/</span><span class="m m-Double">2.</span>
+<span class="ni">   tol  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1.e-4</span>
+<span class="ni">   plot_func</span>
+<span class="ni">   root </span><span class="p">=</span><span class="ni"> froot</span>
+<span class="ni">   c_x0  </span><span class="p">=</span><span class="ni"> root</span>
+<span class="ni">   </span><span class="k">table.x</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> root</span>
+<span class="ni">   </span><span class="k">table.y</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> func</span>
+<span class="nb">end</span>
+<span class="c">;</span>
+<span class="nb">fish define</span><span class="ni"> plot_func</span>
+<span class="c">;  calculate func at 20 points in the interval and</span>
+<span class="c">;  store the values in table 1</span>
+<span class="ni">   dx  </span><span class="p">=</span><span class="ni"> </span><span class="p">(</span><span class="ni">c_x2 </span><span class="o">-</span><span class="ni"> c_x1</span><span class="p">)</span><span class="o">/</span><span class="m m-Double">20.</span>
+<span class="ni">   c_x0 </span><span class="p">=</span><span class="ni"> c_x1</span>
+<span class="ni">   </span><span class="k">loop</span><span class="ni"> ii </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">20</span><span class="p">)</span>
+<span class="ni">      c_x0 </span><span class="p">=</span><span class="ni"> c_x0 </span><span class="o">+</span><span class="ni"> dx</span>
+<span class="ni">      </span><span class="k">table.x</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="ni">ii</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> c_x0</span>
+<span class="ni">      </span><span class="k">table.y</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="ni">ii</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> func</span>
+<span class="ni">   </span><span class="k">end_loop</span>
+<span class="nb">end</span>
+<span class="c">;</span>
+<span class="ni">@itis_root</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../../../../../_images/755F0001.png"><img alt="../../../../../_images/755F0001.png" src="../../../../../_images/755F0001.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Function and its root in an interval</span></p>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Root of a Function in an Interval" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

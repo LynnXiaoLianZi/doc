@@ -1,0 +1,250 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FISH Functions &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fish-functions">
+<span id="sel-node-fish"></span><h1><span class="codename">FISH</span> Functions</h1>
+<p><span class="codename">FISH</span> functions operating on extrusion nodes. The type specifiers used in the <span class="codename">FISH</span> function signatures are given in the <a class="reference internal" href="../../../../../../docproject/source/manual/scripting/fish_scripting/fish_types.html#fish-variabletypes"><span class="std std-ref">FISH Type Index</span></a> section.</p>
+<p class="rubric" id="selnode-functions">Structural Node Functions</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.acc.global.html#struct.node.acc.global" title="Get the acceleration of structure node expressed in a global system."><span class="fishcmd">struct.node.acc.global</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.acc.local.html#struct.node.acc.local" title="Get the acceleration of structure node expressed in a local system."><span class="fishcmd">struct.node.acc.local</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.apply.html#struct.node.apply" title="Get/set the generalized applied force expressed in a system defined by  struct.node.apply.local &#013;&#010;(degree-of-freedom  i  ∈ {1, 2, … , 6}). If the argument  i  is not specified, a&#013;&#010;matrix is assigned/returned for all degrees-of-freedom."><span class="fishcmd">struct.node.apply</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.apply.local.html#struct.node.apply.local" title="Get whether the coordinate system in which generalized applied forces are expressed&#013;&#010;is a local system."><span class="fishcmd">struct.node.apply.local</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.convergence.html#struct.node.convergence" title="Returns the gridpoint convergence value, defined as the ratio of the current&#013;&#010;local force ratio ( struct.node.ratio ), to the target force ratio ( struct.node.ratio.target ).&#013;&#010; A value of 1 or less is therefore considered “converged”."><span class="fishcmd">struct.node.convergence</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.damp.local.html#struct.node.damp.local" title="Get/set the local damping factor of the structure node."><span class="fishcmd">struct.node.damp.local</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.disp.global.html#struct.node.disp.global" title="Get the displacement of structure node expressed in a global system."><span class="fishcmd">struct.node.disp.global</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.disp.local.html#struct.node.disp.local" title="Get/set the displacement of structure node expressed in a local system."><span class="fishcmd">struct.node.disp.local</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.dynamic.timestep.html#struct.node.dynamic.timestep" title="Returns the critical dynamic timestep for this structural node as of the last&#013;&#010;time the gridpoint was updated when dynamic calculations were active. Will return&#013;&#010;zero if this isn’t calculated for any reason (slaved, nulled, fixed in all DOF,&#013;&#010;etc)."><span class="fishcmd">struct.node.dynamic.timestep</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.elements.html#struct.node.elements" title="Get a list of all structural elements directly connected to this node."><span class="fishcmd">struct.node.elements</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.extra.html#struct.node.extra" title="Get/set the value stored in the  i th extra variable array of structure node&#013;&#010; sn ."><span class="fishcmd">struct.node.extra</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.find.html#struct.node.find" title="Get the structural node with internally assigned component-ID number  i ."><span class="fishcmd">struct.node.find</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.fix.html#struct.node.fix" title="Get/Set velocity-fixity flag expressed in the node-local system (degree-of-freedom&#013;&#010;component  i1  ∈ {1, 2, … , 6})."><span class="fishcmd">struct.node.fix</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.fix.local.html#struct.node.fix.local" title="Get/set the boolean flag for the local coordinate system fixity."><span class="fishcmd">struct.node.fix.local</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.force.unbal.global.html#struct.node.force.unbal.global" title="Get the unbalanced force of structure node expressed in a global system."><span class="fishcmd">struct.node.force.unbal.global</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.force.unbal.local.html#struct.node.force.unbal.local" title="Get the unbalanced force of structure node expressed in a local system."><span class="fishcmd">struct.node.force.unbal.local</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.head.html#struct.node.head" title="Get the first structure node in the list of all structure nodes. This function&#013;&#010;should be considered deprecated; it is provided mostly for backwards compatibility&#013;&#010;with old data files. Instead, see the  fish_statement_loopforeach  statement&#013;&#010;and the  struct.node.list  function. See also the  struct.node.next  function."><span class="fishcmd">struct.node.head</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.id.html#struct.node.id" title="Get the structural node ID number. This is defined as the ID number of the first&#013;&#010;element connected to the node and is not to be confused with the component-ID&#013;&#010;number."><span class="fishcmd">struct.node.id</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.id.component.html#struct.node.id.component" title="Get the structural node component-ID number. This is a unique value assigned&#013;&#010;internally at creation, not to be confused with the ID number."><span class="fishcmd">struct.node.id.component</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.link.html#struct.node.link" title="Get the link associated with structure node  sn . Returns  null  if no link&#013;&#010;is associated with the structure node."><span class="fishcmd">struct.node.link</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.list.html#struct.node.list" title="Get the pointer to the container of all structure nodes in the model."><span class="fishcmd">struct.node.list</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.mark.html#struct.node.mark" title="Get/set the mark flag. Note that the SEL logic may modify this flag during command&#013;&#010;processing, cycling, and plotting."><span class="fishcmd">struct.node.mark</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.mass.added.html#struct.node.mass.added" title="Get/set the  extra  mass in each degree of freedom addition to the inertial&#013;&#010;mass as a 1x6 matrix."><span class="fishcmd">struct.node.mass.added</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.mass.local.html#struct.node.mass.local" title="Get the mass at the degree-of-freedom  i  ∈ {1, 2, … , 6} of in the node-local&#013;&#010;system."><span class="fishcmd">struct.node.mass.local</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.maxid.html#struct.node.maxid" title="Get the maximum component-ID number assigned to any structural node in this&#013;&#010;model. The next structural node created will be assigned this value plus one."><span class="fishcmd">struct.node.maxid</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.near.html#struct.node.near" title="Get the structure node nearest  v . Will return  null  if there are no structure&#013;&#010;nodes in the model."><span class="fishcmd">struct.node.near</span><span class="fishparamlist"><big>(</big><span class="null">VEC+</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.next.html#struct.node.next" title="Get the next structure node after  sn  in the list of all structure nodes in&#013;&#010;the model. Will return  null  if no more structure nodes follow. This function&#013;&#010;should be considered deprecated; it is provided mostly for backwards compatibility&#013;&#010;with old data files. Instead, see the  fish_statement_loopforeach  statement&#013;&#010;and the  struct.node.list  function. See also the  struct.node.head  function."><span class="fishcmd">struct.node.next</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.num.html#struct.node.num" title="Get the total number of structure nodes in the model."><span class="fishcmd">struct.node.num</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.pos.html#struct.node.pos" title="Get the current position vector for the structure node."><span class="fishcmd">struct.node.pos</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.pos.reference.html#struct.node.pos.reference" title="Get the reference position vector for the structure node."><span class="fishcmd">struct.node.pos.reference</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.ratio.html#struct.node.ratio" title="Get the local gridpoint mechanical convergence ratio.  This is the ratio of&#013;&#010;unbalanced force to force applied to the node."><span class="fishcmd">struct.node.ratio</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.ratio.target.html#struct.node.ratio.target" title="Get/set the target mechanical force ratio in the node.  The default value is&#013;&#010;1e-4. A local force ratio ( struct.node.ratio ) below this value is considered&#013;&#010;converged.  See  struct.node.convergence ."><span class="fishcmd">struct.node.ratio.target</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.resultant.html#struct.node.resultant" title="Get stress resultants last calculated for the elements connected to this node."><span class="fishcmd">struct.node.resultant</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.stiff.local.html#struct.node.stiff.local" title="Get the stiffness of structure node expressed in a local system."><span class="fishcmd">struct.node.stiff.local</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.surface.valid.html#struct.node.surface.valid" title="Get a boolean flag for surface system validity; true  if the surface system&#013;&#010;is valid,  false  if not. The surface system can be made valid by issuing a&#013;&#010;structure recovery command."><span class="fishcmd">struct.node.surface.valid</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.surface.xdir.html#struct.node.surface.xdir" title="Get/set the orientation of the surface system of node  sn  such that the  -direction&#013;&#010;is aligned with the projection of the surface vector  v  onto the normal plane,&#013;&#010;which is defined by the  -direction."><span class="fishcmd">struct.node.surface.xdir</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.system.local.html#struct.node.system.local" title="Get the local coordinate system of the structure node. The return value can&#013;&#010;be a matrix if both  i1  and  i2  are omitted, a vector if both  i1  is assigned&#013;&#010;but  i2  is omitted, or a value if both  i1  and  i2  are assigned."><span class="fishcmd">struct.node.system.local</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.system.surface.html#struct.node.system.surface" title="Get/set the surface coordinate system of the structure node. The return value&#013;&#010;can be a matrix if both  i1  and  i2  are omitted, a vector if both  i1  is&#013;&#010;assigned but  i2  is omitted, or a value if both  i1  and  i2  are assigned."><span class="fishcmd">struct.node.system.surface</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.temp.increment.html#struct.node.temp.increment" title="Get/set the the temperature increment that will be applied to the structural&#013;&#010;node in the next timestep, causing elements connected to it to see changes in&#013;&#010;stress due to thermal expansion. This value is cleared to zero after every step&#013;&#010;when thermal expansion stresses are applied."><span class="fishcmd">struct.node.temp.increment</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.typeid.html#struct.node.typeid" title="Get an identifier that uniquely determines the type of object. For structure&#013;&#010;node, this will always return ‭1283546106‬."><span class="fishcmd">struct.node.typeid</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.vel.global.html#struct.node.vel.global" title="Get the velocity of a structure node expressed in a global system."><span class="fishcmd">struct.node.vel.global</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.vel.local.html#struct.node.vel.local" title="Get the velocity of a structure node expressed in a local system."><span class="fishcmd">struct.node.vel.local</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.acc.global.html"><code class="docutils literal"><span class="pre">struct.node.acc.global</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.acc.local.html"><code class="docutils literal"><span class="pre">struct.node.acc.local</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.apply.html"><code class="docutils literal"><span class="pre">struct.node.apply</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.apply.local.html"><code class="docutils literal"><span class="pre">struct.node.apply.local</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.convergence.html"><code class="docutils literal"><span class="pre">struct.node.convergence</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.damp.local.html"><code class="docutils literal"><span class="pre">struct.node.damp.local</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.disp.global.html"><code class="docutils literal"><span class="pre">struct.node.disp.global</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.disp.local.html"><code class="docutils literal"><span class="pre">struct.node.disp.local</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.dynamic.timestep.html"><code class="docutils literal"><span class="pre">struct.node.dynamic.timestep</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.elements.html"><code class="docutils literal"><span class="pre">struct.node.elements</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.extra.html"><code class="docutils literal"><span class="pre">struct.node.extra</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.find.html"><code class="docutils literal"><span class="pre">struct.node.find</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.fix.html"><code class="docutils literal"><span class="pre">struct.node.fix</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.fix.local.html"><code class="docutils literal"><span class="pre">struct.node.fix.local</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.force.unbal.global.html"><code class="docutils literal"><span class="pre">struct.node.force.unbal.global</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.force.unbal.local.html"><code class="docutils literal"><span class="pre">struct.node.force.unbal.local</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.group.html"><code class="docutils literal"><span class="pre">struct.node.group</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.group.remove.html"><code class="docutils literal"><span class="pre">struct.node.group.remove</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.head.html"><code class="docutils literal"><span class="pre">struct.node.head</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.id.html"><code class="docutils literal"><span class="pre">struct.node.id</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.id.component.html"><code class="docutils literal"><span class="pre">struct.node.id.component</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.isgroup.html"><code class="docutils literal"><span class="pre">struct.node.isgroup</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.link.html"><code class="docutils literal"><span class="pre">struct.node.link</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.list.html"><code class="docutils literal"><span class="pre">struct.node.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.mark.html"><code class="docutils literal"><span class="pre">struct.node.mark</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.mass.added.html"><code class="docutils literal"><span class="pre">struct.node.mass.added</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.mass.local.html"><code class="docutils literal"><span class="pre">struct.node.mass.local</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.maxid.html"><code class="docutils literal"><span class="pre">struct.node.maxid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.near.html"><code class="docutils literal"><span class="pre">struct.node.near</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.next.html"><code class="docutils literal"><span class="pre">struct.node.next</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.num.html"><code class="docutils literal"><span class="pre">struct.node.num</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.pos.html"><code class="docutils literal"><span class="pre">struct.node.pos</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.pos.reference.html"><code class="docutils literal"><span class="pre">struct.node.pos.reference</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.ratio.html"><code class="docutils literal"><span class="pre">struct.node.ratio</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.ratio.target.html"><code class="docutils literal"><span class="pre">struct.node.ratio.target</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.resultant.html"><code class="docutils literal"><span class="pre">struct.node.resultant</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.stiff.local.html"><code class="docutils literal"><span class="pre">struct.node.stiff.local</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.surface.valid.html"><code class="docutils literal"><span class="pre">struct.node.surface.valid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.surface.xdir.html"><code class="docutils literal"><span class="pre">struct.node.surface.xdir</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.system.local.html"><code class="docutils literal"><span class="pre">struct.node.system.local</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.system.surface.html"><code class="docutils literal"><span class="pre">struct.node.system.surface</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.temp.increment.html"><code class="docutils literal"><span class="pre">struct.node.temp.increment</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.typeid.html"><code class="docutils literal"><span class="pre">struct.node.typeid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.vel.global.html"><code class="docutils literal"><span class="pre">struct.node.vel.global</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.node_intrinsics/fish_sel.node.vel.local.html"><code class="docutils literal"><span class="pre">struct.node.vel.local</span></code></a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?FISH Functions" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

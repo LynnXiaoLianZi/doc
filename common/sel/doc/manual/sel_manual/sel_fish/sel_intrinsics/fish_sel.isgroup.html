@@ -1,0 +1,135 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>struct.isgroup &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="struct-isgroup">
+<h1><code class="docutils literal"><span class="pre">struct.isgroup</span></code></h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="struct intrinsics function">
+<dt id="function:struct.isgroup">
+<a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span></span></a><span class="null"> := </span><span class="fishname">struct.isgroup</span><span class="fishparamlist"><big>(</big><span class="varfishsym">p</span><span class="null">,</span><span class="varfishsym">s</span><span class="cmdopt"><<span class="null">,</span><span class="varfishsym">slot</span>></span><big>)</big></span></dt>
+<dd><p>Check if the group <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a> is associated with the structural element and return <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">true</span></span></a> if a match is found in <em>any</em> slot. The check for <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a> will only occur in <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">slot</span></span></a>, if provided.</p>
+<p>A group index or slot index may be used for the arguments <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a> or <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">slot</span></span></a>, respectively. Indices operate more efficiently than strings*.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span></span></a> - <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">true</span></span></a> if the group was found for that structural element</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Arguments:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">p</span></span></a> - structural element pointer</p>
+<p><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a> - the group name or index*</p>
+<p class="last"><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">slot</span></span></a> - the slot name or index*; the check occurs on all slots assigned to the structural element if omitted</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-note admonition">
+<p class="first admonition-title">Note</p>
+<p>*Use the <a class="reference internal" href="../../../../../../module/doc/manual/group_manual/group_fish/group_utilities/fish_group.find.html#function:group.find" title="Get the group index associated with a group name. Note that a group with the&#013;&#010;name  s  will be created if one does not exist already (and the index to&#013;&#010;it is returned)."><code class="xref fish fish-func docutils literal"><span class="pre">group.find</span></code></a> and <a class="reference internal" href="../../../../../../module/doc/manual/group_manual/group_fish/group_utilities/fish_group.find.slot.html#function:group.find.slot" title="Get the slot index associated with the slot name  s . Note that a slot&#013;&#010;with the name  s  will be created if one does not exist already (and the&#013;&#010;index to it is returned). Also be aware that there is a limit of 128 distinct&#013;&#010;slots in a given model."><code class="xref fish fish-func docutils literal"><span class="pre">group.find.slot</span></code></a> intrinsics to obtain group and slot indices, respectively, and for further information.</p>
+<p class="last">Use of the group logic is described in <a class="reference internal" href="../../../../../../module/doc/manual/group_manual/groupkwd.html#group-manual"><span class="std std-ref">Groups</span></a>.</p>
+</div>
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?struct.isgroup" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

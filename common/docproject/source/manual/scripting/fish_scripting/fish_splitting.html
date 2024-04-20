@@ -1,0 +1,174 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Splitting: Automatic Execution of Functions on Type Contents &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Operators: Multi-threaded function support" href="fish_operators.html" />
+    <link rel="prev" title="Executing FISH: Inline FISH or FISH Fragments" href="fish_inline.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="splitting-automatic-execution-of-functions-on-type-contents">
+<span id="fish-splitting"></span><h1>Splitting: Automatic Execution of Functions on Type Contents</h1>
+<p><span class="codename">FISH</span> splitting allows a function, operator, or library call to be executed repeatedly on each element of an aggregate type (a list, an array, a container of objects, etc).
+If done as part of a get operation, the result is a list containing the result of each execution in order.</p>
+<p>Splitting can be used as an alternative to <span class="cmdkey">loop</span> statements to perform actions on many object in a very clear and concise manner.</p>
+<p>In order to make a split call, give the split operator ‘::’ prefix to one or more arguments of the function, operator, or library call.
+Arguments that are not split will be the same in every execution of the function.
+If multiple arguments are split, they must contain the same number of elements.</p>
+<p>For example, to build a list of the x-coordinates of all data scalar objects we could say.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">    local a </span><span class="p">=</span><span class="n"> data</span><span class="p">.</span><span class="n">scalar</span><span class="p">.</span><span class="n">pos</span><span class="p">(::</span><span class="n">data</span><span class="p">.</span><span class="n">scalar</span><span class="p">.</span><span class="n">list</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">x</span>
+</pre></div>
+</div>
+<p>This splits the container of all data scalar objects in the container pointed to by the return value of  <a class="reference internal" href="../../../../../kernel/doc/manual/data/fish/data.scalar_utilities/fish_data.scalar.list.html#function:data.scalar.list" title="Get the global scalar list. Use the  loop foreach &lt;fish_statement_loopendloop&gt; &#013;&#010;construct to iterate through the list."><code class="xref fish fish-func docutils literal"><span class="pre">data.scalar.list</span></code></a>, and calls the intrinsic  <a class="reference internal" href="../../../../../kernel/doc/manual/data/fish/data.scalar_utilities/fish_data.scalar.pos.html#function:data.scalar.pos" title="Get/set the scalar position."><code class="xref fish fish-func docutils literal"><span class="pre">data.scalar.pos</span></code></a> once for each entry in the list.
+Any iterable <span class="codename">FISH</span> types may be split.
+<span class="codename">FISH</span> iterable types include: pointers to containers, strings, vectors, tensors, matrices, lists, maps, and arrays.
+Most often splitting will be done on lists or pointers to containers of model objects (such as grid points, balls, or blocks).</p>
+<div class="section" id="list-filtering">
+<h2>List Filtering</h2>
+<p>Splitting in combination with boolean list filtering can be used to quickly find a sub-list of objects selected by a specific criteria.
+For example, the following code will find the list of all data scalars that are tagged with the group ‘surface’.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">    local allpts </span><span class="p">=</span><span class="n"> list</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">scalar</span><span class="p">.</span><span class="n">list</span><span class="p">)</span><span class="n"> </span><span class="c">; A list of pointers to scalars</span>
+<span class="n">    local check </span><span class="p">=</span><span class="n"> data</span><span class="p">.</span><span class="n">scalar</span><span class="p">.</span><span class="n">isgroup</span><span class="p">(::</span><span class="n">data</span><span class="p">.</span><span class="n">scalar</span><span class="p">.</span><span class="n">list</span><span class="p">,</span><span class="s">&#39;surface&#39;</span><span class="p">)</span><span class="n"> </span>
+<span class="n">                                                 </span><span class="c">; List of booleans</span>
+<span class="n">    global pts </span><span class="p">=</span><span class="n"> allpts</span><span class="p">(</span><span class="n">check</span><span class="p">)</span><span class="n"> </span><span class="c">; List of scalars in &#39;surface&#39;</span>
+</pre></div>
+</div>
+<p>This can be done as a single line of <span class="codename">FISH</span> as follows:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">    global pts </span><span class="p">=</span><span class="n"> </span><span class="sx">...</span>
+<span class="nb">    list</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">scalar</span><span class="p">.</span><span class="n">list</span><span class="p">)(</span><span class="n">data</span><span class="p">.</span><span class="n">scalar</span><span class="p">.</span><span class="n">isgroup</span><span class="p">(::</span><span class="n">data</span><span class="p">.</span><span class="n">scalar</span><span class="p">.</span><span class="n">list</span><span class="p">,</span><span class="s">&#39;surface&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="splitting-on-assignment">
+<h2>Splitting on Assignment</h2>
+<p>Splitting may also be performed on assignment to a library function.
+In this case, the user must indicate whether the right-hand-side of the assignment (after the equals sign) will be split or not.
+If not, the same value will be assigned to each split assignment to the function.
+If split, the elements of the list on the right will be assigned sequentially to each call to the function.</p>
+<p>Right-hand splitting is indicated by appending the splitting operator :: to any of the assignment operators =, +=, -=, *=, or /=.
+So =::, +=::, -=::, *=::, and /=::.</p>
+<p>For example, the following line of <span class="codename">FISH</span> will increment a random value from 0.0 to 1.0 to the x-coordinate of every data scalar in the model.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">    data</span><span class="p">.</span><span class="n">scalar</span><span class="p">.</span><span class="n">pos</span><span class="p">(::</span><span class="n">data</span><span class="p">.</span><span class="n">scalar</span><span class="p">.</span><span class="n">list</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">x </span><span class="sx">...</span>
+<span class="n">                      </span><span class="o">+=</span><span class="p">::</span><span class="n"> math</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">scalar</span><span class="p">.</span><span class="n">num</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="splitting-and-multithreading">
+<h2>Splitting and Multithreading</h2>
+<p>If splitting is performed on an operator or a library function that is tagged as thread-safe, the splitting will be done on all available threads automatically.
+Library functions are tagged as thread-safe if the ‘=’ sign is preceded by a ‘:’ in the documentation description.
+Otherwise the splitting operation will still be performed, just sequentially on a single thread.</p>
+</div>
+<div class="section" id="conclusion-and-tips">
+<h2>Conclusion and Tips</h2>
+<p>The combination of boolean list selection, operators acting on list elements, and splitting allows complex algorithms to be created in relatively few lines of code without ever having to use <span class="cmdkey">loop</span> statements.</p>
+<p>Effectively using splitting requires a certain change of perspective and approach from traditional sequential programming.
+But once the user becomes comfortable, the reward is being able to very quickly and relatively efficiently perform operations on large quantities of data using a relatively small amount of code.</p>
+<p>Note that while splitting is very convenient, it is in general not as efficient in a multi-threaded environment as a <span class="codename">FISH</span> operator that does multiple calculations on a single object at the same time using a single split.
+If speed is important (as is generally the case for functions executing during cycling), it is almost always worth the effort to create an operator instead of using multiple splitting implementations on existing intrinsics.</p>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="fish.html" ><span class="codename">FISH</span> Scripting Reference</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="fish_languagerules.html" accesskey="U"><span class="codename">FISH</span> Rules and Usage</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="fish_inline.html"
+                           title="previous chapter"> Executing <span class="codename">FISH</span>:  Inline <span class="codename">FISH</span> or <span class="codename">FISH</span> Fragments</a> |    
+       <a href="fish_operators.html"
+                           title="next chapter">Operators: Multi-threaded function support</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Splitting: Automatic Execution of Functions on Type Contents" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

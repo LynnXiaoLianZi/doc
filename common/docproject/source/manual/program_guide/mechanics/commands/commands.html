@@ -1,0 +1,163 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Commands &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="How Commands Work" href="howcommandswork.html" />
+    <link rel="prev" title="Program Mechanics" href="../program_mechanics.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="commands">
+<span id="frameworkcommands"></span><h1>Commands</h1>
+<p>At the heart of the program are its commands.  It cannot be stated often enough: <em>this is command driven software</em>.  Any operation that may be performed in the user interface is ultimately just a method for issuing one of the program’s commands, whether that operation is performed on a screen view of the model, from a menu, by mouse click on a toolbar, or any other kind of visually interactive input operation.  However, it should also be remembered that the user interface only exposes <em>some</em> of the command set to the windowed program space.  A complete knowledge of the software necessarily implies at least passing familiarity with the entirety of the command set.</p>
+<p class="h2 rubric">The <em>Console</em> Pane</p>
+<p>The <span class="flag4">i</span> <a class="reference internal" href="console_pane/consolepane.html#theconsolepane"><span class="std std-ref">Console</span></a> pane, described in the topics that follow, represents the program’s core.  This pane provides the output from command (and <span class="codename">FISH</span> script) processing at all times.  It may be used for command (and <span class="codename">FISH</span> script) input as well.  In usual practice, users will input to the console for simple operations, “spot check” inquiries of the model, or possibly as a speedier alternative to program menus or toolbars.  In a full scale model run the bulk of the project will be written in and processed from input files — data files, <span class="codename">FISH</span> or python script files, and other input files. For working with these, see the discussion of <a class="reference internal" href="../datafiles/editor_pane/editoroverview.html#theeditorpane"><span class="std std-ref">The Editor Pane</span></a>.</p>
+<p class="h2 rubric">Where Is… ?</p>
+<p>This section only introduces commands as a topic and describes working with them <em>in general terms</em> within the program, particularly in the <em>Console</em> pane.  Full reference information on all commands in Itasca programs, commands and <span class="codename">FISH</span> specific to <span class="codename">UDEC</span> and all information on <span class="codename">FISH</span> scripting is presented elsewhere.</p>
+<p><em>Common</em></p>
+<ul class="simple">
+<li><a class="reference internal" href="../../command_summary.html#core-command-summary"><span class="std std-ref">Index: Common Commands</span></a> for commands common to all Itasca software (<span class="flag3">c</span> <a class="reference internal" href="../../../../../../kernel/doc/manual/program/commands/cmd_program.call.html#call-command"><span class="std std-ref">call</span></a>, <span class="flag3">c</span> <span class="xref std std-ref">geometry</span>, <span class="flag3">c</span> <span class="xref std std-ref">fracture</span>, <span class="flag3">c</span> <span class="xref std std-ref">model</span>, <span class="flag3">c</span> <span class="xref std std-ref">program</span>, <span class="flag3">c</span> <span class="xref std std-ref">table</span>, etc.)</li>
+<li><a class="reference internal" href="../../fish_summary.html#core-fish-summary"><span class="std std-ref">Index: Common FISH</span></a> for all <span class="codename">FISH</span> functions associated with common commands.</li>
+</ul>
+<p><em>UDEC</em></p>
+<ul class="simple">
+<li><a class="reference internal" href="../../../../../../../udec/docproject/source/elements/udeccommandsandfish.html#udeccommandsandfish"><span class="std std-ref">UDEC Commands and FISH</span></a> for all <span class="codename">UDEC</span> commands and <span class="codename">FISH</span> (all referenced by block — <span class="flag3">c</span> <a class="reference internal" href="../../../../../../../udec/docproject/source/elements/block/block_commands/block_commands.html#block-commands"><span class="std std-ref">block</span></a> commands and <span class="flag3">c</span> <a class="reference internal" href="../../../../../../../udec/docproject/source/elements/block/block_fish/block_fish.html#block-fish"><span class="std std-ref">block</span></a> <span class="codename">FISH</span> functions).</li>
+</ul>
+<p><em>Scripting</em></p>
+<ul class="simple">
+<li><a class="reference internal" href="../../../scripting/fish_scripting/fish.html#fish-scripting"><span class="std std-ref">FISH Scripting Reference</span></a> for the general reference on <span class="codename">FISH</span>;</li>
+<li><a class="reference internal" href="../../../../../../fish/doc/fish_manual/fish_fish/fish_fish.html#fish-fish"><span class="std std-ref">FISH Functions</span></a> for an index of all functions built directly into the <span class="codename">FISH</span> language (that are not associated with the set found with the common commands (see above)).</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The console can be thought of as the “oldest” part of the program.  In their first versions, Itasca codes featured nothing <em>but</em> a console window.  The proof of the fundamentally command-driven nature of the codes is that, even now, with a number of facilities and on-board utilities added to the program for plotting, mesh generation, project management and more, with the <em>Console</em> alone an entire model run can be performed.</p>
+</div>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="howcommandswork.html">How Commands Work</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="commandsyntax.html">Command Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandshaping.html">Command Shaping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandentry.html">Command Entry in the <em>Console</em> Pane</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandhighlighting.html">Command and <span class="codename">FISH</span> Highlighting in the Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandfishrefpresentation.html">Command and <span class="codename">FISH</span> Reference Notation in the Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandtools.html">Command Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandsmoretopics.html">Commands: Additional Material</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="console_pane/consolepane.html">The <em>Console</em> Pane</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="console_pane/consoletoolbar.html">Console Pane Toolbar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="console_pane/console_cp.html">Control Panel</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="backgroundoncommands.html">Commands, a Rationale</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="backgroundoncommands.html#why-a-command-driven-interface">Why A Command-Driven Interface?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backgroundoncommands.html#why-fish">Why <span class="codename">FISH</span>?</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../program_mechanics.html" accesskey="U">Program Mechanics</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../program_mechanics.html"
+                           title="previous chapter"> Program Mechanics</a> |    
+       <a href="howcommandswork.html"
+                           title="next chapter">How Commands Work</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Commands" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

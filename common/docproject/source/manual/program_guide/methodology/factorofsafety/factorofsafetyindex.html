@@ -1,0 +1,152 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Factor of Safety Defined &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="Computational Methods for Factor of Safety Calculation of Slopes" href="computationalmethods.html" />
+    <link rel="prev" title="Factor of Safety" href="factorofsafety.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="hide sectionname docutils container">
+<span class="codename">FLAC3D</span> Theory and Background • Factor of Safety</div>
+<div class="section" id="factor-of-safety-defined">
+<span id="fos-index"></span><h1>Factor of Safety Defined</h1>
+<p>A “factor of safety” index can be defined for any relevant problem parameter by taking
+the ratio of the calculated parameter value under given conditions to the critical value
+of the parameter at  which the onset of an unacceptable outcome manifests itself. A
+relevant problem parameter could be a dimensionless group that governs the problem at hand
+(e.g., a stability number). Examples of (dimensional) parameters for slope stability
+include slope height, water level, applied load, and strength property.</p>
+<p>Unacceptable outcome relates to “safety” (and is usually taken as shear failure), but
+other possibilities, such as displacement above a given threshold, convergence beyond an
+acceptable level (such as in a tunnel excavation), toppling failure, slope raveling
+(cyclic freezing/thawing, weathering), etc. can also be considered.</p>
+<p>By convention, a factor of safety index larger than one indicates stable conditions.
+Thus, factor of safety index is taken as the actual over the critical parameter value if
+the parameter value above critical is acceptable (e.g., material cohesion), and as the
+inverse of this ratio otherwise (e.g., slope height). Note that, with the exception of
+simple cases, the calculated factor of safety index will not in general be linearly
+related to the selected problem parameter for which it is defined. Also, different
+measures will give different values of factor of safety for the same problem.
+Factor of safety index is most valuable when used on a comparative basis, in analyses
+using the same index definition (e.g., use of the index may produce the following statement:
+this slope with wider benches has a higher index than that with higher benches).</p>
+<p>The effort involved in computing the factor of safety index (once the definition is
+established) consists of identifying actual as well as critical parameter values. In the
+most general case, the actual parameter value is evaluated by direct resolution of field
+and constitutive equations governing the problem, and this often is done using a numerical
+method. On the other hand, an inverse boundary value problem needs to be solved to
+estimate the critical value of the parameter. In principle, this can be achieved using a
+trial-and-error technique, whereby numerical simulations are performed for a range of
+parameter values until the critical value is found. We refer to this general approach as the
+“parameter reduction technique.” Any appropriate geo-mechanical software (e.g., finite
+volume, finite element, and distinct element method) can be used to perform this task
+for problems involving various levels of complexity (e.g., geometry, material constitutive
+law, discrete fracture network, slope reinforcement, support systems, mechanical
+structures, etc.).</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../methodology.html" >Modeling Methodology</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="factorofsafety.html" accesskey="U">Factor of Safety</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="factorofsafety.html"
+                           title="previous chapter"> Factor of Safety</a> |    
+       <a href="computationalmethods.html"
+                           title="next chapter">Computational Methods for Factor of Safety Calculation of Slopes</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Factor of Safety Defined" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

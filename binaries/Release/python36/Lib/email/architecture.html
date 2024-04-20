@@ -1,0 +1,295 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Overview &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <p><code class="xref fish fish-mod docutils literal"><span class="pre">email</span></code> Package Architecture</p>
+<hr class="docutils" />
+<div class="section" id="overview">
+<h1>Overview</h1>
+<p>The email package consists of three major components:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Model</dt>
+<dd>An object structure that represents an email message, and provides an
+API for creating, querying, and modifying a message.</dd>
+<dt>Parser</dt>
+<dd>Takes a sequence of characters or bytes and produces a model of the
+email message represented by those characters or bytes.</dd>
+<dt>Generator</dt>
+<dd>Takes a model and turns it into a sequence of characters or bytes.  The
+sequence can either be intended for human consumption (a printable
+unicode string) or bytes suitable for transmission over the wire.  In
+the latter case all data is properly encoded using the content transfer
+encodings specified by the relevant RFCs.</dd>
+</dl>
+</div></blockquote>
+<p>Conceptually the package is organized around the model.  The model provides both
+“external” APIs intended for use by application programs using the library,
+and “internal” APIs intended for use by the Parser and Generator components.
+This division is intentionally a bit fuzzy; the API described by this
+documentation is all a public, stable API.  This allows for an application
+with special needs to implement its own parser and/or generator.</p>
+<p>In addition to the three major functional components, there is a third key
+component to the architecture:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Policy</dt>
+<dd>An object that specifies various behavioral settings and carries
+implementations of various behavior-controlling methods.</dd>
+</dl>
+</div></blockquote>
+<p>The Policy framework provides a simple and convenient way to control the
+behavior of the library, making it possible for the library to be used in a
+very flexible fashion while leveraging the common code required to parse,
+represent, and generate message-like objects.  For example, in addition to the
+default <span class="target" id="index-0"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc5322.html"><strong>RFC 5322</strong></a> email message policy, we also have a policy that manages
+HTTP headers in a fashion compliant with <span class="target" id="index-1"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc2616.html"><strong>RFC 2616</strong></a>.  Individual policy
+controls, such as the maximum line length produced by the generator, can also
+be controlled individually to meet specialized application requirements.</p>
+</div>
+<div class="section" id="the-model">
+<h1>The Model</h1>
+<p>The message model is implemented by the <a href="#id1"><span class="problematic" id="id2">:class:`~email.message.Message`</span></a> class.
+The model divides a message into the two fundamental parts discussed by the
+RFC: the header section and the body.  The <span class="math">\(Message\)</span> object acts as a
+pseudo-dictionary of named headers.  Its dictionary interface provides
+convenient access to individual headers by name.  However, all headers are kept
+internally in an ordered list, so that the information about the order of the
+headers in the original message is preserved.</p>
+<p>The <span class="math">\(Message\)</span> object also has a <span class="math">\(payload\)</span> that holds the body.  A <span class="math">\(payload\)</span> can
+be one of two things: data, or a list of <span class="math">\(Message\)</span> objects.  The latter is used
+to represent a multipart MIME message.  Lists can be nested arbitrarily deeply
+in order to represent the message, with all terminal leaves having non-list
+data payloads.</p>
+</div>
+<div class="section" id="message-lifecycle">
+<h1>Message Lifecycle</h1>
+<p>The general lifecyle of a message is:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Creation</dt>
+<dd>A <span class="math">\(Message\)</span> object can be created by a Parser, or it can be
+instantiated as an empty message by an application.</dd>
+<dt>Manipulation</dt>
+<dd>The application may examine one or more headers, and/or the
+payload, and it may modify one or more headers and/or
+the payload.  This may be done on the top level <span class="math">\(Message\)</span>
+object, or on any sub-object.</dd>
+<dt>Finalization</dt>
+<dd>The Model is converted into a unicode or binary stream,
+or the model is discarded.</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="header-policy-control-during-lifecycle">
+<h1>Header Policy Control During Lifecycle</h1>
+<p>One of the major controls exerted by the Policy is the management of headers
+during the <span class="math">\(Message\)</span> lifecycle.  Most applications don’t need to be aware of
+this.</p>
+<p>A header enters the model in one of two ways: via a Parser, or by being set to
+a specific value by an application program after the Model already exists.
+Similarly, a header exits the model in one of two ways: by being serialized by
+a Generator, or by being retrieved from a Model by an application program.  The
+Policy object provides hooks for all four of these pathways.</p>
+<p>The model storage for headers is a list of (name, value) tuples.</p>
+<p>The Parser identifies headers during parsing, and passes them to the
+<a href="#id3"><span class="problematic" id="id4">:meth:`~email.policy.Policy.header_source_parse`</span></a> method of the Policy.  The
+result of that method is the (name, value) tuple to be stored in the model.</p>
+<p>When an application program supplies a header value (for example, through the
+<span class="math">\(Message\)</span> object <span class="math">\(__setitem__\)</span> interface), the name and the value are passed to
+the <a href="#id5"><span class="problematic" id="id6">:meth:`~email.policy.Policy.header_store_parse`</span></a> method of the Policy, which
+returns the (name, value) tuple to be stored in the model.</p>
+<p>When an application program retrieves a header (through any of the dict or list
+interfaces of <span class="math">\(Message\)</span>), the name and value are passed to the
+<a href="#id7"><span class="problematic" id="id8">:meth:`~email.policy.Policy.header_fetch_parse`</span></a> method of the Policy to
+obtain the value returned to the application.</p>
+<p>When a Generator requests a header during serialization, the name and value are
+passed to the <a href="#id9"><span class="problematic" id="id10">:meth:`~email.policy.Policy.fold`</span></a> method of the Policy, which
+returns a string containing line breaks in the appropriate places.  The
+<a href="#id11"><span class="problematic" id="id12">:meth:`~email.policy.Policy.cte_type`</span></a> Policy control determines whether or
+not Content Transfer Encoding is performed on the data in the header.  There is
+also a <a href="#id13"><span class="problematic" id="id14">:meth:`~email.policy.Policy.binary_fold`</span></a> method for use by generators
+that produce binary output, which returns the folded header as binary data,
+possibly folded at different places than the corresponding string would be.</p>
+</div>
+<div class="section" id="handling-binary-data">
+<h1>Handling Binary Data</h1>
+<p>In an ideal world all message data would conform to the RFCs, meaning that the
+parser could decode the message into the idealized unicode message that the
+sender originally wrote.  In the real world, the email package must also be
+able to deal with badly formatted messages, including messages containing
+non-ASCII characters that either have no indicated character set or are not
+valid characters in the indicated character set.</p>
+<p>Since email messages are <em>primarily</em> text data, and operations on message data
+are primarily text operations (except for binary payloads of course), the model
+stores all text data as unicode strings.  Un-decodable binary inside text
+data is handled by using the <span class="math">\(surrogateescape\)</span> error handler of the ASCII
+codec.  As with the binary filenames the error handler was introduced to
+handle, this allows the email package to “carry” the binary data received
+during parsing along until the output stage, at which time it is regenerated
+in its original form.</p>
+<p>This carried binary data is almost entirely an implementation detail.  The one
+place where it is visible in the API is in the “internal” API.  A Parser must
+do the <span class="math">\(surrogateescape\)</span> encoding of binary input data, and pass that data to
+the appropriate Policy method.  The “internal” interface used by the Generator
+to access header values preserves the <span class="math">\(surrogateescaped\)</span> bytes.  All other
+interfaces convert the binary data either back into bytes or into a safe form
+(losing information in some cases).</p>
+</div>
+<div class="section" id="backward-compatibility">
+<h1>Backward Compatibility</h1>
+<p>The <a href="#id15"><span class="problematic" id="id16">:class:`~email.policy.Policy.Compat32`</span></a> Policy provides backward
+compatibility with version 5.1 of the email package.  It does this via the
+following implementation of the four+1 Policy methods described above:</p>
+<dl class="docutils">
+<dt>header_source_parse</dt>
+<dd>Splits the first line on the colon to obtain the name, discards any spaces
+after the colon, and joins the remainder of the line with all of the
+remaining lines, preserving the linesep characters to obtain the value.
+Trailing carriage return and/or linefeed characters are stripped from the
+resulting value string.</dd>
+<dt>header_store_parse</dt>
+<dd>Returns the name and value exactly as received from the application.</dd>
+<dt>header_fetch_parse</dt>
+<dd>If the value contains any <span class="math">\(surrogateescaped\)</span> binary data, return the value
+as a <a href="#id17"><span class="problematic" id="id18">:class:`~email.header.Header`</span></a> object, using the character set
+<span class="math">\(unknown-8bit\)</span>.  Otherwise just returns the value.</dd>
+<dt>fold</dt>
+<dd>Uses <a href="#id19"><span class="problematic" id="id20">:class:`~email.header.Header`</span></a>’s folding to fold headers in the
+same way the email5.1 generator did.</dd>
+<dt>binary_fold</dt>
+<dd>Same as fold, but encodes to ‘ascii’.</dd>
+</dl>
+</div>
+<div class="section" id="new-algorithm">
+<h1>New Algorithm</h1>
+<dl class="docutils">
+<dt>header_source_parse</dt>
+<dd>Same as legacy behavior.</dd>
+<dt>header_store_parse</dt>
+<dd>Same as legacy behavior.</dd>
+<dt>header_fetch_parse</dt>
+<dd>If the value is already a header object, returns it.  Otherwise, parses the
+value using the new parser, and returns the resulting object as the value.
+<span class="math">\(surrogateescaped\)</span> bytes get turned into unicode unknown character code
+points.</dd>
+<dt>fold</dt>
+<dd><p class="first">Uses the new header folding algorithm, respecting the policy settings.
+surrogateescaped bytes are encoded using the <code class="docutils literal"><span class="pre">unknown-8bit</span></code> charset for
+<code class="docutils literal"><span class="pre">cte_type=7bit</span></code> or <code class="docutils literal"><span class="pre">8bit</span></code>.  Returns a string.</p>
+<p class="last">At some point there will also be a <code class="docutils literal"><span class="pre">cte_type=unicode</span></code>, and for that
+policy fold will serialize the idealized unicode message with RFC-like
+folding, converting any surrogateescaped bytes into the unicode
+unknown character glyph.</p>
+</dd>
+<dt>binary_fold</dt>
+<dd><p class="first">Uses the new header folding algorithm, respecting the policy settings.
+surrogateescaped bytes are encoded using the <span class="math">\(unknown-8bit\)</span> charset for
+<code class="docutils literal"><span class="pre">cte_type=7bit</span></code>, and get turned back into bytes for <code class="docutils literal"><span class="pre">cte_type=8bit</span></code>.
+Returns bytes.</p>
+<p class="last">At some point there will also be a <code class="docutils literal"><span class="pre">cte_type=unicode</span></code>, and for that
+policy binary_fold will serialize the message according to :rfc:<code class="docutils literal"><span class="pre">5335</span></code>.</p>
+</dd>
+</dl>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Overview" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

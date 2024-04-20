@@ -1,0 +1,198 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Command and FISH Highlighting in the Program &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="Command and FISH Reference Notation in the Documents" href="commandfishrefpresentation.html" />
+    <link rel="prev" title="Command Entry in the Console Pane" href="commandentry.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="command-and-fish-highlighting-in-the-program">
+<span id="commandhighlighting"></span><h1>Command and <span class="codename">FISH</span> Highlighting in the Program</h1>
+<p>In two cases in this documentation, commands and <span class="codename">FISH</span>, when shown, will match the default syntax highlighting of the program (assuming the default is in use — syntax highlighting may be customized by the user in the <a class="reference internal" href="../configuration/options/options.html#dlg-options"><span class="std std-ref">Options dialog</span></a>). These are the case of a complete data or <span class="codename">FISH</span> file listing, or the case where lines of commands or <span class="codename">FISH</span> are presented offset from the main body text, as here. In both cases, the lines are boxed as shown.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">block edge</span><span class="n"> apply stress </span><span class="o">-</span><span class="m m-Double">1</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">0</span><span class="p">,</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">2</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                 range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">22.7</span><span class="n"> </span><span class="m m-Double">1.19e-1</span>
+</pre></div>
+</div>
+<p>When presented inline with body text (either plain or as a hyperlink), or in the reference sections, or elsewhere, the presentation is simplified somewhat.  Command words and keywords are presented in black monospaced text; values supplied with keywords or arguments, regardless of type, are shown in blue text.</p>
+<p>To illustrate: a reference in the body text such as this — <a class="reference internal" href="../../../../../../../udec/docproject/source/elements/block/block_commands/cmd_block.create.html#command:block.create" title="Create and perform other operations on rigid blocks."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">create</span></code></a> — is a basic hyperlink to the reference documentation for the command.  This is quite common. Similarly, an inline illustration of a “filled out” command is common, and would look something like this: &nbsp; <span class="fishcmd">block zone generate edge-length</span> <a class="reference internal" href="../../../../../utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">3.14</span></span></a>.</p>
+<table border="1" class="colwidths-given blank docutils" id="id1">
+<caption><span class="caption-text">Table 1: Visual Guide to Syntax Highlighting for Commands and <span class="codename">FISH</span> in the Program and in Documentation Examples</span></caption>
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Type style/</strong> <br> <strong>character</strong></td>
+<td><strong>Used for</strong></td>
+</tr>
+<tr class="row-even"><td><span class="xtc">command</span></td>
+<td>first word in a command</td>
+</tr>
+<tr class="row-odd"><td><span class="xtk">keyword</span></td>
+<td>command keyword</td>
+</tr>
+<tr class="row-even"><td><span class="xtf">fishword</span></td>
+<td>a <span class="codename">FISH</span> function name or statement</td>
+</tr>
+<tr class="row-odd"><td><span class="xtv">fishvar</span></td>
+<td>a <span class="codename">FISH</span> variable</td>
+</tr>
+<tr class="row-even"><td><span class="xtn">flt</span> or <span class="xtn">int</span></td>
+<td>a number of float or integer type</td>
+</tr>
+<tr class="row-odd"><td><span class="xts">str</span> or <span class="xts">bool</span></td>
+<td>a string value or boolean value</td>
+</tr>
+<tr class="row-even"><td><span class="xtd">comment</span></td>
+<td>a comment</td>
+</tr>
+<tr class="row-odd"><td><span class="xtx">stop</span></td>
+<td>stop, pause, return, quit (stop words)</td>
+</tr>
+<tr class="row-even"><td><span class="xtg">solve</span></td>
+<td>solve, cycle (execute words)</td>
+</tr>
+<tr class="row-odd"><td><span class="xts">&amp;</span> or <span class="xts">…</span></td>
+<td>line continuation characters</td>
+</tr>
+</tbody>
+</table>
+<style>
+   span[class^="xt"] {
+      font-family: monospace;
+   }
+   span.xtc {
+      color: black;
+      font-weight: bold;
+      }
+   span.xtf {
+      color: #660099;
+      font-weight: bold;
+      }
+   span.xtn {
+      color: #0000ff;
+      }
+   span.xts {
+      color: #269900;
+      }
+   span.xtd {
+      color: #808080;
+      }
+   span.xtv {
+      color: #AA00FF;
+      }
+   span.xtx {
+      color: rgb(255,0,0);
+      }
+   span.xtg {
+      color: rgb(72,217,135);
+      }
+</style>
+</style></div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="commands.html" >Commands</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="howcommandswork.html" accesskey="U">How Commands Work</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="commandentry.html"
+                           title="previous chapter"> Command Entry in the <em>Console</em> Pane</a> |    
+       <a href="commandfishrefpresentation.html"
+                           title="next chapter">Command and <span class="codename">FISH</span> Reference Notation in the Documents</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Command and FISH Highlighting in the Program" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

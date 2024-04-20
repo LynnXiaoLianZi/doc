@@ -1,0 +1,142 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>structure geogrid recover command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="structure-geogrid-recover-command">
+<h1><code class="docutils literal"><span class="pre">structure</span> <span class="pre">geogrid</span> <span class="pre">recover</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="structuregeogrid command">
+<dt id="command:structure.geogrid.recover">
+<span class="cmdname"><span class="pref">s</span><span class="pref">t</span><span class="pref">r</span><span class="null">u</span><span class="null">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">g</span><span class="null">e</span><span class="null">o</span><span class="null">g</span><span class="null">r</span><span class="null">i</span><span class="null">d</span><span class="null"> </span></span><span class="cmdname"><span class="pref">r</span><span class="pref">e</span><span class="pref">c</span><span class="null">o</span><span class="null">v</span><span class="null">e</span><span class="null">r</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:structure.geogrid.recover.resultants" title="structure geogrid recover resultants">resultants</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.geogrid.recover.stress" title="structure geogrid recover stress">stress</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.geogrid.recover.surface" title="structure geogrid recover surface">surface</a></p>
+</div>
+<p>Stress-recovery for geogrid elements.  The stress-recovery procedure can be applied to all elements to compute both the stress resultants and the stresses acting at a specified depth. The range keyword identifies the patch of elements to which the command will apply. Note that the recovered quantities will depend upon the range of elements over which these quantities are being recovered, because nodal averaging only occurs for elements within this range.</p>
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.recover.resultants">
+<span class="cmdkey"><span class="pref">r</span><span class="null">e</span><span class="null">s</span><span class="null">u</span><span class="null">l</span><span class="null">t</span><span class="null">a</span><span class="null">n</span><span class="null">t</span><span class="null">s</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><p>recover the eight stress resultants for all elements in the optional range. The stress resultants are expressed in terms of the surface coordinate system. This command assumes that a consistent surface coordinate system has been established for the group of elements in the range (see the <span class="cmdkey">surface</span> keyword). The bending and membrane stress resultants (<span class="math">\(M_x\)</span>, <span class="math">\(M_y\)</span>, <span class="math">\(M_{xy}\)</span>, <span class="math">\(N_x\)</span>, <span class="math">\(N_y\)</span>, and <span class="math">\(N_{xy}\)</span>) vary linearly over each element, whereas the transverse-shear stress resultants (<span class="math">\(Q_x\)</span> and <span class="math">\(Q_y\)</span>) are constant over each element. The recovery procedure first computes the average values of bending and membrane stress resultants (by averaging, at the nodes, the contributions from each element in the range), and then spatially differentiates this average bending field over each element to obtain the transverse-shear stress resultants.</p>
+<p>stress resultants can be queried after recovery with the command <a class="reference internal" href="cmd_structure.geogrid.list.html#kwd:structure.geogrid.list.resultant" title="all eight stress resultant quantities last calculated with the  structure.geogrid.recover.resultants &#013;&#010;command.  If the  nodes  keyword is given the values of these quantities&#013;&#010;is supplied at each node of the element, in addition to the value at the element&#013;&#010;centroid."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">geogrid</span> <span class="pre">list</span> <span class="pre">resultant</span></code></a> and the <span class="codename">FISH</span> function <a class="reference internal" href="../../shells/fish/sel.shell_intrinsics/fish_sel.shell.resultant.html#function:struct.shell.resultant" title="Get stress resultants last calculated for the element at the location corresponding&#013;&#010;to node index  inode ."><code class="xref fish fish-func docutils literal"><span class="pre">struct.shell.resultant</span></code></a>. The validity of the stress resultants for a particular element can be queried with the <span class="codename">FISH</span> function <a class="reference internal" href="../../shells/fish/sel.shell_intrinsics/fish_sel.shell.resultant.valid.html#function:struct.shell.resultant.valid" title="Get stress resultant validity flag."><code class="xref fish fish-func docutils literal"><span class="pre">struct.shell.resultant.valid</span></code></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.recover.stress">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="pref">d</span><span class="null">e</span><span class="null">p</span><span class="null">t</span><span class="null">h</span><span class="null">-</span><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>recover a stress tensor (expressed in global coordinate system) at a specified depth in all elements in the optional range. The depth equals <span class="math">\(v\)</span> times <span class="math">\(t\)</span>/2, where <span class="math">\(t\)</span> is shell thickness. The depth factor, <span class="math">\(v\)</span>, must be in the range [-1, +1]. <span class="math">\(v\)</span> equal to +1 / -1 corresponds with the outer/inner shell surface (outer surface defined by positive surface system <span class="math">\(z\)</span>-direction), and <span class="math">\(v\)</span> equal to zero corresponds with the shell mid-surface. If <span class="math">\(v\)</span> is not specified, it defaults to +1.</p>
+<p>stresses are recovered at the three nodal points and centroid of each element. If we designate the shell mid-surface by <span class="math">\(xy\)</span>-axes, then 1) stress components <span class="math">\(σ_{xx}\)</span>, <span class="math">\(σ_{yy}\)</span>, and <span class="math">\(σ_{xy}\)</span> vary linearly over each element, 2) stress components <span class="math">\(σ_{zy}\)</span> and <span class="math">\(σ_{zx}\)</span> are constant over each element, and 3) <span class="math">\(σ_{zz}\)</span> = 0 over each element. The stresses are derived from the internal element forces (see <a class="reference internal" href="cmd_structure.geogrid.list.html#kwd:structure.geogrid.list.force-node" title="List nodal forces.  By default, components are displayed in terms of the element&#013;&#010;local coordinate systems. These are the forces exerted by the nodes on the element."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">geogrid</span> <span class="pre">list</span> <span class="pre">force-node</span></code></a>). If the stress resultants are not valid when this command is executed, then an attempt is first made to recover them; if this attempt fails, then an error message is displayed indicating the problem—usually the inconsistency of the surface system, which must then be established manually using the <a class="reference internal" href="#kwd:structure.geogrid.recover.surface" title="The vector  v  enables a surface coordinate system to be generated for&#013;&#010;all nodes used by the elements in the optional range. The surface coordinate&#013;&#010;system, `x'` `y'` `z'`, has the following properties: (1) `z'` is normal to&#013;&#010;the surface; (2) `x'` is the projection of the given vector onto the surface;&#013;&#010;and (3) `y'` is orthogonal to `x'` and `z'`. The `z'`-direction is found at&#013;&#010;each node by taking the average normal direction of"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">geogrid</span> <span class="pre">recover</span> <span class="pre">surface</span></code></a> command (see next keyword).</p>
+<p>stresses and principal stresses can be queried after recovery with the commands <a class="reference internal" href="cmd_structure.geogrid.list.html#kwd:structure.geogrid.list.stress" title="the stress state calculated with the  structure.geogrid.recover.stress &#013;&#010;command.   If the  nodes  keyword is given the values of these quantities&#013;&#010;is supplied at each node of the element, in addition to the value at the element&#013;&#010;centroid."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">geogrid</span> <span class="pre">list</span> <span class="pre">stress</span></code></a> and  <a class="reference internal" href="cmd_structure.geogrid.list.html#kwd:structure.geogrid.list.stress-principal" title="principal stresses calculated with the  structure.geogrid.recover.stress &#013;&#010;command.   If the  nodes  keyword is given the values of these quantities&#013;&#010;is supplied at each node of the element, in addition to the value at the element&#013;&#010;centroid."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">geogrid</span> <span class="pre">list</span> <span class="pre">stress-principal</span></code></a>, and with the <span class="codename">FISH</span> functions <a class="reference internal" href="../../shells/fish/sel.shell_intrinsics/fish_sel.shell.stress.html#function:struct.shell.stress" title="Get the shell stresses at the current depth factor at the location corresponding&#013;&#010;to index  inode ."><code class="xref fish fish-func docutils literal"><span class="pre">struct.shell.stress</span></code></a> and <a class="reference internal" href="../../shells/fish/sel.shell_intrinsics/fish_sel.shell.stress.prin.html#function:struct.shell.stress.prin" title="Get the resolved principal stress at the current depth factor and position given&#013;&#010;by  inode ."><code class="xref fish fish-func docutils literal"><span class="pre">struct.shell.stress.prin</span></code></a>. The depth at which these stresses have been recovered can be queried with the <a class="reference internal" href="cmd_structure.geogrid.list.html#kwd:structure.geogrid.list.depth-factor" title="depth factor used during stress recovery"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">geogrid</span> <span class="pre">list</span> <span class="pre">depth-factor</span></code></a> and the <span class="codename">FISH</span> function <a class="reference internal" href="../../shells/fish/sel.shell_intrinsics/fish_sel.shell.depth.factor.html#function:struct.shell.depth.factor" title="Get the depth factor at which stresses have been recovered.  The depth equals&#013;&#010;`Ft/2` where `t` is the shell element thickness.  `F` values equal to  +1.0 &#013;&#010;or  -1.0  correspond to the outer/inner shell surface.  The outer surface&#013;&#010;is defined by the positive `z`-direction of the local shell element system.&#013;&#010; `F` values of  0.0  corresponds to the shell mid-surface.  The depth&#013;&#010;factor can be modified with the  structure.shell.recover.stress ,  structure.geogrid.recover.stress ,&#013;&#010;or the"><code class="xref fish fish-func docutils literal"><span class="pre">struct.shell.depth.factor</span></code></a>. The validity of the stresses and principal stresses for a particular element can be queried with the <span class="codename">FISH</span> function <a class="reference internal" href="../../shells/fish/sel.shell_intrinsics/fish_sel.shell.stress.valid.html#function:struct.shell.stress.valid" title="Get the stress validity flag for the element.  true  indicates that the&#013;&#010;stresses last calculated at the current depth factor are valid.  false &#013;&#010;indicates that stresses have not been calculated, or that there has been a change&#013;&#010;that invalidates the last stresses calculated. See the  struct.shell.stress &#013;&#010;function."><code class="xref fish fish-func docutils literal"><span class="pre">struct.shell.stress.valid</span></code></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.recover.surface">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">u</span><span class="null">r</span><span class="null">f</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>The vector <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span></span></a> enables a surface coordinate system to be generated for all nodes used by the elements in the optional range. The surface coordinate system, <span class="math">\(x'\)</span> <span class="math">\(y'\)</span> <span class="math">\(z'\)</span>, has the following properties: (1) <span class="math">\(z'\)</span> is normal to the surface; (2) <span class="math">\(x'\)</span> is the projection of the given vector onto the surface; and (3) <span class="math">\(y'\)</span> is orthogonal to <span class="math">\(x'\)</span> and <span class="math">\(z'\)</span>. The <span class="math">\(z'\)</span>-direction is found at each node by taking the average normal direction of all elements in the range. If <span class="cmdkey">surface</span> <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span></span></a> is aligned with <span class="math">\(z'\)</span> at any node, then processing stops and an error message is displayed. To proceed, designate a different <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span></span></a>, or restrict the range of elements considered.</p>
+<p>The surface coordinate system can be queried with <a class="reference internal" href="cmd_structure.geogrid.list.html#kwd:structure.geogrid.list.system-local" title="element local coordinate system"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">geogrid</span> <span class="pre">list</span> <span class="pre">system-local</span></code></a> and the <span class="codename">FISH</span> function <a class="reference internal" href="../../nodes/fish/sel.node_intrinsics/fish_sel.node.system.surface.html#function:struct.node.system.surface" title="Get/set the surface coordinate system of the structure node."><code class="xref fish fish-func docutils literal"><span class="pre">struct.node.system.surface</span></code></a>. It can also be set for an individual node with the <span class="codename">FISH</span> function <a class="reference internal" href="../../nodes/fish/sel.node_intrinsics/fish_sel.node.system.local.html#function:struct.node.system.local" title="Get the local coordinate system of the structure node."><code class="xref fish fish-func docutils literal"><span class="pre">struct.node.system.local</span></code></a>. It can be visualized with the <em>Geogrid</em> plot item by choosing the corresponding <em>System</em> attribute.</p>
+<p>The surface system at a node automatically becomes invalid under the following conditions: 1) large-strain update; or 2) creation or deletion of an element that uses the node. Validity must be re-established with the command <a class="reference internal" href="#kwd:structure.geogrid.recover.surface" title="The vector  v  enables a surface coordinate system to be generated for&#013;&#010;all nodes used by the elements in the optional range. The surface coordinate&#013;&#010;system, `x'` `y'` `z'`, has the following properties: (1) `z'` is normal to&#013;&#010;the surface; (2) `x'` is the projection of the given vector onto the surface;&#013;&#010;and (3) `y'` is orthogonal to `x'` and `z'`. The `z'`-direction is found at&#013;&#010;each node by taking the average normal direction of"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">geogrid</span> <span class="pre">recover</span> <span class="pre">surface</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?structure geogrid recover command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

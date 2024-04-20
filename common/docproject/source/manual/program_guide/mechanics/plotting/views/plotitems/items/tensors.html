@@ -1,0 +1,180 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tensors &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../../../search.html" />
+    <link rel="next" title="Vectors" href="vectors.html" />
+    <link rel="prev" title="Table Chart" href="tablechart.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="tensors">
+<span id="ui-pi-tensors"></span><h1>Tensors</h1>
+<p class="h3 rubric" id="tensors-description">Description</p>
+<p>User defined tensor data.</p>
+<p class="h3 rubric" id="tensors-attributes">Attributes</p>
+<div class="docutils container" id="attributelist">
+<a class="reference internal" href="#tensors-colorby-att"><span class="std std-ref">ColorBy By</span></a>
+<a class="reference internal" href="#tensors-colorlist-att"><span class="std std-ref">Color-List</span></a>
+<a class="reference internal" href="#tensors-scale-att"><span class="std std-ref">Scale By</span></a>
+<a class="reference internal" href="#tensors-line-att"><span class="std std-ref">Line</span></a>
+<a class="reference internal" href="#tensors-legend-att"><span class="std std-ref">Legend</span></a></div>
+<span class="target" id="tensors-colorby-att"></span><p>Color By</p>
+<img alt="../../../../../../../../../../_images/autoconf01.png" class="pi-attribute" src="../../../../../../../../../../_images/autoconf01.png" />
+<p>Determines how the plot item will be colored.</p>
+<p>There are three groups of options here: textual values, numeric values, and vector quantities.  All choices are mutually exclusive; only one selection can be active at any time.  In some cases (the text value “extra,” for instance) an additional field is supplied to specify additional parameters as needed.  When these appear they are described in the tables below.</p>
+<span class="target" id="tensors-colorlist-att"></span><p><strong>Color-List</strong></p>
+<img alt="colorlist_attribute" class="pi-attribute" src="../../../../../../../../../../_images/colorlist.png" />
+<p>Configure the list used to color the plot item.</p>
+<blockquote>
+<div><p><em>Color-List</em>: Set which items on the list are displayed.  The field contains “Select None”, “Select All”, and “Invert Selection” buttons, respectively. These are followed by the “Global” checkbox, which, if checked, causes the current pairing of colors and labels to be used globally across all plots. For example, if a specific, consistent color is desired for group names that appear in all plots, this setting will be useful.</p>
+<p>This field is also a container for the items on the list.</p>
+<blockquote>
+<div><em>[Item]</em>: When the list contains one or more items, they are listed beneath the main field.  The item’s name is used as a label for the field.  If checked, the item is displayed. Next a <a class="reference internal" href="attributes/std_color.html#std-color"><span class="std std-ref">color control</span></a> appears to set/indicate the item color. The current label for the item appears next; initially this defaults to the item name.  The settings button (…) may be used to set an “<a class="reference internal" href="../../../../../../glossaryofterms.html#term-alias"><span class="xref std std-term">alias</span></a>” that can be used instead of the item name when displayed in the legend.</div></blockquote>
+</div></blockquote>
+<span class="target" id="tensors-scale-att"></span><p><strong>Scale</strong></p>
+<img alt="../../../../../../../../../../_images/scale021.png" class="pi-attribute" src="../../../../../../../../../../_images/scale021.png" />
+<p>Size the plot item.</p>
+<blockquote>
+<div><em>Scale</em>: Automatically (checked) scale the plot item.  The <em>Target</em> field specifies the target scaling (as a percentage of screen size).  If unchecked, the edit field may be used to manually scale the item.</div></blockquote>
+<span class="target" id="tensors-line-att"></span><p><strong>Line</strong></p>
+<img alt="line" class="pi-attribute" src="../../../../../../../../../../_images/line01.png" />
+<p>Set the outline properties of the plot item.</p>
+<blockquote>
+<div><em>Line</em>: set line style and thickness.</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Depending on context, this control may also feature:</p>
+<blockquote class="last">
+<div><p>–a checkbox for including (checked) the line in the plot item, and/or <br>
+–a <a class="reference internal" href="attributes/std_color.html#std-color"><span class="std std-ref">color control</span></a> for setting the color of the line. <br></p>
+<blockquote>
+<div><img alt="../../../../../../../../../../_images/line03.png" src="../../../../../../../../../../_images/line03.png" />
+</div></blockquote>
+</div></blockquote>
+</div>
+<span class="target" id="tensors-legend-att"></span><p><strong>Legend</strong></p>
+<p>Set display of the item in the plot legend.  All plot items, at minimum, have a <em>Title</em> attribute.</p>
+<blockquote>
+<div><p><em>Legend</em>: Show (checked) all information about the plot item in the legend.</p>
+<blockquote>
+<div><p><em>Title</em>: Show (checked) the title of the plot item in the legend.  The “Alias:” field may be used to specify a custom title for the item.</p>
+<blockquote>
+<div><p><em>Size</em>:  Set the size of text in the legend.</p>
+<p><em>Font</em>: Set the font face used for the text.</p>
+<p><em>Style</em>: Set the text style (the options are normal, bold, italic, bold-italic).</p>
+<p><em>Color</em>: Set the text color.</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<style>
+   h1:after {
+      content: " Plot Item";
+   }
+</style></div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../../../plotting.html" >Plotting</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../plotitem_index.html" >Plot Items</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../plotitemsincommon.html" accesskey="U">Plot Items in Common</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="tablechart.html"
+                           title="previous chapter"> Table Chart</a> |    
+       <a href="vectors.html"
+                           title="next chapter">Vectors</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Tensors" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

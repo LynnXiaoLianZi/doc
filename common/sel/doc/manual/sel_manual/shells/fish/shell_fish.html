@@ -1,0 +1,182 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FISH Functions &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fish-functions">
+<span id="sel-shell-fish"></span><h1><span class="codename">FISH</span> Functions</h1>
+<p><span class="codename">FISH</span> functions operating on structural shells. The type specifiers used in the <span class="codename">FISH</span> function signatures are given in the <a class="reference internal" href="../../../../../../docproject/source/manual/scripting/fish_scripting/fish_types.html#fish-variabletypes"><span class="std std-ref">FISH Type Index</span></a> section.</p>
+<p>Note that all shell functions will also work with both geogrid elements and liner elements.</p>
+<p class="rubric" id="selshell-functions">Structural Shell Functions</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.area.html#struct.shell.area" title="Get surface area of the shell-type element."><span class="fishcmd">struct.shell.area</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.beta.html#struct.shell.beta" title="Get/set shell-type material system beta angle. This is defined as the angle&#013;&#010;between the element local system  -axis and the material system  -axis. In radians&#013;&#010;measured counter-clockwise from the element local  -axis."><span class="fishcmd">struct.shell.beta</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.depth.factor.html#struct.shell.depth.factor" title="Get the depth factor at which stresses have been recovered.  The depth equals&#013;&#010;  where   is the shell element thickness.    values equal to  +1.0  or  -1.0 &#013;&#010;correspond to the outer/inner shell surface.  The outer surface is defined by&#013;&#010;the positive  -direction of the local shell element system.    values of  0.0 &#013;&#010;corresponds to the shell mid-surface.  The depth factor can be modified with&#013;&#010;the  structure shell recover stress ,"><span class="fishcmd">struct.shell.depth.factor</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.element.type.html#struct.shell.element.type" title="Get the name of the finite-element type used by this shell-type element."><span class="fishcmd">struct.shell.element.type</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.poisson.html#struct.shell.poisson" title="Get/set the Poisson’s ratio of the element."><span class="fishcmd">struct.shell.poisson</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.pressure.html#struct.shell.pressure" title="Get/set the uniform pressure acting on the shell.  A positive value acts in&#013;&#010;the  -direction of the element local system."><span class="fishcmd">struct.shell.pressure</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.prop.anis.html#struct.shell.prop.anis" title="Get/set the anisotropic material properties as a list of 6 values."><span class="fishcmd">struct.shell.prop.anis</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.prop.matx.html#struct.shell.prop.matx" title="Get/set the orthotropic/anisotropic material property x-direction."><span class="fishcmd">struct.shell.prop.matx</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.prop.ortho.html#struct.shell.prop.ortho" title="Get/set the orthotropic material properties as a list of 4 values."><span class="fishcmd">struct.shell.prop.ortho</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.prop.type.html#struct.shell.prop.type" title="Get the material property type."><span class="fishcmd">struct.shell.prop.type</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.resultant.html#struct.shell.resultant" title="Get stress resultants last calculated for the element at the location corresponding&#013;&#010;to node index  inode ."><span class="fishcmd">struct.shell.resultant</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><span class="null">,</span><span class="null">INT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.resultant.valid.html#struct.shell.resultant.valid" title="Get stress resultant validity flag."><span class="fishcmd">struct.shell.resultant.valid</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.stress.html#struct.shell.stress" title="Get the shell stresses at the current depth factor at the location corresponding&#013;&#010;to index  inode ."><span class="fishcmd">struct.shell.stress</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.stress.max.html#struct.shell.stress.max" title="Get the maximum stress of the element. This is the maximum principal stress&#013;&#010;of the fiber stress at depth +1 or -1, which is the combination of membrane&#013;&#010;and bending resultants."><span class="fishcmd">struct.shell.stress.max</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.stress.min.html#struct.shell.stress.min" title="Get the minimum stress of the element. This is the minimum principal stress&#013;&#010;of the fiber stress at depth +1 or -1, which is the combination of membrane&#013;&#010;and bending resultants."><span class="fishcmd">struct.shell.stress.min</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.stress.prin.html#struct.shell.stress.prin" title="Get the resolved principal stress at the current depth factor and position given&#013;&#010;by  inode ."><span class="fishcmd">struct.shell.stress.prin</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.stress.valid.html#struct.shell.stress.valid" title="Get the stress validity flag for the element.  true  indicates that the stresses&#013;&#010;last calculated at the current depth factor are valid.  false  indicates that&#013;&#010;stresses have not been calculated, or that there has been a change that invalidates&#013;&#010;the last stresses calculated. See the  struct.shell.stress  function."><span class="fishcmd">struct.shell.stress.valid</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.thickness.html#struct.shell.thickness" title="Get/set the element thickness."><span class="fishcmd">struct.shell.thickness</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.volume.html#struct.shell.volume" title="Get the element volume, or surface area times thickness."><span class="fishcmd">struct.shell.volume</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.young.html#struct.shell.young" title="Get/set the Young’s modulus of the element."><span class="fishcmd">struct.shell.young</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.area.html"><code class="docutils literal"><span class="pre">struct.shell.area</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.beta.html"><code class="docutils literal"><span class="pre">struct.shell.beta</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.depth.factor.html"><code class="docutils literal"><span class="pre">struct.shell.depth.factor</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.element.type.html"><code class="docutils literal"><span class="pre">struct.shell.element.type</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.poisson.html"><code class="docutils literal"><span class="pre">struct.shell.poisson</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.pressure.html"><code class="docutils literal"><span class="pre">struct.shell.pressure</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.prop.anis.html"><code class="docutils literal"><span class="pre">struct.shell.prop.anis</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.prop.matx.html"><code class="docutils literal"><span class="pre">struct.shell.prop.matx</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.prop.ortho.html"><code class="docutils literal"><span class="pre">struct.shell.prop.ortho</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.prop.type.html"><code class="docutils literal"><span class="pre">struct.shell.prop.type</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.resultant.html"><code class="docutils literal"><span class="pre">struct.shell.resultant</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.resultant.valid.html"><code class="docutils literal"><span class="pre">struct.shell.resultant.valid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.stress.html"><code class="docutils literal"><span class="pre">struct.shell.stress</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.stress.max.html"><code class="docutils literal"><span class="pre">struct.shell.stress.max</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.stress.min.html"><code class="docutils literal"><span class="pre">struct.shell.stress.min</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.stress.prin.html"><code class="docutils literal"><span class="pre">struct.shell.stress.prin</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.stress.valid.html"><code class="docutils literal"><span class="pre">struct.shell.stress.valid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.thickness.html"><code class="docutils literal"><span class="pre">struct.shell.thickness</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.volume.html"><code class="docutils literal"><span class="pre">struct.shell.volume</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.shell_intrinsics/fish_sel.shell.young.html"><code class="docutils literal"><span class="pre">struct.shell.young</span></code></a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?FISH Functions" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

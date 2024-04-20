@@ -1,0 +1,204 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Constitutive Models in FLAC3D, UDEC,333 and 3DEC &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="Incremental Formulation" href="formulation.html" />
+    <link rel="prev" title="Constitutive Models" href="../models.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="hide sectionname docutils container">
+<span class="codename">FLAC3D</span> Theory and Background • Constitutive Models</div>
+<div class="section" id="constitutive-models-in-flac3d-udec-333-and-3dec">
+<span id="consitutivemodelsinflac3d"></span><h1>Constitutive Models in <span class="codename">FLAC3D</span>, <span class="codename">UDEC</span>,333 and <span class="codename">3DEC</span></h1>
+<p>The basic mechanical constitutive models provided in <span class="codename">FLAC3D</span>, <span class="codename">UDEC</span>, and <span class="codename">3DEC</span> are arranged into null, elastic, and plastic model groups:</p>
+<p><a class="reference internal" href="nullmodel.html#nullmodel"><span class="std std-ref">Null model group</span></a></p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><span class="xref std std-ref">Null model</span></li>
+</ol>
+<blockquote>
+<div>A null material model is used to represent material that is removed or excavated.</div></blockquote>
+</div></blockquote>
+<p><a class="reference internal" href="elasticmodel.html#elasticmodel"><span class="std std-ref">Elastic model group</span></a></p>
+<blockquote>
+<div><ol class="arabic simple" start="2">
+<li><span class="xref std std-ref">Elastic model</span></li>
+</ol>
+<blockquote>
+<div>The elastic, isotropic model provides the simplest representation of material behavior. This model is valid for homogeneous, isotropic, continuous materials that exhibit linear stress-strain behavior with no hysteresis on unloading.</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><span class="xref std std-ref">Anisotropic model</span></li>
+</ol>
+<blockquote>
+<div>The elastic, transversely isotropic model gives the ability to simulate layered elastic media in which there are distinctly different elastic moduli in directions normal and parallel to the layers.</div></blockquote>
+</div></blockquote>
+<p><a class="reference internal" href="plasticmodel.html#plasticmodel"><span class="std std-ref">Plastic model group</span></a></p>
+<blockquote>
+<div><ol class="arabic simple" start="4">
+<li><span class="xref std std-ref">Drucker-Prager model</span></li>
+</ol>
+<blockquote>
+<div>The Drucker-Prager plasticity model may be useful to model soft clays with low friction angles. However, this model is not generally recommended for application to geologic materials. It is included here mainly to permit comparison with other numerical program results.</div></blockquote>
+<ol class="arabic simple" start="5">
+<li><span class="xref std std-ref">Mohr-Coulomb model</span></li>
+</ol>
+<blockquote>
+<div>The Mohr-Coulomb model is the conventional model used to represent shear failure in soils and rocks. Vermeer and de Borst (1984), for example, report laboratory test results for sand and concrete that match well with the Mohr-Coulomb criterion.</div></blockquote>
+<ol class="arabic simple" start="6">
+<li><span class="xref std std-ref">Ubiquitous-Joint model</span></li>
+</ol>
+<blockquote>
+<div>The ubiquitous-joint model is an anisotropic plasticity model that includes weak planes of specific orientation embedded in a Mohr-Coulomb solid.</div></blockquote>
+<ol class="arabic simple" start="7">
+<li><span class="xref std std-ref">Strain-Softening/Hardening model</span></li>
+</ol>
+<blockquote>
+<div>The strain-softening/hardening model allows representation of nonlinear material softening and hardening behavior based on prescribed variations of the Mohr-Coulomb model properties (i.e., cohesion, friction, dilation and tensile strength) as functions of the deviatoric plastic strain.</div></blockquote>
+<ol class="arabic simple" start="8">
+<li><span class="xref std std-ref">Bilinear-Softening/Hardening Ubiquitous-Joint model</span></li>
+</ol>
+<blockquote>
+<div>The bilinear strain-softening/hardening ubiquitous-joint model allows representation of material softening and hardening behavior for the matrix and the weak plane based on prescribed variations of the ubiquitous-joint model properties (i.e., cohesion, friction, dilation, and tensile strength) as functions of deviatoric and tensile plastic strain. The variation of material strength properties with mean stress can also be taken into account by using the bilinear option.</div></blockquote>
+<ol class="arabic simple" start="9">
+<li><span class="xref std std-ref">Double-Yield model</span></li>
+</ol>
+<blockquote>
+<div>The double-yield model is intended to represent materials in which there may be significant irreversible compaction in addition to shear yielding, such as hydraulically placed backfill or lightly cemented granular material.</div></blockquote>
+<ol class="arabic simple" start="10">
+<li><span class="xref std std-ref">Modified Cam-Clay model</span></li>
+</ol>
+<blockquote>
+<div>The modified Cam-Clay model may be used to represent materials when the influence of volume change on bulk property and resistance to shear need to be taken into consideration, as in the case of soft clay.</div></blockquote>
+<ol class="arabic simple" start="11">
+<li><span class="xref std std-ref">Hoek-Brown model</span></li>
+</ol>
+<blockquote>
+<div>A Hoek-Brown model provides an alternative to the Hoek-Brown-PAC model with a stress-dependent plastic flow rule, described above. The model characterizes post-failure plastic flow by simple flow rule choices given in terms of a user-specified dilation angle. This model also contains a tensile strength limit similar to that used by the Mohr-Coulomb model. In addition, a factor-of-safety calculation based on the strength reduction method can be run with the Hoek-Brown model.</div></blockquote>
+<ol class="arabic simple" start="12">
+<li><span class="xref std std-ref">Hoek-Brown-PAC model</span></li>
+</ol>
+<blockquote>
+<div>The Hoek-Brown failure criterion characterizes the stress conditions that lead to failure in intact rock and rock masses. The failure surface is nonlinear and is based on the relation between the major and minor principal stresses. The model incorporates a plasticity flow rule that varies as a function of the confining stress level.</div></blockquote>
+<ol class="arabic simple" start="13">
+<li><span class="xref std std-ref">Cap-Yield (CYSoil) model</span></li>
+</ol>
+<blockquote>
+<div>The cap-yield (CY) soil model provides a comprehensive representation of the nonlinear behavior of soils. The model includes frictional strain-hardening and softening shear behavior, an elliptic volumetric cap with strain-hardening behavior, and an elastic modulus function of plastic volumetric strain. The model allows a more realistic representation of the loading/unloading response of soils.</div></blockquote>
+<ol class="arabic simple" start="14">
+<li>:ref:<a href="#id1"><span class="problematic" id="id2">`</span></a>Simplified CYSoil (CHSoil) model &lt;modelchsoil&gt;</li>
+</ol>
+<blockquote>
+<div>A simplified version of the CYSoil model, called the CHSoil model, offers built-in features including a friction-hardening law that uses hyperbolic model parameters as direct input, and a Mohr-Coulomb failure envelope with two built-in dilation laws.</div></blockquote>
+</div></blockquote>
+<p>There are ten time-dependent <span class="xref std std-ref">creep constitutive models</span> available in the creep model option for <span class="codename">UDEC</span>.  Nine of these models are included with <span class="codename">3DEC</span>.</p>
+<p>The source codes of most of the models are included in the “\pluginfiles\cmodels” sub-directory.
+Users can modify these models or create their own constitutive models as DLLs by following the procedures given in <span class="xref std std-ref">Writing New Constitutive Models</span>.
+The list of user-defined models (UDMs) is at <a class="reference external" href="https://www.itascacg.com/software/user-defined-constitutive-models-udm">Itasca UDM Website</a>.</p>
+<p>The formulation of the basic mechanical models is addressed in general terms first in the section of <a class="reference internal" href="formulation.html#incrementalformulation"><span class="std std-ref">Incremental Formulation</span></a>.
+Separate discussions of the theoretical background and specific implementation for each model are then presented.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../models.html" accesskey="U">Constitutive Models</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../models.html"
+                           title="previous chapter"> Constitutive Models</a> |    
+       <a href="formulation.html"
+                           title="next chapter">Incremental Formulation</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Constitutive Models in FLAC3D, UDEC,333 and 3DEC" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

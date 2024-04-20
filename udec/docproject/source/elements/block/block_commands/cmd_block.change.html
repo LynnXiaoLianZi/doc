@@ -1,0 +1,168 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block change command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block config command" href="cmd_block.config.html" />
+    <link rel="prev" title="block cell command" href="cmd_block.cell.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-change-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">change</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="block command">
+<dt id="command:block.change">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">c</span><span class="null">h</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.change.material" title="block change material">material</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.change.model" title="block change model">model</a></p>
+</div>
+<p>Set or change block material characteristics. All blocks with centroids lying within the optional <a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><code class="xref fish fish-tok docutils literal"><span class="pre">range</span></code></a> have block material characteristics changed.  If no range is specified, all blocks will have characteristics changed according to the keywords given below. To change joint characteristics, see <a class="reference internal" href="../block.contact_commands/cmd_block.contact.change.html#command:block.contact.change" title="Set or change joint models or material numbers. All joints with contact coordinates&#013;&#010;lying within the optional range have material numbers changed. If no range is&#013;&#010;specified, all joints will have material numbers changed according to the keywords&#013;&#010;given below.To change block material numbers, see  block.change ; for cable&#013;&#010;material numbers, see  cable.change ; for domain material numbers, see&#013;&#010; domain.change .  See  block.contact.cmodel  for extended joint models,&#013;&#010;and local storage joint models. To assign properties to the"><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">change</span></code></a>; for cable characteristics, see <code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">struct</span> <span class="pre">cable</span> <span class="pre">change</span></code>; for domain characteristics, see <code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">domain</span> <span class="pre">change</span></code>.  See the <a class="reference internal" href="../block.zone_commands/cmd_block.zone.cmodel.html#command:block.zone.cmodel" title="Assign constitutive models to zones."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">cmodel</span></code></a>, <a class="reference internal" href="../block.contact_commands/cmd_block.contact.cmodel.html#command:block.contact.cmodel" title="There are presently two independant methods for assigning constitutive models&#013;&#010;and properties to contacts[1]. The method described here assigns a constitutive&#013;&#010;model to each contact and that contact has its own local set of properties.&#013;&#010; This method uses more memory, but is more flexible.  Using this method, FISH&#013;&#010;may be used to modify the properties during cycling.  The basic form of this&#013;&#010;command will associate a constitutive model with contacts in the"><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">cmodel</span></code></a>, commands for extended and user-defined
+zone models, user-defined joint models, and local storage joint models.</p>
+<p>The following keywords are used to change block characteristics.</p>
+<dl class="keyword">
+<dt id="kwd:block.change.material">
+<span class="cmdkey"><span class="pref">m</span><span class="pref">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Material property number <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> is assigned to designated rigid or deformable blocks. (All blocks initially default to mat = <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">1</span></span></a>. The maximum value for <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> is <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">50</span></span></a>.)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.change.model">
+<span class="cmdkey"><span class="pref">m</span><span class="pref">o</span><span class="null">d</span><span class="null">e</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Constitutive number <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> is assigned to designated deformable blocks according to the following table.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><span class="cmdkey">model</span></th>
+<th class="head">Model Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>null material (The null model is used to model excavated material. The stresses within the null block are automatically set to zero.)</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>linearly elastic, isotropic (default)</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>elastic/plastic, Mohr-Coulomb failure</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>elastic/plastic, Drucker-Prager failure</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="block_commands.html" accesskey="U">Block Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_block.cell.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">cell</span></code> command</a> |    
+       <a href="cmd_block.config.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">block</span> <span class="pre">config</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block change command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

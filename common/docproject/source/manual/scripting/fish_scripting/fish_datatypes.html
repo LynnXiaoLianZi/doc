@@ -1,0 +1,217 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Data Types &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Strings" href="fish_strings.html" />
+    <link rel="prev" title="Lines" href="fish_lines.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="data-types">
+<span id="fish-datatypes"></span><h1>Data Types</h1>
+<p><span class="codename">FISH</span> variables can be of many types. These include:</p>
+<ol class="arabic simple">
+<li><span class="bi">Integer</span>: exact numbers in the range <a class="reference internal" href="../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">-9,223,372,036,854,775,807</span></span></a> to <a class="reference internal" href="../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">+9,223,372,036,854,775,807</span></span></a></li>
+<li><span class="bi">Floating-point</span>: approximate numbers with about fourteen decimal digits of precision, with a range of approximately <span class="math">\(10^{-308}\)</span> to <span class="math">\(10^{308}\)</span></li>
+<li><span class="bi">Boolean</span>: either a value of <a class="reference internal" href="../../../../utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">true</span></span></a> or <a class="reference internal" href="../../../../utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">false</span></span></a>.</li>
+<li><span class="bi">String</span>: a sequence of any printable characters; the sequence may be any length, but it may be truncated when printed. Strings are denoted in <span class="codename">FISH</span> and <span class="codename">FLAC3D</span> by a sequence of characters enclosed by single or double quotes (e.g., <a class="reference internal" href="../../../../utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">'Have a nice day'</span></span></a> or <a class="reference internal" href="../../../../utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">&quot;Have a nice day&quot;</span></span></a>).  See the <a class="reference internal" href="fish_strings.html#fish-stringdesc"><span class="std std-ref">Strings</span></a> topic for further details.   Iterable.</li>
+<li><span class="bi">Pointer</span>: machine address used when looping through a list and marking references to an object.  They have an associated type from the object to which the pointer refers, except for the null pointer. See the <a class="reference internal" href="fish_pointers.html#fish-pointers"><span class="std std-ref">Pointers</span></a> topic for further details.  In general when the value of a pointer is listed you get the type name and the ID number of the object being pointed to. Pointers to containers are iterable.</li>
+<li><span class="bi">Vector</span>: 2D or 3D vector of floating-point types. See the <a class="reference internal" href="fish_vectors.html#fish-vectordesc"><span class="std std-ref">Vectors</span></a> topic for further details.   Iterable.</li>
+<li><span class="bi">Tensor</span>: a symmetric tensor.
+See the <a class="reference internal" href="fish_tensors.html#fish-tensordesc"><span class="std std-ref">Tensors</span></a> topic for further details.   Iterable.</li>
+<li><span class="bi">Matrix</span>: A two dimensional matrix of numeric values.
+See the <a class="reference internal" href="fish_matrices.html#fish-matrixdesc"><span class="std std-ref">Matrices</span></a> topic for further details.   Iterable.</li>
+<li><span class="bi">List</span>: A linear container of general <span class="codename">FISH</span> values.
+See the <a class="reference internal" href="fish_list.html#fish-listdesc"><span class="std std-ref">Lists</span></a> topic for further details.   Iterable.</li>
+<li><span class="bi">Map</span>: an associative array made of key-value pairs.
+See the <a class="reference internal" href="fish_maps.html#fish-mapdesc"><span class="std std-ref">Maps</span></a> topic for further details.    Iterable.</li>
+<li><span class="bi">Structure</span>: a structure may be defined by the user and contains multiple named <span class="codename">FISH</span> variables.
+See the <a class="reference internal" href="fish_structures.html#fish-structdesc"><span class="std std-ref">Structures</span></a> topic for further details.</li>
+<li><span class="bi">Array</span>: a collection of <span class="codename">FISH</span> variables with specified dimensionality.  Arrays differ from lists in two respects:  They can be of more than one dimension, and they are passed by reference rather than value.
+See the <a class="reference internal" href="fish_arrays.html#fish-arraydesc"><span class="std std-ref">Arrays</span></a> topic for further details.   Iterable.</li>
+<li><span class="bi">ind</span>: an array index which must be a positive integer.</li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>A variable in <span class="codename">FISH</span> can change its type dynamically, depending on the type of the expression to
+which it is set. To make this clear, consider the assignment statement:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">var1 </span><span class="p">=</span><span class="n"> var2</span>
+</pre></div>
+</div>
+<p>If <span class="fishname">var1</span> and <span class="fishname">var2</span> are of different types, then two things are done: first,
+<span class="fishname">var1</span>’s type is converted to <span class="fishname">var2</span>’s type; second, <span class="fishname">var2</span>’s data are transferred to
+<span class="fishname">var1</span>. In other languages, such as FORTRAN or C, the type of <span class="fishname">var1</span> is not changed,
+although data conversion is done. By default, all variables in <span class="codename">FISH</span> start as integers with the value <a class="reference internal" href="../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">0</span></span></a>; however,
+a statement such as:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">var1 </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">3.4</span>
+</pre></div>
+</div>
+<p>causes <span class="fishname">var1</span> to become a floating-point variable when it is executed. The current types of all
+variables may be determined with the <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.list.html#command:fish.list" title="List |fish|-related quantities. By default all |fish| symbols are listed. Alternatively&#013;&#010;a specific |fish| symbol  s  can be listed."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">list</span></code></a> command.</p>
+<p>The dynamic typing mechanism in <span class="codename">FISH</span> was devised to make programming easier for non-programmers. In
+languages such as BASIC, numbers are stored in floating-point format, which can cause difficulties when
+integers are needed for loop counters, for example. In <span class="codename">FISH</span>, the type of the variable adjusts naturally
+to the context in which it is used. For example, in the code fragment:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">n  </span><span class="p">=</span><span class="n"> n </span><span class="o">+</span><span class="n"> </span><span class="m m-Double">2</span>
+<span class="n">xx </span><span class="p">=</span><span class="n"> xx </span><span class="o">+</span><span class="n"> </span><span class="m m-Double">3.5</span>
+</pre></div>
+</div>
+<p>the variable <span class="fishname">n</span> will be an integer and will be incremented by exactly 2, and the variable <span class="fishname">xx</span>
+will be a floating-point number, subject to the usual truncation error but capable of handling a much
+larger dynamic range. The rules governing type conversion in arithmetic operations are explained in
+<a class="reference internal" href="fish_arithmetic.html#fish-arithmetic"><span class="std std-ref">Arithmetic: Expressions and Type Conversions</span></a>. The type of a variable is
+determined by type precedent rules govering the operators used, in general types are promoted to the most flexible required.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>On an explicit assignment to a constant value the following rules are applied:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">An integer assignment (digits 0-9 only) will cause the variable to become an integer:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">var1 </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">334</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">If the assigned number has a decimal point or an exponent denoted by “e” or “E,” then the variable will become a floating-point number:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">var1 </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">3e5</span>
+<span class="n">var2 </span><span class="p">=</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">1.2</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">If the assignment is delimited by single or double quotes, the variable becomes a string, with the “value” taken to be the list of characters inside the quotes:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">var1 </span><span class="p">=</span><span class="n"> </span><span class="s">&#39;Have a nice day&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">If the assignment is delimited by parentheses and contains one or two internal commas, then the variable will become a 2D or 3D vector:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">var3 </span><span class="p">=</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">0.3</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">)</span>
+<span class="n">var2 </span><span class="p">=</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">0.1</span><span class="p">,</span><span class="m m-Double">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div></blockquote>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fish_strings.html">Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fish_pointers.html">Pointers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fish_vectors.html">Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fish_tensors.html">Tensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fish_matrices.html">Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fish_list.html">Lists</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fish_list.html#appending-to-a-list">Appending to a list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fish_list.html#prepending-to-a-list">Prepending to a list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fish_list.html#inserting-into-a-list">Inserting into a list</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fish_maps.html">Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fish_structures.html">Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fish_arrays.html">Arrays</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="fish.html" ><span class="codename">FISH</span> Scripting Reference</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="fish_languagerules.html" accesskey="U"><span class="codename">FISH</span> Rules and Usage</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="fish_lines.html"
+                           title="previous chapter"> Lines</a> |    
+       <a href="fish_strings.html"
+                           title="next chapter">Strings</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Data Types" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

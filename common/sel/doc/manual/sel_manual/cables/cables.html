@@ -1,0 +1,299 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Cable Structural Elements &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="cable-structural-elements">
+<span id="id1"></span><h1>Cable Structural Elements</h1>
+<p>Cable and bolt reinforcements in rock have two somewhat different functions. In hard rock subjected to low magnitude in-situ stress fields, failure is often localized and limited to wedges of rock directly adjacent to openings. The effect of the rock-bolt reinforcement here is to provide a local resistance to wedge displacement at the joint surfaces. In some cases, the bending, in addition to the axial stiffness of the reinforcement, may be important in resisting shear deformations. This type of bolt action may be modeled using pile structural elements, which have a flexural rigidity (see <a class="reference internal" href="../piles/piles.html#pile-structural-elements"><span class="std std-ref">Pile Structural Elements</span></a>). If bending effects are not important, cable structural elements are sufficient, because they provide a shearing resistance (by means of the grout properties) along their length. One can model reinforcing systems (e.g., cable bolts) in which the bonding agent (grout) may fail in shear over some length of the reinforcement. The numerical formulation that accounts for this shear behavior of the grout annulus is described in <a class="reference internal" href="#sel-cable-shear-behavior"><span class="std std-ref">Shear Behavior of Grout Annulus</span></a>.</p>
+<div class="section" id="mechanical-behavior">
+<h2>Mechanical Behavior</h2>
+<p>Each cable structural element is defined by its geometric, material and grout properties. A cable element is assumed to be a straight segment of uniform cross-sectional and material properties lying between two nodal points. An arbitrarily curved structural cable can be modeled as a curvilinear structure composed of a collection of cable elements. The cable element behaves as an elastic, perfectly plastic material that can yield in tension and compression, but cannot resist a bending moment. A cable may be grouted such that force develops along its length in response to relative motion between the cable and the grid. The grout behaves as an elastic, perfectly plastic material, with its peak strength being confining stress dependent, and with no loss of strength after failure. Cable elements are suitable for modeling structural-support members in which tensile capacity is important, and for which axially directed frictional interaction with the rock or soil mass occurs.</p>
+<p>Each cable element has its own local coordinate system, shown in <a href="#cable-coordinate-system">Figure  1</a>. This system is used to define the average axial cable direction. The cable element coordinate system is defined by the locations of its two nodal points, labeled as 1 and 2 in <a href="#cable-coordinate-system">Figure  1</a>. The element coordinate system is defined such that</p>
+<ol class="arabic simple">
+<li>the centroidal axis coincides with the <span class="math">\(x\)</span>-axis,</li>
+<li>the <span class="math">\(x\)</span>-axis is directed from node-1 to node-2, and</li>
+<li>the <span class="math">\(y\)</span>-axis is aligned with the projection of the global <span class="math">\(y\)</span>- or <span class="math">\(x\)</span>-direction (whichever is not parallel with the local <span class="math">\(x\)</span>-axis) onto the cross-sectional plane.</li>
+</ol>
+<div class="figure" id="id2">
+<span id="cable-coordinate-system"></span><img alt="../../../../../../_images/coordinate-system1.png" src="../../../../../../_images/coordinate-system1.png" />
+<p class="caption"><span class="caption-text">Figure 1: Cable element coordinate system and 2 active degrees-of-freedom of the cable finite element</span></p>
+</div>
+<p>The cable element coordinate system cannot be modified. It can be viewed with the Cable plot item and printed with the <a class="reference internal" href="commands/cmd_structure.cable.list.html#kwd:structure.cable.list.system-local" title="the element local coordinate system"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">cable</span> <span class="pre">list</span> <span class="pre">system-local</span></code></a> command. The nodal connectivity can be printed with the <a class="reference internal" href="commands/cmd_structure.cable.list.html#kwd:structure.cable.list.information" title="lists general element information, including  id  and  component-id &#013;&#010;numbers, connected nodes, centroids, surface area, volume, and the hide and&#013;&#010;select status"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">cable</span> <span class="pre">list</span> <span class="pre">information</span></code></a> command.</p>
+<p>The orientation of the node-local system for all nodes used by cable elements is set automatically at the start of a set of cycles (or when the <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">cycle</span></code> <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">0</span></span></a> command is executed), such that the <span class="math">\(x\)</span>-axis is aligned with the average axial direction of all cable elements using the node, and the <span class="math">\(yz\)</span>-axes are arbitrarily oriented in the cable cross-sectional plane.</p>
+<p>Cables support large-strain sliding (by setting the <span class="cmdkey">slide</span> property to <span class="cmdkey">on</span>) whereby the interpolation locations (used by the cable nodes to transfer forces and velocities to and from the zones — see <a class="reference internal" href="../formulation/formulation.html#sel-links"><span class="std std-ref">Structural-Element Links</span></a>) will migrate through the grid when running in large-strain mode. This allows one to calculate the large-strain, post-failure behavior of a cable whereby substantial sliding between the cable nodes and the zones occurs. If a cable node moves out of all zones, then a connection with the zones will not be reestablished if the node is later moved back into zones; however, the connection remains intact as the cable nodes slide between zones.</p>
+<p>The two active degrees-of-freedom of the cable finite element are shown in <a href="#cable-coordinate-system">Figure  1</a>. For each axial displacement shown in the figure, there is a corresponding axial force. The stiffness matrix of the cable finite element includes only this single degree-of-freedom at each node to represent axial action within a cable structure.</p>
+<p>The following four subsections describe (1) the axial behavior of the cable itself, (2) the shear behavior of the grout annulus, (3) the normal behavior at the grout interface, and (4) the means by which cables may be pretensioned. The behavior is described in terms of the cable properties listed in <a class="reference internal" href="#cable-properties"><span class="std std-ref">Properties</span></a> (refer to this list for a summary of relevant notations).</p>
+<p class="h3 rubric">Axial Behavior</p>
+<p>The axial behavior of conventional reinforcement systems may be assumed to be governed entirely by the reinforcing member itself. The reinforcing member is usually composed of steel, and may be either a bar or a cable. Because the reinforcing member is slender, it offers little bending resistance (particularly in the case of a cable), and is treated as a one-dimensional structural member with the capacity to sustain uniaxial tension. (Compression is also allowed; however, when modeling support that is primarily loaded in compression, pile structural elements are recommended.)</p>
+<p>A one-dimensional constitutive model is adequate for describing the axial behavior of the reinforcing member. The axial stiffness, <span class="math">\(K\)</span>, is determined based on the reinforcement cross-sectional area, <span class="math">\(A\)</span>, Young’s modulus, <span class="math">\(E\)</span>, and element length, <span class="math">\(L\)</span>, by the relation</p>
+<div class="math">
+\[K = {A E \over L}\]</div>
+<p>A tensile- and compressive-yield strength, <span class="math">\(F_t\)</span> and <span class="math">\(F_c\)</span>, may be assigned to the cable element such that cable forces that are greater than these limits cannot develop (see <a href="#cable-material-behavior">Figure  2</a>). If either <span class="math">\(F_t\)</span> or <span class="math">\(F_c\)</span> is not specified, the cable will have infinite strength for loading in that direction.</p>
+<div class="figure" id="id3">
+<span id="cable-material-behavior"></span><img alt="../../../../../../_images/material-behavior.png" src="../../../../../../_images/material-behavior.png" />
+<p class="caption"><span class="caption-text">Figure 2: Cable material behavior for elements</span></p>
+</div>
+<p>Cables may break after sufficient accumulated plastic tensile strain.  If the failure limit is set and the tensile strain goes over the value then the element is considered failed and will no longer sustain axial force in either compression or tension.</p>
+<div class="figure" id="id4">
+<span id="cable-mechanical-representation"></span><img alt="../../../../../../_images/mechanical-representation.png" src="../../../../../../_images/mechanical-representation.png" />
+<p class="caption"><span class="caption-text">Figure 3: Mechanical representation of fully bonded reinforcement</span></p>
+</div>
+<p class="h3 rubric" id="sel-cable-shear-behavior">Shear Behavior of Grout Annulus</p>
+<p>The shear behavior of the cable-rock interface is cohesive and frictional in nature. The system is idealized (as shown in <a href="#cable-grouted-system">Figure  4</a> (a)), and represented numerically as a spring-slider system located at the nodal points along the cable axis (as shown in <a href="#cable-mechanical-representation">Figure  3</a>). The shear behavior of the grout annulus during relative shear displacement between the cable/grout interface and the grout/rock interface (as shown in <a href="#cable-grouted-system">Figure  4</a> (b)) is described numerically by (1) the grout shear stiffness, <span class="math">\(k_g\)</span>, (2) the grout cohesive strength, <span class="math">\(c_g\)</span>, (3) the grout friction angle, <span class="math">\(\phi_g\)</span>, (4) the grout exposed perimeter, <span class="math">\(p_g\)</span>, and (5) the effective confining stress, <span class="math">\(\sigma_m\)</span> ( <a href="#cable-grouted-system">Figure  4</a> (c)). The mechanical behavior of the grouted-cable system is depicted in terms of these parameters in <a href="#cable-grout-material-behavior">Figure  5</a>. Note that the grout properties associated with each cable element are averaged at cable nodes.</p>
+<div class="figure" id="id5">
+<span id="cable-grouted-system"></span><a class="reference internal image-reference" href="../../../../../../_images/grouted-cable-system.png"><img alt="../../../../../../_images/grouted-cable-system.png" src="../../../../../../_images/grouted-cable-system.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-text">Figure 4: Idealization of grouted-cable system</span></p>
+</div>
+<div class="figure" id="id6">
+<span id="cable-grout-material-behavior"></span><a class="reference internal image-reference" href="../../../../../../_images/grout-material-behavior.png"><img alt="../../../../../../_images/grout-material-behavior.png" src="../../../../../../_images/grout-material-behavior.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-text">Figure 5: Grout material behavior for cable elements</span></p>
+</div>
+<p>The effective confining stress, <span class="math">\(\sigma_m\)</span>, acts in the plane perpendicular to the cable axis, and is computed at each nodal point along the cable axis, based on the stress acting in the zone to which the nodal point is linked. Denote the cable-axis direction as <span class="math">\(x'\)</span>, and denote the principal stresses acting in the <span class="math">\(y'z'\)</span>-plane as <span class="math">\(\sigma_1\)</span> and <span class="math">\(\sigma_2\)</span>, such that <span class="math">\(\sigma_1 &gt; \sigma_2\)</span> (tension positive). Then the value of <span class="math">\(\sigma_m\)</span> is taken as</p>
+<div class="math" id="cable-confining-stress-eq">
+\[\sigma_m = - \bigl ({{\sigma_1 + \sigma_2}\over 2} + p \bigr )\]</div>
+<p>where: <a href="#id7"><span class="problematic" id="id8">|sp3|</span></a> <span class="math">\(p\)</span> = pore pressure</p>
+<p>In computing the relative displacement at the cable-rock interface, an interpolation scheme is used to calculate the displacement of the rock in the cable axial direction at each cable node, based on the displacement field in the zone to which the node is linked. The interpolation scheme uses weighting factors that are determined by the distance to each of the gridpoints of the zone. The same interpolation scheme is used to apply forces developed at the cable-rock interface back to the gridpoints of the zone.</p>
+<p class="h3 rubric">Normal Behavior at Grout Interface</p>
+<p>As explained above, an interpolated estimate of grid velocity is made at each cable node. The velocity <em>normal</em> to the cable-axis direction is transferred directly to the node (i.e., the cable node is “slaved” to the grid motion in the normal direction). The node exerts no normal force on the grid if the two cable elements that share the node are colinear; however, if the two elements are not colinear, then a proportion of their axial forces will act in the normal direction. This net force acts both on the grid and on the cable node (in opposite directions). Thus, an initially straight cable can sustain normal loading if it is allowed finite deflection, using the large-strain solution mode.</p>
+<p class="h3 rubric" id="cable-pretensioning">Pretensioning</p>
+<p>Cables may be pretensioned via the <a class="reference internal" href="commands/cmd_structure.cable.apply.html#kwd:structure.cable.apply.tension" title="assign a specific axial tension value in the cable element that will be maintained&#013;&#010;during cycling.  Incomplete sentence follows:   This is intended&#013;&#010;as a way to pre-tension cables, but applying the pre-tension force as a tension&#013;&#010;to the end cable element(s), that are generally ungrouted. [DR: why is this&#013;&#010;flagged?]   Note that this setting will override the normal force-displacement&#013;&#010;law for the cable element as long as it is active.  Removing the condition"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">cable</span> <span class="pre">apply</span> <span class="pre">tension</span></code></a> command.  A positive value assigns a tensile axial force into all of the cable elements that fall within the range.  This tension will be maintained until released with the <a class="reference internal" href="commands/cmd_structure.cable.apply.html#kwd:structure.cable.apply.tension.active" title="make the tensile apply condition active or inactive.  If active, the last specified&#013;&#010;value of tension is used, which is  0.0  by default."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">cable</span> <span class="pre">apply</span> <span class="pre">tension</span> <span class="pre">active</span></code></a> <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a> command.  Note that removing the tension apply condition does not change the current axial force in the cable element, it just removes the condition maintaining that force at a specific level.</p>
+<p>In practice, pretensioned cables may be fully grouted, or they may be left ungrouted over part of their length. In either case, some anchorage length is provided (usually at the far end) to support the cable during pretensioning. To simulate this pretensioning, one need only specify anchorage properties for the cable elements making up the anchorage length, and other properties (e.g., <span class="math">\(c_g = 0\)</span>) for the elements making up the free length.</p>
+<p>It is important to note that the cable with specified pretension is initially unlikely to be in equilibrium with other structural elements or the model grid to which it is linked. In other words, some displacement of the cable nodes and linked entities is probably required to achieve equilibrium.   As a result, properly pretentioning cables generally is done in three commands:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">struct cable apply</span><span class="n"> tension value </span><span class="m m-Double">1000</span><span class="n"> range group </span><span class="s">&#39;pretension&#39;</span>
+<span class="nb">model </span><span class="ss">solve</span>
+<span class="nb">struct cable apply</span><span class="n"> tension active </span><span class="sx">off</span>
+</pre></div>
+</div>
+<p>The first command applies tension to a specific set of cable elements (previously tagged with the <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">pretension</span></span></a> group name for this purpose).
+The second command solves to equilibrium.
+The third command removes the applied tension value, so that the cable will respond naturally from then on.</p>
+<p>For an example of this in practice, please see <span class="xref std std-ref">Installation of a Triple-Anchored Excavation Wall</span> or <span class="xref std std-ref">Impermeable Concrete Caisson Wall with Pretensioned Tiebacks</span>.</p>
+<p class="h3 rubric">Response Quantities</p>
+<p>Cable responses include force, stress and yield state of the cable element itself, and stress, displacement and slip state of the shear coupling springs that represent the grout. Additional coupling-spring information includes the current loading direction and the confining stress. The cable responses can be accessed via <span class="codename">FISH</span> and</p>
+<ol class="arabic simple">
+<li>printed with one of the keywords available to the the <a class="reference internal" href="commands/cmd_structure.cable.list.html#command:structure.cable.list" title="List information about cables."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">cable</span> <span class="pre">list</span></code></a> command,</li>
+<li>monitored with the <a class="reference internal" href="commands/cmd_structure.cable.history.html#command:structure.cable.history" title="Sample cable responses.  Quantities for sampling include cable element force,&#013;&#010;stress and yield state, and shear coupling spring displacement, stress and slip&#013;&#010;state.  If a cable is created using the  structure.cable.create , then&#013;&#010;the nodes of each element so created will be ordered such that the overall cable&#013;&#010;direction goes from the begin point to the end point (i.e., the nodal connectivity&#013;&#010;of each element will be ordered such that the direction from end-1"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">cable</span> <span class="pre">history</span></code></a> command, and</li>
+<li>plotted with the Cable plot item.</li>
+</ol>
+<p>The sign of the grout stress refers to the average axial cable direction such that positive grout stresses act on the cable in the positive average axial cable direction. This sign convention assumes that the set of elements making up the cable are oriented consistently, such that their local coordinate systems form a continuous description of the cable orientation. Such will be the case if the cable is created using the <a class="reference internal" href="commands/cmd_structure.cable.create.html#command:structure.cable.create" title="Create a cable, represented by one or more elements."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">cable</span> <span class="pre">create</span></code></a> command. The nodes of each element so created will be ordered such that the overall cable direction goes from the first point to the second point. The nodal connectivity can be printed with the <a class="reference internal" href="commands/cmd_structure.cable.list.html#kwd:structure.cable.list.information" title="lists general element information, including  id  and  component-id &#013;&#010;numbers, connected nodes, centroids, surface area, volume, and the hide and&#013;&#010;select status"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">cable</span> <span class="pre">list</span> <span class="pre">information</span></code></a> command.</p>
+</div>
+<div class="section" id="properties">
+<span id="cable-properties"></span><h2>Properties</h2>
+<p>Each cable element possesses 12 properties:</p>
+<ol class="arabic simple">
+<li><span class="cmdkey">density</span>, mass density, <span class="math">\(ρ\)</span> (optional — needed if dynamic mode or gravity is active) [M/L<sup>3</sup>]</li>
+<li><span class="cmdkey">young</span>, Young’s modulus, <span class="math">\(E\)</span> [F/L<sup>2</sup>]</li>
+<li><span class="cmdkey">grout-cohesion</span>, grout cohesive strength (force) per unit length, <span class="math">\(c_g\)</span> [F/L]</li>
+<li><span class="cmdkey">grout-friction</span>, grout friction angle, <span class="math">\(ϕ_g\)</span> [degrees]</li>
+<li><span class="cmdkey">grout-stiffness</span>, grout stiffness per unit length, <span class="math">\(k_g\)</span> [F/L<sup>2</sup>]</li>
+<li><span class="cmdkey">grout_perimeter</span>, grout exposed perimeter, <span class="math">\(p_g\)</span> [L]</li>
+<li><span class="cmdkey">slide</span>, large-strain sliding flag (default: <strong>off</strong>)</li>
+<li><span class="cmdkey">slide-tolerance</span>, large-strain sliding tolerance</li>
+<li><span class="cmdkey">thermal-expansion</span>, thermal-expansion coefficient, <span class="math">\(α_t\)</span> [1/T] (optional — used for thermal analysis)</li>
+<li><span class="cmdkey">cross-section-area</span>, cross-sectional area, <span class="math">\(A\)</span> [L<sup>2</sup>]</li>
+<li><span class="cmdkey">yield-compression</span>, compressive yield strength (force), <span class="math">\(F_c\)</span> [F]</li>
+<li><span class="cmdkey">yield-tension</span>, tensile yield strength (force), <span class="math">\(F_t\)</span> [F]</li>
+</ol>
+<p>The area, modulus and yield strength of the cable are usually readily available from handbooks, manufacturer’s specifications, etc. The grout properties are more difficult to estimate. The grout annulus is assumed to behave as an elastic-perfectly plastic solid. As a result of relative shear displacement, <span class="math">\(u^t\)</span>, between the tendon surface and the borehole surface, the shear force, <span class="math">\(F^t\)</span>, mobilized per length of cable is related to the grout stiffness, <span class="math">\(k_g\)</span>:</p>
+<div class="math">
+\[F^t\ =\ k_g \ u^t\]</div>
+<p>Usually, <span class="math">\(k_g\)</span> can be measured directly in laboratory pull-out tests. Alternatively, the stiffness can be calculated from a numerical estimate for the elastic shear stress, <span class="math">\(\tau_G\)</span>, obtained from an equation describing the shear stress at the grout/rock interface (St. John and Van Dillen 1983):</p>
+<div class="math">
+\[\tau_G  =\ {G \over {(D/2+t)}}\ \ \ {\Delta u \over {\ln (1+2t/D)}}\]</div>
+<table border="1" class="colwidths-auto blank docutils">
+<tbody valign="top">
+<tr class="row-odd"><td>where:</td>
+<td><span class="math">\(\Delta u\)</span></td>
+<td>=</td>
+<td>relative displacement between the element and the surrounding material;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><span class="math">\(G\)</span></td>
+<td>=</td>
+<td>grout shear modulus;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><span class="math">\(D\)</span></td>
+<td>=</td>
+<td>reinforcing diameter; and</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><span class="math">\(t\)</span></td>
+<td>=</td>
+<td>annulus thickness.</td>
+</tr>
+</tbody>
+</table>
+<p>Consequently, the grout shear stiffness, <span class="math">\(k_g\)</span>, is simply given by</p>
+<div class="math">
+\[k_g\ =\ {2\pi\ G  \over {\ln\ (1+2t/D)}}\]</div>
+<p>In many cases, the following expression has been found to provide a reasonable estimate of <span class="math">\(k_g\)</span> for use in the program:</p>
+<div class="math" id="equation-cable-grout-stiffness">
+<span class="eqno">(1)</span>\[k_g\ \simeq\ {2\pi\ G \over {10\ \ln\ (1+2t/D)}}\]</div>
+<p>The one-tenth factor helps to account for the relative shear displacement that occurs between the host-zone gridpoints and the borehole surface. This relative shear displacement is not accounted for in the present formulation.</p>
+<p>The maximum shear force per cable length in the grout is determined by the relation illustrated in <a href="#cable-material-behavior">Figure  2</a>. The values for bond cohesive strength, <span class="math">\(c_g\)</span>, and friction angle, <span class="math">\(\phi_g\)</span>, can be estimated from the results of pull-out tests conducted at different confining pressures or, should such results not be available, the maximum force per length may be approximated from the peak shear strength (St. John and Van Dillen 1983):</p>
+<div class="math">
+\[{\tau_{peak}\ =\ \tau_IQ_B}\]</div>
+<p>where <span class="math">\(\tau_I\)</span> is approximately one-half of the uniaxial compressive strength of the weaker of the rock and grout, and <span class="math">\(Q_B\)</span> is the quality of the bond between the grout and rock (<span class="math">\(Q_B\)</span> = 1 for perfect bonding).</p>
+<p>Neglecting frictional confinement effects, <span class="math">\(c_g\)</span> may then be obtained from</p>
+<div class="math" id="equation-cable-bond-cohesive-strength">
+<span class="eqno">(2)</span>\[c_g\ =\ \pi (D + 2t)\ \tau_{peak}\]</div>
+<p>Failure of reinforcing systems does not always occur at the grout/rock interface. Failure may occur at the reinforcing/grout interface, as is often true for cable reinforcing. In such cases, the shear stress should be evaluated at this interface. This means that the expression (<span class="math">\(D + 2t\)</span>) is replaced by (<span class="math">\(D\)</span>) in <a class="reference internal" href="#equation-cable-bond-cohesive-strength">(2)</a>.</p>
+<p>The calculation of cable element properties is demonstrated by the following example. A 25.4 mm (1 inch)-diameter locked-coil cable was installed at 2.5 m spacing. The reinforcing system is characterized by several properties:</p>
+<table border="1" class="colwidths-given blank docutils">
+<colgroup>
+<col width="64%" />
+<col width="36%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>cable diameter (<span class="math">\(D\)</span>)</td>
+<td>25.4 mm</td>
+</tr>
+<tr class="row-even"><td>hole diameter (<span class="math">\(D+2t\)</span>)</td>
+<td>38 mm</td>
+</tr>
+<tr class="row-odd"><td>cable modulus (<span class="math">\(E\)</span>)</td>
+<td>98.6 GPa</td>
+</tr>
+<tr class="row-even"><td>cable ultimate tensile capacity</td>
+<td>0.548 MN</td>
+</tr>
+<tr class="row-odd"><td>grout compressive strength</td>
+<td>20 MPa</td>
+</tr>
+<tr class="row-even"><td>grout shear modulus (<span class="math">\(G_g\)</span>)</td>
+<td>9 GPa</td>
+</tr>
+<tr class="row-odd"><td>friction (ignored)</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Two independent methods are used in evaluating the maximum shear force in the grout. In the first method, the bond shear strength is assumed to be one-half the uniaxial compressive strength of the grout. If the grout-material compressive strength is 20 MPa, and the grout is weaker than the surrounding rock, the grout shear strength is then 10 MPa.</p>
+<p>In the second method, reported pull-out data are used to estimate the grout shear strength. The report presents results for 15.9 mm (5/8 inch)-diameter steel cables grouted with a 0.15 m (5.9 inch) bond length in holes of varying depths. The testing indicated capacities of roughly 70 kN. If a surface area of 0.0075 m<sup>2</sup> (0.15 m × 0.05 m) is assumed for the cables, then the calculated maximum shear strength of the grout is</p>
+<div class="math">
+\[{70\ \hbox{x}\ 10^3\ \hbox{N} \over {0.0075\ \hbox{m}^2}} = 9.33\ \hbox{x}\ 10^6\ \hbox{N/m}^2 = 9.33\ \hbox{MPa}\]</div>
+<p>This value agrees closely with the 10 MPa estimated above, and either value could be used. Assuming failure occurs at the cable/grout interface, the maximum bond force per length is (using <a class="reference internal" href="#equation-cable-bond-cohesive-strength">(2)</a> with <span class="math">\(D+2t\)</span> replaced by <span class="math">\(D\)</span>)</p>
+<div class="math">
+\[c_g = \pi (0.0254 m) (10 MPa) = 800 kN/m\]</div>
+<p>The grout stiffness, <span class="math">\(k_g\)</span>, is estimated from <a class="reference internal" href="#equation-cable-grout-stiffness">(1)</a>. For the assumed values shown above, a grout stiffness of 1.5 × 10<sup>10</sup> <span class="math">\({N/m \over {m}}\)</span> is calculated.</p>
+<p>Another example estimation of grout properties from pull-out tests is presented in <span class="xref std std-ref">Simulation of Pull-Tests for Fully Bonded Rock Reinforcement</span></p>
+</div>
+<div class="section" id="example-applications">
+<h2>Example Applications</h2>
+<p>Simple examples are given to illustrate the use of cables.</p>
+<div class="toctree-wrapper compound">
+</div>
+<p>A complete list of examples that use cable elements is available in <span class="xref std std-ref">Structural Cable Examples</span>.</p>
+</div>
+<div class="section" id="commands-fish">
+<h2>Commands &amp; FISH</h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commands/cable_commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fish/cable_fish.html"><span class="codename">FISH</span> Functions</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Cable Structural Elements" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

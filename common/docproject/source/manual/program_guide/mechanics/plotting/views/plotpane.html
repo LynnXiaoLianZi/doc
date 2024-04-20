@@ -1,0 +1,215 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The Plot Pane &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../search.html" />
+    <link rel="next" title="View Manipulation" href="quickref.html" />
+    <link rel="prev" title="How Plots Work" href="../howplotswork.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="the-plot-pane">
+<span id="theplotpane"></span><span id="theviewpane"></span><h1>The <em>Plot</em> Pane</h1>
+<div class="enlarge figure align-right" id="id1">
+<a class="reference internal image-reference" href="../../../../../../../../_images/viewpane.png"><img alt="editor pane image" src="../../../../../../../../_images/viewpane.png" style="width: 181px;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: A <em>Plot</em> pane. Click to enlarge in a separate window.</span></p>
+</div>
+<p>The <em>Plot</em> pane provides the facility to visualize the model.  In the pane, all view manipulation (rotate, zoom, pan, etc.) is always available from the right-mouse button, regardless of the currently selected tool (which will govern what is possible with the <em>left</em> mouse button).  See <a class="reference internal" href="quickref.html#ui-viewpane-quickref"><span class="std std-ref">View Manipulation Reference</span></a> for a complete list of mouse/keyboard commands available for view manipulation. Tools are selected from <a class="reference internal" href="viewtoolbar.html#theplotpanetoolbar"><span class="std std-ref">the toolbar</span></a>.  Common toolbar commands are also available from the right-click context menu, as described below.</p>
+<p class="h2 rubric" id="editor-rightclick">The Context (Right-Click) Menu in the <em>View</em> Pane</p>
+<p>The <em>View</em> pane’s context (right-click) pop-up menu appears as below. The “Hide group” and “Show only group” commands are
+only available when the mouse is in “Select” mode. All other commands in the menu are always available, regardless of
+which mouse mode is active.</p>
+<div class="figure align-left">
+<a class="reference internal image-reference" href="../../../../../../../../_images/viewpane_rightclickmenu.png"><img alt="view pane image" src="../../../../../../../../_images/viewpane_rightclickmenu.png" style="width: 170px;" /></a>
+</div>
+<table border="1" class="colwidths-given icg1 docutils" id="viewpane-rightclickcommands">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Hide group</strong> - If the mouse is over a group within the plot that can be detected, this command will hide the group.</td>
+</tr>
+<tr class="row-even"><td><strong>Show only group</strong> - If the mouse is over a group within the plot that can be detected, this command will hide all groups except this one.</td>
+</tr>
+<tr class="row-odd"><td><strong>Plot ►</strong> - This fly-out menu contains the following commands, which are also available on the toolbar: “New Plot,” “Regenerate Plot,” “Save Plot,” “Duplicate Plot,” “Print Plot,” and “Rename Plot.”</td>
+</tr>
+<tr class="row-even"><td><strong>Export ►</strong> - This fly-out menu contains the following commands, which are also available from the “Export” command on the toolbar: “Bitmap…,” “Data File…,” “DXF…,” “VMRL…,” “PostScript…,” “SVG…,” and “Excel….” The “Excel” command is only active on a plot that contains a <em>History</em>, <em>Profile</em>, or <em>Table</em> plot item.</td>
+</tr>
+<tr class="row-odd"><td><strong>Plot Control Help</strong> - Open the “<a class="reference internal" href="quickref.html#ui-viewpane-quickref"><span class="std std-ref">Quick Reference</span></a>” topic page from this <em>Help</em> file, which provides a complete list of mouse + keyboard commands available for view manipulation (zoom, pan, rotate, etc.).</td>
+</tr>
+<tr class="row-even"><td><strong>View Modes ►</strong> - This fly-out menu contains commands to switch between the mouse modes: “Manipulate,” “Query,” “Center,” “Measure Distance” and “Define Plane.”</td>
+</tr>
+<tr class="row-odd"><td><strong>Picking</strong> - Turn on/off picking globally (for all plots).</td>
+</tr>
+<tr class="row-even"><td><strong>Sketch Mode</strong> - Turn on/off sketch mode globally (for all plots) (This is not used in <span class="codename">UDEC</span>).</td>
+</tr>
+<tr class="row-odd"><td><strong>System Info</strong> - Open a dialog that provides information on the computer’s OpenGl implementation and its total/available memory.</td>
+</tr>
+</tbody>
+</table>
+<p class="h2 rubric">Keyboard commands</p>
+<table border="1" class="colwidths-given icg1 docutils" id="plot-keycommands">
+<caption><span class="caption-text">Table 2: Key Commands on Plots</span></caption>
+<colgroup>
+<col width="22%" />
+<col width="33%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Keystroke</th>
+<th class="head">Command</th>
+<th class="head">Description/Comment</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="kbd docutils literal"><span class="pre">Ctrl+O</span></code></td>
+<td>Open Into Project…</td>
+<td>Open an item and add it to the project.</td>
+</tr>
+<tr class="row-odd"><td><code class="kbd docutils literal"><span class="pre">Ctrl+Shift+N</span></code></td>
+<td>Add New Plot…</td>
+<td>Open an item and add it to the project.</td>
+</tr>
+<tr class="row-even"><td><code class="kbd docutils literal"><span class="pre">Ctrl+Shift+S</span></code></td>
+<td>Save All Items…</td>
+<td>Save all project items; will provide a dialog for naming/locating items that have not previously been saved.</td>
+</tr>
+<tr class="row-odd"><td><code class="kbd docutils literal"><span class="pre">Ctrl+Alt+S</span></code></td>
+<td>[plot Name] ▸ Save As…</td>
+<td>Save the item in the active pane to a plot file.</td>
+</tr>
+<tr class="row-even"><td><code class="kbd docutils literal"><span class="pre">Ctrl+W</span></code></td>
+<td>[plot Name] ▸ Close</td>
+<td>Close the plot in the active pane.</td>
+</tr>
+<tr class="row-odd"><td><code class="kbd docutils literal"><span class="pre">Ctrl+P</span></code></td>
+<td>[plot Name] ▸ Print</td>
+<td>Print the plot in the active pane.</td>
+</tr>
+</tbody>
+</table>
+<p>The command text shown above matches the text for the command as it appears on the <span class="flag4">i</span> <a class="reference internal" href="../../../programwindow/filemenu.html#thefilemenu"><span class="std std-ref">File</span></a> menu.</p>
+<p class="h2 rubric"><em>Control Panel</em> in a <em>Plot</em> Pane</p>
+<p>When a <em>Plot</em> pane is active, the following control sets are available in the <em>Control Panel</em></p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="../../../programwindow/controlpanel/plotitems.html#plotitemscontrolset"><span class="std std-ref">Plot Items Control Set</span></a></li>
+<li><a class="reference internal" href="quickref.html#viewshiftcontrolset"><span class="std std-ref">View Shift</span></a></li>
+<li><a class="reference internal" href="quickref.html#viewstatscontrolset"><span class="std std-ref">View Stats</span></a></li>
+<li><a class="reference internal" href="information.html#infocontrolset"><span class="std std-ref">Information Control Set</span></a></li>
+<li><a class="reference internal" href="../../../programwindow/controlpanel/fishglobals.html#fishglobals"><span class="std std-ref">FISH Global Symbols Control Set</span></a></li>
+</ul>
+</div></blockquote>
+<p>Use the <em>Show/Hide Control Sets</em> button ( <img alt="showcs" src="../../../../../../../../_images/togglecontrolset_inactive.png" /> )  on the toolbar to access these control sets.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickref.html">View Manipulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viewtoolbar.html">View Pane Toolbar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../programwindow/dialogs/build_plot.html">Add Items</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../plotting.html" accesskey="U">Plotting</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../howplotswork.html"
+                           title="previous chapter"> How Plots Work</a> |    
+       <a href="quickref.html"
+                           title="next chapter">View Manipulation</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?The Plot Pane" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,196 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Types &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Unicode Characters" href="unicodechars.html" />
+    <link rel="prev" title="Tokens" href="tokens.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../contents.html"><img id="cornerlogo" src="../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="types">
+<span id="id1"></span><h1>Types</h1>
+<p>There are a number of basic variable types, listed below. The type of a variable in a command or function is always cued by the name given in the command/function signature, which will either be (e.g, <a class="reference internal" href="#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span></span></a> for a boolean type) or start with (e.g., <a class="reference internal" href="#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fposx</span></span></a> for a float type) the first letter of the type’s name. Multiple instances of the same type in a command signature or <span class="codename">FISH</span> function are most often numbered (<a class="reference internal" href="#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i1</span></span></a> <a class="reference internal" href="#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i2</span></span></a> <a class="reference internal" href="#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i3</span></span></a> … and so on).<a class="footnote-reference" href="#id3" id="id2">[1]</a></p>
+<dl class="type">
+<dt id="type:any">
+<span class="fishname">any</span></dt>
+<dd><p>A catch-all for any (<a class="reference internal" href="#type:any" title="A catch-all for any ( a ) of the other types, excepting  sym , shown&#013;&#010;here. Multiple instances in a command are numbered ( a1   a2   a3 &#013;&#010;etc.).  This type is also indicated when a specific combination of types is&#013;&#010;acceptable (for instance, the common case where a string  s  or an integer&#013;&#010; i  may be supplied). When this is the case, the specific acceptable types&#013;&#010;are indicated in the explanatory text."><span class="varany"><span class="null">a</span></span></a>) of the other types, excepting <a class="reference internal" href="#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">sym</span></span></a>, shown here. Multiple instances in a command are numbered (<a class="reference internal" href="#type:any" title="A catch-all for any ( a ) of the other types, excepting  sym , shown&#013;&#010;here. Multiple instances in a command are numbered ( a1   a2   a3 &#013;&#010;etc.).  This type is also indicated when a specific combination of types is&#013;&#010;acceptable (for instance, the common case where a string  s  or an integer&#013;&#010; i  may be supplied). When this is the case, the specific acceptable types&#013;&#010;are indicated in the explanatory text."><span class="varany"><span class="null">a1</span></span></a> <a class="reference internal" href="#type:any" title="A catch-all for any ( a ) of the other types, excepting  sym , shown&#013;&#010;here. Multiple instances in a command are numbered ( a1   a2   a3 &#013;&#010;etc.).  This type is also indicated when a specific combination of types is&#013;&#010;acceptable (for instance, the common case where a string  s  or an integer&#013;&#010; i  may be supplied). When this is the case, the specific acceptable types&#013;&#010;are indicated in the explanatory text."><span class="varany"><span class="null">a2</span></span></a> <a class="reference internal" href="#type:any" title="A catch-all for any ( a ) of the other types, excepting  sym , shown&#013;&#010;here. Multiple instances in a command are numbered ( a1   a2   a3 &#013;&#010;etc.).  This type is also indicated when a specific combination of types is&#013;&#010;acceptable (for instance, the common case where a string  s  or an integer&#013;&#010; i  may be supplied). When this is the case, the specific acceptable types&#013;&#010;are indicated in the explanatory text."><span class="varany"><span class="null">a3</span></span></a> etc.).  This type is also indicated when a specific combination of types is acceptable (for instance, the common case where a string <a class="reference internal" href="#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a> or an integer <a class="reference internal" href="#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> may be supplied). When this is the case, the specific acceptable types are indicated in the explanatory text.</p>
+</dd></dl>
+
+<dl class="type">
+<dt id="type:bool">
+<span class="fishname">bool</span></dt>
+<dd><p>A Boolean value (<a class="reference internal" href="#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span></span></a>), with six valid expressions: <span class="cmdkey">on off true false yes no</span>.
+If no value is found, a Boolean is assumed to be <span class="cmdkey">true</span>.  No value, <span class="cmdkey">on</span>, <span class="cmdkey">true</span>, and <span class="cmdkey">yes</span> are all equivalent.
+<span class="cmdkey">off</span>, <span class="cmdkey">false</span>, and <span class="cmdkey">no</span> are all equivalent. Multiple instances in a command are numbered (<a class="reference internal" href="#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b1</span></span></a> <a class="reference internal" href="#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b2</span></span></a> <a class="reference internal" href="#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b3</span></span></a> etc.).</p>
+</dd></dl>
+
+<dl class="type">
+<dt id="type:flt">
+<span class="fishname">flt</span></dt>
+<dd><p>A real number (<a class="reference internal" href="#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a>), positive or negative. It may be written in scientific e notation. Multiple instances in a command are numbered (<a class="reference internal" href="#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f1</span></span></a> <a class="reference internal" href="#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f2</span></span></a> <a class="reference internal" href="#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f3</span></span></a> etc.).</p>
+</dd></dl>
+
+<dl class="type">
+<dt id="type:ind">
+<span class="fishname">ind</span></dt>
+<dd><p>An index (<a class="reference internal" href="#type:ind" title="An index ( ind ), positive integer.  Multiple instances in a command are&#013;&#010;numbered ( ind1   ind2   ind3  etc.)."><span class="varint"><span class="null">ind</span></span></a>), positive integer.  Multiple instances in a command are numbered (<a class="reference internal" href="#type:ind" title="An index ( ind ), positive integer.  Multiple instances in a command are&#013;&#010;numbered ( ind1   ind2   ind3  etc.)."><span class="varint"><span class="null">ind1</span></span></a> <a class="reference internal" href="#type:ind" title="An index ( ind ), positive integer.  Multiple instances in a command are&#013;&#010;numbered ( ind1   ind2   ind3  etc.)."><span class="varint"><span class="null">ind2</span></span></a> <a class="reference internal" href="#type:ind" title="An index ( ind ), positive integer.  Multiple instances in a command are&#013;&#010;numbered ( ind1   ind2   ind3  etc.)."><span class="varint"><span class="null">ind3</span></span></a> etc.).</p>
+</dd></dl>
+
+<dl class="type">
+<dt id="type:int">
+<span class="fishname">int</span></dt>
+<dd><p>An integer (<a class="reference internal" href="#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a>), positive or negative. An integer <em>cannot</em> contain a decimal.  Multiple instances in a command are numbered (<a class="reference internal" href="#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i1</span></span></a> <a class="reference internal" href="#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i2</span></span></a> <a class="reference internal" href="#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i3</span></span></a> etc.).</p>
+</dd></dl>
+
+<dl class="type">
+<dt id="type:list">
+<span class="fishname">list</span></dt>
+<dd><p>A list (<a class="reference internal" href="#type:list" title="A list ( l ), which is a changeable, ordered sequence of elements or items.&#013;&#010;Lists items are accessed by index.  See  fish_listdesc  for more information."><span class="varint"><span class="null">l</span></span></a>), which is a changeable, ordered sequence of elements or items. Lists items are accessed by index.  See <a class="reference internal" href="../source/manual/scripting/fish_scripting/fish_list.html#fish-listdesc"><span class="std std-ref">Lists</span></a> for more information.</p>
+</dd></dl>
+
+<dl class="type">
+<dt id="type:map">
+<span class="fishname">map</span></dt>
+<dd><p>A map (<a class="reference internal" href="#type:map" title="A map ( m ) container of key-values pairs. See  fish_mapdesc  for&#013;&#010;more information."><span class="varint"><span class="null">m</span></span></a>) container of key-values pairs. See <a class="reference internal" href="../source/manual/scripting/fish_scripting/fish_maps.html#fish-mapdesc"><span class="std std-ref">Maps</span></a> for more information.</p>
+</dd></dl>
+
+<dl class="type">
+<dt id="type:num">
+<span class="fishname">num</span></dt>
+<dd><p>A number (<a class="reference internal" href="#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n</span></span></a>), for which either a <span class="ltype">flt</span> or an <span class="ltype">int</span> is valid.  Multiple instances in a command are numbered (<a class="reference internal" href="#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n1</span></span></a> <a class="reference internal" href="#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n2</span></span></a> <a class="reference internal" href="#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n3</span></span></a> etc.).</p>
+</dd></dl>
+
+<dl class="type">
+<dt id="type:str">
+<span class="fishname">str</span></dt>
+<dd><p>A string (<a class="reference internal" href="#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>) of alphanumeric characters. Multiple instances in a command are numbered (<a class="reference internal" href="#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s1</span></span></a> <a class="reference internal" href="#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s2</span></span></a> <a class="reference internal" href="#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s3</span></span></a> etc.).  See <a class="reference internal" href="../source/manual/scripting/fish_scripting/fish_strings.html#fish-stringdesc"><span class="std std-ref">Strings</span></a> for more information.</p>
+</dd></dl>
+
+<dl class="type">
+<dt id="type:sym">
+<span class="fishname">sym</span></dt>
+<dd><p>A <span class="codename">FISH</span> symbol (<a class="reference internal" href="#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">name</span></span></a>) — where <a class="reference internal" href="#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">name</span></span></a> is the name of either a <span class="codename">FISH</span> variable or a <span class="codename">FISH</span> function.</p>
+</dd></dl>
+
+<dl class="type">
+<dt id="type:vec">
+<span class="fishname">vec</span></dt>
+<dd><p>A vector (<a class="reference internal" href="#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span></span></a> or <a class="reference internal" href="#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v2</span></span></a> or <a class="reference internal" href="#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v3</span></span></a>) expressed as a matrix with one row.  <a class="reference internal" href="#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v2</span></span></a> and <a class="reference internal" href="#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v3</span></span></a> denote that a 2D or 3D vector, respectively, is required.  A plain “<a class="reference internal" href="#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span></span></a>” indicates that a vector of the same dimensionality as the code is required, that is, a 3D vector is required if the code is a 3D code, and a 2D vector is required if the code is a 2D code. In <span class="codename">FLAC3D</span>, <a class="reference internal" href="#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span></span></a> always indicates a 3D vector. When more than one vector of the same type in is required in a command these are distinguished with underscore-appended letters (<a class="reference internal" href="#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v2_a</span></span></a> <a class="reference internal" href="#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v2_b</span></span></a> or <a class="reference internal" href="#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v_a</span></span></a> <a class="reference internal" href="#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v_b</span></span></a>, etc.). See <a class="reference internal" href="../source/manual/scripting/fish_scripting/fish_vectors.html#fish-vectordesc"><span class="std std-ref">Vectors</span></a> for more information.</p>
+</dd></dl>
+
+<dl class="type">
+<dt id="type:vec2">
+<span class="fishname">vec2</span></dt>
+<dd><p>A 2D vector.</p>
+</dd></dl>
+
+<p class="endnotesection rubric">Endnotes</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>In some cases, multiple instances of a type in a single command may be demarcated differently if the variation enhances interpretability (for instance, <a class="reference internal" href="#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span></span></a> <a class="reference internal" href="#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span></span></a> <a class="reference internal" href="#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fz</span></span></a>).  In other cases, they may be given “names” (<a class="reference internal" href="#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">imax</span></span></a>, <a class="reference internal" href="#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fradius</span></span></a>, etc.) because they appear as arguments of one keyword but may be referenced in the explanatory text of another keyword (review the <a class="reference internal" href="../../geometry/doc/manual/commands/cmd_geometry.generate.html#kwd:geometry.generate.cone" title="Generate a cone in 3D. Either a cone or a conic frustum (i.e., cone with the&#013;&#010;tip cut off, such as a funnel if the caps are absent) can be generated."><code class="xref fish fish-cmd docutils literal"><span class="pre">geometry</span> <span class="pre">generate</span> <span class="pre">cone</span></code></a> command, for instance).  In these cases the basic type is always indicated by the first letter — “i” for an <code class="docutils literal"><span class="pre">int</span></code>, “f” for a <code class="docutils literal"><span class="pre">flt</span></code>, and so on.</td></tr>
+</tbody>
+</table>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="tokens.html"
+                           title="previous chapter"> Tokens</a> |    
+       <a href="unicodechars.html"
+                           title="next chapter">Unicode Characters</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Types" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

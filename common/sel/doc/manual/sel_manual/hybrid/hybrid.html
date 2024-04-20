@@ -1,0 +1,403 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Hybrid Bolt Structural Elements &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="hybrid-bolt-structural-elements">
+<span id="hybrid-structural-elements"></span><h1>Hybrid Bolt Structural Elements</h1>
+<p>Hybrid bolts encompass the behavior of cables but include an extra component to resist shearing perpendicular to the cable where the cable crosses a joint or interface.</p>
+<p>Basic cable elements do not resist shearing perpendicular to the cable. However, when cables are used to simulate bolts, it is well known that bolts crossing joints will provide some resistance to shearing on the joints. Dight (1982) suggests five different mechanisms that contribute to this effect.</p>
+<ol class="arabic simple">
+<li>An increase in shear resistance due to lateral resistance developed by the rockbolt via dowel action</li>
+<li>An increase in normal stress as a result of pre-stressing of the rockbolt</li>
+<li>An increase in normal stress as a result of axial force developed in the rockbolt from dilatancy of the joint</li>
+<li>An increase in normal stress as a result of axial force developed in the rockbolt from lateral extension</li>
+<li>An increase in shear resistance due to axial force in the rockbolt resolved in the direction of the joint</li>
+</ol>
+<p>Cables will demonstrate effects 2 – 5, but not 1. The dowel action is really an umbrella term for a set of complex mechanical effects including bending of the steel bolt, crushing of the grout, crushing of the host rock, etc. (see <a href="#hybrid-mechanism">Figure  1</a>). No attempt is made to reproduce all of these effects in <span class="codename">3DEC</span>. Instead, the dowel effect is simulated simply by a shear spring that resists slip on the fault where it is crossed by the bolt. The hybrid bolt is therefore a combination of cable element and reinforcement element.</p>
+<div class="figure align-center" id="hybrid-mechanism">
+<img alt="../../../../../../_images/hybrid_mechanism.png" src="../../../../../../_images/hybrid_mechanism.png" />
+<p class="caption"><span class="caption-text">Figure 1: Resistance mechanism of a rock joint reinforced by means of a dowel (from Ferrero, 1995).</span></p>
+</div>
+<div class="section" id="mechanical-behavior">
+<h2>Mechanical Behavior</h2>
+<p>The formulation of the cable portion is exactly as described in <a class="reference internal" href="../cables/cables.html#cable-structural-elements"><span class="std std-ref">Cable Structural Elements</span></a>.  The mechanical behavior of the dowel segments is described here.  The following description is modified from Lorig (1985).</p>
+<p>Experimental results and theoretical investigations indicate that shearing along a discontinuity induces bending stresses in the reinforcement that decay very rapidly with distance into the rock from the shear surface. Typically, the bending stresses are insignificant within one to two reinforcing element diameters.
+The short length of reinforcement that spans the discontinuity and changes orientation during shear displacement is referred to as the active length.
+Methods for estimating the active length are presented below.</p>
+<p>The model may be considered to consist of a spring located at the discontinuity interface and oriented parallel to the interface, as shown in <a href="#dowel-geometry">Figure  2</a>. Following shear displacement, the shear spring remains perpendicular to the original orientation.
+Note that the spring representing the dowel segment is not oriented perpendicular to the bolt as might be expected.  This is because a spring oriented in this way would produce resisting forces when the discontinuity opens purely in tension.  This would then result in too much resistance to opening since the cable component is already resisting opening.  The dowel segment therefore is oriented to only resist shearing on the joint.</p>
+<p>The shear force-displacement relation is described in incremental form by the expression</p>
+<div class="math" id="equation-the-sel3-pctf">
+<span class="eqno">(1)</span>\[\Delta F_s = K_s \vert \Delta u_s \vert\]</div>
+<p>where:</p>
+<blockquote>
+<div><p><span class="math">\(\Delta F_s\)</span> is an incremental change in shear force;</p>
+<p><span class="math">\(\Delta u_s\)</span> is an incremental change in shear displacement; and</p>
+<p><span class="math">\(K_s\)</span> is the shear stiffness.</p>
+</div></blockquote>
+<p>The maximum force is limited by a shear strength (in force units).  A rupture limit can also be specified for the shear force. If the relative shear strain in the reinforcement element exceeds a specified strain limit, then the shear force will be set to zero.  The shear strain is defined as the shear displacement divided by the active length.</p>
+</div>
+<div class="section" id="implementation">
+<h2>Implementation</h2>
+<p>The dowels are simulated with two nodes on either side of a discontinuity.  The nodes are rigidly connected to the zones.  A second link also exists between the two nodes that uses a Pile Yield constitutive model in the non-axial directions.
+The nodes are spaced a small distance apart (0.1% of the bolt length) so that the local coordinate system can be determined.  The nodes are always placed such that the local direction is perpendicular to the discontinuity, not necessarily parallel to the bolt. See #fnum`Figure #
+The dowel force calculations proceed independently of the host cable calculations.  The only interaction is if the dowel ruptures in shear, then the host cable element also ruptures, so that the segment carries no load.</p>
+<div class="figure align-center" id="dowel-geometry">
+<a class="reference internal image-reference" href="../../../../../../_images/dowel.png"><img alt="../../../../../../_images/dowel.png" src="../../../../../../_images/dowel.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: A hybrid bolt crossing a discontinuity at an angle.  The dowel is plotted with a length equal to the active length.  The nodes used in the dowel calculation are shown on either side of the open joint.</span></p>
+</div>
+</div>
+<div class="section" id="properties">
+<span id="hybrid-properties"></span><h2>Properties</h2>
+<p>Each hybrid bolt element has 13 properties (the same as cable elements):</p>
+<ol class="arabic simple">
+<li><span class="cmdkey">density</span>, mass density, <span class="math">\(ρ\)</span> (optional — needed if dynamic mode or gravity is active) [M/L<sup>3</sup>]</li>
+<li><span class="cmdkey">young</span>, Young’s modulus, <span class="math">\(E\)</span> [F/L<sup>2</sup>]</li>
+<li><span class="cmdkey">yield-compression</span>, compressive yield strength (force units), <span class="math">\(F_c\)</span> [F]</li>
+<li><span class="cmdkey">yield-tension</span>, tensile yield strength (force units), <span class="math">\(F_t\)</span> [F]</li>
+<li><span class="cmdkey">tensile-failure-strain</span>, tensile failure strain, <span class="math">\(\varepsilon_f\)</span> [-] (only active if assigned a positive value)</li>
+<li><span class="cmdkey">thermal-expansion</span>, thermal expansion coefficient , <span class="math">\(\alpha_t [1/T]\)</span> (optional — used for thermal analysis)</li>
+<li><span class="cmdkey">cross-sectional-area</span>, cross-sectional area, <span class="math">\(A\)</span> [L<sup>2</sup>]</li>
+<li><span class="cmdkey">grout-cohesion</span>, grout cohesion (force units) per unit length, <span class="math">\(c_g\)</span> [F/L]</li>
+<li><span class="cmdkey">grout-friction</span>, grout friction angle, <span class="math">\(ϕ_g\)</span> (degrees)</li>
+<li><span class="cmdkey">grout-stiffness</span>, grout stiffness per unit length, <span class="math">\(k_g\)</span> [F/L<sup>2</sup>]</li>
+<li><span class="cmdkey">grout-perimeter</span>, grout exposed perimeter, <span class="math">\(p_g\)</span> [L]</li>
+<li><span class="cmdkey">slide</span>, large-strain sliding flag (default: <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a>)</li>
+<li><span class="cmdkey">slide-tolerance</span>, large-strain sliding tolerance</li>
+</ol>
+<p>The material behavior is described by properties 1–6, the cross-sectional geometry is described by property 7, and the coupling behavior is described by properties 8–13.</p>
+<p>The dowel segments have 4 properties:</p>
+<ol class="arabic simple">
+<li><span class="cmdkey">dowel-active-length</span>, Dowel active length, [-]</li>
+<li><span class="cmdkey">dowel-stiffness</span>, Dowel shear stiffness, <span class="math">\(K_s\)</span>  [F/L]</li>
+<li><span class="cmdkey">dowel-strength</span>, Dowel shear strength, [F]</li>
+<li><span class="cmdkey">dowel-failure-strain</span>, Dowel shear failure strain, [-]</li>
+</ol>
+<div class="section" id="calibration">
+<h3>Calibration</h3>
+<div class="section" id="influence-of-segment-length-and-dowel-length">
+<h4>Influence of Segment Length and Dowel Length</h4>
+<p>For a fixed set of parameters, changing the node spacing mostly influences the rupture displacement in axial and shear — easy to readjust by changing the axial and shear critical strain — but also the stiffness of the bolt. Indeed, for a given shear or axial joint displacement/opening, the smaller the node spacing, the stiffer the bolt reaction will be due to an increase in component (4) described above (increase in normal stress as a result of axial force developed in the rockbolt from lateral extension). One can adjust the shear and axial stiffness then, but there is a limitation to the calibration process: the smaller the segment, the larger the influence of the axial stiffness on the shear response of the bolt. Indeed, the smaller the node spacing, the larger the axial strain becomes for a given joint shear displacement relative to the shear strain. This is a geometric effect that the calibration can not overcome.</p>
+<p>Overall, it is important to realize that the micro-axial behavior strongly influences the macro-shear behavior of the bolt.</p>
+</div>
+<div class="section" id="the-calibration-steps">
+<h4>The Calibration Steps</h4>
+<p>The hybrid bolt model properties are typically calibrated through simple shear and pullout tests on bolts perpendicular to the joint (see example below).</p>
+<p><a href="#hybrid-calibration1">Table  1</a> presents the parameters that should be defined before performing the calibration and held constant during a simulation for the calibration to remain valid.</p>
+<table border="1" class="colwidths-given icg1 stripes docutils" id="hybrid-calibration1">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><span class="codename">3DEC</span> Parameter</th>
+<th class="head">Description</th>
+<th class="head">Depends on</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">cross-sectional-area</span></code></td>
+<td>Cross-sectional area of cable</td>
+<td>Support design</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">grout-perimeter</span></code></td>
+<td>Perimeter of the hole. Only required if <code class="docutils literal"><span class="pre">grout-friction</span></code> &gt; 0</td>
+<td>Borehole diameter</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">segment-length</span></code></td>
+<td>Hybrid bolt node spacing</td>
+<td>Geometry of the model used to model the rock mass. <code class="docutils literal"><span class="pre">segment-length</span></code> should be small enough to have at least one or two nodes between discontinuities</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">dowel-active-length</span></code></td>
+<td>Length of dowel segments in a hybrid bolt</td>
+<td>Same as <code class="docutils literal"><span class="pre">segment-length</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">grout-friction</span></code></td>
+<td>Optional parameter. Friction angle of the grout material [degrees]</td>
+<td>Grout properties</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#hybrid-sheartest">Figure  3</a> presents typical simple shear test results and associated stages. Simple shear tests are the classical tests used to study (and in this case calibrate) bolt behavior in shear.</p>
+<div class="figure align-center" id="hybrid-sheartest">
+<img alt="../../../../../../_images/hybrid_sheartest.png" src="../../../../../../_images/hybrid_sheartest.png" />
+<p class="caption"><span class="caption-text">Figure 3: Hybrid bolt calibration. Typical simple shear test curve and associated stages.</span></p>
+</div>
+<p><a href="#hybrid-calibration2">Table  2</a> presents the critical parameters to adjust in order to obtain the desired behavior for hybrid bolts during a simple shear test.</p>
+<table border="1" class="colwidths-given icg1 docutils" id="hybrid-calibration2">
+<caption><span class="caption-text">Table 2: Hybrid Bolt Calibration: Critical Parameters for Each Stage of the Simple Shear Test</span></caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Stage</th>
+<th class="head">Primary Influence</th>
+<th class="head">Secondary Influence</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Elastic stage (1)</td>
+<td><code class="docutils literal"><span class="pre">dowel-stiffness</span></code></td>
+<td><code class="docutils literal"><span class="pre">young</span></code> <code class="docutils literal"><span class="pre">grout-stiffness</span></code></td>
+</tr>
+<tr class="row-odd"><td>End of elastic stage</td>
+<td><code class="docutils literal"><span class="pre">dowel-yield</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Yield stage (2)</td>
+<td><code class="docutils literal"><span class="pre">grout-stiffness</span></code></td>
+<td><code class="docutils literal"><span class="pre">young</span></code></td>
+</tr>
+<tr class="row-odd"><td>End of yield stage/Plastic stage (3)</td>
+<td><code class="docutils literal"><span class="pre">grout-cohesion</span></code></td>
+<td><code class="docutils literal"><span class="pre">yield-tension</span></code></td>
+</tr>
+<tr class="row-even"><td>End of plastic stage</td>
+<td><code class="docutils literal"><span class="pre">dowel-failure-strain</span></code></td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#hybrid-pulltest">Figure  4</a> presents typical simple pull test results and associated stages. Pull tests are the classical tests used to study, and in this case calibrate, bolt behavior in tension.</p>
+<div class="figure align-center" id="hybrid-pulltest">
+<img alt="../../../../../../_images/hybrid_pulltest.png" src="../../../../../../_images/hybrid_pulltest.png" />
+<p class="caption"><span class="caption-text">Figure 4: Hybrid bolt calibration. Typical pull test curves and associated stages.</span></p>
+</div>
+<p><a href="#hybrid-calibration2">Table  2</a> presents the critical parameters to adjust in order to obtain the desired behavior for hybrid bolts during a simple pull test.</p>
+<table border="1" class="colwidths-given icg1 docutils" id="hybrid-calibration3">
+<caption><span class="caption-text">Table 3: Hybrid Bolt Calibration: Critical Parameters for Each Pullout Test Stage</span></caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Stage</th>
+<th class="head">Primary Influence</th>
+<th class="head">Secondary Influence</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Elastic stage (1)</td>
+<td><code class="docutils literal"><span class="pre">young</span></code> <code class="docutils literal"><span class="pre">grout-stiffness</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>End of elastic stage</td>
+<td><code class="docutils literal"><span class="pre">grout-cohesion</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Yield stage (2)</td>
+<td><code class="docutils literal"><span class="pre">grout-cohesion</span></code></td>
+<td><code class="docutils literal"><span class="pre">young</span></code></td>
+</tr>
+<tr class="row-odd"><td>End of yield stage/Plastic stage (3)</td>
+<td><code class="docutils literal"><span class="pre">yield-tension</span></code> or <code class="docutils literal"><span class="pre">grout-cohesion</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>End of plastic stage</td>
+<td><code class="docutils literal"><span class="pre">tensile-failure-strain</span></code></td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p>Below are a few comments to keep in mind while calibrating the hybrid bolt.</p>
+<ul class="simple">
+<li>Make sure the number of nodes and length of the cable is large enough that it does not influence the results of the calibration (i.e., ensure that the bolt length is long enough to fully exercise the bolt capacity and not get slip along the whole length of the bolt before reaching that stage).</li>
+<li>If the cable strain limit is very low compared to the dowel’s, then the rupture (axial and shear) will always be induced by cable (axial) rupture.</li>
+<li>The node spacing strongly influences the behavior of the bolt for a given joint displacement. The node spacing used for the calibration should be equal to the one used in the real problem.</li>
+</ul>
+</div>
+<div class="section" id="orientation-dependent-shear-strength">
+<h4>Orientation-Dependent Shear Strength</h4>
+<p>In the field, rock bolts can be subjected to a combination and/or succession of shear and axial solicitation in various directions. Only a few references study the effect of bolt inclination on the bolt behavior when crossing a joint. The hybrid bolt model has not been implemented to reproduce all the complexity of rock bolt behavior in every possible condition. It is built to take into account the shear resistance generated by the bolt at joint intersections in a simple manner, while accurately reproducing the support brought to the rock mass observed experimentally. This section discusses the inclination effect on a simple shear test in <span class="codename">3DEC</span> for a given set of parameters and compares it to observations available in the literature.</p>
+<p>Laboratory tests suggest the following.</p>
+<ul class="simple">
+<li>The maximum shear strength of the bolted joint increases with the joint friction angle.</li>
+<li>For a given joint friction angle, the maximum shear strength of the bolted joint varies with the bolt inclination.</li>
+<li>Inclined bolts react in a stiffer way than normal ones.</li>
+<li>The greatest ultimate displacement is reached when the bolt is normal to the joint.</li>
+<li>For very low values of friction angle, the bolt inclination has no influence on the maximum resistance.</li>
+<li>The confining effect increases with inclination while the cohesion term decreases.</li>
+</ul>
+<p><a href="#hybrid-shear-angle">Figure  5</a> shows simple shear test results for a friction angle of 40º and various bolt inclinations (from 10º to 130º).</p>
+<div class="figure align-center" id="hybrid-shear-angle">
+<a class="reference internal image-reference" href="../../../../../../_images/hybrid_shear_angle.png"><img alt="../../../../../../_images/hybrid_shear_angle.png" src="../../../../../../_images/hybrid_shear_angle.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 5: Bolt inclination effect on a simple shear test with a joint friction angle of 40º (inclination &gt; 90º corresponds to bolt inclined in the opposite direction to the shearing direction).</span></p>
+</div>
+<p><a href="#hybrid-pull-angle">Figure  6</a> shows simple pull test results for two inclination angles (from 70º to 90º).</p>
+<div class="figure align-center" id="hybrid-pull-angle">
+<a class="reference internal image-reference" href="../../../../../../_images/hybrid_pull_angle.png"><img alt="../../../../../../_images/hybrid_pull_angle.png" src="../../../../../../_images/hybrid_pull_angle.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 6: Bolt inclination effect on a pullout test.</span></p>
+</div>
+<p>Like the rock bolt behavior observed experimentally, the hybrid bolt behaves as follows.</p>
+<ul class="simple">
+<li>Inclined bolts react in a stiffer way than normal ones. This is due to a geometrical effect. Indeed, the more the bolt is inclined (compared to the perpendicular direction to the joint), the bigger the increment of axial force in the cable for a given increment of shear displacement.</li>
+<li>As the bolt rotates from the perpendicular direction, the confining effect (friction effect) increases while the cohesion term (dowel action and shear cable action) decreases.</li>
+<li>The ultimate shear displacement leading to bolt failure varies with bolt inclination. The ultimate shear displacement is maximum when the bolt is perpendicular to the joint. In this case, it is directly related to the input dowel shear rupture strain (maximum shear displacement = maximum dowel strain × dowel length). When the bolt is more inclined (<span class="math">\(\theta\)</span> &gt; 70 degrees in <a href="#hybrid-shear-angle">Figure  5</a>), the cable strain limit for axial rupture is reached before the dowel strain limit since the cable element gets elongated more quickly. And the more the bolt is inclined, the less joint shear displacement is necessary for the cable to reach the axial strain limit.</li>
+</ul>
+<p>Note that the inclination at which the rupture strain switches from being controlled by the dowel shear limit to being controlled by the cable axial limit depends on the input values. If the cable strain limit is very low compared to the dowel’s, then the rupture will always be induced by cable (axial) rupture. If the cable strain limit is infinite, then the controlling strain limit is always the dowel (shear) strain limit, independent of the orientation.</p>
+<p>Shear tests have also been performed on bolts inclined in the opposite direction to shearing (inclination &gt; 90° in <a href="#hybrid-shear-angle">Figure  5</a>). In those cases, while the joint is sheared, the cable element gets compressed (and not stretched) so that the only force applied by the bolt on the joints comes from the dowel element. At the end of the elastic stage, when the dowel reaches its yield value, the force no longer increases except if the cable element rotates enough so that it gets stretched again (this is the case at the end of the test for <span class="math">\(\theta\)</span> = 110°).</p>
+<p><a href="#hybrid-pull-angle">Figure  6</a> presents pullout test results for a bolt perpendicular to the joint and one slightly inclined (<span class="math">\(\theta\)</span> = 70°). When the bolt is inclined, a given increment of displacement (when the block is pulled) induces a smaller stretch than when the bolt is perpendicular to the joint. That is why the stiffness is slightly lower. This is the same geometrical effect that causes the maximum axial displacement to be higher for the inclined bolt (~31 mm) than for the perpendicular bolt (~29 mm). When the bolt is perpendicular to the joint (and so parallel to the pulling direction), the maximum load equals the cable yield capacity (18 tonnes in this case). When the bolt is inclined, the maximum load equals the projection of this value on the pulling direction. The more inclined the bolt, the lower the maximum load when compared to the yield capacity of the bolt.</p>
+<p>Very few experimental results are available that consider an inclined bolt subjected to shearing. In terms of qualitative behavior, the hybrid bolt reproduces most effects due to inclination described in the literature for analytical or experimental results. In terms of quantitative results, we believe the hybrid bolt behavior is reasonable considering the level of accuracy it is meant to achieve and in the order of magnitude observed in the few available experimental tests.</p>
+</div>
+<div class="section" id="effect-of-joint-friction-angle-on-bolt-load-capacity">
+<h4>Effect of Joint Friction Angle on Bolt Load Capacity</h4>
+<p>During a simple shear test the three forces contributing to the bolt effect on the joint are the dowel element shear resistance (Fd), the cable shear resistance (FcS), and the additional friction force due to the cable normal force (FcN). If we consider a bolt inclination of <span class="math">\(\theta_1\)</span> (so that 90º corresponds to a bolt perpendicular to the joint) and a joint friction angle of <span class="math">\(\phi\)</span> degrees, the theoretical maximum bolt contribution equals:</p>
+<div class="math" id="equation-the-sel3-hfri">
+<span class="eqno">(2)</span>\[\mathrm{Maximum \ Bolt \ Contribution} = F_d + F_c \cos \theta_1 + + F_c \sin \theta_1 \tan \phi\]</div>
+<p>where:</p>
+<blockquote>
+<div><p><span class="math">\(F_c\)</span> = Axial force acting in the cable element whose maximum value is the input cable yield value;</p>
+<p><span class="math">\(F_d\)</span> = Force acting in the dowel element whose maximum value is the input dowel yield value</p>
+</div></blockquote>
+<p>The first term represents the shear resistance (FcS) and the second term represents the normal component (FcN).</p>
+<p>As a consequence, the hybrid bolt contribution depends on the friction angle and the bolt inclination. Considering that the bolt rotates a few degrees during the simple shear test, <a href="#hybrid-friction">Figure  7</a> gives an estimation of the three forces generated by the presence of the hybrid bolt for various bolt inclinations and for different friction angles.</p>
+<p>Like the rock bolt behavior observed experimentally, the <span class="codename">3DEC</span> hybrid bolt behaves as follows.</p>
+<ul class="simple">
+<li>For a given joint friction angle, the maximum shear strength of the bolted joint varies with the bolt inclination. For a 40 degree friction angle, the maximum value is observed around 45 degrees and corresponds to a 30% increase compared to a perpendicular bolt.</li>
+<li>The maximum shear strength of the bolted joint varies with the joint friction angle; the higher the friction, the higher the maximum shear strength.</li>
+</ul>
+<div class="figure align-center" id="hybrid-friction">
+<a class="reference internal image-reference" href="../../../../../../_images/hybrid_friction.png"><img alt="../../../../../../_images/hybrid_friction.png" src="../../../../../../_images/hybrid_friction.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 7: Variation of bolt action contributions with bolt inclination for five different joint friction angles (0º, 20º, 30º, 40º, and 50º) – a bolt inclination of 90º corresponds to a bolt perpendicular to the joint.</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="html-calibration-tool">
+<h3>HTML Calibration Tool</h3>
+<p>A <a class="reference external" href="../../../../../../_static/icg_tools/cable-prop-tool.html">calibration tool</a> for hybrid bolts is provided with this documentation to make it easier to choose bolt properties based on laboratory data. Default properties for different bolt types are also included with the tool. The tool provides its own documentation (see the “?” where it appears in the tool).</p>
+</div>
+</div>
+<div class="section" id="example-applications">
+<h2>Example Applications</h2>
+<p>Simple examples are given to illustrate the use of hybrid bolts.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="references">
+<h2>References</h2>
+<p>Dight, P. M. “Improvements to the Stability of Rock Walls in Open Pit Mines.” Ph.D. Thesis, Monash University (1982).</p>
+<p>Fuller, P. G., and R. H. T. Cox. “Rock Reinforcement Design Based on Control of Joint Displacement — A New Concept,” in <span class="bi">Proceedings of the 3rd Australian Tunnelling Conference (Sydney, Australia, 1978)</span>, pp. 28-35. Sydney: Inst. of Engrs., Australia (1978).</p>
+<p>Gerdeen, J. C., et al. “Design Criteria for Roof Bolting Plans Using Fully Resin-Grouted Nontensioned Bolts to Reinforce Bedded Mine Roof,” U.S. Bureau of Mines, OFR 46(4)-80 (1977).</p>
+<p>Hyett, A. J., W. F. Bawden and R. D. Reichert. “The Effect of Rock Mass Confinement on the Bond Strength of Fully Grouted Cable Bolts,” <em>Int. J. Rock Mech. Min. Sci. &amp; Geomech. Abstr.</em>, <span class="bi">29</span>(5), 503-524 (1992).</p>
+<p>Itasca Consulting Group Inc. <em>UDEC (Universal Distinct Element Code)</em>, Version 5.0. Minneapolis: ICG (2011).</p>
+<p>Littlejohn, G. S., and D. A. Bruce. “Rock Anchors – State of the Art. Part I: Design,” <em>Ground Engineering</em>, <span class="bi">8</span>(3), 25-32 (1975).</p>
+<p>Lorig, L. J. “A Simple Numerical Representation of Fully Bonded Passive Rock Reinforcement for Hard Rocks,” <em>Computers and Geotechnics</em>, <span class="bi">1</span>, 79-97 (1985).</p>
+<p>Pells, P. J. N. “The Behaviour of Fully Bonded Rock Bolts,” in <span class="bi">Proceedings of the 3rd International Congress on Rock Mechanics</span>, Vol. 2, pp. 1212-1217 (1974).</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="commands-fish">
+<h2>Commands &amp; FISH</h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commands/hybrid_commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fish/hybrid_fish.html"><span class="codename">FISH</span> Functions</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Hybrid Bolt Structural Elements" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,196 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Buckling of an Axially Loaded Beam &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <span class="target" id="axial-buckling"></span><div class="section" id="buckling-of-an-axially-loaded-beam">
+<h1>Buckling of an Axially Loaded Beam</h1>
+<p class="h2 rubric">Problem Statement</p>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To view this project in <span class="codename">FLAC3D</span>, use the menu command <span class="menuselection">Help ► Examples…</span>.  Choose “Structure/Beam/AxialBuckling” and select “AxialBuckling.prj” to load.
+The <a class="reference internal" href="#axialbucklingdata"><span class="std std-ref">main data files</span></a> used are shown at the end of this example. The remaining data files can be found in the project.</p>
+</div>
+<p>This example demonstrates the buckling behavior of an axially loaded beam with small initial deflection. The beam rests on a base and is fixed in lateral translation at its ends. A global system of coordinates is defined with the <span class="math">\(z\)</span>-axis pointing upward, oriented along the axis of the beam, and with origin at the base of the beam. The beam initial shape is defined by the equation found in Massonnet (1960):</p>
+<div class="math" id="equation-axialbuckling-eq1">
+<span class="eqno">(1)</span>\[x_0 = f_0 {\rm sin} \Bigl({{\pi z} \over {l}}\Bigr)\]</div>
+<p>where <span class="math">\(l\)</span> is beam length, and <span class="math">\(f_0\)</span> is maximum initial deflection.</p>
+<p>The additional deflection taken by the beam under an axial load, <span class="math">\(P\)</span>, is predicted from linear stability analysis by the equation</p>
+<div class="math" id="equation-axialbuckling-eq2">
+<span class="eqno">(2)</span>\[x - x_0 = {{ f_0 {\rm sin} ({{\pi z} \over{l}})} \over {{ {P_{cr}} \over {P}} - 1}}\]</div>
+<p>where <span class="math">\(P_{cr}\)</span> is the minimum critical load for buckling.</p>
+<p>The minimum critical load is defined as</p>
+<div class="math" id="equation-axialbuckling-eq3">
+<span class="eqno">(3)</span>\[P_{cr} = \pi^2 { {EI} \over {l^2}}\]</div>
+<p>where <span class="math">\(E\)</span> is Young’s modulus, and <span class="math">\(I\)</span> is the moment of inertia for lateral flexion.</p>
+<p>The additional deflection at the center of the beam <span class="math">\(f\)</span> is thus</p>
+<div class="math" id="equation-axialbuckling-eq4">
+<span class="eqno">(4)</span>\[f = { {f_0} \over { {P_{cr} / {P - 1} } }}\]</div>
+<p>For this example, the beam is 200 m long, and the maximum amplitude of initial deflection is 1 cm (or 0.005% of the beam length). Young’s modulus is 257 MPa, and the moment of inertia for lateral flexion is 5.333 m<sup>4</sup>. The beam is modeled using 20 elements, translation is fixed in all directions at the base, and in the <span class="math">\(x\)</span>- and <span class="math">\(y\)</span>- directions at the top. An axial load is applied in increments at the beam top until the critical load is reached. After each increment, the model is cycled to mechanical equilibrium and the load deflection is recorded in a table.</p>
+<p>The beam deflection is seen to increase beyond measure as the load converges to the minimum critical value, as expected. A comparison between analytical solution and numerical prediction for additional deflection at the center of the beam is presented in <a href="#axialbuckling-deflection">Figure  1</a>. As can be seen, the match between the solutions is very good.</p>
+<div class="figure align-center" id="id1">
+<span id="axialbuckling-deflection"></span><a class="reference internal image-reference" href="common\sel\test3d\Beam\AxialBuckling\axialbuckling-deflection.png"><img alt="common\sel\test3d\Beam\AxialBuckling\axialbuckling-deflection.png" src="common\sel\test3d\Beam\AxialBuckling\axialbuckling-deflection.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Load deflection curve.</span></p>
+</div>
+<p class="h2 rubric">Reference</p>
+<p>Massonnet, C. E. <span class="bi">Résistance Des Matériaux</span>. Sciences Et Lettres, Liége (1960).</p>
+<p class="h2 rubric" id="axialbucklingdata">Data File</p>
+<p><strong>AxialBuckling.dat</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="c">; Axial loading of a beam with small initial deflection. </span>
+<span class="c">; Load versus additional deflection at beam half length:</span>
+<span class="nb">model new</span>
+<span class="nb">fish automatic-create</span><span class="n"> </span><span class="sx">off</span>
+<span class="nb">model title</span><span class="n"> </span><span class="s">&quot;Axial loading of a beam with small initial deflection.&quot;</span>
+<span class="c">; Create a beam of 20 elements with a sin wave initial deflection in x</span>
+<span class="nb">fish define</span><span class="ni"> createBeam</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> p2 </span><span class="p">=</span><span class="ni"> vector</span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> </span><span class="k">local</span><span class="ni"> z </span><span class="p">(</span><span class="m m-Double">10</span><span class="p">,</span><span class="m m-Double">200</span><span class="p">,</span><span class="m m-Double">10</span><span class="p">)</span>
+<span class="ni">        </span><span class="k">local</span><span class="ni"> p1 </span><span class="p">=</span><span class="ni"> p2</span>
+<span class="ni">        p2 </span><span class="p">=</span><span class="ni"> vector</span><span class="p">(</span><span class="m m-Double">0.01</span><span class="o">*</span><span class="k">math.sin</span><span class="p">(</span><span class="k">math.pi</span><span class="o">*</span><span class="ni">z</span><span class="o">/</span><span class="m m-Double">200.</span><span class="p">),</span><span class="m m-Double">0</span><span class="p">,</span><span class="ni">z</span><span class="p">)</span>
+<span class="k">        command</span>
+<span class="nb">            struct beam create</span><span class="n"> by</span><span class="o">-</span><span class="n">line </span><span class="ni">[p1]</span><span class="n"> </span><span class="ni">[p2]</span><span class="n"> id</span><span class="p">=</span><span class="m m-Double">1</span>
+<span class="k">        end_command</span>
+<span class="ni">    </span><span class="k">end_loop</span>
+<span class="nb">end</span>
+<span class="ni">[createBeam]</span>
+<span class="c">; Setup properties and boundary conditions</span>
+<span class="nb">model large-strain</span><span class="n"> </span><span class="sx">on</span>
+<span class="nb">struct beam property</span><span class="n"> young </span><span class="m m-Double">2.57e8</span><span class="n"> cross</span><span class="o">-</span><span class="n">sectional</span><span class="o">-</span><span class="n">area </span><span class="m m-Double">4</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                     direction</span><span class="o">-</span><span class="n">y </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> moi</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">5.33</span><span class="n"> moi</span><span class="o">-</span><span class="n">z </span><span class="m m-Double">5.333</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                     moi</span><span class="o">-</span><span class="n">polar </span><span class="m m-Double">0</span><span class="n"> poisson </span><span class="m m-Double">0.3</span>
+<span class="nb">struct node fix</span><span class="n"> velocity range position</span><span class="o">-</span><span class="n">z </span><span class="m m-Double">0</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">x velocity</span><span class="o">-</span><span class="n">y range position</span><span class="o">-</span><span class="n">z </span><span class="m m-Double">200</span>
+<span class="c">; create history</span>
+<span class="nb">struct node history</span><span class="n"> displacement</span><span class="o">-</span><span class="n">x position </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">100</span><span class="p">)</span>
+<span class="nb">struct node history</span><span class="n"> displacement</span><span class="o">-</span><span class="n">y position </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">100</span><span class="p">)</span>
+<span class="c">; define loading sequence, in a table as a fraction of the critical load</span>
+<span class="nb">table</span><span class="n"> </span><span class="s">&#39;seq&#39;</span><span class="n"> add </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">.1</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">.2</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">.3</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">.4</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">.5</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">6</span><span class="p">,</span><span class="m m-Double">.6</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">7</span><span class="p">,</span><span class="m m-Double">.7</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">8</span><span class="p">,</span><span class="m m-Double">.8</span><span class="p">)</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                </span><span class="p">(</span><span class="m m-Double">9</span><span class="p">,</span><span class="m m-Double">.9</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">10</span><span class="p">,</span><span class="m m-Double">.92</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">11</span><span class="p">,</span><span class="m m-Double">.94</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">12</span><span class="p">,</span><span class="m m-Double">.96</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">13</span><span class="p">,</span><span class="m m-Double">.97</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">14</span><span class="p">,</span><span class="m m-Double">.98</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">15</span><span class="p">,</span><span class="m m-Double">.99</span><span class="p">)</span><span class="n"> </span>
+<span class="c">; Apply Each load in sequence, and record deflection after equilibrium</span>
+<span class="nb">fish define</span><span class="ni"> loadDeflection</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> endNode </span><span class="p">=</span><span class="ni"> </span><span class="k">struct.node.near</span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">200</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> midNode </span><span class="p">=</span><span class="ni"> </span><span class="k">struct.node.near</span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">100</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> Pcr </span><span class="p">=</span><span class="ni"> </span><span class="p">(</span><span class="k">math.pi</span><span class="o">/</span><span class="m m-Double">200</span><span class="p">)</span><span class="o">^</span><span class="m m-Double">2</span><span class="ni"> </span><span class="o">*</span><span class="ni"> </span><span class="m m-Double">2.57e8</span><span class="ni"> </span><span class="o">*</span><span class="ni"> </span><span class="m m-Double">5.333</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> </span><span class="k">local</span><span class="ni"> i </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="k">table.size</span><span class="p">(</span><span class="s">&#39;seq&#39;</span><span class="p">))</span>
+<span class="ni">        </span><span class="k">local</span><span class="ni"> load </span><span class="p">=</span><span class="ni"> </span><span class="k">table</span><span class="p">(</span><span class="s">&#39;seq&#39;</span><span class="p">,</span><span class="ni">i</span><span class="p">)</span><span class="ni"> </span><span class="o">*</span><span class="ni"> Pcr</span>
+<span class="ni">        </span><span class="k">struct.node.apply</span><span class="p">(</span><span class="ni">endNode</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="o">-</span><span class="ni">load</span>
+<span class="ni">        </span><span class="k">io.out</span><span class="p">(</span><span class="s">&#39;Loading step &#39;</span><span class="o">+</span><span class="ni">string</span><span class="p">(</span><span class="ni">i</span><span class="p">))</span>
+<span class="k">        command</span>
+<span class="nb">model </span><span class="ss">solve</span><span class="n"> convergence </span><span class="m m-Double">5e-4</span>
+<span class="k">        end_command</span>
+<span class="ni">        </span><span class="k">local</span><span class="ni"> pos </span><span class="p">=</span><span class="ni"> </span><span class="k">struct.node.pos</span><span class="p">(</span><span class="ni">midNode</span><span class="p">)</span>
+<span class="ni">        pos</span><span class="o">-&gt;</span><span class="ni">z </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0</span>
+<span class="ni">        </span><span class="k">local</span><span class="ni"> deflect </span><span class="p">=</span><span class="ni"> </span><span class="k">math.mag</span><span class="p">(</span><span class="ni">pos</span><span class="p">)</span><span class="ni"> </span><span class="o">-</span><span class="ni"> </span><span class="m m-Double">0.01</span>
+<span class="ni">        </span><span class="k">local</span><span class="ni"> x </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0.01</span><span class="o">/</span><span class="p">(</span><span class="ni">Pcr</span><span class="o">/</span><span class="ni">load </span><span class="o">-</span><span class="ni"> </span><span class="m m-Double">1</span><span class="p">)</span>
+<span class="ni">        </span><span class="k">table</span><span class="p">(</span><span class="s">&#39;def&#39;</span><span class="p">,</span><span class="ni">deflect</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> load</span>
+<span class="ni">        </span><span class="k">table</span><span class="p">(</span><span class="s">&#39;anal&#39;</span><span class="p">,</span><span class="ni">x</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> load</span>
+<span class="k">        command</span>
+<span class="nb">            model save</span><span class="n"> </span><span class="ni">[</span><span class="s">&#39;load&#39;</span><span class="o">+</span><span class="ni">string</span><span class="p">(</span><span class="ni">load</span><span class="o">*</span><span class="m m-Double">100</span><span class="o">/</span><span class="ni">Pcr</span><span class="p">)</span><span class="ni">]</span>
+<span class="k">        end_command</span>
+<span class="ni">    </span><span class="k">end_loop</span>
+<span class="nb">end</span>
+<span class="ni">[loadDeflection]</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;AxialBuckling&#39;</span>
+</pre></div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Buckling of an Axially Loaded Beam" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

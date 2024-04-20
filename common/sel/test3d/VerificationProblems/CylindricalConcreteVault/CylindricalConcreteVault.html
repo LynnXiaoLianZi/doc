@@ -1,0 +1,355 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Cylindrical Concrete Vault &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="hide sectionname docutils container">
+Examples • Verification Problems</div>
+<div class="section" id="cylindrical-concrete-vault">
+<span id="cylconcretevault"></span><h1>Cylindrical Concrete Vault</h1>
+<p class="h2 rubric">Problem Statement</p>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To view this project in <span class="codename">FLAC3D</span>, use the menu command <span class="menuselection">Help ‣ Examples…</span>.  Choose “VerificationProblems/ CylindricalConcreteVault” and select “CylindricalConcreteVault.prj” to load.
+The <a class="reference internal" href="#vaultdata"><span class="std std-ref">main data files</span></a> used are shown at the end of this example.  The remaining data files can be found in the project.</p>
+</div>
+<p>A cylindrical concrete vault supported by two rigid diaphragms and loaded by its own
+weight is analyzed using the two different shell elements available in <span class="codename">FLAC3D</span>. The effects
+of both element type and mesh pattern on the structural response (deformation and shell
+stress resultants) are investigated by performing a convergence study, whereby the mesh
+density is increased. The results quantify the accuracy of the shell elements and
+illustrate the effects of mesh pattern and mesh density on accuracy. In this problem,
+there is no coupling between the shell elements and a surrounding continuum, as would be
+the case in a tunnel analysis. Nevertheless, it is proposed that this problem is similar
+to such a system, and that the results described here can help guide the selection of the
+proper discretization and element type in such coupled problems.</p>
+<p>This problem has become a de facto standard test problem of a singly curved shell (MacNeil
+and Harder 1985), and is used as such by Zienkiewicz and Taylor (1991, pp. 123-128) and
+Carpenter et al. (1986), who refer to it as the Scordelis-Lo roof (Scordelis and Lo 1964).
+The structure is a cylindrical concrete vault supported by two rigid diaphragms and loaded
+by its own weight (see <a href="#vault-problem">Figure  1</a>). Bending action is severe due to supports
+restraining deflection at the ends, and both bending and membrane deformations contribute
+significantly to the vertical displacement at the midpoint of the free edge.</p>
+<div class="figure align-center" id="vault-problem">
+<a class="reference internal image-reference" href="../../../../../_images/vault-problem.png"><img alt="../../../../../_images/vault-problem.png" src="../../../../../_images/vault-problem.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Cylindrical concrete vault supported by two rigid diaphragms.</span></p>
+</div>
+<p>The vault has a radius of 25 ft, with an included angle of 80°, and a span of 50 ft between the two
+diaphragm walls. The loading consists of the weight of the concrete shell, which acts in the negative
+<span class="math">\(z\)</span>-direction. The vault is supported by two rigid diaphragm walls, such that along these two edges
+(labeled <span class="math">\(A-A'\)</span> and <span class="math">\(B-B'\)</span> in <a href="#vault-problem">Figure  1</a>), displacements in the plane of
+each wall are fixed, but the vault is free to move in the <span class="math">\(y\)</span>-direction and to rotate about each
+edge. (The walls are relatively flexible with respect to loading perpendicular to their surfaces and do not
+resist bending along their top edges.) The following geometrical and material properties are assigned:</p>
+<table border="1" class="colwidths-given blank docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>shell thickness</td>
+<td><span class="math">\(t\)</span> = 3 in</td>
+</tr>
+<tr class="row-even"><td>gravity acceleration</td>
+<td><span class="math">\(g\)</span> = 32 ft/s<sup>2</sup></td>
+</tr>
+<tr class="row-odd"><td>material density</td>
+<td><span class="math">\(\rho\)</span> = 11.25 lbm/ft<sup>3</sup></td>
+</tr>
+<tr class="row-even"><td>weight of shell</td>
+<td><span class="math">\(w_s\)</span> = 90 lbf/ft<sup>2</sup></td>
+</tr>
+<tr class="row-odd"><td>Young’s modulus</td>
+<td><span class="math">\(E\)</span> = 4.32 × 10<sup>8</sup> psf</td>
+</tr>
+<tr class="row-even"><td>Poisson’s ratio</td>
+<td><span class="math">\(\nu\)</span> = 0.0</td>
+</tr>
+</tbody>
+</table>
+<p class="h2 rubric">Closed-Form Solution</p>
+<p>Analytical results are presented graphically by Zienkiewicz and Taylor (1991, pp. 123-128) for
+displacements and moments along various sections of the vault. The results are computed according to an
+analysis by Scordelis and Lo (1964) and Scordelis (1971). In the present comparison, the graphical plots
+from Zienkiewicz and Taylor (1991) were utilized. The analytical results include:</p>
+<blockquote>
+<div><ul class="simple">
+<li>the vertical displacement, <span class="math">\(w\)</span>, along central section <span class="math">\(C-C'\)</span>;</li>
+<li>the longitudinal displacement, <span class="math">\(v\)</span>, along support section <span class="math">\(A-A'\)</span>;</li>
+<li>the transverse, <span class="math">\(M_1\)</span>, and longitudinal, <span class="math">\(M_2\)</span>, moments along central section <span class="math">\(C-C'\)</span>; and</li>
+<li>the twisting moment, <span class="math">\(M_{12}\)</span>, along the support section <span class="math">\(A-A'\)</span>.</li>
+</ul>
+</div></blockquote>
+<p>The vertical displacement at the midpoint of the free edge (at point <span class="math">\(C'\)</span> in
+<a href="#vault-problem">Figure  1</a>) used for the present convergence study is taken as 0.3024 ft. MacNeil and
+Harder (1985) state that 0.3086 ft is the value given by Scordelis and Lo (1964) and that many shell
+finite-element formulations converge to a slightly smaller value. Both MacNeil and Harder (1985) and
+Carpenter et al. (1986) use 0.3024 ft for normalization of their results.</p>
+<p class="h2 rubric"><span class="codename">FLAC3D</span> Model</p>
+<p>The problem has two lines of symmetry, and thus only a quarter of the structure (the shaded area in
+<a href="#vault-problem">Figure  1</a>) is analyzed with <span class="codename">FLAC3D</span>. A convergence study is performed by increasing
+the mesh resolution, <span class="math">\(N\)</span>, of a set of <span class="math">\(N \times N\)</span> meshes using both crosshatch and
+cross-diagonal mesh patterns (see <a href="#vault-diag">Figure  2</a>). For the cross-diagonal meshes, the midpoint
+nodes lie on the plane formed by the four immediately surrounding nodes, not on the true cylinder
+surface. This produces the same quadrilateral-faceted mesh for both mesh patterns. If the midpoint nodes
+are placed on the true cylinder surface, then the pyramid-like facets in the mesh reduce the accuracy of
+the DKT-CST elements more so than that of the DKT-CST Hybrid elements (Carpenter et al. 1986). (If
+generating cross-diagonal shell meshes with the <span class="cmdkey">cross-diagonal</span> keyword of the
+<a class="reference internal" href="../../../doc/manual/sel_manual/shells/commands/cmd_structure.shell.create.html#command:structure.shell.create" title="Create a shell. The four main keywords articulate four different techniques&#013;&#010;of creation: by creating a collection of elements from a group of zone faces&#013;&#010;( by-face ); by creating a single element from four existing nodes ( by-nodes );&#013;&#010;from a specified quadrilateral ( by-quadrilateral ); or from a triangle&#013;&#010;( by-triangle )."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">shell</span> <span class="pre">create</span></code></a> command, then midpoint nodes will be placed at the centroid of the four
+corner points of the zone face to which the element is being attached. This produces the desired
+quadrilateral-faceted mesh.)</p>
+<div class="figure align-center" id="vault-diag">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-diag.png"><img alt="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-diag.png" src="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-diag.png" style="width: 55%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Example of 2 × 2 meshes with crosshatch (left) and cross-diagonal (right) mesh patterns.</span></p>
+</div>
+<p>The displacement boundary conditions along the four edges of the <span class="codename">FLAC3D</span> model are specified in terms of
+the global coordinate system in <a href="#vault-problem">Figure  1</a>, as follows. Only fully fixed displacement
+components are specified; all other displacement components are free.</p>
+<blockquote>
+<div><p>edge <span class="math">\(A-A'\)</span> : <span class="math">\(u = w = 0\)</span></p>
+<p>edge <span class="math">\(A'-B'\)</span> : all displacement components are free</p>
+<p>edge <span class="math">\(C-C'\)</span> : symmetry plane, <span class="math">\(v=0\)</span>, <span class="math">\(\theta_x=\theta_z=0\)</span></p>
+<p>edge <span class="math">\(D-D'\)</span> : symmetry plane, <span class="math">\(u=0\)</span>, <span class="math">\(\theta_y=\theta_z=0\)</span></p>
+</div></blockquote>
+<p>Each mesh is generated using <a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.generate.html#command:geometry.generate" title="Generate objects with specified shapes. The polygons are created in the current&#013;&#010;geometry set and, if the optional  group  keyword is specified, then the&#013;&#010;group name is applied to the generated polygons. The shapes include: box, cone,&#013;&#010;cylinder, disk and sphere. If the  set  keyword is not given, then the&#013;&#010;current set is used."><code class="xref fish fish-cmd docutils literal"><span class="pre">geometry</span> <span class="pre">generate</span></code></a> commands to first generate the cylindrical shell shape.  Then
+the shell elements are created using the <a class="reference internal" href="../../../doc/manual/sel_manual/shells/commands/cmd_structure.shell.import.html#kwd:structure.shell.import.from-geometry" title="Create elements from the geometry set named  s .  The range applies to&#013;&#010;the list of edges in the geometry set."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">shell</span> <span class="pre">import</span> <span class="pre">from-geometry</span></code></a> command. Model
+construction is completed by specifying material properties (for each shell element), boundary conditions
+(for each node), and loading. The loading consists of gravity-induced body forces acting in the negative
+<span class="math">\(z\)</span>-direction, and is assigned by specifying the appropriate element density and a gravity vector.
+The body forces are computed based on the element volume, and  distributed equally to the three nodes of
+each element.</p>
+<p>The data file “CylindricalConcreteVault.dat” loads the data files “store_results.dat” and “run_all_cases.dat”. It then calls the <span class="codename">FISH</span> function <a class="reference internal" href="../../../../docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">run_all_cases</span></span></a> to solve all 24 cases being examined.  Six different discretizations each using DKT-CST and DKT-CSTH elements, with a hatch and a cross-diagonal element pattern.   The problems are run to static equilibrium using the <a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.solve.html#command:model.solve" title="Enable the automatic detection of the steady-state solution for mechanical&#013;&#010;problems. A calculation is performed until the limiting conditions, as defined&#013;&#010;by the following keywords, are reached. SOLVE force must be used for rigid block&#013;&#010;models. The SOLVE command does not monitor fluid flow. It is possible that mechanical&#013;&#010;equilibrium may be reached prior to fluid-flow equilibrium for steady-state&#013;&#010;flow. CYCLE ftime should be used for transient fluid flow."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">solve</span></code></a> command with a <span class="cmdkey">ratio-local</span> of 1 × 10<sup>-6</sup>.</p>
+<p>The moments are recovered in terms of a surface coordinate system oriented such that the <span class="math">\(x\)</span>-axis is equal to the projection of the global <span class="math">\(x\)</span>-axis onto each element surface, and the <span class="math">\(z\)</span>-axis is equal to the direction of each element normal vector. For this convention: (a) the transverse, <span class="math">\(M_1\)</span>, and longitudinal, <span class="math">\(M_2\)</span>, moments along central section <span class="math">\(C-C'\)</span> correspond with <span class="math">\(M_{xx}\)</span> and <span class="math">\(M_{yy}\)</span>, respectively; and (b) the twisting moment, <span class="math">\(M_{12}\)</span>, along the support section <span class="math">\(A-A'\)</span> corresponds with <span class="math">\(M_{xy}\)</span>.</p>
+<p class="h2 rubric">Results and Discussion</p>
+<p>For the convergence study, we vary the element type (DKT-CST and DKT-CST Hybrid) and the
+mesh pattern (crosshatch and cross-diagonal), while increasing the mesh resolution. We
+present normalized results for:</p>
+<blockquote>
+<div><ul class="simple">
+<li>the vertical displacement at the midpoint of the free edge (analytical value: -0.3024 ft — see <a href="#vault-convdisp">Figure  3</a>);</li>
+<li>the transverse moment at the midpoint of the central section <span class="math">\(C-C'\)</span> (analytical value: 2073 ft <span class="math">\(\cdot\)</span> lbf/ft — see <a href="#vault-convtrans">Figure  4</a>); and</li>
+<li>the twisting moment at the end (point <span class="math">\(A'\)</span>) of the support section <span class="math">\(A-A'\)</span> (analytical value: 1290 ft <span class="math">\(\cdot\)</span> lbf/ft — see <a href="#vault-convtwist">Figure  5</a>).</li>
+</ul>
+</div></blockquote>
+<p>In addition to the convergence results for responses at specific points in the structure, the analytical results along various sections of the vault are compared with the computed results for an 8 × 8 mesh in <a href="#vault-vertdisp">Figure  6</a> to <a href="#vault-twistmom">Figure  10</a>. These plots provide a general indication of the kind of accuracy one can expect to obtain for a problem in which bending action is severe from the two elements and two mesh patterns available in <span class="codename">FLAC3D</span>.</p>
+<p>The results can be summarized and generalized in terms of two statements.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Both the DKT-CST and the DKT-CST Hybrid elements are converging to the analytical displacements and moments. In general, the DKT-CST element is too stiff (displacements and stress resultants are underestimated) and converges more slowly than the DKT-CST Hybrid element. (For a 6 × 6 crosshatch mesh, the DKT-CST Hybrid has converged to a value that is within 0.2% of the analytical displacement, whereas the DKT-CST element is still underestimating this displacement by 18.5%. See <a href="#vault-convdisp">Figure  3</a>).</li>
+<li>Use of a cross-diagonal mesh softens the DKT-CST element, and therefore improves its performance. The DKT-CST Hybrid element is essentially unaffected by mesh pattern. (This suggests that when using the DKT-CST element, a cross-diagonal mesh should be employed, but when using the DKT-CST Hybrid element, a less costly (fewer nodes and elements) crosshatch mesh can be employed. However, another factor to consider when choosing a mesh pattern is that there is no directional bias in a cross-diagonal mesh, i.e., the response of a shell structure discretized with a crosshatch mesh will differ slightly depending upon the crosshatch direction.)</li>
+</ol>
+</div></blockquote>
+<p>When using these results as a guide to select the proper discretization of a particular
+problem, keep in mind that, in this verification problem, the bending action is severe (in
+particular, there are large membrane-stress gradients). For such problems, the DKT-CST
+element will be overly stiff, and the DKT-CST Hybrid element will perform better. For
+problems without large membrane-stress gradients, the performance of the DKT-CST element
+will be much improved, making it more competitive with the DKT-CST Hybrid element.</p>
+<p>Our general recommendation regarding choice of shell element is as follows. For problems
+in which a shell element is being connected to <span class="codename">FLAC3D</span> zones, use the DKT-CST element. For
+all other problems, use the DKT-CST Hybrid element. The reasoning that underlies this
+recommendation is discussed in <a class="reference internal" href="../../../doc/manual/sel_manual/formulation/formulation.html#struct-shell-finite-elements"><span class="std std-ref">Shell Finite Elements</span></a> in the <em>Structural Elements</em>  section.</p>
+<div class="figure align-center" id="vault-convdisp">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-convdisp.png"><img alt="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-convdisp.png" src="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-convdisp.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 3: Log of normalized vertical displacement at midpoint of free edge <span class="math">\(C'\)</span>.</span></p>
+</div>
+<div class="figure align-center" id="vault-convtrans">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-convtrans.png"><img alt="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-convtrans.png" src="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-convtrans.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 4: Log of normalized transverse moment at <span class="math">\(C\)</span>.</span></p>
+</div>
+<div class="figure align-center" id="vault-convtwist">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-convtwist.png"><img alt="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-convtwist.png" src="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-convtwist.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 5: Log of normalized twisting moment at <span class="math">\(A'\)</span>.</span></p>
+</div>
+<div class="figure align-center" id="vault-vertdisp">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-vertdisp.png"><img alt="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-vertdisp.png" src="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-vertdisp.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 6: Vertical displacement along central section <span class="math">\(C-C'\)</span> for 8 × 8 mesh.</span></p>
+</div>
+<div class="figure align-center" id="vault-longdisp">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-longdisp.png"><img alt="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-longdisp.png" src="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-longdisp.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 7: Longitudinal displacement along support section <span class="math">\(A-A'\)</span> for 8 × 8 mesh.</span></p>
+</div>
+<div class="figure align-center" id="vault-transmom">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-transmom.png"><img alt="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-transmom.png" src="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-transmom.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 8: Transverse moment along central section <span class="math">\(C-C'\)</span> for 8 × 8 mesh.</span></p>
+</div>
+<div class="figure align-center" id="vault-longmom">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-longmom.png"><img alt="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-longmom.png" src="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-longmom.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 9: Longitudinal moment along central section <span class="math">\(C-C'\)</span> for 8 × 8 mesh.</span></p>
+</div>
+<div class="figure align-center" id="vault-twistmom">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-twistmom.png"><img alt="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-twistmom.png" src="common\sel\test3d\VerificationProblems\CylindricalConcreteVault\vault-twistmom.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 10: Twisting moment along the support section <span class="math">\(A-A'\)</span> for 8 × 8 mesh.</span></p>
+</div>
+<p class="h2 rubric">References</p>
+<p>Carpenter, N., H. Stolarski and T. Belytschko. “Improvements in 3-Noded Triangular Shell Elements,” <em>International Journal for Numerical Methods in Engineering</em>, <span class="bi">23</span>, 1643-1667 (1986).</p>
+<p>MacNeil, R. H., and R. L. Harder. “A Proposed Standard Set of Problems to Test Finite Element Accuracy,” <em>Finite Elements in Analysis and Design</em>, <span class="bi">1</span>, 3-20 (1985).</p>
+<p>Scordelis, A. C. “Analysis of Cylindrical Shells and Folded Plates,” in <em>Concrete Thin Shells</em>, American Concrete Institute report SP 28-N (1971).</p>
+<p>Scordelis, A. C., and K. S. Lo. “Computer Analysis of Cylindrical Shells,” <em>J. Amer. Concr. Inst.</em>, <span class="bi">61</span>, 539-561 (1964).</p>
+<p>Zienkiewicz, O. C., and R. L. Taylor. <span class="bi">The Finite Element Method. Volume 2: Solid and Fluid Mechanics, Dynamics and Non-linearity, Fourth Edition</span>. London: McGraw-Hill Book Company (1991).</p>
+<p class="h2 rubric" id="vaultdata">Data Files</p>
+<p><strong>CylindricalConcreteVault.dat</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">fish automatic-create</span><span class="n"> </span><span class="sx">off</span>
+<span class="c">; FISH function that creates the mesh</span>
+<span class="nb">program call</span><span class="n"> </span><span class="s">&#39;store_results&#39;</span><span class="n"> suppress </span><span class="c">; FISH Stores results in the arrays</span>
+<span class="nb">program call</span><span class="n"> </span><span class="s">&#39;run_all_cases&#39;</span><span class="n"> suppress </span><span class="c">; FISH runs all 24 cases 6 sizes, </span>
+<span class="n">                                      </span><span class="c">;hybrid and not, cross-diagonal and not</span>
+<span class="nb">struct shell create</span><span class="n"> by</span><span class="o">-</span><span class="n">triangle </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="n"> </span><span class="c">; Prevent a warning</span>
+<span class="n">                                                        </span><span class="c">; the first delete</span>
+<span class="nb">geometry edge</span><span class="n"> create by</span><span class="o">-</span><span class="n">pos </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="c">; Prevent an error </span>
+<span class="n">                                            </span><span class="c">; the first delete</span>
+<span class="ni">[run_all_cases]</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;final&#39;</span>
+<span class="nb">program </span><span class="se">return</span>
+</pre></div>
+</div>
+<p><strong>run_all_cases.dat</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model large-strain</span><span class="n"> </span><span class="sx">off</span>
+<span class="c">; Run all 24 cases being examined</span>
+<span class="c">; 6 different discretization levels, hybrid vs normal, hatch vs cross-diagonal</span>
+<span class="nb">fish define</span><span class="ni"> run_all_cases</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> etype </span><span class="p">=</span><span class="ni"> map</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="s">&#39;dkt-cst&#39;</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">,</span><span class="s">&#39;dkt-csth&#39;</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> crossd </span><span class="p">=</span><span class="ni"> map</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="sx">false</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">,</span><span class="sx">true</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> clab </span><span class="p">=</span><span class="ni"> map</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="s">&#39;h&#39;</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">,</span><span class="s">&#39;d&#39;</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> </span><span class="k">local</span><span class="ni"> i </span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">12</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">)</span>
+<span class="ni">        </span><span class="k">loop</span><span class="ni"> </span><span class="k">local</span><span class="ni"> h </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">)</span>
+<span class="ni">            </span><span class="k">loop</span><span class="ni"> </span><span class="k">local</span><span class="ni"> cd </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">)</span>
+<span class="k">                command</span>
+<span class="n">                    </span><span class="c">; Delete previous data</span>
+<span class="nb">                    struct shell delete</span><span class="n"> </span>
+<span class="nb">                    geometry delete</span><span class="n"> set </span><span class="s">&#39;Default&#39;</span>
+<span class="n">                    </span><span class="c">; Create geometry data in arc at right discretization</span>
+<span class="nb">                    geometry edge</span><span class="n"> create by</span><span class="o">-</span><span class="n">arc origin </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                                start </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">25</span><span class="p">)</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                                end </span><span class="p">(</span><span class="m m-Double">16.06969</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">19.15111</span><span class="p">)</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                                segments </span><span class="ni">[i]</span>
+<span class="nb">                    geometry generate</span><span class="n"> from</span><span class="o">-</span><span class="n">edges extrude </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">25</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> segments </span><span class="ni">[i]</span><span class="n"> </span>
+<span class="n">                    </span><span class="c">; Create shell elements from geometry</span>
+<span class="nb">                    struct shell import</span><span class="n"> from</span><span class="o">-</span><span class="n">geometry </span><span class="s">&#39;Default&#39;</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                           element</span><span class="o">-</span><span class="n">type </span><span class="ni">[etype</span><span class="p">(</span><span class="ni">h</span><span class="p">)</span><span class="ni">]</span><span class="n"> cross</span><span class="o">-</span><span class="n">diagonal </span><span class="ni">[crossd</span><span class="p">(</span><span class="ni">cd</span><span class="p">)</span><span class="ni">]</span>
+<span class="n">                    </span><span class="c">; Assign properties and gravity</span>
+<span class="nb">                    struct shell property</span><span class="n"> isotropic</span><span class="p">=(</span><span class="m m-Double">4.32e8</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">0.0</span><span class="p">)</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                          thick</span><span class="p">=</span><span class="m m-Double">0.25</span><span class="n"> density</span><span class="p">=</span><span class="m m-Double">11.25</span>
+<span class="nb">                    model gravity</span><span class="n"> </span><span class="m m-Double">32</span>
+<span class="n">                    </span><span class="c">; Specify boundary conditions.</span>
+<span class="nb">                    struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">x velocity</span><span class="o">-</span><span class="n">z </span><span class="sx">...</span>
+<span class="n">                           range position</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0</span>
+<span class="nb">                    struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">y rotation</span><span class="o">-</span><span class="n">x rotation</span><span class="o">-</span><span class="n">z </span><span class="sx">...</span>
+<span class="n">                           range position</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">25</span>
+<span class="nb">                    struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">x rotation</span><span class="o">-</span><span class="n">y rotation</span><span class="o">-</span><span class="n">z </span><span class="sx">...</span>
+<span class="n">                           range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0</span>
+<span class="n">                    </span><span class="c">; Solve the model</span>
+<span class="nb">model </span><span class="ss">solve</span><span class="n"> ratio</span><span class="o">-</span><span class="n">local </span><span class="m m-Double">1e-6</span>
+<span class="n">                    </span><span class="c">; Store the results</span>
+<span class="n">                    </span><span class="ni">[store_results</span><span class="p">(</span><span class="ni">i</span><span class="p">,</span><span class="ni">h</span><span class="p">,</span><span class="ni">cd</span><span class="p">)</span><span class="ni">]</span>
+<span class="n">                    </span><span class="c">; Save current state for later reference</span>
+<span class="nb">                    model save</span><span class="n"> </span><span class="ni">[etype</span><span class="p">(</span><span class="ni">h</span><span class="p">)</span><span class="o">+</span><span class="ni">string</span><span class="p">(</span><span class="ni">i</span><span class="p">)</span><span class="o">+</span><span class="ni">clab</span><span class="p">(</span><span class="ni">cd</span><span class="p">)</span><span class="ni">]</span>
+<span class="k">                endcommand</span>
+<span class="ni">            </span><span class="k">endloop</span>
+<span class="ni">        </span><span class="k">endloop</span>
+<span class="ni">    </span><span class="k">endloop</span>
+<span class="nb">end</span>
+</pre></div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Cylindrical Concrete Vault" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

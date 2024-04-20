@@ -1,0 +1,232 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block zone property command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="null model properties" href="proplists/null.html" />
+    <link rel="prev" title="block zone nodal-mixed-discretization command" href="cmd_block.zone.nodal-mixed-discretization.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-zone-property-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">property</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="blockzone command">
+<dt id="command:block.zone.property">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">z</span><span class="null">o</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="null">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Assign values to one or more properties of zones of deformable blocks within the given range.  The advantage of assigning models and properties with this command is that each zone has its own local properties.</p>
+<p>The keywords that assign material properties and are model-specific. The property keywords are presented below, according to each model type.  The model must be defined before assigning properties. <span class="flag3">CS: is preceding statement still true?</span> If properties are given that are not consistent with zone’s constitutive model, a warning message will be issued to inform the user that the unneeded properties were not accepted.</p>
+<p>Zone properties can be listed (see <a class="reference internal" href="cmd_block.zone.list.html#kwd:block.zone.list.property" title="List values of specified zone property."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">list</span> <span class="pre">property</span></code></a>) and plotted. In addition to the input properties, other properties calculated by the models can be printed or plotted. These are listed with the other model properties.</p>
+<p>WARNING: If a model is assigned to zones in a specified range via the <a class="reference internal" href="cmd_block.zone.cmodel.html#command:block.zone.cmodel" title="Assign constitutive models to zones."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">cmodel</span></code></a> command, all properties associated with that model are initialized to zero in that range. Properties previously assigned to that range must be specified again, even if their values have not changed.</p>
+<p>Properties to be assigned with this command are sorted by constitutive model in the table below.  Use the model name to link to the list of properties associated with that model. (The models are listed by name, followed by the keyword associated with their designation in the <a class="reference internal" href="cmd_block.zone.cmodel.html#command:block.zone.cmodel" title="Assign constitutive models to zones."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">cmodel</span></code></a> command.)</p>
+<table border="1" class="colwidths-given icg2 docutils" id="cmtab-all">
+<caption><span class="caption-text">Table 1: Constitutive Models</span></caption>
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><em>Null Model</em></td>
+<td><a class="reference internal" href="proplists/null.html#modelnulludec"><span class="std std-ref">null</span></a> (<span class="cmdkey">null</span>)</td>
+</tr>
+<tr class="row-even"><td><em>Elastic Models</em></td>
+<td><a class="reference internal" href="proplists/elastic.html#modelelasticudec"><span class="std std-ref">isotropic elastic</span></a> (<span class="cmdkey">elastic</span>)</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><a class="reference internal" href="proplists/anisotropic.html#modelanisotropicudec"><span class="std std-ref">transversely isotropic elastic</span></a> (<span class="cmdkey">anisotropic</span>)</td>
+</tr>
+<tr class="row-even"><td><em>Elastic-Plastic Models</em></td>
+<td><a class="reference internal" href="proplists/drucker.html#modeldruckerudec"><span class="std std-ref">Drucker-Prager</span></a> (<span class="cmdkey">drucker</span>)</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><a class="reference internal" href="proplists/mohr.html#modelmohrudec"><span class="std std-ref">Mohr-Coulomb</span></a> (<span class="cmdkey">mohr-coulomb</span>)</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><a class="reference internal" href="proplists/ubiquitous.html#modelubiquitousudec"><span class="std std-ref">ubiquitous-joint</span></a> (<span class="cmdkey">ubiquitous</span>)</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><a class="reference internal" href="proplists/ss.html#modelssudec"><span class="std std-ref">strain-hardening/softening</span></a> (<span class="cmdkey">ss</span>)</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><a class="reference internal" href="proplists/subiquitous.html#modelsubiquitousudec"><span class="std std-ref">Bilinear Strain-Hardening/Softening Ubiquitous-Joint</span></a> (<span class="cmdkey">subiquitous</span>)</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><a class="reference internal" href="proplists/dy.html#modeldyudec"><span class="std std-ref">double-yield</span></a> (<span class="cmdkey">dy</span>)</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><a class="reference internal" href="proplists/camclay.html#modelcamclayudec"><span class="std std-ref">modified Cam-Clay</span></a> (<span class="cmdkey">cam-clay</span>)</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><a class="reference internal" href="proplists/capyieldsimplified.html#modelchsoiludec"><span class="std std-ref">simplified Cysoil-Chsoil</span></a> (<span class="cmdkey">cap-yield-simplified</span>)</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><a class="reference internal" href="proplists/cap-yield.html#modelcysoiludec"><span class="std std-ref">cap-yield</span></a> (<span class="cmdkey">cap-yield</span>)</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><a class="reference internal" href="proplists/hoek.html#modelhoekudec"><span class="std std-ref">Hoek-Brown</span></a> (<span class="cmdkey">hoekbrown</span>)</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><a class="reference internal" href="proplists/mhoek.html#modelmhoekudec"><span class="std std-ref">modified Hoek-Brown</span></a> (<span class="cmdkey">mhoek</span>)</td>
+</tr>
+<tr class="row-odd"><td><em>Creep Models</em></td>
+<td><a class="reference internal" href="proplists/viscous.html#modelviscousudec"><span class="std std-ref">classical viscoelastic (Maxwell subst.)</span></a> (<span class="cmdkey">viscous</span>)</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><a class="reference internal" href="proplists/burgers.html#modelburgersudec"><span class="std std-ref">Burgers</span></a> (<span class="cmdkey">burgers</span>)</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><a class="reference internal" href="proplists/power.html#modelpowerudec"><span class="std std-ref">power law</span></a> (<span class="cmdkey">power</span>)</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><a class="reference internal" href="proplists/wipp.html#modelwippudec"><span class="std std-ref">WIPP</span></a> (<span class="cmdkey">wipp</span>)</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><a class="reference internal" href="proplists/cvisc.html#modelcviscudec"><span class="std std-ref">Burgers-creep viscoplastic</span></a> (<span class="cmdkey">svisc</span>)</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><a class="reference internal" href="proplists/cpow.html#modelcpowudec"><span class="std std-ref">power law viscoplastic</span></a> (<span class="cmdkey">cpow</span>)</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><a class="reference internal" href="proplists/pwipp.html#modelpwippudec"><span class="std std-ref">WIPP-creep viscoplastic</span></a> (<span class="cmdkey">pwipp</span>)</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><a class="reference internal" href="proplists/cwipp.html#modelcwippudec"><span class="std std-ref">crushed salt</span></a> (<span class="cmdkey">cwipp</span>)</td>
+</tr>
+</tbody>
+</table>
+<p><span class="flag3">CS: ok, so the above is a hodgepodge of the verbiage that went with the old ZONE command.  Requires review.</span></p>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proplists/null.html"><span class="cmdkey">null</span> model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proplists/elastic.html"><span class="cmdkey">elastic</span> model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proplists/anisotropic.html"><span class="cmdkey">anisotropic</span> model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proplists/drucker.html"><span class="cmdkey">drucker-prager</span> model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proplists/mohr.html"><span class="cmdkey">mohr-coulomb</span> model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proplists/ubiquitous.html"><span class="cmdkey">ubiquitous-joint</span> model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proplists/ss.html"><span class="cmdkey">strain-softening</span> model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proplists/subiquitous.html"><span class="cmdkey">softening-ubiquitous</span> model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proplists/dy.html"><span class="cmdkey">double-yield</span> model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proplists/camclay.html"><span class="cmdkey">cam-clay</span> model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proplists/capyieldsimplified.html"><span class="cmdkey">cap-yield-simplified</span> (chsoil) model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proplists/cap-yield.html"><span class="cmdkey">cap-yield</span> (cysoil) model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proplists/hoek.html"><span class="cmdkey">hoek-brown-pac</span> model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proplists/mhoek.html"><span class="cmdkey">hoek-brown</span> model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proplists/viscous.html"><span class="cmdkey">maxwell</span> model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proplists/burgers.html"><span class="cmdkey">burgers</span> model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proplists/power.html"><span class="cmdkey">power</span> model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proplists/wipp.html"><span class="cmdkey">wipp</span> model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proplists/cvisc.html"><span class="cmdkey">burgers-mohr</span> model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proplists/cpow.html"><span class="cmdkey">power-mohr</span> model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proplists/pwipp.html"><span class="cmdkey">wipp-drucker</span> model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proplists/cwipp.html"><span class="cmdkey">wipp-salt</span> model properties</a></li>
+</ul>
+</div>
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../block_commands/block_commands.html" >Block Commands</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../block_commands/cmd_block.zone.html" accesskey="U"><span class="fishcmd">block zone</span> commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_block.zone.nodal-mixed-discretization.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">nodal-mixed-discretization</span></code> command</a> |    
+       <a href="proplists/null.html"
+                           title="next chapter"><span class="cmdkey">null</span> model properties</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block zone property command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

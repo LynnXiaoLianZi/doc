@@ -1,0 +1,451 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FISH Functions &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="geom.edge.find" href="geom.edge_utilities/fish_geom.edge.find.html" />
+    <link rel="prev" title="geometry triangulate command" href="../commands/cmd_geometry.triangulate.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fish-functions">
+<span id="geom-fish"></span><h1><span class="codename">FISH</span> Functions</h1>
+<p>The type specifiers used in the <span class="codename">FISH</span> function signatures are given in the <a class="reference internal" href="../../../../docproject/source/manual/scripting/fish_scripting/fish_types.html#fish-variabletypes"><span class="std std-ref">FISH Type Index</span></a> section.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#geom-edge-utilities"><span class="std std-ref">Geometry Edge Utilities</span></a></li>
+<li><a class="reference internal" href="#geom-edge-intrinsics"><span class="std std-ref">Geometry Edge Intrinsics</span></a></li>
+<li><a class="reference internal" href="#geom-node-utilities"><span class="std std-ref">Geometry Node Utilities</span></a></li>
+<li><a class="reference internal" href="#geom-node-intrinsics"><span class="std std-ref">Geometry Node Intrinsics</span></a></li>
+<li><a class="reference internal" href="#geom-poly-utilities"><span class="std std-ref">Geometry Polygon Utilities</span></a></li>
+<li><a class="reference internal" href="#geom-poly-intrinsics"><span class="std std-ref">Geometry Polygon Intrinsics</span></a></li>
+<li><a class="reference internal" href="#geom-set-utilities"><span class="std std-ref">Geometry Set Utilities</span></a></li>
+<li><a class="reference internal" href="#geom-set-intrinsics"><span class="std std-ref">Geometry Set Intrinsics</span></a></li>
+</ul>
+<div class="section" id="geometry-edge-functions">
+<h2><code class="docutils literal"><span class="pre">geometry.edge</span></code> Functions</h2>
+<p class="rubric" id="geom-edge-utilities">Geometry Edge Utilities</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="geom.edge_utilities/fish_geom.edge.find.html#geom.edge.find" title="Find an edge."><span class="fishcmd">geom.edge.find</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.edge_utilities/fish_geom.edge.list.html#geom.edge.list" title="Get the edge list of a geometry set. Use the  loop foreach  construct to iterate&#013;&#010;through the list."><span class="fishcmd">geom.edge.list</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.edge_utilities/fish_geom.edge.near.html#geom.edge.near" title="Find the closest edge to a point. If  f  is specified, then the search radius&#013;&#010;is limited."><span class="fishcmd">geom.edge.near</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="null">,</span><span class="null">VEC</span><span class="cmdopt"><<span class="null">,</span><span class="null">FLT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.edge_utilities/fish_geom.edge.typeid.html#geom.edge.typeid" title="Get the edge type number. The type ID can be used to uniquely identify edge&#013;&#010; FISH  pointers, and distinguish them from any other type of  FISH  pointer."><span class="fishcmd">geom.edge.typeid</span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric" id="geom-edge-intrinsics">Geometry Edge Intrinsics</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.create.html#geom.edge.create" title="Create an edge. The nodes can either be specified by their IDs or as node pointers.&#013;&#010;The nodes must already exist."><span class="fishcmd">geom.edge.create</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="null">,</span><span class="null">INT/GN_PNT</span><span class="null">,</span><span class="null">INT/GN_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.delete.html#geom.edge.delete" title="Delete an edge. Any object (e.g., a polygon) connected to the edge is also deleted."><span class="fishcmd">geom.edge.delete</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="null">,</span><span class="null">GE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.dir.html#geom.edge.dir" title="Get the edge direction. The edge direction is defined the vector from node 1&#013;&#010;to node 2. Its magnitude is the length from node 1 to node 2."><span class="fishcmd">geom.edge.dir</span><span class="fishparamlist"><big>(</big><span class="null">GE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.extra.html#geom.edge.extra" title="Get/set edge extra variable."><span class="fishcmd">geom.edge.extra</span><span class="fishparamlist"><big>(</big><span class="null">GE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.id.html#geom.edge.id" title="Get the edge ID."><span class="fishcmd">geom.edge.id</span><span class="fishparamlist"><big>(</big><span class="null">GE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.next.edge.html#geom.edge.next.edge" title="Get the next edge connected to the node with local index  i  within the source&#013;&#010;edge  e . This can be used to iterate through all edges connected to a node&#013;&#010;using the  geom.edge.next.index  function."><span class="fishcmd">geom.edge.next.edge</span><span class="fishparamlist"><big>(</big><span class="null">GE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.next.index.html#geom.edge.next.index" title="Get local index  ir  of a point within the next edge attached to this point&#013;&#010;(note: the same point has local index  i  within the source edge  e ). This&#013;&#010;can be used to iterate through all edges connected to a node with the  geom.edge.next.edge &#013;&#010;function."><span class="fishcmd">geom.edge.next.index</span><span class="fishparamlist"><big>(</big><span class="null">GE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.node.html#geom.edge.node" title="Get an edge node."><span class="fishcmd">geom.edge.node</span><span class="fishparamlist"><big>(</big><span class="null">GE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.node.pos.html#geom.edge.node.pos" title="Get/set the node position."><span class="fishcmd">geom.edge.node.pos</span><span class="fishparamlist"><big>(</big><span class="null">GE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.pos.html#geom.edge.pos" title="Get the edge position. The edge position is the center of the edge."><span class="fishcmd">geom.edge.pos</span><span class="fishparamlist"><big>(</big><span class="null">GE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.remove.html#geom.edge.remove" title="Delete an edge. Any object (e.g., a polygon) connected to the edge is also deleted."><span class="fishcmd">geom.edge.remove</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="null">,</span><span class="null">GE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.start.index.html#geom.edge.start.index" title="Get local index  i  of edge  e  within the first polygon attached to the edge.&#013;&#010;This can be used to iterate through all polygons attached to an edge using &#013;&#010;the  geom.edge.start.poly ,  geom.poly.next.poly  and  geom.poly.next.index &#013;&#010;functions."><span class="fishcmd">geom.edge.start.index</span><span class="fishparamlist"><big>(</big><span class="null">GE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.start.poly.html#geom.edge.start.poly" title="Get the first polygon attached to edge  e . This is used to iterate through&#013;&#010;all polygons attached to an edge using the  geom.edge.start.index ,  geom.poly.next.poly &#013;&#010;and  geom.poly.next.index  functions."><span class="fishcmd">geom.edge.start.poly</span><span class="fishparamlist"><big>(</big><span class="null">GE_PNT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.create.html"><code class="docutils literal"><span class="pre">geom.edge.create</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.delete.html"><code class="docutils literal"><span class="pre">geom.edge.delete</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.dir.html"><code class="docutils literal"><span class="pre">geom.edge.dir</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.extra.html"><code class="docutils literal"><span class="pre">geom.edge.extra</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.edge_utilities/fish_geom.edge.find.html"><code class="docutils literal"><span class="pre">geom.edge.find</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.group.html"><code class="docutils literal"><span class="pre">geom.edge.group</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.group.remove.html"><code class="docutils literal"><span class="pre">geom.edge.group.remove</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.id.html"><code class="docutils literal"><span class="pre">geom.edge.id</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.isgroup.html"><code class="docutils literal"><span class="pre">geom.edge.isgroup</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.edge_utilities/fish_geom.edge.list.html"><code class="docutils literal"><span class="pre">geom.edge.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.edge_utilities/fish_geom.edge.near.html"><code class="docutils literal"><span class="pre">geom.edge.near</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.next.edge.html"><code class="docutils literal"><span class="pre">geom.edge.next.edge</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.next.index.html"><code class="docutils literal"><span class="pre">geom.edge.next.index</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.node.html"><code class="docutils literal"><span class="pre">geom.edge.node</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.node.pos.html"><code class="docutils literal"><span class="pre">geom.edge.node.pos</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.pos.html"><code class="docutils literal"><span class="pre">geom.edge.pos</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.remove.html"><code class="docutils literal"><span class="pre">geom.edge.remove</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.start.index.html"><code class="docutils literal"><span class="pre">geom.edge.start.index</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.edge_intrinsics/fish_geom.edge.start.poly.html"><code class="docutils literal"><span class="pre">geom.edge.start.poly</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.edge_utilities/fish_geom.edge.typeid.html"><code class="docutils literal"><span class="pre">geom.edge.typeid</span></code></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="geometry-node-functions">
+<h2><code class="docutils literal"><span class="pre">geometry.node</span></code> Functions</h2>
+<p class="rubric" id="geom-node-utilities">Geometry Node Utilities</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="geom.node_utilities/fish_geom.node.find.html#geom.node.find" title="Find a node."><span class="fishcmd">geom.node.find</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.node_utilities/fish_geom.node.list.html#geom.node.list" title="Get the node list of a geometry set. Use the  loop foreach  construct to iterate&#013;&#010;through the list."><span class="fishcmd">geom.node.list</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.node_utilities/fish_geom.node.near.html#geom.node.near" title="Find the closest node to a point. If  f  is specified, then the search radius&#013;&#010;is limited."><span class="fishcmd">geom.node.near</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="null">,</span><span class="null">VEC</span><span class="cmdopt"><<span class="null">,</span><span class="null">FLT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.node_utilities/fish_geom.node.typeid.html#geom.node.typeid" title="Get the node type number. The type ID can be used to uniquely identify node&#013;&#010; FISH  pointers, and distinguish them from any other type of  FISH  pointer."><span class="fishcmd">geom.node.typeid</span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric" id="geom-node-intrinsics">Geometry Node Intrinsics</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.create.html#geom.node.create" title="Create a node. The node is located at  v ."><span class="fishcmd">geom.node.create</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="null">,</span><span class="null">VEC</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.delete.html#geom.node.delete" title="Delete a node. All dependent objects connected to the node are deleted."><span class="fishcmd">geom.node.delete</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="null">,</span><span class="null">GN_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.extra.html#geom.node.extra" title="Get/set node extra variable."><span class="fishcmd">geom.node.extra</span><span class="fishparamlist"><big>(</big><span class="null">GN_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.group.html#geom.node.group" title="Get/set the group name assigned to node  n  in slot  slot , if provided. The&#013;&#010;slot named  'Default'  is used by default if  slot  is not provided."><span class="fishcmd">geom.node.group</span><span class="fishparamlist"><big>(</big><span class="null">GN_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR/IND</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.group.remove.html#geom.node.group.remove" title="Remove the group  s  from the node in  any  slot. The removal of  s  will only&#013;&#010;occur in  slot , if provided."><span class="fishcmd">geom.node.group.remove</span><span class="fishparamlist"><big>(</big><span class="null">GN_PNT</span><span class="null">,</span><span class="null">STR/IND</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR/IND</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.id.html#geom.node.id" title="Get the node ID."><span class="fishcmd">geom.node.id</span><span class="fishparamlist"><big>(</big><span class="null">GN_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.isgroup.html#geom.node.isgroup" title="Check if the group  s  is associated with the node and return  true  if a match&#013;&#010;is found in  any  slot. The check for  s  will only occur in  slot , if provided."><span class="fishcmd">geom.node.isgroup</span><span class="fishparamlist"><big>(</big><span class="null">GN_PNT</span><span class="null">,</span><span class="null">STR/IND</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR/IND</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.pos.html#geom.node.pos" title="Get/set the node position."><span class="fishcmd">geom.node.pos</span><span class="fishparamlist"><big>(</big><span class="null">GN_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.remove.html#geom.node.remove" title="Delete a node. All dependent objects connected to the node are deleted."><span class="fishcmd">geom.node.remove</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="null">,</span><span class="null">GN_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.start.edge.html#geom.node.start.edge" title="Get the first edge connected to a node. This can be used to iterate through&#013;&#010;all edges attached to a node with the  geom.node.start.index ,  geom.edge.next.edge &#013;&#010;and   geom.edge.next.index  functions."><span class="fishcmd">geom.node.start.edge</span><span class="fishparamlist"><big>(</big><span class="null">GN_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.start.index.html#geom.node.start.index" title="Get local index  i  of point  n  within the first edge attached to the point.&#013;&#010;This can be used to iterate through all edges attached to a node with the  geom.node.start.edge ,&#013;&#010; geom.edge.next.edge  and   geom.edge.next.index  functions."><span class="fishcmd">geom.node.start.index</span><span class="fishparamlist"><big>(</big><span class="null">GN_PNT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.create.html"><code class="docutils literal"><span class="pre">geom.node.create</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.delete.html"><code class="docutils literal"><span class="pre">geom.node.delete</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.extra.html"><code class="docutils literal"><span class="pre">geom.node.extra</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.node_utilities/fish_geom.node.find.html"><code class="docutils literal"><span class="pre">geom.node.find</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.group.html"><code class="docutils literal"><span class="pre">geom.node.group</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.group.remove.html"><code class="docutils literal"><span class="pre">geom.node.group.remove</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.id.html"><code class="docutils literal"><span class="pre">geom.node.id</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.isgroup.html"><code class="docutils literal"><span class="pre">geom.node.isgroup</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.node_utilities/fish_geom.node.list.html"><code class="docutils literal"><span class="pre">geom.node.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.node_utilities/fish_geom.node.near.html"><code class="docutils literal"><span class="pre">geom.node.near</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.pos.html"><code class="docutils literal"><span class="pre">geom.node.pos</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.remove.html"><code class="docutils literal"><span class="pre">geom.node.remove</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.start.edge.html"><code class="docutils literal"><span class="pre">geom.node.start.edge</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.node_intrinsics/fish_geom.node.start.index.html"><code class="docutils literal"><span class="pre">geom.node.start.index</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.node_utilities/fish_geom.node.typeid.html"><code class="docutils literal"><span class="pre">geom.node.typeid</span></code></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="geometry-polygon-functions">
+<h2><code class="docutils literal"><span class="pre">geometry.polygon</span></code> Functions</h2>
+<p class="rubric" id="geom-poly-utilities">Geometry Polygon Utilities</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="geom.poly_utilities/fish_geom.poly.find.html#geom.poly.find" title="Find a polygon."><span class="fishcmd">geom.poly.find</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.poly_utilities/fish_geom.poly.list.html#geom.poly.list" title="Get the polygon list of a geometry set. Use the  loop foreach  construct to&#013;&#010;iterate through the list."><span class="fishcmd">geom.poly.list</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.poly_utilities/fish_geom.poly.near.html#geom.poly.near" title="Find the closest polygon to a point. If  f  is specified, then the search radius&#013;&#010;is limited."><span class="fishcmd">geom.poly.near</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="null">,</span><span class="null">VEC</span><span class="cmdopt"><<span class="null">,</span><span class="null">FLT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.poly_utilities/fish_geom.poly.typeid.html#geom.poly.typeid" title="Get the polygon type number. The type ID can be used to uniquely identify polygon&#013;&#010; FISH  pointers, and distinguish them from any other type of  FISH  pointer."><span class="fishcmd">geom.poly.typeid</span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric" id="geom-poly-intrinsics">Geometry Polygon Intrinsics</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.add.edge.html#geom.poly.add.edge" title="Add an edge to a polygon. The edges must be in order so that each edge connects&#013;&#010;via a node to the edge before it. An error results if this is not true."><span class="fishcmd">geom.poly.add.edge</span><span class="fishparamlist"><big>(</big><span class="null">GPOL_PNT</span><span class="null">,</span><span class="null">GE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.add.node.html#geom.poly.add.node" title="Add an edge via a node addition. The first node in the created edge is whichever&#013;&#010;unconnected node remains from the last edge added to the polygon. A node pointer&#013;&#010;or a vector or an integer must be specified as the third argument to identify&#013;&#010;the second node to complete the edge. If a vector is specified, then that position&#013;&#010;is queried for a node. If an integer is specified, then the nodes in this"><span class="fishcmd">geom.poly.add.node</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="null">,</span><span class="null">GPOL_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">GN_PNT</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">VEC</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.area.html#geom.poly.area" title="Get the polygon area. The polygon must be valid."><span class="fishcmd">geom.poly.area</span><span class="fishparamlist"><big>(</big><span class="null">GPOL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.check.html#geom.poly.check" title="Get the validity status. A polygon is valid if: 1) it has at least 3 edges;&#013;&#010;2) the edges are all connected; and 3) the polygon is closed."><span class="fishcmd">geom.poly.check</span><span class="fishparamlist"><big>(</big><span class="null">GPOL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.close.html#geom.poly.close" title="Close a polygon. An edge is created between the first node of the first edge&#013;&#010;and the last node of the last edge. If an edge already exists between the nodes,&#013;&#010;then the preexisting edge will be used by the polygon and returned."><span class="fishcmd">geom.poly.close</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="null">,</span><span class="null">GPOL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.create.html#geom.poly.create" title="Create a polygon. The newly created polygon has no edges, so is in an invalid&#013;&#010;state. Edges may be added with  geom.poly.add.edge  or  geom.poly.add.node &#013;&#010;before the polygon is in a valid state."><span class="fishcmd">geom.poly.create</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.delete.html#geom.poly.delete" title="Delete a polygon. The polygon must belong to  g ."><span class="fishcmd">geom.poly.delete</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="null">,</span><span class="null">GPOL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.edge.html#geom.poly.edge" title="Get a polygon edge. A null pointer may be returned."><span class="fishcmd">geom.poly.edge</span><span class="fishparamlist"><big>(</big><span class="null">GPOL_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.extra.html#geom.poly.extra" title="Get/set polygon extra variable."><span class="fishcmd">geom.poly.extra</span><span class="fishparamlist"><big>(</big><span class="null">GPOL_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.group.html#geom.poly.group" title="Get/set the group name assigned to polygon  p  in slot  slot , if provided.&#013;&#010;The slot named  'Default'  is used by default if  slot  is not provided."><span class="fishcmd">geom.poly.group</span><span class="fishparamlist"><big>(</big><span class="null">GPOL_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR/IND</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.group.remove.html#geom.poly.group.remove" title="Remove the group  s  from the polygon in  any  slot. The removal of  s  will&#013;&#010;only occur in  slot , if provided."><span class="fishcmd">geom.poly.group.remove</span><span class="fishparamlist"><big>(</big><span class="null">GPOL_PNT</span><span class="null">,</span><span class="null">STR/IND</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR/IND</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.id.html#geom.poly.id" title="Get the polygon ID."><span class="fishcmd">geom.poly.id</span><span class="fishparamlist"><big>(</big><span class="null">GPOL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.isgroup.html#geom.poly.isgroup" title="Check if the group  s  is associated with the polygon and return  true  if a&#013;&#010;match is found in  any  slot. The check for  s  will only occur in  slot , if&#013;&#010;provided."><span class="fishcmd">geom.poly.isgroup</span><span class="fishparamlist"><big>(</big><span class="null">GPOL_PNT</span><span class="null">,</span><span class="null">STR/IND</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR/IND</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.next.index.html#geom.poly.next.index" title="Get local index  ir  of an edge within the next polygon attached to this edge&#013;&#010;(note: the same edge has local index  i  within the source polygon  p ). This&#013;&#010;can be used to iterate through all polygons connected to an edge using the  geom.poly.next.poly &#013;&#010;function."><span class="fishcmd">geom.poly.next.index</span><span class="fishparamlist"><big>(</big><span class="null">GPOL_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.next.poly.html#geom.poly.next.poly" title="Get the next polygon connected to the edge with local index  i  within the source&#013;&#010;polygon  p . This can be used to iterate through all polygons connected to an&#013;&#010;edge using the  geom.poly.next.index  function."><span class="fishcmd">geom.poly.next.poly</span><span class="fishparamlist"><big>(</big><span class="null">GPOL_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.node.html#geom.poly.node" title="Get a node."><span class="fishcmd">geom.poly.node</span><span class="fishparamlist"><big>(</big><span class="null">GPOL_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.normal.html#geom.poly.normal" title="Get the polygon normal. If not planar, this is the average of each vertex"><span class="fishcmd">geom.poly.normal</span><span class="fishparamlist"><big>(</big><span class="null">GPOL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.pos.html#geom.poly.pos" title="Get the polygon position."><span class="fishcmd">geom.poly.pos</span><span class="fishparamlist"><big>(</big><span class="null">GPOL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.remove.html#geom.poly.remove" title="Delete a polygon. The polygon must belong to  g ."><span class="fishcmd">geom.poly.remove</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="null">,</span><span class="null">GPOL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.size.html#geom.poly.size" title="Get the number of edges."><span class="fishcmd">geom.poly.size</span><span class="fishparamlist"><big>(</big><span class="null">GPOL_PNT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.add.edge.html"><code class="docutils literal"><span class="pre">geom.poly.add.edge</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.add.node.html"><code class="docutils literal"><span class="pre">geom.poly.add.node</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.area.html"><code class="docutils literal"><span class="pre">geom.poly.area</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.check.html"><code class="docutils literal"><span class="pre">geom.poly.check</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.close.html"><code class="docutils literal"><span class="pre">geom.poly.close</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.create.html"><code class="docutils literal"><span class="pre">geom.poly.create</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.delete.html"><code class="docutils literal"><span class="pre">geom.poly.delete</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.edge.html"><code class="docutils literal"><span class="pre">geom.poly.edge</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.extra.html"><code class="docutils literal"><span class="pre">geom.poly.extra</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_utilities/fish_geom.poly.find.html"><code class="docutils literal"><span class="pre">geom.poly.find</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.group.html"><code class="docutils literal"><span class="pre">geom.poly.group</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.group.remove.html"><code class="docutils literal"><span class="pre">geom.poly.group.remove</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.id.html"><code class="docutils literal"><span class="pre">geom.poly.id</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.isgroup.html"><code class="docutils literal"><span class="pre">geom.poly.isgroup</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_utilities/fish_geom.poly.list.html"><code class="docutils literal"><span class="pre">geom.poly.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_utilities/fish_geom.poly.near.html"><code class="docutils literal"><span class="pre">geom.poly.near</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.next.index.html"><code class="docutils literal"><span class="pre">geom.poly.next.index</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.next.poly.html"><code class="docutils literal"><span class="pre">geom.poly.next.poly</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.node.html"><code class="docutils literal"><span class="pre">geom.poly.node</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.normal.html"><code class="docutils literal"><span class="pre">geom.poly.normal</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.pos.html"><code class="docutils literal"><span class="pre">geom.poly.pos</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.remove.html"><code class="docutils literal"><span class="pre">geom.poly.remove</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_intrinsics/fish_geom.poly.size.html"><code class="docutils literal"><span class="pre">geom.poly.size</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.poly_utilities/fish_geom.poly.typeid.html"><code class="docutils literal"><span class="pre">geom.poly.typeid</span></code></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="geometry-set-functions">
+<h2><code class="docutils literal"><span class="pre">geometry.set</span></code> Functions</h2>
+<p class="rubric" id="geom-set-utilities">Geometry Set Utilities</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="geom.set_utilities/fish_geom.set.create.html#geom.set.create" title="Creates a new geometry set with the provided name."><span class="fishcmd">geom.set.create</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.set_utilities/fish_geom.set.find.html#geom.set.find" title="Find a geometry set."><span class="fishcmd">geom.set.find</span><span class="fishparamlist"><big>(</big><span class="null">INT/STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.set_utilities/fish_geom.set.list.html#geom.set.list" title="Get the global geometry set list. Use the  loop foreach  construct to iterate&#013;&#010;through the list."><span class="fishcmd">geom.set.list</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.set_utilities/fish_geom.set.maxid.html#geom.set.maxid" title="Get the maximum geometry set ID."><span class="fishcmd">geom.set.maxid</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.set_utilities/fish_geom.set.num.html#geom.set.num" title="Get the number of geometry sets."><span class="fishcmd">geom.set.num</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.set_utilities/fish_geom.set.typeid.html#geom.set.typeid" title="Get the geometry set type number. The type ID can be used to uniquely identify&#013;&#010;geometry set  FISH  pointers, and distinguish them from any other type of  FISH &#013;&#010;pointer."><span class="fishcmd">geom.set.typeid</span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric" id="geom-set-intrinsics">Geometry Set Intrinsics</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.closest.html#geom.set.closest" title="Get closest node coordinate vector from the position supplied."><span class="fishcmd">geom.set.closest</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="null">,</span><span class="null">VEC</span><span class="cmdopt"><<span class="null">,</span><span class="null">FLT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.create.html#geom.set.create" title="Create a geometry set. One can optionally specify a unique ID along with the&#013;&#010;required geometry set name."><span class="fishcmd">geom.set.create</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.delete.html#geom.set.delete" title="Delete a geometry set. All associated edges/nodes are deleted."><span class="fishcmd">geom.set.delete</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.edge.maxid.html#geom.set.edge.maxid" title="Get the maximum edge ID."><span class="fishcmd">geom.set.edge.maxid</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.edge.num.html#geom.set.edge.num" title="Get the number of edges."><span class="fishcmd">geom.set.edge.num</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.id.html#geom.set.id" title="Get the geometry set ID."><span class="fishcmd">geom.set.id</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.name.html#geom.set.name" title="Get the geometry set name."><span class="fishcmd">geom.set.name</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.node.maxid.html#geom.set.node.maxid" title="Get the maximum node ID."><span class="fishcmd">geom.set.node.maxid</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.node.num.html#geom.set.node.num" title="Get/set the number of nodes."><span class="fishcmd">geom.set.node.num</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.poly.closest.html#geom.set.poly.closest" title="Get closest node coordinate vector on polygons from the position supplied."><span class="fishcmd">geom.set.poly.closest</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="null">,</span><span class="null">VEC</span><span class="cmdopt"><<span class="null">,</span><span class="null">FLT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.poly.maxid.html#geom.set.poly.maxid" title="Get the maximum polygon ID."><span class="fishcmd">geom.set.poly.maxid</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.poly.num.html#geom.set.poly.num" title="Get the number of polygons."><span class="fishcmd">geom.set.poly.num</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.raydist.html#geom.set.raydist" title="Get the distance from a point to the set along a ray."><span class="fishcmd">geom.set.raydist</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="null">,</span><span class="null">VEC</span><span class="null">,</span><span class="null">VEC</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.remove.html#geom.set.remove" title="Delete a geometry set. All associated edges/nodes are deleted."><span class="fishcmd">geom.set.remove</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.closest.html"><code class="docutils literal"><span class="pre">geom.set.closest</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.create.html"><code class="docutils literal"><span class="pre">geom.set.create</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.set_utilities/fish_geom.set.list.html"><code class="docutils literal"><span class="pre">geom.set.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.delete.html"><code class="docutils literal"><span class="pre">geom.set.delete</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.edge.maxid.html"><code class="docutils literal"><span class="pre">geom.set.edge.maxid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.edge.num.html"><code class="docutils literal"><span class="pre">geom.set.edge.num</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.set_utilities/fish_geom.set.find.html"><code class="docutils literal"><span class="pre">geom.set.find</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.id.html"><code class="docutils literal"><span class="pre">geom.set.id</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.set_utilities/fish_geom.set.list.html"><code class="docutils literal"><span class="pre">geom.set.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.set_utilities/fish_geom.set.maxid.html"><code class="docutils literal"><span class="pre">geom.set.maxid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.name.html"><code class="docutils literal"><span class="pre">geom.set.name</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.node.maxid.html"><code class="docutils literal"><span class="pre">geom.set.node.maxid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.node.num.html"><code class="docutils literal"><span class="pre">geom.set.node.num</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.set_utilities/fish_geom.set.num.html"><code class="docutils literal"><span class="pre">geom.set.num</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.poly.closest.html"><code class="docutils literal"><span class="pre">geom.set.poly.closest</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.poly.maxid.html"><code class="docutils literal"><span class="pre">geom.set.poly.maxid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.poly.num.html"><code class="docutils literal"><span class="pre">geom.set.poly.num</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.raydist.html"><code class="docutils literal"><span class="pre">geom.set.raydist</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.set_intrinsics/fish_geom.set.remove.html"><code class="docutils literal"><span class="pre">geom.set.remove</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geom.set_utilities/fish_geom.set.typeid.html"><code class="docutils literal"><span class="pre">geom.set.typeid</span></code></a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../geometry.html" accesskey="U">Geometry</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../commands/cmd_geometry.triangulate.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">geometry</span> <span class="pre">triangulate</span></code> command</a> |    
+       <a href="geom.edge_utilities/fish_geom.edge.find.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">geom.edge.find</span></code></a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?FISH Functions" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

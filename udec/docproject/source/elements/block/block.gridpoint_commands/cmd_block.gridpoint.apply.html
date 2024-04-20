@@ -1,0 +1,313 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block gridpoint apply command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block gridpoint apply-interior command" href="cmd_block.gridpoint.apply-interior.html" />
+    <link rel="prev" title="block gridpoint commands" href="../block_commands/cmd_block.gridpoint.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-gridpoint-apply-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">gridpoint</span> <span class="pre">apply</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="blockgridpoint command">
+<dt id="command:block.gridpoint.apply">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">g</span><span class="null">r</span><span class="null">i</span><span class="null">d</span><span class="null">p</span><span class="null">o</span><span class="null">i</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><span class="cmdname"><span class="null">a</span><span class="null">p</span><span class="null">p</span><span class="null">l</span><span class="null">y</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.gridpoint.apply.force-x" title="block gridpoint apply force-x">force-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.apply.force-y" title="block gridpoint apply force-y">force-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.apply.free-x" title="block gridpoint apply free-x">free-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.apply.free-y" title="block gridpoint apply free-y">free-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.apply.velocity-gradient" title="block gridpoint apply velocity-gradient">velocity-gradient</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.apply.velocity-normal" title="block gridpoint apply velocity-normal">velocity-normal</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.apply.veolocity-shear" title="block gridpoint apply veolocity-shear">veolocity-shear</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.apply.velocity-x" title="block gridpoint apply velocity-x">velocity-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.apply.velocity-y" title="block gridpoint apply velocity-y">velocity-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.apply.viscous-x" title="block gridpoint apply viscous-x">viscous-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.apply.viscous-y" title="block gridpoint apply viscous-y">viscous-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.apply.bulk" title="block gridpoint apply bulk">bulk</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.apply.shear" title="block gridpoint apply shear">shear</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.apply.density" title="block gridpoint apply density">density</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.apply.young" title="block gridpoint apply young">young</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.apply.poisson" title="block gridpoint apply poisson">poisson</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.apply.material" title="block gridpoint apply material">material</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.apply.history" title="block gridpoint apply history">history</a></p>
+</div>
+<p>Boundary conditions are specified for an external boundary over a specified range. If BLOCK CONFIG CELL has been specified, boundary commands will apply to the outer edges of all blocks with the range.  Otherwise the boundary conditions are applied only to the outside edges of the model. If the range is omitted, the boundary condition applies to the entire model boundary. Boundary forces can be applied to both rigid and deformable blocks. Boundary velocities can only be applied to deformable blocks. Boundary conditions are defined by a given boundary condition keyword. See also the <a class="reference internal" href="../block.edge_commands/cmd_block.edge.list.html#command:block.edge.apply" title="Display boundary condition information.  The foollowing keywords maye be used&#013;&#010;to display the information separately."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">edge</span> <span class="pre">apply</span></code></a> command for free-field, fluid, and stress boundaries. The keywords and associated parameters are as follows.</p>
+<p><strong>Forces</strong></p>
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.force-x">
+<span class="cmdkey"><span class="pref">f</span><span class="null">o</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set <span class="math">\(x\)</span>-direction load to apply to each gridpoint (see Note 1).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.force-y">
+<span class="cmdkey"><span class="pref">f</span><span class="null">o</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set <span class="math">\(y\)</span>-direction load to apply to each gridpoint (see Note 1).</p>
+</dd></dl>
+
+<div class="admonition-note-1 admonition">
+<p class="first admonition-title">Note 1</p>
+<p>All forces are assumed to be constant and permanent by default, and are added to the existing permanent loads.</p>
+<p class="last">CAUTION: The BLOCK EDGE APPLY stress command affects all degrees of freedom. For example, if BLOCK EDGE APPLY stress follows a BLOCK GRIDPOINT vel-x or vel-y command affecting the same gridpoint(s), then the effect of the previously prescribed vel-x or vel-y will be lost (.i.e.  do stresses before velocities).</p>
+</div>
+<p><strong>Free Boundaries</strong></p>
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.free-x">
+<span class="cmdkey"><span class="pref">f</span><span class="null">r</span><span class="null">e</span><span class="null">e</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span></dt>
+<dd><p>Remove a boundary condition and all forces in the <span class="math">\(x\)</span>-direction.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.free-y">
+<span class="cmdkey"><span class="pref">f</span><span class="null">r</span><span class="null">e</span><span class="null">e</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span></dt>
+<dd><p>Remove a boundary condition and all forces in the <span class="math">\(y\)</span>-direction.</p>
+</dd></dl>
+
+<p><strong>Velocity boundaries</strong></p>
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.velocity-gradient">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxo</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyo</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxx</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyx</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyy</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply a velocity gradient to the boundary.</p>
+<div class="math">
+\[\begin{split}fx = fxo + (fxx · x) + (fxy · y) \\
+fy = fyo + (fyx · x) + (fyy · y)\end{split}\]</div>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.velocity-normal">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">n</span><span class="null">o</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply normal direction velocity for deformable blocks.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.veolocity-shear">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">o</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">s</span><span class="null">h</span><span class="null">e</span><span class="null">a</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply shear direction velocity for deformable blocks.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.velocity-x">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply <span class="math">\(x\)</span>-direction velocity for deformable blocks.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.velocity-y">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply <span class="math">\(y\)</span>-direction velocity for deformable blocks.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.viscous-x">
+<span class="cmdkey"><span class="pref">v</span><span class="null">i</span><span class="null">s</span><span class="null">c</span><span class="null">o</span><span class="null">u</span><span class="null">s</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply <span class="math">\(x\)</span>-direction velocity for deformable blocks.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.viscous-y">
+<span class="cmdkey"><span class="pref">v</span><span class="null">i</span><span class="null">s</span><span class="null">c</span><span class="null">o</span><span class="null">u</span><span class="null">s</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply <span class="math">\(y\)</span>-direction velocity for deformable blocks.</p>
+</dd></dl>
+
+<p><strong>Boundary properties</strong></p>
+<blockquote>
+<div>These properties are used for boundary-element boundaries, the dynamic free-field boundaries and for viscous (quiet) boundaries.</div></blockquote>
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.bulk">
+<span class="cmdkey"><span class="pref">b</span><span class="null">u</span><span class="null">l</span><span class="null">k</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply far-field bulk modulus (see Note 2).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.shear">
+<span class="cmdkey"><span class="pref">s</span><span class="null">h</span><span class="null">e</span><span class="null">a</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply far-field shear modulus (see Note 2).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.density">
+<span class="cmdkey"><span class="pref">d</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply far-field density (see Note 2).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.young">
+<span class="cmdkey"><span class="pref">y</span><span class="null">o</span><span class="null">u</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply far-field Young’s modulus (see Note 2).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.poisson">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">i</span><span class="null">s</span><span class="null">s</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply far-field Poisson’s ratio (see Note 2).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.material">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Assign material number <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a>  to far-field properties (required for nonreflecting boundaries; see Note 2).</p>
+</dd></dl>
+
+<div class="admonition-note-2 admonition">
+<p class="first admonition-title">Note 2</p>
+<p class="last">Far-field elastic properties can be specified in three ways: by material number (in which case the properties are specified using the <code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">property</span></code> command); by density, bulk and shear modulus; or by density, Young’s modulus and Poisson’s ratio.</p>
+</div>
+<p><strong>Histories</strong>
+A time varying history may be applied to an applied boundary condition.</p>
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.history">
+<span class="cmdkey"><span class="pref">h</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>The keyword history defines a time history that is a multiplier for all the forces and x- and y-velocities given on the same input line.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Loads assigned a history are considered transient loads, and are stored separately from any permanent loads assigned to the same corners. If a corner already has a transient load, any new load with the same history type (see below) is added to it; however, a new transient load with a different history type replaces the old transient load.</p>
+</div>
+<p>Boundary forces and velocities can be applied as a constant, sinusoidal or user-defined FISH function, or they may consist of a series of points given by a TABLE command or read from a file. The keywords must be given on the same line specifying the load, stress or velocity.</p>
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.history.cosine">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span><span class="null"> </span></span></a></dt>
+<dd><p>Get a history of cosine wave load with frequency <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span></span></a> (cycles/sec) applied for a problem time period of <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.history.funcname">
+<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">f</span><span class="null">u</span><span class="null">n</span><span class="null">c</span><span class="null">n</span><span class="null">a</span><span class="null">m</span><span class="null">e</span><span class="null"> </span></span></a></dt>
+<dd><p>Use the user-defined fish function named <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">funcname</span></span></a> as the history multiplier.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.history.sine">
+<span class="cmdkey"><span class="pref">s</span><span class="null">i</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span><span class="null"> </span></span></a></dt>
+<dd><p>Get a history of cosine wave load with frequency <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span></span></a> (cycles/sec) applied for a problem time period of <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.history.table">
+<span class="cmdkey"><span class="pref">t</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Input the history via the <span class="flag3">trick</span> <a class="reference internal" href="../../../../../../common/kernel/doc/manual/table_manual/table_commands/commands.html#table-commands"><span class="std std-ref">table</span></a> commands. Table <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> consists of a list of pairs: <span class="math">\(time\)</span>, <span class="math">\(f(time)\)</span>. Linear interpolation is performed between the given discrete points.</p>
+</dd></dl>
+
+<p><strong>Multipliers</strong>
+Multipliers can be applied to load and velocity boundaries using the following keywords.</p>
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.history.multiply-normal">
+<span class="cmdkey"><span class="pref">m</span><span class="null">u</span><span class="null">l</span><span class="null">t</span><span class="null">i</span><span class="null">p</span><span class="null">l</span><span class="null">y</span><span class="null">-</span><span class="pref">n</span><span class="null">o</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Normal-direction load multiplier (default = 1.0)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.history.multiply-shear">
+<span class="cmdkey"><span class="pref">m</span><span class="null">u</span><span class="null">l</span><span class="null">t</span><span class="null">i</span><span class="null">p</span><span class="null">l</span><span class="null">y</span><span class="null">-</span><span class="pref">s</span><span class="null">h</span><span class="null">e</span><span class="null">a</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Shear-direction load multiplier (default = 1.0)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.history.multiply-x">
+<span class="cmdkey"><span class="pref">m</span><span class="null">u</span><span class="null">l</span><span class="null">t</span><span class="null">i</span><span class="null">p</span><span class="null">l</span><span class="null">y</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p><span class="math">\(x\)</span>-direction load multiplier (default = 1.0)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.apply.history.multiply-y">
+<span class="cmdkey"><span class="pref">m</span><span class="null">u</span><span class="null">l</span><span class="null">t</span><span class="null">i</span><span class="null">p</span><span class="null">l</span><span class="null">y</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p><span class="math">\(y\)</span>-direction load multiplier (default = 1.0)</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../block_commands/block_commands.html" >Block Commands</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../block_commands/cmd_block.gridpoint.html" accesskey="U"><span class="fishcmd">block gridpoint</span> commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../block_commands/cmd_block.gridpoint.html"
+                           title="previous chapter"> <span class="fishcmd">block gridpoint</span> commands</a> |    
+       <a href="cmd_block.gridpoint.apply-interior.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">block</span> <span class="pre">gridpoint</span> <span class="pre">apply-interior</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block gridpoint apply command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

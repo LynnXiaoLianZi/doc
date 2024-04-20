@@ -1,0 +1,228 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Isotropic Rectangular Plate with Applied Pressure &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <span class="target" id="plateapplied"></span><div class="section" id="isotropic-rectangular-plate-with-applied-pressure">
+<h1>Isotropic Rectangular Plate with Applied Pressure</h1>
+<p class="h2 rubric">Problem Statement</p>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To view this project in <span class="codename">FLAC3D</span>, use the menu command <span class="menuselection">Help ► Examples…</span>.  Choose “Structure/Shell/PlateAppliedPressure” and select “PlateAppliedPressure.prj” to load.
+The <a class="reference internal" href="#plateapplieddata"><span class="std std-ref">main data files</span></a> used are shown at the end of this example. The remaining data files can be found in the project.</p>
+</div>
+<p>An isotropic rectangular plate (4 m by 8 m) is simply supported along its edges. The solution for bending and deflection of the plate when subjected to a uniform pressure, <span class="math">\(p\)</span>, is given by Ugural (1981, pp. 66-73). The maximum deflection, <span class="math">\(w_{\rm max}\)</span>, occurs at the plate center and equals</p>
+<div class="math">
+\[w_{\rm max} = {\delta_1 p a^4 \over D}\]</div>
+<p>The maximum bending stress resultants also occur at the plate center and equal</p>
+<div class="math">
+\[M_x = \delta_3 p a^2\]</div>
+<div class="math">
+\[M_y = \delta_2 p a^2\]</div>
+<table border="1" class="colwidths-auto blank docutils">
+<tbody valign="top">
+<tr class="row-odd"><td>where:</td>
+<td><span class="math">\(a\)</span></td>
+<td>=</td>
+<td>short length of plate;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><span class="math">\(D\)</span></td>
+<td>=</td>
+<td>flexural rigidity = <span class="math">\({Et^3\over12(1-\nu^2)}\)</span> (<span class="math">\(E\)</span> is Young’s modulus=, <span class="math">\(\nu\)</span> is Poisson’s ratio, and <span class="math">\(t\)</span>, is plate thickness); and</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><span class="math">\(\delta_1, \delta_2, \delta_3\)</span></td>
+<td>=</td>
+<td>coefficients from Table 3.1 of Ugural (1981) (<span class="math">\(\delta_1\)</span> = 0.01013, <span class="math">\(\delta_2\)</span> = 0.1017, <span class="math">\(\delta_3\)</span> = 0.0464).</td>
+</tr>
+</tbody>
+</table>
+<p>The following shell properties are specified:</p>
+<table border="1" class="colwidths-given blank docutils">
+<colgroup>
+<col width="58%" />
+<col width="42%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>thickness (<span class="math">\(t\)</span>)</td>
+<td>0.3 m</td>
+</tr>
+<tr class="row-even"><td>Young’s modulus (<span class="math">\(E\)</span>)</td>
+<td>30 GPa</td>
+</tr>
+<tr class="row-odd"><td>Poisson’s ratio (<span class="math">\(\nu\)</span>)</td>
+<td>0.30</td>
+</tr>
+</tbody>
+</table>
+<p>For an applied pressure of 240 kPa, the plate oriented such that <span class="math">\(a\)</span> = 4 m (aligned with the
+<span class="math">\(y\)</span>-axis), and the long dimension of the plate aligned with the <span class="math">\(x\)</span>-axis, the maximum
+plate deflection is <span class="math">\(w_{\rm max}\)</span> = 8.39 mm, and the maximum bending stress resultants are
+<span class="math">\(M_x\)</span> = 178 kN and <span class="math">\(M_y\)</span> = 391 kN (where the surface coordinate system in which
+<span class="math">\(M_x\)</span> and <span class="math">\(M_y\)</span> are expressed is aligned with the global system).</p>
+<p>The <span class="codename">FLAC3D</span> model consists of 64 shell elements, as shown in <a href="#plateapplied-geometry">Figure  1</a>.
+Only half of the plate is modeled; a symmetry plane is prescribed at half the long dimension (at
+<span class="math">\(x\)</span> = 4). The nodes along the symmetry edge have their <span class="math">\(x\)</span>-velocities and <span class="math">\(y\)</span>- and
+<span class="math">\(z\)</span>-rotations fixed. The other three edges have only their <span class="math">\(z\)</span>-velocities fixed to
+simulate simple supports. (Although the proper classical plate theory boundary condition for a
+simple support also includes constraining rotation about an axis in the plane of the plate directed
+normal to the edge, such classical boundary conditions tend to overconstrain the mesh and produce
+results that are too stiff (Cook 1989, p. 332).) The pressure loading is applied with the
+<a class="reference internal" href="../../../doc/manual/sel_manual/shells/commands/cmd_structure.shell.apply.html#command:structure.shell.apply" title="Assign uniform applied pressure  f  to all shell elements in the range.&#013;&#010;Positive pressure acts in the positive `z`\ -direction of the element system&#013;&#010;and maintains this orientation during large-strain motion."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">shell</span> <span class="pre">apply</span></code></a> command. A cross-diagonal mesh pattern is utilized to ensure symmetric
+response, and the <a class="reference internal" href="../../../doc/manual/sel_manual/formulation/formulation.html#struct-shell-dkt-element"><span class="std std-ref">DKT Plate Bending Element</span></a> is also utilized. The same
+results would be produced if either of the shell finite elements were used, because no membrane
+loading occurs.</p>
+<div class="figure align-center" id="id1">
+<span id="plateapplied-geometry"></span><a class="reference internal image-reference" href="common\sel\test3d\Shell\PlateAppliedPressure\plateapplied-geometry.png"><img alt="common\sel\test3d\Shell\PlateAppliedPressure\plateapplied-geometry.png" src="common\sel\test3d\Shell\PlateAppliedPressure\plateapplied-geometry.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: <span class="codename">FLAC3D</span> model for rectangular plate problem.</span></p>
+</div>
+<p>The displacement field is shown in <a href="#plateapplied-disp">Figure  3</a> and
+<a href="#plateapplied-deformed">Figure  2</a>. The maximum plate deflection occurs at the plate center and equals
+8.224 mm, which is within 2% of the theoretical value.</p>
+<p>Contours of the bending stress resultants <span class="math">\(M_x\)</span> and <span class="math">\(M_y\)</span> are shown in
+<a href="#plateapplied-mx">Figure  4</a> and <a href="#plateapplied-my">Figure  5</a>. The exact values computed at the
+plate center of <span class="math">\(M_x\)</span> and <span class="math">\(M_y\)</span> are 182 kN and 396 kN, respectively, which are both within
+2.3% of the analytical values.</p>
+<div class="figure align-center" id="id2">
+<span id="plateapplied-deformed"></span><a class="reference internal image-reference" href="common\sel\test3d\Shell\PlateAppliedPressure\plateapplied-deformed.png"><img alt="common\sel\test3d\Shell\PlateAppliedPressure\plateapplied-deformed.png" src="common\sel\test3d\Shell\PlateAppliedPressure\plateapplied-deformed.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Deformed (magnification of 100) shape of rectangular plate.</span></p>
+</div>
+<div class="figure align-center" id="id3">
+<span id="plateapplied-disp"></span><a class="reference internal image-reference" href="common\sel\test3d\Shell\PlateAppliedPressure\plateapplied-disp.png"><img alt="common\sel\test3d\Shell\PlateAppliedPressure\plateapplied-disp.png" src="common\sel\test3d\Shell\PlateAppliedPressure\plateapplied-disp.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 3: Contours of plate deflection.</span></p>
+</div>
+<div class="figure align-center" id="id4">
+<span id="plateapplied-mx"></span><a class="reference internal image-reference" href="common\sel\test3d\Shell\PlateAppliedPressure\plateapplied-mx.png"><img alt="common\sel\test3d\Shell\PlateAppliedPressure\plateapplied-mx.png" src="common\sel\test3d\Shell\PlateAppliedPressure\plateapplied-mx.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 4: Contour of bending stress resultant <span class="math">\(M_x\)</span>.</span></p>
+</div>
+<div class="figure align-center" id="id5">
+<span id="plateapplied-my"></span><a class="reference internal image-reference" href="common\sel\test3d\Shell\PlateAppliedPressure\plateapplied-my.png"><img alt="common\sel\test3d\Shell\PlateAppliedPressure\plateapplied-my.png" src="common\sel\test3d\Shell\PlateAppliedPressure\plateapplied-my.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 5: Contour of bending stress resultant <span class="math">\(M_y\)</span>.</span></p>
+</div>
+<p class="h2 rubric">References</p>
+<p>Cook, R. D., D. S. Malkus and M. E. Plesha. <span class="bi">Concepts and Applications of Finite Element Analysis</span>, Third Edition. New York: John Wiley &amp; Sons Inc. (1989).</p>
+<p>Ugural, A. C. <span class="bi">Stresses in Plates and Shells</span>. New York: McGraw-Hill Publishing Company Inc. (1981).</p>
+<p class="h2 rubric" id="plateapplieddata">Data File</p>
+<p><strong>PlateAppliedPressure.dat</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model large-strain</span><span class="n"> </span><span class="sx">off</span>
+<span class="nb">model title</span><span class="n"> </span><span class="s">&quot;Rectangular plate with applied pressure&quot;</span>
+<span class="c">; Create shell elements and set properties</span>
+<span class="nb">struct shell create</span><span class="n"> by</span><span class="o">-</span><span class="n">quadrilateral </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                    size </span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">)</span><span class="n"> element</span><span class="o">-</span><span class="n">type</span><span class="p">=</span><span class="n">dkt cross</span><span class="o">-</span><span class="n">diagonal</span>
+<span class="nb">struct shell property</span><span class="n"> isotropic</span><span class="p">=(</span><span class="m m-Double">30e9</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">0.3</span><span class="p">)</span><span class="n"> thick</span><span class="p">=</span><span class="m m-Double">0.3</span>
+<span class="c">; Bounday conditions</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">z range position</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">4</span><span class="n"> </span><span class="c">; Simply supported condition</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">z range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">z range position</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">x rotation</span><span class="o">-</span><span class="n">y rotation</span><span class="o">-</span><span class="n">z range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">4</span><span class="n"> </span>
+<span class="c">; Symmetry condition</span>
+<span class="c">; Applied Pressure</span>
+<span class="nb">struct shell apply</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">240e3</span>
+<span class="c">; Solve</span>
+<span class="nb">model </span><span class="ss">solve</span><span class="n"> ratio</span><span class="o">-</span><span class="n">local</span><span class="p">=</span><span class="m m-Double">1e-6</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;PlateAppliedPressure&#39;</span>
+</pre></div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Isotropic Rectangular Plate with Applied Pressure" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

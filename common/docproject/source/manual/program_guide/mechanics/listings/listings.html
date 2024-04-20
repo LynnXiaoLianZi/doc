@@ -1,0 +1,135 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Listings &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="The Listing Pane" href="listing_pane/listingoverview.html" />
+    <link rel="prev" title="Plot Files" href="../otherinputs/plotfiles.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="listings">
+<span id="id1"></span><h1>Listings</h1>
+<p>A listing is the printed output resulting from a command that uses the <span class="cmdkey">list</span> keyword (of which there are many).</p>
+<p>When the length of the output is below the threshold for number of lines of output, as set in the “Listings” page in the <span class="flag4">i</span> <a class="reference internal" href="../configuration/options/options.html#theoptionsdialog"><span class="std std-ref">Options</span></a> dialog, the output is shown in the <a class="reference internal" href="../../../glossaryofterms.html#term-console"><span class="xref std std-term">console</span></a>.  When the output exceeds the threshold, it is put into its own the <span class="flag4">i</span> <a class="reference internal" href="listing_pane/listingoverview.html#thelistingpane"><span class="std std-ref">Listing</span></a> pane.  The output in the pane is static — it is not updated or altered from any subsequent program operation. The <em>Listing</em> pane provides tools for working with the output, including copying text and exporting to file output. There is no limit to the number of listing panes that may be opened.</p>
+<p class="h2 rubric">Commands that Use <span class="cmdkey">list</span></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">program list</span><span class="n"> security</span>
+<span class="nb">program list</span><span class="n"> cycle</span><span class="o">-</span><span class="n">sequence</span>
+</pre></div>
+</div>
+<p>The <span class="cmdkey">list</span> keyword appears in many commands (e.g., <code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">list</span> <span class="pre">cycle-sequence</span></code>, <code class="xref fish fish-cmd docutils literal"><span class="pre">zone</span> <span class="pre">list</span> <span class="pre">stress</span></code>, <code class="xref fish fish-cmd docutils literal"><span class="pre">ball</span> <span class="pre">list</span> <span class="pre">property</span></code> <a class="reference internal" href="../../../../../../../udec/docproject/source/elements/block/block.contact_commands/cmd_block.contact.list.html#command:block.contact.list" title="List contact data."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">list</span></code></a>).  It is used to obtain text-based information about the object that uses it, with keywords following to identify what aspect of the object is needed.  As with all commands, its output is expected to be processed in the <span class="flag4">i</span> <a class="reference internal" href="../commands/console_pane/consolepane.html#theconsolepane"><span class="std std-ref">Console</span></a> pane.  However, a listing is created instead in an automatically-generated <span class="flag4">i</span> <a class="reference internal" href="listing_pane/listingoverview.html#thelistingpane"><span class="std std-ref">Listing</span></a> pane when the output of a <span class="cmdkey">list</span>-type command exceeds a certain number of lines.</p>
+<p>The number of lines used as the threshold for creating <em>Listing</em> panes may be specified in the <span class="flag4">i</span> <a class="reference internal" href="../configuration/options/options_listings.html#thelistingspage"><span class="std std-ref">Listings</span></a> page of the <span class="flag4">i</span> <a class="reference internal" href="../configuration/options/options.html#theoptionsdialog"><span class="std std-ref">Options</span></a> dialog.</p>
+<p>For comparison, type both commands shown above at the <a class="reference internal" href="../../../glossaryofterms.html#term-45"><span class="xref std std-term">command prompt</span></a> in the <em>Console</em> pane.  Assuming the listing threshold in the <span class="flag4">i</span> <a class="reference internal" href="../configuration/options/options.html#theoptionsdialog"><span class="std std-ref">Options</span></a> dialog is set at about 10 or less, output from the first command appears in the <em>Console</em> pane.  Output from the second goes into a <em>Listing</em> pane.</p>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="listing_pane/listingoverview.html">The <em>Listing</em> Pane</a></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As is noted elsewhere, all <span class="flag3">c</span> <a class="reference internal" href="../../../../../../kernel/doc/manual/program/commands/commands.html#program-commands"><span class="std std-ref">program</span></a> commands may omit the leading word <span class="cmdkey">program</span>. The commands shown above may be issued as <span class="cmdkey">list security</span> and <span class="cmdkey">list cycle-sequence</span>.</p>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../program_mechanics.html" accesskey="U">Program Mechanics</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../otherinputs/plotfiles.html"
+                           title="previous chapter"> Plot Files</a> |    
+       <a href="listing_pane/listingoverview.html"
+                           title="next chapter">The <em>Listing</em> Pane</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Listings" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,196 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block zone generate command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block zone group command" href="cmd_block.zone.group.html" />
+    <link rel="prev" title="block zone cmodel command" href="cmd_block.zone.cmodel.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-zone-generate-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">generate</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="blockzone command">
+<dt id="command:block.zone.generate">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">z</span><span class="null">o</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="null">g</span><span class="null">e</span><span class="null">n</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="null">r</span><span class="null">e</span><span class="null">z</span><span class="null">o</span><span class="null">n</span><span class="null">e</span></span>></span><span class="null"> </span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.zone.generate.edge-length" title="block zone generate edge-length">edge-length</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.zone.generate.match" title="block zone generate match">match</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.zone.generate.manual" title="block zone generate manual">manual</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.zone.generate.mixed" title="block zone generate mixed">mixed</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.zone.generate.quad" title="block zone generate quad">quad</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.zone.generate.rezone" title="block zone generate rezone">rezone</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.zone.generate.single" title="block zone generate single">single</a></p>
+</div>
+<p>Generate zones in blocks.  All blocks with centroids lying within the optional <a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><code class="xref fish fish-tok docutils literal"><span class="pre">range</span></code></a> are discretized into deformable triangular finite-difference zones. If no range is given, then all blocks will be discretized.</p>
+<p>Zone generation can be performed automatically or manually. For automatic generation, one of the following keywords must be specified.</p>
+<dl class="keyword">
+<dt id="kwd:block.zone.generate.edge-length">
+<span class="cmdkey"><span class="pref">e</span><span class="null">d</span><span class="null">g</span><span class="null">e</span><span class="null">-</span><span class="pref">l</span><span class="null">e</span><span class="null">n</span><span class="null">g</span><span class="null">t</span><span class="null">h</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify automatic generation of zones for an arbitrarily shaped block. The value <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> defines the maximum edge length of the triangular zones. This is the most commonly used zone generation method in <span class="codename">UDEC</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.generate.match">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">c</span><span class="null">h</span><span class="null"> </span></span></dt>
+<dd><p>An optional keyword to force corners to be added to blocks to ensure that all gridpoints will match those on adjoining blocks.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.generate.manual">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">n</span><span class="null">u</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Manually generate zones by specifying lists of gridpoints and zones.  Manual generation must be performed for <em>each</em> individual block. Only one block should be within the specified range. Both the lists in <span class="cmdkey">gridpoint</span> and <span class="cmdkey">zone</span> may extend over an arbitrary number of continuation lines, but doubles and triples should not be split over two lines. When using manual zoning, ensure that zoning completely fills the block.</p>
+<dl class="keyword">
+<dt id="kwd:block.zone.generate.manual.gridpoint">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">i</span><span class="null">d</span><span class="null">p</span><span class="null">o</span><span class="null">i</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy1</span><span class="null"> </span></span></a><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span></dt>
+<dd><p>Specify gridpoints in a list of one to <em>n</em> gridpoints following the format <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx1</span></span></a> <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy1</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx2</span></span></a> <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy2</span></span></a>, … <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxn</span></span></a> <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyn</span></span></a> , where each x,y pair is a coordinate of a gridpoint. If a given coordinate lies within a certain tolerance of a block corner, the gridpoint is placed on that corner.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.generate.manual.edge_tolerance">
+<span class="cmdkey"><span class="pref">e</span><span class="null">d</span><span class="null">g</span><span class="null">e</span><span class="null">_</span><span class="pref">t</span><span class="null">o</span><span class="null">l</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fl1</span><span class="null"> </span></span></a></dt>
+<dd><p>The edge_tolerance keyword allows setting a tolerance that controls how close to an edge a user specified gridpoint must be to be considered on the edge of a block.  This is intended to solve issues of numerical precision when generating zones from outside sources.  The tolerance is specified as a fraction of the block corner-round-length.  A typical value would be 0.1.  It is unknown how large this value may be before the model results would be adversely affected.  This differs from the default tolerances in that it allows the gridpoint to be slightly outside of the block.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.generate.manual.zone">
+<span class="cmdkey"><span class="pref">z</span><span class="null">o</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fl1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fm1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fn1...</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify zones in a list following the format <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fl1</span></span></a> <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fm1</span></span></a> <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fn1</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fl2</span></span></a> <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fm2</span></span></a> <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fn2</span></span></a>, etc. Each triple corresponds to the three gridpoints that define the zone, where the numbering of the gridpoints refers to the order in the <span class="cmdkey">gridpoint</span>. The triple must be given in clockwise order. (Perform BLOCK CYCLE 0, then BLOCK ZONE LIST STATE to ensure that no negative zone volumes are created.) Both GRIDPOINT and ZONE may extend over an arbitrary number of continuation lines. When using manual zoning, ensure that zoning completely fills the block.</p>
+<p>For example,</p>
+<p>block create poly  0,10   0,20   10,20   10,10</p>
+<p>block zone gen man grid  5,15  0,20  0,10  10,10  10,20 …</p>
+<p>zone  1,2,5   1,5,4   1,4,3   1,3,2</p>
+<p>will divide a block into four zones with five gridpoints.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.generate.mixed">
+<span class="cmdkey"><span class="pref">m</span><span class="null">i</span><span class="null">x</span><span class="null">e</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>subdivides triangular zones into 3 subzones with an overlay of 4 zones (12 total). The strain of these zones is averaged to avoid hourglass effects. This command only subdivides existing zones; GENERATE EDGE or GENERATE QUAD must be used first.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.generate.quad">
+<span class="cmdkey"><span class="null">q</span><span class="null">u</span><span class="null">a</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Automatic generation of diagonally opposed triangular zones to improve plastic flow calculation. Parameters <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span></span></a> and <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span></span></a> are zone widths in the <span class="math">\(x\)</span>- and <span class="math">\(y\)</span>-directions. If <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span></span></a> is not given, the parameter defaults to <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span></span></a>. This form of zoning will not work for all block shapes; blocks must contain 4 or 5 corners, and at least 3 of the corners must not be co-linear. For blocks with 5 corners, the block is split into quadrilateral regions before zoning. For best results, the block sides should not be too different in size. If GENERATE QUAD does not work, or produces irregular zoning, the GENERATE EDGE command should be used for the remaining blocks.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.generate.rezone">
+<span class="cmdkey"><span class="pref">r</span><span class="null">e</span><span class="null">z</span><span class="null">o</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>This keyword is designed to be added in front of other keywords. This allows a block to be rezoned. This command should be used to correct problems with zone degeneration that can result from deformation of null blocks. It may be necessary to rezone a block containing null material if the block is then assigned non-null material. When the block is rezoned, stresses in the block are set to zero. All gridpoints along the edges of blocks are retained and used for the new zoning. The zone edge length used with REZONE can be specified to generate smaller zoning.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.generate.single">
+<span class="cmdkey"><span class="pref">s</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>mixed discretization with single layer of zones (no overlay), when used instead of the MIXED keyword.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../block_commands/block_commands.html" >Block Commands</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../block_commands/cmd_block.zone.html" accesskey="U"><span class="fishcmd">block zone</span> commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_block.zone.cmodel.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">cmodel</span></code> command</a> |    
+       <a href="cmd_block.zone.group.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">group</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block zone generate command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

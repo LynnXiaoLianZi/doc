@@ -1,0 +1,261 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Functions: Structure, Evaluation and Calling Scheme &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Operators, Assignment, Conversions, and Member Access" href="fish_arithmetic.html" />
+    <link rel="prev" title="Scope of Variables" href="fish_scopeofvariables.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="functions-structure-evaluation-and-calling-scheme">
+<span id="fish-functionsbasics"></span><h1>Functions: Structure, Evaluation and Calling Scheme</h1>
+<p>There are only two user-created objects in the <span class="codename">FISH</span> language that can be executed: functions and <a class="reference internal" href="fish_operators.html#fish-operators"><span class="std std-ref">operators</span></a>.
+The name of a function follows the <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.define.html#command:fish.define" title="Define a new |FISH| function.   The function will be named  s , and must&#013;&#010;be a valid symbol name.  Tokens following are assumed to be arguments that the&#013;&#010;function will take.  Please see  fish_scripting .  [CS: this needs&#013;&#010;'common-izing  for use with PFC] and the ref-basicclifishtutorial.`"><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">define</span></code></a> command, can be followed by an optional list of arguments, and its scope terminates with the <span class="cmdkey">end</span> statement.
+The <span class="cmdkey">end</span> statement also serves to return control to the caller when the function is executed.
+(Note that the <a class="reference internal" href="statements/exit.html#fish-statement-exit"><span class="std std-ref">exit</span></a> statement returns control prior to an <a class="reference internal" href="../../../../../sel/doc/manual/sel_manual/piles/commands/cmd_structure.pile.history.html#kwd:end" title="the quantity will be sampled at end  i  (where  i  is  1  or&#013;&#010; 2 ), which corresponds with the order in the nodal-connectivity list.&#013;&#010;The history is sampled at end  1  (the default) if this keyword is not&#013;&#010;supplied."><code class="xref fish fish-cmd docutils literal"><span class="pre">end</span></code></a> statement.)
+Consider this example that shows function construction and use.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">fish define</span><span class="ni"> xxx</span>
+<span class="ni">    aa  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">2</span><span class="ni"> </span><span class="o">*</span><span class="ni"> </span><span class="m m-Double">3</span>
+<span class="ni">    bb  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0</span>
+<span class="ni">    xxx </span><span class="p">=</span><span class="ni"> aa </span><span class="o">+</span><span class="ni"> bb</span>
+<span class="nb">end</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The value of <span class="fishname">xxx</span> is changed when the function is executed. The variable <span class="fishname">aa</span> is computed locally, but the existing value of <span class="fishname">bb</span> is used in the computation of <span class="fishname">xxx</span>. If values are not explicitly given to variables, they default to zero (integer). It is not necessary for a function to assign a value to the variable corresponding to its name.</p>
+<p>An alternative method of returning a value is to use the <span class="fishname">return</span> statement, as shown in the following example:</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">fish define</span><span class="ni"> yyy</span>
+<span class="ni">    aa  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">2</span><span class="ni"> </span><span class="o">*</span><span class="ni"> </span><span class="m m-Double">3</span>
+<span class="ni">    return aa </span><span class="o">+</span><span class="ni"> bb</span>
+<span class="nb">end</span>
+</pre></div>
+</div>
+<p>In this case, the value <span class="fishname">aa+bb</span> is returned whenever <span class="fishname">yyy</span> is called, but the actual <span class="codename">FISH</span> parameter associated with <span class="fishname">yyy</span> is not changed.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>A function may be invoked in a variety of ways, which include:</p>
+<ol class="arabic">
+<li><p class="first">as the single word <span class="cmdkey">xxx</span> inside a <span class="codename">FISH</span> function;</p>
+</li>
+<li><p class="first">as the variable <span class="cmdkey">xxx</span> in a <span class="codename">FISH</span> formula — e.g.,:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">new_var </span><span class="p">=</span><span class="n"> </span><span class="p">(</span><span class="n">math</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">xxx</span><span class="p">)</span><span class="n"> </span><span class="o">/</span><span class="n"> </span><span class="m m-Double">5.6</span><span class="p">)</span><span class="o">^</span><span class="m m-Double">4</span><span class="c">;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">as a single word [<span class="cmdkey">xxx</span>] enclosed in brackets as outlined <a class="reference internal" href="fish_inline.html#fish-inline"><span class="std std-ref">here</span></a>;</p>
+</li>
+<li><p class="first">as a symbolic replacement for a number in a <span class="codename">UDEC</span> input line; or</p>
+</li>
+<li><p class="first">as a parameter to a command that accept <span class="codename">FISH</span> functions as options (for example, <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.history.html#command:fish.history" title="Create a history of the |fish| variable  sym .  A  name  can be assigned&#013;&#010;for later reference.  If not assigned, a name will be generated automatically&#013;&#010;based on the internally assigned ID number.  The value of the history will be&#013;&#010;taken at the history interval, the return value is assumed to be a number."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">history</span></code></a>.).  In this case the function will generally be invoked as a callback at a later time.</p>
+</li>
+<li><p class="first">as a special case of (5), a function may be executing <em>during cycling</em> by using the <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.callback.html#command:fish.callback" title="Add/remove functions to be executed in response to callback events."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">callback</span></code></a> command or the <span class="cmdkey">fish-call</span> keyword to the <a class="reference internal" href="../../../../../kernel/doc/manual/model/commands/cmd_model.solve.html#command:model.solve" title="Enable the automatic detection of the steady-state solution for mechanical&#013;&#010;problems. A calculation is performed until the limiting conditions, as defined&#013;&#010;by the following keywords, are reached. SOLVE force must be used for rigid block&#013;&#010;models. The SOLVE command does not monitor fluid flow. It is possible that mechanical&#013;&#010;equilibrium may be reached prior to fluid-flow equilibrium for steady-state&#013;&#010;flow. CYCLE ftime should be used for transient fluid flow."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">solve</span></code></a> command.  Although in this case we recommend using <a class="reference internal" href="fish_operators.html#fish-operators"><span class="std std-ref">operators</span></a> for runtime efficiency.</p>
+</li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><span class="codename">FISH</span> functions may also take an arbitrary number of arguments.
+When the function is defined these are indicated by including the arguments in the function definition.
+For instance:</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">fish define</span><span class="ni"> george</span><span class="p">(</span><span class="ni">one</span><span class="p">,</span><span class="ni">two</span><span class="p">)</span>
+<span class="ni">    george </span><span class="p">=</span><span class="ni"> one </span><span class="o">*</span><span class="ni"> two</span>
+<span class="nb">end</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>A function may be referenced in another function before it is defined; the <span class="codename">FISH</span> compiler
+simply creates a symbol at the time of first mention, and then links all references to the
+function when it is defined by a <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.define.html#command:fish.define" title="Define a new |FISH| function.   The function will be named  s , and must&#013;&#010;be a valid symbol name.  Tokens following are assumed to be arguments that the&#013;&#010;function will take.  Please see  fish_scripting .  [CS: this needs&#013;&#010;'common-izing  for use with PFC] and the ref-basicclifishtutorial.`"><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">define</span></code></a> command. A function cannot be deleted, but
+it can be redefined.</p>
+<p>Function calls may be nested to any level (i.e., functions may refer to other functions, which may refer to others, ad infinitum).
+Function calls <em>may</em> be recursive (i.e., execution of a function can invoke that same function), however a function call nesting limit of 64 is enforced.
+The next example shows an unbounded recursive function call, which is not allowed, because the name of the defining function is used in such a way that the function will try to call itself without limit.
+The example will produce an error on execution:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="c">;; Bad recursion</span>
+<span class="nb">data scalar create</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span>
+<span class="nb">data scalar create</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span>
+<span class="nb">data scalar create</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span>
+<span class="nb">fish define</span><span class="ni"> pos_sum</span>
+<span class="ni">    pos_sum </span><span class="p">=</span><span class="ni"> </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> </span><span class="k">foreach</span><span class="ni"> </span><span class="k">local</span><span class="ni"> scalar data</span><span class="p">.</span><span class="ni">scalar</span><span class="p">.</span><span class="ni">list</span>
+<span class="ni">        pos_sum </span><span class="p">=</span><span class="ni"> pos_sum </span><span class="o">+</span><span class="ni"> data</span><span class="p">.</span><span class="ni">scalar</span><span class="p">.</span><span class="ni">pos</span><span class="p">(</span><span class="ni">scalar</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">end_loop</span>
+<span class="nb">end</span>
+<span class="o">!</span><span class="ni">[pos_sum]</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>In general, the rule is that a function should avoid retrieving its own value.
+The same function should be coded as shown:</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="c">;; No Recursion</span>
+<span class="nb">fish define</span><span class="ni"> pos_sum</span>
+<span class="ni">    pos_sum </span><span class="p">=</span><span class="ni"> </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> </span><span class="k">foreach</span><span class="ni"> </span><span class="k">local</span><span class="ni"> scalar data</span><span class="p">.</span><span class="ni">scalar</span><span class="p">.</span><span class="ni">list</span>
+<span class="ni">        pos_sum </span><span class="o">+=</span><span class="ni"> data</span><span class="p">.</span><span class="ni">scalar</span><span class="p">.</span><span class="ni">pos</span><span class="p">(</span><span class="ni">scalar</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">end_loop</span>
+<span class="nb">end</span>
+<span class="ni">[pos_sum]</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The difference between variables and functions is that a function is always executed whenever its name is mentioned, while a variable simply conveys its current value. However, the execution of a function may cause other variables (as opposed to functions) to be evaluated. This effect is useful, for example, when several histories of <span class="codename">FISH</span> variables are required: only one function is necessary in order to evaluate several quantities, as below:</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">fish define</span><span class="ni"> h_var_1</span>
+<span class="ni">    </span><span class="k">global</span><span class="ni"> bp2</span><span class="m m-Double">2</span><span class="ni"> </span><span class="c">; pointer to grid point with ID = 22, set during creation...</span>
+<span class="ni">    </span><span class="k">global</span><span class="ni"> bp4</span><span class="m m-Double">5</span><span class="ni"> </span><span class="c">; pointer to grid point with ID = 45, set during creation...</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> xx </span><span class="p">=</span><span class="ni"> </span><span class="k">gp.pos.x</span><span class="p">(</span><span class="ni">bp4</span><span class="m m-Double">5</span><span class="p">)</span>
+<span class="ni">    h_var_1 </span><span class="p">=</span><span class="ni"> xx</span>
+<span class="ni">    h_var_2 </span><span class="p">=</span><span class="ni"> </span><span class="k">gp.pos.x</span><span class="p">(</span><span class="ni">bp2</span><span class="m m-Double">2</span><span class="p">)</span>
+<span class="ni">    h_var_3 </span><span class="p">=</span><span class="ni"> </span><span class="k">math.abs</span><span class="p">(</span><span class="ni">h_var_2 </span><span class="o">-</span><span class="ni"> xx</span><span class="p">)</span><span class="ni">  </span><span class="c">; use of xx here avoids recursion</span>
+<span class="ni">    h_var_4 </span><span class="p">=</span><span class="ni"> </span><span class="k">gp.vel.x</span><span class="p">(</span><span class="ni">bp4</span><span class="m m-Double">5</span><span class="p">)</span>
+<span class="ni">    h_var_5 </span><span class="p">=</span><span class="ni"> </span><span class="k">gp.vel.x</span><span class="p">(</span><span class="ni">bp2</span><span class="m m-Double">2</span><span class="p">)</span>
+<span class="ni">    h_var_6 </span><span class="p">=</span><span class="ni"> </span><span class="k">math.abs</span><span class="p">(</span><span class="ni">h_var_5 </span><span class="o">-</span><span class="ni"> h_var_4</span><span class="p">)</span>
+<span class="nb">end</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The <span class="codename">FLAC3D</span> commands to request <a class="reference internal" href="../../../../../kernel/doc/manual/history_manual/history.html#history-manual"><span class="std std-ref">histories</span></a> might be:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">fish history</span><span class="n"> h_var_1</span>
+<span class="nb">fish history</span><span class="n"> h_var_2</span>
+<span class="nb">fish history</span><span class="n"> h_var_3</span>
+<span class="nb">fish history</span><span class="n"> h_var_4</span>
+<span class="nb">fish history</span><span class="n"> h_var_5</span>
+<span class="nb">fish history</span><span class="n"> h_var_6</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The function <span class="fishname">h_var_1</span> would be executed by <span class="codename">FLAC3D</span>’s <a class="reference internal" href="../../../../../kernel/doc/manual/history_manual/history.html#history-manual"><span class="std std-ref">history</span></a> logic at a specified interval.
+But as a side effect, the values of <span class="fishname">h_var_2</span> through <span class="fishname">h_var_6</span> would also be updated.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="fish.html" ><span class="codename">FISH</span> Scripting Reference</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="fish_languagerules.html" accesskey="U"><span class="codename">FISH</span> Rules and Usage</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="fish_scopeofvariables.html"
+                           title="previous chapter"> Scope of Variables</a> |    
+       <a href="fish_arithmetic.html"
+                           title="next chapter">Operators, Assignment, Conversions, and Member Access</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Functions: Structure, Evaluation and Calling Scheme" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

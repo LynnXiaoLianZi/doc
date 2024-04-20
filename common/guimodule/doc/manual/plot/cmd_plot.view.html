@@ -1,0 +1,222 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>plot view command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Program" href="../../../../kernel/doc/manual/program/program.html" />
+    <link rel="prev" title="plot update command" href="cmd_plot.update.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="plot-view-command">
+<h1><code class="docutils literal"><span class="pre">plot</span> <span class="pre">view</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="plot command">
+<dt id="command:plot.view">
+<span class="cmdname"><span class="pref">p</span><span class="pref">l</span><span class="null">o</span><span class="null">t</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s </span></span></a>></span><span class="null"> </span><span class="cmdname"><span class="pref">v</span><span class="null">i</span><span class="null">e</span><span class="null">w</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:plot.view.center" title="plot view center">center</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:plot.view.clip-back" title="plot view clip-back">clip-back</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:plot.view.clip-front" title="plot view clip-front">clip-front</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:plot.view.dip" title="plot view dip">dip</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:plot.view.dip-direction" title="plot view dip-direction">dip-direction</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:plot.view.distance" title="plot view distance">distance</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:plot.view.eye" title="plot view eye">eye</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:plot.view.isometric" title="plot view isometric">isometric</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:plot.view.magnification" title="plot view magnification">magnification</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:plot.view.projection" title="plot view projection">projection</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:plot.view.reset" title="plot view reset">reset</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:plot.view.roll" title="plot view roll">roll</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:plot.view.rotation" title="plot view rotation">rotation</a></p>
+</div>
+<p>controls the camera view of the plot.  If a plot name <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a> is not specified, the current view is assumed.</p>
+<p>The available keywords are:</p>
+<dl class="keyword">
+<dt id="kwd:plot.view.center">
+<span class="cmdkey"><span class="pref">c</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>the center of the view.  The camera always points from the eye position to the view center.  In model mode (the default) the eye rotates around the view center when the view is rotated.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:plot.view.clip-back">
+<span class="cmdkey"><span class="pref">c</span><span class="null">l</span><span class="null">i</span><span class="null">p</span><span class="null">-</span><span class="pref">b</span><span class="null">a</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>the limiting distance to the back clipping plane.  This is by default set to <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">1e10</span></span></a> so to be not a constraint.  If the default view depth setting is causing objects that are very far away to reduce the resolution of the depth buffer, you can adjust this parameter bring it forward.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:plot.view.clip-front">
+<span class="cmdkey"><span class="pref">c</span><span class="null">l</span><span class="null">i</span><span class="null">p</span><span class="null">-</span><span class="pref">f</span><span class="null">r</span><span class="null">o</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>the limiting distance to the back clipping plane.  This is by default set to <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">-1e10</span></span></a> so to be not a constraint.  If the default view depth setting is causing objects that are very close to reduce the resolution of the depth buffer, you can adjust this parameter bring it back.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:plot.view.dip">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>sets the orientation of the view plane, in degrees.  The current view center and distance is kept constant and the eye is rotated about the center until the vector from the eye to the view center is normal to the plane with this dip.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:plot.view.dip-direction">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">p</span><span class="null">-</span><span class="pref">d</span><span class="null">i</span><span class="null">r</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>sets the orientation of the view plane, in degrees.  The current view center and distance is kept constant and the eye is rotated about the center until the vector from the eye to the view center is normal to the plane with this dip direction.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:plot.view.distance">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">a</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>sets the distance from the eye to the view center.  The direction of the current vector from the eye position to the view center is held constant, but the eye is moved so that the distance between them is this value.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:plot.view.eye">
+<span class="cmdkey"><span class="pref">e</span><span class="null">y</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>sets the current eye position.  The viewing direction is always from the eye position to the view center.  The direction of “up” is determined by the current <span class="cmdkey">roll</span>, which is held constant.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:plot.view.isometric">
+<span class="cmdkey"><span class="pref">i</span><span class="null">s</span><span class="null">o</span><span class="null">m</span><span class="null">e</span><span class="null">t</span><span class="null">r</span><span class="null">i</span><span class="null">c</span><span class="null"> </span></span></dt>
+<dd><p>Reset to plot isometric view. If a view name <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a> is not specified, the current view is assumed. This command is equivalent to the keystroke [I].</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:plot.view.magnification">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">g</span><span class="null">n</span><span class="null">i</span><span class="null">f</span><span class="null">i</span><span class="null">c</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>sets the current view magnification.  The default value is 1.0, which represents a field of view angle of 45 degrees. Increasing the magnification decreases the field of view angle.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:plot.view.projection">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">o</span><span class="null">j</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>sets if the view includes perspective distortion or if it is an orthographic (parallel) projection.  The available keywords are:</p>
+<dl class="keyword">
+<dt id="kwd:plot.view.projection.parallel">
+<span class="cmdkey"><span class="pref">p</span><span class="pref">a</span><span class="null">r</span><span class="null">a</span><span class="null">l</span><span class="null">l</span><span class="null">e</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>Sets the view to be a orthographic or parallel projection.  Objects do not get smaller as they get farther away.  The <span class="cmdkey">distance</span> parameter has no immediate effect on the view, except to change the result of interactive controls.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:plot.view.projection.perspective">
+<span class="cmdkey"><span class="pref">p</span><span class="pref">e</span><span class="null">r</span><span class="null">s</span><span class="null">p</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">v</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Sets the view to be a perspective view based on the current eye position with a field of view determined by the current <span class="cmdkey">magnification</span>.  This is the default value.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:plot.view.reset">
+<span class="cmdkey"><span class="pref">r</span><span class="pref">e</span><span class="null">s</span><span class="null">e</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>Resets the view settings to default values, forcing a recalculation of an initial view. The current list of plot items is not changed. If a plot name <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a> is not specified, the current view is assumed. This command is equivalent to the keystroke “shift” + [R].</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:plot.view.roll">
+<span class="cmdkey"><span class="pref">r</span><span class="pref">o</span><span class="pref">l</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Sets the current roll, in degrees.  Roll defines which direction is towards the top of the screen.</p>
+<p>The camera always faces from the eye position to the view center.  Roll is defined by the angle from the vector pointing to the top of the screen to the global z direction projected onto the screen.  The global x direction is used if the view is entirely along the z-axis, and therefore has no projection.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:plot.view.rotation">
+<span class="cmdkey"><span class="pref">r</span><span class="pref">o</span><span class="pref">t</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>The plot view is rotated by the vector &lt;<a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span></span></a>&gt;.  If a plot view name <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a> is not specified, the current plot is assumed.</p>
+<p>The first component of &lt;<a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span></span></a>&gt; is the yaw rotation angle. The second component of &lt;<a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span></span></a>&gt; is the pitch rotation angle. The third component of &lt;<a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span></span></a>&gt; is the roll rotation angle.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="plot.html" >Plot</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="plot_commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_plot.update.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">plot</span> <span class="pre">update</span></code> command</a> |    
+       <a href="../../../../kernel/doc/manual/program/program.html"
+                           title="next chapter">Program</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?plot view command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,226 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>geometry edge create command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="geometry edge delete command" href="cmd_geometry.edge.delete.html" />
+    <link rel="prev" title="geometry delete command" href="cmd_geometry.delete.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="geometry-edge-create-command">
+<h1><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">edge</span> <span class="pre">create</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="geometry command">
+<dt id="command:geometry.edge.create">
+<span class="cmdname"><span class="pref">g</span><span class="pref">e</span><span class="null">o</span><span class="null">m</span><span class="null">e</span><span class="null">t</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span><span class="cmdname"><span class="pref">e</span><span class="pref">d</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">c</span><span class="null">r</span><span class="null">e</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:geometry.edge.create.by-node" title="geometry edge create by-node">by-node</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.edge.create.by-positions" title="geometry edge create by-positions">by-positions</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.edge.create.by-arc" title="geometry edge create by-arc">by-arc</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.edge.create.by-ray" title="geometry edge create by-ray">by-ray</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.edge.create.set" title="geometry edge create set">set</a></p>
+</div>
+<p>Create an edge in the current geometry set. If the <span class="cmdkey">set</span> keyword is given then the edge is created in that set. The following keywords are available as different methods of edge creation.</p>
+<dl class="keyword">
+<dt id="kwd:geometry.edge.create.by-node">
+<span class="cmdkey"><span class="pref">b</span><span class="null">y</span><span class="null">-</span><span class="pref">n</span><span class="null">o</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i2</span><span class="null"> </span></span></a><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="#edgecreateoptions">[edgecreateoptions]</a>></span></dt>
+<dd><p>Create one or more edges by giving a series of node ID numbers.   At least two ID numbers must be given, to create a single edge.
+If an edge already exists connecting those to nodes, no new edge will be created.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.edge.create.by-positions">
+<span class="cmdkey"><span class="pref">b</span><span class="null">y</span><span class="null">-</span><span class="pref">p</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v2</span><span class="null"> </span></span></a><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="#edgecreateoptions">[edgecreateoptions]</a>></span></dt>
+<dd><p>Create one or more edges by giving a series of positions.  At least two positions must be given, to create a single edge.  If an node already exists at that location within a relative tolerance of 1e-7, then that node will be used instead of creating a new one.  If an edge already exists between those two nodes, no new edge will be created.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.edge.create.by-arc">
+<span class="cmdkey"><span class="pref">b</span><span class="null">y</span><span class="null">-</span><span class="pref">a</span><span class="null">r</span><span class="null">c</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="#edgecreateoptions">[edgecreateoptions]</a>></span></dt>
+<dd><p>Create edges describing a circular arc section in space.   The arc is described by the locations <span class="cmdkey">origin</span>, <span class="cmdkey">start</span>, and <span class="cmdkey">end</span>.   <span class="cmdkey">origin</span> defines the center of the arc, and <span class="cmdkey">start</span> defines both the starting direction and the arc radius.  The <span class="cmdkey">end</span> location defines the plane and sweep angle of the arc but the distance from the origin is ignored.  The arc will be broken into <span class="cmdkey">segments</span> linear lengths.</p>
+<p>The following keywords control the arc definition:</p>
+<dl class="keyword">
+<dt id="kwd:geometry.edge.create.by-arc.end">
+<span class="cmdkey"><span class="pref">e</span><span class="null">n</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>The end location of the arc, defines the plane of the arc and the total sweep angle.  The default end location is (0,0,1).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.edge.create.by-arc.origin">
+<span class="cmdkey"><span class="pref">o</span><span class="null">r</span><span class="null">i</span><span class="null">g</span><span class="null">i</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>The origin of the arc.  The default origin is (0,0,0).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.edge.create.by-arc.segments">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">e</span><span class="null">g</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>The number of linear segments into which the arc is divided.  Each segment will be a single edge, and segments+1 nodes will be created and/or found.  The default number of segments is 10.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.edge.create.by-arc.start">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">t</span><span class="null">a</span><span class="null">r</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>The starting position of the arc, and also defins the arc radius.  The default start position is (1,0,0).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.edge.create.by-ray">
+<span class="cmdkey"><span class="pref">b</span><span class="null">y</span><span class="null">-</span><span class="pref">r</span><span class="null">a</span><span class="null">y</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="#edgecreateoptions">[edgecreateoptions]</a>></span></dt>
+<dd><p>Create edges described by a starting location, a direction, and a distance.   The ray may be broken into a number of segments, each of which will be a separate edge.</p>
+<p>The following keywrods control the ray definition:</p>
+<dl class="keyword">
+<dt id="kwd:geometry.edge.create.by-ray.base">
+<span class="cmdkey"><span class="pref">b</span><span class="null">a</span><span class="null">s</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>The base of the ray, from which the edges will project.  The default base location is (0,0,0).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.edge.create.by-ray.direction">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">r</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>The direction in which the edges will extend from the base.  The length is ignored.   The default direction is (1,0,0).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.edge.create.by-ray.length">
+<span class="cmdkey"><span class="pref">l</span><span class="null">e</span><span class="null">n</span><span class="null">g</span><span class="null">t</span><span class="null">h</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>The length of the edge(s) that will be generated.  The default length is 1.0.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.edge.create.by-ray.segments">
+<span class="cmdkey"><span class="pref">s</span><span class="null">e</span><span class="null">g</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>The number of segments that the ray will be divided into.  The default segments is 1.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.edge.create.set">
+<span class="cmdkey"><span class="pref">s</span><span class="null">e</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Create the edge in the set <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>.</p>
+</dd></dl>
+
+<p class="h2 rubric" id="edgecreateoptions">Block of Common Options for Edge Creation</p>
+</dd></dl>
+
+<p>The following keywords may be used in any edge creation keyword to add group or extra variable designations to any created edge.  Note that created nodes are not modified, and existing edges that are used instead are also not modified.  The following keywords are available: <a class="reference internal" href="#kwd:geometry.edge.create.by-arc"><code class="docutils literal"><span class="fishcmd"><span class="pre">by-arc</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.edge.create.by-node"><code class="docutils literal"><span class="fishcmd"><span class="pre">by-node</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.edge.create.by-positions"><code class="docutils literal"><span class="fishcmd"><span class="pre">by-positions</span></span></code></a> and <a class="reference internal" href="#kwd:geometry.edge.create.by-ray"><code class="docutils literal"><span class="fishcmd"><span class="pre">by-ray</span></span></code></a>.</p>
+<blockquote>
+<div><dl class="keyword">
+<dt id="kwd:group">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a><span class="cmdopt"><<span class="cmdkey"><span class="pref">s</span><span class="null">l</span><span class="null">o</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">slot</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Add the group name <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a> using slot <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">slot</span></span></a> to all created edges.  Use of the group logic is described in <a class="reference internal" href="../../../../module/doc/manual/group_manual/groupkwd.html#group-manual"><span class="std std-ref">Groups</span></a>. If not specified the slot name <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">Default</span></span></a> is used.  More than one <span class="cmdkey">group</span> keyword may be given.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:extra">
+<span class="cmdkey"><span class="pref">e</span><span class="null">x</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../docproject/utilities/types.html#type:any" title="A catch-all for any ( a ) of the other types, excepting  sym , shown&#013;&#010;here. Multiple instances in a command are numbered ( a1   a2   a3 &#013;&#010;etc.).  This type is also indicated when a specific combination of types is&#013;&#010;acceptable (for instance, the common case where a string  s  or an integer&#013;&#010; i  may be supplied). When this is the case, the specific acceptable types&#013;&#010;are indicated in the explanatory text."><span class="varany"><span class="null">a</span></span></a></dt>
+<dd><p>Add the value <a class="reference internal" href="../../../../docproject/utilities/types.html#type:any" title="A catch-all for any ( a ) of the other types, excepting  sym , shown&#013;&#010;here. Multiple instances in a command are numbered ( a1   a2   a3 &#013;&#010;etc.).  This type is also indicated when a specific combination of types is&#013;&#010;acceptable (for instance, the common case where a string  s  or an integer&#013;&#010; i  may be supplied). When this is the case, the specific acceptable types&#013;&#010;are indicated in the explanatory text."><span class="varany"><span class="null">a</span></span></a> to created edges in extra variable index <a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a>.  More than one <span class="cmdkey">extra</span> keyword may be given.</p>
+</dd></dl>
+
+</div></blockquote>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../geometry.html" >Geometry</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_geometry.delete.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">geometry</span> <span class="pre">delete</span></code> command</a> |    
+       <a href="cmd_geometry.edge.delete.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">edge</span> <span class="pre">delete</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?geometry edge create command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

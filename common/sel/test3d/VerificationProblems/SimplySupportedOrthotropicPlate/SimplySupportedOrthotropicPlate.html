@@ -1,0 +1,471 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Simply Supported Orthotropic Plate &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="hide sectionname docutils container">
+Examples • Verification Problems</div>
+<div class="section" id="simply-supported-orthotropic-plate">
+<span id="simplysupportedorthplate"></span><h1>Simply Supported Orthotropic Plate</h1>
+<p class="h2 rubric">Problem Statement</p>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The project file for this example is available to be viewed/run in <span class="codename">FLAC3D</span>.<a class="footnote-reference" href="#id3" id="id1">[1]</a> The <a class="reference internal" href="#oplatedata"><span class="std std-ref">main data files</span></a> used are shown at the end of this example.  The remaining data files can be found in the project.</p>
+</div>
+<p>The deflection and stress are determined numerically for the case of a simply supported
+rectangular orthotropic plate subjected to a uniformly distributed load.</p>
+<p class="h2 rubric">Closed-Form Solution</p>
+<p>The analytic solution for this problem is given by Ugural (1981, pp. 144-145). Consider a rectangular
+plate of sides <span class="math">\(a\)</span> and <span class="math">\(b\)</span>, simply supported on all edges, subjected to a uniformly
+distributed load, <span class="math">\(p_0\)</span>, and with principal directions of orthotropy aligned with the <span class="math">\(x\)</span>- and
+<span class="math">\(y\)</span>-axes as shown in <a href="#oplate-problem">Figure  1</a>.</p>
+<div class="figure align-center" id="oplate-problem">
+<a class="reference internal image-reference" href="../../../../../_images/oplate-problem.png"><img alt="../../../../../_images/oplate-problem.png" src="../../../../../_images/oplate-problem.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Rectangular plate and coordinate system used to express the closed-form solution.</span></p>
+</div>
+<p>The deflection (<span class="math">\(w\)</span>) bending stress resultants (<span class="math">\(M_x\)</span>, <span class="math">\(M_y\)</span>, and <span class="math">\(M_{xy}\)</span>) and
+transverse-shear stress resultants (<span class="math">\(Q_x\)</span> and <span class="math">\(Q_y\)</span>) are given by</p>
+<div class="math">
+\[w  = {{16 p_0} \over {\pi^6}} \sum^{\infty}_m \sum^{\infty}_n \Biggl[{1 \over \beta}\Biggr] {\rm sin} (m \pi x / a) {\rm sin} (n \pi y / b)\]</div>
+<div class="math">
+\[M_x = {{16 p_0} \over {\pi^4}} \sum^{\infty}_m \sum^{\infty}_n \Biggl[{{D_x (m^2 / a^2) + D_{xy} (n^2 / b^2)} \over {\beta}}\Biggr] {\rm sin} (m \pi x / a) {\rm sin} (n \pi y / b)\]</div>
+<div class="math">
+\[M_y = {{16 p_0} \over {\pi^4}} \sum^{\infty}_m \sum^{\infty}_n \Biggl[{{D_{xy} (m^2 / a^2) + D_y (n^2 / b^2)} \over {\beta}}\Biggr] {\rm sin} (m \pi x / a) {\rm sin} (n \pi y / b)\]</div>
+<div class="math">
+\[M_{xy} = {{16 p_0} \over {\pi^4}} \sum^{\infty}_m \sum^{\infty}_n \Biggl[{{2G_{xy} (mn/ab)} \over {\beta}}\Biggr] {\rm cos} (m \pi x / a) {\rm cos} (n \pi y / b)\]</div>
+<div class="math">
+\[Q_x = {{16 p_0} \over {\pi^4}} \sum^{\infty}_m \sum^{\infty}_n \Biggl[{{D_x (m^3 \pi / a^3) + H (mn^2 \pi / ab^2)} \over {\beta}}\Biggr] {\rm cos} (m \pi x / a) {\rm sin} (n \pi y / b)\]</div>
+<div class="math">
+\[Q_y = {{16 p_0} \over {\pi^4}} \sum^{\infty}_m \sum^{\infty}_n \Biggl[{{D_y (n^3 \pi / b^3) + H (m^2n \pi / a^2b)} \over {\beta}}\Biggr] {\rm sin} (m \pi x / a) {\rm cos} (n \pi y / b)\]</div>
+<div class="math">
+\[(m,n=1,3,...)\]</div>
+<div class="math">
+\[\beta = mn \Biggl[D_x (m^4 / a^4) + 2H (m^2 n^2 / a^2 b^2) + D_y (n^4 / b^4)\Biggr]\]</div>
+<div class="math">
+\[H = D_{xy} + 2G_{xy}\]</div>
+<p>where <span class="math">\(D_x\)</span>, <span class="math">\(D_y\)</span>, <span class="math">\(D_{xy}\)</span>, and <span class="math">\(G_{xy}\)</span> are the rigidities. For the case of an
+isotropic plate, <span class="math">\(D_x = D_y = H = D = {t^3 \over 12} \bigl({E \over {1 - \nu^2}}\bigr), D_{xy} = \nu D\)</span>, and <span class="math">\(G_{xy} = \bigl({{1 - \nu} \over 2}\bigr) D\)</span>.</p>
+<p>Consider a 4 by 8 rectangular sheet of 3/4-inch plywood reinforced by equidistant stiffeners (1 by 2
+boards above and below the sheet) and nailed to a supporting frame along its edges, as shown in
+<a href="#oplate-problem2">Figure  2</a>. The structural response of this system when subjected to a uniformly
+distributed load can be approximated by the closed-form solution, because all of the load is resisted
+by bending action. (The more general case in which some of the load is resisted by membrane action is
+considered in <a class="reference internal" href="#sec-extendingthesystem"><span class="std std-ref">below</span></a>.) A rectangular box is placed above the sheet, and the box
+is filled with dry sand to a height of <span class="math">\(H\)</span>. If the box sides are frictionless, then the plate is
+loaded by a uniform pressure, <span class="math">\(p_0 = \gamma H\)</span>, where <span class="math">\(\gamma\)</span> is the unit weight of dry sand.
+This problem is described by the following parameters (the values shown are rounded to three significant
+figures and the actual values used are computed from the given relations):</p>
+<div class="math">
+\[a = 1.22 \ {\rm m,} \ b = 2.44 \ {\rm m}\]</div>
+<div class="math">
+\[p_0 = \gamma g H = 19.6 \ {\rm kPa} \ (\gamma = 2000 \ {\rm kg/m^3,} \ g = 9.81 \ {\rm m/s^2,} \ H = 1 \ {\rm m})\]</div>
+<div class="math">
+\[t = 19 \ {\rm mm,} \ s = 0.41 \ {\rm m,} \ w = 25 \ {\rm mm,} \ h = 50 \ {\rm mm}\]</div>
+<div class="math" id="eq-rigidities">
+\[D_x=H={Et^3 \over {12(1 - \nu^2)}}=5.72\times10^3{\rm Nm}\]</div>
+<div class="math">
+\[D_y={Et^3 \over {12(1 - \nu^2)}}+{E^\prime I \over s}=91.0\times10^3{\rm Nm}\]</div>
+<div class="math">
+\[D_{xy}=0\]</div>
+<div class="math">
+\[E = E^\prime = 10 \ {\rm GPa,} \ \nu = 0\]</div>
+<div class="math">
+\[I = 2 \biggl[{1 \over 12} wh^3 + (wh) \biggl({{t + h} \over 2}\biggr)^2\biggr] = 3.50 \times 10^{-6} {\rm m^4}\]</div>
+<p>where the rigidities are from Ugural (1981, Table 6.1, case B).</p>
+<p>The orthotropic bending stiffnesses required for input to <span class="codename">FLAC3D</span> (assuming that the principal directions
+of orthotropy are aligned with the <span class="math">\(x\)</span>- and <span class="math">\(y\)</span>-axes shown in <a href="#oplate-problem">Figure  1</a>
+and <a href="#oplate-problem2">Figure  2</a>) are</p>
+<div class="math" id="eq-bendingstiffnesses">
+\[{c^b_{11}}^\prime = {12 \over t^3} D_x = 10 \ {\rm GPa}\]</div>
+<div class="math">
+\[{c^b_{22}}^\prime = {12 \over t^3} D_y = 159 \ {\rm GPa}\]</div>
+<div class="math">
+\[{c^b_{33}}^\prime = {12 \over t^3} G_{xy} = 5 \ {\rm GPa}\]</div>
+<div class="math">
+\[{c^b_{12}}^\prime = {12 \over t^3} D_{xy} = 0\]</div>
+<p>For this system, all of the load is resisted by bending action, and thus the orthotropic membrane
+stiffnesses are not relevant. If the stiffeners were removed, the plate would be isotropic with
+<span class="math">\(c^m_{ij} = c^b_{ij} = c_{ij}\)</span> and <span class="math">\(c^{\prime}_{11} = c^{\prime}_{22}\)</span> = 10.0 GPa, <span class="math">\(c^{\prime}_{33}\)</span> = 5.0 GPa and <span class="math">\(c^{\prime}_{12}\)</span> = 0. (If the Poisson’s ratio of the wood were not zero, then <span class="math">\(c^{\prime}_{12}\)</span> would also be nonzero.) The maximum deflection occurs at the plate center. The theoretical values are 49.9 and 77.0 mm for the orthotropic and isotropic plates, respectively.</p>
+<div class="figure align-center" id="oplate-problem2">
+<a class="reference internal image-reference" href="../../../../../_images/oplate-problem2.png"><img alt="../../../../../_images/oplate-problem2.png" src="../../../../../_images/oplate-problem2.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Plywood sheet reinforced by equidistant stiffeners.</span></p>
+</div>
+<p class="h2 rubric"><span class="codename">FLAC3D</span> Model</p>
+<p>The <span class="codename">FLAC3D</span> model with a 4 by 8 mesh contains 128 shell elements, as shown in
+<a href="#oplate-igeom">Figure  3</a>. The entire plate is modeled for clarity, although quarter symmetry
+could be applied to reduce the model size. All four edges have their <span class="math">\(z\)</span>-velocities fixed to
+simulate simple supports. (Although the proper classical plate theory boundary condition for a simple
+support also includes constraining rotation about an axis in the plane of the plate directed normal to
+the edge, such classical boundary conditions tend to overconstrain the mesh and produce results that are
+too stiff (Cook 1989, p. 332).) The pressure loading is applied with the <a class="reference internal" href="../../../doc/manual/sel_manual/shells/commands/cmd_structure.shell.apply.html#command:structure.shell.apply" title="Assign uniform applied pressure  f  to all shell elements in the range.&#013;&#010;Positive pressure acts in the positive `z`\ -direction of the element system&#013;&#010;and maintains this orientation during large-strain motion."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">shell</span> <span class="pre">apply</span></code></a>
+command. A cross-diagonal mesh pattern is utilized to ensure symmetric response.</p>
+<div class="figure align-center" id="oplate-igeom">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-igeom.png"><img alt="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-igeom.png" src="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-igeom.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 3: <span class="codename">FLAC3D</span> model for rectangular plate problem (4 by 8 mesh).</span></p>
+</div>
+<p>The isotropic case is modeled using only the applied pressure, and so has no membrane loading. Since this
+is a small-strain problem, there is no coupling between bending and membrane responses. The isotropic case
+therefore uses the DKT element type (which resolves bending only) and does not bother to provide boundary
+conditions in the <span class="math">\(x\)</span>- and <span class="math">\(y\)</span>-directions.</p>
+<p>The orthotropic case calculates the shell properties using a <span class="codename">FISH</span> function defined in “ortho_prop.dat”.</p>
+<p>The orthotropic case also adds a membrane pressure of 30 MPa applied to the outer edges of the plate, and
+so uses the default DKT-CST element type. The inner edges are given roller conditions. Note that because
+the bending and membrane responses are not coupled, this does not affect the comparison to the analytical
+solution, but the model is also checked for proper membrane response. If the model were in large-strain
+mode, then coupling would occur as the bending response caused displacement in the <span class="math">\(z\)</span>-direction.</p>
+<p>The theoretical and numerical solutions are compared along the lines <span class="math">\(x = a/2\)</span> and <span class="math">\(x = a/4\)</span>.
+The theoretical values are obtained by taking the first 10 terms (<span class="math">\(m\)</span> ≤ 21 and <span class="math">\(n\)</span> ≤ 21) of
+the infinite series. The numerical values for deflection are obtained from the nodes that lie along each
+line. The stress resultants are expressed in terms of a surface coordinate system that is aligned with
+the global system.</p>
+<p class="h2 rubric">Results</p>
+<p>The results for the isotropic case are presented first and followed by the results for the
+orthotropic case.</p>
+<p class="h3 rubric">Isotropic Case</p>
+<p>The displacement field is shown in <a href="#oplate-ideform">Figure  4</a> and <a href="#oplate-izdisp">Figure  5</a>. The
+maximum deflection occurs at the plate center and equals 75.43 mm, which is within 2.07% of the
+theoretical value of 77.021 mm.  A more refined 8 by 16 mesh gives a value of 76.62 mm, which is within
+0.5% of the theoretical value.  The deflection is compared with the theoretical solution along the lines
+<span class="math">\(x = a/2\)</span> and <span class="math">\(x = a/4\)</span> in <a href="#oplate-ideflect">Figure  6</a>. The bending stress resultant
+<span class="math">\(M_x\)</span> and <span class="math">\(M_y\)</span> fields are shown in <a href="#oplate-imxcont">Figure  7</a> and
+<a href="#oplate-imycont">Figure  8</a> and compared with the theoretical solutions along the lines
+<span class="math">\(x = a/2\)</span> and <span class="math">\(x = a/4\)</span> in <a href="#oplate-imxtab">Figure  9</a> and <a href="#oplate-imytab">Figure  10</a>.
+The results are improved for a finer mesh (compare <a href="#oplate-ideflect">Figure  6</a> and
+<a href="#oplate-ideform2">Figure  11</a>).</p>
+<div class="figure align-center" id="oplate-ideform">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-ideform.png"><img alt="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-ideform.png" src="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-ideform.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 4: Deformed (magnification of 5) shape of isotropic plate.</span></p>
+</div>
+<div class="figure align-center" id="oplate-izdisp">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-izdisp.png"><img alt="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-izdisp.png" src="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-izdisp.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 5: Deflection contours of isotropic plate.</span></p>
+</div>
+<div class="figure align-center" id="oplate-ideflect">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-ideflect.png"><img alt="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-ideflect.png" src="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-ideflect.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 6: Deflection of isotropic plate along the lines <span class="math">\(x = a/2\)</span> and <span class="math">\(x = a/4\)</span>.</span></p>
+</div>
+<div class="figure align-center" id="oplate-imxcont">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-imxcont.png"><img alt="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-imxcont.png" src="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-imxcont.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 7: Stress resultant <span class="math">\(M_x\)</span> contours of isotropic plate.</span></p>
+</div>
+<div class="figure align-center" id="oplate-imycont">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-imycont.png"><img alt="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-imycont.png" src="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-imycont.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 8: Stress resultant <span class="math">\(M_y\)</span> contours of isotropic plate.</span></p>
+</div>
+<div class="figure align-center" id="oplate-imxtab">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-imxtab.png"><img alt="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-imxtab.png" src="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-imxtab.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 9: Stress resultant <span class="math">\(M_x\)</span> of isotropic plate along the lines <span class="math">\(x = a/2\)</span> and <span class="math">\(x = a/4\)</span>.</span></p>
+</div>
+<div class="figure align-center" id="oplate-imytab">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-imytab.png"><img alt="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-imytab.png" src="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-imytab.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 10: Stress resultant <span class="math">\(M_y\)</span> of isotropic plate along the lines <span class="math">\(x = a/2\)</span> and <span class="math">\(x = a/4\)</span>.</span></p>
+</div>
+<div class="figure align-center" id="oplate-ideform2">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-ideform2.png"><img alt="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-ideform2.png" src="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-ideform2.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 11: Deflection of isotropic plate along the lines <span class="math">\(x = a/2\)</span> and <span class="math">\(x = a/4\)</span> (8 by 16 mesh).</span></p>
+</div>
+<p class="h3 rubric">Orthotropic Case</p>
+<p>The displacement field is shown in <a href="#oplate-odeform">Figure  12</a> and <a href="#oplate-ozdisp">Figure  13</a>. The maximum deflection occurs at the plate center and equals 47.31 mm, which is within 5.1% of the theoretical value of 49.868 mm. A more refined 8 by 16 mesh gives a value of 49.50 mm, which is within 0.7% of the theoretical value. The deflection is compared with the theoretical solution along the lines <span class="math">\(x = a/2\)</span> and <span class="math">\(x = a/4\)</span> <a href="#oplate-odeflect">Figure  14</a>. The bending stress resultant <span class="math">\(M_x\)</span> and <span class="math">\(M_y\)</span> fields are shown in <a href="#oplate-omxcont">Figure  15</a> and <a href="#oplate-omycont">Figure  16</a>, and compared with the theoretical solutions along the lines <span class="math">\(x = a/2\)</span> and <span class="math">\(x = a/4\)</span> in <a href="#oplate-omxtab">Figure  17</a> and <a href="#oplate-omytab">Figure  18</a>. The results are improved for a finer mesh (compare <a href="#oplate-odeflect">Figure  14</a> and <a href="#oplate-odeflect2">Figure  19</a>).</p>
+<div class="figure align-center" id="oplate-odeform">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-odeform.png"><img alt="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-odeform.png" src="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-odeform.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 12: Deformed (magnification of 5) shape of orthotropic plate.</span></p>
+</div>
+<div class="figure align-center" id="oplate-ozdisp">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-ozdisp.png"><img alt="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-ozdisp.png" src="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-ozdisp.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 13: Deflection contours of orthotropic plate.</span></p>
+</div>
+<div class="figure align-center" id="oplate-odeflect">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-odeflect.png"><img alt="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-odeflect.png" src="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-odeflect.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 14: Deflection of orthotropic plate along the lines <span class="math">\(x = a/2\)</span> and <span class="math">\(x = a/4\)</span>.</span></p>
+</div>
+<div class="figure align-center" id="oplate-omxcont">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-omxcont.png"><img alt="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-omxcont.png" src="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-omxcont.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 15: Stress resultant <span class="math">\(M_x\)</span> contours of orthotropic plate.</span></p>
+</div>
+<div class="figure align-center" id="oplate-omycont">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-omycont.png"><img alt="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-omycont.png" src="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-omycont.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 16: Stress resultant <span class="math">\(M_y\)</span> contours of orthotropic plate.</span></p>
+</div>
+<div class="figure align-center" id="oplate-omxtab">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-omxtab.png"><img alt="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-omxtab.png" src="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-omxtab.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 17: Stress resultant <span class="math">\(M_x\)</span> of orthotropic plate along the lines <span class="math">\(x = a/2\)</span> and <span class="math">\(x = a/4\)</span>.</span></p>
+</div>
+<div class="figure align-center" id="oplate-omytab">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-omytab.png"><img alt="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-omytab.png" src="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-omytab.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 18: Stress resultant <span class="math">\(M_y\)</span> of orthotropic plate along the lines <span class="math">\(x = a/2\)</span> and <span class="math">\(x = a/4\)</span>.</span></p>
+</div>
+<div class="figure align-center" id="oplate-odeflect2">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-odeflect2.png"><img alt="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-odeflect2.png" src="common\sel\test3d\VerificationProblems\SimplySupportedOrthotropicPlate\oplate-odeflect2.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 19: Deflection of orthotropic plate along the lines <span class="math">\(x = a/2\)</span> and <span class="math">\(x = a/4\)</span> (8 by 16 mesh).</span></p>
+</div>
+<p class="h2 rubric" id="sec-extendingthesystem">Extending the System to Include Membrane Effects</p>
+<p>The system described above only experiences bending loading. The orthotropic system was also subjected to a membrane loading by applying traction along the sheet boundary. Either the DKT-CST or the DKT-CST Hybrid element could be used, but in this case, the default DKT-CST element was used. In addition to the bending material stiffnesses (given in the <a class="reference internal" href="#eq-bendingstiffnesses"><span class="std std-ref">equation above</span></a>), we must also specify the membrane material stiffnesses, which can be approximated as follows.</p>
+<p>The membrane material stiffnesses is chosen so that the membrane stiffness in both the <span class="math">\(x\)</span>- and <span class="math">\(y\)</span>-directions of a representative portion of the real sheet (shown in <a href="#oplate-problem2">Figure  2</a>) is the same as that of the orthotropic shell. The representative portion is a square with side length <span class="math">\(s\)</span> in both the <span class="math">\(x\)</span>- and <span class="math">\(y\)</span>-directions (see <a href="#oplate-problem3">Figure  20</a>).</p>
+<div class="figure align-center" id="oplate-problem3">
+<a class="reference internal image-reference" href="../../../../../_images/oplate-problem3.png"><img alt="../../../../../_images/oplate-problem3.png" src="../../../../../_images/oplate-problem3.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 20: Representative portions of the sheet.</span></p>
+</div>
+<p>The membrane stiffnesses (<span class="math">\(AE/L\)</span>) in the <span class="math">\(x\)</span>- and <span class="math">\(y\)</span>-directions for the real sheet and the orthotropic shell are</p>
+<div class="math">
+\[k_x = {{(st) E} \over s}, \ k_y = {{(st) E + (2wh)E^{\prime}} \over s} \ \ ({\rm real \ sheet})\]</div>
+<div class="math">
+\[k_x = {{(st) E_x} \over s} = tE_x, \ k_y = {{(st) E_y} \over s} = tE_y \ \ ({\rm orthotropic \ shell})\]</div>
+<p>where <span class="math">\(s\)</span>, <span class="math">\(t\)</span>, <span class="math">\(E\)</span>, and <span class="math">\(E^{\prime}\)</span> are defined in the <a class="reference internal" href="#eq-rigidities"><span class="std std-ref">equation above</span></a>, and
+<span class="math">\(E_x\)</span> and <span class="math">\(E_y\)</span> are the effective moduli (Ugural 1981, p.141). The effective moduli are found
+by equating the corresponding stiffnesses:</p>
+<div class="math">
+\[E_x = E, \ E_y = E + \biggl({2wh \over st}\biggr)E^{\prime}\]</div>
+<p>The orthotropic membrane stiffnesses required for input to <span class="codename">FLAC3D</span> are</p>
+<div class="math">
+\[{c^m_{11}}^{\prime} = {E_x \over {1 - \nu_x \nu_y}}\]</div>
+<div class="math">
+\[{c^m_{22}}^{\prime} = {E_y \over {1 - \nu_x \nu_y}}\]</div>
+<div class="math">
+\[{c^m_{33}}^{\prime} = G\]</div>
+<div class="math">
+\[{c^m_{12}}^{\prime} = {{E_x \nu_y} \over {1 - \nu_x \nu_y}} = {{E_y \nu_x} \over {1 - \nu_x \nu_y}}\]</div>
+<p>where <span class="math">\(\nu_x\)</span> and <span class="math">\(\nu_y\)</span> are effective Poisson’s ratios, and <span class="math">\(G\)</span> is shear modulus. This expression makes use of <a class="reference internal" href="../../../doc/manual/sel_manual/shelltypes/shelltypes.html#eq-material-stiffness-orthotropic"><span class="std std-ref">this equation</span></a> from discussion of shell-element properties in the <em>Structural Elements</em> section. If we assume that <span class="math">\(\nu_x = \nu_y\)</span> = 0 and <span class="math">\(G = E/2\)</span>, then:</p>
+<div class="math">
+\[{c^m_{11}}^{\prime} = 10 {\rm \ GPa}\]</div>
+<div class="math">
+\[{c^m_{22}}^{\prime} = 13.2 {\rm \ GPa}\]</div>
+<div class="math">
+\[{c^m_{33}}^{\prime} = 5 {\rm \ GPa}\]</div>
+<div class="math">
+\[{c^m_{12}}^{\prime} = 0\]</div>
+<p>The system described above has a uniform membrane stress of 30 MPa that acts around the entire plate boundary. The edges at <span class="math">\(x\)</span> = 0 and <span class="math">\(y\)</span> = 0 are given roller boundary conditions, and the edges at <span class="math">\(x = a\)</span> and <span class="math">\(y = b\)</span> are loaded by using the <a class="reference internal" href="../../../doc/manual/sel_manual/nodes/commands/cmd_structure.node.apply.html#kwd:structure.node.apply.force-edge" title="the vector  v  is added as a force-per-unit-length to all *edges* that&#013;&#010;join nodes in the range.  The forces assigned due to the edge will be lumped&#013;&#010;at the two nodes, with each node receiving half.  These forces are always in&#013;&#010;the global system and will set the nodes to the global system as with the  structure.node.apply.system.global &#013;&#010;command."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">apply</span> <span class="pre">force-edge</span></code></a> command with a value that takes into account the shell thickness. Each node receives the total force acting along its tributary area.<a class="footnote-reference" href="#id4" id="id2">[2]</a> For these conditions, the stresses will be uniform throughout the plate and equal to</p>
+<div class="math">
+\[\sigma_{xx} = \sigma_{yy} = 30 \ {\rm MPa,} \ \ \tau_{xy} = 0\]</div>
+<p>The displacements along the edges at <span class="math">\(x = a\)</span> and <span class="math">\(y = b\)</span> will be uniform and equal to</p>
+<div class="math">
+\[\Delta_x = \biggl({\sigma_m \over {c^m_{11}}^{\prime}}\biggr) a = 3.66 \ {\rm mm,} \ \ \Delta_y = \biggl({\sigma_m \over {c^m_{22}}^{\prime}}\biggr) b = 5.55 \ {\rm mm}\]</div>
+<p>The results for a 4 by 8 mesh are as follows.</p>
+<div class="math">
+\[\sigma_{xx} = \sigma_{yy} = 30 \ {\rm MPa,} \ \ \tau_{xy} \approx 0\]</div>
+<div class="math">
+\[\Delta_x  = 3.660 \ {\rm mm,} \ \ \Delta_y = 5.542 \ {\rm mm}\]</div>
+<div class="pagebreak docutils container">
+break</div>
+<p class="h2 rubric">References</p>
+<p>Cook, R. D., D. S. Malkus and M. E. Plesha. <span class="bi">Concepts and Applications of Finite Element Analysis</span>, Third Edition. New York: John Wiley &amp; Sons Inc. (1989).</p>
+<p>Ugural, A. C. <span class="bi">Stresses in Plates and Shells</span>. New York: McGraw-Hill Publishing Company Inc. (1981).</p>
+<p class="h2 rubric" id="oplatedata">Data Files</p>
+<p><strong>isotropic4x8.dat</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="c">; FLAC3D isotropic plate with combined lateral &amp; direct loads</span>
+<span class="c">; verification problem</span>
+<span class="nb">model new</span>
+<span class="nb">model large-strain</span><span class="n"> </span><span class="sx">off</span>
+<span class="nb">model title</span><span class="n"> </span><span class="s">&quot;Isotropic rectangular plate with applied pressure (4 by 8 mesh)&quot;</span>
+<span class="c">; Create the elements, and assign properties</span>
+<span class="nb">struct shell create</span><span class="n"> by</span><span class="o">-</span><span class="n">quadrilateral </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">1.22</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                     </span><span class="p">(</span><span class="m m-Double">1.22</span><span class="p">,</span><span class="m m-Double">2.44</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">2.44</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                     size </span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">8</span><span class="p">)</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                     element</span><span class="o">-</span><span class="n">type</span><span class="p">=</span><span class="n">dkt cross</span><span class="o">-</span><span class="n">diagonal</span>
+<span class="nb">struct shell property</span><span class="n"> isotropic </span><span class="p">(</span><span class="m m-Double">10e9</span><span class="p">,</span><span class="m m-Double">0.0</span><span class="p">)</span><span class="n"> thickness </span><span class="m m-Double">19e-3</span>
+<span class="c">; simply supported condition - fix z velocity on all boundaries</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">z range union position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0.0</span><span class="n"> position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">1.22</span><span class="n"> </span><span class="sx">...</span><span class="n"> </span>
+<span class="n">                                       position</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0.0</span><span class="n"> position</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">2.44</span>
+<span class="c">; Apply pressure loading</span>
+<span class="nb">struct shell apply</span><span class="n"> </span><span class="m m-Double">19620</span>
+<span class="c">; Solve</span>
+<span class="nb">model </span><span class="ss">solve</span><span class="n"> ratio</span><span class="o">-</span><span class="n">local</span><span class="p">=</span><span class="m m-Double">1e-5</span>
+<span class="c">; Save the result</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;isotropic4x8&#39;</span>
+</pre></div>
+</div>
+<div class="pagebreak docutils container">
+break</div>
+<p><strong>orthotropic4x8.dat</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="c">; FLAC3D orthotropic plate (bending) verification problem</span>
+<span class="nb">model new</span>
+<span class="nb">model large-strain</span><span class="n"> </span><span class="sx">off</span>
+<span class="ni">[t </span><span class="p">=</span><span class="ni">  </span><span class="s">&#39;Orthotropic rectangular plate with pressure loading &#39;</span><span class="ni">]</span>
+<span class="ni">[t </span><span class="o">+=</span><span class="ni"> </span><span class="s">&#39;and lateral load (4 by 8 mesh)&#39;</span><span class="ni">]</span>
+<span class="nb">model title</span><span class="n"> </span><span class="ni">[t]</span>
+<span class="c">; ------------------------------------------------------------------------</span>
+<span class="nb">struct shell create</span><span class="n"> by</span><span class="o">-</span><span class="n">quadrilateral </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">1.22</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                     </span><span class="p">(</span><span class="m m-Double">1.22</span><span class="p">,</span><span class="m m-Double">2.44</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">2.44</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                     size </span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">8</span><span class="p">)</span><span class="n"> cross</span><span class="o">-</span><span class="n">diagonal</span>
+<span class="c">; Function to calculate orthotropic properties </span>
+<span class="c">; given shell and stiffener properties</span>
+<span class="nb">program call</span><span class="n"> </span><span class="s">&#39;ortho_prop&#39;</span>
+<span class="ni">[ortho_prop</span><span class="p">(</span><span class="m m-Double">10e9</span><span class="p">,</span><span class="m m-Double">19e-3</span><span class="p">,</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="m m-Double">25e-3</span><span class="p">,</span><span class="m m-Double">50e-3</span><span class="p">,</span><span class="m m-Double">10e9</span><span class="p">,</span><span class="m m-Double">0.41</span><span class="p">)</span><span class="ni">]</span>
+<span class="nb">struct shell property</span><span class="n"> orthotropic</span><span class="o">-</span><span class="n">bending </span><span class="ni">[bend_stiff]</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                      orthotropic</span><span class="o">-</span><span class="n">membrane </span><span class="ni">[memb_stiff]</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                      material</span><span class="o">-</span><span class="n">x </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> thickness </span><span class="m m-Double">19e-3</span>
+<span class="c">; simply supported condition</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">z range union position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0</span><span class="n"> position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">1.22</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                       position</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0</span><span class="n"> position</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">2.44</span>
+<span class="c">; Apply membrane loading - edge loading</span>
+<span class="nb">struct node apply</span><span class="n"> force</span><span class="o">-</span><span class="n">edge </span><span class="p">(</span><span class="m m-Double">5.7e5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">1.22</span>
+<span class="nb">struct node apply</span><span class="n"> force</span><span class="o">-</span><span class="n">edge </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">5.7e5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> add range position</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">2.44</span>
+<span class="c">; Apply rollers to the other edges</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">x range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0</span><span class="n"> </span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">y range position</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0</span><span class="n"> </span>
+<span class="c">; Apply pressure loading</span>
+<span class="nb">struct shell apply</span><span class="n"> </span><span class="m m-Double">19620</span>
+<span class="c">; Solve</span>
+<span class="nb">model </span><span class="ss">solve</span><span class="n"> ratio</span><span class="o">-</span><span class="n">local</span><span class="p">=</span><span class="m m-Double">1e-5</span>
+<span class="c">; Save</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;orthotropic4x8&#39;</span>
+</pre></div>
+</div>
+<p><strong>ortho_prop.dat</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="c">; Calculate orthotropic shell properties given </span>
+<span class="c">;    e = shell young&#39;s modulus,</span>
+<span class="c">;    t = shell thickness, </span>
+<span class="c">;    nu = shell Poisson&#39;s ratio, </span>
+<span class="c">;    swidth = stiffener width,</span>
+<span class="c">;    sheight = stiffener height, </span>
+<span class="c">;    se = stiffener stiffness, and </span>
+<span class="c">;    sspace = stiffener spacing</span>
+<span class="c">; Returns 4x1 arrays with membrane and bending stiffness </span>
+<span class="c">; in globals memb_stiff and bend_stiff.</span>
+<span class="c">; Also flexural rigidities in global map rigidity</span>
+<span class="nb">fish automatic-create</span><span class="n"> </span><span class="sx">off</span>
+<span class="nb">fish define</span><span class="ni"> ortho_prop</span><span class="p">(</span><span class="ni">e</span><span class="p">,</span><span class="ni">t</span><span class="p">,</span><span class="ni">nu</span><span class="p">,</span><span class="ni">swidth</span><span class="p">,</span><span class="ni">sheight</span><span class="p">,</span><span class="ni">se</span><span class="p">,</span><span class="ni">sspace</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">global</span><span class="ni"> rigidity </span><span class="p">=</span><span class="ni"> map</span>
+<span class="ni">    rigidity</span><span class="p">(</span><span class="s">&#39;Dxy&#39;</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0.0</span>
+<span class="ni">    rigidity</span><span class="p">(</span><span class="s">&#39;Dx&#39;</span><span class="p">)</span><span class="ni">  </span><span class="p">=</span><span class="ni"> e </span><span class="o">*</span><span class="ni"> t</span><span class="o">^</span><span class="m m-Double">3</span><span class="ni"> </span><span class="o">/</span><span class="ni"> </span><span class="p">(</span><span class="m m-Double">12.0</span><span class="o">*</span><span class="p">(</span><span class="m m-Double">1.0</span><span class="ni"> </span><span class="o">-</span><span class="ni"> nu</span><span class="o">^</span><span class="m m-Double">2</span><span class="p">))</span>
+<span class="ni">    rigidity</span><span class="p">(</span><span class="s">&#39;H&#39;</span><span class="p">)</span><span class="ni">   </span><span class="p">=</span><span class="ni"> rigidity</span><span class="p">(</span><span class="s">&#39;Dx&#39;</span><span class="p">)</span>
+<span class="ni">    rigidity</span><span class="p">(</span><span class="s">&#39;Gxy&#39;</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="p">(</span><span class="ni">rigidity</span><span class="p">(</span><span class="s">&#39;H&#39;</span><span class="p">)</span><span class="ni"> </span><span class="o">-</span><span class="ni"> rigidity</span><span class="p">(</span><span class="s">&#39;Dxy&#39;</span><span class="p">))</span><span class="ni"> </span><span class="o">/</span><span class="ni"> </span><span class="m m-Double">2.0</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> Iv </span><span class="p">=</span><span class="ni"> swidth</span><span class="o">*</span><span class="ni">sheight</span><span class="o">*</span><span class="ni">sheight</span><span class="o">*</span><span class="ni">sheight </span><span class="o">/</span><span class="ni"> </span><span class="m m-Double">12.0</span>
+<span class="ni">          Iv </span><span class="p">=</span><span class="ni"> Iv </span><span class="o">+</span><span class="ni"> </span><span class="p">(</span><span class="ni">swidth</span><span class="o">*</span><span class="ni">sheight</span><span class="o">*</span><span class="p">(</span><span class="ni">t </span><span class="o">+</span><span class="ni"> sheight</span><span class="p">)</span><span class="o">^</span><span class="m m-Double">2</span><span class="p">)</span><span class="ni"> </span><span class="o">/</span><span class="ni"> </span><span class="m m-Double">4.0</span>
+<span class="ni">          Iv </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">2.0</span><span class="ni"> </span><span class="o">*</span><span class="ni"> Iv</span>
+<span class="ni">    rigidity</span><span class="p">(</span><span class="s">&#39;Dy&#39;</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> rigidity</span><span class="p">(</span><span class="s">&#39;Dx&#39;</span><span class="p">)</span><span class="ni"> </span><span class="o">+</span><span class="ni"> </span><span class="p">(</span><span class="ni">se </span><span class="o">*</span><span class="ni"> Iv</span><span class="p">)</span><span class="ni"> </span><span class="o">/</span><span class="ni"> sspace</span>
+<span class="ni">    </span>
+<span class="ni">    </span><span class="k">global</span><span class="ni"> bend_stiff </span><span class="p">=</span><span class="ni"> matrix</span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span>
+<span class="ni">    bend_stiff</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="p">(</span><span class="m m-Double">12.0</span><span class="ni"> </span><span class="o">/</span><span class="ni"> t</span><span class="o">^</span><span class="m m-Double">3</span><span class="p">)</span><span class="ni"> </span><span class="o">*</span><span class="ni"> rigidity</span><span class="p">(</span><span class="s">&#39;Dx&#39;</span><span class="p">)</span>
+<span class="ni">    bend_stiff</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="p">(</span><span class="m m-Double">12.0</span><span class="ni"> </span><span class="o">/</span><span class="ni"> t</span><span class="o">^</span><span class="m m-Double">3</span><span class="p">)</span><span class="ni"> </span><span class="o">*</span><span class="ni"> rigidity</span><span class="p">(</span><span class="s">&#39;Dxy&#39;</span><span class="p">)</span>
+<span class="ni">    bend_stiff</span><span class="p">(</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="p">(</span><span class="m m-Double">12.0</span><span class="ni"> </span><span class="o">/</span><span class="ni"> t</span><span class="o">^</span><span class="m m-Double">3</span><span class="p">)</span><span class="ni"> </span><span class="o">*</span><span class="ni"> rigidity</span><span class="p">(</span><span class="s">&#39;Dy&#39;</span><span class="p">)</span>
+<span class="ni">    bend_stiff</span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="p">(</span><span class="m m-Double">12.0</span><span class="ni"> </span><span class="o">/</span><span class="ni"> t</span><span class="o">^</span><span class="m m-Double">3</span><span class="p">)</span><span class="ni"> </span><span class="o">*</span><span class="ni"> rigidity</span><span class="p">(</span><span class="s">&#39;Gxy&#39;</span><span class="p">)</span>
+<span class="ni">    </span>
+<span class="ni">    </span><span class="c">; Membrane stiffness, only used for membrane.f3dat</span>
+<span class="ni">    </span><span class="k">global</span><span class="ni"> memb_stiff </span><span class="p">=</span><span class="ni"> matrix</span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span>
+<span class="ni">    memb_stiff</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> e</span>
+<span class="ni">    memb_stiff</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0.0</span>
+<span class="ni">    memb_stiff</span><span class="p">(</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> e </span><span class="o">+</span><span class="ni"> </span><span class="p">(</span><span class="m m-Double">2.0</span><span class="ni"> </span><span class="o">*</span><span class="ni"> swidth </span><span class="o">*</span><span class="ni"> sheight </span><span class="o">/</span><span class="ni"> </span><span class="p">(</span><span class="ni">sspace </span><span class="o">*</span><span class="ni"> t</span><span class="p">))</span><span class="ni"> </span><span class="o">*</span><span class="ni"> se</span>
+<span class="ni">    memb_stiff</span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> e </span><span class="o">/</span><span class="ni"> </span><span class="m m-Double">2.0</span>
+<span class="nb">end</span>
+</pre></div>
+</div>
+<p class="endnotesection rubric">Endnotes</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><p class="first">To view this project in <span class="codename">FLAC3D</span>, use the program menu.</p>
+<p><span class="menuselection">Help ▼ Examples…</span></p>
+<p class="last"><a href="#id5"><span class="problematic" id="id6">|p1|</span></a> FLAC <br>
+<a href="#id7"><span class="problematic" id="id8">|p2|</span></a> VerificationProblems <br>
+<a href="#id9"><span class="problematic" id="id10">|p3|</span></a> SimplySupportedOrthotropicPlate <br>
+<a href="#id11"><span class="problematic" id="id12">|p4|</span></a> SimplySupportedOrthotropicPlate.prj <br></p>
+</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>For a system experiencing combined membrane and bending loads, a shell element (such as the DKT-CST) must be used. In order to model the coupling whereby the presence of a tensile membrane force decreases the plate deflection, <span class="codename">FLAC3D</span> must be run in large-strain mode.</td></tr>
+</tbody>
+</table>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Simply Supported Orthotropic Plate" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

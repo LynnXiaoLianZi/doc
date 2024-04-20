@@ -1,0 +1,1133 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>IMASS Model** &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Tokens" href="../../../docproject/utilities/tokens.html" />
+    <link rel="prev" title="Temp Toctree Material" href="../../../docproject/utilities/toctree_temp.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../contents.html"><img id="cornerlogo" src="../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="hide sectionname docutils container">
+<span class="codename">FLAC3D</span> Theory and Background • Constitutive Models</div>
+<div class="section" id="imass-model">
+<span id="modelimass"></span><h1><em>IMASS</em> Model**</h1>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">**This model requires separate license.</p>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction</h2>
+<p>The original CaveHoek constitutive model (first appearing in 2010, Pierce 2013) has undergone numerous revisions and enhancements. In terms of strength envelopes, CaveHoek is characterized by two bounding yield surfaces (peak and residual) as shown in <a href="#modelimass-1">Figure  1</a>. Material softening from peak to residual values was controlled by accumulated plastic shear strain. After many successful projects and new discoveries about brittle rock behavior, a new strain-softening model has been created. This new constitutive model is named <em>IMASS</em> (Itasca Model for Advanced Strain Softening). <em>IMASS</em> (<a class="reference external" href="https://www.researchgate.net/profile/Zhao-Cheng-18/publication/346835859_Theory_and_Implementation_of_the_Itasca_Constitutive_Model_for_Advanced_Strain_Softening_IMASS/links/5fd24259a6fdcc697bf6ec35/Theory-and-Implementation-of-the-Itasca-Constitutive-Model-for-Advanced-Strain-Softening-IMASS.pdf?origin=searchReact&amp;_iepl%5BgeneralViewId%5D=Yx2TH8ZP5fkIGC5fdnr6NOsfeljgxqQjYw1r&amp;_iepl%5Bcontexts%5D%5B0%5D=searchReact&amp;_iepl%5BviewId%5D=ECspLYExcxAy4MUUJGfGVJbHTy0mcqUE4IRI&amp;_iepl%5BsearchType%5D=publication&amp;_iepl%5Bdata%5D%5BcountLessEqual20%5D=1&amp;_iepl%5Bdata%5D%5BinteractedWithPosition4%5D=1&amp;_iepl%5Bdata%5D%5BwithEnrichment%5D=1&amp;_iepl%5Bposition%5D=4&amp;_iepl%5BrgKey%5D=PB%3A346835859&amp;_iepl%5BinteractionType%5D=publicationDownload">Ghazvinian et al., 2020</a>) contains a two-mode softening of yield surfaces as shown in <a href="#modelimass-2">Figure  2</a>. In addition, <em>IMASS</em> material properties have new and unique names when compared to the original CaveHoek. <em>IMASS</em> uses the latest Itasca constitutive model framework and techniques for apex correction, automatic testing, and property updates and management. This document describes <em>IMASS</em> properties and provides several example test cases illustrating <em>IMASS</em> material response.</p>
+<div class="figure align-center" id="id2">
+<span id="modelimass-1"></span><a class="reference internal image-reference" href="../../../../_images/imass-1.png"><img alt="../../../../_images/imass-1.png" src="../../../../_images/imass-1.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: CaveHoek initial (peak) and residual yield surfaces shown in green.</span></p>
+</div>
+<div class="figure align-center" id="id3">
+<span id="modelimass-2"></span><a class="reference internal image-reference" href="../../../../_images/imass-2.png"><img alt="../../../../_images/imass-2.png" src="../../../../_images/imass-2.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: <em>IMASS</em> constitutive model, yield surfaces (left) and material response (right).</span></p>
+</div>
+</div>
+<div class="section" id="imass-constitutive-model">
+<h2><em>IMASS</em> Constitutive Model</h2>
+<p>A numerical model that represents the damage around an excavation, slope, or caving process must account for the progressive failure and disintegration of the rock mass from an intact/jointed condition to a bulked material. Four critical factors that control the overall behavior of the rock mass matrix during this process are described below.</p>
+<div class="section" id="cohesion-and-tension-weakening-and-frictional-strengthening">
+<h3>Cohesion and Tension Weakening and Frictional Strengthening</h3>
+<p>As the rock mass deforms, it undergoes a reduction in strength from its peak in-situ value to a lower residual value. In general, the massive to moderately jointed rock masses weaken by fracturing and the associated loss of cohesion and tensile strength, but they rapidly strengthen when even lightly confined due to a combination of friction mobilization and dilation resulting from bulking of the fractured rock. These mechanisms largely occur in sequence (Kaiser et al., 2015).</p>
+</div>
+<div class="section" id="post-peak-brittleness">
+<h3>Post Peak Brittleness</h3>
+<p>The rate at which the strength drops from peak to residual is referred to as brittleness. Rocks that maintain their peak strength with continued loading are referred to as perfectly plastic (ductile). Rock masses that instantaneously drop to residual strength properties when they exceed their peak strength are referred to as perfectly brittle. The brittleness controls how fast or slow the stresses are shed away from the yielded rock mass with accumulated strain.</p>
+</div>
+<div class="section" id="modulus-softening">
+<span id="modelimass-modulus-softening"></span><h3>Modulus Softening</h3>
+<p>The rock mass increases in volume as intact rock blocks fracture, separate, and rotate during the yielding and mobilization process. Along with this bulking, a reduction in modulus is expected to occur. Representation of the decrease in stiffness is crucial for assessing the evolving stress state around the cave and underground openings, because as rock mass dilates/bulks, its potential to carry stress decreases.</p>
+</div>
+<div class="section" id="dilational-behavior">
+<h3>Dilational Behavior</h3>
+<p>Dilation is the change in volume with shear. An accurate assessment and representation of the dilational behavior of a jointed rock mass is essential to predict the correct volume increase during plastic deformation. This will impact the confinement-dependent strength of the rock mass
+This overall process — loading the rock mass to its peak strength, followed by a post-peak reduction in strength to some residual level with increasing strain — often is termed a “strain-softening” process and is the result of strain-dependent material properties. Itasca’s most advanced strain-softening model (<em>IMASS</em>) is capable of simulating strain-softening behavior and uses a Hoek-Brown criterion for the peak and residual strength.</p>
+</div>
+<div class="section" id="model-main-components">
+<h3>Model Main Components</h3>
+<p>The <em>IMASS</em> constitutive model has been developed to represent the rock mass response to stress changes (i.e., rock mass yield, modulus softening, density adjustment, dilation, dilation shutoff, scaling of properties to zone size, cohesion weakening, tension weakening, and frictional strengthening). This constitutive model was developed using strain-softening material models, with strain-dependent properties adjusted to reflect the impacts of dilation and bulking as a result of induced stress changes. This section and the following sub-sections discuss the fundamentals and implementation of <em>IMASS</em> with a two-mode softening of yield surfaces.</p>
+<div class="section" id="peak-envelope">
+<h4>Peak Envelope</h4>
+<p>The <em>IMASS</em> model peak behavior is based on the built-in “modified Hoek-Brown model”, called the <em>mhoek</em> model. This model contains a tensile strength limit similar to that used by the Mohr-Coulomb model, because the classic Hoek-Brown failure criteria (Hoek et al., 2002) works well at higher confining stress states but can produce excessive dilation at low confinement or under tensile-stress conditions.</p>
+<p>The GSI, <span class="math">\(m_i\)</span>, and UCS parameters control the shape of the peak Hoek-Brown envelope, which is defined by the following equations (Hoek et al., 2002):</p>
+<div class="math" id="equation-modelimasshb1">
+<span class="eqno">(1)</span>\[ \sigma_1 = \sigma_3 + \sigma_{ci} \left( m_b \frac{\sigma_3}{\sigma_{ci}} + s \right)^a\]</div>
+<p>where</p>
+<div class="math" id="equation-modelimasshbm">
+<span class="eqno">(2)</span>\[ m_b = m_i \exp \left( \frac{GSI-100}{28} \right)\]</div>
+<div class="math" id="equation-modelimasshbs">
+<span class="eqno">(3)</span>\[ s = \exp \left( \frac{GSI-100}{9} \right)\]</div>
+<div class="math" id="equation-modelimasshba">
+<span class="eqno">(4)</span>\[ a = \frac{1}{2} + \frac{1}{6} \left[ \exp{\left(\frac{-GSI}{15}\right)} - \exp{\left(\frac{-20}{3}\right)}\right]\]</div>
+</div>
+<div class="section" id="residual-envelopes">
+<h4>Residual Envelopes</h4>
+<p>Residual envelopes and rock mass softening after reaching peak envelope is a major component of <em>IMASS</em> that is described in detail in <a class="reference internal" href="#modelimass-coh-fri"><span class="std std-ref">Cohesion Weakening Frictional Strengthening Behavior</span></a>.</p>
+</div>
+<div class="section" id="elastic-properties">
+<h4>Elastic Properties</h4>
+<p>The intact Young’s modulus (<span class="math">\(E_i\)</span>) is used to calculate the rock mass Young’s modulus (<span class="math">\(E_{rm}\)</span>), using Hoek and Diederichs’ (2006) equation, which governs the rock mass elastic behavior:</p>
+<div class="math" id="equation-modelimasshberm">
+<span class="eqno">(5)</span>\[ E_{rm} = E_i \left[ 0.02 + \dfrac{1}{1+\exp{\left(\frac{60-GSI}{11}\right)}} \right]\]</div>
+<p>Poisson’s ratio is defined as a function of GSI as:</p>
+<div class="math" id="equation-modelimasshbv">
+<span class="eqno">(6)</span>\[ \nu = 0.32 - 0.0015 \times GSI\]</div>
+</div>
+<div class="section" id="tensile-strength-envelope">
+<h4>Tensile Strength Envelope</h4>
+<p>The Hoek-Brown envelope is extended, for a tensile <span class="math">\(\sigma_3\)</span>, by a combination of the Mohr-Coulomb envelope (tangent to Hoek-Brown at <span class="math">\(\sigma_3\)</span> = 0) and a tensile cutoff at <span class="math">\(\sigma_3 = -s\sigma_{ci}/m_b\)</span>.</p>
+</div>
+<div class="section" id="bulking-behavior">
+<h4>Bulking Behavior</h4>
+<p>The bulking factor or volumetric strain increment (VSI) is defined by:</p>
+<div class="math" id="equation-modelimassvsi">
+<span class="eqno">(7)</span>\[ B = VSI = \frac{\Delta V}{V_i} = \frac{n}{1-n}\]</div>
+<p>where <span class="math">\(\Delta V\)</span> is the change in volume (positive = expansion), <span class="math">\(V_i\)</span> is the initial volume, and n is porosity. The initial bulking factor is commonly assumed to be equal to 0 for an undisturbed and unbulked rock.  Maximum VSI is the volumetric strain increment value at which the rock mass is considered to have fully bulked.</p>
+<p>The bulking factor or VSI is an integral component of <em>IMASS</em> that allows for large-strain processes to control the softening/weakening of strain-dependent properties. For instance, the transition from post-peak envelope to ultimate strength envelope, modulus softening, density adjustment, and dilation shut off are all controlled by VSI in <em>IMASS</em>.</p>
+<p>The Hoek-Brown strength envelope only considers the response of the rock mass up to the point of failure. The post peak behavior, which is believed to exert a strong control on rock mass response to stress changes (e.g., due to mining), is not described in this criterion. In order to do this, separate consideration of the post-peak behavior is required.</p>
+</div>
+</div>
+<div class="section" id="cohesion-weakening-frictional-strengthening-behavior">
+<span id="modelimass-coh-fri"></span><h3>Cohesion Weakening Frictional Strengthening Behavior</h3>
+<p>In <em>IMASS</em>, damage, disturbance and the associated loss of strength (i.e. “softening/weakening”) is captured in two phases:</p>
+<ul class="simple">
+<li>During Phase 1:<ul>
+<li>Damage is the result of fracturing of intact rock due to stress changes. This causes only small (negligible) increases in porosity and permeability.</li>
+<li>Loss of strength results from small-strain processes.</li>
+<li>The numerical assessment of damage is dependent on the accumulation of plastic shear strain. Phase 1 ends when the rock mass reaches the “critical plastic shear strain” and its strength equals the post-peak strength.</li>
+</ul>
+</li>
+<li>During Phase 2:<ul>
+<li>Additional straining and disturbance are the result of rearrangement of rock blocks and cause a significant increase in porosity (up to 40%) and permeability.</li>
+<li>Loss of strength results from large-strain processes.</li>
+<li>The numerical assessment of disturbance is dependent on the accumulation of volumetric strain. Phase 2 ends when the rock mass has reached the “maximum volumetric strain”. At this point, the rock mass has reached its   ultimate residual strength and its strength won’t evolve further with additional straining.</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="strength-envelopes">
+<h4>Strength Envelopes</h4>
+<p>Strength weakening in the <em>IMASS</em> constitutive model is defined by three Hoek-Brown strength envelopes, as shown in <a href="#modelimass-3">Figure  3</a> a peak envelope and two residual strength envelopes (post-peak and ultimate strength). The peak strength envelope (green curve) parameters <span class="math">\(m_b\)</span>, s, and a (parameters <em>calc_stren_mb</em>, <em>calc_stren_s</em>, and <em>calc_stren_a</em> in <em>IMASS</em>) are calculated from the classic Hoek-Brown equations based on GSI (<em>in_stren_gsi</em>) and intact rock parameters UCS and <span class="math">\(m_i\)</span> (<em>in_stren_ucsi</em> and <em>in_stren_mi</em>) presented above (see <a href="#modelimass-1">Figure  1</a> through <a href="#modelimass-4">Figure  4</a>). The Hoek-Brown (H-B) parameters of the residual strength envelopes (red and blue curves) are selected to approximate the peak shear strength for rockfill material as defined by Barton &amp; Kjaernsli (1981):</p>
+<div class="math" id="equation-modelimassbarton">
+<span class="eqno">(8)</span>\[ \tau = \sigma_n \tan{ \left[ R \log{\left( \frac{s}{\sigma_n} \right)} + \phi_b \right]}\]</div>
+<p>where <span class="math">\(\tau\)</span> is shear strength, <span class="math">\(\sigma_n\)</span> is the normal stress, <span class="math">\(R\)</span> is equivalent roughness (see <a href="#modelimass-4">Figure  4</a> ), <span class="math">\(R\)</span> is the rock block strength, and <span class="math">\(\phi_b\)</span> (<em>in_weak_phib</em>) is the basic friction angle for the rock blocks.</p>
+<div class="figure align-center" id="id4">
+<span id="modelimass-3"></span><a class="reference internal image-reference" href="../../../../_images/imass-3.png"><img alt="../../../../_images/imass-3.png" src="../../../../_images/imass-3.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 3: <em>IMASS</em> strength envelopes.</span></p>
+</div>
+<div class="figure align-center" id="id5">
+<span id="modelimass-4"></span><a class="reference internal image-reference" href="../../../../_images/imass-4.png"><img alt="../../../../_images/imass-4.png" src="../../../../_images/imass-4.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 4: Equivalent roughness of an assembly of rock fragments based on porosity and fragment roundedness/smoothness (Barton &amp; Kjaernsli, 1981).</span></p>
+</div>
+<p>The first residual strength envelope (the red curve in <a href="#modelimass-3">Figure  3</a>, which is referred to as the post-peak envelope in this document) represents the post-peak strength. At this point, the rock mass is assumed to have undergone fracturing, but the resulting rock fragments are still fully interlocked, and hence, porosity is considered to be zero.</p>
+<p>The second residual strength envelope (the blue curve in <a href="#modelimass-3">Figure  3</a>, which is referred to as the ultimate strength envelope in this document) represents the ultimate rock mass residual strength. At this point, the degree of rock fragments interlocking is at its minimum, and the porosity is maximized (maximum porosity of 40% is assumed). Ideally, the first and second residual envelopes describe the behavior of cohesionless, perfectly frictional material with different degrees of interlocking.</p>
+<p>The R calculation from the monogram based on porosity and roundedness can be approximated with the following equation:</p>
+<div class="math" id="equation-modelimassr">
+<span class="eqno">(9)</span>\[ R = 15 - (34 - 5.5 ri) \times  n\]</div>
+<p>where <span class="math">\(n\)</span> is prosity, <span class="math">\(ri\)</span> is the roundedness index, with <span class="math">\(ri=0\)</span> for partly rounded/smooth blocks, <span class="math">\(ri=1\)</span> for angular/rough blocks, and <span class="math">\(ri=2\)</span> for very sharp, angular/very rough blocks.
+When the shear strength from the Barton &amp; Kjaernsli (1981) equation is converted to a strength envelope in <span class="math">\(\sigma_1-\sigma_3\)</span> space, it can be approximated by a Hoek-Brown envelope with the following parameters:</p>
+<div class="math" id="equation-modelimasssr">
+<span class="eqno">(10)</span>\[ s = 0\]</div>
+<div class="math" id="equation-modelimassar">
+<span class="eqno">(11)</span>\[ a = 0.6 + [(1 - 0.075 ri)-0.6] \times \frac{n}{n_{max}}\]</div>
+<div class="math" id="equation-modelimassmbr">
+<span class="eqno">(12)</span>\[ m_b = 0.1614 \times \exp{(0.0836 \phi_b)}\]</div>
+<p>where <em>in_weak_phib</em> is equivalent to <span class="math">\(\phi_b\)</span> in Eq. <a class="reference internal" href="#equation-modelimassbarton">(8)</a> (in degrees and default = 30 deg) and <span class="math">\(n_{max}\)</span> is the maximum porosity considered in the Barton &amp; Kjaernsli (1981) nomogram, or 40%.</p>
+<p>The Hoek-Brown approximation of Eq. <a class="reference internal" href="#equation-modelimassbarton">(8)</a> that is implemented in <em>IMASS</em> assumes formation and interaction of very sharp, angular, and very rough fragments during the course of bulking, from a porosity of 0% to 40% in the Barton &amp; Kjaernsli (1981) nomogram in <a href="#modelimass-4">Figure  4</a> (shown with the dashed red line). This also takes into account Itasca’s experience in caving simulations whereby having VSI cut-off of 0.67 (corresponding to 40% porosity) is more realistic than allowing the rock mass to bulk up to 45% porosity. Therefore, Eq. <a class="reference internal" href="#equation-modelimassar">(11)</a> can be further simplified to:</p>
+<div class="math" id="equation-modelimassar2">
+<span class="eqno">(13)</span>\[ a = 0.6 +  \frac{VSI}{0.67} \times 0.25\]</div>
+<p>The maximum porosity in this equation is fixed at 0.67 . Therefore, to reach the true residual strength for the rock mass, a zone must bulk to 40% porosity. VSI is the current total VSI for a zone that can be monitored with <em>emer_bulking_totvsi</em> in <em>IMASS</em>. It can be seen that <span class="math">\(s\)</span> and <span class="math">\(m_b\)</span> parameters are equal between post-peak and ultimate strength envelopes, and the only parameter that controls the transition between these two is <span class="math">\(a\)</span>:</p>
+<ul class="simple">
+<li>For the post-peak envelope (red curve), porosity is fixed to be 0 (VSI = 0.67), resulting in <span class="math">\(a\)</span> = 0.6.</li>
+<li>For the ultimate strength envelope (blue curve), the default porosity is assumed to be 40% (VSI = 0.67), resulting in <span class="math">\(a\)</span> = 0.85.</li>
+</ul>
+<p>Note that the maximum bulking capacity of the rock mass can be controlled with <em>in_bulking_maxtotvsi</em> to a value below 0.67. Lowering the maximum allowable VSI for the rock mass would allow for partial weakening of the residual strength envelope between the upper boundary defined by <span class="math">\(a\)</span> = 0.6 and a lower boundary defined by <span class="math">\(a\)</span> = 0.85 (for <em>in_bulking_maxtotvsi</em> = 0.67).</p>
+<p>The defined Hoek-Brown parameters for the residual envelopes would result in the following:</p>
+<ul class="simple">
+<li>Zero or near zero apparent cohesion and a high friction angle at low confinement for the post-peak envelope, therefore mimicking the cohesion-weakening, frictional-strengthening behavior for the rock mass as it transitions from the peak envelope to post-peak.</li>
+<li>Lower friction angle at low confinement for the ultimate strength envelope. This allows for gradual reduction of the rock mass friction angle from its mobilized post-peak value to the ultimate residual state with increasing porosity (bulking).</li>
+<li>Both post-peak and ultimate strength envelopes continue to use the peak Hoek-Brown envelope at higher confinement (above brittle-ductile transition, see <a class="reference internal" href="#modelimass-transition"><span class="std std-ref">Transition between Peak and Post-Peak Envelopes</span></a>.</li>
+</ul>
+</div>
+<div class="section" id="transition-between-peak-and-post-peak-envelopes">
+<span id="modelimass-transition"></span><h4>Transition between Peak and Post-Peak Envelopes</h4>
+<p>When yielding occurs, the instantaneous cohesion weakens linearly from the peak surface to post-peak (zero cohesion when unconfined) with accumulated plastic shear strain (second invariant of the deviatoric plastic strain tensor). The critical shear strain is defined as the total plastic shear strain required to drop the cohesion of a rock mass from peak to zero. At this point, the rock mass is at post-peak strength. The smaller the critical plastic strain, the more brittle a rock mass. Unfortunately, little is known about the critical plastic shear strain required to reach residual strength, particularly on a rock-mass scale. There are very few guidelines for the selection of values for use in modeling.</p>
+<p>Some generalizations may be made regarding these effects. For example, a higher-quality rock mass (higher GSI) with greater solid rock volume participating in the failure process often will act in a more brittle fashion, thus having a lower critical strain value. Conversely, a lower-quality rock mass (lower GSI) with higher fracture frequency often will act in a more ductile fashion, thus having a larger value of the critical strain.</p>
+<p>An estimate of the relation between the critical strain and GSI was determined by a back analysis of rock mass failure in caves and other openings as part of the MMT project (Lorig, 2000). The estimate provides a starting point for describing the degree of strain-softening to be used in caving simulation:</p>
+<div class="math" id="equation-modelimasscriticalstrain">
+<span class="eqno">(14)</span>\[ \epsilon^p_{crit} = (12.5 - 0.125 \times GSI) / (100d)\]</div>
+<p>where <span class="math">\(d\)</span> = zone size in meters.</p>
+<p>The presence of zone size within this relation recognizes that the critical strain parameter is zone-size dependent in continuum models, where shearing tends to be resolved in a band approximately one zone thick. By default, in <em>IMASS</em>, a critical plastic shear strain is calculated and stored for each zone based on Eq. <a class="reference internal" href="#equation-modelimasssr">(10)</a> using the zone size. A multiplier <span class="math">\(M\)</span> can be applied to the calculated zone-based critical plastic shear strain for refinement of zone brittleness.</p>
+</div>
+<div class="section" id="transition-between-post-peak-and-ultimate-strength-envelopes">
+<h4>Transition between Post-Peak and Ultimate Strength Envelopes</h4>
+<p>Between the post-peak envelope and ultimate strength envelope, the frictional characteristics of the rock mass is governed by its volumetric strain increment (VSI) instead of plastic shear strain. This replicates the dependency of rockfill shear strength to porosity in the Barton &amp; Kjaernsli (1981) criteria. Since VSI for a zone is not monotonically increasing (unlike plastic shear strain), rock mass strength envelope can weaken or strengthen between post-peak and ultimate strength envelopes as a function of porosity changes. This a powerful feature that allows for capturing strength gain in a rock mass due to recompaction.</p>
+<div class="figure align-center" id="id6">
+<span id="modelimass-5"></span><a class="reference internal image-reference" href="../../../../_images/imass-5.png"><img alt="../../../../_images/imass-5.png" src="../../../../_images/imass-5.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 5: Material response in the IMASS constitutive model.</span></p>
+</div>
+<p>The rock mass response in terms of stress-strain behavior in <em>IMASS</em> is shown in <a href="#modelimass-5">Figure  5</a>, which summarizes the scale used for softening/weakening of the rock mass between peak to post-peak and then between post-peak and ultimate strength envelopes.</p>
+</div>
+<div class="section" id="stress-point-evolution-domains">
+<h4>Stress Point Evolution Domains</h4>
+<p>Fitting Hoek-Brown curves to Barton &amp; Kjaernsli (1981) shear strength criteria can lead to residual and peak strength envelopes crossing in principal stress space at relatively high confinements, depending on the rock mass input properties. To capture a reliable brittle-ductile transition for the rock mass, it is critical to properly account for zone stress evolution and correction in different domains defined by the confining stresses at which the strength envelopes cross one another.</p>
+<p>The behavior of three points (A, B, and C) representing different confinement domains in <em>IMASS</em> stress space is shown in <a href="#modelimass-6">Figure  6</a> and briefly described here. If a stress point is found outside of the peak envelope, somewhere near A, the material yields, the stress point is moved to the peak envelope, and the material accumulates some plastic shear strain. When the stress point is found outside the yield surface during another cycle, instantaneous cohesion and friction angles are calculated (tangent line to the peak envelope at the stress point’s <span class="math">\(\sigma_3\)</span> value, called cohesion_peak and friction_peak). A new yield surface is calculated by linearly interpolating the accumulated plastic shear strain as a parameter between cohesion_peak and cohesion_postpeak and friction_peak and friction_postpeak. The stress point is moved to this new yield surface and more plastic shear strain is accumulated. Eventually, stress point A might reach the post-peak envelope. When this occurs, the strength characteristics of the material start to be governed by its volumetric strain increment (VSI) instead of plastic shear strain. The evolution of friction and apparent cohesion from the post-peak envelope to the ultimate strength envelope is linearly interpolated by using VSI as a parameter between instantaneous cohesion and the friction angle of the two envelopes at the stress point’s <span class="math">\(\sigma_3\)</span> value. The interpolation assumes VSI is equal to zero and 0.67 at the post peak envelope and ultimate strength envelope (40% porosity), respectively.</p>
+<p>Yield surfaces of stress point B evolve from the peak Hoek-Brown surface directly to the ultimate residual strength envelope based on VSI and the same rules as above (eliminating the post-peak envelope in the calculations).</p>
+<p>Stress point C is simply moved to the Hoek-Brown yield surface (plastic shear strain and VSI are accumulated). However, in that region, the material does not weaken and behaves perfectly plastic. This allows reproduction of the brittle to ductile transition that is observed in rock masses at high confinement. In general, hardening is not allowed in <em>IMASS</em> implementation when residual strength envelopes cross the peak yield surface.</p>
+<div class="figure align-center" id="id7">
+<span id="modelimass-6"></span><a class="reference internal image-reference" href="../../../../_images/imass-6.png"><img alt="../../../../_images/imass-6.png" src="../../../../_images/imass-6.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Figure 6: IMASS stress point evolution domains.</span></p>
+</div>
+</div>
+<div class="section" id="mohr-coulomb-fit">
+<h4>Mohr-Coulomb Fit</h4>
+<p>Linear interpolation of Hoek-Brown <span class="math">\(m\)</span>, <span class="math">\(s\)</span>, and <span class="math">\(a\)</span> parameters does not give a smooth transition of the strength envelope between peak and residual strength. Therefore, <em>IMASS</em> performs a linear interpolation directly between the linear Mohr-Coulomb fits at the three defining yield surfaces for the rock mass based on the current stress state. The Mohr-Coulomb approximation of the Hoek-Brown strength envelopes is performed over a range bounded by the current zone stress level (<span class="math">\(\sigma_3\)</span>) and  <span class="math">\(\sigma_3+\Delta \sigma_3\)</span>, where <span class="math">\(\Delta \sigma_3\)</span> = 10 Pa.</p>
+</div>
+<div class="section" id="tension-weakening-and-tension-cutoff">
+<h4>Tension Weakening and Tension Cutoff</h4>
+<p>The peak tensile strength for a rock mass in <em>IMASS</em> is adopted as the minimum of:</p>
+<ul class="simple">
+<li>the tensile strength determined by the HB model (<span class="math">\(sUCS⁄m_b\)</span> );</li>
+<li>the tensile strength determined by the equivalent MC strength line (<span class="math">\(c⁄\tan⁡{\phi}\)</span>); and</li>
+<li>the input tensile strength, either by a scalar value (<em>calc_stren_tension</em>), or by a table-like property (<em>in_weak_tabletension</em>).</li>
+</ul>
+<p>With the growth of new fractures during shear, the tensile strength of every zone is linearly weakened with the increase of its accumulated plastic shear strain (see <a href="#modelimass-7">Figure  7</a> a) until it reaches its post-peak value (note that post-peak tensile strength is 0 with the default residual parameters).</p>
+<div class="figure align-center" id="id8">
+<span id="modelimass-7"></span><a class="reference internal image-reference" href="../../../../_images/imass-7.png"><img alt="../../../../_images/imass-7.png" src="../../../../_images/imass-7.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 7: Graphical representation of Hoek-Brown failure envelope with tension weakening: (a) Tensile strength degradation occurring with accumulated plastic shear strain. (b) Sudden loss of tensile strength during tensile failure (yellow line represents tensile shutoff).</span></p>
+</div>
+<p>The softening of a rock mass can be attributed to strain-based damage manifesting as intact rock block damage (accumulation of micro-cracks) and joint slip/dislocation and/or extension. So far, through the standard strain-softening relation, only shear softening has been considered. However, shear failure is only one yielding mechanism for a rock mass. Tensile failure can also be expected. Brown (2003) has shown this within the conceptual model of caving based on the review of fracture models within a cave mine.</p>
+<p>Tensile failure is dominated by the existence of pre-existing fractures in the rock mass. Because there is no consideration of the joint orientation in a strain-softening model, the impact of independent tensile failure due to pre-existing joints must be accounted for in another way. <a href="#modelimass-8">Figure  8</a> shows how it is feasible that tension can soften independently of cohesion when a tensile failure mechanism is simulated in a rock mass.</p>
+<div class="figure align-center" id="id9">
+<span id="modelimass-8"></span><a class="reference internal image-reference" href="../../../../_images/imass-8.png"><img alt="../../../../_images/imass-8.png" src="../../../../_images/imass-8.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 8: Schematic diagram of tensile failure that does not affect cohesive strength.</span></p>
+</div>
+<p>This phenomenon has previously been described by Pine et al. (2007): “Crack growth orthogonal to the direction of dilation in a compressive stress field does not immediately produce a mechanical instability, as observed in tensile fields … It is this stable fracture process in compression that results in large differences between tensile and compressive strengths.”</p>
+<p>The mechanism of independent tensile softening is implemented in <em>IMASS</em>, i.e., in addition to softening tension and cohesion at the same rate based on plastic shear strain, tension is allowed to soften independently of the cohesion in the instance of a tensile yield state within a zone. For implementation of such a mechanism in <em>IMASS</em>, the rock mass is treated perfectly brittle in tension. Therefore, any time a zone reaches its peak tensile strength, it is presumed to permanently weaken to zero tensile strength in a perfectly brittle fashion as represented in <a href="#modelimass-8">Figure  8</a> b. If that happens during the simulation, then the <em>emer_weak_istenweak</em> is set to a value greater than zero (and less than or equal to 1) for that zone (instead of zero). Note that a zone that has not failed in tension can reach a zero tensile strength only by tension weakening due to accumulated plastic shear strain; in that case, the <em>emer_weak_istenweak</em> parameter is still equal to zero. The perfectly brittle response of a zone in tension can be turned off by setting the <em>flag_weak_tencut</em> to false. In that case, a perfectly plastic behavior is assumed for a zone in tension when that zone reaches its peak tensile strength, unless it progressively decreases by accumulation of plastic shear strain or if a table that correlates tension weakening to accumulated plastic tensile strain is assigned to the zone (<em>in_weak_tabletension</em>).</p>
+</div>
+</div>
+<div class="section" id="dilation-angle">
+<h3>Dilation Angle</h3>
+<p>During mining operations such as caving, the rock mass will increase in volume (or bulk) due to dilation under shear, or due to volumetric expansion under tension. Thus, the specification of a dilation angle within the numerical model is important, as it controls the rate of bulking during shearing, which is a natural consequence of advance or differential draw (in caving). <a href="#modelimass-9">Figure  9</a> shows non-uniform bulking in the mobilized zone as a consequence of the two bulking mechanisms acting simultaneously within the model.</p>
+<div class="figure align-center" id="id10">
+<span id="modelimass-9"></span><a class="reference internal image-reference" href="../../../../_images/imass-9.png"><img alt="../../../../_images/imass-9.png" src="../../../../_images/imass-9.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Figure 9: Non-uniform bulking in the mobilized zone (Sainsbury, 2010).</span></p>
+</div>
+<p>Within <em>IMASS</em>, dilation angle is set as a standard material property and drops to zero once the user-defined maximum bulking factor is reached. This prevents zones from expanding to unrealistic levels during shear. A constant dilation angle can be assigned to the rock mass (i.e., equal everywhere) based on the available guidelines such as those provided by Hoek and Brown (1997). Alternatively, a more advanced dilation model is available that constantly updates the dilation angle for each zone as a function of confining stress and porosity (or VSI). <a href="#modelimass-10">Figure  10</a> presents a graphical representation of this model as implemented in <em>IMASS</em>. In this piece-wise model, the dilation angles at zero porosity are informed by the results of Bonded Block Modeling (BBM) (Garza-Cruz et al., 2019). The linear section of the model between 15% to 45% porosity is equivalent to the dilatant part of Barton’s approximation of friction angle for rockfill (i.e., <span class="math">\(R\log{S/\sigma_n}\)</span>). Finally, a function that exponentially decays with porosity connects the two parts of the model between 0 and 15% porosity.</p>
+<div class="figure align-center" id="id11">
+<span id="modelimass-10"></span><a class="reference internal image-reference" href="../../../../_images/imass-10.png"><img alt="../../../../_images/imass-10.png" src="../../../../_images/imass-10.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 10: Dilation model in <em>IMASS</em> as a function of confining stress and porosity.</span></p>
+</div>
+<p>The necessity for assembling this model stems from the fact that all of the available empirical dilation models based on laboratory test data, such as those proposed by Walton and Diederichs (2015) and Alejano and Alonso (2005), only apply to rock deformations of the order of thousands of microstrains. This level of strain corresponds only to rock mass softening from peak to post-peak envelopes; therefore, these empirical models do not provide any insight into the estimation of dilation angle at high porosities (between post-peak and ultimate strength envelopes).</p>
+</div>
+<div class="section" id="id1">
+<h3>Modulus Softening</h3>
+<p>As a rock mass bulks via shear or tension, it is expected to experience a drop in modulus. Representation of this softening is required in order to properly capture how new loads are carried in bulked regions. In addition, it is necessary to allow for modulus hardening that can occur when stresses are shed back onto bulked regions (inducing recompaction).</p>
+<p>The results of laboratory testing by Pappas and Mark (1993) (<a href="#modelimass-11">Figure  11</a>) show that the modulus of rock drops in a nonlinear fashion with increased bulking, and that the rate of modulus change is a function of fragment shape and intact strength. Based on the results of these tests, they developed a series of equations that can be used to estimate modulus as a function of bulking factor (BF), the uniaxial compressive strength (UCS, in psi) of the intact rock fragments, as well as the aspect ratio of the fragments denoted by X1 and X2 in <a href="#modelimass-table-1">Table  1</a>. Note that the Pappas and Mark (1993) definition of BF (BF = 1 + broken-rock bulking factor, defined here as B) is different from what is used typically in caving. The chart shown in <a href="#modelimass-12">Figure  12</a> can be used to estimate the thickness-to-width (aspect) ratio (specified as 0.6 in <em>IMASS</em>).</p>
+<div class="figure align-center" id="id12">
+<span id="modelimass-11"></span><a class="reference internal image-reference" href="../../../../_images/imass-11.png"><img alt="../../../../_images/imass-11.png" src="../../../../_images/imass-11.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Figure 11: Best-fit tangent modulus (in psi) versus void ratio for all rock types tested by Pappas and Mark (1993). The y-axis (modulus) limit of 50,000 psi in this plot is equal to 345 MPa. The lower x-axis (void ratio) limit of 1.9 is equivalent to a porosity of 47%.</span></p>
+</div>
+<span id="modelimass-table-1"></span><table border="1" class="colwidths-given icg1 docutils" id="id13">
+<caption><span class="caption-text">Table 1: Modulus-Softening Equations Developed by Pappas and Mark (1993)</span></caption>
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>&#160;</td>
+<td>Tangent (<span class="math">\(E_t\)</span>) Modulus at Various Bulking Factors (BF) (Pappas and Mark 1993)</td>
+</tr>
+<tr class="row-even"><td>BF = 1.25</td>
+<td><span class="math">\(E_t = 2.49 X_1 + 41200 X_2 - 24800\)</span></td>
+</tr>
+<tr class="row-odd"><td>BF = 1.30</td>
+<td><span class="math">\(E_t = 1.76 X_1 + 23800 X_2 - 15700\)</span></td>
+</tr>
+<tr class="row-even"><td>BF = 1.25</td>
+<td><span class="math">\(E_t = 1.32 X_1 + 16300 X_2 - 11400\)</span></td>
+</tr>
+<tr class="row-odd"><td>BF = 1.40</td>
+<td><span class="math">\(E_t = 0.933 X_1 + 11300 X_2 - 7900\)</span></td>
+</tr>
+<tr class="row-even"><td>BF = 1.50</td>
+<td><span class="math">\(E_t = 0.568 X_1 + 6900 X_2 - 500\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is based on laboratory oedometer tests on materials of varying bulking factor (BF), intact strength and fragment shape. <span class="math">\(X_1\)</span> is the uniaxial compressive strength (UCS) of the intact rock fragments (in psi); <span class="math">\(X_2\)</span> is the thickness-to-width (aspect) ratio of the fragments.</p>
+</div>
+<div class="figure align-center" id="id14">
+<span id="modelimass-12"></span><a class="reference internal image-reference" href="../../../../_images/imass-12.png"><img alt="../../../../_images/imass-12.png" src="../../../../_images/imass-12.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Figure 12: Pappas and Mark (1993) chart for estimation of fragment thickness-to-width ratio.</span></p>
+</div>
+<p>The modulus softening equations listed in <a href="#modelimass-table-1">Table  1</a> for different BFs can be summarized in one equation by fitting curves to the X1-X2 coefficients and constants. The curves are expressed as exponential functions of VSI (bulking or B):</p>
+<div class="math" id="equation-modelimasset">
+<span class="eqno">(15)</span>\[ E_t = [A(145 X1)+B X2-C]/145\]</div>
+<p>where</p>
+<div class="math" id="equation-modelimasseta">
+<span class="eqno">(16)</span>\[ A = 0.1316 \times VSI^{(-2.145)}\]</div>
+<div class="math" id="equation-modelimassetb">
+<span class="eqno">(17)</span>\[ B=1110.5 \times VSI^{(-2.574)}\]</div>
+<div class="math" id="equation-modelimassetc">
+<span class="eqno">(18)</span>\[ C=981.14 \times VSI^{(-2.318)}\]</div>
+<p>During simulation, the broken-rock bulking factor in each zone is given by its VSI. If the broken-rock bulking factor is greater than 0.25, the Pappas and Mark equation is used to establish a new tangent modulus for the zone based on the user-defined UCS, shape factor (0.6 in <em>IMASS</em>), and BF (caved rock bulking factor + 1). For broken-rock bulking factors less than 0.25, the tangent modulus is calculated through interpolation between the in-situ rock mass modulus and the Pappas and Mark modulus corresponding to a broken-rock bulking factor of 0.25. <a href="#modelimass-13">Figure  13</a> through <a href="#modelimass-14">Figure  14</a> show the relations in graphical form as a function of initial modulus and UCS. Because the modulus is updated constantly via the zone-based VSI, it allows for both modulus softening (during bulking) and modulus hardening (e.g., during re-compaction of exhausted or undrawn parts of the cave).</p>
+<div class="figure align-center" id="id15">
+<span id="modelimass-13"></span><a class="reference internal image-reference" href="../../../../_images/imass-13.png"><img alt="../../../../_images/imass-13.png" src="../../../../_images/imass-13.png" style="width: 450px;" /></a>
+<p class="caption"><span class="caption-text">Figure 13: Sensitivity of Pappas and Mark modulus-softening relations to UCS (<span class="math">\(E_i\)</span> = 10 GPa, aspect ratio = 0.5).</span></p>
+</div>
+<div class="figure align-center" id="id16">
+<span id="modelimass-14"></span><a class="reference internal image-reference" href="../../../../_images/imass-14.png"><img alt="../../../../_images/imass-14.png" src="../../../../_images/imass-14.png" style="width: 450px;" /></a>
+<p class="caption"><span class="caption-text">Figure 14: Sensitivity of Pappas and Mark modulus-softening relations to initial rock-mass modulus, <span class="math">\(E_i\)</span> (UCS = 100 MPa, aspect ratio = 0.5).</span></p>
+</div>
+</div>
+<div class="section" id="density-adjustment">
+<h3>Density Adjustment</h3>
+<p>Due to the large displacements involved in caving, a caving simulation run in large-strain mode (i.e., node coordinates are updated based on calculated strain) would involve extreme mesh deformation. While it may be possible to employ dynamic remeshing techniques to accommodate this, it has been shown that caving can be simulated in small-strain mode as long as mass balance is maintained. In small-strain mode, node coordinates are not updated and the zone density is adjusted continuously in <em>IMASS</em> to reflect the volumetric changes that accompany bulking, according to the following relation:</p>
+<div class="math" id="equation-modelimassrhod">
+<span class="eqno">(19)</span>\[\rho_d = \rho_s / (1+B)\]</div>
+<div class="math" id="equation-modelimassfrn">
+<span class="eqno">(20)</span>\[B = n/(1-n)\]</div>
+<p>where</p>
+<blockquote>
+<div><p><span class="math">\(\rho_d\)</span>        = dry density of caved rock;</p>
+<p><span class="math">\(\rho_s\)</span>        = solid density of in-situ rock;</p>
+<p>B = bulking factor;</p>
+<p>1 + B = swell factor; and</p>
+<p>n = porosity.</p>
+</div></blockquote>
+<p>By default, density adjustment is not performed in <em>IMASS</em> (<em>flag_bulking_denadj</em> = off). It can be activated by setting <em>flag_bulking_denadj</em> to true/on/yes, in which case, <em>IMASS</em> will adjust zone density based on the current value of VSI.</p>
+</div>
+<div class="section" id="ubiquitous-joints">
+<h3>Ubiquitous Joints</h3>
+<p>To keep <em>IMASS</em> implementation clean, the ubiquitous joint logic is borrowed from <span class="codename">FLAC3D</span> within the hierarchy structure.</p>
+<p>Tensile strength, cohesion, and friction angle control the Mohr-Coulomb envelope for the ubiquitous joints; dip and dip direction are set equal to those of structures or joints to represent their true orientation.</p>
+</div>
+</div>
+<div class="section" id="single-residual-envelope-implementation-similar-to-cavehoek-in-imass">
+<h2>Single Residual Envelope Implementation (Similar To Cavehoek) In <em>IMASS</em></h2>
+<p>IMASS provides the user with the option to choose between a single residual envelope approach (similar to the CaveHoek approach) or the Barton shear strength approach in which the post-peak behavior is defined by two residual envelopes bounded by 0 and a higher porosity (e.g., 40%) for the rock mass. The default method to simulate post-peak in IMASS is the Barton shear strength criteria (<em>flag_weak_barton</em> = true). While there are some minor differences between an IMASS model with one residual envelope and CaveHoek (more details on fundamental differences are presented in <a class="reference internal" href="#modelimass-differences"><span class="std std-ref">Differences between the Single Residual Envelope Implementation in IMASS and the CaveHoek Model</span></a>), this option would streamline the comparison between the IMASS and CaveHoek results if necessary, within one constitutive model. It also provides the flexibility to turn on the one residual envelope depending on the application (e.g., when large strains are not anticipated).</p>
+<p>To switch to the post-peak simulation approach similar to CaveHoek, <em>flag_weak_barton</em> needs to be set to false. The residual envelope is then defined by <em>in_weak_chmbr</em> (default 4.33), <em>in_weak_char</em> (default 1.0), and a residual s value that is set to zero and can’t be modified by the user. This residual envelope is treated similarly to the post-peak envelope in a two-residual implementation, meaning that weakening between the peak strength envelope and the residual envelope is controlled by the accumulated plastic shear strain. The VSI-based modulus and density adjustment, dilation model, and dilation shut-off remain unchanged.</p>
+<div class="section" id="differences-between-the-single-residual-envelope-implementation-in-imass-and-the-cavehoek-model">
+<span id="modelimass-differences"></span><h3>Differences between the Single Residual Envelope Implementation in IMASS and the CaveHoek Model</h3>
+<p>The fundamental differences between CaveHoek and <em>IMASS</em> are the updated yield surfaces and new property names. Additional differences include the following.</p>
+<ul class="simple">
+<li><em>IMASS</em> does not allow strength hardening when the residual envelopes cross the peak envelope (CaveHoek does).</li>
+<li><em>IMASS</em>, by default, uses a constant dilation angle specified by property <em>in_bulking_dil</em> before reaching the maximum VSI. At this point, an experimental dilation model as described in <a class="reference internal" href="#modelimass-modulus-softening"><span class="std std-ref">Modulus  Softening</span></a> is implemented in <em>IMASS</em>; however, this model is different from those available in CaveHoek (see <em>hb_doption</em> in CaveHoek).</li>
+<li>In <em>IMASS</em>, the calculated properties are updated automatically when the input properties for given zones are updated (see <a class="reference internal" href="#modelimass-properties"><span class="std std-ref">PROPERTIES IN *IMASS*</span></a>).</li>
+</ul>
+<p>It should be noted that despite implementing the single residual envelope mode in <em>IMASS</em>, the results might slightly differ from those obtained from CaveHoek due to a more advanced apex correction in <em>IMASS</em> and other minor differences between the two models, such as allowing/limiting strength hardening when the peak and residual envelopes cross each other.</p>
+</div>
+</div>
+<div class="section" id="sloss-an-indicator-for-damage-in-imass">
+<h2>Sloss, an indicator for damage in <em>IMASS</em></h2>
+<p>Sloss is an indicator of damage in <em>IMASS</em> that can be used to evaluate the amount of softening/weakening that a rock mass has gone through. Sloss varies between [-1, 1].</p>
+<p>Between Peak and post-peak envelopes:</p>
+<div class="math" id="equation-modelimassesloss1">
+<span class="eqno">(21)</span>\[sloss = 1 - \frac{plastic\;shear\;strain}{critical\;plastic\;shear\;strain}\]</div>
+<p>Between post-peak and ultimate strength envelopes:</p>
+<div class="math" id="equation-modelimasssloss2">
+<span class="eqno">(22)</span>\[sloss = -\frac{volumetric\;strain}{maximum\;allowable\;volumetric\;strain}\]</div>
+<p><a href="#modelimass-15">Figure  15</a> schematically represents sloss for different degrees of damage and disturbance in a rock mass. At “C” the rock mass is assumed to have undergone fracturing, but the resulting rock fragments are still fully interlocked (cohesion in the rock mass is completely lost but friction is high). At this point the stress is above the spalling or fracturing strength of the rock. However, experience has shown that the underground opening is stable with minimal support. At “D” the degree of rock fragments interlocking is at its minimum and the porosity is maximized. Unlined shafts or minimally supported drifts at this stress state are considered unserviceable. If sloss is calibrated to field observations in terms of damage, it can be a powerful tool for prediction of the serviceability and stability of the structure.</p>
+<div class="figure align-center" id="id17">
+<span id="modelimass-15"></span><a class="reference internal image-reference" href="../../../../_images/imass-15.png"><img alt="../../../../_images/imass-15.png" src="../../../../_images/imass-15.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 15: Schematic representation of <em>sloss</em> for various degrees of damage in a rock mass (cave schematic after Potvin 2018).</span></p>
+</div>
+</div>
+<div class="section" id="examples-using-imass">
+<span id="modelimass-examples"></span><h2>Examples using <em>IMASS</em></h2>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="properties-in-imass">
+<span id="modelimass-properties"></span><h2>Properties In <em>IMASS</em></h2>
+<p><em>IMASS</em> properties have been logically grouped as shown in Table 2. Property names have three parts, the first two parts corresponding to the groups in Table 2. The first piece of the property name is either <strong>in_</strong>, <strong>calc_</strong>, <strong>emer_</strong>, or <strong>flag_</strong> to distinguish inputs, calculated values, emergent values, or flags, respectively. These categories are columns in Table 2. Row categories group properties based on peak strength, modulus, strength weakening, dilation, bulking and modulus softening, stress at failure, and ubiquitous joints. These groupings form the second portion of the property name (<em>stren_</em>, <em>mod_</em>, <em>weak_</em>, <em>bulking_</em>, <em>sfail_</em>, <em>uj_</em>, respectively). The remaining portion of a property name is a specific descriptive name such as <em>GSI</em> or <em>youngintact</em>. Without the two prefixes, the third portion of the property names are somewhat similar to many of the property names used in the original CaveHoek model. Property names are described in detail in <a class="reference internal" href="#imassprops"><span class="std std-ref">IMASS Properties</span></a>.</p>
+<p>The <em>italicized</em> properties in Table 2 are the minimum input properties that are required for <em>IMASS</em>. In general, the Input properties and Flags are parameters provided by the user. Calculated properties are the sets of parameters that are initially calculated by <em>IMASS</em> based on the Input properties and Flags. Every time the Input properties or Flags are assigned or updated by the user, the calculated properties will be updated automatically by <em>IMASS</em>. The Calculated properties are generally not modifiable; however, there are some exceptions that will be listed in <a class="reference internal" href="#imassprops"><span class="std std-ref">IMASS Properties</span></a>. Emergent properties are the sets of parameters that evolve as a consequence of stress changes in the model. Those parameters are not modifiable by the user.</p>
+<span id="modelimass-prop-table"></span><table border="1" class="colwidths-given icg1 docutils" id="id18">
+<caption><span class="caption-text">Table 2: <em>IMASS</em> material property names</span></caption>
+<colgroup>
+<col width="16%" />
+<col width="28%" />
+<col width="28%" />
+<col width="28%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head"><strong>Flags/Inputs</strong></th>
+<th class="head"><strong>Calculated</strong></th>
+<th class="head"><strong>Emergent</strong></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Peak</strong></td>
+<td>flag_stren_mod(off)</td>
+<td>calc_stren_global</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>strength</strong></td>
+<td><em>in_stren_gsi</em></td>
+<td>calc_stren_tension</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><em>in_stren_mi</em></td>
+<td>calc_stren_ucsrm</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><em>in_stren_ucsi</em></td>
+<td>calc_stren_mb</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>calc_stren_s</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>calc_stren_a</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><strong>Modulus</strong></td>
+<td><em>in_mod_youngintact</em></td>
+<td>calc_mod_youngrm</td>
+<td>emer_mod_young</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>calc_mod_poisson</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><strong>Strength</strong></td>
+<td>flag_weak_barton(on)</td>
+<td>calc_weak_ecrit</td>
+<td>emer_weak_sloss</td>
+</tr>
+<tr class="row-odd"><td><strong>weakening</strong></td>
+<td>flag_weak_tencut(on)</td>
+<td>calc_weak_zsize</td>
+<td>emer_weak_esplastic</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>in_weak_multecrit</td>
+<td>&#160;</td>
+<td>emer_weak_istenweak</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>in_weak_chmbr(4.33)</td>
+<td>&#160;</td>
+<td>emer_stren_mcfric</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>in_weak_char(1.0)</td>
+<td>&#160;</td>
+<td>emer_stren _mccoh</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>in_weak_phib(30)</td>
+<td>&#160;</td>
+<td>emer_stren_tension</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>in_weak_sloss(1.0)</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>in_weak_tabletension</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><strong>Dilation</strong>/</td>
+<td>flag_bulking_denadj</td>
+<td>&#160;</td>
+<td>emer_bulking_mcdil</td>
+</tr>
+<tr class="row-odd"><td><strong>bulking</strong> &amp;</td>
+<td>flag_bulking_modsoft</td>
+<td>&#160;</td>
+<td>emer_bulking_den</td>
+</tr>
+<tr class="row-even"><td><strong>modulus</strong></td>
+<td>in_bulking_den</td>
+<td>&#160;</td>
+<td>emer_bulking_totvsi</td>
+</tr>
+<tr class="row-odd"><td><strong>softening</strong></td>
+<td>in_bulking_dil</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>in_bulking_targetvsi</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>in_bulking_maxtotvsi(2/3)</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><strong>Stress at</strong></td>
+<td>flag_sfail_failtrack(off)</td>
+<td>&#160;</td>
+<td>emer_sfail_pmax</td>
+</tr>
+<tr class="row-odd"><td><strong>failure</strong></td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>emer_sfail_plungepmax</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>emer_sfail_trendpmax</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>emer_sfail_pmid</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>emer_sfail_plungepmid</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>emer_sfail_trendpmid</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>emer_sfail_pmin</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>emer_sfail_plungepmin</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>emer_sfail_trendpmin</td>
+</tr>
+<tr class="row-odd"><td><strong>Ubiquitous</strong></td>
+<td>flag_uj_usejoints(on)</td>
+<td>&#160;</td>
+<td>emer_uj_esplastic</td>
+</tr>
+<tr class="row-even"><td><strong>joint</strong></td>
+<td>in_uj_jcoh</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>in_uj_jdil</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>in_uj_jfric</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>in_uj_jten</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>in_uj_jdip</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>in_uj_jddirection(on)</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>in_uj_jnx</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>in_uj_jny</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>in_uj_jnz</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="unit-system">
+<h3>Unit System</h3>
+<p><em>IMASS</em> uses a single set of <strong>SI units</strong> as listed in <a href="#modelimass-unit-table">Table  3</a>. <strong>Do not use any other system of units in this model</strong>.</p>
+<span id="modelimass-unit-table"></span><table border="1" class="colwidths-given icg1 docutils" id="id19">
+<caption><span class="caption-text">Table 3: Unit System in <em>IMASS</em></span></caption>
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Length</td>
+<td><span class="math">\(m\)</span></td>
+</tr>
+<tr class="row-even"><td>Density</td>
+<td><span class="math">\(kg/m^3\)</span></td>
+</tr>
+<tr class="row-odd"><td>Force</td>
+<td><span class="math">\(N\)</span></td>
+</tr>
+<tr class="row-even"><td>Stress/Pressure/Modulus</td>
+<td><span class="math">\(Pa\)</span></td>
+</tr>
+<tr class="row-odd"><td>Gravity</td>
+<td><span class="math">\(m/s^2\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="resetting-properties">
+<h3>Resetting Properties</h3>
+<p>The calculated properties (for instance <em>calc_stren_mb</em>, <em>calc_stren_s</em> and <em>calc_stren_a</em>) are automatically updated when new values are specified for <em>IMASS</em> input parameters such as <em>in_stren_gsi</em>, and <em>in_stren_mi</em>. This has been done to avoid the confusion that was experienced by some users of CaveHoek, whereby <em>hb_mmi</em>, <em>hb_ssi</em>, <em>hb_aai</em> had to be set to -1 when new values were being specified for the input parameters.</p>
+<p>The following points should be kept in mind when resetting properties in <em>IMASS</em>:</p>
+<ul class="simple">
+<li>Strength properties of a zone between post-peak and ultimate strength envelope can be reset to their peak values by setting <em>in_weak_sloss</em> = +1.0. However, if a zone has accumulated sufficient plastic shear strain to be placed past the post-peak envelope whereby the zone strength properties are controlled by VSI, the input properties for the zone have to be redefined to restore it to its peak strength properties. It should be kept in mind that VSI is a <span class="codename">FLAC3D</span> property (not an <em>IMASS</em> property) and non-reversible. Therefore, even by redefining the input properties for a zone, some VSI-dependent elastic properties or density might not fully recover to their initial values.</li>
+<li>If the residual state of a zone is changed iteratively using <em>in_weak_sloss</em> or <em>in_bulking_targetvsi</em>, <em>IMASS</em> will not notice a change if those parameters are reset to a value that is already assigned to them (or is their default value). For instance, if in_bulking_targetvsi is set to 0.5 in cycle 1 and in cycle 100 in_bulking_targetvsi is again reset to 0.5, <em>IMASS</em> will not realize that.</li>
+</ul>
+<p class="h3 rubric">References</p>
+<p>Hoek, E., C. Carranza-Torres and B. Corkum. (2002) “Hoek-Brown Failure Criterion - 2002 Edition,” in NARMS-TAC 2002:  Mining and Tunneling Innovation and Opportunity, Vol. 1, 267–273, R. Hammah, W. Bawden, J. Curran, and M. Telesnicki, Eds. Toronto: University of Toronto Press.</p>
+<p>Hoek, E., and M. S. Diederichs. (2006) “Empirical Estimation of Rock Mass Modulus,” Int. J Rock Mech. Min. Sci, 43, 203–215.</p>
+<p>Lorig, L &amp; Pierce, M (2000) “Methodology and Guidelines for Numerical Modelling of Undercut and Extraction Level Behavior in Caving Mines,” Itasca Consulting Group Inc., Report to the International Caving Study.</p>
+<p>Pappas, D., and C. Mark. (1993) “Behavior of Simulated Longwall Gob Material,” Report of Investigations, 9458 USBM.</p>
+<p>Hoek, E., and E. T. Brown. (1997) “Practical Estimates of Rock Mass Strength,” Int. J. Rock Mech. Min. Sci., 34(8), 1165–1186.</p>
+<p>Pierce, M. (2013) “Numerical Modeling of Rock Mass Weakening, Bulking and Softening Associated with Cave Mining,” ARMA E-Newsletter Spring 2013, (9).</p>
+<p>Barton, N., and B. Kjaernsli. (1981) “Shear Strength of Rockfill,” J. Geotech. Engr., GT7, 873–891.</p>
+<p>Cumming-Potvin, D, Wesseloo, J, Jacobsz, SW &amp; Kearsley, E (2018), “A re-evaluation of the conceptual model of caving mechanics”, in Y Potvin &amp; J Jakubec (eds), Proceedings of the Fourth International Symposium on Block and Sublevel Caving, Australian Centre for Geomechanics, Perth, pp. 179-190.</p>
+<p>Ghazvinian, E., Garza-Cruz, T., Bouzeran, L., Fuenzalida, M., Cheng, Z., Cancino, C., and Pierce M. (2020). “Theory and Implementation of the Itasca Constitutive Model for Advanced Strain Softening (IMASS),” in <span class="bi">Proceedings Eighth International Conference and Exhibition on Mass Mining</span> (MassMin 2020): Santiago.</p>
+<p>Sainsbury, B. (2010) “Sensitivities in the numerical assessment of cave propagation” in Caving 2010: Second International Symposium on Block and Sublevel Caving. 20–22 April 2010, Australian Centre for Geomechanics.</p>
+<p class="h3 rubric" id="imassmodelprops"><span class="cmdkey">imass</span> Model Properties</p>
+<p>Use the following keywords with the <code class="xref fish fish-cmd docutils literal"><span class="pre">zone</span> <span class="pre">property</span></code> (<span class="codename">FLAC3D</span>) or <a class="reference internal" href="../../../../udec/docproject/source/elements/block/block.zone_commands/cmd_block.zone.property.html#command:block.zone.property" title="Assign values to one or more properties of zones of deformable blocks within&#013;&#010;the given range.  The advantage of assigning models and properties with this&#013;&#010;command is that each zone has its own local properties."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">property</span></code></a> (<span class="codename">3DEC</span>) command to set these properties of the <em>IMASS</em> model.</p>
+<span class="target" id="imassprops"></span><dl class="command">
+<dt id="command:imass">
+<span class="cmdname"><span class="hide">i</span><span class="hide">m</span><span class="hide">a</span><span class="hide">s</span><span class="hide">s</span><span class="hide"> </span></span></dt>
+<dd><p><strong>Peak Strength</strong></p>
+<dl class="keyword">
+<dt id="kwd:imass.flag_stren_mod">
+<span class="cmdkey"><span class="null">f</span><span class="null">l</span><span class="null">a</span><span class="null">g</span><span class="null">_</span><span class="null">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">_</span><span class="null">m</span><span class="null">o</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><p>Flag, the default is <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a>. Set this to <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a> to manually define the peak Hoek-Brown parameters <em>calc_stren_mb</em>, <em>calc_stren_s</em> and <em>calc_stren_a</em>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_stren_gsi">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">_</span><span class="null">g</span><span class="null">s</span><span class="null">i</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Geological Strength Index, GSI. This is one of primary properties with allowable input values between 0 and 100.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_stren_mi">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">_</span><span class="null">m</span><span class="null">i</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Hoek-Brown parameter for intact rock, <span class="math">\(m_i\)</span>. This is one of primary properties and must be a positive input value.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_stren_ucsi">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">_</span><span class="null">u</span><span class="null">c</span><span class="null">s</span><span class="null">i</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Uniaxial compressive strength (UCS) of intact rock [Pa], <span class="math">\(\sigma_{ci}\)</span>. This is one of primary properties and must be a positive input value.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.calc_stren_global">
+<span class="cmdkey"><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null">c</span><span class="null">_</span><span class="null">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">_</span><span class="null">g</span><span class="null">l</span><span class="null">o</span><span class="null">b</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Global rock mass strength [Pa]. See Equation <a class="reference internal" href="#equation-modelimasshberm">(5)</a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.calc_stren_tension">
+<span class="cmdkey"><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null">c</span><span class="null">_</span><span class="null">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">_</span><span class="null">t</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Tensile strength [Pa]. This value equals to <span class="math">\(s \sigma_{ci}/m_b\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.calc_stren_ucsrm">
+<span class="cmdkey"><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null">c</span><span class="null">_</span><span class="null">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">_</span><span class="null">u</span><span class="null">c</span><span class="null">s</span><span class="null">r</span><span class="null">m</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Uniaxial compressive strength [Pa]. This value equals to <span class="math">\(s^a\sigma_{ci}\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.calc_stren_mb">
+<span class="cmdkey"><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null">c</span><span class="null">_</span><span class="null">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">_</span><span class="null">m</span><span class="null">b</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Initial value of Hoek-Brown parameter <span class="math">\(m_b\)</span>. See Equation <a class="reference internal" href="#equation-modelimasshbm">(2)</a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.calc_stren_s">
+<span class="cmdkey"><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null">c</span><span class="null">_</span><span class="null">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">_</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Initial value of Hoek-Brown parameter <span class="math">\(s\)</span>. See Equation <a class="reference internal" href="#equation-modelimasshbs">(3)</a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.calc_stren_a">
+<span class="cmdkey"><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null">c</span><span class="null">_</span><span class="null">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">_</span><span class="null">a</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Initial value of Hoek-Brown parameter <span class="math">\(a\)</span>. See Equation <a class="reference internal" href="#equation-modelimasshba">(4)</a>.</p>
+</dd></dl>
+
+<p><strong>Modulus</strong></p>
+<dl class="keyword">
+<dt id="kwd:imass.in_mod_youngintact">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">m</span><span class="null">o</span><span class="null">d</span><span class="null">_</span><span class="null">y</span><span class="null">o</span><span class="null">u</span><span class="null">n</span><span class="null">g</span><span class="null">i</span><span class="null">n</span><span class="null">t</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Young’s modulus of intact rock [Pa],  <span class="math">\(E_i\)</span>. This is one of primary properties and must be a positive input value.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.calc_mod_youngrm">
+<span class="cmdkey"><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null">c</span><span class="null">_</span><span class="null">m</span><span class="null">o</span><span class="null">d</span><span class="null">_</span><span class="null">y</span><span class="null">o</span><span class="null">u</span><span class="null">n</span><span class="null">g</span><span class="null">r</span><span class="null">m</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Initial value of rock mass Young’s modulus [Pa]. See Equation <a class="reference internal" href="#equation-modelimasshberm">(5)</a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.calc_mod_poisson">
+<span class="cmdkey"><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null">c</span><span class="null">_</span><span class="null">m</span><span class="null">o</span><span class="null">d</span><span class="null">_</span><span class="null">p</span><span class="null">o</span><span class="null">i</span><span class="null">s</span><span class="null">s</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Poisson’s ratio estimated for the rock mass. See Equation <a class="reference internal" href="#equation-modelimasshbv">(6)</a>. This usually is automatically calculated based on GSI by default. If this parameter is specified before initialization of calculated properties by <em>IMASS</em>, then <em>IMASS</em> will not automatically calculate this parameter. Note that if it has been (or the user input) a positive non-zero value, the Poisson ratio will not recalculated by Equation <a class="reference internal" href="#equation-modelimasshbv">(6)</a>. To make it recalculated by Equation <a class="reference internal" href="#equation-modelimasshbv">(6)</a>, just input a zero value.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.emer_mod_young">
+<span class="cmdkey"><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">r</span><span class="null">_</span><span class="null">m</span><span class="null">o</span><span class="null">d</span><span class="null">_</span><span class="null">y</span><span class="null">o</span><span class="null">u</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Current Young’s modulus of the rock mass [Pa].</p>
+</dd></dl>
+
+<p><strong>Strength Weakening</strong></p>
+<dl class="keyword">
+<dt id="kwd:imass.flag_weak_barton">
+<span class="cmdkey"><span class="null">f</span><span class="null">l</span><span class="null">a</span><span class="null">g</span><span class="null">_</span><span class="null">w</span><span class="null">e</span><span class="null">a</span><span class="null">k</span><span class="null">_</span><span class="null">b</span><span class="null">a</span><span class="null">r</span><span class="null">t</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>Flag, the default is <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>. Set this to <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a> to disable Barton &amp; Kjaernsli (1981) shear strength criteria (two residual envelopes) to be used for post-peak behavior and use the single residual method instead.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.flag_weak_tencut">
+<span class="cmdkey"><span class="null">f</span><span class="null">l</span><span class="null">a</span><span class="null">g</span><span class="null">_</span><span class="null">w</span><span class="null">e</span><span class="null">a</span><span class="null">k</span><span class="null">_</span><span class="null">t</span><span class="null">e</span><span class="null">n</span><span class="null">c</span><span class="null">u</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>Flag, the default is <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>. Set this to <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a> to disable the tension cutoff option. A material is deemed to be tension weakened if it exceeds its tensile strength in at least one of the zone’s tet overlays. If a material is tension weakened (property <em>emer_weak_istenweak</em> is calculated by <em>IMASS</em> as the ratio of total volume of tet overlays failed in tension to the overall zone volume) and if <em>flag_weak_tencut</em> =  <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>, material tensile strength will be set to zero.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_weak_multecrit">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">w</span><span class="null">e</span><span class="null">a</span><span class="null">k</span><span class="null">_</span><span class="null">m</span><span class="null">u</span><span class="null">l</span><span class="null">t</span><span class="null">e</span><span class="null">c</span><span class="null">r</span><span class="null">i</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>A multiplier for critical plastic shear strain for the matrix material. This property must be assigned by the user. Critical strain (Equation 13) is initially calculated based on input properties as (12.5 - 0.125 * GSI + 1.0e-5) / (100.0 * <em>calc_weak_zsize</em>) and then multiplied directly by <em>in_weak_multecrit</em>; the resulting product is stored in variable <em>calc_weak_ecrit</em>. Material can be made to have a more brittle response by setting <em>in_weak_mult_ecrit</em> to a value less than 1.0 (and greater than 0.0) or more ductile by setting <em>in_weak_multecrit</em> to a value &gt; 1.0</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_weak_chmbr">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">w</span><span class="null">e</span><span class="null">a</span><span class="null">k</span><span class="null">_</span><span class="null">c</span><span class="null">h</span><span class="null">m</span><span class="null">b</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>Residual value of Hoek-Brown parameter <span class="math">\(m_{br}\)</span> when only one residual strength curve is used (<em>flag_weak_barton</em> = <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a>). The default is 4.33.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_weak_char">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">w</span><span class="null">e</span><span class="null">a</span><span class="null">k</span><span class="null">_</span><span class="null">c</span><span class="null">h</span><span class="null">a</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>Residual value of Hoek-Brown parameter <span class="math">\(a_r\)</span> when only one residual strength curve is used (<em>flag_weak_barton</em> = <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a>). The default is 1.0.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_weak_phib">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">w</span><span class="null">e</span><span class="null">a</span><span class="null">k</span><span class="null">_</span><span class="null">p</span><span class="null">h</span><span class="null">i</span><span class="null">b</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>Basic friction angle for the rock blocks in Barton &amp; Kjaernsli (1981) shear strength criteria [degrees], <span class="math">\(\phi_b\)</span>, see Equation <a class="reference internal" href="#equation-modelimassbarton">(8)</a>. The default is 30.0.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_weak_sloss">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">w</span><span class="null">e</span><span class="null">a</span><span class="null">k</span><span class="null">_</span><span class="null">s</span><span class="null">l</span><span class="null">o</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Input sloss value to initialize some damage in the rock mass and start from a residual state [dimensionless]. Five rules apply to using this property:</p>
+<ul class="simple">
+<li>The <em>in_weak_sloss</em> should be between -1.0 to 1.0.</li>
+<li>If the zone current sloss (<em>emer_weak_sloss</em>) is between 0.0 and 1.0, then <em>in_weak_sloss</em> = 0 won’t be effective because the zone behavior is controlled by accumulated plastic shear strain.</li>
+<li>If the zone current sloss (<em>emer_weak_sloss</em>) is between -1.0 and 0.0, then an <em>in_weak_sloss</em> &gt; 0 won’t be effective because the strength properties of a zone that is past the post-peak envelope cannot move back to the space between peak and post-peak envelopes.</li>
+<li>If <em>in_weak_sloss</em> is reset to its current value, <em>IMASS</em> won’t notice the change.</li>
+<li>The <em>in_weak_sloss</em> property cannot be used in combination with <em>in_bulking_targetvsi</em>.</li>
+</ul>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_weak_tabletension">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">w</span><span class="null">e</span><span class="null">a</span><span class="null">k</span><span class="null">_</span><span class="null">t</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null">t</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Name of the table relating matrix tensile strength to critical plastic tensile strain (<em>emer_weak_etplastic</em>).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.calc_weak_ecrit">
+<span class="cmdkey"><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null">c</span><span class="null">_</span><span class="null">w</span><span class="null">e</span><span class="null">a</span><span class="null">k</span><span class="null">_</span><span class="null">e</span><span class="null">c</span><span class="null">r</span><span class="null">i</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Critical strain for the matrix material [m/m] used for material softening calculations. <strong>Critical strain is initially calculated based on input properties as Equation :eq:`modelimasscriticalstrain` and then multiplied  directly by in_weak_multecrit</strong>; the resulting product is stored in <em>calc_weak_ecrit</em>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.calc_weak_zsize">
+<span class="cmdkey"><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null">c</span><span class="null">_</span><span class="null">w</span><span class="null">e</span><span class="null">a</span><span class="null">k</span><span class="null">_</span><span class="null">z</span><span class="null">s</span><span class="null">i</span><span class="null">z</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Zone size represented by the cube root of zone volume [m], <span class="math">\(Z\)</span>. This is used to calculate the critical strain, see Equation <a class="reference internal" href="#equation-modelimasscriticalstrain">(14)</a>. Note that this is a read-only variable.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.emer_weak_esplastic">
+<span class="cmdkey"><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">r</span><span class="null">_</span><span class="null">w</span><span class="null">e</span><span class="null">a</span><span class="null">k</span><span class="null">_</span><span class="null">e</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">s</span><span class="null">t</span><span class="null">i</span><span class="null">c</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Current accumulated plastic shear strain, <span class="math">\(\gamma^p\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.emer_weak_etplastic">
+<span class="cmdkey"><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">r</span><span class="null">_</span><span class="null">w</span><span class="null">e</span><span class="null">a</span><span class="null">k</span><span class="null">_</span><span class="null">e</span><span class="null">t</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">s</span><span class="null">t</span><span class="null">i</span><span class="null">c</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Current accumulated plastic tensile strain.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.emer_weak_istenweak">
+<span class="cmdkey"><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">r</span><span class="null">_</span><span class="null">w</span><span class="null">e</span><span class="null">a</span><span class="null">k</span><span class="null">_</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">e</span><span class="null">n</span><span class="null">w</span><span class="null">e</span><span class="null">a</span><span class="null">k</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p><em>emer_weak_istenweak</em> = 0 initially, but changes to maximum value of 1.0 as material yields in tension. It is calculated as the ratio of total volume of tet overlays in a zone that are yielded in tension to the overall volume of the zone.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.emer_weak_sloss">
+<span class="cmdkey"><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">r</span><span class="null">_</span><span class="null">w</span><span class="null">e</span><span class="null">a</span><span class="null">k</span><span class="null">_</span><span class="null">s</span><span class="null">l</span><span class="null">o</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Strength loss indicator (<span class="math">\(S_L\)</span>) which varies between +1 and -1 (<span class="math">\(-1 \le S_L \le 1\)</span>). A material which has not yielded has <span class="math">\(S_L = 1\)</span>. This value linearly reduces to 0 as a function of <span class="math">\(\gamma^p\)</span>. When <span class="math">\(\gamma^p = \gamma_{crit}\)</span>, <span class="math">\(S_L = 0\)</span>. <span class="math">\(S_L\)</span> linearly varies between 0 and -1 as a function of <span class="math">\(VSI_c\)</span>. When <span class="math">\(VSI_c = 2/3\)</span>, <span class="math">\(S_L = -1\)</span>, therefore if <span class="math">\(VSI_{max} &lt; 2/3\)</span> is specified <span class="math">\(S_L\)</span> can only decrease to a value equal to <span class="math">\(-1.5 VSI_c\)</span> but not -1.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.emer_stren_mcfric">
+<span class="cmdkey"><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">r</span><span class="null">_</span><span class="null">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">_</span><span class="null">m</span><span class="null">c</span><span class="null">f</span><span class="null">r</span><span class="null">i</span><span class="null">c</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Current value of friction [degrees]. Calculated for each tet individually in overlays, this reported value is the average value of tet overlays for the zone.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.emer_stren_mccoh">
+<span class="cmdkey"><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">r</span><span class="null">_</span><span class="null">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">_</span><span class="null">m</span><span class="null">c</span><span class="null">c</span><span class="null">o</span><span class="null">h</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Current value of cohesion [Pa]. Calculated for each tet individually in overlays, this reported value is the average value of tet overlays for the zone.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.emer_stren_tension">
+<span class="cmdkey"><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">r</span><span class="null">_</span><span class="null">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">_</span><span class="null">t</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Current value of tension cutoff [Pa]. Calculated for each tet individually in overlays, this reported value is the average value of tet overlays for the zone.</p>
+</dd></dl>
+
+<p><strong>Dilation, Bulking and Modulus Softening</strong></p>
+<dl class="keyword">
+<dt id="kwd:imass.flag_bulking_denadj">
+<span class="cmdkey"><span class="null">f</span><span class="null">l</span><span class="null">a</span><span class="null">g</span><span class="null">_</span><span class="null">b</span><span class="null">u</span><span class="null">l</span><span class="null">k</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">_</span><span class="null">d</span><span class="null">e</span><span class="null">n</span><span class="null">a</span><span class="null">d</span><span class="null">j</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>Flag, the default is <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a>. When this flag is <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>, <em>IMASS</em> will adjust zone density based on current value of VSI.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.flag_bulking_modsoft">
+<span class="cmdkey"><span class="null">f</span><span class="null">l</span><span class="null">a</span><span class="null">g</span><span class="null">_</span><span class="null">b</span><span class="null">u</span><span class="null">l</span><span class="null">k</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">_</span><span class="null">m</span><span class="null">o</span><span class="null">d</span><span class="null">s</span><span class="null">o</span><span class="null">f</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>Flag, the default is <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>. Set this to <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a> to disable modulus softening. The fragment aspect ratio for modulus softening calculation is set to 0.6.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_bulking_den">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">b</span><span class="null">u</span><span class="null">l</span><span class="null">k</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">_</span><span class="null">d</span><span class="null">e</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>Initial material density [<span class="math">\(kg/m^3\)</span>]. This can be obtained internally from the zone density, which can be set with the command of <code class="xref fish fish-cmd docutils literal"><span class="pre">zone</span> <span class="pre">initialize</span> <span class="pre">density</span></code>. The zone’s density may be altered by <em>IMASS</em> (if <em>flag_bulking_denadj</em> = <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_bulking_dil">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">b</span><span class="null">u</span><span class="null">l</span><span class="null">k</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">_</span><span class="null">d</span><span class="null">i</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>Initial dilation angle [degrees], the default is 10. If inputting a positive value (option 1), this positive constant dilation angle will be used. If inputting a negative value (option 2), the built-in evolving dilation angle will be used (shown in <a href="#modelimass-10">Figure  10</a>). With either dilation option, the dilation angle is set to zero when a user-defined maximum bulking factor (<span class="math">\(VSI_{max}\)</span>) is reached. This prevents zones from expanding to unrealistic levels during shearing.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_bulking_targetvsi">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">b</span><span class="null">u</span><span class="null">l</span><span class="null">k</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">_</span><span class="null">t</span><span class="null">a</span><span class="null">r</span><span class="null">g</span><span class="null">e</span><span class="null">t</span><span class="null">v</span><span class="null">s</span><span class="null">i</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>Target bulking factor or VSI (Volumetric Strain Increment), <span class="math">\(VSI_{tgt}\)</span>. When <em>in_bulking_targetvsi</em> is specified as a positive value for a zone, the plastic shear strain is set to <em>calc_weak_ecrit</em> for that zone, and it is placed past the post-peak envelope in principal stress space. The VSI for the purpose of strength envelope calculation is assumed to be zero on the post-peak envelope and equal to <em>in_bulking_maxtotvsi</em> on the ultimate strength envelope; therefore, the relative position of the zone between the two residuals is determined based on the specified <em>in_bulking_targetvsi</em>. Setting property <em>in_bulking_targetvsi</em> to a positive value is useful to force a material to start at an accumulated strain level. <em>emer_bulking_totvsi</em> = <em>in_bulking_targetvsi</em> at the beginning of the cycle at which the in_bulking_targetvsi value is specified.  A set of rules applies to using this property:</p>
+<ul class="simple">
+<li><em>in_bulking_targetvsi</em> cannot be larger than <em>in_bulking_maxtotvsi</em>.</li>
+<li>If the zone current sloss (<em>emer_weak_sloss</em>) is between 0.0 and 1.0, then <em>in_bulking_targetvsi</em> = 0 won’t be effective because the zone behavior is controlled by accumulated plastic shear strain.</li>
+<li>If <em>in_bulking_targetvsi</em> is reset to its current value, <em>IMASS</em> won’t notice the change.</li>
+<li><em>in_bulking_targetvsi</em> cannot be used in combination with <em>in_weak_sloss</em>.</li>
+</ul>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_bulking_maxtotvsi">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">b</span><span class="null">u</span><span class="null">l</span><span class="null">k</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">_</span><span class="null">m</span><span class="null">a</span><span class="null">x</span><span class="null">t</span><span class="null">o</span><span class="null">t</span><span class="null">v</span><span class="null">s</span><span class="null">i</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>Maximum bulking factor, <span class="math">\(VSI_{max}\)</span>. The default is 2/3.  After zone’s VSI reaches this limit, the dilation is shut off and density adjustment is terminated.  <em>in_bulking_maxtotvsi</em> also controls the extent of strength weakening for the ultimate strength envelope. It can change anywhere between post-peak envelope (<em>in_bulking_maxtotvsi</em> = 0) and a strength envelope corresponding to 40% of rock mass porosity (<em>in_bulking_maxtotvsi</em> = 2/3), which is the default ultimate strength envelope in <em>IMASS</em>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.emer_stren_mcdil">
+<span class="cmdkey"><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">r</span><span class="null">_</span><span class="null">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">_</span><span class="null">m</span><span class="null">c</span><span class="null">d</span><span class="null">i</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Current value of dilation [degrees], calculated for each tet individually in overlays, this reported value is the average value of tet overlays for the zone.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.emer_bulking_den">
+<span class="cmdkey"><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">r</span><span class="null">_</span><span class="null">b</span><span class="null">u</span><span class="null">l</span><span class="null">k</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">_</span><span class="null">d</span><span class="null">e</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Current zone density [<span class="math">\(kg/m^3\)</span>]. The zone’s density may be altered by <em>IMASS</em>, and current zone density is available in properties density and <em>emer_bulking_den</em>. See the <em>in_bulking_den</em> property for additional information.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.emer_bulking_totvsi">
+<span class="cmdkey"><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">r</span><span class="null">_</span><span class="null">b</span><span class="null">u</span><span class="null">l</span><span class="null">k</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">_</span><span class="null">t</span><span class="null">o</span><span class="null">t</span><span class="null">v</span><span class="null">s</span><span class="null">i</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Current total VSI value, <span class="math">\(VSI_c\)</span>, used in modulus calculations, density adjustment, dilation model, dilation shut off, and updating the strength envelope between post-peak and ultimate strength. <em>emer_bulking_totvsi</em> = [VSI from zone] + [amount of VSI that is automatically calculated by <em>IMASS</em> from <em>in_bulking_targetvsi</em> if specified].</p>
+</dd></dl>
+
+<p><strong>Stress at Failure</strong></p>
+<dl class="keyword">
+<dt id="kwd:imass.flag_sfail_failtrack">
+<span class="cmdkey"><span class="null">f</span><span class="null">l</span><span class="null">a</span><span class="null">g</span><span class="null">_</span><span class="null">s</span><span class="null">f</span><span class="null">a</span><span class="null">i</span><span class="null">l</span><span class="null">_</span><span class="null">f</span><span class="null">a</span><span class="null">i</span><span class="null">l</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>Flag, the default is <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>. Set this to <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a> to disable failure stress tracking. <em>IMASS</em> records trend and plunge of the principal stress direction. Trend = angle in degrees measured clockwise from North (toward the East axis). Plunge = angle in degrees, measured positive downward from the horizontal which is at 0 degrees. In <span class="codename">FLAC3D</span> and 3DEC model space, positive y-axis points North, positive x-axis points East, positive z-axis points up. Note <span class="codename">FLAC3D</span> and 3DEC use the convention of negative stresses being compressive and tensile stresses being positive. <em>IMASS</em> records and reports the following values for the first subzone (tet) that reaches the specified yielding limit for any given zone.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.emer_sfail_pmax">
+<span class="cmdkey"><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">r</span><span class="null">_</span><span class="null">s</span><span class="null">f</span><span class="null">a</span><span class="null">i</span><span class="null">l</span><span class="null">_</span><span class="null">p</span><span class="null">m</span><span class="null">a</span><span class="null">x</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Maximum, most positive principal stress [Pa].</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.emer_sfail_plungepmax">
+<span class="cmdkey"><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">r</span><span class="null">_</span><span class="null">s</span><span class="null">f</span><span class="null">a</span><span class="null">i</span><span class="null">l</span><span class="null">_</span><span class="null">p</span><span class="null">l</span><span class="null">u</span><span class="null">n</span><span class="null">g</span><span class="null">e</span><span class="null">p</span><span class="null">m</span><span class="null">a</span><span class="null">x</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Plunge [degrees] of maximum principal stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.emer_sfail_trendpmax">
+<span class="cmdkey"><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">r</span><span class="null">_</span><span class="null">s</span><span class="null">f</span><span class="null">a</span><span class="null">i</span><span class="null">l</span><span class="null">_</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">d</span><span class="null">p</span><span class="null">m</span><span class="null">a</span><span class="null">x</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Trend [degrees] of maximum principal stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.emer_sfail_pmid">
+<span class="cmdkey"><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">r</span><span class="null">_</span><span class="null">s</span><span class="null">f</span><span class="null">a</span><span class="null">i</span><span class="null">l</span><span class="null">_</span><span class="null">p</span><span class="null">m</span><span class="null">i</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Intermediate principal stress [Pa].</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.emer_sfail_plungepmid">
+<span class="cmdkey"><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">r</span><span class="null">_</span><span class="null">s</span><span class="null">f</span><span class="null">a</span><span class="null">i</span><span class="null">l</span><span class="null">_</span><span class="null">p</span><span class="null">l</span><span class="null">u</span><span class="null">n</span><span class="null">g</span><span class="null">e</span><span class="null">p</span><span class="null">m</span><span class="null">i</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Plunge [degrees] of intermediate principal stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.emer_sfail_trendpmid">
+<span class="cmdkey"><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">r</span><span class="null">_</span><span class="null">s</span><span class="null">f</span><span class="null">a</span><span class="null">i</span><span class="null">l</span><span class="null">_</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">d</span><span class="null">p</span><span class="null">m</span><span class="null">i</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Trend [degrees] of intermediate principal stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.emer_sfail_pmin">
+<span class="cmdkey"><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">r</span><span class="null">_</span><span class="null">s</span><span class="null">f</span><span class="null">a</span><span class="null">i</span><span class="null">l</span><span class="null">_</span><span class="null">p</span><span class="null">m</span><span class="null">i</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Minimum, most negative principal stress [Pa].</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.emer_sfail_plungepmin">
+<span class="cmdkey"><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">r</span><span class="null">_</span><span class="null">s</span><span class="null">f</span><span class="null">a</span><span class="null">i</span><span class="null">l</span><span class="null">_</span><span class="null">p</span><span class="null">l</span><span class="null">u</span><span class="null">n</span><span class="null">g</span><span class="null">e</span><span class="null">p</span><span class="null">m</span><span class="null">i</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Plunge [degrees] of minimum principal stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.emer_sfail_trendpmin">
+<span class="cmdkey"><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">r</span><span class="null">_</span><span class="null">s</span><span class="null">f</span><span class="null">a</span><span class="null">i</span><span class="null">l</span><span class="null">_</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">d</span><span class="null">p</span><span class="null">m</span><span class="null">i</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Trend [degrees] of minimum principal stress.</p>
+</dd></dl>
+
+<p><strong>Ubiquitous Joint</strong></p>
+<p><em>IMASS</em> uses the hierarchy approach to borrow the ubiquitous joint logic from <span class="codename">FLAC3D</span>. To use joints, property <em>flag_uj_usejoint</em> must be set to <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a> and joint properties must be set. Note all joint properties are initially zero. For weakness plane orientation, specify properties <em>in_uj_jdip</em> and <em>in_uj_jddirection</em> or properties <em>in_uj_jnx</em>, <em>in_uj_jny</em>, and <em>in_uj_jnz</em> (these components of the normal to the weakness plane are not required to be a unit vector, <em>IMASS</em> normalizes them).</p>
+<dl class="keyword">
+<dt id="kwd:imass.flag_uj_usejoints">
+<span class="cmdkey"><span class="null">f</span><span class="null">l</span><span class="null">a</span><span class="null">g</span><span class="null">_</span><span class="null">u</span><span class="null">j</span><span class="null">_</span><span class="null">u</span><span class="null">s</span><span class="null">e</span><span class="null">j</span><span class="null">o</span><span class="null">i</span><span class="null">n</span><span class="null">t</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>Flag, the default is <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a>. Set this to <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a> if to set ubiquitous joints (ubiquitous joint properties must also be set for this case). Note all joint properties are initially zero. For weakness plane orientation, specify properties <em>in_uj_jdip, in_uj_jddirection</em> or properties <em>in_uj_jnx, in_uj_jny, in_uj_jnz</em> (these components of the normal to the weakness plane are not required to be a unit vector, <em>IMASS</em> normalizes them internally).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_uj_jcoh">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">u</span><span class="null">j</span><span class="null">_</span><span class="null">j</span><span class="null">c</span><span class="null">o</span><span class="null">h</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Joint cohesion [Pa], <span class="math">\(c_j\)</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_uj_jdil">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">u</span><span class="null">j</span><span class="null">_</span><span class="null">j</span><span class="null">d</span><span class="null">i</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Joint dilation angle, <span class="math">\({\psi}_j\)</span>. The default is <a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">0.0</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_uj_jfric">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">u</span><span class="null">j</span><span class="null">_</span><span class="null">j</span><span class="null">f</span><span class="null">r</span><span class="null">i</span><span class="null">c</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Joint friction angle, <span class="math">\({\phi}_j\)</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_uj_jten">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">u</span><span class="null">j</span><span class="null">_</span><span class="null">j</span><span class="null">t</span><span class="null">e</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Joint tension limit [Pa], <span class="math">\({\sigma}^t_j\)</span>. The default is <a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">0.0</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_uj_jdip">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">u</span><span class="null">j</span><span class="null">_</span><span class="null">j</span><span class="null">d</span><span class="null">i</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Dip [degrees] of weakness plane, measured positive down from <em>xy</em> plane.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_uj_jddirection">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">u</span><span class="null">j</span><span class="null">_</span><span class="null">j</span><span class="null">d</span><span class="null">d</span><span class="null">i</span><span class="null">r</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Dip direction [degrees] of weakness plane], measured in <em>xy</em> plane, positive clockwise from positive <span class="math">\(y\)</span>-axis (North) toward positive <span class="math">\(x\)</span>-axis (East).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_uj_jnx">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">u</span><span class="null">j</span><span class="null">_</span><span class="null">j</span><span class="null">n</span><span class="null">x</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p><span class="math">\(x\)</span>-component of the normal direction to the weakness plane <span class="math">\(n_x\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_uj_jny">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">u</span><span class="null">j</span><span class="null">_</span><span class="null">j</span><span class="null">n</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p><span class="math">\(y\)</span>-component of the normal direction to the weakness plane <span class="math">\(n_y\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.in_uj_jnz">
+<span class="cmdkey"><span class="null">i</span><span class="null">n</span><span class="null">_</span><span class="null">u</span><span class="null">j</span><span class="null">_</span><span class="null">j</span><span class="null">n</span><span class="null">z</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p><span class="math">\(z\)</span>-component of the normal direction to the weakness plane <span class="math">\(n_z\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:imass.emer_uj_esplastic">
+<span class="cmdkey"><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">r</span><span class="null">_</span><span class="null">u</span><span class="null">j</span><span class="null">_</span><span class="null">e</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">s</span><span class="null">t</span><span class="null">i</span><span class="null">c</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Accumulated plastic shear strain in the joint.</p>
+</dd></dl>
+
+<p><strong>Development and Version Control</strong></p>
+<dl class="keyword">
+<dt id="kwd:imass.version">
+<span class="cmdkey"><span class="null">v</span><span class="null">e</span><span class="null">r</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p><em>IMASS</em> is actively used and enhanced through experience and research at Itasca. This read-only property is used by the development team to keep track of changes made to <em>IMASS</em> over time.</p>
+</dd></dl>
+
+<p><strong>Key</strong></p>
+<dl class="docutils">
+<dt>(a) Advanced property.</dt>
+<dd>This property has a default value; simpler applications of the model do not need to provide a value for it.</dd>
+<dt>(r) Read-only property.</dt>
+<dd>This property cannot be set by the user. Instead, it can be listed, plotted, or accessed through <span class="codename">FISH</span>.</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../docproject/utilities/toctree_temp.html" accesskey="U">Temp Toctree Material</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../../../docproject/utilities/toctree_temp.html"
+                           title="previous chapter"> Temp Toctree Material</a> |    
+       <a href="../../../docproject/utilities/tokens.html"
+                           title="next chapter">Tokens</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?IMASS Model**" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

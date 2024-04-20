@@ -1,0 +1,153 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Editor Pane Local Options &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../search.html" />
+    <link rel="next" title="File Storage and the Editor Pane" href="storage.html" />
+    <link rel="prev" title="Selection in an Editor Pane" href="editorselection.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="editor-pane-local-options">
+<span id="editorlocaloptions"></span><h1><em>Editor</em> Pane Local Options</h1>
+<p>Within an <em>Editor</em> pane, the options listed below may be turned off or on from the <a class="reference internal" href="editortoolbar.html#editortoolbar"><span class="std std-ref">toolbar</span></a>, which will
+affect that pane only. The same options are presented in the <em>Editor</em> section of the <em>Options</em>
+<a class="reference internal" href="../../configuration/options/options_editor.html#dlg-options-editor"><span class="std std-ref">dialog</span></a>. Selections made there will be used as defaults for any new <em>Editor</em> pane.</p>
+<p class="h3 rubric" id="editor-linenumbering">Line Numbers</p>
+<div class="enlarge figure align-right" id="id1">
+<a class="reference internal image-reference" href="../../../../../../../../_images/editorpane_localoptions.png"><img alt="editor pane image" src="../../../../../../../../_images/editorpane_localoptions.png" style="width: 181px;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Local options in the <em>Editor</em> pane: numbering (at left); code folding (line 69); indentation guide (lines 65-67); syntax highlighting (throughout); word wrapping (line 45 or 48) vs. line continuation (lines 49 &amp; 50). Click to enlarge in a separate window.</span></p>
+</div>
+<p>This switch on the <em>Local Options</em> button ( <img alt="lo" src="../../../../../../../../_images/options_local_normal.png" /> ) turns on/off line numbering. Line numbers appear on a gutter at the left side
+of the pane when they are in use. The aspects of line numbering are illustrated in the adjacent image.</p>
+<ul class="simple">
+<li>When a line number is preceded by “&amp;,” this indicates that the line is a continuation of the one preceding it.</li>
+<li>A boxed plus sign following a line number indicates a code-folded section (see below). The line numbering at such a junction will indicate the start of the fold (the line with the plus sign), and the next line number shown in the line numbering will be that of the last line in the fold.</li>
+<li>When wrapping is off (see below), line numbering will show no gaps between line numbers.</li>
+<li>When a gap from one line number to the next appears, this indicates that wrapping is on. The gap itself indicates the extent of the wrapped line.</li>
+</ul>
+<p class="h3 rubric" id="editor-codefolding">Code Folding</p>
+<p>Any aspect of command or <span class="codename">FISH</span> syntax that is demarcated with start and end points may be folded when this option is on.</p>
+<ul class="simple">
+<li><strong>Fold code</strong>: press the boxed minus ( <img alt="fm" src="../../../../../../../../_images/editor_foldminus.png" /> )</li>
+<li><strong>Unfold code</strong>: press the boxed plus ( <img alt="fp" src="../../../../../../../../_images/editor_foldplus.png" /> )</li>
+</ul>
+<p>Folds may be nested, and foldable sections often appear within other foldable sections. The end point of a foldable section
+within another foldable section is marked by a small dash ( <img alt="fi" src="../../../../../../../../_images/editor_foldinnerend.png" /> ). The end point of an outermost foldable section is marked
+by a curl ( <img alt="fo" src="../../../../../../../../_images/editor_foldouterend.png" /> ). Within the <em>Editor</em>, a horizontal line the extent of the pane window will be drawn between the start
+line and the end line of a folded section.</p>
+<p class="h3 rubric" id="editor-indentation">Indentation Guides</p>
+<p>Indentation guides are dotted vertical lines that appear at the left starting point of the line(s) that they mark to
+indicate the level of indentation that has been applied to the line.</p>
+<p class="h3 rubric" id="editor-syntax">Syntax Highlighting</p>
+<p>Syntax is formatted by color and font weight according to the settings in the <a class="reference internal" href="../../configuration/options/options_editor.html#dlg-options-editor"><span class="std std-ref">Options</span></a> dialog
+when this option is “on.” If “off,” text is black.</p>
+<p class="h3 rubric" id="editor-wrapping">Word Wrapping</p>
+<p>Turns line wrapping on or off. When “on,” lines that are longer than the current width of the pane that contains them
+will be wrapped.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../datafiles.html" >Data Files</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="editoroverview.html" accesskey="U">The <em>Editor</em> Pane</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="editorselection.html"
+                           title="previous chapter"> Selection in an <em>Editor</em> Pane</a> |    
+       <a href="storage.html"
+                           title="next chapter">File Storage and the <em>Editor</em> Pane</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Editor Pane Local Options" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

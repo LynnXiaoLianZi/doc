@@ -1,0 +1,157 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Projects &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="How Projects Work" href="howprojectswork.html" />
+    <link rel="prev" title="Commands, a Rationale" href="../commands/backgroundoncommands.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="projects">
+<span id="projectsmainpage"></span><h1>Projects</h1>
+<div class="figure" id="id1">
+<img alt="../../../../../../../_images/projectandfriends.svg" src="../../../../../../../_images/projectandfriends.svg" /><p class="caption"><span class="caption-text">Figure 1: The project file tracks files opened into or created in the program, and those output from the program as well.  Note there are some other program outputs (plot bitmaps, exported tables, etc.) that are not tracked with the project.</span></p>
+</div>
+<p>The modeling process is organized by project.  The project is encompassed in a text-based file that does the following jobs.</p>
+<blockquote>
+<div><ul class="simple">
+<li>track all files input (this is primarily <em>any</em> file processed by the <a class="reference internal" href="../../../../../../kernel/doc/manual/program/commands/cmd_program.call.html#command:program.call" title="Process the specified data file(s)."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">call</span></code></a> command or opened into the project using the <span class="flag4">i</span> <a class="reference internal" href="openintoprojectdialog.html#theopenintoprojectdialog"><span class="std std-ref">Open Into Project</span></a> dialog)</li>
+<li>track all files output (this is primarily all saved model states)</li>
+<li>track/indicate the current state of all input and output files within the program (which data files are open, which model state is the current state, etc.)</li>
+<li>store project settings</li>
+<li>store the program layout</li>
+<li>store “project” objects (this is a range of items that includes plots and named filters)</li>
+<li>set the working directory</li>
+<li>store program environment information (program name, version, and revision information, for instance)</li>
+</ul>
+</div></blockquote>
+<p>Keep in mind that files tracked by the project are not <em>embedded</em> within it.  Moving project files <em>outside</em> the program will break the links being maintained by the project.  With items tracked by the project, it is best to do file management tasks (moving or <a class="reference internal" href="../datafiles/datafilehandling.html#datafilerename"><span class="std std-ref">renaming</span></a>) within the program.</p>
+<p>When the program starts, it may be set to open the most recent project used or a start a new one. The preferred option may be set by the user in the <a class="reference internal" href="../configuration/options/options.html#theoptionsdialog"><span class="std std-ref">Options dialog</span></a>’s “Startup” section.</p>
+<p>The <span class="menuselection"><span class="accelerator">B</span>undle</span> command from the <span class="menuselection">Tools</span> menu is a utility for <a class="reference internal" href="bundle.html#bundle"><span class="std std-ref">packaging projects</span></a> (both the project file and the resources it tracks) into a single compressed archive file. The <a class="reference internal" href="../../../glossaryofterms.html#term-bundle-file"><span class="xref std std-term">bundle file</span></a> is useful for transfer of projects between users, for obtaining technical support, or for archival purposes.</p>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="howprojectswork.html">How Projects Work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howprojectswork.html#handling-projects">Handling Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_pane/projectsoverview.html">The Project Pane</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="project_pane/projecttoolbar.html">Project Pane Toolbar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project_pane/keyboard.html">Project-Related Keyboard Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project_pane/projects_cp.html">Control Panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project_pane/projectsdiscussed.html">Projects: Further Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="openintoprojectdialog.html">&quot;Open into Project&quot; Dialog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projectsanditemtracking.html">Projects and Item Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bundle.html">Project Bundle Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bundle/createbundle.html">Create a Bundle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bundle/openbundle.html">Open a Bundle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bundle/bundlereport.html">Bundle Report</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../programwindow/controlpanel/fishglobals.html"><span class="codename">FISH</span> <em>Global Symbols</em> Control Set</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../program_mechanics.html" accesskey="U">Program Mechanics</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../commands/backgroundoncommands.html"
+                           title="previous chapter"> Commands, a Rationale</a> |    
+       <a href="howprojectswork.html"
+                           title="next chapter">How Projects Work</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Projects" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

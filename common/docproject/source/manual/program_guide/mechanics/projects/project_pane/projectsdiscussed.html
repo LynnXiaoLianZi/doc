@@ -1,0 +1,145 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Projects: Further Description &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../search.html" />
+    <link rel="next" title="Open into Project Dialog" href="../openintoprojectdialog.html" />
+    <link rel="prev" title="Control Panel in the Project Pane" href="projects_cp.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="projects-further-description">
+<span id="projectsdiscussion"></span><h1>Projects: Further Description</h1>
+<p>The project file is new in version 7.0. For users of version 6.0 or earlier, it represents a significant shift in the way a
+modeling run is organized. The project file is a binary file that tracks (but <em>does not embed</em>) the resources used in a
+modeling sequence. In this documentation, these resources are generally and generically referred to as “items,” and they
+include all file types familiar to users of previous versions: data (.dat) files, save (.sav) files, <span class="codename">FISH</span> (.fis), and
+driver (.dvr) files. There is always a project open while the program is operating, either a newly created project
+requested by the user, a previously saved project that has been opened by the user, or a “temp” project that the program has
+created absent instruction from the user to do one of the preceding two options.</p>
+<p>The program automatically makes the location of the project file the current working directory. This makes saving items easier
+and keeps project items together without having to use explicit paths or issue instructions to set a current folder.
+Dialogs that tap into the file system (<em>Save…</em>, <em>Open…</em>, etc.) will present the folder containing the project file
+as the default location when they are used.</p>
+<p>The items that compose the active project and their current state (saved, unsaved, opened, closed, or missing) are listed in
+the <em>Project</em> pane. Users who wish to familiarize themselves with projects and how they work will be best assisted by paying
+attention to the state of the <a class="reference internal" href="projectsoverview.html#theprojectpane"><span class="std std-ref">Project pane</span></a>, since it provides a graphical representation of the
+project itself.</p>
+<p>The project tracks all items used in a modeling. Items come into the project in three ways: (1) they may be loaded in manually
+by the user (for instance, opening a data file using the file menu); (2) they may be created directly in <span class="codename">UDEC</span> (for instance,
+creating a new data file, or saving a model state at the console command line); or (3) they may be created/added during
+command processing (for instance, when a <a class="reference internal" href="../../../../../../../kernel/doc/manual/model/commands/cmd_model.save.html#command:model.save" title="Save all model-state information. The file  s  is created and, if no extension&#013;&#010;is provided, the extension is set to &quot;.sav&quot;. This information includes any defined&#013;&#010;|FISH| functions/variables, histories, tables, and other model components."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">save</span></code></a> command is issued in a data file, or when the data file currently
+being processed <a class="reference internal" href="../../../../../../../kernel/doc/manual/program/commands/cmd_program.call.html#command:program.call" title="Process the specified data file(s)."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">call</span></code></a>s another data file).</p>
+<p>Similarly, items may be deleted from the project using the <em>Project</em> pane. Users should keep in mind the distinction
+between closing a project item (which merely removes it from the program interface) and removing or deleting it (which not
+only excises it from the project, but also causes the file associated with the item to be deleted).</p>
+<p>Finally, experienced users will have noted by now that all project items tracked in the project are themselves files that
+are distinct from a project file. Since the location of these files is part of what the projects monitors, working with
+these files (moving or renaming them, specifically) outside of the program is liable to introduce errors or broken links within
+the project.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../projects.html" >Projects</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="projectsoverview.html" accesskey="U">The Project Pane</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="projects_cp.html"
+                           title="previous chapter"> <em>Control Panel</em> in the <em>Project</em> Pane</a> |    
+       <a href="../openintoprojectdialog.html"
+                           title="next chapter"><em>Open into Project</em> Dialog</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Projects: Further Description" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

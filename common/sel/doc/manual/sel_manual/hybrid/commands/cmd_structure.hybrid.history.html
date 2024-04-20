@@ -1,0 +1,215 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>structure hybrid history &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="structure-hybrid-history">
+<h1><code class="docutils literal"><span class="pre">structure</span> <span class="pre">hybrid</span> <span class="pre">history</span></code></h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="structurehybrid command">
+<dt id="command:structure.hybrid.history">
+<span class="cmdname"><span class="pref">s</span><span class="pref">t</span><span class="pref">r</span><span class="null">u</span><span class="null">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">h</span><span class="null">y</span><span class="null">b</span><span class="null">r</span><span class="null">i</span><span class="null">d</span><span class="null"> </span></span><span class="cmdname"><span class="pref">h</span><span class="pref">i</span><span class="pref">s</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:structure.hybrid.history.force" title="structure hybrid history force">force</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.hybrid.history.stress" title="structure hybrid history stress">stress</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.hybrid.history.yield-tension" title="structure hybrid history yield-tension">yield-tension</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.hybrid.history.yield-compression" title="structure hybrid history yield-compression">yield-compression</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.hybrid.history.grout-displacement" title="structure hybrid history grout-displacement">grout-displacement</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.hybrid.history.grout-slip" title="structure hybrid history grout-slip">grout-slip</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.hybrid.history.grout-stress" title="structure hybrid history grout-stress">grout-stress</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.hybrid.history.dowel-force" title="structure hybrid history dowel-force">dowel-force</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.hybrid.history.dowel-rupture" title="structure hybrid history dowel-rupture">dowel-rupture</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.hybrid.history.dowel-strain" title="structure hybrid history dowel-strain">dowel-strain</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.hybrid.history.dowel-yield" title="structure hybrid history dowel-yield">dowel-yield</a></p>
+</div>
+<p>Sample hybrid bolt responses.  Quantities for sampling include element force, stress and yield state, and shear coupling spring displacement, stress and slip state.  If a bolt is created using the <a class="reference internal" href="cmd_structure.hybrid.create.html#command:structure.hybrid.create" title="Create a hybrid bolt consisting of a collection of cable finite elements and&#013;&#010;dowels. The three main keywords articulate three creation techniques: create&#013;&#010;a collection of elements that lie between a begin point and an end point ( by-line );&#013;&#010;create a single element from two existing nodes ( by-nodeids ); and create&#013;&#010;a collection of elements that lie along a ray ( by-ray )."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">hybrid</span> <span class="pre">create</span></code></a>, then the nodes of each element so created will be ordered such that the overall bolt direction goes from the begin point to the end point (i.e., the nodal connectivity of each element will be ordered such that the direction from end-1 to end-2 corresponds with the direction from the begin point to the end point).</p>
+<dl class="keyword">
+<dt id="kwd:structure.hybrid.history.force">
+<span class="cmdkey"><span class="pref">f</span><span class="null">o</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="#hybridhistoryblock">[hybridhistoryblock]</a></dt>
+<dd><p>average axial force in the element (positive: tension; negative: compression)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.hybrid.history.stress">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="#hybridhistoryblock">[hybridhistoryblock]</a></dt>
+<dd><p>average axial stress in the element (positive: tension; negative: compression)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.hybrid.history.yield-tension">
+<span class="cmdkey"><span class="pref">y</span><span class="null">i</span><span class="null">e</span><span class="null">l</span><span class="null">d</span><span class="null">-</span><span class="pref">t</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="#hybridhistoryblock">[hybridhistoryblock]</a></dt>
+<dd><p>tensile yield state of the element. Value {0, 1, 2} denotes never yielded, now yielding, or yielded in the past, respectively.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.hybrid.history.yield-compression">
+<span class="cmdkey"><span class="pref">y</span><span class="null">i</span><span class="null">e</span><span class="null">l</span><span class="null">d</span><span class="null">-</span><span class="pref">c</span><span class="null">o</span><span class="null">m</span><span class="null">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="#hybridhistoryblock">[hybridhistoryblock]</a></dt>
+<dd><p>compressive yield state of the element. Value {0, 1, 2} denotes never yielded, now yielding, or yielded in the past, respectively.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.hybrid.history.grout-displacement">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">t</span><span class="null">-</span><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="#hybridhistoryblock">[hybridhistoryblock]</a></dt>
+<dd><p>displacement in grout (shear coupling spring) at end of the element. Sign convention is +/- with respect to the average axial direction of cable.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.hybrid.history.grout-slip">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">t</span><span class="null">-</span><span class="pref">s</span><span class="null">l</span><span class="null">i</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="#hybridhistoryblock">[hybridhistoryblock]</a></dt>
+<dd><p>slip state in grout (shear coupling spring) at end of the element. Value {0, 1, 2} denotes never slipped, now slipping, or slipped in the past, respectively.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.hybrid.history.grout-stress">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">t</span><span class="null">-</span><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="#hybridhistoryblock">[hybridhistoryblock]</a></dt>
+<dd><p>stress in grout (shear coupling spring) at end of the element. Sign convention is +/- with respect to the average axial direction of cable.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.hybrid.history.dowel-force">
+<span class="cmdkey"><span class="pref">d</span><span class="null">o</span><span class="null">w</span><span class="null">e</span><span class="null">l</span><span class="null">-</span><span class="pref">f</span><span class="null">o</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="#hybridhistoryblock">[hybridhistoryblock]</a></dt>
+<dd><p>Shear force in the dowel (always positive).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.hybrid.history.dowel-rupture">
+<span class="cmdkey"><span class="pref">d</span><span class="null">o</span><span class="null">w</span><span class="null">e</span><span class="null">l</span><span class="null">-</span><span class="pref">r</span><span class="null">u</span><span class="null">p</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="#hybridhistoryblock">[hybridhistoryblock]</a></dt>
+<dd><p>Shear rupture state of the dowel. Value is 0 for not ruptured and 1 for ruptured.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.hybrid.history.dowel-strain">
+<span class="cmdkey"><span class="pref">d</span><span class="null">o</span><span class="null">w</span><span class="null">e</span><span class="null">l</span><span class="null">-</span><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="#hybridhistoryblock">[hybridhistoryblock]</a></dt>
+<dd><p>Shear strain in the dowel (always positive).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.hybrid.history.dowel-yield">
+<span class="cmdkey"><span class="pref">d</span><span class="null">o</span><span class="null">w</span><span class="null">e</span><span class="null">l</span><span class="null">-</span><span class="pref">y</span><span class="null">i</span><span class="null">e</span><span class="null">l</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="#hybridhistoryblock">[hybridhistoryblock]</a></dt>
+<dd><p>Shear yield state of the dowel.  Value {0, 1, 2} denotes never yielded, now yielding, or yielded in the past, respectively.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><p class="h2 rubric" id="hybridhistoryblock"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">hybrid</span> <span class="pre">history</span></code> Keyword Block</p>
+</div></blockquote>
+<p>Either the <span class="cmdkey">component-id</span> keyword or the <span class="cmdkey">position</span> keyword must be supplied. The <span class="cmdkey">end</span> keyword is optional. These keywords are supplied with the following keywords of <a class="reference internal" href="#command:structure.hybrid.history" title="Sample hybrid bolt responses.  Quantities for sampling include element force,&#013;&#010;stress and yield state, and shear coupling spring displacement, stress and slip&#013;&#010;state.  If a bolt is created using the  structure.hybrid.create , then&#013;&#010;the nodes of each element so created will be ordered such that the overall bolt&#013;&#010;direction goes from the begin point to the end point (i.e., the nodal connectivity&#013;&#010;of each element will be ordered such that the direction from end-1"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">hybrid</span> <span class="pre">history</span></code></a>: <a class="reference internal" href="#kwd:structure.hybrid.history.dowel-force"><code class="docutils literal"><span class="fishcmd"><span class="pre">dowel-force</span></span></code></a>, <a class="reference internal" href="#kwd:structure.hybrid.history.dowel-rupture"><code class="docutils literal"><span class="fishcmd"><span class="pre">dowel-rupture</span></span></code></a>, <a class="reference internal" href="#kwd:structure.hybrid.history.dowel-strain"><code class="docutils literal"><span class="fishcmd"><span class="pre">dowel-strain</span></span></code></a>, <a class="reference internal" href="#kwd:structure.hybrid.history.dowel-yield"><code class="docutils literal"><span class="fishcmd"><span class="pre">dowel-yield</span></span></code></a>, <a class="reference internal" href="#kwd:structure.hybrid.history.force"><code class="docutils literal"><span class="fishcmd"><span class="pre">force</span></span></code></a>, <a class="reference internal" href="#kwd:structure.hybrid.history.grout-displacement"><code class="docutils literal"><span class="fishcmd"><span class="pre">grout-displacement</span></span></code></a>, <a class="reference internal" href="#kwd:structure.hybrid.history.grout-slip"><code class="docutils literal"><span class="fishcmd"><span class="pre">grout-slip</span></span></code></a>, <a class="reference internal" href="#kwd:structure.hybrid.history.grout-stress"><code class="docutils literal"><span class="fishcmd"><span class="pre">grout-stress</span></span></code></a>, <a class="reference internal" href="#kwd:structure.hybrid.history.stress"><code class="docutils literal"><span class="fishcmd"><span class="pre">stress</span></span></code></a>, <a class="reference internal" href="#kwd:structure.hybrid.history.yield-compression"><code class="docutils literal"><span class="fishcmd"><span class="pre">yield-compression</span></span></code></a> and <a class="reference internal" href="#kwd:structure.hybrid.history.yield-tension"><code class="docutils literal"><span class="fishcmd"><span class="pre">yield-tension</span></span></code></a>.</p>
+<blockquote>
+<div><dl class="keyword">
+<dt id="kwd:component-id">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">m</span><span class="null">p</span><span class="null">o</span><span class="null">n</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">i</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>the particular element is identified by the component ID number.  This could refer to a “cable” element or a dowel.  If this keyword is used, <span class="cmdkey">position</span> should not be used.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:end">
+<span class="cmdkey"><span class="pref">e</span><span class="null">n</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><dl class="docutils">
+<dt>the quantity will be sampled at end <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> (where <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> is <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">1</span></span></a> or <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">2</span></span></a>), which corresponds with the order in the nodal-connectivity list. The history is sampled at end <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">1</span></span></a> (the default) if this keyword is not supplied.</dt>
+<dd>Not used for dowels.</dd>
+</dl>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:position">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>the particular element is identified by (<a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span></span></a>) coordinates (the nearest element is taken).  This could apply to a “cable” element or dowel, depending on what history quantitiy is being queried.  If this keyword is used, <span class="cmdkey">component-id</span> should not be used.</p>
+</dd></dl>
+
+</div></blockquote>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?structure hybrid history" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

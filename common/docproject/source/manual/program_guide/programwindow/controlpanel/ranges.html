@@ -1,0 +1,251 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Plot Item Ranges &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="The Build Range Dialog" href="rangedialog.html" />
+    <link rel="prev" title="Plot Items Control Set" href="plotitems.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="plot-item-ranges">
+<span id="plotitemrangescontrolset"></span><span id="ui-pi-filter"></span><h1>Plot Item Ranges</h1>
+<p>Range construction involves multiple steps.  It is helpful to recognize that ranges and range construction resemble plotting in a few ways.  Plots can be thought of as containers of plot items, where plot construction involves addition of one or more items to the plot.  Ranges, similarly, are containers of range elements; range construction involves adding one or more elements to the range.  This is done by selecting the “Range” item for a given plot item and pressing <img alt="filt" src="common/guilib/Icons/addfilterelement_normal.png" /> and adding range elements from the ensuing dialog see (<a class="reference internal" href="rangedialog.html#thebuildrangedialog"><span class="std std-ref">The Build Range Dialog</span></a>).</p>
+<p>A range applied to a plot item will show the portion of that plot item that lies within the range’s definition, while removing from view that which lies outside it. A range comprises one or more range elements. These elements are largely (though not completely) identical to the keywords that may be used with the <a class="reference internal" href="../../../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><code class="xref fish fish-tok docutils literal"><span class="pre">range</span></code></a> keyword — the overlap between the two should provide a sense of familiarity.</p>
+<img alt="../../../../../../../_images/cs_filterattributes.png" class="align-right" src="../../../../../../../_images/cs_filterattributes.png" />
+<p><em>Add</em> range elements to the range using the <img alt="filt" src="common/guilib/Icons/addfilterelement_normal.png" /> on the toolbar to call the <span class="flag4">i</span> <a class="reference internal" href="rangedialog.html#thebuildrangedialog"><span class="std std-ref">Build Range</span></a> dialog.</p>
+<p><em>Show</em> a range element (make it visible in the plot, if possible) by selecting it in the “Plot Item List.”  It is removed from view when a different object is selected on the “Plot Item List.”  Some range elements have no visual component and may only be edited by the “Attributes” section of the <em>Plot Items</em> control set.</p>
+<p><em>Activate</em> a range (turn on its filtering effect) or de-activate by toggling its <img alt="vis_on" src="../../../../../../../_images/show_normal_16x16.png" /> button.</p>
+<div class="aside nofloat admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Showing and activating are independent of one another.</p>
+</div>
+<p>A range may be <a class="reference internal" href="plotitems.html#copyandpasteinplotitemscs"><span class="std std-ref">copied/pasted</span></a> onto another plot item. This operation can be performed across plots.</p>
+<p><em>Edit</em> the range of a plot item by selecting it or one of its range elements in the upper portion of the control set. The lower <em>Attributes</em> section of the control set (image above) will show its properties.  These may be adjusted in the <em>Attributes</em> section of the control set, or, if a range element is selected and it has a visual component, it may be adjusted interactively by operating on the range element within the plot.</p>
+<p>To manipulate the range without showing its effect on the plot item, de-activate it (toggle <img alt="vis_on" src="../../../../../../../_images/show_normal_16x16.png" />) but leave the “Range” item selected in the upper portion of the control set.</p>
+<p class="h2 rubric" id="filterattributes">Range Attributes</p>
+<p><strong>Activate</strong>: This is equivalent to using the visibility toggle button ( <img alt="vis_on" src="../../../../../../../_images/show_normal_16x16.png" /> ). Selecting “Yes” will cause the range to operate on the plot item; selecting “No” will leave the plot item unaffected. In either case, if one of the range’s range elements is selected, it will be shown in the plot if it is an interactive element. This means that while “No” is selected, a range element may be manipulated or its attributes may be changed, but effects will not be shown on the plot item.</p>
+<p><strong>Type</strong>: A range must be either the “Intersection” of its range elements or the “Union” of its range elements.</p>
+<p><strong>Render Mode</strong>: Select “Normal” to render the plot item normally while the range is active. In this state, the
+plot item is rendered according to its attributes. Selecting “Specific” will render the plot item in a range-specific way.
+In this state, various rendering attributes are available to modify how the plot item appears. One practical difference
+between the two is that during definition of the range, objects outside the range (and therefore to be removed by
+the range) are rendered transparently when the “Specific” mode is set; when “Normal” is set, they are removed immediately,
+as the range is being defined.</p>
+<p><strong>Extent</strong>: Determine whether range elements, when added, will have their default extents calculated from the current
+“Model” size or calculated according to the size of the current view on the “Screen.”</p>
+<p><strong>Load</strong>: Call a dialog that allows the user to load a stored <em>Project Filter</em> as the current range. The loaded
+<em>Project Filter</em> will <em>replace</em> the current range definition.</p>
+<p><strong>Save</strong>: Call a dialog that allows the user to save the current range definition as a <em>Project Filter</em>. Once saved,
+this may be used as either a range element (via the <span class="xref std std-ref">fe_savedplotfilters</span> element) or it may be “loaded” (per above)
+to make it the active range definition.</p>
+<p class="h2 rubric">Ranges in the <em>Plot Items</em> Control Set</p>
+<div class="figure" id="id1">
+<a class="reference internal image-reference" href="../../../../../../../_images/plotitemscontrolset_ranges.png"><img alt="../../../../../../../_images/plotitemscontrolset_ranges.png" src="../../../../../../../_images/plotitemscontrolset_ranges.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Ranges (left) and their range elements (right) have properties that are listed in the “Attributes” section below the “Plot Items List”.</span></p>
+</div>
+<p>Like plot items, when a given range or one of its range elements is selected in the upper portion of the <span class="flag4">i</span> <a class="reference internal" href="plotitems.html#theplotitemscontrolset"><span class="std std-ref">Plot Items</span></a> control set, its editable properties are displayed and accessed from the lower “Attributes” portion of the set.</p>
+<p>A range may be <a class="reference internal" href="plotitems.html#copyandpasteinplotitemscs"><span class="std std-ref">copied/pasted</span></a> onto another plot item. This operation can be performed across plots.</p>
+<p>Like plots, where the same item may be added multiple times to the plot, a range will accept multiple instances of the same range element (though it requires revisiting the “Build Range” dialog to add each instance).</p>
+<p>The range sub-item cannot be deleted from a plot item.  To <em>clear</em> a range on a plot item, delete its range elements by selecting it from the “Plot Items” list and pressing the <img alt="delete" src="../../../../../../../_images/delete_normal.png" /> button on the toolbar.</p>
+<p class="h2 rubric" id="filterelementlist">Common Range Elements</p>
+<p>The specific operations and attributes of each range element are described in the <a class="reference internal" href="../../mechanics/plotting/views/rangeelementindex.html#rangeelementindex"><span class="std std-ref">Range Element Index</span></a>.</p>
+<table border="1" class="colwidths-given icg1 docutils" id="id2">
+<caption><span class="caption-text">Table 1: Range Elements</span></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Visual</th>
+<th class="head">Property-Based</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference internal" href="filterelements/filter_circle.html#fe-circle"><span class="std std-ref">Circle</span></a></td>
+<td><a class="reference internal" href="filterelements/filter_angle.html#fe-angle"><span class="std std-ref">Angle</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="filterelements/filter_ellipse.html#fe-ellipse"><span class="std std-ref">Ellipse</span></a></td>
+<td><a class="reference internal" href="filterelements/filter_area.html#fe-area"><span class="std std-ref">Area</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="filterelements/filter_polygon.html#fe-polygon"><span class="std std-ref">Polygon</span></a></td>
+<td><a class="reference internal" href="filterelements/filter_block_material.html#fe-block-material"><span class="std std-ref">Block Material</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="filterelements/filter_xposition.html#fe-xposition"><span class="std std-ref">X Position</span></a></td>
+<td><span class="xref std std-ref">fe_component_id</span></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="filterelements/filter_yposition.html#fe-yposition"><span class="std std-ref">Y Position</span></a></td>
+<td><a class="reference internal" href="filterelements/filter_deformable.html#fe-deformable"><span class="std std-ref">Deformable</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="filterelements/filter_rectangle.html#fe-rectangle"><span class="std std-ref">Rectangle</span></a></td>
+<td><a class="reference internal" href="filterelements/filter_displacement.html#fe-displacement"><span class="std std-ref">Displacement</span></a></td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><a class="reference internal" href="filterelements/filter_group.html#fe-group"><span class="std std-ref">Group</span></a></td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><a class="reference internal" href="filterelements/filter_id.html#fe-id"><span class="std std-ref">ID</span></a></td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><a class="reference internal" href="filterelements/filter_idlist.html#fe-idlist"><span class="std std-ref">ID List</span></a></td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><a class="reference internal" href="filterelements/filter_index_list.html#fe-index-list"><span class="std std-ref">Index List</span></a></td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><a class="reference internal" href="filterelements/filter_joint_material.html#fe-joint-material"><span class="std std-ref">Joint Material</span></a></td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><a class="reference internal" href="filterelements/filter_joint_set.html#fe-joint-set"><span class="std std-ref">Jointset ID</span></a></td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><span class="xref std std-ref">fe_name</span></td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><a class="reference internal" href="filterelements/filter_rigid.html#fe-rigid"><span class="std std-ref">Rigid</span></a></td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><a class="reference internal" href="filterelements/filter_sel_colection2.html#fe-sel-collection"><span class="std std-ref">SEL Collection</span></a></td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><a class="reference internal" href="filterelements/filter_velocity.html#fe-velocity"><span class="std std-ref">Velocity</span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="rangedialog.html">The <em>Build Range</em> Dialog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mechanics/plotting/views/rangeelementindex.html">Range Element Index</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="filterelements/filter_circle.html">Circle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filterelements/filter_ellipse.html">Ellipse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filterelements/filter_polygon.html">Polygon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filterelements/filter_xposition.html">X Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filterelements/filter_yposition.html">Y Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filterelements/filter_rectangle.html">Rectangle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filterelements/filter_angle.html">Angle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filterelements/filter_area.html">Area</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filterelements/filter_block_material.html">Block Material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filterelements/filter_deformable.html">Deformable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filterelements/filter_displacement.html">Displacement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filterelements/filter_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filterelements/filter_id.html">ID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filterelements/filter_idlist.html">ID List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filterelements/filter_index_list.html">Index List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filterelements/filter_joint_material.html">Joint Material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filterelements/filter_joint_set.html">Jointset ID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filterelements/filter_rigid.html">Rigid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filterelements/filter_velocity.html">Velocity</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<style>
+   div.nofloat {
+     float: none;
+   }
+</style></div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../mechanics/program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../../mechanics/plotting/plotting.html" >Plotting</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="plotitems.html" accesskey="U"><em>Plot Items</em> Control Set</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="plotitems.html"
+                           title="previous chapter"> <em>Plot Items</em> Control Set</a> |    
+       <a href="rangedialog.html"
+                           title="next chapter">The <em>Build Range</em> Dialog</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Plot Item Ranges" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

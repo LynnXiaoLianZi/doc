@@ -1,0 +1,193 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Adapting the Mohr-Coulomb Model to a Hoek-Brown Failure Surface &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="adapting-the-mohr-coulomb-model-to-a-hoek-brown-failure-surface">
+<h1>Adapting the Mohr-Coulomb Model to a Hoek-Brown Failure Surface</h1>
+<p>The <span class="codename">FISH</span> routines in “<code class="docutils literal"><span class="pre">hoek.fis</span></code>” adapt the Mohr-Coulomb model in UDEC to approximate the nonlinear failure surface for a Hoek-Brown material (Hoek and Brown 1982). The Hoek-Brown failure criterion is based on a nonlinear relation between major and minor principal stresses, <span class="math">\(σ_1\)</span> and <span class="math">\(σ_3\)</span>:</p>
+<div class="math">
+\[\sigma_1\ =\ \sigma_3\ -\ \sqrt{-\sigma_3 \sigma_c m + \sigma^2_c s}\]</div>
+<p>where <span class="math">\(σ_c\)</span> is the unconfined compressive strength of the intact rock, <span class="math">\(m\)</span> and <span class="math">\(s\)</span> are material constants of the rock mass, and compressive stresses are negative (<span class="codename">UDEC</span> convention).</p>
+<p>For a given value of <span class="math">\(σ_3\)</span>, a tangent to the function above will represent an equivalent Mohr-Coulomb yield criterion in the form</p>
+<div class="math">
+\[\sigma_1\ =\ N_\phi \sigma_3\ -\ \sigma^M_c\]</div>
+<p>where <span class="math">\($N_\phi\ =\ {1 + \sin \phi \over {1 - \sin \phi}}\ =\ \tan^2\
+({\phi \over {2}} + 45^\circ)\)</span>.</p>
+<p>By substitution, <span class="math">\(σ^M_c\)</span> is</p>
+<div class="math">
+\[\begin{split}\begin{align} \sigma^M_c &amp;=\ \sigma_1 + \sigma_3\ N_\phi  \\
+&amp;=-\sigma_3 + \sqrt{-\sigma_3 \sigma_c m + \sigma^2_c s} - \sigma_3\ N_\phi  \\
+&amp;=-\sigma_3\ (1 - N_\phi) + \sqrt{-\sigma_3 \sigma_c m + \sigma^2_c s} \end{align}\end{split}\]</div>
+<p><span class="math">\(σ^M_c\)</span> is the apparent uniaxial compressive strength of the rock mass for that value of <span class="math">\(σ_3\)</span>.</p>
+<p>The tangent to the function (1) is defined by</p>
+<div class="math">
+\[N_\phi (\sigma_3)\ =\ {\partial \sigma_1 \over {\partial \sigma_3}}\ =\ 1\ +\ {\sigma_c m \over {2\sqrt{-\sigma_3 \cdot \sigma_c m + s\ \sigma^2_c}}}\]</div>
+<p>The cohesion (<span class="math">\(c\)</span>) and friction angle (<span class="math">\(\phi\)</span>) can then be obtained from <span class="math">\(N_\phi\)</span> and <span class="math">\(σ^M_c\)</span>:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\phi\ &amp;=\ 2 \tan^{-1} \sqrt{N_\phi}\ -\ 90^\circ \\
+\ \\
+c\    &amp;=\ {\sigma^M_c \over {2\sqrt{N_\phi}}}
+\end{align}\end{split}\]</div>
+<p>The comparison of the Mohr-Coulomb linear approximation to the Hoek-Brown yield surface is shown in the figure. These equivalent <span class="math">\(c\)</span> and <span class="math">\(\phi\)</span> are a good approximation of the nonlinear yield surface for values of the minor principal stress that are close to the given <span class="math">\(σ_3\)</span>. The <span class="codename">FISH</span> function <code class="docutils literal"><span class="pre">cfi</span></code> calculates the value of <span class="math">\(c\)</span> and <span class="math">\(\phi\)</span> for each zone every <code class="docutils literal"><span class="pre">ns</span></code> steps. Thus, as <span class="math">\(σ_3\)</span> changes, the values of <span class="math">\(c\)</span> and <span class="math">\(\phi\)</span> will also change. Note that the instantaneous values of <span class="math">\(c\)</span> and <span class="math">\(\phi\)</span> calculated in this way closely match those calculated using Hoek’s (1990) expressions based on normal and shear stress.</p>
+<p>Hoek and Brown (1982) also define constants <span class="math">\(m_r\)</span> and <span class="math">\(s_r\)</span> for properties of a broken rock mass. If failure occurs, <span class="math">\(m\)</span> and <span class="math">\(s\)</span> are changed to <span class="math">\(m_r\)</span> and <span class="math">\(s_r\)</span> to represent sudden post-failure response. A progressive strain-softening behavior could be modeled by replacing the Mohr-Coulomb model with the strain-softening model.</p>
+<p>The Hoek-Brown parameters <span class="math">\(σ_c\)</span>, <span class="math">\(m\)</span>, <span class="math">\(s\)</span>, <span class="math">\(m_r\)</span> and <span class="math">\(s_r\)</span> are set in “<code class="docutils literal"><span class="pre">hoek.fis</span></code>” via the variables <code class="docutils literal"><span class="pre">hb_sc</span></code>, <code class="docutils literal"><span class="pre">hb_mmi</span></code>, <code class="docutils literal"><span class="pre">hb_ssi</span></code>, <code class="docutils literal"><span class="pre">hb_mmr</span></code> and <code class="docutils literal"><span class="pre">hb_ssr</span></code>, respectively, through the SET command. The <span class="codename">FISH</span> function <code class="docutils literal"><span class="pre">cfi</span></code> is called to update cohesion, friction, and tension variables in the Mohr-Coulomb model. The dilation angle may be specified using the variable <code class="docutils literal"><span class="pre">hoek_psi</span></code> (use <code class="docutils literal"><span class="pre">hoek_psi</span></code> = <span class="math">\(fi\)</span> for an associated flow rule – see example below). Note that, if <span class="math">\(σ_3\)</span> becomes tensile, the yield surface remains linear with the slope <span class="math">\(N_\phi\)</span> (<span class="math">\(σ_3\)</span>) defined at <span class="math">\(σ_3\)</span> = 0.</p>
+<p>The user controls the update process by specifying <code class="docutils literal"><span class="pre">ns</span></code> and <code class="docutils literal"><span class="pre">nsup</span></code> through the SET command. <code class="docutils literal"><span class="pre">ns</span></code> defines the number of steps taken before <code class="docutils literal"><span class="pre">cfi</span></code> is called to update properties. <code class="docutils literal"><span class="pre">nsup</span></code> defines the total number of times <code class="docutils literal"><span class="pre">cfi</span></code> is to be called. <code class="docutils literal"><span class="pre">ns</span></code> × <code class="docutils literal"><span class="pre">nsup</span></code> corresponds to the total number of steps in the <span class="codename">UDEC</span> run. If not specified, the default for <code class="docutils literal"><span class="pre">ns</span></code> is 5. This may require variation depending on the nonlinearity of the failure surface.</p>
+<p>A triaxial compression test on a Hoek-Brown material sample is provided below as an example application of this routine. The test is strain-controlled, and an associated flow rule is selected, for the numerical simulation.</p>
+<p><em>References</em></p>
+<p>Hoek, E. “Estimating Mohr-Coulomb Friction and Cohesion Values from the Hoek-Brown Failure Criterion,” <em>Int. J. Rock Mech. Min. Sci. &amp; Geomech. Abstr.</em>, <span class="bi">27</span>(3), 227-229 (1990).</p>
+<p>Hoek, E., and E. T. Brown. <span class="bi">Underground Excavations in Rock</span>. London: IMM (1982).</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../../../../../_images/modelhoek-1.png"><img alt="../../../../../_images/modelhoek-1.png" src="../../../../../_images/modelhoek-1.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Linear approximation of the Hoek-Brown failure criterion</span></p>
+</div>
+<p><strong>Data File:</strong> <code class="docutils literal"><span class="pre">hoek.dat</span></code></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="n">mode title </span><span class="s">&#39; Triaxial test on a Hoek-Brown material&#39;</span>
+
+<span class="nb">block tolerance</span><span class="n"> corner</span><span class="o">-</span><span class="n">round</span><span class="o">-</span><span class="n">length </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">.001</span>
+<span class="nb">block create</span><span class="n"> polygon </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">2.2</span><span class="n"> </span><span class="m m-Double">0.5</span><span class="n"> </span><span class="m m-Double">2.2</span><span class="n"> </span><span class="m m-Double">0.5</span><span class="n"> </span><span class="m m-Double">0</span>
+<span class="nb">block zone gen</span><span class="n"> quad </span><span class="m m-Double">.2</span>
+<span class="nb">block zone cmodel</span><span class="n"> assign mohr</span><span class="o">-</span><span class="n">c</span>
+<span class="n">bl edg app stress </span><span class="o">-</span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> range  pos</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">.499</span><span class="n"> </span><span class="m m-Double">5.01</span><span class="n"> pos</span><span class="o">-</span><span class="n">y </span><span class="o">-</span><span class="m m-Double">.1</span><span class="n"> </span><span class="m m-Double">2.3</span>
+<span class="n">bl grid app vel</span><span class="o">-</span><span class="n">x  </span><span class="m m-Double">0.0</span><span class="n">  range pos</span><span class="o">-</span><span class="n">x </span><span class="o">-</span><span class="m m-Double">.01</span><span class="n"> </span><span class="m m-Double">.01</span><span class="n"> pos</span><span class="o">-</span><span class="n">y  </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">20</span>
+<span class="n">bl grid app vel</span><span class="o">-</span><span class="n">y   </span><span class="m m-Double">.05</span><span class="n"> range pos</span><span class="o">-</span><span class="n">x    </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">.5</span><span class="n">  pos</span><span class="o">-</span><span class="n">y </span><span class="o">-</span><span class="m m-Double">0.1</span><span class="n">  </span><span class="m m-Double">0.1</span>
+<span class="n">bl grid app vel</span><span class="o">-</span><span class="n">y  </span><span class="o">-</span><span class="m m-Double">.05</span><span class="n"> range pos</span><span class="o">-</span><span class="n">x    </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">.5</span><span class="n">  pos</span><span class="o">-</span><span class="n">y  </span><span class="m m-Double">2.19</span><span class="n"> </span><span class="m m-Double">2.21</span>
+<span class="nb">block zone prop</span><span class="n"> bulk </span><span class="m m-Double">666.67</span><span class="n"> shear </span><span class="m m-Double">400</span><span class="n"> tension </span><span class="m m-Double">1e10</span>
+<span class="nb">block property</span><span class="n"> mat </span><span class="m m-Double">1</span><span class="n"> dens </span><span class="m m-Double">2e-3</span>
+<span class="nb">block contact prop</span><span class="n"> mat </span><span class="m m-Double">1</span><span class="n"> stiffness</span><span class="o">-</span><span class="n">normal </span><span class="m m-Double">133</span><span class="n"> stiffness</span><span class="o">-</span><span class="n">shear </span><span class="m m-Double">133</span>
+<span class="nb">block insitu</span><span class="n"> stress </span><span class="o">-</span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">5</span><span class="n"> stress</span><span class="o">-</span><span class="n">zz </span><span class="o">-</span><span class="m m-Double">5</span>
+<span class="nb">block zone history</span><span class="n"> stress</span><span class="o">-</span><span class="n">yy </span><span class="m m-Double">.25</span><span class="n"> </span><span class="m m-Double">1.1</span>
+<span class="n">hist name </span><span class="m m-Double">1</span><span class="n"> label </span><span class="s">&#39;YY - Stress&#39;</span>
+<span class="nb">block zone history</span><span class="n"> stress</span><span class="o">-</span><span class="n">xx </span><span class="m m-Double">.25</span><span class="n"> </span><span class="m m-Double">1.1</span>
+<span class="n">hist name </span><span class="m m-Double">2</span><span class="n"> label </span><span class="s">&#39;XX - Stress&#39;</span>
+<span class="nb">block zone hist</span><span class="n"> stress</span><span class="o">-</span><span class="n">zz </span><span class="m m-Double">.25</span><span class="n"> </span><span class="m m-Double">1.1</span>
+<span class="nb">block gridpoint history</span><span class="n"> disp</span><span class="o">-</span><span class="n">y  </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">2.2</span>
+<span class="n">hist name </span><span class="m m-Double">4</span><span class="n"> label </span><span class="s">&#39;Y - Displacement&#39;</span>
+<span class="nb">block gridpoint history</span><span class="n"> disp</span><span class="o">-</span><span class="n">x  </span><span class="m m-Double">1.0</span><span class="n"> </span><span class="m m-Double">1.1</span>
+
+<span class="nb">program call</span><span class="n"> </span><span class="s">&#39;hoek.fis&#39;</span>
+<span class="nb">fish def</span><span class="ni"> hoek_psi</span>
+<span class="ni">   hoek_psi </span><span class="p">=</span><span class="ni"> fi  </span><span class="c">;associated flow rule</span>
+<span class="nb">end</span>
+
+<span class="n">fish set hb_mmi</span><span class="p">=</span><span class="m m-Double">1.0</span><span class="n"> </span><span class="ni">@hb_mmr</span><span class="p">=</span><span class="m m-Double">1.0</span>
+<span class="n">fish set hb_ssi</span><span class="p">=</span><span class="m m-Double">0.00753</span><span class="n"> </span><span class="ni">@hb_ssr</span><span class="p">=</span><span class="m m-Double">0.00753</span>
+<span class="n">fish set hb_sc</span><span class="p">=</span><span class="m m-Double">50.0</span>
+<span class="n">fish set nsup</span><span class="p">=</span><span class="n"> </span><span class="m m-Double">1200</span><span class="n"> </span><span class="ni">@ns</span><span class="p">=</span><span class="m m-Double">10</span><span class="n"> </span><span class="c">; note, UDEC will cycle nsup*ns times</span>
+
+<span class="ni">@supsolve</span>
+
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;HoekBrown.sav&#39;</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../../../../../_images/722F0002.png"><img alt="../../../../../_images/722F0002.png" src="../../../../../_images/722F0002.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Linear approximation of the Hoek-Brown failure criterion</span></p>
+</div>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="../../../../../_images/722F0003.png"><img alt="../../../../../_images/722F0003.png" src="../../../../../_images/722F0003.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 3: Linear approximation of the Hoek-Brown failure criterion</span></p>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Adapting the Mohr-Coulomb Model to a Hoek-Brown Failure Surface" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

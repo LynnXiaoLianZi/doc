@@ -1,0 +1,139 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Struct - Structure &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="FISH Functions" href="../../../../../../fish/doc/fish_manual/fish_fish/fish_fish.html" />
+    <link rel="prev" title="Section - EndSection" href="section.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="struct-structure">
+<span id="fish-statement-struct"></span><h1>Struct - Structure</h1>
+<p>The <span class="fishname">struct</span> or <span class="fishname">structure</span> statments (both are synonyms in <span class="codename">FISH</span>) are used to define or create <a class="reference internal" href="../fish_structures.html#fish-structdesc"><span class="std std-ref">structure types</span></a>.</p>
+<p>If used at the start of a line of input, then the <span class="fishname">struct</span> statement defines a new structure:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">struct fred</span><span class="p">(</span><span class="n">mem1</span><span class="p">,</span><span class="n">mem2</span><span class="p">,</span><span class="n">mem3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The name following <span class="fishname">struct</span> is the name of the new structure.
+The arguments following are the names of the structure members.
+Both structure names and member names must follow the <a class="reference internal" href="../fish_reservednames.html#fish-reserved-names"><span class="std std-ref">rules for names</span></a>, however structure names and member names can be the same as global symbols.</p>
+<p>Note that this structure definition happens when the <span class="codename">FISH</span> function is parsed, and not when it is executed.</p>
+<p>If a structure of that name already exists and does not exactly match the previous definition, an error will be thrown.</p>
+<p>An alternative method of defining structures is to use the <a class="reference internal" href="../../../../../../kernel/doc/manual/fish/commands/cmd_fish.structure.html#command:fish.structure" title="Define a new |FISH| structure."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">structure</span></code></a> command.</p>
+<p>Structure definitions are part of the model state.
+This means the are saved and restored with the model, and are removed with a <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.new.html#command:model.new" title="Clear model-state information. Model information is cleared, allowing one to&#013;&#010;begin a new"><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">new</span></code></a>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>If used in an expression, the <span class="fishname">struct</span> keyword is used to create a structure type.
+In this case the arguments following are optional, and are used to initialize the structure members in the order declared in the structure definition.</p>
+<p>The following is an example of using the <span class="fishname">struct</span> keyword:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">local a </span><span class="p">=</span><span class="n"> struct fred</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="n">list</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">10</span><span class="p">))</span>
+<span class="n">my_function_call</span><span class="p">(</span><span class="n">struct fred</span><span class="p">(</span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">7.8</span><span class="p">,</span><span class="s">&#39;monkey&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../fish.html" ><span class="codename">FISH</span> Scripting Reference</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../fish_statements.html" accesskey="U"><span class="codename">FISH</span> Statements</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="section.html"
+                           title="previous chapter"> Section - EndSection</a> |    
+       <a href="../../../../../../fish/doc/fish_manual/fish_fish/fish_fish.html"
+                           title="next chapter"><span class="codename">FISH</span> Functions</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Struct - Structure" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

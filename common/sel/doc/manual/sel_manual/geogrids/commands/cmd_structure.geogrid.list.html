@@ -1,0 +1,286 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>structure geogrid list command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="structure-geogrid-list-command">
+<h1><code class="docutils literal"><span class="pre">structure</span> <span class="pre">geogrid</span> <span class="pre">list</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="structuregeogrid command">
+<dt id="command:structure.geogrid.list">
+<span class="cmdname"><span class="pref">s</span><span class="pref">t</span><span class="pref">r</span><span class="null">u</span><span class="null">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">g</span><span class="null">e</span><span class="null">o</span><span class="null">g</span><span class="null">r</span><span class="null">i</span><span class="null">d</span><span class="null"> </span></span><span class="cmdname"><span class="pref">l</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:structure.geogrid.list.apply" title="structure geogrid list apply">apply</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.geogrid.list.coupling" title="structure geogrid list coupling">coupling</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.geogrid.list.depth-factor" title="structure geogrid list depth-factor">depth-factor</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.geogrid.list.element-type" title="structure geogrid list element-type">element-type</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.geogrid.list.group" title="structure geogrid list group">group</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.geogrid.list.information" title="structure geogrid list information">information</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.geogrid.list.force-node" title="structure geogrid list force-node">force-node</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.geogrid.list.property" title="structure geogrid list property">property</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.geogrid.list.resultant" title="structure geogrid list resultant">resultant</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.geogrid.list.stress" title="structure geogrid list stress">stress</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.geogrid.list.stress-principal" title="structure geogrid list stress-principal">stress-principal</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.geogrid.list.system-local" title="structure geogrid list system-local">system-local</a></p>
+</div>
+<p>List properties and response of each geogrid element in the range.</p>
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.apply">
+<span class="cmdkey"><span class="pref">a</span><span class="null">p</span><span class="null">p</span><span class="null">l</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>uniform applied pressure acting on the element</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.coupling">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null">l</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span></dt>
+<dd><p>Information about the shear coupling springs connecting the liner to the zones.  The confining stress, displacement, yield state, and direction is given.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.depth-factor">
+<span class="cmdkey"><span class="pref">d</span><span class="null">e</span><span class="null">p</span><span class="null">t</span><span class="null">h</span><span class="null">-</span><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>depth factor used during stress recovery</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.element-type">
+<span class="cmdkey"><span class="pref">e</span><span class="null">l</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">t</span><span class="null">y</span><span class="null">p</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>finite element type used</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.group">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="pref">s</span><span class="null">l</span><span class="null">o</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>list the group assignment(s) of this element.  If <span class="cmdkey">slot</span> is supplied, list the group assignment for this element, if any, in slot <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.information">
+<span class="cmdkey"><span class="pref">i</span><span class="null">n</span><span class="null">f</span><span class="null">o</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>Lists general element information, including <span class="cmdkey">id</span> and <span class="cmdkey">component-id</span> numbers, connected nodes, centroids, surface area, volume, and the hide and select status.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.force-node">
+<span class="cmdkey"><span class="pref">f</span><span class="null">o</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null">-</span><span class="pref">n</span><span class="null">o</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>List nodal forces.  By default, components are displayed in terms of the element local coordinate systems. These are the forces exerted by the nodes on the element.</p>
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.force-node.local">
+<span class="cmdkey"><span class="pref">l</span><span class="null">o</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>List forces in terms of the element local coordinate system (the default).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.force-node.global">
+<span class="cmdkey"><span class="pref">g</span><span class="null">l</span><span class="null">o</span><span class="null">b</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>List forces in terms of the global coordinate system.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.property">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><dl class="keyword">
+<dt id="kwd:structure.geogrid.list.property.density">
+<span class="cmdkey"><span class="pref">d</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>density, <span class="math">\(ρ\)</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.property.thickness">
+<span class="cmdkey"><span class="pref">t</span><span class="null">h</span><span class="null">i</span><span class="null">c</span><span class="null">k</span><span class="null">n</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>geogrid thickness</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.property.thermal-expansion">
+<span class="cmdkey"><span class="pref">t</span><span class="null">h</span><span class="null">e</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">e</span><span class="null">x</span><span class="null">p</span><span class="null">a</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>thermal expansion coefficient</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.property.anisotropic-membrane">
+<span class="cmdkey"><span class="pref">a</span><span class="null">n</span><span class="null">i</span><span class="null">s</span><span class="null">o</span><span class="null">t</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">i</span><span class="null">c</span><span class="null">-</span><span class="pref">m</span><span class="null">e</span><span class="null">m</span><span class="null">b</span><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>anisotropic membrane material-stiffness coefficients { <span class="math">\(c_{11}\)</span>, <span class="math">\(c_{12}\)</span>, <span class="math">\(c_{13}\)</span>, <span class="math">\(c_{22}\)</span>, <span class="math">\(c_{23}\)</span>, <span class="math">\(c_{33}\)</span> }</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.property.anisotropic-bending">
+<span class="cmdkey"><span class="pref">a</span><span class="null">n</span><span class="null">i</span><span class="null">s</span><span class="null">o</span><span class="null">t</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">i</span><span class="null">c</span><span class="null">-</span><span class="pref">b</span><span class="null">e</span><span class="null">n</span><span class="null">d</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span></dt>
+<dd><p>anisotropic bending material-stiffness coefficients { <span class="math">\(c_{11}\)</span>, <span class="math">\(c_{12}\)</span>, <span class="math">\(c_{13}\)</span>, <span class="math">\(c_{22}\)</span>, <span class="math">\(c_{23}\)</span>, <span class="math">\(c_{33}\)</span> }</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.property.material-x">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span></dt>
+<dd><p>Vector used to determine the local X direction of the material coordinate system.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.property.isotropic">
+<span class="cmdkey"><span class="pref">i</span><span class="null">s</span><span class="null">o</span><span class="null">t</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">i</span><span class="null">c</span><span class="null"> </span></span></dt>
+<dd><p>isotropic material properties: <span class="math">\(E\)</span> and <span class="math">\(v\)</span>, where <span class="math">\(E\)</span> is Young’s modulus <span class="math">\([F/L^2\)</span><span class="math">\(]\)</span> and <span class="math">\(v\)</span> is Poisson’s ratio</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.property.orthotropic-membrane">
+<span class="cmdkey"><span class="pref">o</span><span class="null">r</span><span class="null">t</span><span class="null">h</span><span class="null">o</span><span class="null">t</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">i</span><span class="null">c</span><span class="null">-</span><span class="pref">m</span><span class="null">e</span><span class="null">m</span><span class="null">b</span><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>orthotropic membrane material-stiffness coefficients { <span class="math">\(c_{11}\)</span>, <span class="math">\(c_{12}\)</span>, <span class="math">\(c_{22}\)</span>, <span class="math">\(c_{33}\)</span> }</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.property.orthotropic-bending">
+<span class="cmdkey"><span class="pref">o</span><span class="null">r</span><span class="null">t</span><span class="null">h</span><span class="null">o</span><span class="null">t</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">i</span><span class="null">c</span><span class="null">-</span><span class="pref">b</span><span class="null">e</span><span class="null">n</span><span class="null">d</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span></dt>
+<dd><p>orthotropic membrane material-stiffness coefficients { <span class="math">\(c_{11}\)</span>, <span class="math">\(c_{12}\)</span>, <span class="math">\(c_{22}\)</span>, <span class="math">\(c_{33}\)</span> }</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.property.coupling-cohesion">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null">l</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">-</span><span class="pref">c</span><span class="null">o</span><span class="null">h</span><span class="null">e</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>coupling spring cohesion (stress units)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.property.coupling-friction">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null">l</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">-</span><span class="pref">f</span><span class="null">r</span><span class="null">i</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>coupling spring friction angle (degrees)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.property.coupling-stiffness">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null">l</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">-</span><span class="pref">s</span><span class="null">t</span><span class="null">i</span><span class="null">f</span><span class="null">f</span><span class="null">n</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>coupling spring stiffness per unit area</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.property.slide">
+<span class="cmdkey"><span class="pref">s</span><span class="null">l</span><span class="null">i</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>large-strain sliding flag</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.property.slide-tolerance">
+<span class="cmdkey"><span class="pref">s</span><span class="null">l</span><span class="null">i</span><span class="null">d</span><span class="null">e</span><span class="null">-</span><span class="pref">t</span><span class="null">o</span><span class="null">l</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>large-strain sliding tolerance</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.resultant">
+<span class="cmdkey"><span class="pref">r</span><span class="null">e</span><span class="null">s</span><span class="null">u</span><span class="null">l</span><span class="null">t</span><span class="null">a</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">d</span><span class="null">e</span><span class="null">s</span></span>></span><span class="null"> </span></dt>
+<dd><p>all eight stress resultant quantities last calculated with the <a class="reference internal" href="cmd_structure.geogrid.recover.html#kwd:structure.geogrid.recover.resultants" title="recover the eight stress resultants for all elements in the optional range.&#013;&#010;The stress resultants are expressed in terms of the surface coordinate system.&#013;&#010;This command assumes that a consistent surface coordinate system has been established&#013;&#010;for the group of elements in the range (see the  surface  keyword). The&#013;&#010;bending and membrane stress resultants (`M_x`\ , `M_y`\ , `M_{xy}`\ , `N_x`\&#013;&#010;, `N_y`, and `N_{xy}`\ ) vary linearly over each element, whereas the transverse-shear&#013;&#010;stress"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">geogrid</span> <span class="pre">recover</span> <span class="pre">resultants</span></code></a> command.  If the <span class="cmdkey">nodes</span> keyword is given the values of these quantities is supplied at each node of the element, in addition to the value at the element centroid.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.stress">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">d</span><span class="null">e</span><span class="null">s</span></span>></span><span class="null"> </span></dt>
+<dd><p>the stress state calculated with the <a class="reference internal" href="cmd_structure.geogrid.recover.html#kwd:structure.geogrid.recover.stress" title="recover a stress tensor (expressed in global coordinate system) at a specified&#013;&#010;depth in all elements in the optional range. The depth equals `v` times `t`\&#013;&#010;/2, where `t` is shell thickness. The depth factor, `v`, must be in the range&#013;&#010;[-1, +1]. `v` equal to +1 / -1 corresponds with the outer/inner shell surface&#013;&#010;(outer surface defined by positive surface system `z`-direction), and `v` equal&#013;&#010;to zero corresponds with the shell mid-surface. If `v`"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">geogrid</span> <span class="pre">recover</span> <span class="pre">stress</span></code></a> command.   If the <span class="cmdkey">nodes</span> keyword is given the values of these quantities is supplied at each node of the element, in addition to the value at the element centroid.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.stress-principal">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">p</span><span class="null">r</span><span class="null">i</span><span class="null">n</span><span class="null">c</span><span class="null">i</span><span class="null">p</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">d</span><span class="null">e</span><span class="null">s</span></span>></span><span class="null"> </span></dt>
+<dd><p>principal stresses calculated with the <a class="reference internal" href="cmd_structure.geogrid.recover.html#kwd:structure.geogrid.recover.stress" title="recover a stress tensor (expressed in global coordinate system) at a specified&#013;&#010;depth in all elements in the optional range. The depth equals `v` times `t`\&#013;&#010;/2, where `t` is shell thickness. The depth factor, `v`, must be in the range&#013;&#010;[-1, +1]. `v` equal to +1 / -1 corresponds with the outer/inner shell surface&#013;&#010;(outer surface defined by positive surface system `z`-direction), and `v` equal&#013;&#010;to zero corresponds with the shell mid-surface. If `v`"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">geogrid</span> <span class="pre">recover</span> <span class="pre">stress</span></code></a> command.   If the <span class="cmdkey">nodes</span> keyword is given the values of these quantities is supplied at each node of the element, in addition to the value at the element centroid.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.geogrid.list.system-local">
+<span class="cmdkey"><span class="pref">s</span><span class="null">y</span><span class="null">s</span><span class="null">t</span><span class="null">e</span><span class="null">m</span><span class="null">-</span><span class="pref">l</span><span class="null">o</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>element local coordinate system</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?structure geogrid list command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,144 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>structure damping command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="structure-damping-command">
+<h1><code class="docutils literal"><span class="pre">structure</span> <span class="pre">damping</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="structure command">
+<dt id="command:structure.damping">
+<span class="cmdname"><span class="pref">s</span><span class="pref">t</span><span class="pref">r</span><span class="null">u</span><span class="null">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">d</span><span class="null">a</span><span class="null">m</span><span class="null">p</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:structure.damping.combined-local" title="structure damping combined-local">combined-local</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.damping.local" title="structure damping local">local</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.damping.none" title="structure damping none">none</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.damping.rayleigh" title="structure damping rayleigh">rayleigh</a></p>
+</div>
+<p>Set the structural element logic damping scheme. This command is depreciated. Use instead the command <a class="reference internal" href="cmd_structure.mechanical.html#command:structure.mechanical.damping" title="Set the structural element logic damping scheme for static analysis. The following&#013;&#010;keywords are available:"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">mechanical</span> <span class="pre">damping</span></code></a> for static mode or <a class="reference internal" href="cmd_structure.dynamic.html#command:structure.dynamic.damping" title="Set the structural element logic damping scheme for dynamic analysis. The following&#013;&#010;keywords are available:"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">dynamic</span> <span class="pre">damping</span></code></a> for dynamic mode. The values of this setting can be printed using the <a class="reference internal" href="cmd_structure.list.html#command:structure.list.information" title="Lists general information about structural element settings.  This list includes&#013;&#010;the timestep safety factor, the mass scaling settings, the damping scheme in&#013;&#010;place, the link tolerances, the default large-strain sliding settings, the number&#013;&#010;of elements, nodes, and links, etc."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">list</span> <span class="pre">information</span></code></a> command. The following keywords are available:</p>
+<dl class="keyword">
+<dt id="kwd:structure.damping.combined-local">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">m</span><span class="null">b</span><span class="null">i</span><span class="null">n</span><span class="null">e</span><span class="null">d</span><span class="null">-</span><span class="pref">l</span><span class="null">o</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>sets the damping scheme used by the structural element logic to combined-local damping. The local damping constants are stored separately for each node and set by the command <a class="reference internal" href="../nodes/commands/cmd_structure.node.damping-local.html#command:structure.node.damping-local" title="Sets the local-damping factor to  f  for all nodes in the range (see the&#013;&#010; structure.damping  command). By default,  f  equals to 0.8."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">damping-local</span></code></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.damping.local">
+<span class="cmdkey"><span class="pref">l</span><span class="null">o</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>sets the damping scheme used by the structural element logic to local damping. <em>This is the default setting for static mode</em>. The local-damping constants are stored separately for each node and set by the command <a class="reference internal" href="../nodes/commands/cmd_structure.node.damping-local.html#command:structure.node.damping-local" title="Sets the local-damping factor to  f  for all nodes in the range (see the&#013;&#010; structure.damping  command). By default,  f  equals to 0.8."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">damping-local</span></code></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.damping.none">
+<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>sets the damping scheme used by the structural element logic to no damping. <em>This is the default setting for dynamic mode</em>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.damping.rayleigh">
+<span class="cmdkey"><span class="pref">r</span><span class="null">a</span><span class="null">y</span><span class="null">l</span><span class="null">e</span><span class="null">i</span><span class="null">g</span><span class="null">h</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f2</span><span class="null"> </span></span></a></dt>
+<dd><p>sets the damping scheme used by the structural element logic to Rayleigh damping. The stiffness-proportional constant is <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f1</span></span></a> = <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">beta</span></span></a>, and the mass-proportional constant is <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f2</span></span></a> = <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">alpha</span></span></a>.
+This command must be used when the dynamic option is configured and turned on.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?structure damping command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

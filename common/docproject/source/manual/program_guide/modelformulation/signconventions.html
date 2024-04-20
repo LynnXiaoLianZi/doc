@@ -1,0 +1,186 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Sign Conventions &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Stress Sign Conventions" href="stresssignconvention.html" />
+    <link rel="prev" title="Notations" href="notations.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="sign-conventions">
+<span id="commonsignconventions"></span><h1>Sign Conventions</h1>
+<p><span class="flag3">this page is based on the pfc version of the doc, with flac3d bits added to it.</span></p>
+<p>The following sign conventions must be kept in mind when entering input or evaluating results.</p>
+<dl class="docutils">
+<dt><strong>DIRECT STRESS</strong></dt>
+<dd>Positive stresses indicate tension; negative stresses indicate compression.</dd>
+<dt><strong>SHEAR STRESS</strong></dt>
+<dd><p class="first">With reference to <a href="#stress-conventions">Figure  1</a>, a positive shear stress points in the positive direction of the coordinate axis of the second subscript if it    acts on a surface with an outward normal in the positive direction. Conversely, if the outward normal of the surface is in the negative direction, then the positive shear stress points in the negative direction of the coordinate axis of the second subscript. The stresses shown in <a href="#stress-conventions">Figure  1</a> are all positive. The stress tensor is symmetric (i.e., complementary shear stresses are equal).</p>
+<div class="figure align-center" id="id1">
+<span id="stress-conventions"></span><a class="reference internal image-reference" href="../../../../../../_images/signconvs01.png"><img alt="../../../../../../_images/signconvs01.png" src="../../../../../../_images/signconvs01.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Sign convention for positive stress components.</span></p>
+</div>
+<p>The distortion associated with positive and negative shear strain is illustrated in <a href="#shear-distortion">Figure  2</a>.</p>
+<div class="last figure align-center" id="id2">
+<span id="shear-distortion"></span><a class="reference internal image-reference" href="../../../../../../_images/signconvs03.png"><img alt="../../../../../../_images/signconvs03.png" src="../../../../../../_images/signconvs03.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Distortion associated with positive and negative shear strain.</span></p>
+</div>
+</dd>
+<dt><strong>STRAIN RATE</strong></dt>
+<dd>The convention for strain rate is analogous to that for stress.</dd>
+<dt><strong>CONTACT FORCE</strong></dt>
+<dd>Each contact-force vector can be resolved into normal and shear components with respect to the contact plane (see the “<span class="xref std std-ref">contact_resolution</span>” section for further details).
+Normal contact forces act normal to the contact plane, while shear contact forces act in the contact plane.
+Positive normal contact forces indicate compression; negative normal contact forces indicate tension.</dd>
+<dt><strong>CONTACT STRESS</strong></dt>
+<dd>The contact force is divided by the area associated with the contact.  The sign convention is the same as for the contact force.</dd>
+<dt><strong>VECTOR QUANTITIES</strong></dt>
+<dd>The <span class="math">\(x\)</span>-, <span class="math">\(y\)</span>-, and <span class="math">\(z\)</span>-components of all vector quantities (e.g., forces, moments, displacements, and velocities) are positive when pointing in the directions of the positive
+global <span class="math">\(x\)</span>-, <span class="math">\(y\)</span>-, and <span class="math">\(z\)</span>-coordinate space.</dd>
+</dl>
+<p><span class="flag3">following material brought over from flac3d (and not found in pfc)</span></p>
+<dl class="docutils">
+<dt><strong>DIRECT STRAIN</strong></dt>
+<dd>Positive strain indicates extension; negative strain indicates compression.</dd>
+<dt><strong>SHEAR STRAIN</strong></dt>
+<dd>Shear strain follows the convention of shear stress (see above).</dd>
+</dl>
+<p><span class="bi">JOINT NORMAL STRESS</span> — Joint normal stress is positive in compression.</p>
+<p><span class="bi">JOINT NORMAL OPENING</span> — Joint opening is positive; joint closure is negative.</p>
+<p><span class="bi">JOINT SHEAR STRESS</span> — Joint shear stress is positive for the following direction
+of relative movement:</p>
+<div class="figure align-center" id="id3">
+<span id="joint-shear-stress-convention"></span><img alt="Positive joint shear stress" src="../../../../../../_images/signconvs04.svg" /><p class="caption"><span class="caption-text">Figure 3: Positive joint shear stress</span></p>
+</div>
+<p><span class="bi">JOINT SHEAR DISPLACEMENT</span> — Joint shear displacement is positive for the following direction
+of relative movement:</p>
+<div class="figure align-center" id="id4">
+<span id="joint-shear-displacement-convention"></span><img alt="Positive joint shear displacement" src="../../../../../../_images/signconvs05.svg" /><p class="caption"><span class="caption-text">Figure 4: Positive joint shear displacement</span></p>
+</div>
+<dl class="docutils">
+<dt><strong>PRESSURE</strong></dt>
+<dd>A positive pressure will act normal to, and in a direction toward, the surface of a body (i.e., push). A negative pressure will act normal to, and in a direction away from, the surface of a body (i.e., pull). The next figure illustrates this convention:</dd>
+</dl>
+<div class="figure align-center" id="id5">
+<span id="pressure-convention"></span><img alt="Mechanical pressure" src="../../../../../../_images/signconvs02.png" />
+<p class="caption"><span class="caption-text">Figure 5: Mechanical pressure: (a) positive; (b) negative</span></p>
+</div>
+<p><span class="bi">PORE PRESSURE</span> — Fluid pore pressure is positive in compression. Negative pore pressure indicates fluid tension.</p>
+<p><span class="bi">DIP, DIP DIRECTION</span> — When dip and dip direction are used to specify joints in <span class="codename">UDEC</span>, the dip and dip direction are defined using a global right-handed <span class="math">\(xyz\)</span>-axes system.  When dip and dip direction are specified, <span class="codename">UDEC</span> assumes the following: +<span class="math">\(y\)</span> points North (0 degrees azimuth); +<span class="math">\(x\)</span> points East (+90 degrees azimuth); and +<span class="math">\(z\)</span> points up. Dip direction is measured positive clockwise in the horizontal plane from North, which is at 0 degrees azimuth. Dip is measured positive down from the horizontal plane. This is not the same system that is normally used to specify coordinates in <span class="codename">UDEC</span>.  Also the user is required to specify the orientation of the <span class="codename">UDEC</span> plane using the model orientation and origin commands.</p>
+<p><span class="bi">VECTOR QUANTITIES</span> — The <span class="math">\(x\)</span>- and <span class="math">\(y\)</span>-components of vector quantities such as forces, displacements, and velocities are positive when pointing in the directions of the <span class="math">\(x\)</span>- and <span class="math">\(y\)</span>-axes.</p>
+<p><span class="bi">STRUCTURAL ELEMENTS</span> Axial forces in beam elements are negative in
+compression. Shear forces in beam elements follow the opposite sign convention as
+that given for zone shear stress (illustrated in Figure 1). Axial forces in rockbolts and cable elements elements are negative in
+compression.  Moments at the end of
+beam and rockbolt elements are positive in the counterclockwise direction.</p>
+<p>Axial compression force in cables and rockbolts is (+) positive.</p>
+<p>Translational displacements at nodes are positive in the direction of the positive
+coordinate axes, and angular displacements are positive in the counterclockwise direction.</p>
+<p>The shear force and shear displacement at a cable/grout interface-spring node, or a
+rockbolt shear coupling-spring node, are positive if the node displacement is in the
+direction of the specification of the cable or rockbolt.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="formulation.html" accesskey="U">Underpinnings</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="notations.html"
+                           title="previous chapter"> Notations</a> |    
+       <a href="stresssignconvention.html"
+                           title="next chapter">Stress Sign Conventions</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Sign Conventions" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

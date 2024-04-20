@@ -1,0 +1,146 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Structures &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Arrays" href="fish_arrays.html" />
+    <link rel="prev" title="Maps" href="fish_maps.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="structures">
+<span id="fish-structdesc"></span><h1>Structures</h1>
+<p>Structures allow a single value to contain multiple named <span class="codename">FISH</span> variables.
+This is a programming data structure that can be used to compartmentalize <span class="codename">FISH</span> variables.</p>
+<p>See the <span class="xref std std-ref">Structure Utilities</span> for available methods.</p>
+<p>A structure may be defined either with the <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.structure.html#command:fish.structure" title="Define a new |FISH| structure."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">structure</span></code></a> command, or with the <span class="cmdkey">struct</span> or <span class="cmdkey">structure</span> statement as the first thing on a line of <span class="codename">FISH</span> input.</p>
+<p>An instance of a structure may be created anywhere in an expression by using the <span class="cmdkey">struct</span> or <span class="cmdkey">structure</span> keyword, followed by the name of the structure and optionally values to initialize structure members as arguments.
+If uninitialized, structure members have the default <span class="codename">FISH</span> value of <a class="reference internal" href="../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">0</span></span></a>.</p>
+<p>Structure members can contain any valid <span class="codename">FISH</span> values, including lists or other structures.</p>
+<p>Structure members can be accessed using the accessor <a class="reference internal" href="../../../../utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">-&gt;</span></span></a> operator followed by the member name.  Structure member access is much more efficient than in previous versions of <span class="codename">FISH</span>, only slightly slower than direct variable access.</p>
+<p>Structure types can be compared against each other with <span class="fishname">==</span>, <span class="fishname">&lt;</span>, <span class="fishname">&gt;</span> etc.  If the structures are of the same type name then each member is compared in order.</p>
+<p>The example below illustrates the use of structures.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">fish structure</span><span class="n"> fred</span><span class="p">(</span><span class="n">one</span><span class="p">,</span><span class="n">two</span><span class="p">,</span><span class="n">three</span><span class="p">)</span><span class="n"> </span><span class="c">;; Define structure type fred</span>
+<span class="n">                                   </span><span class="c">;; With three members:</span>
+<span class="n">                                   </span><span class="c">;;   &#39;one&#39;, &#39;two&#39;, &#39;three&#39;</span>
+<span class="nb">fish define</span><span class="ni"> test</span>
+<span class="ni">   struct george</span><span class="p">(</span><span class="ni">val1</span><span class="p">,</span><span class="ni">val2</span><span class="p">,</span><span class="ni">val3</span><span class="p">)</span><span class="ni"> </span><span class="c">;; Define structure type george</span>
+<span class="ni">                                 </span><span class="c">;; with three members:</span>
+<span class="ni">                                 </span><span class="c">;;   &#39;val1&#39;, &#39;val2&#39;, &#39;val3&#39;</span>
+<span class="ni">   fred </span><span class="p">=</span><span class="ni"> struct george</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span><span class="ni"> </span><span class="c">;; Create and initialize a george struct</span>
+<span class="ni">   mary </span><span class="p">=</span><span class="ni"> struct fred          </span><span class="c">;; Create fred struct</span>
+<span class="ni">   test </span><span class="p">=</span><span class="ni"> fred</span><span class="o">-&gt;</span><span class="ni">val1</span>
+<span class="ni">   mary</span><span class="o">-&gt;</span><span class="ni">two </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;monkey&#39;</span>
+<span class="nb">end</span>
+<span class="ni">[test]</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>As with most aggregate types, when the value is listed it will simply indicate that it is of type Structure and the structure name.  To see the contents of the structure use the <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.list.html#kwd:fish.list.contents" title="For |FISH| values of an aggregate type (arrays, matrices, structures, maps,&#013;&#010;etc.) this will list the contents of the type in a structured way."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">list</span> <span class="pre">contents</span></code></a> command.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="fish.html" ><span class="codename">FISH</span> Scripting Reference</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="fish_languagerules.html" ><span class="codename">FISH</span> Rules and Usage</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="fish_datatypes.html" accesskey="U">Data Types</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="fish_maps.html"
+                           title="previous chapter"> Maps</a> |    
+       <a href="fish_arrays.html"
+                           title="next chapter">Arrays</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Structures" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

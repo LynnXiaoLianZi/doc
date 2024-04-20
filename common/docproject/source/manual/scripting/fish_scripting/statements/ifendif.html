@@ -1,0 +1,136 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>If - Else If - Else - EndIf &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="Local" href="local.html" />
+    <link rel="prev" title="Global" href="global.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="if-else-if-else-endif">
+<span id="fish-statement-ifendif"></span><h1>If - Else If - Else - EndIf</h1>
+<p><span class="fishname">if</span> <a class="reference internal" href="../../../../../utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">expression</span></span></a> <span class="fishname">then</span></p>
+<p><a href="#id1"><span class="problematic" id="id2">|sp6|</span></a> …</p>
+<p><span class="fishname">else if</span> <a class="reference internal" href="../../../../../utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">expression</span></span></a> <span class="fishname">then</span></p>
+<p><a href="#id3"><span class="problematic" id="id4">|sp6|</span></a> …</p>
+<p><span class="fishname">else</span></p>
+<p><a href="#id5"><span class="problematic" id="id6">|sp6|</span></a> …</p>
+<p><span class="fishname">endif</span></p>
+<p>These statements allow conditional execution of <span class="codename">FISH</span> code segments; <span class="fishname">else</span> and <span class="fishname">else if</span> are optional,
+and the word <span class="fishname">then</span> may be omitted if desired.</p>
+<p>The expression following <span class="fishname">if</span> or <span class="fishname">else if</span> may be any expression that evaluates to a boolean, or has a type that will convert to a boolean after evaluation.
+For example, an integer result will be considered <a class="reference internal" href="../../../../../utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">false</span></span></a> if it is <a class="reference internal" href="../../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">0</span></span></a> and <a class="reference internal" href="../../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">true</span></span></a> if it has any non-zero value.</p>
+<p><span class="fishname">if</span> … <span class="fishname">else</span> <span class="fishname">if</span> … <span class="fishname">else</span> … <span class="fishname">endif</span> clauses can be nested to any depth.</p>
+<p>As a special case shorthand, a <span class="codename">FISH</span> expression or function list may follow the <span class="fishname">then</span> keyword in the following syntax</p>
+<blockquote>
+<div><span class="fishname">if</span> <a class="reference internal" href="../../../../../utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">expression</span></span></a> <span class="fishname">then</span> <a class="reference internal" href="../../../../../utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">expression</span></span></a></div></blockquote>
+<p>This allows simple conditions to be expressed in a single line, for example:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">if x</span><span class="o">&lt;</span><span class="m m-Double">0.0</span><span class="n"> then system</span><span class="p">.</span><span class="n">error </span><span class="p">=</span><span class="n"> </span><span class="s">&quot;this is an error&quot;</span>
+</pre></div>
+</div>
+<p>If the shorthand syntax is used <span class="fishname">else</span> and <span class="fishname">else if</span> statements are not allowed, and the <span class="fishname">then</span> keyword is required.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../fish.html" ><span class="codename">FISH</span> Scripting Reference</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../fish_statements.html" accesskey="U"><span class="codename">FISH</span> Statements</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="global.html"
+                           title="previous chapter"> Global</a> |    
+       <a href="local.html"
+                           title="next chapter">Local</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?If - Else If - Else - EndIf" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

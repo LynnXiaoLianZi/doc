@@ -1,0 +1,313 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Development of Plastic Hinges in a Statically Loaded Beam &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="hide sectionname docutils container">
+Examples • Verification Problems</div>
+<div class="section" id="development-of-plastic-hinges-in-a-statically-loaded-beam">
+<span id="beamfail"></span><h1>Development of Plastic Hinges in a Statically Loaded Beam</h1>
+<p class="h2 rubric">Problem Statement</p>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To view this project in <span class="codename">FLAC3D</span>, use the menu command <span class="menuselection">Help ‣ Examples…</span>.  Choose “VerificationProblems/ PlasticHingesBeam” and select “PlasticHingesBeam.prj” to load.
+The <a class="reference internal" href="#plastichingesbeamdata"><span class="std std-ref">main data files</span></a> used are shown at the end of this example. The remaining data files can be found in the project.</p>
+</div>
+<p>A statically indeterminate beam of length <span class="math">\(2 l\)</span> is loaded with a distributed load <span class="math">\(w\)</span>. This load corresponds to the self-weight of the beam. Assuming the beam can support a maximum bending moment, <span class="math">\(M^{pl}\)</span> (after which a plastic hinge forms, and the section deforms indefinitely at constant load), the problem involves finding the maximum load, <span class="math">\(w^{max}\)</span>, that produces a kinematic mechanism and, consequently, the collapse of the system. The problem is illustrated in <a href="#plastichingesbeam-problem">Figure  1</a>.</p>
+<p>This problem can be solved using the plastic theory of structures (see, for example, Riley and Zachary, 1989, pp. 581-586). According to this theory, the development of plastic hinges is dictated by the occurrence of maximum bending moments.</p>
+<div class="figure align-center" id="id1">
+<span id="plastichingesbeam-problem"></span><a class="reference internal image-reference" href="../../../../../_images/plastichingesbeam-problem.png"><img alt="../../../../../_images/plastichingesbeam-problem.png" src="../../../../../_images/plastichingesbeam-problem.png" style="width: 82%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Bending moment distribution in a statically indeterminate continuous beam</span></p>
+</div>
+<p>The lower part of <a href="#plastichingesbeam-problem">Figure  1</a> displays the bending moment distribution for the continuous beam assuming elastic behavior. The maximum moment occurs at the position <span class="math">\(A\)</span>, indicated as <span class="math">\(M_A=M_1^{max}\)</span> in the figure. A second maximum moment occurs at point <span class="math">\(D\)</span> and is indicated as <span class="math">\(M_D=M_2^{max}\)</span>. (Note that, for the given, symmetric, problem geometry, there is another point <span class="math">\(D\)</span>—not indicated in the figure—between points <span class="math">\(C\)</span> and <span class="math">\(A\)</span>.)</p>
+<p>Consider a gradually increasing surcharge, <span class="math">\(w\)</span>, acting on the beam. If the maximum plastic moment that the beam supports is <span class="math">\(M^{pl}\)</span>, the first plastic hinge will develop at the point where <span class="math">\(M^{pl}\)</span> is reached first (i.e., at point <span class="math">\(A\)</span>). After the first hinge has formed, the problem is still stable. The system behaves as two separate beams with a constant bending moment <span class="math">\(M^{pl}\)</span> at point <span class="math">\(A\)</span>. Collapse of the system will occur when a second hinge develops (i.e., at point <span class="math">\(D\)</span> where the second maximum bending moment occurs). This is because a second hinge at position <span class="math">\(D\)</span> creates a kinematic mechanism that allows the roller at point <span class="math">\(B\)</span> to freely move toward the right.</p>
+<p>The formation of hinges can be modeled with <span class="codename">FLAC3D</span>. The problem illustrated in <a href="#plastichingesbeam-problem">Figure  1</a> provides a test of the plastic-hinge logic implemented in the code.</p>
+<p>The problem conditions for this test are</p>
+<table border="1" class="colwidths-given blank docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>length</td>
+<td><span class="math">\(l\)</span> = 10 m</td>
+</tr>
+<tr class="row-even"><td>height</td>
+<td><span class="math">\(h\)</span> = 1 m</td>
+</tr>
+<tr class="row-odd"><td>plastic moment</td>
+<td><span class="math">\(M^{pl}\)</span> = 50 MN-m</td>
+</tr>
+<tr class="row-even"><td>Young’s modulus</td>
+<td><span class="math">\(E\)</span> = 210 GPa</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the properties associated with the deformability of the beam (the height, <span class="math">\(h\)</span>, and Young’s modulus, <span class="math">\(E\)</span>) are not relevant in this problem but are needed as input for the <span class="codename">FLAC3D</span> model.</p>
+<p class="h2 rubric" id="plastichingesbeam-solutiondiscussion">Closed-Form Solution</p>
+<p>The location of the point <span class="math">\(D\)</span> in <a href="#plastichingesbeam-problem">Figure  1</a>, where the second plastic hinge develops, can be found from simple beam theory analysis.</p>
+<p>Consider the simply supported beam shown in <a href="#plastichingesbeam-solution">Figure  2</a>. This represents the situation after the first plastic hinge has developed at the midpoint in <a href="#plastichingesbeam-problem">Figure  1</a>. The bending moment at point <span class="math">\(A\)</span> is constant and equal to <span class="math">\(M^{pl}\)</span>.</p>
+<div class="figure align-center" id="plastichingesbeam-solution">
+<a class="reference internal image-reference" href="../../../../../_images/plastichingesbeam-solution.png"><img alt="../../../../../_images/plastichingesbeam-solution.png" src="../../../../../_images/plastichingesbeam-solution.png" style="width: 82%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Bending moment and shear force distribution after plastic hinge has developed at point <em>A</em>.</span></p>
+</div>
+<p><a href="#plastichingesbeam-solution">Figure  2</a> also illustrates the distribution of bending moments <span class="math">\(M(x)\)</span> and shear force <span class="math">\(Q(x)\)</span> along the right half of the beam. The objective, then, is to find the coordinate, <span class="math">\(x_D\)</span>, of the maximum bending moment where the second plastic hinge that produces collapse will develop.</p>
+<p>The reaction force at point <span class="math">\(B\)</span> is obtained from the condition of equilibrium of moments at point <span class="math">\(A\)</span>, i.e.,</p>
+<div class="math">
+\[R_B = - { {M^{pl}} \over {l} } +  { {w l} \over {2} }\]</div>
+<p>The distribution of shear force, <span class="math">\(Q(x)\)</span>, is given by</p>
+<div class="math">
+\[Q(x) = - R_B + w (l - x)\]</div>
+<p>The distribution of bending moment, <span class="math">\(M(x)\)</span>, is given by</p>
+<div class="math">
+\[M(x) =  R_B (l - x) - { { w (l - x)^2 }  \over 2 }\]</div>
+<p>The coordinate <span class="math">\(x_D\)</span> can be found from the preceding expressions and the condition <span class="math">\(Q(x_D)=0\)</span></p>
+<div class="math">
+\[x_D = {  l - {R_B  \over w } }\]</div>
+<p>The maximum surcharge <span class="math">\(w^{max}\)</span> is found from the condition <span class="math">\(M(x) = M^{pl}\)</span> at <span class="math">\(x=x_D\)</span></p>
+<div class="math">
+\[w^{max} = (6+4 \sqrt{2}) { {M^{pl}} \over {l^2} }\]</div>
+<p>By application of these equations, the position of the second plastic hinge, <span class="math">\(x_D\)</span>, and the maximum load, <span class="math">\(w^{max}\)</span>, can be determined. The results are</p>
+<div class="math">
+\[x_D  = 5.86 \rm m\]</div>
+<div class="math">
+\[w^{max} = 5.83 \rm MN/m\]</div>
+<p class="h2 rubric"><span class="codename">FLAC3D</span> Model</p>
+<p>This problem is solved using the two different approaches to determine plastic hinges in <span class="codename">FLAC3D</span> (see <span class="xref std std-ref">Beam-Type Properties</span>). The first approach involves assigning a limiting plastic moment at structural nodes, and the second requires creating double nodes at each node location and assigning a deformable link to connect each double node.</p>
+<p><em>Plastic hinge formation by limiting plastic moment</em> — For this approach, we assign a limiting plastic moment for all structural nodes using the <a class="reference internal" href="../../../doc/manual/sel_manual/beams/commands/cmd_structure.beam.property.html#kwd:structure.beam.property.plastic-moment" title="plastic moment capacity, `M^P`"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">beam</span> <span class="pre">property</span> <span class="pre">plastic-moment</span></code></a> command. The right
+half of the beam is discretized into 20 elements of length 0.5 m each (see <a href="#plastichingesbeam-geometry">Figure  3</a>). The beam contains 21 nodes, and each node has a limiting plastic moment of 50 MN-m.</p>
+<div class="figure align-center" id="plastichingesbeam-geometry">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\PlasticHingesBeam\plastichingesbeam-geometry.png"><img alt="common\sel\test3d\VerificationProblems\PlasticHingesBeam\plastichingesbeam-geometry.png" src="common\sel\test3d\VerificationProblems\PlasticHingesBeam\plastichingesbeam-geometry.png" style="width: 82%;" /></a>
+<p class="caption"><span class="caption-text">Figure 3: <span class="codename">FLAC3D</span> model of the beam in <a href="#plastichingesbeam-problem">Figure  1</a>.</span></p>
+</div>
+<p><em>Plastic hinge formation by double-node approach</em> — For the second approach, we define double nodes at all structural nodes that have the potential for a plastic hinge to develop. The right half of the beam is
+discretized into 20 elements of length 0.5 m each. Each element is defined by two nodes (by using the <span class="cmdkey">separated</span> keyword during the <a class="reference internal" href="../../../doc/manual/sel_manual/beams/commands/cmd_structure.beam.create.html#command:structure.beam.create" title="Create a beam represented by one or more elements."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">beam</span> <span class="pre">create</span></code></a> command); thus, the beam has 40 nodes.
+The nodes of adjacent elements are linked together using the <a class="reference internal" href="../../../doc/manual/sel_manual/nodes/commands/cmd_structure.node.join.html#command:structure.node.join" title="This command creates node-to-node links on all nodes in the range by attempting&#013;&#010;to find another node in the range that is at the same position. If found, and&#013;&#010;if the node does not already possess a node-to-node link, then any existing&#013;&#010;link is deleted and a new node-to-node link is created.  The new link is rigidly&#013;&#010;attached in all six degrees-of-freedom to the target node."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">join</span></code></a> command to allow the potential for the formation of a plastic hinge.</p>
+<p>There are 19 links (i.e., all nodes except the extreme nodes in <a href="#plastichingesbeam-geometry">Figure  3</a> are linked; each pair of nodes defines a link). The limiting plastic moment is assigned to the links by first changing the link conditions with the <a class="reference internal" href="../../../doc/manual/sel_manual/links/commands/cmd_structure.link.attach.html#command:structure.link.attach" title="Set attachment conditions for the specified link directions. The current attachment&#013;&#010;condition will be replaced by the condition specified here. Conditions are specified&#013;&#010;in keyword pairs, the first ( keyword ) being the degree-of-freedom and&#013;&#010;the second ([linkattachblock]) being the type of condition to use.  The following&#013;&#010;keywords are available to specify the degree-of-freedom:"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">link</span> <span class="pre">attach</span></code></a> command, and then prescribing deformable link properties for the <span class="math">\(y\)</span>-rotation via the <a class="reference internal" href="../../../doc/manual/sel_manual/links/commands/cmd_structure.link.property.html#command:structure.link.property" title="List a property of a deformable force-displacement model in the link at the&#013;&#010;degree-of-freedom specified in  keyword .  A list of properties available&#013;&#010;to each link constitituve model is found in  Structural Element Link Properties&#013;&#010;&lt;sel-link-properties&gt; ."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">link</span> <span class="pre">property</span></code></a> command. The plastic moment is assigned to this command with the <span class="cmdkey">yield-compression</span> and <span class="cmdkey">yield-tension</span> keywords.</p>
+<p><em>Applying a uniform surcharge in both approaches</em> — The effect of the uniform surcharge <span class="math">\(w\)</span> (see <a href="#plastichingesbeam-solution">Figure  2</a>) is represented by forces that are applied to the nodes. This is done by applying a distributed load with the <a class="reference internal" href="../../../doc/manual/sel_manual/beams/commands/cmd_structure.beam.apply.html#command:structure.beam.apply" title="Assign uniform applied distributed loads. Loads (force per unit length) are&#013;&#010;applied to all elements in the range. Positive loads act in the positive `y`-&#013;&#010;or `z`-directions ( f1  and  f2 , respectively) of the element system&#013;&#010;and maintain this orientation during large-strain motion. Point loads are applied&#013;&#010;at the nodes using the command  structure.node.apply ."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">beam</span> <span class="pre">apply</span></code></a> command. The surcharge load, <span class="math">\(w\)</span>, is assigned via the <span class="codename">FISH</span> variable <a class="reference internal" href="../../../../docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">load</span></span></a>, which is increased from 5.5 to 6.6 in 0.05 increments. The maximum surcharge is determined by finding the level of loading that does not reach equilibrium.</p>
+<p>The equilibrium of the system is found by issuing a <a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.solve.html#command:model.solve" title="Enable the automatic detection of the steady-state solution for mechanical&#013;&#010;problems. A calculation is performed until the limiting conditions, as defined&#013;&#010;by the following keywords, are reached. SOLVE force must be used for rigid block&#013;&#010;models. The SOLVE command does not monitor fluid flow. It is possible that mechanical&#013;&#010;equilibrium may be reached prior to fluid-flow equilibrium for steady-state&#013;&#010;flow. CYCLE ftime should be used for transient fluid flow."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">solve</span></code></a> command. Cycling is continued until the local unbalanced force ratio falls below the default limiting value of 1 × 10<sup>-5</sup> or 100,000 steps are taken.  If this step limit is achieved without reaching the limiting ratio, the system is assumed to be unstable.</p>
+<p>The function <a class="reference internal" href="../../../../docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">find _critical _load</span></span></a> saves each stage of the loading process and displays the status of the model being solved on the screen (i.e., whether equilibrium is reached for the current level of surcharge). This file is printed to determine the load, <span class="math">\(w^{max}\)</span>, that produces collapse of the beam.</p>
+<p class="h2 rubric">Results and Discussion</p>
+<p>The output indicates that the system does not reach equilibrium for a load <span class="math">\(w^{max}\)</span> = 5.85 MN/m. The last stable case in the preceding listing is for a load of 5.80 MN/m. These results bound the value computed with the <a class="reference internal" href="#plastichingesbeam-solutiondiscussion"><span class="std std-ref">analytical solution</span></a>.</p>
+<p>The distribution of bending moments and shear forces before collapse can be obtained from the file “plasticmoment_580.f3sav”—see <a href="#plastichingesbeam-bending">Figure  4</a> and <a href="#plastichingesbeam-shear">Figure  5</a>.</p>
+<p>The location of the failed hinge can be seen by plotting the link yield state indicators in the <span class="math">\(y\)</span>-rotation degree-of-freedom, as seen in <a href=".html#plastichingesbeam-yieldstate">Figure </a><code class="xref fnum docutils literal"><span class="pre">Figure</span> <span class="pre">#plastichingesbeam-yieldstate</span></code>. Note that only one of each pair of nodes has a link, so the side of the element connected to that node will display the “No Link” state. The plot indicates that the plastic hinge developes at link 12. Each element has a length 0.5 m; thus, the failed link is located at a distance of 6 m. This is within reasonable agreement with the analytical solution in the <a class="reference internal" href="#plastichingesbeam-solutiondiscussion"><span class="std std-ref">closed form solution</span></a> that predicts a value of <span class="math">\(x_D\)</span> = 5.86 m. The plastic hinge can also be observed by the plot of magnified geometry and displacement, as shown in <a href="#plastichingesbeam-disp">Figure  6</a> for the limiting plastic moment approach.</p>
+<div class="figure align-center" id="plastichingesbeam-bending">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\PlasticHingesBeam\plastichingesbeam-bending.png"><img alt="common\sel\test3d\VerificationProblems\PlasticHingesBeam\plastichingesbeam-bending.png" src="common\sel\test3d\VerificationProblems\PlasticHingesBeam\plastichingesbeam-bending.png" style="width: 82%;" /></a>
+<p class="caption"><span class="caption-text">Figure 4: Distribution of bending moments before failure for double-node approach (<em>w</em> = 5.8 MN/m).</span></p>
+</div>
+<div class="figure align-center" id="plastichingesbeam-shear">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\PlasticHingesBeam\plastichingesbeam-shear.png"><img alt="common\sel\test3d\VerificationProblems\PlasticHingesBeam\plastichingesbeam-shear.png" src="common\sel\test3d\VerificationProblems\PlasticHingesBeam\plastichingesbeam-shear.png" style="width: 82%;" /></a>
+<p class="caption"><span class="caption-text">Figure 5: Distribution of shear forces before failure for double-node approach (<em>w</em> = 5.8 MN/m).</span></p>
+</div>
+<div class="figure align-center" id="plastichingesbeam-disp">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\PlasticHingesBeam\plastichingesbeam-disp.png"><img alt="common\sel\test3d\VerificationProblems\PlasticHingesBeam\plastichingesbeam-disp.png" src="common\sel\test3d\VerificationProblems\PlasticHingesBeam\plastichingesbeam-disp.png" style="width: 82%;" /></a>
+<p class="caption"><span class="caption-text">Figure 6: Magnified beam geometry and displacement vectors for limiting plastic moment approach.</span></p>
+</div>
+<p class="h2 rubric">Reference</p>
+<p>Riley, W. F. and L. Zachary. <span class="bi">Introduction to Mechanics of Materials</span>. New York: John Wiley &amp; Sons Inc. (1989).</p>
+<p class="h2 rubric" id="plastichingesbeamdata">Data Files</p>
+<p><strong>plastic-moment.dat</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model large-strain</span><span class="n"> </span><span class="sx">off</span>
+<span class="nb">fish automatic-create</span><span class="n"> </span><span class="sx">off</span><span class="n"> </span>
+<span class="c">;</span>
+<span class="nb">struct beam create</span><span class="n"> by</span><span class="o">-</span><span class="n">line </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">10</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> segments </span><span class="m m-Double">20</span>
+<span class="c">; Tag nodes with names</span>
+<span class="nb">struct node group</span><span class="n"> </span><span class="s">&#39;Begin&#39;</span><span class="n">  range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0</span>
+<span class="nb">struct node group</span><span class="n"> </span><span class="s">&#39;End&#39;</span><span class="n">    range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">10</span>
+<span class="c">; beam properties</span>
+<span class="nb">struct beam property</span><span class="n"> young </span><span class="m m-Double">210e3</span><span class="n"> poisson </span><span class="m m-Double">0.3</span>
+<span class="nb">struct beam property</span><span class="n"> cross</span><span class="o">-</span><span class="n">sectional</span><span class="o">-</span><span class="n">area </span><span class="m m-Double">1.0</span><span class="n"> moi</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0.083</span><span class="n"> moi</span><span class="o">-</span><span class="n">z </span><span class="m m-Double">0.083</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                     moi</span><span class="o">-</span><span class="n">polar </span><span class="m m-Double">1.25e-4</span><span class="n"> plastic</span><span class="o">-</span><span class="n">moment </span><span class="m m-Double">50</span>
+<span class="c">; fix b.c. for external nodes</span>
+<span class="nb">struct node fix</span><span class="n"> velocity rotation</span><span class="o">-</span><span class="n">x rotation</span><span class="o">-</span><span class="n">z range group </span><span class="s">&#39;Begin&#39;</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">y velocity</span><span class="o">-</span><span class="n">z rotation</span><span class="o">-</span><span class="n">x rotation</span><span class="o">-</span><span class="n">z range group </span><span class="s">&#39;End&#39;</span>
+<span class="c">; apply bending moment</span>
+<span class="nb">struct node apply</span><span class="n"> moment </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">50</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> range group </span><span class="s">&#39;Begin&#39;</span>
+<span class="c">; take a history</span>
+<span class="nb">model history</span><span class="n"> mechanical ratio</span><span class="o">-</span><span class="n">local</span>
+<span class="c">;</span>
+<span class="nb">fish define</span><span class="ni"> find_critical_load</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> </span><span class="k">global</span><span class="ni"> load </span><span class="p">(</span><span class="m m-Double">5.5</span><span class="p">,</span><span class="m m-Double">6.5</span><span class="p">,</span><span class="m m-Double">0.05</span><span class="p">)</span><span class="ni"> </span><span class="c">; Load is global just so you can see </span>
+<span class="ni">                                    </span><span class="c">; progress in the FISH browser</span>
+<span class="ni">        </span><span class="k">local</span><span class="ni"> starting_cycles </span><span class="p">=</span><span class="ni"> </span><span class="k">mech.step</span>
+<span class="ni">        </span><span class="k">global</span><span class="ni"> filename </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;plasticmoment_&#39;</span><span class="ni"> </span><span class="o">+</span><span class="ni"> string</span><span class="p">(</span><span class="ni">load</span><span class="o">*</span><span class="m m-Double">100</span><span class="p">)</span>
+<span class="k">        command</span>
+<span class="nb">            history purge</span>
+<span class="nb">            struct beam apply</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="ni">[</span><span class="o">-</span><span class="ni">load]</span><span class="p">)</span>
+<span class="nb">model </span><span class="ss">solve</span><span class="n"> ratio</span><span class="o">-</span><span class="n">local </span><span class="m m-Double">1e-5</span><span class="n"> or cycles </span><span class="m m-Double">100000</span>
+<span class="nb">            model save</span><span class="n"> </span><span class="ni">[filename]</span>
+<span class="k">        end_command</span>
+<span class="ni">        </span><span class="k">local</span><span class="ni"> solve_cycles </span><span class="p">=</span><span class="ni"> </span><span class="k">mech.step</span><span class="ni"> </span><span class="o">-</span><span class="ni"> starting_cycles</span>
+<span class="ni">        </span><span class="k">local</span><span class="ni"> line </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;STABLE&#39;</span>
+<span class="ni">        </span><span class="k">if</span><span class="ni"> solve_cycles </span><span class="o">&gt;</span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">100000</span>
+<span class="ni">            line </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;UNSTABLE (maximum steps reached)...&#39;</span>
+<span class="ni">        </span><span class="k">else</span><span class="ni"> </span><span class="k">if</span><span class="ni"> load </span><span class="o">&gt;</span><span class="ni"> </span><span class="m m-Double">6.5</span>
+<span class="ni">            line </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;STABLE and LAST&#39;</span>
+<span class="ni">        </span><span class="k">end_if</span>
+<span class="ni">        </span><span class="k">io.out</span><span class="p">(</span><span class="ni">line</span><span class="p">)</span>
+<span class="ni">        </span><span class="k">if</span><span class="ni"> line # </span><span class="s">&#39;STABLE&#39;</span>
+<span class="ni">            </span><span class="k">exit loop</span>
+<span class="ni">        </span><span class="k">end_if</span>
+<span class="ni">    </span><span class="k">end_loop</span>
+<span class="nb">end</span>
+<span class="ni">[find_critical_load]</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;plasticmoment_final&#39;</span>
+<span class="nb">program </span><span class="se">return</span>
+</pre></div>
+</div>
+<p><strong>double-node.dat</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model large-strain</span><span class="n"> </span><span class="sx">off</span>
+<span class="nb">fish automatic-create</span><span class="n"> </span><span class="sx">off</span>
+<span class="c">; Created the beam using the separated keyword so elements do not share nodes</span>
+<span class="nb">struct beam create</span><span class="n"> by</span><span class="o">-</span><span class="n">line </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">10</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> segments </span><span class="m m-Double">20</span><span class="n"> distinct</span>
+<span class="c">; Tag nodes with names</span>
+<span class="nb">struct node group</span><span class="n"> </span><span class="s">&#39;Begin&#39;</span><span class="n">  range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0</span>
+<span class="nb">struct node group</span><span class="n"> </span><span class="s">&#39;End&#39;</span><span class="n">    range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">10</span>
+<span class="c">; beam properties</span>
+<span class="nb">struct beam property</span><span class="n"> young </span><span class="m m-Double">210e3</span><span class="n"> poisson </span><span class="m m-Double">0.3</span>
+<span class="nb">struct beam property</span><span class="n"> cross</span><span class="o">-</span><span class="n">sectional</span><span class="o">-</span><span class="n">area </span><span class="m m-Double">1.0</span><span class="n"> moi</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0.083</span><span class="n"> moi</span><span class="o">-</span><span class="n">z </span><span class="m m-Double">0.083</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                     moi</span><span class="o">-</span><span class="n">polar </span><span class="m m-Double">1.25e-4</span>
+<span class="c">; Boundary Conditions for end nodes</span>
+<span class="nb">struct node fix</span><span class="n"> velocity rotation</span><span class="o">-</span><span class="n">x rotation</span><span class="o">-</span><span class="n">z range group </span><span class="s">&#39;Begin&#39;</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">y velocity</span><span class="o">-</span><span class="n">z rotation</span><span class="o">-</span><span class="n">x rotation</span><span class="o">-</span><span class="n">z range group </span><span class="s">&#39;End&#39;</span>
+<span class="c">; Create links and set their conditions and properties</span>
+<span class="nb">struct node join</span>
+<span class="nb">struct link attach</span><span class="n"> rotation</span><span class="o">-</span><span class="n">y normal</span><span class="o">-</span><span class="n">yield</span>
+<span class="nb">struct link property</span><span class="n"> rotation</span><span class="o">-</span><span class="n">y stiffness </span><span class="m m-Double">3.0e6</span><span class="n"> yield</span><span class="o">-</span><span class="n">tension </span><span class="m m-Double">50</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                     yield</span><span class="o">-</span><span class="n">compression </span><span class="m m-Double">50</span>
+<span class="c">; apply bending moment</span>
+<span class="nb">struct node apply</span><span class="n"> moment </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">50</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> range group </span><span class="s">&#39;Begin&#39;</span>
+<span class="c">; Take some histories</span>
+<span class="nb">model history</span><span class="n"> mechanical ratio</span><span class="o">-</span><span class="n">local</span>
+<span class="c">; FISH function to keep increasing applied load till plastic failure.</span>
+<span class="nb">fish define</span><span class="ni"> find_critical_load</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> </span><span class="k">global</span><span class="ni"> load </span><span class="p">(</span><span class="m m-Double">5.5</span><span class="p">,</span><span class="m m-Double">6.5</span><span class="p">,</span><span class="m m-Double">0.05</span><span class="p">)</span><span class="ni"> </span><span class="c">; Global so it appears in the FISH browser</span>
+<span class="ni">        </span><span class="k">local</span><span class="ni"> starting_cycles </span><span class="p">=</span><span class="ni"> </span><span class="k">mech.step</span>
+<span class="ni">        </span><span class="k">local</span><span class="ni"> filename </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;doublenode_&#39;</span><span class="ni"> </span><span class="o">+</span><span class="ni"> string</span><span class="p">(</span><span class="ni">load</span><span class="o">*</span><span class="m m-Double">100</span><span class="p">)</span>
+<span class="k">        command</span>
+<span class="nb">            history purge</span>
+<span class="nb">            struct beam apply</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="ni">[</span><span class="o">-</span><span class="ni">load]</span><span class="p">)</span>
+<span class="nb">model </span><span class="ss">solve</span><span class="n"> ratio</span><span class="o">-</span><span class="n">local </span><span class="m m-Double">1e-5</span><span class="n"> or cycles </span><span class="m m-Double">100000</span>
+<span class="nb">            model save</span><span class="n"> </span><span class="ni">[filename]</span>
+<span class="k">        end_command</span>
+<span class="ni">        </span><span class="k">local</span><span class="ni"> solve_cycles </span><span class="p">=</span><span class="ni"> </span><span class="k">mech.step</span><span class="ni"> </span><span class="o">-</span><span class="ni"> starting_cycles</span>
+<span class="ni">        </span><span class="k">local</span><span class="ni"> line </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;STABLE&#39;</span>
+<span class="ni">        </span><span class="k">if</span><span class="ni"> solve_cycles </span><span class="o">&gt;</span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">100000</span>
+<span class="ni">            line </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;UNSTABLE (maximum steps reached)...&#39;</span>
+<span class="ni">        </span><span class="k">else</span><span class="ni"> </span><span class="k">if</span><span class="ni"> load </span><span class="o">&gt;</span><span class="ni"> </span><span class="m m-Double">6.5</span>
+<span class="ni">            line </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;STABLE and LAST&#39;</span>
+<span class="ni">        </span><span class="k">end_if</span>
+<span class="ni">        </span><span class="k">io.out</span><span class="p">(</span><span class="ni">line</span><span class="p">)</span>
+<span class="ni">        </span><span class="k">if</span><span class="ni"> line # </span><span class="s">&#39;STABLE&#39;</span>
+<span class="ni">            </span><span class="k">exit loop</span>
+<span class="ni">        </span><span class="k">end_if</span>
+<span class="ni">    </span><span class="k">end_loop</span>
+<span class="nb">end</span>
+<span class="ni">[find_critical_load]</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;doublenode_final&#39;</span>
+<span class="nb">program </span><span class="se">return</span>
+</pre></div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Development of Plastic Hinges in a Statically Loaded Beam" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

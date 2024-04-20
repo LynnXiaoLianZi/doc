@@ -1,0 +1,237 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Commands &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="fracture aperture command" href="cmd_fracture_aperture.html" />
+    <link rel="prev" title="Overview" href="../dfn_overview.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="commands">
+<span id="dfn-command"></span><h1>Commands</h1>
+<p>Operate on discrete fracture networks (DFNs). A DFN is a collection of line segments (planar, convex polygons, and/or disks)
+in 2D (3D). Each element in a DFN is called a fracture. Fractures hold lists of properties and can also hold extra variables
+and belong to groups. The properties may be of any type and can be assigned as needed. DFNs, as sets of fractures, can be
+generated via DFN templates that are sets of statistical parameters describing the distribution of fractures. Intersections
+between fractures can be calculated and queried for fracture connectivity analyses.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>All DFN fractures must be created inside the model domain, as specified by the <a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.domain.html#command:model.domain" title="Specify the DFN domain boundaries and conditions.  DFN fractures only exist&#013;&#010;within the domain extent."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">domain</span></code></a> command.</li>
+<li>Fracture properties and extra variables are converted to floating point numbers or integers when imported from a property file, although they are exported in their actual format. Thus, one may save/restore general properties or extra variables of fractures in a model state (SAV) file, but may not import these values from a property file. An Itasca DFN data file format is specified in “<a class="reference internal" href="../../../../docproject/source/manual/program_guide/mechanics/otherinputs/dfnfileformats.html#dfnfileformats"><span class="std std-ref">DFN-Related File Formats</span></a>,” along with a property file format to assign properties to the fractures.</li>
+</ul>
+</div>
+<p class="rubric">DFN Commands</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="cmd_fracture_aperture.html#fracture.aperture" title="Assign apertures to fractures. Apertures can be used during contact model assignment&#013;&#010;(with the fracture contact-model  command), for connectivity distance calculations&#013;&#010;(with the fracture connectivity  command) and with the DFN range element."><span class="fishcmd">fracture aperture</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_fracture_attribute.html#fracture.attribute" title="Modify fracture attributes. This command is a synonym for the  fracture initialize &#013;&#010;command."><span class="fishcmd">fracture attribute</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_fracture_cluster.html#fracture.cluster" title="Compute fracture clusters. Clusters are defined as sets of fractures connected&#013;&#010;via intersections. These sets of fracture are indexed, and group names are assigned&#013;&#010;based on the indices. Intersections are created via the fracture intersections&#013;&#010;compute  command. If either no intersection set is specified or the specified&#013;&#010;intersection set does not exist, a new intersection set is created and all intersections between&#013;&#010;fractures are delineated; the resulting intersection set is used as the basis&#013;&#010;for the cluster calculation."><span class="fishcmd">fracture cluster</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_fracture_combine.html#fracture.combine" title="Simplify fractures. Fractures are sorted by decreasing size and, starting with&#013;&#010;the largest fracture (termed the reference fracture), the algorithm determines&#013;&#010;smaller fractures in which the following 2 criteria are met:"><span class="fishcmd">fracture combine</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_fracture_compute.html#fracture.compute" title="Compute fracture statistics. Various density measures of fractures, filtered&#013;&#010;by range, can be computed."><span class="fishcmd">fracture compute</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_fracture_connectivity.html#fracture.connectivity" title="Calculate fracture connectivity with a specified structure. The initial structure&#013;&#010;can either be a fracture or a geometry set. By default, integer connectivity&#013;&#010;levels are computed for each fracture (i.e., a connectivity level of  n  means&#013;&#010;that the fracture is connected to the structure through  n  fracture intersections),&#013;&#010;and extras are assigned based on the distance. This behavior can be modified&#013;&#010;with the  aperture ,  cubic  and  distance  keywords. If either no intersection&#013;&#010;set is specified"><span class="fishcmd">fracture connectivity</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_fracture_contact-model.html#fracture.contact-model" title="Assign contact models via fractures. The command only applies to  PFC . In order&#013;&#010;for the contact model specified with the  model  keyword to use the fracture&#013;&#010;geometry, the contact model must have the property “dip” corresponding to the&#013;&#010;fracture dip (and “ddir” corresponding to the fracture dip direction, in 3D).&#013;&#010;The properties assigned to the fractures with the  fracture property  command&#013;&#010;are supplied to the contact model. These properties are fixed, in the sense&#013;&#010;that they will not be inherited"><span class="fishcmd">fracture contact-model</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_fracture_copy.html#fracture.copy" title="Copy fractures. Fractures falling in the specified range are copied from the&#013;&#010;DFN specified with the  from-dfn  keyword to the DFN specified with the  to-dfn &#013;&#010;keyword. If the later DFN does not exist it is created."><span class="fishcmd">fracture copy</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_fracture_create.html#fracture.create" title="Create a deterministic fracture."><span class="fishcmd">fracture create</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_fracture_delete.html#fracture.delete" title="Delete fractures. If the optional  dfn  keyword is given then deletion is restricted&#013;&#010;to the specified DFN. Empty DFNs are deleted. If the  dfn  keyword is given&#013;&#010;without specifying a string name then the range is applied to DFNs, removing&#013;&#010;entire DFNs (i.e., all fractures in the DFNs are deleted)."><span class="fishcmd">fracture delete</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_fracture_dfn-extra.html#fracture.dfn-extra" title="Set DFN extra variables. The extra variable  a  can be of any type, and is associated&#013;&#010;with the index  i  as if stored in an array."><span class="fishcmd">fracture dfn-extra</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_fracture_dfn-group.html#fracture.dfn-group" title="Specify DFN group names. Use of the group logic is described in the  group_manual &#013;&#010;topic. By default,  s  is assigned to the default slot  Default . Use the  remove &#013;&#010;keyword to remove  s  from all slots."><span class="fishcmd">fracture dfn-group</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_fracture_export.html#fracture.export" title="Export fractures to file. By default, fractures are exported in the Itasca DFN&#013;&#010;data file format (see  DFN-Related File Formats ) and the ‘.dat’ extension is&#013;&#010;added to the file name if an extension is absent. FISHLab and FracMan formats&#013;&#010;are also supported. The associated fracture generation template (if unique)&#013;&#010;can be exported in a fracture generation template file, and fracture properties&#013;&#010;can be exported in a property file (see  DFN-Related File Formats ). These files&#013;&#010;can be imported with"><span class="fishcmd">fracture export</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_fracture_extra.html#fracture.extra" title="Set fracture extra variables. The extra variable  a  can be of any type, and&#013;&#010;is associated with the index  i  as if stored in an array."><span class="fishcmd">fracture extra</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_fracture_generate.html#fracture.generate" title="Generate fractures from a statistical description. A model domain must be specified&#013;&#010;prior to generation. {Line segment fractures in 2D; disk-shaped fractures in&#013;&#010;3D} are generated. If no fracture generation template (i.e., the statistical&#013;&#010;description defined with the fracture template create  command) is specified,&#013;&#010;the default fracture generation template is used. The default fracture template parameters&#013;&#010;can be changed with the  fracture template modify-default  command. The DFN&#013;&#010;may be linked to the fracture generation template, provided that the  modify &#013;&#010;keyword is"><span class="fishcmd">fracture generate</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_fracture_group.html#fracture.group" title="Specify fracture group names. Use of the group logic is described in  group_manual .&#013;&#010;By default,  s  is assigned to the default slot  Default . Use the  remove &#013;&#010;keyword to remove  s  from all slots."><span class="fishcmd">fracture group</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_fracture_import.html#fracture.import" title="Import fractures."><span class="fishcmd">fracture import</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_fracture_initialize.html#fracture.initialize" title="Modify fracture attributes."><span class="fishcmd">fracture initialize</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_fracture_intersections.automatic-update.html#fracture.intersections.automatic-update" title="Set the intersection automatic-updating state. By default, when new fractures&#013;&#010;are added or removed, the previously calculated intersections and clusters are&#013;&#010;not updated automatically. By enabling this behavior, these data structures&#013;&#010;remain valid and up-to-date. This keyword cannot be given with any other keywords."><span class="fishcmd">fracture intersections automatic-update</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_fracture_intersections.compute.html#fracture.intersections.compute" title="Compute intersections. Intersections can exist between fractures, and between&#013;&#010;fractures and geometry sets. The supported geometry types are {edges in 2D;&#013;&#010;polygons/edges in 3D}. Neither concave, planar polygons nor nonplanar polygons&#013;&#010;are supported in 3D. The  geometry  keyword can be provided to produce intersections&#013;&#010;between fractures and geometry sets. Intersections are stored in an intersection&#013;&#010;set specified with the  intersection-set  keyword. The specified intersection&#013;&#010;set must not already exist. Intersections can be visualized and queried in  FISH . In&#013;&#010;addition, intersections are"><span class="fishcmd">fracture intersections compute</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_fracture_intersections.delete.html#fracture.intersections.delete" title="Delete intersections. An intersection set can be specified with  intersection-set  keyword.&#013;&#010;If no intersection set is specified then all intersections are deleted. Empty&#013;&#010;intersection sets are also deleted."><span class="fishcmd">fracture intersections delete</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_fracture_intersections.scanline.html#fracture.intersections.scanline" title="Create intersections corresponding to scanline mapping. Scanline mapping occurs&#013;&#010;on a planar surface that is specified with the  surface  keyword. The measurement&#013;&#010;surface must be a planar, convex polygon. All fracture intersections with this&#013;&#010;surface that also intersect one of a set of the specified scanlines (see the&#013;&#010; scanlines  keyword) are added to the specified intersection set."><span class="fishcmd">fracture intersections scanline</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_fracture_joint-set.html#fracture.joint-set" title="Create a set of sub-parallel fractures, or joint set, with specified origin,&#013;&#010;size, and spacing."><span class="fishcmd">fracture joint-set</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_fracture_list.html#fracture.list" title="List the fracture attributes. By default, the DFNs are listed along with their&#013;&#010;associated templates (if any) and fracture count."><span class="fishcmd">fracture list</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_fracture_property.html#fracture.property" title="Assign fracture surface properties. The value  a  is assigned to the surface&#013;&#010;property with name  s . The properties may be used with the  fracture contact-model &#013;&#010;command to set contact model properties."><span class="fishcmd">fracture property</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_fracture_prune.html#fracture.prune" title="Prune isolated fractures. The intersection set that forms the basis for this&#013;&#010;operation is specified with the  intersection-set  keyword. Clusters of fractures&#013;&#010;with size less than or equal to the number of fractures specified with the  critical-number &#013;&#010;keyword are deleted. The intersection set must exist. If clusters have not been&#013;&#010;computed, they are computed before pruning isolated fractures."><span class="fishcmd">fracture prune</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_fracture_results.html#fracture.results" title="Specify whether fracture information is stored in subsequent results files.&#013;&#010; By default this value is  off ."><span class="fishcmd">fracture results</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_fracture_set-property.html#fracture.set-property" title="Assign properties in objects that intersect fractures."><span class="fishcmd">fracture set-property</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_fracture_template.create.html#fracture.template.create" title="Create a fracture generation template. The name of the template is  s . A fracture&#013;&#010;generation template is a set of statistical parameters used to generate fractures&#013;&#010;with the  fracture generate  command. These parameters are the size distribution,&#013;&#010;the position distribution and the orientation distribution. Once fractures have&#013;&#010;been generated, an association may exist between the fracture generation template&#013;&#010;and the generated fractures. Fracture generation templates can also be output&#013;&#010;to a file to be imported and reused (see the  fracture export"><span class="fishcmd">fracture template create</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_fracture_template.delete.html#fracture.template.delete" title="Delete fracture generation templates. A fracture generation template is a set&#013;&#010;of statistical parameters used to generate fractures with the  fracture generate &#013;&#010;command. These parameters are the size distribution, the position distribution&#013;&#010;and the orientation distribution. Once fractures have been generated, an association&#013;&#010;may exist between the fracture generation template and the generated fractures."><span class="fishcmd">fracture template delete</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_fracture_template.modify-default.html#fracture.template.modify-default" title="Modify the default fracture generation template. A fracture generation template&#013;&#010;is a set of statistical parameters used to generate fractures with the  fracture&#013;&#010;generate  command. If no fracture generation template is specified, the default&#013;&#010;template is used. Upon a  model new , the default fracture generation template&#013;&#010;is given the following properties: 1) uniform fracture positions; 2) uniform&#013;&#010;fracture orientations (dip between 0 and 180 degrees in 2D; dip between 0 and&#013;&#010;90 degrees, dip direction between 0 and 360 degrees"><span class="fishcmd">fracture template modify-default</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_fracture_verify-file.html#fracture.verify-file" title="Verify a DFN file. Before importing fractures from a DFN file, one should use&#013;&#010;the fracture verify-file  command to check the validity/characteristics of the&#013;&#010;fractures represented in the file. The following quantities are displayed:"><span class="fishcmd">fracture verify-file</span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_aperture.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">aperture</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_attribute.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">attribute</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_cluster.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">cluster</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_combine.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">combine</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_compute.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">compute</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_connectivity.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">connectivity</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_contact-model.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">contact-model</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_copy.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">copy</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_create.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">create</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_delete.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_dfn-extra.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">dfn-extra</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_dfn-group.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">dfn-group</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_export.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">export</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_extra.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">extra</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_generate.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">generate</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_group.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">group</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_import.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">import</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_initialize.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">initialize</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_intersections.automatic-update.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">intersections</span> <span class="pre">automatic-update</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_intersections.compute.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">intersections</span> <span class="pre">compute</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_intersections.delete.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">intersections</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_intersections.scanline.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">intersections</span> <span class="pre">scanline</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_joint-set.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">joint-set</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_list.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_property.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">property</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_prune.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">prune</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_results.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">results</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_set-property.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">set-property</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_template.create.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">template</span> <span class="pre">create</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_template.delete.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">template</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_template.modify-default.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">template</span> <span class="pre">modify-default</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_fracture_verify-file.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">verify-file</span></code> command</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../dfn.html" accesskey="U">Discrete Fracture Network (DFN)</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../dfn_overview.html"
+                           title="previous chapter"> Overview</a> |    
+       <a href="cmd_fracture_aperture.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">aperture</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Commands" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

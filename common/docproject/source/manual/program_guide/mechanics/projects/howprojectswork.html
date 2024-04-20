@@ -1,0 +1,168 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>How Projects Work &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="The Project Pane" href="project_pane/projectsoverview.html" />
+    <link rel="prev" title="Projects" href="projects.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="how-projects-work">
+<span id="howprojectswork"></span><h1>How Projects Work</h1>
+<div class="figure" id="id1">
+<a class="reference internal image-reference" href="../../../../../../../_images/projecttitlebar.png"><img alt="../../../../../../../_images/projecttitlebar.png" src="../../../../../../../_images/projecttitlebar.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: The program title bar shows the project name (note the asterisk adjacent to its name indicates the project currently has unsaved changes).</span></p>
+</div>
+<p>The project is fundamentally what is “open” in the program, so its name is shown in the program title bar adjacent to the program name and version.</p>
+<p>Operation of the project is largely transparent to the user — it is “just there.”  Other than initially creating it and subsequently saving it, there is nothing the user does <em>to</em> the project. Note the project is one of the few entities related to the program that <em>does not</em> have commands associated with it (see “Handling Projects” below).</p>
+<p>Because the project has jobs that involve tracking the current state of the program in addition to tracking resources used by it, there must <em>always</em> be a project in operation in the program — even in the case that the program has been started with no project opened (see next). When this is the case, the program creates an unsaved “temp” project to do the necessary work while the program is in use.  As with unsaved modifications to existing projects, the user will be prompted to save or discard the “temp” project at program exit or any attempt that would change the current project (i.e., <span class="cmdkey">File –&gt; New Project...</span>, <span class="cmdkey">File –&gt; Close Project</span>, etc.).</p>
+<p class="h2 rubric">Program Startup</p>
+<p>The <em>Startup</em> dialog has the job of providing messaging to the user about the program when first started.  In addition, the “Startup Options” control provides the means, via a set of options, to indicate what should occur next vis-à-vis the project.</p>
+<div class="figure" id="id2">
+<a class="reference internal image-reference" href="../../../../../../../_images/startup.png"><img alt="../../../../../../../_images/startup.png" src="../../../../../../../_images/startup.png" style="width: 353.76px; height: 228.36px;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: The <a class="reference internal" href="../../programwindow/dialogs/startup.html#dlg-startup"><span class="std std-ref">“Startup” dialog</span></a>.</span></p>
+</div>
+<p>The selection made here is persistently used as the initial selection on future startups. The setting here is also automatically set on the parallel “Project” option on the <a class="reference internal" href="../configuration/options/options_startup.html#thestartuppage"><span class="std std-ref">Startup</span></a> page in the <em>Options</em> dialog.</p>
+</div>
+<div class="section" id="handling-projects">
+<h1>Handling Projects</h1>
+<div class="figure">
+<img alt="../../../../../../../_images/filemenu.png" src="../../../../../../../_images/filemenu.png" />
+</div>
+<p>All possible operations on projects are conducted solely from  the <span class="cmdkey">File</span> menu.</p>
+<p class="h2 rubric">Open</p>
+<ul class="simple">
+<li>Use the <span class="cmdkey">File –&gt; Open</span> command</li>
+</ul>
+<p class="h2 rubric" id="projects-saveproject">Save</p>
+<ul class="simple">
+<li>Use the <span class="cmdkey">File –&gt; Save Project</span></li>
+</ul>
+<p class="h2 rubric">Save As</p>
+<ul class="simple">
+<li>Use the <span class="cmdkey">File –&gt; Save Project As...</span> command.  This will open a <span class="cmdkey">Save</span> dialog that allows specification of a folder + name for the new project file, which will duplicate the current project. This operation will also close the base project and make the newly created duplicate the active project.</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">When a project is duplicated using <span class="cmdkey">Save As...</span>, the files <em>tracked</em> by the project are not duplicated as well, which means both the “old” and the “new” project are linked to those items.</p>
+</div>
+<p class="h2 rubric">Close</p>
+<ul class="simple">
+<li>Use the <span class="cmdkey">File –&gt; Close Project</span> command</li>
+</ul>
+<p><br>
+<br></p>
+<div class="admonition-nomenclature admonition">
+<p class="first admonition-title">Nomenclature</p>
+<p class="last"><em>Files “In” the Project</em>: In this documentation, a data file, saved state, or other resource may be termed “in the project,” which indicates that it is currently tracked by the project.  It is a file that the project “knows about.” By contrast, a file not “in the project” is not tracked by the project file.  All this is most easily visualized by referring to the <span class="flag4">i</span> <a class="reference internal" href="project_pane/projectsoverview.html#theprojectpane"><span class="std std-ref">Project</span></a> pane: a file shown there is in the project, and if not seen, it is not in the project.</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="../../programwindow/filemenu.html#thefilemenu"><span class="std std-ref">File Menu</span></a> for a description of every command that appears on the <span class="cmdkey">File</span> menu</p>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="projects.html" accesskey="U">Projects</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="projects.html"
+                           title="previous chapter"> Projects</a> |    
+       <a href="project_pane/projectsoverview.html"
+                           title="next chapter">The Project Pane</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?How Projects Work" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

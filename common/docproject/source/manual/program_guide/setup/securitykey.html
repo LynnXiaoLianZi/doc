@@ -1,0 +1,136 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Security &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Program License" href="license.html" />
+    <link rel="prev" title="Running a Code on Amazon Web Services (AWS)" href="aws.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="security">
+<span id="securitykey"></span><h1>Security</h1>
+<p>The program is secured with a key (also called a “hardware lock” or “dongle”). The key must be present for the program to <a class="reference internal" href="../../glossaryofterms.html#term-cycle"><span class="xref std std-term">cycle</span></a>.  If no key is present, the code operates in “Demonstration Mode” (see below). The program is offered with either a standard license or a network license. There are variances in the behavior of the program under these different license types; they require different keys as well.</p>
+<blockquote>
+<div><div class="figure align-center" id="id1">
+<img alt="../../../../../../_images/securitykey.png" src="../../../../../../_images/securitykey.png" />
+<p class="caption"><span class="caption-text">Figure 1: The security key for a network license is red; <br> for a standard license it is blue.</span></p>
+</div>
+</div></blockquote>
+<p class="h2 rubric" id="standardlicense">Standard License</p>
+<p>On a standard license, which is designed for single-user program use, the security key should be present on the same computer where the program is installed. As detailed in the <a class="reference internal" href="license.html#license"><span class="std std-ref">License Agreement</span></a>, a standard license will allow up to two instances of the program to be cycled simultaneously. However, there is no limit to the number of instances that may be started. The key may be moved from one computer to another as needed.</p>
+<p class="h2 rubric" id="networklicense">Network License</p>
+<p>A network license allows a single key to provide access to <em>n</em> program instances, where <em>n</em> is the number of seats purchased with the license. In this configuration, the key and the server software necessary to operate the licensing management software are installed on one computer (the server). The program is then installed on computers (the clients) that will access the license seats available from the server. The program may be installed on as many client computers as needed. When there are less than <em>n</em> licenses in use, a client that starts the program will start normally and will acquire its license from the server. If <em>n</em> licenses are already in use, a client starting the program will receive a <a class="reference internal" href="../programwindow/dialogs/key_error.html#dlg-keyerror"><span class="std std-ref">Hardware Lock Not Detected!</span></a> warning.</p>
+<p class="h2 rubric" id="demomode">Demonstration Mode</p>
+<p>If the program is started without the key for either a standard or network license, the <a class="reference internal" href="../programwindow/dialogs/key_error.html#dlg-keyerror"><span class="std std-ref">Hardware Lock Not Detected</span></a> error dialog will appear. When no key is present, the dialog provides the option to start the program in “Demonstration Mode” by choosing the <em>Continue</em> button. This mode is fully functional in every respect, except the program will only cycle models within certain model size limits.  <span class="flag3">limited to 1000 balls, 1000 clumps and 10 fractures.</span> <span class="flag3">CS: will need to figure out how to indicate the limits</span> Efforts to cycle larger models will generate an error message indicating that the model size exceeds that which may be cycled in “Demonstration Mode.”</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="license.html">Program License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="licensenumber.html">License Number</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../mechanics/program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../support/support.html" accesskey="U">Support</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="aws.html"
+                           title="previous chapter"> Running a Code on Amazon Web Services (AWS)</a> |    
+       <a href="license.html"
+                           title="next chapter">Program License</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Security" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

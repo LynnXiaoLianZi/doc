@@ -1,0 +1,139 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Named Ranges &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Range Phrase Keyword Reference" href="rangephrasereference.html" />
+    <link rel="prev" title="Logical Operations in a Range Phrase" href="rangelogical.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="named-ranges">
+<span id="rangenaming"></span><h1>Named Ranges</h1>
+<p>Creating a named range provides an easy-access method for subsequent use of a range. Named range creation is performed using the <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">range</span></code> command. For instance:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model range</span><span class="n"> create </span><span class="s">&#39;fred&#39;</span><span class="n"> position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">500</span><span class="n"> id </span><span class="m m-Double">100</span><span class="n"> </span><span class="m m-Double">200</span><span class="n"> group </span><span class="s">&#39;external&#39;</span><span class="n"> not</span>
+</pre></div>
+</div>
+<p>Once created, the named range is applied on subsequent commands using the <a class="reference internal" href="rangephrasereference.html#kwd:range.named-range" title="Use the named range  s  as an element within the current range phrase.&#013;&#010; See the command  model.range.create ."><code class="xref fish fish-kwd docutils literal"><span class="pre">named-range</span></code></a> keyword in a range phrase:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">geometry group</span><span class="n"> edge </span><span class="s">&#39;mainedges&#39;</span><span class="n"> range named</span><span class="o">-</span><span class="n">range </span><span class="s">&#39;fred&#39;</span>
+</pre></div>
+</div>
+<p>This is equivalent to:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">geometry group</span><span class="n"> edge </span><span class="s">&#39;mainedges&#39;</span><span class="n"> range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">500</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                      id </span><span class="m m-Double">100</span><span class="n"> </span><span class="m m-Double">200</span><span class="n"> group </span><span class="s">&#39;external&#39;</span><span class="n"> not</span>
+</pre></div>
+</div>
+<p>Since the group defined and named <code class="docutils literal"><span class="pre">'mainedges'</span></code> in the second command uses <code class="docutils literal"><span class="pre">'fred'</span></code> for its definition, it might seem that the two refer to the same thing.  However:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">zone cmodel</span><span class="n"> assign </span><span class="s">&#39;mohr&#39;</span><span class="n"> range named</span><span class="o">-</span><span class="n">range </span><span class="s">&#39;fred&#39;</span><span class="n">   </span><span class="c">; will work</span>
+<span class="nb">zone cmodel</span><span class="n"> assign </span><span class="s">&#39;elastic&#39;</span><span class="n"> range group </span><span class="s">&#39;mainedges&#39;</span><span class="n"> </span><span class="c">; will fail</span>
+</pre></div>
+</div>
+<p>The latter command fails because <code class="docutils literal"><span class="pre">'mainedges'</span></code> is a group of geometry faces, so invoking it for a command that affects zones is nonsensical (error).  If the group <code class="docutils literal"><span class="pre">'mainedges'</span></code> comprised zones, then the usage would be acceptable.  See below for further discussion.</p>
+<p class="h2 rubric" id="namedrangesvsgroups">Named Ranges vs. Groups</p>
+<p>The group and the named range have similarities: either provide a convenient mechanism for naming and re-using a particular “selection”, which, considering the verbosity of some range phrases, is not trivial. Either can be used as part of the definition of the other (that is, a group may be defined using one or more named ranges, and vice versa).</p>
+<p>However, there is a critical difference. A named range is a stored range phrase: <em>a set of criteria for selecting model objects</em>. It may return different results at different times, depending on the behavior of the model and the definition of the range. Also, a named range can be applied to different <em>types</em> of objects. A group is always a collection of <em>a specific set of objects of a specific type</em> that will change only if group members are explicitly added, moved, or deleted.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../range.html" accesskey="U">Range</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="rangelogical.html"
+                           title="previous chapter"> Logical Operations in a Range Phrase</a> |    
+       <a href="rangephrasereference.html"
+                           title="next chapter">Range Phrase Keyword Reference</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Named Ranges" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

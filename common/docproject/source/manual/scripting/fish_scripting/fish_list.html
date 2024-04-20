@@ -1,0 +1,270 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Lists &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Maps" href="fish_maps.html" />
+    <link rel="prev" title="Matrices" href="fish_matrices.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="lists">
+<span id="fish-listdesc"></span><h1>Lists</h1>
+<p><span class="codename">FISH</span> supports one-dimensional dynamic sized value based lists.</p>
+<p>Lists are one-dimensional arrays of general <span class="codename">FISH</span> values.
+They differ from matrices in that each index can hold any valid <span class="codename">FISH</span> type (including another list).
+They differ from arrays in that they are passed by value, and they can only be of one dimension.
+They differ from maps in that they can be indexed only by consecutive integers starting at 1, but such indexing is more efficient.</p>
+<p>While any iterable type can be the argument of a splitting operation (see <a class="reference internal" href="fish_splitting.html#fish-splitting"><span class="std std-ref">Splitting</span></a>), the return value of a split call will always be a list.</p>
+<p>You can iterate through all the elements of a list using the <span class="cmdkey">loop foreach</span> statement.</p>
+<p>Lists are a handy way to pass and return multiple values using one symbol.
+Arbitrarily complex data structures can be created by embedding lists within lists.</p>
+<p>Components of a list can be accessed using parentheses ().
+A single index can be used to get or set a single element of the list.
+As a special case, the string arguments ‘start’ and ‘end’ can be used (single argument only) to prepend or append to a list.
+The abbreviations ‘s’ and ‘e’ can be used as well.</p>
+<p>Two indices can be used to get a sub-range of the list, or to update or resize a sub-range of a list on assignment.
+The return value is always a list (although it may be an empty list), and values assigned must be a list.
+The list assigned to a sub-range does not have to be the same length, the previous elements are replaced with the new elements and this may make the list longer or shorter.
+Using a two argument range for assignment, and assigning an empty list, removes that range from the list.</p>
+<p>List can also be indexed using another list as a single argument – this is only available on get, it cannot currently be used for assignment.
+In this case, the list used as the argument must be composed entirely of positive integers (indices) or boolean values.
+In the case of boolean values, the return value is a list composed only of those elements that had <a class="reference internal" href="../../../../utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">true</span></span></a> in the argument list.
+In the case of index values, the return value is a list of the elements in the original list at those indices.</p>
+<p>The following example illustrates accessing list components using parentheses:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">    local a </span><span class="p">=</span><span class="n"> list</span><span class="p">.</span><span class="n">seq</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="m m-Double">3.1</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="n">math</span><span class="p">.</span><span class="n">pi</span><span class="p">)</span><span class="n"> </span><span class="c">;; Makes a 6 element list</span>
+<span class="n">    local b </span><span class="p">=</span><span class="n"> a</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">)</span><span class="n">          </span><span class="c">;; b = &#39;a&#39;</span>
+<span class="n">    a</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> </span><span class="s">&#39;c&#39;</span><span class="n">              </span><span class="c">;; a = list.seq(1,&#39;c&#39;,3.1,4,&#39;b&#39;,math.pi)</span>
+
+<span class="n">    local c </span><span class="p">=</span><span class="n"> a</span><span class="p">(</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">)</span><span class="n">        </span><span class="c">;; c = list.seq(3.1,4)</span>
+<span class="n">    a</span><span class="p">(</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> list</span><span class="p">.</span><span class="n">seq</span><span class="p">(</span><span class="s">&#39;d&#39;</span><span class="p">)</span><span class="n">  </span><span class="c">;; a = list.seq(1,&#39;c&#39;,&#39;d&#39;,&#39;b&#39;,math.pi)</span>
+<span class="n">    a</span><span class="p">(</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> c                </span><span class="c">;; Note: Now the third element of a is a list</span>
+<span class="n">    a</span><span class="p">(</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> c              </span><span class="c">;; Note: In this case the 1 element range has</span>
+<span class="n">                            </span><span class="c">;;        been replaced by the two element list</span>
+<span class="n">                            </span><span class="c">;;        c, making the list longer</span>
+<span class="n">    a</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> list           </span><span class="c">;; Note: This removes the second element.</span>
+
+<span class="n">    c</span><span class="p">(</span><span class="s">&#39;start&#39;</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">1</span><span class="n">          </span><span class="c">;; the value 1 has been prepended to c</span>
+<span class="n">    c</span><span class="p">(</span><span class="s">&#39;end&#39;</span><span class="p">)</span><span class="n">   </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">4</span><span class="n">          </span><span class="c">;; the value 4 has been appended to c</span>
+
+<span class="n">    local d </span><span class="p">=</span><span class="n"> a</span><span class="p">(</span><span class="n">list</span><span class="p">.</span><span class="n">seq</span><span class="p">(</span><span class="sx">false</span><span class="p">,</span><span class="sx">true</span><span class="p">,</span><span class="sx">false</span><span class="p">,</span><span class="sx">false</span><span class="p">,</span><span class="sx">true</span><span class="p">,</span><span class="sx">false</span><span class="p">))</span>
+<span class="n">                            </span><span class="c">;; d = list.seq(&#39;a&#39;,&#39;b&#39;)</span>
+<span class="n">    local e </span><span class="p">=</span><span class="n"> a</span><span class="p">(</span><span class="n">list</span><span class="p">.</span><span class="n">seq</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">5</span><span class="p">))</span>
+<span class="n">                            </span><span class="c">;; e = list.seq(&#39;a&#39;,&#39;b&#39;)</span>
+</pre></div>
+</div>
+<p>Binary and unary operators function differently on list types.
+Instead of operating on the lists themselves, the operators apply automatically to each element in the respective lists.
+If a list and a non-list type are involved in a binary operation, then the non-list type and operator is applied to each element of the list separately, and the result is a new list.
+If both sides are lists, then the operator is applied to each element of both lists separately in order, and the result is a third list.
+These operations may happen on multiple threads, if possible.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">    local a </span><span class="p">=</span><span class="n"> list</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">10</span><span class="p">)</span>
+<span class="n">    local b </span><span class="p">=</span><span class="n"> list</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="m m-Double">20</span><span class="p">,</span><span class="m m-Double">11</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">1</span><span class="p">)</span>
+
+<span class="n">    local d </span><span class="p">=</span><span class="n"> a </span><span class="o">*</span><span class="n"> </span><span class="m m-Double">2</span><span class="n">  </span><span class="c">;; The result is the same as list.range(2,20)</span>
+<span class="n">    local e </span><span class="p">=</span><span class="n"> a </span><span class="o">+</span><span class="n"> b  </span><span class="c">;; The result is a 10 element list with all values of 21</span>
+</pre></div>
+</div>
+<p>The access operator <span class="cmdkey">-&gt;</span> also behaves differently when applied to lists.  The retrieval/assignment is done on each element individually, and the result is returned as another list. If any element in the list does not support that accessor, then an error will occur. This applies to any type that is compatible with accessors - which at this time includes vectors, tensors, and structures.  The following is a brief example of that syntax:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">    </span><span class="c">;; Create a list of vectors, as an example.</span>
+<span class="n">    local a </span><span class="p">=</span><span class="n"> list</span><span class="p">.</span><span class="n">sequence</span><span class="p">(</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> </span><span class="p">,</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                             </span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">6</span><span class="p">)</span><span class="n"> </span><span class="p">,</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                             </span><span class="p">(</span><span class="m m-Double">7</span><span class="p">,</span><span class="m m-Double">8</span><span class="p">,</span><span class="m m-Double">9</span><span class="p">)</span><span class="n"> </span><span class="p">,</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                             </span><span class="p">(</span><span class="m m-Double">10</span><span class="p">,</span><span class="m m-Double">11</span><span class="p">,</span><span class="m m-Double">12</span><span class="p">)</span><span class="n"> </span><span class="p">)</span>
+<span class="n">    local b </span><span class="p">=</span><span class="n"> a</span><span class="o">-&gt;</span><span class="n">y </span><span class="c">;; b is now a list of the y-components of the vectors in a,</span>
+<span class="n">                   </span><span class="c">;;    or the list { 2, 5, 8, 11 }</span>
+<span class="n">    a</span><span class="o">-&gt;</span><span class="n">z </span><span class="o">/=</span><span class="n"> </span><span class="m m-Double">2</span><span class="n">      </span><span class="c">;; the z components of the vectors in a are cut in half.</span>
+</pre></div>
+</div>
+<p>List types are created using the <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/constructors/fish_list.html#function:list" title="Creates a new list object."><code class="xref fish fish-func docutils literal"><span class="pre">list</span></code></a> or <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/list_utilities/fish_list.create.html#function:list.create" title="Create a list of  i  elements."><code class="xref fish fish-func docutils literal"><span class="pre">list.create</span></code></a> library functions.
+A sequence of values can be created using the <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/list_utilities/fish_list.sequence.html#function:list.sequence" title="Generates a list of a sequence of entries, given as arguments in order."><code class="xref fish fish-func docutils literal"><span class="pre">list.sequence</span></code></a> function.
+A sequential range of numbers (from a start to an end using a given interval) can be created using the <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/list_utilities/fish_list.range.html#function:list.range" title="Get a range of numbers."><code class="xref fish fish-func docutils literal"><span class="pre">list.range</span></code></a> function.</p>
+<p>A number of additional methods, detailed in the <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/fish_fish.html#fish-list"><span class="std std-ref">List Utilities</span></a> section, are available for lists.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Lists are an iterable type.  This means you can use it as the target of a <span class="cmdkey">loop foreach</span> statement (see <a class="reference internal" href="statements/loopendloop.html#fish-statement-loopforeach"><span class="std std-ref">Loop ForEach</span></a> and can be split (see <a class="reference internal" href="fish_splitting.html#fish-splitting"><span class="std std-ref">Splitting</span></a>).  Each entry of the list is iterated through in order.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>As with most aggregate types, when the value is listed it will simply indicate that it is of type List and the the list size.  To see the contents of the list use the <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.list.html#kwd:fish.list.contents" title="For |FISH| values of an aggregate type (arrays, matrices, structures, maps,&#013;&#010;etc.) this will list the contents of the type in a structured way."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">list</span> <span class="pre">contents</span></code></a> command.</p>
+<div class="section" id="appending-to-a-list">
+<h2>Appending to a list</h2>
+<p>There are four different methods of appending to a list.</p>
+<p>The first is to use the <code class="xref fish fish-func docutils literal"><span class="pre">fish.append</span></code> function, which returns a list with one or more values added to the end of the old one.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">    </span><span class="c">; {1,2,3,4,5,6,7,8,9,10}</span>
+<span class="n">    global l2 </span><span class="p">=</span><span class="n"> list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="m m-Double">11</span><span class="p">)</span>
+<span class="n">    </span><span class="c">; {1,2,3,4,5,6,7,8,9,10,11}</span>
+</pre></div>
+</div>
+<p>Note that if the value appended is itself another list, the new list returned will have <em>one</em> new value that is a list.</p>
+<p>You can also append a single value to a list by using the string ‘end’ or ‘e’ argument on assignment.
+This method has a performance advantage in that a copy of the list is not (necessarily) made.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">    </span><span class="c">; {1,2,3,4,5,6,7,8,9,10}</span>
+<span class="n">    l3</span><span class="p">(</span><span class="s">&#39;e&#39;</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">11</span>
+<span class="n">    </span><span class="c">; {1,2,3,4,5,6,7,8,9,10,11}</span>
+</pre></div>
+</div>
+<p>You can append the <em>contents</em> of another list (or any iterable type) to the end of a list by using the <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/list_utilities/fish_list.extend.html#function:list.extend" title="Extends a list by appending all entries in  a  to the end."><code class="xref fish fish-func docutils literal"><span class="pre">list.extend</span></code></a> function.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">    </span><span class="c">; {1,2,3,4,5,6,7,8,9,10}</span>
+<span class="n">    l2 </span><span class="p">=</span><span class="n"> list</span><span class="p">.</span><span class="n">extend</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="n">list</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="m m-Double">11</span><span class="p">,</span><span class="m m-Double">13</span><span class="p">))</span>
+<span class="n">    </span><span class="c">; {1,2,3,4,5,6,7,8,9,10,11,12,13}</span>
+</pre></div>
+</div>
+<p>This can also be done using two ‘e’ arguments to indicate a ranged insertion at the end:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">    </span><span class="c">; {1,2,3,4,5,6,7,8,9,10}</span>
+<span class="n">    l3</span><span class="p">(</span><span class="s">&#39;e&#39;</span><span class="p">,</span><span class="s">&#39;e&#39;</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> list</span><span class="p">.</span><span class="n">sequence</span><span class="p">(</span><span class="m m-Double">11</span><span class="p">,</span><span class="m m-Double">12</span><span class="p">,</span><span class="m m-Double">13</span><span class="p">,</span><span class="m m-Double">14</span><span class="p">)</span>
+<span class="n">    </span><span class="c">; {1,2,3,4,5,6,7,8,9,10,11,12,13,14}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="prepending-to-a-list">
+<h2>Prepending to a list</h2>
+<p>Similarly, you can prepend a single value to a list using the <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/list_utilities/fish_list.prepend.html#function:list.prepend" title="Prepends the value  a  to the front of list  l  and returns the new&#013;&#010;list."><code class="xref fish fish-func docutils literal"><span class="pre">list.prepend</span></code></a> function.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">    </span><span class="c">; {1,2,3,4,5,6,7,8,9,10}</span>
+<span class="n">    l2 </span><span class="p">=</span><span class="n"> list</span><span class="p">.</span><span class="n">prepend</span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="n">l1</span><span class="p">)</span>
+<span class="n">    </span><span class="c">; {0,1,2,3,4,5,6,7,8,9,10}</span>
+</pre></div>
+</div>
+<p>You can also use the ‘s’ argument to prepend a value:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">    </span><span class="c">; {1,2,3,4,5,6,7,8,9,10,11}</span>
+<span class="n">    l3</span><span class="p">(</span><span class="s">&#39;s&#39;</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">0</span>
+<span class="n">    </span><span class="c">; {0,1,2,3,4,5,6,7,8,9,10,11}</span>
+</pre></div>
+</div>
+<p>Lastly you can use two ‘s’ arguments to prepend a range of values:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">    </span><span class="c">; {1,2,3,4,5,6,7,8,9,10}</span>
+<span class="n">    l3</span><span class="p">(</span><span class="s">&#39;s&#39;</span><span class="p">,</span><span class="s">&#39;s&#39;</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> list</span><span class="p">.</span><span class="n">sequence</span><span class="p">(</span><span class="o">-</span><span class="m m-Double">3</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">2</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span>
+<span class="n">    </span><span class="c">; {-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inserting-into-a-list">
+<h2>Inserting into a list</h2>
+<p>You can insert one or more values into a list using the <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/list_utilities/fish_list.insert.html#function:list.insert" title="Inserts the single parameter  a  before index  i  in list  l &#013;&#010;and returns the new list."><code class="xref fish fish-func docutils literal"><span class="pre">list.insert</span></code></a> function.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">    </span><span class="c">; {1,2,3,4,5,6,7,8,9,10}</span>
+<span class="n">    l2 </span><span class="p">=</span><span class="n"> list</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">,</span><span class="s">&#39;a&#39;</span><span class="p">)</span>
+<span class="n">    </span><span class="c">; {1,2,&#39;a&#39;,3,4,5,6,7,8,9,10}</span>
+</pre></div>
+</div>
+<p>You can also use two arguments to do a ranged insert.
+If the second argument is less than the first then the values appear inserted before the first.
+This is inserting into a null range.</p>
+<p>One way to think of ranged (two argument) assignments to a list is the the values assigned fall from the start of the first argument to the end of the second.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">    </span><span class="c">; {1,2,3,4,5,6,7,8,9,10}</span>
+<span class="n">    l3</span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> list</span><span class="p">.</span><span class="n">sequence</span><span class="p">(</span><span class="o">-</span><span class="m m-Double">4</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">3</span><span class="p">)</span>
+<span class="n">    </span><span class="c">; {1,2,3,-4,-3,4,5,6,7,8,9,10}</span>
+</pre></div>
+</div>
+<p>Finally you can insert all elements in another list (or any iterable type) by using the <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/list_utilities/fish_list.insert.list.html#function:list.insert.list" title="Inserts all values in the iterable type  a  immediately before the index&#013;&#010; i  in list  l ."><code class="xref fish fish-func docutils literal"><span class="pre">list.insert.list</span></code></a> function:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">    </span><span class="c">; {1,2,3,4,5,6,7,8,9,10}</span>
+<span class="n">    l2 </span><span class="p">=</span><span class="n"> list</span><span class="p">.</span><span class="n">insert</span><span class="p">.</span><span class="n">list</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">,</span><span class="n">list</span><span class="p">.</span><span class="n">sequence</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="s">&#39;c&#39;</span><span class="p">))</span>
+<span class="n">    </span><span class="c">; {1,2,&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,3,4,5,6,7,8,9,10}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="fish.html" ><span class="codename">FISH</span> Scripting Reference</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="fish_languagerules.html" ><span class="codename">FISH</span> Rules and Usage</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="fish_datatypes.html" accesskey="U">Data Types</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="fish_matrices.html"
+                           title="previous chapter"> Matrices</a> |    
+       <a href="fish_maps.html"
+                           title="next chapter">Maps</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Lists" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

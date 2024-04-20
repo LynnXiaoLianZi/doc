@@ -1,0 +1,185 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Gradual Unloading of Void Regions &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="gradual-unloading-of-void-regions">
+<span id="gradualunloading"></span><h1>Gradual Unloading of Void Regions</h1>
+<p>The <span class="codename">FISH</span> function “<code class="docutils literal"><span class="pre">zonk.fis</span></code>” detects a void within a model, and slowly relaxes the forces around the void region. This facility is useful for simulating a gradual excavation in elasto-plastic material. The influence of transients on material failure is minimized; the solution is more “static.”</p>
+<p>The boundary of the extracted region is detected and modified by specifying the <span class="codename">FISH</span> function <code class="docutils literal"><span class="pre">zonk</span></code>. The forces are then relaxed by specifying the function <code class="docutils literal"><span class="pre">relax</span></code>.</p>
+<p>The example data file “<code class="docutils literal"><span class="pre">zonk.dat</span></code>” illustrates the use of “<code class="docutils literal"><span class="pre">zonk.fis</span></code>” to simulate a gradual excavation in Mohr-Coulomb material.</p>
+<p><strong>Data File:</strong> <code class="docutils literal"><span class="pre">zonk.dat</span></code></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">block tolerance</span><span class="n"> corner</span><span class="o">-</span><span class="n">round</span><span class="o">-</span><span class="n">length </span><span class="m m-Double">0.01</span>
+<span class="nb">block create</span><span class="n"> polygon </span><span class="o">-</span><span class="m m-Double">50</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">30</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">50</span><span class="n"> </span><span class="m m-Double">70</span><span class="n"> </span><span class="m m-Double">60</span><span class="n"> </span><span class="m m-Double">70</span><span class="n"> </span><span class="m m-Double">60</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">30</span>
+<span class="nb">block cut</span><span class="n"> joint</span><span class="o">-</span><span class="n">set angle </span><span class="m m-Double">45</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> trace </span><span class="m m-Double">1000</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> gap </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> spacing </span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">0</span>
+<span class="c">; Generate cavern</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="o">-</span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">0</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="o">-</span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">28.5</span>
+<span class="nb">block cut</span><span class="n"> crack  </span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">0</span><span class="n">  </span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">28.5</span>
+<span class="nb">block cut</span><span class="n"> arc    </span><span class="m m-Double">3.25</span><span class="n"> </span><span class="m m-Double">28.5</span><span class="n"> </span><span class="m m-Double">9.57</span><span class="n">  </span><span class="m m-Double">28.5</span><span class="n"> </span><span class="m m-Double">60</span><span class="n"> </span><span class="m m-Double">6</span>
+<span class="nb">block cut</span><span class="n"> arc   </span><span class="o">-</span><span class="m m-Double">3.25</span><span class="n"> </span><span class="m m-Double">28.5</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">28.5</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">60</span><span class="n"> </span><span class="m m-Double">6</span>
+<span class="nb">block cut</span><span class="n"> arc </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">22.871</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">35.691</span><span class="n">  </span><span class="m m-Double">30</span><span class="n"> </span><span class="m m-Double">3</span>
+<span class="nb">block cut</span><span class="n"> arc </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">22.871</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">35.691</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">30</span><span class="n"> </span><span class="m m-Double">3</span>
+<span class="nb">block cut</span><span class="n"> arc </span><span class="m m-Double">10.522</span><span class="n"> </span><span class="m m-Double">30.424</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">3.66078</span><span class="n"> </span><span class="m m-Double">35.307522</span><span class="n">  </span><span class="m m-Double">29</span><span class="n"> </span><span class="m m-Double">3</span>
+<span class="nb">block cut</span><span class="n"> arc </span><span class="o">-</span><span class="m m-Double">10.522</span><span class="n"> </span><span class="m m-Double">30.424</span><span class="n"> </span><span class="m m-Double">3.66078</span><span class="n"> </span><span class="m m-Double">35.307522</span><span class="n">  </span><span class="o">-</span><span class="m m-Double">29</span><span class="n"> </span><span class="m m-Double">3</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="o">-</span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">28</span><span class="n">    </span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">28</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="o">-</span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">25.5</span><span class="n">  </span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">25.5</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="o">-</span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">23.0</span><span class="n">  </span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">23.0</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="o">-</span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">20.5</span><span class="n">  </span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">20.5</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="o">-</span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">18.0</span><span class="n">  </span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">18.0</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="o">-</span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">15.5</span><span class="n">  </span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">15.5</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="o">-</span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">13.0</span><span class="n">  </span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">13.0</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="o">-</span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">10.5</span><span class="n">  </span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">10.5</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="o">-</span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">8.00</span><span class="n">  </span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">8.00</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="o">-</span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">5.50</span><span class="n">  </span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">5.50</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="o">-</span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">3.00</span><span class="n">  </span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">3.00</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="o">-</span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">1.00</span><span class="n">  </span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">1.00</span>
+<span class="nb">block zone gen</span><span class="n"> edge </span><span class="m m-Double">15</span>
+
+<span class="nb">block change</span><span class="n"> cons </span><span class="m m-Double">3</span>
+<span class="nb">block Prop</span><span class="n"> m</span><span class="p">=</span><span class="m m-Double">1</span><span class="n"> bulk</span><span class="p">=</span><span class="m m-Double">3.9e9</span><span class="n"> shear</span><span class="p">=</span><span class="m m-Double">2.8e9</span><span class="n"> dens</span><span class="p">=</span><span class="m m-Double">2500</span><span class="n"> coh</span><span class="p">=</span><span class="m m-Double">3.45e6</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">  fric </span><span class="m m-Double">30</span><span class="n"> dil </span><span class="m m-Double">0</span><span class="n"> ten </span><span class="m m-Double">1e10</span>
+<span class="nb">block contact prop</span><span class="n"> mat</span><span class="p">=</span><span class="m m-Double">1</span><span class="n"> stiffness</span><span class="o">-</span><span class="n">normal</span><span class="p">=</span><span class="m m-Double">10e9</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">  stiffness</span><span class="o">-</span><span class="n">shear</span><span class="p">=</span><span class="m m-Double">1e9</span><span class="n"> friction</span><span class="p">=</span><span class="m m-Double">40</span><span class="n"> cohesion</span><span class="p">=</span><span class="m m-Double">0.4e6</span><span class="n">  </span><span class="c">; Crack 1</span>
+<span class="n">bl edg app stress </span><span class="o">-</span><span class="m m-Double">3.95e6</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">7.89e6</span><span class="n"> range  pos</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">69</span><span class="n"> </span><span class="m m-Double">71</span>
+<span class="nb">block gridpoint apply</span><span class="n"> vel</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0</span><span class="n"> range  pos</span><span class="o">-</span><span class="n">y </span><span class="o">-</span><span class="m m-Double">31</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">29</span>
+<span class="nb">block gridpoint apply</span><span class="n"> vel</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0</span><span class="n"> range  pos</span><span class="o">-</span><span class="n">x </span><span class="o">-</span><span class="m m-Double">51</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">49</span>
+<span class="nb">block gridpoint apply</span><span class="n"> vel</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0</span><span class="n"> range  pos</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">59</span><span class="n"> </span><span class="m m-Double">61</span>
+<span class="nb">block mech</span><span class="n"> grav </span><span class="m m-Double">0</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">10</span>
+<span class="nb">block insitu</span><span class="n"> stress </span><span class="o">-</span><span class="m m-Double">3.95e6</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">9.5e6</span><span class="n"> gradient</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">23000</span>
+<span class="nb">block insitu</span><span class="n"> szz</span><span class="p">=</span><span class="o">-</span><span class="m m-Double">3.95e6</span><span class="n"> </span><span class="c">;</span>
+<span class="nb">block solve</span><span class="n"> ratio </span><span class="m m-Double">1e-4</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;stage0.sav&#39;</span>
+
+<span class="nb">call</span><span class="n"> </span><span class="s">&#39;zonk.fis&#39;</span>
+
+<span class="nb">block del</span><span class="n"> range pos</span><span class="o">-</span><span class="n">x </span><span class="o">-</span><span class="m m-Double">4.2</span><span class="n"> </span><span class="m m-Double">3.9</span><span class="n"> pos</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">28</span><span class="n"> </span><span class="m m-Double">35.25</span><span class="n"> </span><span class="c">;</span>
+<span class="nb">block del</span><span class="n"> range region </span><span class="o">-</span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">28</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">8.5</span><span class="n"> </span><span class="m m-Double">33</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">4.</span><span class="n"> </span><span class="m m-Double">35</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">3.25</span><span class="n"> </span><span class="m m-Double">28</span>
+<span class="nb">block del</span><span class="n"> range regio  </span><span class="m m-Double">3.75</span><span class="n"> </span><span class="m m-Double">28</span><span class="n"> </span><span class="m m-Double">3.5</span><span class="n"> </span><span class="m m-Double">35.5</span><span class="n"> </span><span class="m m-Double">8.5</span><span class="n"> </span><span class="m m-Double">33</span><span class="n"> </span><span class="m m-Double">9.57</span><span class="n"> </span><span class="m m-Double">28</span>
+<span class="nb">block del</span><span class="n"> range pos</span><span class="o">-</span><span class="n">x </span><span class="o">-</span><span class="m m-Double">10</span><span class="n"> </span><span class="m m-Double">10</span><span class="n"> pos</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">28</span>
+<span class="c">;</span>
+<span class="c">; must fix points and cycle once to get reaction forces</span>
+<span class="c">;</span>
+<span class="nb">block grid</span><span class="n"> apply</span><span class="o">-</span><span class="n">int velocity</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0</span><span class="n"> velocity</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">  range pos</span><span class="o">-</span><span class="n">x </span><span class="o">-</span><span class="m m-Double">10</span><span class="n"> </span><span class="m m-Double">10</span><span class="n"> pos</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">37</span>
+<span class="nb">block cycle</span><span class="n"> </span><span class="m m-Double">1</span>
+<span class="c">;</span>
+<span class="nb">block zone history</span><span class="n"> stress</span><span class="o">-</span><span class="n">xx </span><span class="m m-Double">12.5</span><span class="n"> </span><span class="m m-Double">20.0</span>
+<span class="nb">block gridpoint history</span><span class="n"> disp</span><span class="o">-</span><span class="n">x  </span><span class="m m-Double">12.5</span><span class="n"> </span><span class="m m-Double">20.0</span>
+
+<span class="ni">@zonk</span>
+<span class="ni">@relax</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;stage1.sav&#39;</span>
+
+
+<span class="n">hist name </span><span class="m m-Double">1</span><span class="n"> label </span><span class="s">&#39;XX - Stress&#39;</span>
+<span class="n">hist name </span><span class="m m-Double">2</span><span class="n"> label </span><span class="s">&#39;X  - Displacement&#39;</span>
+<span class="n">ret</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../../../../../_images/743F0002.png"><img alt="../../../../../_images/743F0002.png" src="../../../../../_images/743F0002.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Horizontal stress vs displacement at history point</span></p>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Gradual Unloading of Void Regions" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

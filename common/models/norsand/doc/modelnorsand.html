@@ -1,0 +1,475 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>NorSand Model* &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../contents.html"><img id="cornerlogo" src="../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="hide sectionname docutils container">
+<span class="codename">FLAC3D</span> Theory and Background • Constitutive Models</div>
+<div class="section" id="norsand-model">
+<span id="modelnorsand"></span><h1>NorSand Model*</h1>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">*This model is available in <span class="codename">FLAC3D</span> only.</p>
+</div>
+<p>NorSand (Jefferies 1993, Jefferies and Been 2015) is a critical state model applicable to soils in which particle to particle interactions are controlled by contact forces and slips rather than bonds,
+intrinsically incorporating the state parameter so that it captures the behavior of granular soils over a wide range of confining stresses and densities.
+NorSand requires relatively few soil properties which are familiar and can be estimated from the routine laboratory or in-situ tests.
+NorSand explicitly captures the full range of soil behavior from static liquefaction of very loose soils through to dilation of very dense soils.</p>
+<p class="h3 rubric">Formulations</p>
+<p class="h4 rubric">Elastic Law</p>
+<p>In the implementation of the NorSand model, the elasticity assumes the elastic shear modulus is</p>
+<div class="math" id="equation-eq:nor:elastic:g">
+<span class="eqno">(1)</span>\[ G = G_{ref}\left( \frac{p}{p_{ref}} \right)^m\]</div>
+<p>where <span class="math">\(p\)</span> is the current mean pressure, and <span class="math">\(G_{ref}\)</span>, are material constants. A valid range for <span class="math">\(m\)</span> is  <span class="math">\(0 \le m \le 1\)</span>.
+<span class="math">\(p_{ref}\)</span> is a reference pressure (usually, and by default, 100 kPa).</p>
+<p>For <span class="math">\(m = 0\)</span>, <span class="math">\(G=G_{ref}\)</span>, which corresponds to a constant elastic shear modulus.
+For <span class="math">\(m = 1\)</span>, <span class="math">\(G = (G_{ref}/p_{ref})p = I_r p\)</span>, which corresponds to an elastic shear modulus being linear to the current <span class="math">\(p\)</span> with a constant shear rigidity <span class="math">\(I_r=G_{ref}/p_{ref}\)</span>.</p>
+<p>The corresponding elastic bulk modulus is</p>
+<div class="math" id="equation-eq:nor:elastic:k">
+<span class="eqno">(2)</span>\[ K = \frac{2(1+\nu)}{3(1-2\nu)} G\]</div>
+<p class="h4 rubric">Critical State</p>
+<p>The critical state requires <span class="math">\(D^p=0\)</span> and <span class="math">\(\dot{D}^p/\dot{e}_q^p=0\)</span>, where the dilatancy <span class="math">\(D^p\)</span> is defined as <span class="math">\(D^p=(\dot{e}_v^p)/(\dot{e}_q^p )\)</span> with <span class="math">\(\dot{e}_v^p\)</span>  and <span class="math">\(\dot{e}_q^p\)</span> are the rate of the plastic volumetric and deviatoric strain, respectively.
+If only <span class="math">\(D^p=0\)</span> then this is an <em>image</em> state (denoted by the subscript <span class="math">\(i\)</span>), variously also referred to as the pseudo steady state or phase change condition.</p>
+<p>The critical state void ratio, <span class="math">\(e_c\)</span> , can be a two-parameter semi-logarithmic form as</p>
+<div class="math" id="equation-eq:nor:cs:1">
+<span class="eqno">(3)</span>\[ e_c(p) = \Gamma - \lambda \ln{\left( \frac{100p}{p_{ref}} \right)}\]</div>
+<p>where <span class="math">\(\Gamma\)</span> and <span class="math">\(\lambda\)</span> are material constants.</p>
+<p>The critical state void ratio, <span class="math">\(e_c\)</span> , can be alternatively a three-parameter power-law form as</p>
+<div class="math" id="equation-eq:nor:cs:2">
+<span class="eqno">(4)</span>\[ e_c(p) = C_1 - C_2 \left( \frac{p}{p_{ref}} \right)^{C_3}\]</div>
+<p>where <span class="math">\(C_1\)</span>, <span class="math">\(C_2\)</span> and <span class="math">\(C_3\)</span> are material constants.</p>
+<p class="h4 rubric">State Parameter</p>
+<p>The state parameter is defined as the difference of the current void ratio and the void ratio at the critical state:</p>
+<div class="math" id="equation-eq:nor:sp">
+<span class="eqno">(5)</span>\[ \psi = e - e_c(p)\]</div>
+<p>The state parameter when <span class="math">\(p=p_i\)</span> ( <span class="math">\(p_i\)</span> is called the image stress) is defined as <span class="math">\(\psi_i\)</span> by</p>
+<div class="math" id="equation-eq:nor:spi">
+<span class="eqno">(6)</span>\[ \psi_i = e - e_c(p_i)\]</div>
+<p class="h4 rubric">Yield Surface</p>
+<p>The outer yield surface of the NorSand model has the familiar bullet-like shape (<a href="#modelnorsand-1">Figure  1</a>) of the original Cam-Clay model,
+which is expressed by</p>
+<div class="math" id="equation-eq:nor:ys">
+<span class="eqno">(7)</span>\[ \frac{\eta}{M_i} = 1 - \ln{\left( \frac{p}{p_i} \right)}\]</div>
+<p>where <span class="math">\(p_i\)</span> is called the image stress, which controls the size of the yield surface.
+<span class="math">\(\eta = q/p\)</span> with <span class="math">\(q = \sqrt{3J_2}\)</span>, and <span class="math">\(J_2\)</span> is the second invariant of the deviatoric stress tensor.</p>
+<div class="figure align-center" id="id1">
+<span id="modelnorsand-1"></span><a class="reference internal image-reference" href="../../../../_images/norsand1.png"><img alt="../../../../_images/norsand1.png" src="../../../../_images/norsand1.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Schematic of NorSand yield surfaces and limiting stress ratios.</span></p>
+</div>
+<p>There is an internal cap so that the soil cannot unload to very low mean stress without yielding.
+This internal cap is taken as a flat plane, crossing the outer yield surface by the limiting stress ratio <span class="math">\(\eta_L\)</span>,
+and its location depends on the soil’s current parameters.
+<a href="#modelnorsand-1">Figure  1</a> illustrates the NorSand yield surfaces for two cases: very dense and very loose.</p>
+<p><span class="math">\(M_i\)</span> is defined as</p>
+<div class="math" id="equation-eq:nor:mi">
+<span class="eqno">(8)</span>\[ M_i = M_{i,tc} g(\theta)\]</div>
+<p>where</p>
+<div class="math" id="equation-eq:nor:mitc">
+<span class="eqno">(9)</span>\[ M_{i,tc} = M_{tc} - N \chi_i |\psi_i|\]</div>
+<p>where <span class="math">\(M_{tc}\)</span> is a material constant representing <span class="math">\(\eta\)</span> at the critical state in the TC (triaxial compression) condition,
+<span class="math">\(N\)</span> is Nova’s (1982) volumetric coupling coefficient,
+and <span class="math">\(g(\theta)\)</span> is a function considering the effect of the Lode’s angle <span class="math">\(\theta\)</span>, defined by</p>
+<div class="math" id="equation-eq:nor:eekelen">
+<span class="eqno">(10)</span>\[g(\theta) = \left[ \frac {2c^4} {c^4 + 1 +(c^4 - 1) \sin{3\theta}} \right]^{0.25}\]</div>
+<p>to interpolate <span class="math">\(M_{\theta}=g(\theta,c) M_C\)</span> for a given Lode angle <span class="math">\(\theta\)</span> and the strength ratio <span class="math">\(c\)</span>,
+which is defined by <span class="math">\(c = M_{te}/M_{tc} = 3/(3+M_{tc})\)</span>,
+with <span class="math">\(M_{te}\)</span> the triaxial compression strength, <span class="math">\(M_{tc}\)</span> the triaxial extension strength.</p>
+<p>It is easy to verify that</p>
+<div class="math">
+\[ g(\frac{\pi}{6}) = 1, \;  g(-\frac{\pi}{6}) = c, \; \mbox{and} \; g'(\frac{\pi}{6}) = g'(-\frac{\pi}{6}) = 0\]</div>
+<p>so</p>
+<div class="math" id="equation-eq:nor:mite">
+<span class="eqno">(11)</span>\[ M_{i,te} = c M_{i,tc}, \; \mbox{at} \; \theta = -\frac{\pi}{6}\]</div>
+<p>According to Jefferies and Been (2015), <span class="math">\(\chi_i\)</span> can be approximated by</p>
+<div class="math" id="equation-eq:nor:chii">
+<span class="eqno">(12)</span>\[ \chi_i = \frac{M_{tc} \chi_{tc}}{M_{tc} - \lambda \chi_{tc}}\]</div>
+<p>where <span class="math">\(\chi_{tc}\)</span> is a material constant.</p>
+<p class="h4 rubric">Stress Dilatancy</p>
+<p>By assuming the associated flow rule, the stress dilatancy can be expressed as</p>
+<div class="math" id="equation-eq:nor:dp">
+<span class="eqno">(13)</span>\[ D^p = \frac{\dot{e}_v^p}{\dot{e}_q^p} = M_i - \eta\]</div>
+<p>where <span class="math">\(\dot{e}_v^p\)</span> and <span class="math">\(\dot{e}_q^p\)</span> are the rate of the plastic volumetric and deviatoric strain, respectively.</p>
+<p>The detailed expressions of the plastic strain rates in the principal stress space are somewhat tedious,
+which can be found in Jefferies and Shuttle (2005).</p>
+<p class="h4 rubric">Hardening Rule of Outer Cap</p>
+<p>The image stress <span class="math">\(p_i\)</span> controls the size of the yield surface.
+The hardening rule in the implementation is defined by</p>
+<div class="math" id="equation-eq:nor:hardening">
+<span class="eqno">(14)</span>\[ \frac{\dot{p}_i}{p_i} = H g(\theta) \left( \frac{p}{p_i} \right)^2 \left( \frac{p_{i,m}}{p} - \frac{p_i}{p} \right) \dot{e}_q^p + S T_S + T_{PSR}\]</div>
+<p>where the hardening modulus <span class="math">\(H\)</span> is expressed by</p>
+<div class="math" id="equation-eq:nor:h">
+<span class="eqno">(15)</span>\[ H = H_0 - H_y \psi\]</div>
+<p>with <span class="math">\(H_0\)</span> and <span class="math">\(H_y\)</span> being material constants.
+The default value of <span class="math">\(H_y\)</span> is zero so that <span class="math">\(H\)</span> equals to the constant <span class="math">\(H_0\)</span> for this case.
+The cut-off of <span class="math">\(H\)</span> is 10 and <span class="math">\(0.5/(\lambda-\kappa)\)</span>, whichever is larger.
+For the case of three-parameter power-law form for critical state, <span class="math">\(\lambda\)</span> is approximated to be the slope of the critical state curve at the initial <span class="math">\(p\)</span>.</p>
+<p><span class="math">\(p_{i,m}\)</span> is defined as</p>
+<div class="math" id="equation-eq:nor:pim">
+<span class="eqno">(16)</span>\[ p_{i,m} = p \exp{\left( -\frac{\chi_i\psi_i}{M_{i,tc}} \right)}\]</div>
+<p>The additional cap softening term <span class="math">\(T_S\)</span> is optional (e.g., inputting <span class="math">\(S=0\)</span> will nullify this term) and the current version of <span class="math">\(T_S\)</span> is</p>
+<div class="math" id="equation-eq:nor:ts">
+<span class="eqno">(17)</span>\[ T_S = \left( \frac{K}{p} \right) \left( \frac{\eta}{\eta_L} \right) \dot{e}_q^p \frac{1}{1+\frac{\chi_i\lambda}{M_{i,tc}}}\]</div>
+<p><span class="math">\(S\)</span> is 0 by default, and it is allowable to be <span class="math">\(0 \le S \le 1\)</span> for undrained analysis.
+A larger <span class="math">\(S\)</span> value will lead to faster softening of a loose sand during an <em>undrained</em> shearing loading.
+Please be aware that the additional term <span class="math">\(T_S\)</span> is still in debate, it should be cautious to use <span class="math">\(S&gt;0\)</span>.
+It is not recommended to use <span class="math">\(S&gt;0\)</span> for any case of drained loading.</p>
+<p>The last term <span class="math">\(T_{PSR}\)</span> in Eq. <a class="reference internal" href="#equation-eq:nor:hardening">(14)</a> is capturing the effects of principal stress rotation (Jefferies et al 2015):</p>
+<div class="math" id="equation-eq:nor:tpsr">
+<span class="eqno">(18)</span>\[ T_{PSR} = \left[ -Z \left( \frac{p_i}{p} - \frac{1}{r}\right) \left| \frac{\dot{\alpha}}{\pi} \right|+ \frac{1}{r} \right] |\psi_i|\]</div>
+<p>where <span class="math">\(Z\)</span> is a soil property and <span class="math">\(r=\exp{(1)} \approx 2.718\)</span> is the yield surface spacing ratio (a fixed value),
+and <span class="math">\(\alpha\)</span> is the current included angle between direction of major principal stress and z-coordinate frame of reference in 3D version.
+To capture the cyclic mobility in a dynamic simulation, <span class="math">\(Z\)</span> should be input a positive value.</p>
+<p class="h4 rubric">Hardening Rule of Inner Cap</p>
+<p>The hardening rule for the inner cap in the implementation is defined by</p>
+<div class="math" id="equation-eq:nor:hardeninginner">
+<span class="eqno">(19)</span>\[ \frac{\dot{p}_i}{p_i} = - H_i H \left| \dot{e}_v^p \right|\]</div>
+<p>where <span class="math">\(H_i\)</span> is a material parameter with a default value 5.0. Yielding of the inner cap always drag the bullet-like outer surface smaller. NorSand uses one plausible idealization that involves imaging the stress <span class="math">\(q\)</span> on the cap across the outer yield surface (Jefferies and Been 2015). By default (<em>flag-inner</em> = <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a>), inner cap hardening is not activated. To activate this option, input the material property <em>flag-inner</em> to <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>.</p>
+<p class="h3 rubric">Initial Conditions</p>
+<p>The NorSand model is a stress-dependent model.
+The initial conditions include the initial stress, <span class="math">\(\sigma_{ij,0}\)</span>, initial state, <span class="math">\(e_0\)</span> or <span class="math">\(\psi_0\)</span>, and over-consolidation ratio, OCR.
+OCR in this model (<a href="#modelnorsand-2">Figure  2</a>) is defined as the ratio of the current <span class="math">\(p_i\)</span> over the calculated <span class="math">\(p_{i, OCR=1}\)</span>
+so that the initial stress is on the yield surface assuming OCR = 1.</p>
+<div class="math" id="equation-eq:nor:ocr">
+<span class="eqno">(20)</span>\[ OCR = \frac{p_i}{p_{i, OCR=1}}\]</div>
+<div class="figure align-center" id="id2">
+<span id="modelnorsand-2"></span><a class="reference internal image-reference" href="../../../../_images/norsand2.png"><img alt="../../../../_images/norsand2.png" src="../../../../_images/norsand2.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Schematic of OCR in the NorSand model.</span></p>
+</div>
+<p>Reasonable initial stress should be input the first time the NorSand model is assigned.
+The stress can be initialized through commands or a <span class="codename">FISH</span> function.
+A common procedure is to generate the initial stress by running the model using a simpler constitutive model (e.g., linear elastic or Mohr-Coulomb model),
+then change the constitutive model into NorSand but keep the calculated stress.
+The calculated stress from the other model can be used as the initial stress of the NorSand model.
+Details on implementation and verification can be found in Cheng and Jefferies (2020).</p>
+<p>NorSand model is recommended for static analysis (e.g., static liquefaction).</p>
+<p class="h3 rubric">Acknowledgment</p>
+<p>The implementation of this model was partially sponsored by VALE S. A. and Inst. Tecnológico Vale.</p>
+<p class="h3 rubric">References</p>
+<p>Cheng, Z. and M. Jefferies. <span class="bi">Implementation and verification of NorSand model in general 3D framework.</span> in <span class="bi">Geo-Congress: Geotechnical Earthquake Engineering and Special Topics</span>, ASCE, 10-19 (2020).</p>
+<p>Jefferies, M.G. <span class="bi">Nor-Sand: a simle critical state model for sand.</span> <em>Géotechnique</em>, 43(1), 91-103 (1993).</p>
+<p>Jefferies, M., and K. Been. <span class="bi">Soil liquefaction: a critical state approach.</span> CRC press (2015).</p>
+<p>Jefferies, M.G., and D.A. Shuttle. <span class="bi">NorSand: Features, calibration and use.</span> in <span class="bi">Soil Constitutive Models: Evaluation, Selection, and Calibration</span>, 204-236 (2005).</p>
+<p>Jefferies, M., D. Shuttle, and K. Been. <span class="bi">Principal stress rotation as cause of cyclic mobility</span>. <em>Geotechnical Research</em>, 2(2), 66-96 (2015).</p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<p class="h3 rubric" id="norsandmodelprops"><span class="cmdkey">norsand</span> Model Properties</p>
+<p>Use the following keywords with the <code class="xref fish fish-cmd docutils literal"><span class="pre">zone</span> <span class="pre">property</span></code> command to set these properties of the NorSand model.</p>
+<span class="target" id="norsandprops"></span><dl class="command">
+<dt id="command:norsand">
+<span class="cmdname"><span class="hide">n</span><span class="hide">o</span><span class="hide">r</span><span class="hide">s</span><span class="hide">a</span><span class="hide">n</span><span class="hide">d</span><span class="hide"> </span></span></dt>
+<dd><dl class="keyword">
+<dt id="kwd:norsand.critical-state-1">
+<span class="cmdkey"><span class="pref">c</span><span class="null">r</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">s</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">1</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd></dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.critical-state-2">
+<span class="cmdkey"><span class="pref">c</span><span class="null">r</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">s</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">2</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd></dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.critical-state-3">
+<span class="cmdkey"><span class="pref">c</span><span class="null">r</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">s</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">3</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>critical state parameters, <span class="math">\(C_1\)</span>, <span class="math">\(C_2\)</span> and <span class="math">\(C_3\)</span>.  Parameters to determine the critical state line. If <span class="math">\(C_3=0\)</span> (by default), the critical state is based on the 2-parameter equation, assuming <span class="math">\(C_1=\Gamma\)</span>  and  <span class="math">\(C_2=\gamma\)</span>; If <span class="math">\(C_3&gt;0\)</span>, the critical state is based on the 3-parameter equation.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.factor-coupling">
+<span class="cmdkey"><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">-</span><span class="pref">c</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null">l</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>volumetric coupling factor, <span class="math">\(N\)</span>. The default value is 0.3.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.factor-dilatancy">
+<span class="cmdkey"><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">-</span><span class="pref">d</span><span class="null">i</span><span class="null">l</span><span class="null">a</span><span class="null">t</span><span class="null">a</span><span class="null">n</span><span class="null">c</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>parameter relating minimum dilatancy to the corresponding <span class="math">\(\psi\)</span> at the TC condition, <span class="math">\(\chi_{tc}\)</span>. The default value is 4.0.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.hardening-0">
+<span class="cmdkey"><span class="pref">h</span><span class="null">a</span><span class="null">r</span><span class="null">d</span><span class="null">e</span><span class="null">n</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">-</span><span class="pref">0</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>plastic hardening modulus when <span class="math">\(\psi=0\)</span>, <span class="math">\(H_0\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.modulus-annealing">
+<span class="cmdkey"><span class="pref">m</span><span class="null">o</span><span class="null">d</span><span class="null">u</span><span class="null">l</span><span class="null">u</span><span class="null">s</span><span class="null">-</span><span class="pref">a</span><span class="null">n</span><span class="null">n</span><span class="null">e</span><span class="null">a</span><span class="null">l</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>plastic softening modulus for PSR, <span class="math">\(Z\)</span>. The default value is 0, which will not consider PSR effect.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.shear-reference">
+<span class="cmdkey"><span class="pref">s</span><span class="null">h</span><span class="null">e</span><span class="null">a</span><span class="null">r</span><span class="null">-</span><span class="pref">r</span><span class="null">e</span><span class="null">f</span><span class="null">e</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>reference shear modulus, <span class="math">\(G_{ref}\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.ratio-critical">
+<span class="cmdkey"><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">-</span><span class="pref">c</span><span class="null">r</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>stress ratio at the critical state at the TC condition, <span class="math">\(M_{tc}\)</span>. The default value is 1.2, which corresponds to a critical friction angle of 30 degrees.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.exponent">
+<span class="cmdkey"><span class="pref">e</span><span class="null">x</span><span class="null">p</span><span class="null">o</span><span class="null">n</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>exponent of pressure dependence defining elasticity, <span class="math">\(m\)</span>. The default value is 1.0.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.flag-inner">
+<span class="cmdkey"><span class="pref">f</span><span class="null">l</span><span class="null">a</span><span class="null">g</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">n</span><span class="null">e</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>flag to activate the inner cap hardening. The default value is <a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.hardening-inner">
+<span class="cmdkey"><span class="pref">h</span><span class="null">a</span><span class="null">r</span><span class="null">d</span><span class="null">e</span><span class="null">n</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">n</span><span class="null">e</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>plastic hardening modulus value for the hardening of inner cap, <span class="math">\(H_i\)</span>. This value is meaningful only when <em>flag-inner = :lbool:`on`</em>. The default value is 5.0.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt>
+<span class="cmdkey"><span class="pref">m</span><span class="null">o</span><span class="null">d</span><span class="null">u</span><span class="null">l</span><span class="null">u</span><span class="null">s</span><span class="null">-</span><span class="pref">a</span><span class="null">n</span><span class="null">n</span><span class="null">e</span><span class="null">a</span><span class="null">l</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>plastic softening modulus for PSR, <span class="math">\(Z\)</span>. The default value is 0, which will not consider the PSR effect.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.over-consolidation-ratio">
+<span class="cmdkey"><span class="pref">o</span><span class="null">v</span><span class="null">e</span><span class="null">r</span><span class="null">-</span><span class="pref">c</span><span class="null">o</span><span class="null">n</span><span class="null">s</span><span class="null">o</span><span class="null">l</span><span class="null">i</span><span class="null">d</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>over consolidation ratio, <span class="math">\(OCR\)</span>. The default is 1.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.hardening-y">
+<span class="cmdkey"><span class="pref">h</span><span class="null">a</span><span class="null">r</span><span class="null">d</span><span class="null">e</span><span class="null">n</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>another hardening modulus parameter, <span class="math">\(H_y\)</span>, so that the real plastic hardening modulus is following <span class="math">\(H=H_0-H_y\psi\)</span>. The default value is zero.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.pressure-reference">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null">-</span><span class="pref">r</span><span class="null">e</span><span class="null">f</span><span class="null">e</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>reference pressure (usually the standard atmospheric pressure), <span class="math">\(p_{atm}\)</span>. The default value is 100.0 if in kPa. This parameter should always be referred to the standard atmospheric pressure and it does not need extra calibration. Its value should be input in a unit of stress/pressure consistent with the other parameters used in the simulation.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.poisson">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">i</span><span class="null">s</span><span class="null">s</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>Poisson’s ratio, <span class="math">\(\nu\)</span>. The default value is 0.2.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.stress-xx-initial">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">x</span><span class="pref">x</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">i</span>)</span><span class="null"> </span></dt>
+<dd><p>initial xx component of the effective stress, <span class="math">\(\sigma^0_{xx}\)</span>. This parameter will not be updating.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.stress-yy-initial">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">y</span><span class="pref">y</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">i</span>)</span><span class="null"> </span></dt>
+<dd><p>initial yy component of the effective stress, <span class="math">\(\sigma^0_{yy}\)</span>. This parameter will not be updating.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.stress-zz-initial">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">z</span><span class="pref">z</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">i</span>)</span><span class="null"> </span></dt>
+<dd><p>initial zz component of the effective stress, <span class="math">\(\sigma^0_{zz}\)</span>. This parameter will not be updating.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.stress-xy-initial">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">x</span><span class="pref">y</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">i</span>)</span><span class="null"> </span></dt>
+<dd><p>initial xy component of the effective stress, <span class="math">\(\sigma^0_{xy}\)</span>. This parameter will not be updating.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.stress-yz-initial">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">y</span><span class="pref">z</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">i</span>)</span><span class="null"> </span></dt>
+<dd><p>initial yz component of the effective stress, <span class="math">\(\sigma^0_{yz}\)</span>. This parameter will not be updating.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.stress-xz-initial">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">x</span><span class="pref">z</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">i</span>)</span><span class="null"> </span></dt>
+<dd><p>initial xz component of the effective stress, <span class="math">\(\sigma^0_{xz}\)</span>. This parameter will not be updating.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.state-parameter-initial">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">p</span><span class="null">a</span><span class="null">r</span><span class="null">a</span><span class="null">m</span><span class="null">e</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">i</span>)</span><span class="null"> </span></dt>
+<dd><p>initial state parameter, <span class="math">\(\psi_0\)</span>. If <span class="math">\(e_0 \le 0\)</span>, the initial state will be represented by this initial state parameter, and <span class="math">\(e_0\)</span> will be calculated by <span class="math">\(\psi_0\)</span>. This parameter will not be updating.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.void-initial">
+<span class="cmdkey"><span class="pref">v</span><span class="null">o</span><span class="null">i</span><span class="null">d</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">i</span>)</span><span class="null"> </span></dt>
+<dd><p>initial void ratio, <span class="math">\(e_0\)</span>. If <span class="math">\(e_0 \ge 0\)</span>, the initial state will be represented by this initial void ratio instead of initial state parameter, and <span class="math">\(\psi_0\)</span> will be calculated by <span class="math">\(e_0\)</span>. This parameter will not be updating.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.angle-psr">
+<span class="cmdkey"><span class="pref">a</span><span class="null">n</span><span class="null">g</span><span class="null">l</span><span class="null">e</span><span class="null">-</span><span class="pref">p</span><span class="pref">s</span><span class="pref">r</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>Current included angle between direction of major principal stress and z-coordinate frame of reference, <span class="math">\(\alpha\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.bulk">
+<span class="cmdkey"><span class="pref">b</span><span class="null">u</span><span class="null">l</span><span class="null">k</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>current elastic bulk modulus, <span class="math">\(K\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.shear">
+<span class="cmdkey"><span class="pref">s</span><span class="null">h</span><span class="null">e</span><span class="null">a</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>current elastic shear modulus, <span class="math">\(G\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.ratio-image">
+<span class="cmdkey"><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">-</span><span class="pref">i</span><span class="null">m</span><span class="null">a</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>current stress ratio for image state at the TC condition, <span class="math">\(M_{i,tc}\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.stress-image">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">i</span><span class="null">m</span><span class="null">a</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>current image stress, <span class="math">\(p_i\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.stress-image-maximum">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">i</span><span class="null">m</span><span class="null">a</span><span class="null">g</span><span class="null">e</span><span class="null">-</span><span class="pref">m</span><span class="null">a</span><span class="null">x</span><span class="null">i</span><span class="null">m</span><span class="null">u</span><span class="null">m</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>current allowable maximum image stress, <span class="math">\(p_{i,max}\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.state-parameter">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">p</span><span class="null">a</span><span class="null">r</span><span class="null">a</span><span class="null">m</span><span class="null">e</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>current state parameter, <span class="math">\(\psi\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.state-parameter-image">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">p</span><span class="null">a</span><span class="null">r</span><span class="null">a</span><span class="null">m</span><span class="null">e</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">-</span><span class="pref">i</span><span class="null">m</span><span class="null">a</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>current state parameter for image stress, <span class="math">\(\psi_i\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:norsand.void">
+<span class="cmdkey"><span class="pref">v</span><span class="null">o</span><span class="null">i</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>current void ratio, <span class="math">\(e\)</span>.</p>
+</dd></dl>
+
+<p><strong>Key</strong></p>
+<dl class="docutils">
+<dt>(a) Advanced property.</dt>
+<dd>This property has a default value; simpler applications of the model do not need to provide a value for it.</dd>
+<dt>(i) Initial property.</dt>
+<dd>This property will not be updated once initialized (first input).</dd>
+<dt>(r) Read-only property.</dt>
+<dd>This property cannot be set by the user. Instead, it can be listed, plotted, or accessed through <span class="codename">FISH</span>.</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?NorSand Model*" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

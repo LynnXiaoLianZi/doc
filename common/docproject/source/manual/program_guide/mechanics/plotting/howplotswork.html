@@ -1,0 +1,166 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>How Plots Work &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="The Plot Pane" href="views/plotpane.html" />
+    <link rel="prev" title="Plotting" href="plotting.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="how-plots-work">
+<span id="howplotswork"></span><h1>How Plots Work</h1>
+<p>This topic describes operations <em>on</em> plots.  For operations <em>in</em> plots (that is, plot construction for the purpose of model visualization), see the section on the <span class="flag4">i</span> <a class="reference internal" href="views/plotpane.html#theplotpane"><span class="std std-ref">Plot</span></a> pane. Review of the <span class="flag4">i</span> <a class="reference internal" href="views/plotpane.html#theplotpane"><span class="std std-ref">plot</span></a> commands is also of use.</p>
+<p class="h2 rubric">Create a Plot</p>
+<p>Multiple methods are available to create a plot. The first two below are available in any program context; the latter two are available in specific contexts, as noted.</p>
+<ul class="simple">
+<li><span class="menuselection">File -&gt; New Plot…</span> command from the File menu.</li>
+<li><code class="kbd docutils literal"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">N</span></code> from the keyboard.</li>
+<li><a class="reference internal" href="../../../../../../guimodule/doc/manual/plot/cmd_plot.create.html#command:plot.create" title="A new plot named  s  is made the current (i.e., active) plot. If no name&#013;&#010;is specified, one is assigned by default."><code class="xref fish fish-cmd docutils literal"><span class="pre">plot</span> <span class="pre">create</span></code></a> at the <a class="reference internal" href="../../../glossaryofterms.html#term-45"><span class="xref std std-term">command prompt</span></a> in the <span class="flag4">i</span> <a class="reference internal" href="../commands/console_pane/consolepane.html#theconsolepane"><span class="std std-ref">Console</span></a> pane.</li>
+<li>the <em>new plot</em> button ( <img alt="newplot" src="../../../../../../../_images/plot_new_on.png" /> ) on the toolbar when an existing <span class="flag4">i</span> <a class="reference internal" href="views/plotpane.html#theplotpane"><span class="std std-ref">Plot</span></a> pane is active.</li>
+</ul>
+<p class="h2 rubric">Hide and Show a Plot</p>
+<p>Hiding a plot removes it from view without deleting it (<em>closing</em> the plot does that, see below).  To hide a specific plot, press the <em>hide</em> button ( <img alt="phide" class="foo" src="../../../../../../../_images/minimize_white_16x8.png" /> ) on its title pane.  This is the only mechanism for hiding a plot.  To return the hidden plot to view, select it from the <span class="flag4">i</span> <a class="reference internal" href="../../programwindow/documentsmenu.html#thedocumentsmenu"><span class="std std-ref">Documents</span></a> menu.  Plots are listed on the menu by their plot name.  This is the only mechanism for showing a hidden plot.</p>
+<p class="h2 rubric">Name and Rename a Plot</p>
+<p>The initial name given to a plot will depend on the mechanism used to create it. If the <span class="menuselection">File -&gt; New Plot…</span> command is used, the plot will be named automatically (“Plot#”, where # is the next available index number, given the existing plot names). If the <a class="reference internal" href="../../../../../../guimodule/doc/manual/plot/cmd_plot.create.html#command:plot.create" title="A new plot named  s  is made the current (i.e., active) plot. If no name&#013;&#010;is specified, one is assigned by default."><code class="xref fish fish-cmd docutils literal"><span class="pre">plot</span> <span class="pre">create</span></code></a> command is used, a string <a class="reference internal" href="../../../../../utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">sname</span></span></a> may be supplied optionally to give it a specific name; if the keyword is omitted, the default automatic naming system will be used.</p>
+<p>Renaming a plot may be done as follows.</p>
+<ul class="simple">
+<li><span class="menuselection">File -&gt; [plotname] -&gt; Rename…</span> (where [plotname] on the <span class="flag4">i</span> <a class="reference internal" href="../../programwindow/filemenu.html#thefilemenu"><span class="std std-ref">File</span></a> menu is the name of the plot, as shown on the plot’s title bar).</li>
+<li>Right click anywhere in the <span class="flag4">i</span> <a class="reference internal" href="views/plotpane.html#theplotpane"><span class="std std-ref">Plot</span></a> pane, and choose <span class="menuselection">Plot -&gt; Rename…</span>.</li>
+<li>If the plot’s pane is part of a tabbed set, right click on the tab label and choose <span class="menuselection">Rename…</span>.</li>
+<li>Rename the current plot with the command <a class="reference internal" href="../../../../../../guimodule/doc/manual/plot/cmd_plot.rename.html#command:plot.rename" title="renames the plot named  s  to  sNew .  If a plot name  s  is&#013;&#010;not specified, the current view is assumed."><code class="xref fish fish-cmd docutils literal"><span class="pre">plot</span> <span class="pre">rename</span></code></a> <a class="reference internal" href="../../../../../utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>; or rename any plot with <span class="fishcmd">plot</span> <a class="reference internal" href="../../../../../utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a> <span class="cmdkey">rename</span> <a class="reference internal" href="../../../../../utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">sNew</span></span></a> .</li>
+</ul>
+<p>In the first three cases, a dialog will be shown allowing the user to specify a new name for the plot.</p>
+<p class="h2 rubric">Close a Plot</p>
+<p>To close a plot, press the <em>close</em> button ( <img alt="pclose" class="foo" src="../../../../../../../_images/destroy_titlebar_white.png" /> ) on its title bar. <strong>Warning</strong>: closing a plot deletes it altogether. It cannot be restored or returned to view. If the intent is merely to hide the <span class="flag4">i</span> <a class="reference internal" href="views/plotpane.html#theplotpane"><span class="std std-ref">Plot</span></a> pane from view, use <em>hide</em> (see above).</p>
+<p class="h2 rubric">Save a Plot</p>
+<p>Any open or hidden plot in the program is saved with the project, and is restored with the project when the project is opened in the program. There are two methods to save a plot file:</p>
+<ul class="simple">
+<li>from the “Save” button ( <a href="#id1"><span class="problematic" id="id2">|save|</span></a> ) on the toolbar of the plot to be saved</li>
+<li>from the <span class="cmdkey">File —&gt; [plot name] —&gt; Save As...</span> menu command (where <span class="cmdkey">[plot name]</span> will be the name of the active plot, as shown on its title bar)</li>
+</ul>
+<p class="h2 rubric" id="exportaplot">Export a Plot</p>
+<ul class="simple">
+<li>Right click on the plot, select <span class="menuselection">Export ‣ Data File …</span></li>
+<li>Select <span class="menuselection">File ‣ [plotname] ‣ Export ‣ Data File…</span> from the main menu</li>
+<li>Use the “Export Plot” button ( <img alt="exp" src="../../../../../../../_images/plot_export_on.png" /> — with the selection “Data File…”) on the <span class="flag4">i</span> <a class="reference internal" href="views/plotpane.html#theplotpane"><span class="std std-ref">Plot</span></a> pane toolbar</li>
+</ul>
+<p>Plots may be exported as graphics files (bitmaps) or as data files.  If exported as a data file, the file includes all keywords associated with the switches assigned interactively in the user interface. Note that after export, the resulting data file is automatically opened in an <span class="flag4">i</span> <a class="reference internal" href="../datafiles/editor_pane/editoroverview.html#theeditorpane"><span class="std std-ref">Editor</span></a> pane for review, and is automatically included in the project.</p>
+<style>
+img.foo {
+   background-color: blue;
+   padding: .25em;
+   background-color: #3d6cc4;
+   border-radius: 4px;
+}
+table td:last-child {
+ text-align: center;
+}
+table td:nth-child(2) {
+ text-align: center;
+}
+</style></div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="plotting.html" accesskey="U">Plotting</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="plotting.html"
+                           title="previous chapter"> Plotting</a> |    
+       <a href="views/plotpane.html"
+                           title="next chapter">The <em>Plot</em> Pane</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?How Plots Work" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,256 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Incremental Formulation &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="Null Model Group" href="nullmodel.html" />
+    <link rel="prev" title="Constitutive Models in FLAC3D, UDEC,333 and 3DEC" href="modelsinflac3d.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="hide sectionname docutils container">
+Theory and Background • Constitutive Models</div>
+<div class="section" id="incremental-formulation">
+<span id="incrementalformulation"></span><h1>Incremental Formulation</h1>
+<p class="h2 rubric">Incremental Formulation</p>
+<p>All constitutive models share the same incremental numerical algorithm. Given
+the stress state at time <span class="math">\(t\)</span>, and the total strain increment for a timestep,
+<span class="math">\(\Delta t\)</span>, the purpose is to determine the corresponding stress increment and the
+new stress state at time <span class="math">\(t + \Delta t\)</span>. When plastic deformations are involved,
+only the elastic part of the strain increment will contribute to the stress increment.
+In this case, a correction must be made to the elastic stress increment as computed from
+the total strain increment in order to obtain the actual stress state for the new timestep.</p>
+<p>Note that this incremental formulation results in effects that may be surprising to those
+accustomed to more traditional implicit finite-element analyses.  First, the displacement field is
+an output-only value and can be changed at any time without affecting
+the stress or equilibrium state of the system.  Second, changes to material properties will also have
+no effect on the current stress state, they will only change to result of <em>future</em> deformations that
+occur.  This makes it easier to model changes to a system over time.</p>
+<p>Note also that all models operate on <em>effective</em> stresses only; pore pressures are
+used to convert total stresses to effective stresses before the constitutive model is
+called. The reverse process occurs after the model calculations are complete.</p>
+<p class="h2 rubric">Definitions and Conventions</p>
+<p>All stress increments in this section are corotational stress increments. For simplicity
+of notation, however, the superscript <span class="math">\(\check{}\)</span> will not be used. The stresses at
+time <span class="math">\(t + \Delta t\)</span> are computed as “new stress values,” indicated by a superscript
+<span class="math">\(^N{ }\)</span> in this section. However, in large-strain mode, those values must be
+incremented by the stress-rotation correction (see <span class="xref std std-ref">this equation</span>).</p>
+<p>We define <span class="math">\([\underline \sigma]\)</span> as a generalized stress vector of dimension
+<span class="math">\(n\)</span> with components <span class="math">\({\underline{\sigma}}_i\)</span>, <span class="math">\(i = 1,n\)</span> and
+<span class="math">\(\Delta [\underline \epsilon]\)</span> as a generalized strain-increment vector with
+components <span class="math">\(\Delta {\underline{\epsilon}}_i\)</span>, <span class="math">\(i = 1,n\)</span>. The components of
+the generalized stress- and strain-increment vectors may consist of the six components of
+the stress- and strain-increment tensors or other appropriately defined combinations of
+variables, giving a measure of stress and strain increments in specific constitutive model
+contexts.</p>
+<p>As a notation convention in this section, we use the subscript <span class="math">\(_n\)</span> to refer to the
+range of generalized components from <span class="math">\(i\)</span> = 1 to <span class="math">\(i = n\)</span>
+(e.g., <span class="math">\(f({\underline{\sigma}}_n)\)</span> is used to represent
+<span class="math">\(f({\underline{\sigma}}_1, {\underline{\sigma}}_2, ..., {\underline{\sigma}}_{n})\)</span>).</p>
+<p class="h3 rubric" id="inc-eqs-of-pf">Incremental Equations of the Theory of Plastic Flow</p>
+<p>The description of plastic flow rests on several relations:</p>
+<ol class="arabic simple">
+<li><em>the failure criterion</em></li>
+</ol>
+<div class="math" id="equation-constitutivemodel01">
+<span class="eqno">(1)</span>\[f({\underline{\sigma}}_n) = 0\]</div>
+<p>where <span class="math">\(f\)</span>, the yield function, is a known function that specifies the limiting
+stress combination for which plastic flow takes place. (This function is represented by a
+surface in the generalized stress space, and all stress points below the surface are
+characterized by elastic behavior.)</p>
+<ol class="arabic simple" start="2">
+<li><em>the relation expressing the decomposition of strain increments into the sum of elastic and plastic parts</em></li>
+</ol>
+<div class="math" id="equation-constitutivemodel02">
+<span class="eqno">(2)</span>\[     \Delta {\underline{\epsilon}}_i = \Delta {\underline{\epsilon}}_i^e + {\underline{\epsilon}}_i^p\]</div>
+<ol class="arabic simple" start="3">
+<li><em>the elastic relations between elastic strain increments and stress increments</em></li>
+</ol>
+<div class="math" id="equation-constitutivemodel03">
+<span class="eqno">(3)</span>\[             \Delta {\underline{\sigma}}_i = S_i (\Delta {\underline{\epsilon}}_n^e) \;\;\; i=1,n\]</div>
+<p>where <span class="math">\(S_i\)</span> is a linear function of the elastic strain increments, <span class="math">\(\Delta {\underline{\epsilon}}_n^e\)</span></p>
+<ol class="arabic simple" start="4">
+<li><em>the flow rule specifying the direction of the plastic-strain increment vector as that normal to the potential surface</em> <span class="math">\(g({\underline{\sigma}}_n)\)</span> = <em>constant</em></li>
+</ol>
+<div class="math" id="equation-constitutivemodel04">
+<span class="eqno">(4)</span>\[     \Delta {\underline{\epsilon}}_i^p = \lambda {{\partial g}\over{\partial {\underline{\sigma}}_i}}\]</div>
+<p>where <span class="math">\(\lambda\)</span> is a constant. (The flow rule is said to be associated if
+<span class="math">\(g \equiv f\)</span>, and nonassociated otherwise.)</p>
+<ol class="arabic simple" start="5">
+<li><em>the requirement for the new stress-vector components to satisfy the yield function</em></li>
+</ol>
+<div class="math" id="equation-constitutivemodel05">
+<span class="eqno">(5)</span>\[     f({\underline{\sigma}}_n + \Delta {\underline{\sigma}}_n) = 0\]</div>
+<p>This equation provides a relation for evaluation of the magnitude of the plastic-strain
+increment vector.</p>
+<p>Substitution of the expression for the elastic-strain increment derived from Equation <a class="reference internal" href="#equation-constitutivemodel02">(2)</a> into the elastic relation Equation <a class="reference internal" href="#equation-constitutivemodel03">(3)</a> yields, taking into consideration the linear property of the function <span class="math">\(S_i\)</span>,</p>
+<div class="math" id="equation-constitutivemodel06">
+<span class="eqno">(6)</span>\[     \Delta {\underline{\sigma}}_i = S_i(\Delta {\underline{\epsilon}}_n) - S_i(\Delta {\underline{\epsilon}}_n^p)\]</div>
+<p>In further expressing the plastic strain increment by means of the flow rule, Equation
+<a class="reference internal" href="#equation-constitutivemodel04">(4)</a>, this equation becomes</p>
+<div class="math" id="equation-constitutivemodel07">
+<span class="eqno">(7)</span>\[     \Delta {\underline{\sigma}}_i = S_i(\Delta {\underline{\epsilon}}_n) - \lambda S_i \left({{\partial g}\over{\partial {\underline{\sigma}}_n}} \right)\]</div>
+<p>where use has been made of the linear property of <span class="math">\(S_i\)</span>.</p>
+<p>In the special case where <span class="math">\(f({\underline{\sigma}}_n)\)</span> is a linear function of the
+components <span class="math">\({\underline{\sigma}}_i\)</span>, <span class="math">\(i\)</span> = 1, <span class="math">\(n\)</span>,
+Equation <a class="reference internal" href="#equation-constitutivemodel05">(5)</a> may be expressed as</p>
+<div class="math" id="equation-constitutivemodel08">
+<span class="eqno">(8)</span>\[     f({\underline{\sigma}}_n) + f^*(\Delta {\underline{\sigma}}_n) = 0\]</div>
+<p>where, as a notation convention, <span class="math">\(f^*\)</span> represents the function <span class="math">\(f\)</span> minus its
+constant term,</p>
+<div class="math" id="equation-constitutivemodel09">
+<span class="eqno">(9)</span>\[     f^* (.) = f(.) - f({\underline{0}}_n)\]</div>
+<p>For a stress point <span class="math">\({\underline{\sigma}}_n\)</span> on the yield surface,
+<span class="math">\(f({\underline{\sigma}}_n)\)</span> = 0, and Equation <a class="reference internal" href="#equation-constitutivemodel08">(8)</a> becomes,
+after substitution of the expression Equation <a class="reference internal" href="#equation-constitutivemodel07">(7)</a> for the stress
+increment, and further using the linear property of <span class="math">\(f^*\)</span>,</p>
+<div class="math" id="equation-constitutivemodel10">
+<span class="eqno">(10)</span>\[     f^* \left[ S_n(\Delta {\underline{\epsilon}}_n) \right] - \lambda f^* \left[ S_n \left({{\partial g}\over{\partial {\underline{\sigma}}_n}} \right) \right] = 0\]</div>
+<p>We now define <em>new</em> stress components <span class="math">\({{\underline{\sigma}}_i}^N\)</span> and <em>elastic guesses</em> <span class="math">\({\underline{\sigma}}_i^I\)</span> as</p>
+<div class="math" id="equation-constitutivemodel12">
+<span id="constitutivemodel11"></span><span class="eqno">(11)</span>\[\begin{split}\begin{split}
+   {\underline{\sigma}}_i^N &amp;= {\underline{\sigma}}_i + \Delta {\underline{\sigma}}_i \\
+   {\underline{\sigma}}_i^I \ &amp;= {\underline{\sigma}}_i + S_i (\Delta {\underline{\epsilon}}_n)
+\end{split}\end{split}\]</div>
+<p>Note that the term <span class="math">\(S_i(\Delta {\underline{\epsilon}}_n)\)</span> in Equation <a class="reference internal" href="#equation-constitutivemodel12">(11)</a> is the component <span class="math">\(i\)</span> of the stress increment
+induced by the total-strain increment <span class="math">\(\Delta {\underline{\epsilon}}_n\)</span>,
+in case no increment of plastic deformation takes place.
+This justifies the name of “elastic guess” for <span class="math">\({\underline{\sigma}}_i^I\)</span>.</p>
+<p>From the definition Equation <a class="reference internal" href="#equation-constitutivemodel12">(11)</a>, it follows, using the preceding arguments, that</p>
+<div class="math" id="equation-constitutivemodel13">
+<span class="eqno">(12)</span>\[     f({\underline{\sigma}}_n^I) = f^* \left[ S_n (\Delta {\underline{\epsilon}}_n) \right]\]</div>
+<p>Hence, an expression for <span class="math">\(\lambda\)</span> may be derived from
+Equation <a class="reference internal" href="#equation-constitutivemodel09">(9)</a>,
+Equation <a class="reference internal" href="#equation-constitutivemodel10">(10)</a>, and
+Equation <a class="reference internal" href="#equation-constitutivemodel13">(12)</a>:</p>
+<div class="math" id="equation-constitutivemodel14">
+<span class="eqno">(13)</span>\[     \lambda = {{f({\underline{\sigma}}_n^I)}\over{f \left[ S_n (\partial g / \partial {\underline{\sigma}}_n) \right] - f({\underline{0}}_n)}}\]</div>
+<p>Using the expression of the stress increment, Equation <a class="reference internal" href="#equation-constitutivemodel07">(7)</a>,
+and the definition of the elastic guess, Equation <a class="reference internal" href="#equation-constitutivemodel12">(11)</a>,
+the new stress may be expressed (also from Equation <a class="reference internal" href="#equation-constitutivemodel12">(11)</a>) as</p>
+<div class="math" id="equation-constitutivemodel15">
+<span class="eqno">(14)</span>\[     {\underline{\sigma}}_i^N = {\underline{\sigma}}_i^I - \lambda S_i \left( {{\partial g}\over{\partial {\underline{\sigma}}_n}} \right)\]</div>
+<p>For clarity, recall that, in these last two expressions,
+<span class="math">\(S_i (\partial g / \partial {\underline{\sigma}}_n )\)</span> is the stress increment obtained from the incremental elastic law,
+where <span class="math">\(\partial g / \partial {\underline{\sigma}}_i\)</span> is substituted for <span class="math">\(\Delta {\underline{\epsilon}}_i\)</span>, <span class="math">\(i = 1,n\)</span>.</p>
+<p class="h3 rubric" id="cms-implementation">Implementation</p>
+<p>An elastic guess <span class="math">\({\underline{\sigma}}_i^I\)</span>, <span class="math">\(i = 1,n\)</span> for the
+stress state at time <span class="math">\(t + \Delta t\)</span> is first evaluated by adding to the stress
+components at time, <span class="math">\(t\)</span>, increments computed from the total-strain increment for
+the step, using an incremental elastic stress-strain law (see Equation <a class="reference internal" href="#equation-constitutivemodel12">(11)</a>). If the elastic guess violates the yield function,
+Equation <a class="reference internal" href="#equation-constitutivemodel15">(14)</a> is used to place the new stress exactly on the yield curve. Otherwise, the elastic guess gives the new stress state at time <span class="math">\(t + \Delta t\)</span>.</p>
+<p>If the stress point <span class="math">\({\underline{\sigma}}_i^I\)</span>, <span class="math">\(i = 1,n\)</span> is located above
+the yield surface in the generalized stress space, the coefficient <span class="math">\(\lambda\)</span> in
+Equation <a class="reference internal" href="#equation-constitutivemodel15">(14)</a> is given by Equation <a class="reference internal" href="#equation-constitutivemodel14">(13)</a>,
+provided the yield function is a linear function of the generalized stress vector
+components. The equation Equation <a class="reference internal" href="#equation-constitutivemodel15">(14)</a> is still valid,
+but <span class="math">\(\lambda\)</span> is set to zero in case <span class="math">\({\underline{\sigma}}_i^I\)</span>, <span class="math">\(i\)</span> = 1, <span class="math">\(n\)</span> is located below the yield surface (elastic loading or unloading).</p>
+<p>The implementation of each of the 15 basic constitutive models is described
+separately in the following sections. All models except the null and elastic models
+potentially involve plastic deformations. Note that a wide range of material behavior may
+be obtained from these models by assigning appropriate values to the model parameters.
+Recommendations for applying these models are given in <span class="xref std std-ref">choice</span>.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../models.html" accesskey="U">Constitutive Models</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="modelsinflac3d.html"
+                           title="previous chapter"> Constitutive Models in <span class="codename">FLAC3D</span>, <span class="codename">UDEC</span>,333 and <span class="codename">3DEC</span></a> |    
+       <a href="nullmodel.html"
+                           title="next chapter">Null Model Group</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Incremental Formulation" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,185 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block cave command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block cell command" href="cmd_block.cell.html" />
+    <link rel="prev" title="block boundary-elements command" href="cmd_block.boundary-elements.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-cave-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">cave</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="block command">
+<dt id="command:block.cave">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">c</span><span class="null">a</span><span class="null">v</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.cave.list" title="block cave list">list</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.cave.model" title="block cave model">model</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.cave.material" title="block cave material">material</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.cave.percent" title="block cave percent">percent</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.cave.zero" title="block cave zero">zero</a></p>
+</div>
+<p>Simulate effects of rock fracturing that occurs in a block-cave mining operation. The area of cave is defined as a Mohr-Coulomb material. The stresses in a block are reset to zero whenever the userspecified percentage of zones has yielded. New material property numbers and constitutive laws may also be assigned. The following keywords may be used.</p>
+<dl class="keyword">
+<dt id="kwd:block.cave.list">
+<span class="cmdkey"><span class="pref">l</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>List block caving settings. This displays the current settings used in simulation of a block caving mining operation.</p>
+<table border="1" class="colwidths-given blank pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>shows if cave material property substitution is <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a> or <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a></td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>failed zone percent limit</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>new material type number</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>new constitutive model number</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>stress zeroing state</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>sum of number of blocks modified</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cave.model">
+<span class="cmdkey"><span class="pref">m</span><span class="pref">o</span><span class="null">d</span><span class="null">e</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n</span><span class="null"> </span></span></a></dt>
+<dd><p>Assign constitutive model number <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n</span></span></a>. If this value is not set, the constitutive model will remain unchanged from the default (Mohr-Coulomb).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cave.material">
+<span class="cmdkey"><span class="pref">m</span><span class="pref">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n</span><span class="null"> </span></span></a></dt>
+<dd><p>Assign material number <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n</span></span></a>. If this value is not set, the material number will remain unchanged. <span class="flag3">what is the default material number?</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cave.percent">
+<span class="cmdkey"><span class="pref">p</span><span class="null">e</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the percentage of zones in a block that must fail in order to trigger the changes.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cave.zero">
+<span class="cmdkey"><span class="pref">z</span><span class="null">e</span><span class="null">r</span><span class="null">o</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><p>Zero the stresses when <span class="cmdkey">percent</span> is exceeded. If this switch is not used, stresses will not be changed.  The default is <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="block_commands.html" accesskey="U">Block Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_block.boundary-elements.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">boundary-elements</span></code> command</a> |    
+       <a href="cmd_block.cell.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">block</span> <span class="pre">cell</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block cave command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

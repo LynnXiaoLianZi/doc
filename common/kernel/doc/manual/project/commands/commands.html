@@ -1,0 +1,148 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Commands &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="project execute command" href="cmd_project.execute.html" />
+    <link rel="prev" title="Project" href="../project.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="commands">
+<span id="project-commands"></span><h1>Commands</h1>
+<p>These commands examine or modify the general project state.   The project state is distinct from the model state (information cleared or reset on a <a class="reference internal" href="../../model/commands/cmd_model.new.html#command:model.new" title="Clear model-state information. Model information is cleared, allowing one to&#013;&#010;begin a new"><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">new</span></code></a> command) and the program state (information that remains throughout this instance of the program).   Project information is saved and restored as part of the project file.  Changes to the model state does not affect the project state.   Some project settings are stored and will persist to the next program execution, but they will be overwritten by any saved project restored.</p>
+<p class="rubric">Project Commands</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="cmd_project.execute.html#project.execute" title="Execute the current project.  This command is specific to the Itasca user interface,&#013;&#010;as described below."><span class="fishcmd">project execute</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_project.list.html#project.list" title="List project information.  This information includes: the project file name&#013;&#010;and location, the log status, and echo status."><span class="fishcmd">project list</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_project.new.html#project.new" title="Clear program-state information. Project information is cleared but the model&#013;&#010;information remains unchanged. The optional  force  keyword suppresses the confirmation&#013;&#010;dialog and automatically resets the project if it has changed since the last&#013;&#010;time it was saved."><span class="fishcmd">project new</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_project.restore.html#project.restore" title="Restores the project file name  s .  If a file extension is not specified, the&#013;&#010;extension  prj  will be assumed.  This will clear the current project (including&#013;&#010;the current model state) and load the specified project."><span class="fishcmd">project restore</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_project.save.html#project.save" title="Save the current project to a file.  The current model state will  not  be saved&#013;&#010;automatically with the command, just the current project state.   If the filename&#013;&#010;given is not the same as the current project, the current project will become&#013;&#010; s ."><span class="fishcmd">project save</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_project.save-plugins.html#project.save-plugins" title="Save the currently loaded plugins with the project file. This is a global setting&#013;&#010;that is set in the registry. It also impacts loading loaded gui plugins - if&#013;&#010;set the  false  gui plugins are not loaded on a restore as well. The default&#013;&#010;value is  true . In general it is advisable to save plugins in the project file&#013;&#010;and load gui plugins."><span class="fishcmd">project save-plugins</span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cmd_project.execute.html"><code class="docutils literal"><span class="pre">project</span> <span class="pre">execute</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_project.list.html"><code class="docutils literal"><span class="pre">project</span> <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_project.new.html"><code class="docutils literal"><span class="pre">project</span> <span class="pre">new</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_project.restore.html"><code class="docutils literal"><span class="pre">project</span> <span class="pre">restore</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_project.save.html"><code class="docutils literal"><span class="pre">project</span> <span class="pre">save</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_project.save-plugins.html"><code class="docutils literal"><span class="pre">project</span> <span class="pre">save-plugins</span></code> command</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../project.html" accesskey="U">Project</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../project.html"
+                           title="previous chapter"> Project</a> |    
+       <a href="cmd_project.execute.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">project</span> <span class="pre">execute</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Commands" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

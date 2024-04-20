@@ -1,0 +1,242 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Plastic Hinge Formation in a Shell Structure &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <span class="target" id="shellplastichinge"></span><div class="section" id="plastic-hinge-formation-in-a-shell-structure">
+<h1>Plastic Hinge Formation in a Shell Structure</h1>
+<p class="h2 rubric">Problem Statement</p>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To view this project in <span class="codename">FLAC3D</span>, use the menu command <span class="menuselection">Help ► Examples…</span>.  Choose “Structure/Shell/PlasticHinge” and select “PlasticHinge.prj” to load.
+The <a class="reference internal" href="#shellplastichingedata"><span class="std std-ref">main data files</span></a> used are shown at the end of this example.  The remaining data files can be found in the project.</p>
+</div>
+<p>This example demonstrates a procedure by which <span class="codename">FLAC3D</span> can be used to calculate the initiation and
+subsequent behavior of a plastic hinge line that forms within a shell structure. The double-node
+method described in <a class="reference internal" href="../../Beam/PlasticHinge/PlasticHinge.html#plastichinge"><span class="std std-ref">Plastic Hinge Formation in a Beam Structure</span></a> is replicated
+using shell elements. Double nodes are created along the hinge line, and then appropriately link
+these nodes together. The double nodes allow a discontinuity in the rotation to occur when the
+limiting plastic moment is reached. For shell elements, there is no analog to the single-node
+method (using the <a class="reference internal" href="../../../doc/manual/sel_manual/beams/commands/cmd_structure.beam.property.html#kwd:structure.beam.property.plastic-moment" title="plastic moment capacity, `M^P`"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">beam</span> <span class="pre">property</span> <span class="pre">plastic-moment</span></code></a> command) that can be used to model
+plastic hinges in beam elements.</p>
+<p>The problem to be considered is described in <a class="reference internal" href="../../Beam/PlasticHinge/PlasticHinge.html#plastichinge"><span class="std std-ref">Plastic Hinge Formation in a Beam Structure</span></a> and shown in <a href="#shellplastichinge-diagram">Figure  1</a>. The <span class="codename">FLAC3D</span> model
+simulates a beam of 10 m length and 1 m depth (see <a href="#shellplastichinge-geom">Figure  2</a>). A
+cross-diagonal mesh pattern is utilized to ensure symmetric response, and a <a class="reference internal" href="../../../doc/manual/sel_manual/formulation/formulation.html#struct-shell-dkt-cst-element"><span class="std std-ref">DKT-CST Hybrid
+Shell Element</span></a> is utilized to support the membrane loading that will
+develop after failure if the problem is run in large-strain mode. The Young’s modulus and Poisson’s
+ratio are set equal to 200 GPa and 0, respectively. The shell thickness is set equal to 0.133887 m
+to produce a second moment of inertia, <span class="math">\(I\)</span>, equal to 200 × 10<sup>-6</sup> m<sup>4</sup>.</p>
+<div class="figure align-center" id="id1">
+<span id="shellplastichinge-diagram"></span><img alt="../../../../../_images/shellplastichinge-diagram.png" src="../../../../../_images/shellplastichinge-diagram.png" />
+<p class="caption"><span class="caption-text">Figure 1: Simple beam with single concentrated load.</span></p>
+</div>
+<div class="figure align-center" id="id2">
+<span id="shellplastichinge-geom"></span><a class="reference internal image-reference" href="common\sel\test3d\Shell\PlasticHinge\shellplastichinge-geom.png"><img alt="common\sel\test3d\Shell\PlasticHinge\shellplastichinge-geom.png" src="common\sel\test3d\Shell\PlasticHinge\shellplastichinge-geom.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: <span class="codename">FLAC3D</span> model for plastic hinge example using shell elements.</span></p>
+</div>
+<p>Two separate <a class="reference internal" href="../../../doc/manual/sel_manual/shells/commands/cmd_structure.shell.create.html#command:structure.shell.create" title="Create a shell. The four main keywords articulate four different techniques&#013;&#010;of creation: by creating a collection of elements from a group of zone faces&#013;&#010;( by-face ); by creating a single element from four existing nodes ( by-nodes );&#013;&#010;from a specified quadrilateral ( by-quadrilateral ); or from a triangle&#013;&#010;( by-triangle )."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">shell</span> <span class="pre">create</span></code></a> commands are issued to produce a model containing two
+separate shell sections: one for the left half of the beam; the other for the right half of the
+beam. <a href="#shellplastichinge-nodes">Figure  3</a> shows the shell elements with the node positions
+marked; <a href="#shellplastichinge-links">Figure  4</a> shows an outline of the shell elements, and marks
+the location of links.  Notice that there is a set of eight nodes that overlap along the beam
+center line, which are connected by node-to-node links.</p>
+<div class="figure align-center" id="id3">
+<span id="shellplastichinge-nodes"></span><a class="reference internal image-reference" href="common\sel\test3d\Shell\PlasticHinge\shellplastichinge-nodes.png"><img alt="common\sel\test3d\Shell\PlasticHinge\shellplastichinge-nodes.png" src="common\sel\test3d\Shell\PlasticHinge\shellplastichinge-nodes.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 3: Shell elements—nodes are shown as spheres.</span></p>
+</div>
+<div class="figure align-center" id="id4">
+<span id="shellplastichinge-links"></span><a class="reference internal image-reference" href="common\sel\test3d\Shell\PlasticHinge\shellplastichinge-links.png"><img alt="common\sel\test3d\Shell\PlasticHinge\shellplastichinge-links.png" src="common\sel\test3d\Shell\PlasticHinge\shellplastichinge-links.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 4: Shell elements—link locations are shown as spheres.</span></p>
+</div>
+<p>We now create appropriate linkages between these nodes with the commands</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">struct node join</span>
+<span class="nb">struct link attach</span><span class="n"> rotation</span><span class="o">-</span><span class="n">z</span><span class="p">=</span><span class="n">normal</span><span class="o">-</span><span class="n">yield </span><span class="c">; Change z-rot dof to normal-yield</span>
+<span class="c">; Set properties of those springs</span>
+<span class="nb">struct link property</span><span class="n"> rotation</span><span class="o">-</span><span class="n">z area</span><span class="p">=</span><span class="m m-Double">1.0</span><span class="n"> stiffness</span><span class="p">=</span><span class="m m-Double">5e9</span>
+<span class="nb">struct link property</span><span class="n"> rotation</span><span class="o">-</span><span class="n">z yield</span><span class="o">-</span><span class="n">compression</span><span class="p">=</span><span class="m m-Double">8.33e3</span><span class="n"> yield</span><span class="o">-</span><span class="n">tension</span><span class="p">=</span><span class="m m-Double">8.33e3</span><span class="n"> range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">5.0</span><span class="n"> position</span><span class="o">-</span><span class="n">z </span><span class="m m-Double">0.3</span><span class="n"> </span><span class="m m-Double">0.7</span>
+<span class="nb">struct link property</span><span class="n"> rotation</span><span class="o">-</span><span class="n">z yield</span><span class="o">-</span><span class="n">compression</span><span class="p">=</span><span class="m m-Double">4.17e3</span><span class="n"> yield</span><span class="o">-</span><span class="n">tension</span><span class="p">=</span><span class="m m-Double">4.17e3</span><span class="n"> range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">5.0</span><span class="n"> position</span><span class="o">-</span><span class="n">z </span><span class="m m-Double">0.0</span>
+<span class="nb">struct link property</span><span class="n"> rotation</span><span class="o">-</span><span class="n">z yield</span><span class="o">-</span><span class="n">compression</span><span class="p">=</span><span class="m m-Double">4.17e3</span><span class="n"> yield</span><span class="o">-</span><span class="n">tension</span><span class="p">=</span><span class="m m-Double">4.17e3</span><span class="n"> range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">5.0</span><span class="n"> position</span><span class="o">-</span><span class="n">z </span><span class="m m-Double">1.0</span>
+</pre></div>
+</div>
+<p>The command creates node-to-node links on each node that lies in the same location as another. The
+links are shown in <a href="#shellplastichinge-links">Figure  4</a> and are rigid in all directions by
+default. The next command affects all links by setting the attachment conditions for the
+<span class="math">\(z\)</span>-rotational direction to be a normal yield spring. three translational directions and the
+<span class="math">\(x\)</span>- and <span class="math">\(y\)</span>-rotational directions to be rigid, and specifying a normal-yield spring to
+be inserted in the <span class="math">\(z\)</span>-rotational direction. The final commands set the properties of these
+normal-yield springs as follows. We set all areas to unity, and we set both the compressive and
+tensile yield strengths equal to the desired plastic-moment capacity (based on the tributary length
+associated with each node). The total plastic-moment capacity is 25 kN-m, so we assign 8.33 kN-m to
+the two center springs and 4.17 kN-m to the two end springs. Finally, we set the spring stiffness
+equal to a value that is large enough to make the spring deformation small relative to the shell
+deformation. We choose a value of 5 × 10<sup>9</sup>, which is approximately the rotational stiffness
+of the nodes just to the left of the center.</p>
+<p>Now that the double-nodes have been appropriately linked to one another, simple supports are
+specified at the beam ends by restricting translation in the <span class="math">\(y\)</span>-direction. A constant
+vertical velocity is applied to the four target nodes on the right section, and the moment acting
+at the centroid of an element near the center is monitored during the calculation to determine when
+the limiting value is reached.</p>
+<p>We find that the limiting value of moment is reached (see <a href="#shellplastichinge-hist">Figure  5</a>).
+<a href="#shellplastichinge-moment">Figure  6</a> shows the value at the beam center is found to be 24.89 kN,
+which is within 1% of the specified moment capacity.  <a href="#shellplastichinge-disp">Figure  7</a> shows
+that a discontinuity in the displacement has developed.</p>
+<div class="figure align-center" id="id5">
+<span id="shellplastichinge-hist"></span><a class="reference internal image-reference" href="common\sel\test3d\Shell\PlasticHinge\shellplastichinge-hist.png"><img alt="common\sel\test3d\Shell\PlasticHinge\shellplastichinge-hist.png" src="common\sel\test3d\Shell\PlasticHinge\shellplastichinge-hist.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 5: Moment at centroid of an element near the center versus applied center displacement.</span></p>
+</div>
+<div class="figure align-center" id="id6">
+<span id="shellplastichinge-moment"></span><a class="reference internal image-reference" href="common\sel\test3d\Shell\PlasticHinge\shellplastichinge-moment.png"><img alt="common\sel\test3d\Shell\PlasticHinge\shellplastichinge-moment.png" src="common\sel\test3d\Shell\PlasticHinge\shellplastichinge-moment.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 6: Mx contours on the shell.</span></p>
+</div>
+<div class="figure align-center" id="id7">
+<span id="shellplastichinge-disp"></span><a class="reference internal image-reference" href="common\sel\test3d\Shell\PlasticHinge\shellplastichinge-disp.png"><img alt="common\sel\test3d\Shell\PlasticHinge\shellplastichinge-disp.png" src="common\sel\test3d\Shell\PlasticHinge\shellplastichinge-disp.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 7: y-displacements on an exaggerated deformation plot of the shell.</span></p>
+</div>
+<p class="h2 rubric" id="shellplastichingedata">Data File</p>
+<p><strong>PlasticHinge.dat</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model large-strain</span><span class="n"> </span><span class="sx">off</span>
+<span class="nb">model title</span><span class="n"> </span><span class="s">&#39;Plastic hinge formation (double-node method with shell elements)&#39;</span>
+<span class="c">; Create shell elements in two groups</span>
+<span class="nb">struct shell create</span><span class="n"> by</span><span class="o">-</span><span class="n">quadrilateral </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="n"> </span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="n"> </span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                     size </span><span class="p">(</span><span class="m m-Double">6</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> id</span><span class="p">=</span><span class="m m-Double">1</span><span class="n"> element</span><span class="o">-</span><span class="n">type</span><span class="p">=</span><span class="n">dkt</span><span class="o">-</span><span class="n">csth </span><span class="sx">...</span>
+<span class="n">                                     cross</span><span class="o">-</span><span class="n">diagonal group </span><span class="s">&#39;Left&#39;</span>
+<span class="nb">struct shell create</span><span class="n"> by</span><span class="o">-</span><span class="n">quadrilateral </span><span class="p">(</span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">10</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">10</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                     size </span><span class="p">(</span><span class="m m-Double">6</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> id</span><span class="p">=</span><span class="m m-Double">2</span><span class="n"> element</span><span class="o">-</span><span class="n">type</span><span class="p">=</span><span class="n">dkt</span><span class="o">-</span><span class="n">csth </span><span class="sx">...</span>
+<span class="n">                                     cross</span><span class="o">-</span><span class="n">diagonal group </span><span class="s">&#39;Right&#39;</span>
+<span class="nb">struct shell property</span><span class="n"> isotropic</span><span class="p">=(</span><span class="m m-Double">2e11</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">0.0</span><span class="p">)</span><span class="n"> thick</span><span class="p">=</span><span class="m m-Double">0.133887</span>
+<span class="c">; Create links (default to rigid in all six dof) </span>
+<span class="c">; at nodes whos positions coincide</span>
+<span class="nb">struct node join</span>
+<span class="nb">struct link attach</span><span class="n"> rotation</span><span class="o">-</span><span class="n">z</span><span class="p">=</span><span class="n">normal</span><span class="o">-</span><span class="n">yield </span><span class="c">; Change z-rot dof to normal-yield</span>
+<span class="c">; Set properties of those springs</span>
+<span class="nb">struct link property</span><span class="n"> rotation</span><span class="o">-</span><span class="n">z area</span><span class="p">=</span><span class="m m-Double">1.0</span><span class="n"> stiffness</span><span class="p">=</span><span class="m m-Double">5e9</span>
+<span class="nb">struct link property</span><span class="n"> rotation</span><span class="o">-</span><span class="n">z yield</span><span class="o">-</span><span class="n">compression</span><span class="p">=</span><span class="m m-Double">8.33e3</span><span class="n"> </span><span class="sx">...</span><span class="n"> </span>
+<span class="n">                     yield</span><span class="o">-</span><span class="n">tension</span><span class="p">=</span><span class="m m-Double">8.33e3</span><span class="n"> range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">5.0</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                     position</span><span class="o">-</span><span class="n">z </span><span class="m m-Double">0.3</span><span class="n"> </span><span class="m m-Double">0.7</span>
+<span class="nb">struct link property</span><span class="n"> rotation</span><span class="o">-</span><span class="n">z yield</span><span class="o">-</span><span class="n">compression</span><span class="p">=</span><span class="m m-Double">4.17e3</span><span class="n"> </span><span class="sx">...</span><span class="n"> </span>
+<span class="n">                     yield</span><span class="o">-</span><span class="n">tension</span><span class="p">=</span><span class="m m-Double">4.17e3</span><span class="n"> range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">5.0</span><span class="n"> </span><span class="sx">...</span><span class="n"> </span>
+<span class="n">                     position</span><span class="o">-</span><span class="n">z </span><span class="m m-Double">0.0</span>
+<span class="nb">struct link property</span><span class="n"> rotation</span><span class="o">-</span><span class="n">z yield</span><span class="o">-</span><span class="n">compression</span><span class="p">=</span><span class="m m-Double">4.17e3</span><span class="n"> </span><span class="sx">...</span><span class="n"> </span>
+<span class="n">                     yield</span><span class="o">-</span><span class="n">tension</span><span class="p">=</span><span class="m m-Double">4.17e3</span><span class="n"> range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">5.0</span><span class="n"> </span><span class="sx">...</span><span class="n"> </span>
+<span class="n">                     position</span><span class="o">-</span><span class="n">z </span><span class="m m-Double">1.0</span>
+<span class="c">; Boundary conditions</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">y rotation</span><span class="o">-</span><span class="n">x rotation</span><span class="o">-</span><span class="n">y range position</span><span class="o">-</span><span class="n">x</span><span class="p">=</span><span class="n"> </span><span class="m m-Double">0.0</span><span class="n"> </span>
+<span class="n">                                        </span><span class="c">; support at left end - roller</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">y rotation</span><span class="o">-</span><span class="n">x rotation</span><span class="o">-</span><span class="n">y range position</span><span class="o">-</span><span class="n">x</span><span class="p">=</span><span class="m m-Double">10.0</span><span class="n"> </span>
+<span class="n">                                        </span><span class="c">; support at rt. end - roller</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">z rotation</span><span class="o">-</span><span class="n">x rotation</span><span class="o">-</span><span class="n">y           </span>
+<span class="n">                                        </span><span class="c">; restrict non-beam deformation modes</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">y range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">5.0</span><span class="n"> group </span><span class="s">&#39;Right&#39;</span>
+<span class="nb">struct node initialize</span><span class="n"> velocity</span><span class="o">-</span><span class="n">y </span><span class="o">-</span><span class="m m-Double">5e-7</span><span class="n"> local </span><span class="sx">...</span>
+<span class="n">                       range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">5.0</span><span class="n"> group </span><span class="s">&#39;Right&#39;</span>
+<span class="c">; Histories</span>
+<span class="nb">struct node history</span><span class="n"> displacement</span><span class="o">-</span><span class="n">y position </span><span class="p">(</span><span class="m m-Double">5.0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0.6667</span><span class="p">)</span>
+<span class="nb">struct shell history</span><span class="n"> resultant</span><span class="o">-</span><span class="n">mx surface</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="n"> position </span><span class="p">(</span><span class="m m-Double">4.861</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0.5</span><span class="p">)</span>
+<span class="c">; Cycle the model</span>
+<span class="nb">struct damping</span><span class="n"> combined</span><span class="o">-</span><span class="n">local</span>
+<span class="nb">model </span><span class="ss">cycle</span><span class="n"> </span><span class="m m-Double">30000</span><span class="n"> </span><span class="c">; 0.015 total displacement</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;PlasticHinge&#39;</span>
+</pre></div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Plastic Hinge Formation in a Shell Structure" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

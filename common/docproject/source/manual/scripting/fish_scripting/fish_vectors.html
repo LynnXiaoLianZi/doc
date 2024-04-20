@@ -1,0 +1,142 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Vectors &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Tensors" href="fish_tensors.html" />
+    <link rel="prev" title="Pointers" href="fish_pointers.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="vectors">
+<span id="fish-vectordesc"></span><h1>Vectors</h1>
+<p>Five general functions to assist in the creation and manipulation of vectors are built into <span class="codename">FISH</span>.</p>
+<p>Vector types can be 2-dimensional, or 3-dimensional.</p>
+<p>Vector types can be created with the <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/constructors/fish_vector.html#function:vector" title="Create a vector type."><code class="xref fish fish-func docutils literal"><span class="pre">vector</span></code></a> intrinsic (using two or three arguments), or by using <code class="docutils literal"><span class="pre">(x,y)</span></code> or <code class="docutils literal"><span class="pre">(x,y,z)</span></code> syntax.</p>
+<p class="h2 rubric" id="vectormemberaccess">Component Access</p>
+<p>Vector components can be accessed (for get or set) using parenthesis and a single argument of <a class="reference internal" href="../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">1</span></span></a>, <a class="reference internal" href="../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">2</span></span></a>, or <a class="reference internal" href="../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">3</span></span></a>.</p>
+<p>They can also be be accessed using the <span class="flag3">c</span> <a class="reference internal" href="fish_arithmetic.html#typememberaccess"><span class="std std-ref">-&gt;</span></a> operator and the accessors <code class="docutils literal"><span class="pre">x</span></code>, <code class="docutils literal"><span class="pre">y</span></code>, or <code class="docutils literal"><span class="pre">z</span></code>, either to retreive or assign a single component of the vector.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">    local a </span><span class="p">=</span><span class="n"> vector</span><span class="p">(</span><span class="m m-Double">1.0</span><span class="p">,</span><span class="m m-Double">2.1</span><span class="p">,</span><span class="m m-Double">3.0</span><span class="p">)</span>
+<span class="n">    local b </span><span class="p">=</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">4.5</span><span class="p">,</span><span class="m m-Double">6.7</span><span class="p">)</span>
+<span class="n">    local c </span><span class="p">=</span><span class="n"> a</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">)</span><span class="n">  </span><span class="c">; c = 2.1</span>
+<span class="n">    local d </span><span class="p">=</span><span class="n"> b</span><span class="o">-&gt;</span><span class="n">y  </span><span class="c">; d = 6.7</span>
+<span class="n">    a</span><span class="p">(</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">2.5</span><span class="n">      </span><span class="c">; a = (1.0,2.1,2.5)</span>
+<span class="n">    a</span><span class="o">-&gt;</span><span class="n">x </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">1.5</span><span class="n">      </span><span class="c">; a = (1.5,2.1,2.5)</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="fish_arithmetic.html#typememberaccess"><span class="std std-ref">Member Access Operator</span></a> for obtaining components from vector <em>types</em> returned from <span class="codename">FISH</span> functions.</p>
+<p class="h2 rubric" id="vectormathops">Mathematical Operations</p>
+<p>The mathematical operators /, *, +, -  are allowed between two vectors of the same type. Each of these operates on
+a component-b`y`-component basis. For example, v1 * v2 returns a vector
+(v1.x * v2.x, v1.y * v2.y, v1.z * v2.z). The * operator is available between a vector and a number
+(integer or floating-point). The / operator is also available between a vector and a number.</p>
+<p>Please see <a class="reference internal" href="fish_arithmetic.html#fish-arithmetic"><span class="std std-ref">Arithmetic</span></a> for a complete table of operator support.</p>
+<p>A few useful library functions for vectors are:  <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/math_utilities/fish_math.cross.html#function:math.cross" title="Get the cross product of vectors. The vectors must be of the same size."><code class="xref fish fish-func docutils literal"><span class="pre">math.cross</span></code></a>, <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/math_utilities/fish_math.dot.html#function:math.dot" title="Get the dot product of vectors. The vectors must be of the same size."><code class="xref fish fish-func docutils literal"><span class="pre">math.dot</span></code></a>, <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/math_utilities/fish_math.mag.html#function:math.mag" title="Get the vector magnitude."><code class="xref fish fish-func docutils literal"><span class="pre">math.mag</span></code></a>, <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/math_utilities/fish_math.mag2.html#function:math.mag2" title="Get the squared vector magnitude. This is useful as a measure of vector length&#013;&#010;without the cost of calling the  math.sqrt  function."><code class="xref fish fish-func docutils literal"><span class="pre">math.mag2</span></code></a>, or <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/math_utilities/fish_math.unit.html#function:math.unit" title="Get a unit vector.  vr  has been normalized by the magnitude of  v ."><code class="xref fish fish-func docutils literal"><span class="pre">math.unit</span></code></a>.</p>
+<p>These are found in the <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/fish_fish.html#fish-math"><span class="std std-ref">Math Utilities</span></a> section; and <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/constructors/fish_vector.html#function:vector" title="Create a vector type."><code class="xref fish fish-func docutils literal"><span class="pre">vector</span></code></a> is in the <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/fish_fish.html#fish-constructor"><span class="std std-ref">Constructors</span></a> section.</p>
+<p class="h2 rubric" id="vectoriteration">Iteration</p>
+<p>Vectors are an iterable type.  This means you can use it as the target of a <span class="cmdkey">loop foreach</span> statement (see <a class="reference internal" href="statements/loopendloop.html#fish-statement-loopforeach"><span class="std std-ref">Loop ForEach</span></a>) and can be split (see <a class="reference internal" href="fish_splitting.html#fish-splitting"><span class="std std-ref">Splitting</span></a>).  Each component is iterated through in order.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="fish.html" ><span class="codename">FISH</span> Scripting Reference</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="fish_languagerules.html" ><span class="codename">FISH</span> Rules and Usage</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="fish_datatypes.html" accesskey="U">Data Types</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="fish_pointers.html"
+                           title="previous chapter"> Pointers</a> |    
+       <a href="fish_tensors.html"
+                           title="next chapter">Tensors</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Vectors" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

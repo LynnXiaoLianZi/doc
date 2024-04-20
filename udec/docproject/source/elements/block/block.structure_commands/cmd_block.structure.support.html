@@ -1,0 +1,315 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block structure support command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block thermal commands" href="../block_commands/cmd_block.thermal.html" />
+    <link rel="prev" title="block structure rockbolt command" href="cmd_block.structure.rockbolt.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-structure-support-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">structure</span> <span class="pre">support</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="blockstructure command">
+<dt id="command:block.structure.support">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">s</span><span class="null">t</span><span class="null">r</span><span class="null">u</span><span class="null">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="null">s</span><span class="null">u</span><span class="null">p</span><span class="null">p</span><span class="null">o</span><span class="null">r</span><span class="null">t</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.structure.support.create" title="block structure support create">create</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.structure.support.delete" title="block structure support delete">delete</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.structure.support.delete-auto" title="block structure support delete-auto">delete-auto</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.structure.support.group" title="block structure support group">group</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.structure.support.list" title="block structure support list">list</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.structure.support.property" title="block structure support property">property</a></p>
+</div>
+<p>Create and configure a support members.  To create the supports, UDEC searches for the two nearest block edges along the axis of a support member, and places the member between the two intersection points. An error will be detected if fewer than two block edges are found. The points of attachment to the blocks are preserved, whatever subsequent displacement occurs.</p>
+<dl class="keyword">
+<dt id="kwd:block.structure.support.create">
+<span class="cmdkey"><span class="pref">c</span><span class="null">r</span><span class="null">e</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>The support element location, geometry and nodal linkage are defined by the following keywords:</p>
+<dl class="keyword">
+<dt id="kwd:block.structure.support.create.location">
+<span class="cmdkey"><span class="pref">l</span><span class="null">o</span><span class="null">c</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span><span class="null"> </span></span></a></dt>
+<dd><p><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span></span></a> is one point on the member. This point must be located in empty space.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.support.create.angle">
+<span class="cmdkey"><span class="pref">a</span><span class="null">n</span><span class="null">g</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>The axis of the support member is oriented at a degrees measured counterclockwise from the x-axis (the default is <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> = 90◦).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.support.create.group">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Assign the created member to the group named <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.support.create.material">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Material number <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> is assigned to the support element. The properties are associated with the property number by using the PROPERTY keyword. (The default is <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> = 1.)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.support.create.segment">
+<span class="cmdkey"><span class="pref">s</span><span class="null">e</span><span class="null">g</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Support elements with nonzero width may be divided into <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> segments. An odd number of segments is always placed. (The default is <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> = 5.)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.support.create.type">
+<span class="cmdkey"><span class="pref">t</span><span class="null">y</span><span class="null">p</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Specify support type.</p>
+<dl class="keyword">
+<dt id="kwd:block.structure.support.create.type.standard">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">a</span><span class="null">n</span><span class="null">d</span><span class="null">a</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Specify standard formulation.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.support.create.type.rate-dependent">
+<span class="cmdkey"><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">d</span><span class="null">e</span><span class="null">p</span><span class="null">e</span><span class="null">n</span><span class="null">d</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>Specify rate-dependent formulation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.support.create.width">
+<span class="cmdkey"><span class="pref">w</span><span class="null">i</span><span class="null">d</span><span class="null">t</span><span class="null">h</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>The support member spans a width of <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> perpendicular to its axis. (The default is <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> = 0.) For example, if width = 10 m and segments = 5, support members are placed at 2.5 m spacing.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.support.delete">
+<span class="cmdkey"><span class="pref">d</span><span class="null">e</span><span class="null">l</span><span class="null">e</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Delete the existing support member in the specified range. The keyword must be the only one given in this case.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.support.delete-auto">
+<span class="cmdkey"><span class="pref">d</span><span class="null">e</span><span class="null">l</span><span class="null">e</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">a</span><span class="null">u</span><span class="null">t</span><span class="null">o</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><p>If <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>, structural supports will be automatically deleed if they fail in tension (default is <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a>).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.support.group">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Assign the support member to the group named <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.support.list">
+<span class="cmdkey"><span class="pref">l</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>List information regarding support members.</p>
+<dl class="keyword">
+<dt id="kwd:block.structure.support.list.element">
+<span class="cmdkey"><span class="pref">e</span><span class="null">l</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>List support element data. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>index of support element</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>index of top block</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>index of bottom block</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>material number for element</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td><span class="math">\(x\)</span>-coordinate of element</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td><span class="math">\(y\)</span>-coordinate of element</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>normal force on element</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td>normal displacement of element</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.support.list.group">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>List support members assigned to the group named <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.support.list.property">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>List structural support properties.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.support.property">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Set support element properties for material <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a>.</p>
+<dl class="keyword">
+<dt id="kwd:block.structure.support.property.load-rate-exponent">
+<span class="cmdkey"><span class="pref">l</span><span class="null">o</span><span class="null">a</span><span class="null">d</span><span class="null">-</span><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">e</span><span class="null">x</span><span class="null">p</span><span class="null">o</span><span class="null">n</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>Set exponent constant, <span class="math">\(α\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.support.property.maximum-force-addition">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">x</span><span class="null">i</span><span class="null">m</span><span class="null">u</span><span class="null">m</span><span class="null">-</span><span class="pref">f</span><span class="null">o</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null">-</span><span class="pref">a</span><span class="null">d</span><span class="null">d</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set maximum support force addition, <span class="math">\(ΔFmax\)</span> [force]</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.support.property.spacing">
+<span class="cmdkey"><span class="pref">s</span><span class="null">p</span><span class="null">a</span><span class="null">c</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set element spacing in out-of-plane direction (default = 1.0) [length].</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.support.property.stiffness-constant">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">i</span><span class="null">f</span><span class="null">f</span><span class="null">n</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">c</span><span class="null">o</span><span class="null">n</span><span class="null">s</span><span class="null">t</span><span class="null">a</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set support stiffness constant, <span class="math">\(k\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.support.property.stiffness-axial">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">i</span><span class="null">f</span><span class="null">f</span><span class="null">n</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">a</span><span class="null">x</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdkey"><span class="null">/</span><span class="null">l</span><span class="null">e</span><span class="null">n</span><span class="null">g</span><span class="null">t</span><span class="null">h</span><span class="null">]</span><span class="null"> </span></span><a class="reference internal" href="#force">[force]</a></dt>
+<dd><p>Set axial stiffness of the support member.</p>
+<p>If the member contains sub-elements, <span class="cmdkey">stiffness-axial</span> is the stiffness for the group of sub-elements. [force/disp.]</p>
+<p>If the specified value for <span class="cmdkey">stiffness-axial</span> is negative, then a <span class="flag3">trick</span> <a class="reference internal" href="../../../../../../common/kernel/doc/manual/table_manual/table.html#table-manual"><span class="std std-ref">table</span></a> provides the relation between axial force and axial displacement. The table number is the absolute value of the number specified for <span class="cmdkey">stiffness-axial</span>. (Note that table should not be used if the support is subject to unloading.)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.support.property.yield-compression">
+<span class="cmdkey"><span class="pref">y</span><span class="null">i</span><span class="null">e</span><span class="null">l</span><span class="null">d</span><span class="null">-</span><span class="pref">c</span><span class="null">o</span><span class="null">m</span><span class="null">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set compressive yield force.</p>
+<p>If the member contains sub-elements, <span class="cmdkey">yield-compression</span> is the compressive yield force for the group of sub-elements. [force]</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.support.property.yield-tension">
+<span class="cmdkey"><span class="pref">y</span><span class="null">i</span><span class="null">e</span><span class="null">l</span><span class="null">d</span><span class="null">-</span><span class="pref">t</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set tensile strength, <span class="math">\(tmax\)</span> [force]</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../block_commands/block_commands.html" >Block Commands</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../block_commands/cmd_block.structure.html" accesskey="U"><span class="fishcmd">block structure</span> commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_block.structure.rockbolt.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">structure</span> <span class="pre">rockbolt</span></code> command</a> |    
+       <a href="../block_commands/cmd_block.thermal.html"
+                           title="next chapter"><span class="fishcmd">block thermal</span> commands</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block structure support command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,153 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>geometry rotate command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="geometry select command" href="cmd_geometry.select.html" />
+    <link rel="prev" title="geometry results command" href="cmd_geometry.results.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="geometry-rotate-command">
+<h1><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">rotate</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="geometry command">
+<dt id="command:geometry.rotate">
+<span class="cmdname"><span class="pref">g</span><span class="pref">e</span><span class="null">o</span><span class="null">m</span><span class="null">e</span><span class="null">t</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span><span class="cmdname"><span class="pref">r</span><span class="pref">o</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="pref">r</span><span class="pref">a</span><span class="pref">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:geometry.rotate.angle" title="geometry rotate angle">angle</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.rotate.axis" title="geometry rotate axis">axis</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.rotate.origin" title="geometry rotate origin">origin</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.rotate.set" title="geometry rotate set">set</a></p>
+</div>
+<p>Rotate nodes. The optional range is applied to nodes, and they are rotated via the right-hand rule about a specified axis that passes through a specified point. If the <span class="cmdkey">set</span> keyword is not given, then the current set is used.</p>
+<dl class="keyword">
+<dt id="kwd:geometry.rotate.angle">
+<span class="cmdkey"><span class="pref">a</span><span class="pref">n</span><span class="null">g</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Angle of rotation in degrees.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.rotate.axis">
+<span class="cmdkey"><span class="pref">a</span><span class="pref">x</span><span class="null">i</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>Axis of rotation about which to rotate following the right-hand rule.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.rotate.origin">
+<span class="cmdkey"><span class="pref">o</span><span class="null">r</span><span class="null">i</span><span class="null">g</span><span class="null">i</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>Point to rotate about.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.rotate.set">
+<span class="cmdkey"><span class="pref">s</span><span class="null">e</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify the geometry set.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../geometry.html" >Geometry</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_geometry.results.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">geometry</span> <span class="pre">results</span></code> command</a> |    
+       <a href="cmd_geometry.select.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">select</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?geometry rotate command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

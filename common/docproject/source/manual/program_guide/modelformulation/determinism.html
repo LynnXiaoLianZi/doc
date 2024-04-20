@@ -1,0 +1,146 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Determinism &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Large Strain/Small Strain" href="largevssmallstrain.html" />
+    <link rel="prev" title="Timestep" href="cycling.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="determinism">
+<h1>Determinism</h1>
+<p>When a calculation is performed in parallel over multiple CPUs or cores, the order in which specific computations occur can and will change.</p>
+<p>This can cause roundoff error to accumulate differently.</p>
+<p>For many models the final result of these differences are nearly impossible to detect.
+But for a wide class of models these differences can magnify, resulting in a situation where every time you run a given model you will get a different result.</p>
+<p>&lt;br&gt;It is important to note that all of these results are equally valid, as they are all within the range of finite-precision floating point error.</p>
+<p><strong>Deterministic mode</strong> sacrifices efficiency and memory to force the parallel computation to result in the same answer every time, regardless of the number of CPUs it is performed on or their relative speed.</p>
+<p>By default the program will run in deterministic mode.  This can be changed by using the ‘model deterministic off’ command in a data file.  You can also change the default by unchecking the “Deterministic by default” box in Tools/Options/General in the User Interface.</p>
+<p class="h2 rubric">Consequences for turning determinism off</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><strong>Your model will run faster.</strong></dt>
+<dd>How much faster will be code and model dependent.  FLAC3D ignores the determinism flag, and is always deterministic.  3DEC is about 10% faster.  PFC3D is about 15% faster.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Your results will not be repeatable.</strong></dt>
+<dd>In some cases where small changes propagate, you will get very different results every time you run the model.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Your data files (and project bundle) will no longer reliably reproduce your results.</strong></dt>
+<dd>For archiving purposes, you should store the resulting save files along with your input data.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>If you have a problem requiring support, Itasca may not be able to duplicate the issue.</strong></dt>
+<dd>In this case you should re-run the model with determinism on.  If the problem no longer occurs, there might be very little we can do to help you.</dd>
+</dl>
+</li>
+</ul>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="formulation.html" accesskey="U">Underpinnings</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cycling.html"
+                           title="previous chapter"> Timestep</a> |    
+       <a href="largevssmallstrain.html"
+                           title="next chapter">Large Strain/Small Strain</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Determinism" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,216 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Block &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Block Commands" href="block_commands/block_commands.html" />
+    <link rel="prev" title="UDEC Commands and FISH" href="../udeccommandsandfish.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block">
+<span id="id1"></span><h1>Block</h1>
+<p>Commands and <span class="codename">FISH</span> functions on blocks.</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="block_commands/cmd_block.apply.html#block.apply" title="Set block or gridpoint variables to initial values. Loads and velocities apply&#013;&#010;to rigid block centroids only. Initialized values for rigid blocks can be made&#013;&#010;permanent by using the FIX command. The following keywords are available."><span class="fishcmd">block apply</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="block_commands/cmd_block.boundary-elements.html#block.boundary-elements" title="Apply boundary-element conditions to the boundary domain (limit 300).  Boundary&#013;&#010;elements are  on  by default.  is this true???"><span class="fishcmd">block boundary-elements</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="block_commands/cmd_block.cave.html#block.cave" title="Simulate effects of rock fracturing that occurs in a block-cave mining operation.&#013;&#010;The area of cave is defined as a Mohr-Coulomb material. The stresses in a block&#013;&#010;are reset to zero whenever the userspecified percentage of zones has yielded.&#013;&#010;New material property numbers and constitutive laws may also be assigned. The&#013;&#010;following keywords may be used."><span class="fishcmd">block cave</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="block_commands/cmd_block.cell.html#block.cell" title="Used to remap the cell space when using the alternate cell contact detection&#013;&#010;logic. This refers to the method used in  UDEC  to determine which blocks to&#013;&#010;consider for contact.  The cell contact detection method is slower than the&#013;&#010;default “domain” contact detection logic, but it allows models with blocks that&#013;&#010;may bounce from one block to another. Fluid flow is not available with the cell&#013;&#010;logic.  The command :cmd:   must be"><span class="fishcmd">block cell</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="block_commands/cmd_block.change.html#block.change" title="Set or change block material characteristics. All blocks with centroids lying&#013;&#010;within the optional  range  have block material characteristics changed.  If&#013;&#010;no range is specified, all blocks will have characteristics changed according&#013;&#010;to the keywords given below. To change joint characteristics, see  block contact&#013;&#010;change ; for cable characteristics, see  block struct cable change ; for domain&#013;&#010;characteristics, see  block domain change .  See the  block zone cmodel ,  block&#013;&#010;contact cmodel , commands for extended and user-defined zone"><span class="fishcmd">block change</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="block_commands/cmd_block.config.html#block.config" title="Specify optional calculation modes.  These require specifying in advance to&#013;&#010;allow extra memory to be assigned to each zone or gridpoint. The options are&#013;&#010;cell space detection logic, plane stress, fluid flow, creep, user-defined models&#013;&#010;and heat transfer. If any of these options are desired, CONFIG must be given&#013;&#010;before the BLOCK command. The following keywords apply."><span class="fishcmd">block config</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="block_commands/cmd_block.contact.html#block.contact" title=""><span class="fishcmd">block contact</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="block_commands/cmd_block.corner.html#block.corner" title="Update or get information on block corners."><span class="fishcmd">block corner</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="block_commands/cmd_block.create.html#block.create" title="Create and perform other operations on rigid blocks."><span class="fishcmd">block create</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="block_commands/cmd_block.creep.html#block.creep" title=""><span class="fishcmd">block creep</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="block_commands/cmd_block.cut.html#block.cut" title="Cut blocks."><span class="fishcmd">block cut</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="block_commands/cmd_block.cycle.html#block.cycle" title="Executes  i  timesteps. ( block cycle   0   is permitted as a check on data.)&#013;&#010;If the  &lt;Esc&gt;  key is pressed during execution,  UDEC  will return control to&#013;&#010;the user after the current cycle is completed. (Also see  block solve .)"><span class="fishcmd">block cycle</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="block_commands/cmd_block.delete.html#block.delete" title="All blocks with centroids in the optional  range  are deleted. If no range is&#013;&#010;specified, the range includes the entire model. For example, small blocks within&#013;&#010;a range can be selectively deleted by using the range keyword phrase  area &#013;&#010; f1 ,  f2 . If the block area is larger than  f1  and smaller than  f2 , the&#013;&#010;block will be deleted."><span class="fishcmd">block delete</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="block_commands/cmd_block.domain.html#block.domain" title="This command allows fluid pressures to be controled within domains (i.e., “open”&#013;&#010;spaces between blocks) within the optional range. If the range is omitted, the&#013;&#010;command applies to all domains except the outer domain. To avoid forming or&#013;&#010;deleting contacts, use the  block contact freeze-new  command. When domain pressures&#013;&#010;are changed, there may be an imbalance between block (total) stresses and joint&#013;&#010;(effective) stresses. Some cycling may be necessary to bring the model to equilibrium."><span class="fishcmd">block domain</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="block_commands/cmd_block.dynamic.html#block.dynamic" title=""><span class="fishcmd">block dynamic</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="block_commands/cmd_block.edge.html#block.edge" title=""><span class="fishcmd">block edge</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="block_commands/cmd_block.fix.html#block.fix" title="Fix current velocities of all blocks with centroids in the specified range.&#013;&#010;Deformable blocks cannot be fixed. Velocity histories may be applied using  FISH &#013;&#010;functions. Note: This command does not zero the current velocity, so, if the&#013;&#010;block centroid velocity is non-zero, it will continue with that value held constant."><span class="fishcmd">block fix</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="block_commands/cmd_block.fluid.html#block.fluid" title=""><span class="fishcmd">block fluid</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="block_commands/cmd_block.fragment.html#block.fragment-energy" title="The fragment-energy command lists the sum of kinetic energy for all of the block&#013;&#010;fragments in the model.  A block fragment is defined as a block or group of&#013;&#010;blocks that has no un-broken connection with the boundary of the model.  The&#013;&#010;determnation of “un-broken” based on the criteria selecte below.  The following&#013;&#010;are available:"><span class="fishcmd">block fragment-energy</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="block_commands/cmd_block.free.html#block.free" title="Remove the fixed velocity condition from block centoids in the specified range.&#013;&#010;This is the opposite of the :cmd:   comand."><span class="fishcmd">block free</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="block_commands/cmd_block.giic.html#block.giic" title="Invoke the graphical user interface (GIIC) or set GIIC paramters.  The use of&#013;&#010;this command without keywords is only functional using the console version of&#013;&#010; UDEC .  Setting of the GIIC parameters may be done using either version."><span class="fishcmd">block giic</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="block_commands/cmd_block.gridpoint.html#block.gridpoint" title=""><span class="fishcmd">block gridpoint</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="block_commands/cmd_block.group.html#block.group" title="Add group name  s  to the blocks in the range. Use of the group logic is described&#013;&#010;in  group_manual .  A shortcut form of the command may be used. Block group&#013;&#010;“groupname” slot “slotname” is equivalent to block group  &quot;slotname = groupname&quot; &#013;&#010;— quotation marks required, spaces at equals sign ignored — where  slotname &#013;&#010;is the slot assignment and  groupname  is the group name."><span class="fishcmd">block group</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="block_commands/cmd_block.hide.html#block.hide" title="All blocks in the specified range are made invisible; they can be made visible&#013;&#010;again with the  block show  command. When blocks are invisible, they are not&#013;&#010;split by  block cut  commands. By hiding blocks, discontinuous joints may be&#013;&#010;made. However, the invisible blocks interact normally with other blocks during&#013;&#010;cycling. In general, invisible blocks are unaffected by most commands that modify&#013;&#010;the geometry, specify boundary or property conditions."><span class="fishcmd">block hide</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="block_commands/cmd_block.history.html#block.history" title="record histories of rigid block values for the block centroid nearest  fxc ,&#013;&#010; fyc . The following keywords are available."><span class="fishcmd">block history</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="block_commands/cmd_block.insitu.html#block.insitu" title="Initializes block zone and contact stresses, domain pressures, zone pore pressures,&#013;&#010;and hydraulic apertures. Initial zone stresses in all deformable blocks and&#013;&#010;stresses along joints between rigid blocks and/or deformable blocks in the optional&#013;&#010;range are set. If no range is specified, stresses are initialized for the entire&#013;&#010;model. Remember that compressive stresses are negative. The following keywords&#013;&#010;apply."><span class="fishcmd">block insitu</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="block_commands/cmd_block.join-block.html#block.join-block" title="Join or unjoin contacts between blocks with centroids in the specified range.&#013;&#010;This command is similar to the  block join-contact  command.  Contacts will&#013;&#010;be listed with a constitutive model of 10. Contacts that are joined cannot slide&#013;&#010;or open."><span class="fishcmd">block join-block</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="block_commands/cmd_block.join-contact.html#block.join-contact" title="Join or unjoin all contacts in a specified range. This command is similar to&#013;&#010;the  block join-block  command. Contacts will be displayed with a constitutive&#013;&#010;model of 10. Contacts that are joined cannot slide or open."><span class="fishcmd">block join-contact</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="block_commands/cmd_block.joint-delete.html#block.joint-delete" title="Joints that do not completely intersect a block are deleted. (This command is&#013;&#010;performed automatically when the BLOCK ZONE GENERATE command and BLOCK STEP,&#013;&#010;BLOCK CYCLE or BLOCK SOLVE commands are issued.)"><span class="fishcmd">block joint-delete</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="block_commands/cmd_block.joint-region.html#block.joint-region" title="Define a joint region. A convex quadrilateral region is defined for generation&#013;&#010;of a joint set (or sets) and assigned id n. The coordinates of the four corners&#013;&#010;(in a clockwise direction) delimit the boundary of the region. The region boundary&#013;&#010;must be convex. A joint set defined by the BLOCK CUT JOINT-SET command will&#013;&#010;be generated in all blocks or portions of blocks within this region. If the&#013;&#010;region is not specified, it is"><span class="fishcmd">block joint-region</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="block_commands/cmd_block.largestrain.html#block.large-strain" title="Set large strain mode in zones. Gridpoint locations will be updated due to strain&#013;&#010;calculation. (Default is on.)"><span class="fishcmd">block large-strain</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="block_commands/cmd_block.link.html#block.link" title="Specify a link between two blocks for the purposes of contact detection.  When&#013;&#010;using the domain contact detection logic, it is possible for a falling block&#013;&#010;to lose it’s linkage to a domain that includes blocks most likely for it to&#013;&#010;fall on. ( fx1 ,  fy1 ) are the coordinates of any point inside the falling&#013;&#010;block, and ( fx2 ,  fy2 ) are the coordinates of any point inside a block that&#013;&#010;it is likely to impact. ( fx1 ,"><span class="fishcmd">block link</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="block_commands/cmd_block.list.html#block.list" title="Display information in the program console pane for all variables defined by&#013;&#010;the keywords described below."><span class="fishcmd">block list</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="block_commands/cmd_block.mechanical.html#block.mechanical" title=""><span class="fishcmd">block mechanical</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="block_commands/cmd_block.property.material.html#block.property.material" title="Assign property values to material model numbers for blocks (BLOCK property&#013;&#010;method). The parameter ( i  ) is the material number ( i  must be in the range&#013;&#010;1-50).  Block properties are not assigned to specific blocks with this command;&#013;&#010;that is done using the  block change material  command."><span class="fishcmd">block property material</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="block_commands/cmd_block.show.html#block.show" title="Show hidden blocks.  All hidden blocks with centroids within the range specified&#013;&#010;by the range phrase are made visible."><span class="fishcmd">block show</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="block_commands/cmd_block.solve.html#block.solve" title="Enable the automatic detection of the steady-state solution for mechanical problems.&#013;&#010;A calculation is performed until the limiting conditions, as defined by the&#013;&#010;following keywords, are reached. SOLVE force must be used for rigid block models.&#013;&#010;The SOLVE command does not monitor fluid flow. It is possible that mechanical&#013;&#010;equilibrium may be reached prior to fluid-flow equilibrium for steady-state&#013;&#010;flow. CYCLE ftime should be used for transient fluid flow."><span class="fishcmd">block solve</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="block_commands/cmd_block.structure.html#block.structure" title=""><span class="fishcmd">block structure</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="block_commands/cmd_block.thermal.html#block.thermal" title=""><span class="fishcmd">block thermal</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="block_commands/cmd_block.tolerance.html#block.tolerance" title="Set default configuration values for blocks."><span class="fishcmd">block tolerance</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="block_commands/cmd_block.trace.html#block.trace" title="A trace is added for the block located at  fx ,  fy . The trace tracks the block&#013;&#010;position and velocity during a model run.  The resulting path through space&#013;&#010;followed by the trace can be plotted. Only one object may be traced per  trace &#013;&#010;command. Traces may be added at any time. The contents of all traces can be&#013;&#010;erased with the  trace purge  keyword, and all traces can be deleted with  trace&#013;&#010;delete . A"><span class="fishcmd">block trace</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="block_commands/cmd_block.zone.html#block.zone" title=""><span class="fishcmd">block zone</span></a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="block_commands/block_commands.html">Block Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="block_fish/block_fish.html">Block <span class="codename">FISH</span> Functions</a></li>
+</ul>
+</div>
+</div></blockquote>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../udeccommandsandfish.html" accesskey="U"><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../udeccommandsandfish.html"
+                           title="previous chapter"> <span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> |    
+       <a href="block_commands/block_commands.html"
+                           title="next chapter">Block Commands</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Block" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

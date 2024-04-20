@@ -1,0 +1,46 @@
+%
+% itasca.sty
+%
+%
+% cmdopt - bracketed <> optional expressions after a command
+% cmdkey - command keyword
+% cmdvar - command variable - preceeded by an underscore
+% cmdname - remaining name of command
+% cmdextra - parenthesized () expression after a command or keyword - no capitalization support
+% cmdextraparam - parameters inside the parenthesis
+% fishname - name of a FISH function
+% fishvar - a FISH variable
+
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{itasca}[2013/01/15 LaTeX package (Itasca markup)]
+
+\newcommand{\cmdarglist}[3]{%
+  \settowidth{\py@argswidth}{#1\code{~}}%
+  \addtolength{\py@argswidth}{-2\py@argswidth}%
+  \addtolength{\py@argswidth}{\linewidth}%
+  \item[#1\code{~}{#2}{#3}]}
+
+\newcommand{\cmdopt}[1]{%
+  \textnormal{$\langle$}{\code{#1}}\textnormal{$\rangle$}
+}
+\newcommand{\cmdextra}[1]{%
+  {\textnormal{\large(}}{#1}{\textnormal{\large)}}}
+
+\newcommand{\codename}[1]{\textit{#1}}
+\newcommand{\codenamexd}[1]{#1}
+
+\newcommand{\cmdname}[1]{\textcolor{green}{#1}}
+\newcommand{\token}[1]{\textcolor{green}{#1}}
+\newcommand{\cmdvar}[1]{\textit{\textcolor{cmvar}{#1}}}
+\newcommand{\cmdkey}[1]{\code{#1}}
+\newcommand{\cmdextraparam}[1]{\textcolor{red}{#1}}
+\newcommand{\fishname}[1]{\code{#1}}
+\newcommand{\fishvar}[1]{\textit{\textcolor{cmvar}{#1}}}
+\newcommand{\fishret}[1]{\code{#1}}
+\newcommand{\varintfloat}[1]{\code{#1}}
+\newcommand{\varstringbool}[1]{\code{#1}}
+\newcommand{\varfishsym}[1]{\code{#1}}
+\newcommand{\fishcmd}[1]{\code{#1}}
+\newcommand{\fishvarintfloat}[1]{\code{#1}}
+\newcommand{\fishvarstringbool}[1]{\code{#1}}
+

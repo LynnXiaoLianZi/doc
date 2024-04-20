@@ -1,0 +1,159 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Scalar File Formats &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="Tensor File Formats" href="datatensorfileformats.html" />
+    <link rel="prev" title="Data Files (Labels, Scalars, Tensors, Vectors)" href="datauserfiles.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="scalar-file-formats">
+<span id="scalarfileformats"></span><h1>Scalar File Formats</h1>
+<p class="h3 rubric" id="scalartextformat">Text Format</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">ITASCA SCALAR3D</span>
+<span class="c">; The line above is a text mode header indicator  —  it is required for the</span>
+<span class="c">; file to be recognized as a scalar data text file.</span>
+<span class="c">; Comment field  —  any text after a semicolon is ignored. Blank lines are</span>
+<span class="c">; ignored.</span>
+<span class="c">; The following first</span>
+<span class="c">; All data are comma and space delimited.</span>
+<span class="n">GROUP s name </span><span class="c">; All scalars following are assigned group name name to the</span>
+<span class="n">             </span><span class="c">; slot s.</span>
+<span class="n">             </span><span class="c">; GROUP statements can be added later in the file,</span>
+<span class="n">             </span><span class="c">; adding to or replacing previous GROUP assignments.</span>
+<span class="n">EXTRA i val  </span><span class="c">; All scalars following are assigned extra data val in the ith</span>
+<span class="n">             </span><span class="c">; index.</span>
+<span class="n">             </span><span class="c">; EXTRA statements can be added later in</span>
+<span class="n">             </span><span class="c">; the file, adding to or replacing previous EXTRA assignments.</span>
+<span class="n">x y z  EXTRA i val  </span><span class="sx">...</span><span class="n"> GROUP s name  </span><span class="sx">...</span>
+<span class="n">x y z  value EXTRA i val  </span><span class="sx">...</span><span class="n"> GROUP s name  </span><span class="sx">...</span>
+<span class="c">; Each line indicates a single scalar object. The EXTRA and GROUP keywords</span>
+<span class="c">; are optional.</span>
+<span class="c">; each EXTRA and GROUP keyword (there can be more than one per line) can</span>
+<span class="c">; be followed</span>
+<span class="c">; by any number of index value pairs, indicating the index of slot the</span>
+<span class="c">; value should be made to.</span>
+<span class="c">; Group names are strings (&quot; delimited for embedded spaces).</span>
+<span class="c">; EXTRA data can be a string, an integer, or a real.</span>
+</pre></div>
+</div>
+<p class="h3 rubric">Binary Format</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="m m-Double">0</span><span class="n">x03714711 </span><span class="p">(</span><span class="n">unsigned </span><span class="m m-Double">32</span><span class="n"> bit integer indicating it is binary scalar data</span><span class="p">)</span>
+<span class="m m-Double">3</span><span class="n"> </span><span class="p">(</span><span class="n">unsigned </span><span class="m m-Double">8</span><span class="n"> bit integer indicating </span><span class="m m-Double">2</span><span class="n"> or </span><span class="m m-Double">3</span><span class="n"> dimensions</span><span class="p">)</span>
+<span class="n">Each scalar</span><span class="p">:</span>
+<span class="n">  x y z as double precision</span>
+<span class="n">  value as double precision</span>
+<span class="n">  uint32 as number of extra</span><span class="p">,</span><span class="n"> following by that many extra</span><span class="p">.</span>
+<span class="n">  uint32 as number of group names</span><span class="p">,</span><span class="n"> following by that many strings</span><span class="p">.</span>
+<span class="n">extra</span><span class="p">:</span><span class="n">  uint8 as type code </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">=</span><span class="n"> </span><span class="m m-Double">64</span><span class="n"> bit signed int</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">1</span><span class="n"> </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">64</span><span class="n"> bit double</span>
+<span class="n">  precision</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">2</span><span class="n"> </span><span class="p">=</span><span class="n"> string</span><span class="p">).</span>
+<span class="n">string</span><span class="p">:</span><span class="n"> uint16 as string length</span><span class="p">,</span><span class="n"> that many uint16 as string contents</span><span class="p">.</span>
+</pre></div>
+</div>
+<span class="target" id="scalarbinaryformat"></span></div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="otherinputs.html" >Other Inputs</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="datauserfiles.html" accesskey="U">Data Files (Labels, Scalars, Tensors, Vectors)</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="datauserfiles.html"
+                           title="previous chapter"> Data Files (Labels, Scalars, Tensors, Vectors)</a> |    
+       <a href="datatensorfileformats.html"
+                           title="next chapter">Tensor File Formats</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Scalar File Formats" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

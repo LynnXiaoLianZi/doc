@@ -1,0 +1,153 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Creep Constitutive Models &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="Description of Creep Constitutive Models" href="description/description.html" />
+    <link rel="prev" title="Plastic Model Group" href="../theory/plasticmodel.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="creep-constitutive-models">
+<span id="creep-models-common"></span><h1>Creep Constitutive Models</h1>
+<p class="h2 rubric">Introduction</p>
+<p>Creep modeling capabilities are available as an option in <span class="codename">UDEC</span>. These facilities are used to simulate the behavior of materials that exhibit creep (i.e., time-dependent material behavior). The following creep models have been implemented:</p>
+<ol class="arabic simple">
+<li><span class="xref std std-ref">Maxwell model</span> —  A classical viscoelastic model known as the Maxwell substance.</li>
+<li><span class="xref std std-ref">Burgers model</span> —  A classical viscoelastic model known as the Burgers substance, composed of a Kelvin model and a <span class="xref std std-ref">Maxwell model</span>.</li>
+<li><span class="xref std std-ref">Power model</span> — A two-component power law model used for mining applications (e.g., salt or potash mining).</li>
+<li><span class="xref std std-ref">WIPP model</span> — A reference creep model commonly used in thermomechanical analyses associated with studies for the underground isolation of nuclear waste in salt.</li>
+<li><span class="xref std std-ref">Burgers-Mohr model</span> — A viscoplastic model combining the <span class="xref std std-ref">Burgers model</span> and the <span class="xref std std-ref">Mohr-Coulomb model</span>.</li>
+<li><span class="xref std std-ref">Power-Mohr model</span> — A viscoplastic model combining the two-component <span class="xref std std-ref">power model</span> and the <span class="xref std std-ref">Mohr-Coulomb model</span>.</li>
+<li><span class="xref std std-ref">Power-Ubiquitous model</span> — A viscoplastic model combining the two-component <span class="xref std std-ref">power model</span> and the <span class="xref std std-ref">ubiquitous-joint model</span>.</li>
+<li><span class="xref std std-ref">WIPP-Drucker model</span> — A viscoplastic model combining the <span class="xref std std-ref">WIPP model</span> and the <span class="xref std std-ref">Drucker-Prager model</span>.</li>
+<li><span class="xref std std-ref">WIPP-Salt model</span> — A viscoplastic model modified from the <span class="xref std std-ref">WIPP model</span>; includes volumetric and deviatoric compaction behavior for salt-like materials.</li>
+</ol>
+<p>The models are presented in order of increasing complexity.</p>
+<p>In addition, it is also possible for users to write their own creep constitutive models using the DLL user-defined models option described in <span class="xref std std-ref">Writing New Constitutive Models</span>.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="description/description.html">Description of Creep Constitutive Models</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="solving/solving.html">Solving Creep Problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="solving/solving.html#creep-timestep">Creep Timestep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solving/solving.html#automatic-adjustment-of-the-creep-timestep">Automatic Adjustment of the Creep Timestep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solving/solving.html#temperature-dependency">Temperature Dependency</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="input/input.html">Input Instructions for Creep Modeling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="input/input.html#creep-commands">Creep Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input/input.html#creep-fish-variables">Creep <span class="codename">FISH</span> Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="verification/verification.html">Verification and Example Problems</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references/references.html">References</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../models.html" accesskey="U">Constitutive Models</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../theory/plasticmodel.html"
+                           title="previous chapter"> Plastic Model Group</a> |    
+       <a href="description/description.html"
+                           title="next chapter">Description of Creep Constitutive Models</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Creep Constitutive Models" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

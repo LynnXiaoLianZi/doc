@@ -1,0 +1,167 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Wall-Zone Coupling Scheme &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="wall-zone-coupling-scheme">
+<span id="wallzone"></span><h1>Wall-Zone Coupling Scheme</h1>
+<p>The coupling scheme described below applies to both zone gridpoints and structural element nodes. In the description below, bold variables denote vectors and non-bold variables denote scalars.</p>
+<p><span class="codename">PFC</span> walls are created coinciding with zone faces or shell-based structural element surfaces. Walls are composed of edge-connected, triangular faces where vertex velocities and positions can be specified as a function of time. The coupling logic works by taking the contact forces and moments with wall facets and determining an equivalent force system at the facet vertices. These forces are passed to the gridpoints/nodes along with stiffness contributions. In addition, stiffness and force criteria (see the <a class="reference internal" href="commands/wallzone/cmd_wallzone.update-tolerance.html#command:wall-zone.update-tolerance" title="Set the tolerance for triggering zone updates. When the dynamic process is not&#013;&#010;active, zone geometric updates are triggered by |flac3d| based on an update&#013;&#010;interval or when the user changes the zone geometry. When coupled with |pfc|,&#013;&#010;zone updates are also triggered when the total contact stiffness of all contacts&#013;&#010;with any wall facet changes by a factor of  f  from one timestep to the&#013;&#010;next."><code class="xref fish fish-cmd docutils literal"><span class="pre">wall-zone</span> <span class="pre">update-tolerance</span></code></a> and <a class="reference internal" href="commands/wallsel/cmd_wallsel.update-tolerance.html#command:wall-structure.update-tolerance" title="Set the tolerance for triggering structural element updates. Structural element&#013;&#010;updates are triggered by |flac3d| based on an update interval. When coupled&#013;&#010;with |pfc|, structural element updates are also triggered when the total contact&#013;&#010;stiffness of all contacts with any wall facet changes by a factor of  f &#013;&#010;from one timestep to the next."><code class="xref fish fish-cmd docutils literal"><span class="pre">wall-structure</span> <span class="pre">update-tolerance</span></code></a> commands) are checked to trigger zone/structural element updates. These updates change both geometric parameters and zone/structural element stiffnesses in order to ensure numerical stability. Note that for the coupling to be active during cycling, mechanical computations must be in large strain mode, set via the <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.largestrain.html#command:model.large-strain" title="Sets the program to use the numerical formulation for large-strain deformation.&#013;&#010; The default is  on ."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">large-strain</span></code></a> command. The discussion below presents results for situations where zones have triangular faces (note: shell-based structural elements are always triangular). When zone faces are quadrilaterals, they are broken into two triangles. In this situation forces are calculated for the three gridpoints corresponding with the wall facet, not for all four gridpoints of the quadrilateral face. This is in contrast to the situation where 1D structural elements are linked to zones. In that case, weights are calculated based on the force application point to all quadrilateral faces and no effort is made to balance induced moments.</p>
+<p>Immediately following the force displacement law where ball-facet and pebble-facet contact forces/moments are calculated, the equivalent forces are sought at the gridpoints and/or nodes of interest. Suppose that a ball is in contact with a triangular wall facet that is wrapping a zone face or a shell-based structural element. <span class="math">\(\textbf{C}\)</span> denotes the position of the contact point and <span class="math">\(\textbf{CP}\)</span> defines the position of the closest point on the wall facet to <span class="math">\(\textbf{C}\)</span>. The location of <span class="math">\(\textbf{C}\)</span> is defined in the <span class="codename">PFC</span> manual description of the faceted wall logic. The most simplistic method of extrapolating values from <span class="math">\(\textbf{CP}\)</span> to the vertices of the triangle, which coincide with the zone gridpoints or structural element nodes, is through barycentric interpolation/extrapolation. Take the three triangular vertex locations to be <span class="math">\(\textbf{x}_i, i = 1 ... 3\)</span> as shown in the figure below. Define the areas of the three triangles created by connecting the vertices of the triangle with <span class="math">\(\textbf{CP}\)</span> as <span class="math">\(A_i, i = 1 ... 3\)</span>, and the total area of the triangle as <span class="math">\(A = \sum_{i=1}^{3} A_i\)</span>. In the descriptions that follow, all summations go from <span class="math">\(i=1...3\)</span>.</p>
+<div class="figure align-center" id="barycentric">
+<a class="reference internal image-reference" href="../../../../../../../_images/barycentric.png"><img alt="../../../../../../../_images/barycentric.png" src="../../../../../../../_images/barycentric.png" style="width: 350px;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Depiction of barycentric interpolation scheme. The color of a triangle opposite a vertex coincides with the vertex color.</span></p>
+</div>
+<p>Weighting factors are determined for each vertex by taking the triangle area opposite a vertex divided by the total area of the triangle, yielding <span class="math">\(w_i = \frac{A_i}{A}\)</span>. Note that <span class="math">\(\sum w_i = 1\)</span> so that the sum of values extrapolated from <span class="math">\(\textbf{CP}\)</span> to the vertices is equal to the value at <span class="math">\(\textbf{CP}\)</span>. When the full computation mode is turned off (see the <a class="reference internal" href="commands/wallzone/cmd_wallzone.full-computation.html#command:wall-zone.full-computation" title="Turn on/off full computation mode. In full computation mode, moments are balanced&#013;&#010;by calculating equivalent forces."><code class="xref fish fish-cmd docutils literal"><span class="pre">wall-zone</span> <span class="pre">full-computation</span></code></a> and <a class="reference internal" href="commands/wallsel/cmd_wallsel.full-computation.html#command:wall-structure.full-computation" title="Turn on/off full computation mode. In full computation mode, moments are balanced&#013;&#010;by calculating equivalent forces."><code class="xref fish fish-cmd docutils literal"><span class="pre">wall-structure</span> <span class="pre">full-computation</span></code></a> commands), contact forces and translational stiffnesses are extrapolated to the gridpoints and nodes via this formulation. For structural element coupling, contact moments result from bonds and the rotational stiffnesses are also extrapolated to the nodes in this manner. Barycentric extrapolation does not ensure that the extrapolated forces and moments are consistent with the contact force/moment in the sense that the total moment at <span class="math">\(\textbf{CP}\)</span> due to both the vertex forces, and potentially the vertex moments, may not be balanced as described below.</p>
+<p>Take <span class="math">\(\textbf{r}_i, i = 1...3\)</span> as the vectors pointing from <span class="math">\(\textbf{CP}\)</span> to the respective triangle vertices (i.e., <span class="math">\(\textbf{r}_i = \textbf{x}_i - \textbf{CP}\)</span>). Take the forces applied at each gridpoint or node to be <span class="math">\(\textbf{F}_i, i = 1...3\)</span>, the contact force applied at <span class="math">\(\textbf{C}\)</span> to be <span class="math">\(\overline{\textbf{F}}\)</span>, and the contact moment due to bonding to be <span class="math">\(\overline{\textbf{M}_b}\)</span>. Since the contact point <span class="math">\(\textbf{C}\)</span> and the closest point on the facet, <span class="math">\(\textbf{CP}\)</span>, may not be at the same location, the total moment acting on the facet is given by</p>
+<div class="math" id="equation-makeequivmom">
+<span class="eqno">(1)</span>\[\overline{\textbf{M}} = \overline{\textbf{M}_b} + (\textbf{C} - \textbf{CP}) \times \overline{\textbf{F}}\]</div>
+<p>where <span class="math">\(\times\)</span> is the cross product.</p>
+<p>When full computation mode is active, the coupling scheme determines a fully consistent equivalent force system so that</p>
+<div class="math" id="equation-sumofforces">
+<span class="eqno">(2)</span>\[\sum \textbf{F}_i = \overline{\textbf{F}}\]</div>
+<p>and</p>
+<div class="math" id="equation-sumofmoments">
+<span class="eqno">(3)</span>\[\sum \textbf{r}_i \times \textbf{F}_i =  \overline{\textbf{M}}\]</div>
+<p>Take <span class="math">\(\hat{\mathbf{n}}\)</span> to be the unit vector pointing in the direction of the triangle normal. The force vector along the triangle surface is given by</p>
+<blockquote>
+<div><div class="math" id="equation-sheardef">
+<span class="eqno">(4)</span>\[\overline{\textbf{F}}^{shear} = \overline{\textbf{F}} - \overline{\textbf{F}} \cdot \hat{\mathbf{n}}\]</div>
+</div></blockquote>
+<p>Take</p>
+<div class="math" id="equation-sheardef2">
+<span class="eqno">(5)</span>\[\hat{\mathbf{s}} = \frac{\overline{\textbf{F}}^{shear}}{\parallel \overline{\textbf{F}}^{shear} \parallel}\]</div>
+<p>If <span class="math">\(\overline{\textbf{F}}^{shear} = \textbf{0}\)</span>, the <span class="math">\(\hat{\mathbf{s}}\)</span> direction is determined by taking the cross product of one of the non-coincident Cartesian axis directions with <span class="math">\(\hat{\mathbf{n}}\)</span>.</p>
+<p>The equivalent force system is determined in the local axis system where the <span class="math">\(x\)</span>-component coincides with the <span class="math">\(\hat{\mathbf{n}}\)</span> direction and the <span class="math">\(y\)</span>-component coincides with <span class="math">\(\hat{\mathbf{s}}\)</span> direction. Take <span class="math">\(\textbf{r}_i^{l}\)</span>, <span class="math">\(\textbf{F}_i^{l}\)</span>, <span class="math">\(\overline{\textbf{F}}^{l}\)</span> and  <span class="math">\(\overline{\textbf{M}}^{l}\)</span> to be in this local system and corresponding to <span class="math">\(\textbf{r}_i\)</span>, <span class="math">\(\textbf{F}_i\)</span>, <span class="math">\(\overline{\textbf{F}}\)</span> and  <span class="math">\(\overline{\textbf{M}}\)</span>, respectively. As the point <span class="math">\(\mathbf{CP}\)</span> is on the triangle surface, the <span class="math">\(x\)</span>-components of each <span class="math">\(\textbf{r}_i^{l}\)</span> are 0, or  <span class="math">\(r_{i,x}^{l} = 0\)</span>. This simplification allows one to directly determine the <span class="math">\(x\)</span>-components of the vertex forces in this local system, <span class="math">\(F_{i,x}^{l}\)</span>, via the solution to the simultaneous equations</p>
+<div class="math" id="equation-xcomp1">
+<span class="eqno">(6)</span>\[\sum F_{i,x}^{l} = \overline{F}_x^l\]</div>
+<div class="math" id="equation-xcomp2">
+<span class="eqno">(7)</span>\[\sum r_{i,y}^l F_{i,x}^{l} = -\overline{M}_z^l\]</div>
+<p>and</p>
+<div class="math" id="equation-xcomp3">
+<span class="eqno">(8)</span>\[\sum r_{i,z}^l F_{i,x}^{l} = \overline{M}_y^l\]</div>
+<p>The following three equations remain to be solved with 6 unknowns:</p>
+<div class="math" id="equation-left1">
+<span class="eqno">(9)</span>\[\sum F_{i,y}^{l} = \overline{F}_y^l\]</div>
+<div class="math" id="equation-left2">
+<span class="eqno">(10)</span>\[\sum F_{i,z}^{l} = \overline{F}_z^l = 0\]</div>
+<p>and</p>
+<div class="math" id="equation-left3">
+<span class="eqno">(11)</span>\[\sum r_{i,y}^l F_{i,z}^{l} - r_{i,z}^l F_{i,y}^{l} = \overline{M}_x^l\]</div>
+<p>Let the <span class="math">\(y\)</span>-components of the force be distributed due to the barycentric weighting terms described above, namely <span class="math">\(F_{i,y}^{l} = w_i \overline{F}_y^l\)</span>. Thus, the barycentric weighting is applied in the direction of the maximum contact force in the plane of the triangle. The result of this assumption leads to the following two equations with three unknowns:</p>
+<div class="math" id="equation-twoeqthree1">
+<span class="eqno">(12)</span>\[\sum F_{i,z}^{l} = 0\]</div>
+<p>and</p>
+<div class="math" id="equation-twoeqthree2">
+<span class="eqno">(13)</span>\[\sum r_{i,y}^l F_{i,z}^{l} = \sum (r_{i,z}^l w_i \overline{F}_y^{l}) + \overline{M}_x^l\]</div>
+<p>There are infinitely many solutions to this underdetermined system of equations without an additional constraint. The governing equations do not provide a clear decision on the nature of this constraint to find an equivalent system. In this work the additional constraint</p>
+<div class="math" id="equation-addconst">
+<span class="eqno">(14)</span>\[\sum r_{i,z}^l F_{i,z}^{l} = 0\]</div>
+<p>is used to provide a particular solution. This constraint is equivalent to stating that, if one were to apply forces at each gridpoint or node in the local z-direction, that the sum of dot products of the vectors pointing from <span class="math">\(\textbf{CP}\)</span> to the triangle vertices in the local system is 0. The resulting forces are subsequently converted into the global axis system and applied to the appropriate zone gridpoints or structural element nodes. In addition, zone/structural element updates are triggered at this time.</p>
+<p>Immediately following the zone/structural element equations of motion, the positions/velocities of the wall facet vertices are set according to the corresponding gridpoint/node positions/velocities. The addition of stiffnesses to the gridpoints/nodes is accomplished during the zone/structural element updates directly. When there are rotational stiffnesses present at contacts, these must also be accounted for to ensure stability. An equivalent translational stiffness is determined by taking the magnitude of the rotational stiffness divided by <span class="math">\(\sum \parallel r_i \parallel\)</span>.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commands/commands.html">Commands</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Wall-Zone Coupling Scheme" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

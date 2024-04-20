@@ -1,0 +1,141 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&lt;no title&gt; &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../../../../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="att_coloropt_short.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="att_colorlist.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <p><strong>Color Opt</strong></p>
+<p>Specify options for coloring the plot item.  This must be set to either <em>scaled</em> (contoured) coloring, or coloring based on <em>named</em> items (group names, for instance).  The former is the default option for numeric or vector items as set with the <em>Color By</em> attribute; the latter is the default setting when a textual value is specified with <em>Color By</em>.  Setting <em>ColorOpt</em> to “scaled” on a textual value will result in nothing rendered.  Setting a numeric or vector quantity to “named” causes the values within the numeric range to be treated as separate “names” to be colored, where the number of names is governed by the “max-names” sub-attribute.</p>
+<p><em>Scaled</em></p>
+<img alt="common\docproject\source\manual\program_guide\mechanics\plotting\views\plotitems\items\attributes\attributes/figures/coloropt01.png" class="pi-attribute" src="common\docproject\source\manual\program_guide\mechanics\plotting\views\plotitems\items\attributes\attributes/figures/coloropt01.png" />
+<p>When <em>scaled</em> is selected, coloring is controlled by the following sub-attributes.</p>
+<blockquote>
+<div><p><em>Contour</em>: A container for settings that control contouring options.</p>
+<blockquote>
+<div><p><em>Ramp</em>: Set the color ramp to use for rendering.  The five options, in order shown in the select box, are: rainbow (blue to red), grayscale, blue-white-red, blue-cyan-white-yellow-red, green-white-red.</p>
+<p><em>Maximum</em>: Set the highest value (right end) of the color ramp automatically (<em>auto</em> checked) or with a specified value (<em>auto</em> unchecked).  Values above <em>Maximum</em> are filled with the <em>Above</em> color.</p>
+<p><em>Minimum</em>: Set the lowest value (left end) of the color ramp automatically (<em>auto</em> checked) or with a specified value (<em>auto</em> unchecked).  Values below <em>Minimum</em> are filled with the <em>Below</em> color.</p>
+<p><em>Interval</em>: Specify the number of color intervals used in when rendering; this value defaults to a number between 8-16 if <em>auto</em> is checked.</p>
+<p><em>Log Scale</em>: Specify that the color intervals are logarithmically spaced when checked.</p>
+<p><em>Reversed</em>: Reverse the color sequence of the color ramp when checked.</p>
+<p><em>Below</em>: Specify which color to use for values below the <em>Minimum</em>.  The left end of the color ramp is used with <em>auto</em> checked.  When unchecked, the color swatch control specifies the color.</p>
+<p><em>Above</em>: Specify which color to use for values above the <em>Maximum</em>.  The right end of the color ramp is used with <em>auto</em> checked.  When unchecked, the color swatch control specifies the color.</p>
+</div></blockquote>
+</div></blockquote>
+<p><em>Named</em></p>
+<img alt="common\docproject\source\manual\program_guide\mechanics\plotting\views\plotitems\items\attributes\attributes/figures/coloropt02.png" class="pi-attribute" src="common\docproject\source\manual\program_guide\mechanics\plotting\views\plotitems\items\attributes\attributes/figures/coloropt02.png" />
+<p>When <em>named</em> is selected, coloring is controlled by the following sub-attributes.</p>
+<blockquote>
+<div><p><em>Max Names</em>:  Specify the maximum number of names and, correspondingly, the maximum number of unique colors, to be used. If more unique names exist they are assigned the name <em>unknown</em> and colored by a single color. The default value is 30.</p>
+<p><em>Name Cont</em>: Specify the existence of name or color controls. When many unique names (or colors) exist, the presence of the controls for each color drastically reduces rendering performance. By unchecking this option, many unique colors can be rendered efficiently.</p>
+<p><em>Color List</em>: If the plot item has selectable color items, the edit/spinbox allows specification of the number of colors to use when rendering the item.  Additionally, the adjacent buttons (select all, select none, invert selection) will be active.  If the plot item does not contain selectable color items, these controls are disabled.   In any context, if there are colors present (colors &gt; 0), this sub-attribute can be opened to show the list of colors used to render the plot item.  The color swatches in the list may be used to change the color at the selected position.  The text label adjacent to the color swatch may be edited.  If there are selectable color items, each color item in the list will start with a checkbox that can be used to show (checked) or hide (unchecked) the item.</p>
+</div></blockquote>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../../../../plotting.html" >Plotting</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../../plotitem_index.html" accesskey="U">Plot Items</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="att_colorlist.html"
+                           title="previous chapter"> &lt;no title&gt;</a> |    
+       <a href="att_coloropt_short.html"
+                           title="next chapter">&lt;no title&gt;</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?<no title>" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,156 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Start-up Options &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../search.html" />
+    <link rel="next" title="Editor Options" href="options_editor.html" />
+    <link rel="prev" title="Email Options" href="options_email.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="start-up-options">
+<span id="thestartuppage"></span><span id="dlg-options-startup"></span><h1>Start-up Options</h1>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../../../../../../_images/dlg_options_startup.png"><img alt="../../../../../../../../_images/dlg_options_startup.png" src="../../../../../../../../_images/dlg_options_startup.png" style="width: 442.20000000000005px; height: 354.42px;" /></a>
+</div>
+<p><em>OpenGL Mode</em></p>
+<blockquote>
+<div><p>Use the selector to specify which of four modes to use when rendering accelerated graphics in the program. <br></p>
+<dl class="docutils">
+<dt>Dynamic</dt>
+<dd>With this option selected, the program will automatically select the OpenGL mode from the rendering capabilities detected at program start, selecting in order of perference: 1) Native Desktop 2) ANGLE 3) Software Emulation.  Though preferred by default, Native Desktop mode is automatically rejected if the program is running under the Remote Desktop Protocol (i.e., in a Windows Remote Desktop session).</dd>
+<dt>Native Desktop</dt>
+<dd>This option uses the OpenGL drivers provided by the video card driver.  Minimally, OpenGL version 2.1 or later is required. Note that the 3D rendering in the plot window requires OpenGL version 3.3 or higher, so if the available implementation falls in this range it may be necessary to choose ANGLE (see next).  Also note that if the code program is running under the Remote Desktop Protocol (Windows Remote Desktop) it will automatically change to Dynamic Mode.</dd>
+<dt>Angle (DirectX)</dt>
+<dd>With this option, rendering is performed in DirectX using an OpenGL → DirectX translation layer (ANGLE).</dd>
+<dt>Software Emulation</dt>
+<dd>When this option is selected, rendering is performed using software providing an OpenGL emulation layer.  This option is least-preferred because it is significantly slower than the others.</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt><em>Splash Screen</em></dt>
+<dd>Show the program splash screen at start up when checked.</dd>
+<dt><em>Suppressed Notifications</em></dt>
+<dd>If checked, the notification indicated <em>will not</em> be shown in the startup dialog at program start.</dd>
+</dl>
+<p><em>Plugins to Autoload</em></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Consitutive Models</dt>
+<dd>If checked, Constitutive Model plugins placed in the pluginscmodel directory are loaded automatically on startup.</dd>
+<dt>Joint Models</dt>
+<dd>If checked, Joint Model plugins placed in in the pluginsjmodel directory are loaded automatically on startup.</dd>
+<dt>Contact Models</dt>
+<dd>If checked Contact Model plugins placed in the pluginscontactmodelmechanical directory are loaded automatically on startup.</dd>
+<dt>Plot Items</dt>
+<dd>If checked Plot Item plugins placed in the pluginsplotitem directory are loaded automatically on startup.  Plot item plugins can add new plot item types to the code.  These are not currently not available for independent development.</dd>
+<dt>Modules</dt>
+<dd>If checked, Module plugins placed in the pluginsmodule directory are loaded automatically on startup.  Module plugins add new capabilities to the code engine.  These are currently not available for independent development.</dd>
+</dl>
+</div></blockquote>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../configuration.html" >Program Layout, Configuration, Tools</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="options.html" accesskey="U">Options Dialog</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="options_email.html"
+                           title="previous chapter"> Email Options</a> |    
+       <a href="options_editor.html"
+                           title="next chapter">Editor Options</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Start-up Options" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

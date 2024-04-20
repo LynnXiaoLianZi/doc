@@ -1,0 +1,292 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Plastic Hinge Formation in a Beam Structure &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <span class="target" id="plastichinge"></span><div class="section" id="plastic-hinge-formation-in-a-beam-structure">
+<h1>Plastic Hinge Formation in a Beam Structure</h1>
+<p class="h2 rubric">Problem Statement</p>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To view this project in <span class="codename">FLAC3D</span>, use the menu command <span class="menuselection">Help ► Examples…</span>.  Choose “Structure/Beam/PlasticHinge” and select “PlasticHinge.prj” to load.
+The <a class="reference internal" href="#plastichingedata"><span class="std std-ref">main data files</span></a> used are shown at the end of this example. The remaining data files can be found in the project.</p>
+</div>
+<p>This example demonstrates two methods, referred to as the single-node and the double-node methods, by which <span class="codename">FLAC3D</span> can be used to calculate the initiation and subsequent behavior of a plastic hinge in a beam. The single-node method involves specifying the limiting plastic moment that can be carried by the elements making up the beam. This is done by specifying the desired plastic-moment capacity using the <a class="reference internal" href="../../../doc/manual/sel_manual/beams/commands/cmd_structure.beam.property.html#kwd:structure.beam.property.plastic-moment" title="plastic moment capacity, `M^P`"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">beam</span> <span class="pre">property</span> <span class="pre">plastic-moment</span></code></a> command. With this method, a hypothetical hinge can form between beam elements; however, because the elements are joined with a single node, a true discontinuity in the rotational motion cannot develop at these locations. The double-node method involves creating double nodes at each potential hinge location and then appropriately linking these nodes together. The double nodes allow a discontinuity in the rotation to occur when the limiting plastic moment is reached. The double-node method should be applied to calculate the large-strain, post-failure behavior of a structure. If it is only necessary to determine the solution at the limiting plastic moment, then the single-node method is sufficient. In the following discussion, we first define the example problem, and then solve it in two ways by using the single-node method, and then using the double-node method.</p>
+<p><em>Single Node</em></p>
+<p>A concentrated vertical load, <span class="math">\(P\)</span>, is applied at the center of a 10 m long, simply supported beam with a plastic-moment capacity, <span class="math">\(M^P\)</span>, of 25 kN-m. The system, along with the shear and moment diagrams, is shown in <a href="#plastichinge-diagram">Figure  1</a>. From these shear and moment diagrams, we find that the specified plastic-moment capacity corresponds with a maximum vertical load of 10 kN and a maximum shear force of 5 kN. If we apply a constant vertical velocity to the beam center, we expect that the limiting values of moment and shear force will be 25 kN-m and 5 kN, respectively.</p>
+<div class="figure align-center" id="id1">
+<span id="plastichinge-diagram"></span><img alt="../../../../../_images/plastichinge-diagram.png" src="../../../../../_images/plastichinge-diagram.png" />
+<p class="caption"><span class="caption-text">Figure 1: Single beam with single concentrated load.</span></p>
+</div>
+<p>The <span class="codename">FLAC3D</span> model demonstrating the single-node method (see “<a class="reference internal" href="#plastichinge-single"><span class="std std-ref">PlasticHinge-Single.dat</span></a>”) is created by issuing a single <a class="reference internal" href="../../../doc/manual/sel_manual/beams/commands/cmd_structure.beam.create.html#command:structure.beam.create" title="Create a beam represented by one or more elements."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">beam</span> <span class="pre">create</span></code></a> command and specifying two segments. This produces a model containing 2 elements and 3 nodes, with both elements sharing the center node (node ID of 3). The beam is assigned the same properties as in the <a class="reference internal" href="../ConcentratedLoads/ConcentratedLoads.html#beam-concentrated-loads"><span class="std std-ref">Concentrated Loads</span></a> example but, in addition, the plastic-moment capacity is set to 25 kN-m with the <a class="reference internal" href="../../../doc/manual/sel_manual/beams/commands/cmd_structure.beam.property.html#kwd:structure.beam.property.plastic-moment" title="plastic moment capacity, `M^P`"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">beam</span> <span class="pre">property</span> <span class="pre">plastic-moment</span></code></a> command. Simple supports are specified at the beam ends by restricting translation in the <span class="math">\(y\)</span>-direction. A constant vertical velocity is applied to the center node, and the moment and shear force acting at the right end of element 1 are monitored during the calculation to determine when the limiting value is reached. Note that we specify combined local damping for this problem (<a class="reference internal" href="../../../doc/manual/sel_manual/sel_commands/cmd_structure.damping.html#kwd:structure.damping.combined-local" title="sets the damping scheme used by the structural element logic to combined-local&#013;&#010;damping. The local damping constants are stored separately for each node and&#013;&#010;set by the command  structure.node.damping-local ."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">damping</span> <span class="pre">combined-local</span></code></a>) in order to eliminate the ringing that can occur with the default local damping scheme when the system is being driven by a constant motion.</p>
+<p>We find that the limiting values of moment and shear force are equal to the analytical values of 25 kN-m and 5 kN, respectively (see <a href="#plastichinge-singlemom">Figure  2</a> and <a href="#plastichinge-singleshear">Figure  3</a>). Also, the moment and shear force distributions correspond with the analytical solution (see <a href="#plastichinge-singlemz">Figure  4</a> and <a href="#plastichinge-singlefy">Figure  5</a>). We also see that a discontinuity in the rotational motion at the center location does not develop; the rotation of the center node is zero (<a class="reference internal" href="../../../doc/manual/sel_manual/nodes/commands/cmd_structure.node.list.html#kwd:structure.node.list.displacement" title="list both the translation and rotational (angular) displacements of the node.&#013;&#010;The following keywords, if present, allow the selection of the coordinate system&#013;&#010;these are displayed in:"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">list</span> <span class="pre">displacement</span></code></a>).</p>
+<div class="figure align-center" id="id2">
+<span id="plastichinge-singlemom"></span><a class="reference internal image-reference" href="common\sel\test3d\Beam\PlasticHinge\plastichinge-singlemom.png"><img alt="common\sel\test3d\Beam\PlasticHinge\plastichinge-singlemom.png" src="common\sel\test3d\Beam\PlasticHinge\plastichinge-singlemom.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Moment at right end of element 1 versus applied center displacement (single-node method).</span></p>
+</div>
+<div class="figure align-center" id="id3">
+<span id="plastichinge-singleshear"></span><a class="reference internal image-reference" href="common\sel\test3d\Beam\PlasticHinge\plastichinge-singleshear.png"><img alt="common\sel\test3d\Beam\PlasticHinge\plastichinge-singleshear.png" src="common\sel\test3d\Beam\PlasticHinge\plastichinge-singleshear.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 3: Shear force at right end of element 1 versus applied center displacement (single-node method).</span></p>
+</div>
+<div class="figure align-center" id="id4">
+<span id="plastichinge-singlemz"></span><a class="reference internal image-reference" href="common\sel\test3d\Beam\PlasticHinge\plastichinge-singlemz.png"><img alt="common\sel\test3d\Beam\PlasticHinge\plastichinge-singlemz.png" src="common\sel\test3d\Beam\PlasticHinge\plastichinge-singlemz.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 4: Moment distribution at limit condition (single-node method).</span></p>
+</div>
+<div class="figure align-center" id="id5">
+<span id="plastichinge-singlefy"></span><a class="reference internal image-reference" href="common\sel\test3d\Beam\PlasticHinge\plastichinge-singlefy.png"><img alt="common\sel\test3d\Beam\PlasticHinge\plastichinge-singlefy.png" src="common\sel\test3d\Beam\PlasticHinge\plastichinge-singlefy.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 5: Shear force distribution at limit condition (single-node method).</span></p>
+</div>
+<p><em>Double Node</em></p>
+<p>The <span class="codename">FLAC3D</span> model demonstrating the double-node method (see “<a class="reference internal" href="#plastichinge-double"><span class="std std-ref">PlasticHinge-Double.dat</span></a>”) is created by issuing two separate <a class="reference internal" href="../../../doc/manual/sel_manual/beams/commands/cmd_structure.beam.create.html#command:structure.beam.create" title="Create a beam represented by one or more elements."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">beam</span> <span class="pre">create</span></code></a> commands. This produces a model containing two elements and four nodes. Going from left to right, the left element uses nodes 1 and 2, and the right element uses nodes 3 and 4. Note that nodes 2 and 3 lie in the same location, but they will not interact with one another. We now create an appropriate linkage between nodes 2 and 3 with the commands</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">struct node join</span>
+<span class="nb">struct link attach</span><span class="n"> rotation</span><span class="o">-</span><span class="n">z</span><span class="p">=</span><span class="n">normal</span><span class="o">-</span><span class="n">yield</span>
+<span class="nb">struct link property</span><span class="n"> rotation</span><span class="o">-</span><span class="n">z area</span><span class="p">=</span><span class="m m-Double">1.0</span><span class="n"> stiffness</span><span class="p">=</span><span class="m m-Double">6.4e8</span><span class="n"> yield</span><span class="o">-</span><span class="n">compression</span><span class="p">=</span><span class="m m-Double">25e3</span><span class="n"> yield</span><span class="o">-</span><span class="n">tension</span><span class="p">=</span><span class="m m-Double">25e3</span>
+</pre></div>
+</div>
+<p>The first command creates a node-to-node link from node 2 to node 3. The second command changes the
+default attachment condition in the <span class="math">\(z\)</span>-rotational direction from rigid to deformable. The
+third command sets the properties of this normal-yield spring as follows. We set the area to unity,
+and we set both the compressive and tensile yield strengths equal to the desired plastic-moment
+capacity of 25 kN-m. Finally, we set the spring stiffness equal to a value that is large enough to
+make the spring deformation small relative to the beam deformation. We determine this value by
+computing the rotational stiffnesses of the two elements that use the spring (each rotational
+stiffness is <span class="math">\(4EI/L\)</span>, where <span class="math">\(L\)</span> is element length) and multiplying this value by 10.</p>
+<p>Now that the double nodes have been appropriately linked to one another, the beam is assigned the
+same properties as in <a class="reference internal" href="../ConcentratedLoads/ConcentratedLoads.html#beam-concentrated-loads"><span class="std std-ref">Concentrated Loads</span></a>—we do <em>not</em> specify a
+plastic-moment capacity, because we want the plastic moment to develop in the normal-yield spring.
+Simple supports are specified at the beam ends by restricting translation in the <span class="math">\(y\)</span>-direction.
+A constant vertical velocity is applied to the center nodes (the applied velocity of the node with
+the rigid attachment condition is ignored) and the moment and shear force acting at the right end
+of element 1 are monitored during the calculation to determine when the limiting value is reached.
+Note that we specify combined local damping for this problem (<a class="reference internal" href="../../../doc/manual/sel_manual/sel_commands/cmd_structure.damping.html#kwd:structure.damping.combined-local" title="sets the damping scheme used by the structural element logic to combined-local&#013;&#010;damping. The local damping constants are stored separately for each node and&#013;&#010;set by the command  structure.node.damping-local ."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">damping</span> <span class="pre">combined-local</span></code></a>) in order to eliminate the ringing that can occur with the default local damping scheme when the system is being driven by a constant motion.</p>
+<p>We find that the limiting values of moment and shear force are equal to the analytical values of 25 kN-m and 5 kN, respectively (see <a href="#plastichinge-doublemom">Figure  6</a> and <a href="#plastichinge-doubleshear">Figure  7</a>). Also, the moment and shear force distributions correspond with the analytical solution (see <a href="#plastichinge-doublemz">Figure  8</a> and <a href="#plastichinge-doublefy">Figure  9</a>). We also see that a discontinuity in the rotational motion at the center location has developed; the rotation of nodes 2 and 3 are nonzero and equal and opposite to each other (<a class="reference internal" href="../../../doc/manual/sel_manual/nodes/commands/cmd_structure.node.list.html#kwd:structure.node.list.displacement" title="list both the translation and rotational (angular) displacements of the node.&#013;&#010;The following keywords, if present, allow the selection of the coordinate system&#013;&#010;these are displayed in:"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">list</span> <span class="pre">displacement</span></code></a>).</p>
+<div class="figure align-center" id="id6">
+<span id="plastichinge-doublemom"></span><a class="reference internal image-reference" href="common\sel\test3d\Beam\PlasticHinge\plastichinge-doublemom.png"><img alt="common\sel\test3d\Beam\PlasticHinge\plastichinge-doublemom.png" src="common\sel\test3d\Beam\PlasticHinge\plastichinge-doublemom.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 6: Moment at right end of element 1 versus applied center displacement (double-node method).</span></p>
+</div>
+<div class="figure align-center" id="id7">
+<span id="plastichinge-doubleshear"></span><a class="reference internal image-reference" href="common\sel\test3d\Beam\PlasticHinge\plastichinge-doubleshear.png"><img alt="common\sel\test3d\Beam\PlasticHinge\plastichinge-doubleshear.png" src="common\sel\test3d\Beam\PlasticHinge\plastichinge-doubleshear.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 7: Shear force at right end of element 1 versus applied center displacement (double-node method).</span></p>
+</div>
+<div class="figure align-center" id="id8">
+<span id="plastichinge-doublemz"></span><a class="reference internal image-reference" href="common\sel\test3d\Beam\PlasticHinge\plastichinge-doublemz.png"><img alt="common\sel\test3d\Beam\PlasticHinge\plastichinge-doublemz.png" src="common\sel\test3d\Beam\PlasticHinge\plastichinge-doublemz.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 8: Moment distribution at limit condition (double-node method).</span></p>
+</div>
+<div class="figure align-center" id="id9">
+<span id="plastichinge-doublefy"></span><a class="reference internal image-reference" href="common\sel\test3d\Beam\PlasticHinge\plastichinge-doublefy.png"><img alt="common\sel\test3d\Beam\PlasticHinge\plastichinge-doublefy.png" src="common\sel\test3d\Beam\PlasticHinge\plastichinge-doublefy.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 9: Shear force distribution at limit condition (double-node method).</span></p>
+</div>
+<p><em>Double Node Cantilever</em></p>
+<p>These two examples demonstrate that both the single-node and the double-node methods produce the
+same behavior near the limiting moment; however, if we were to continue loading the structure in a
+large-strain fashion, then the double-node method would produce more reasonable results because it
+would allow a discontinuity to develop in the rotation at the center. We illustrate this behavior
+by modifying the double-node example to represent a cantilever beam (fixed at the left end) with a
+vertical load applied at the free end (see “<a class="reference internal" href="#plastichinge-cantilever"><span class="std std-ref">PlasticHinge-Cantilever.dat</span></a>”). The problem is run in large-strain mode, and the load is specified such that it will remain oriented in the negative <span class="math">\(y\)</span>-direction throughout the simulation.</p>
+<p>The final structural configuration and moment distribution are shown in <a href="#plastichinge-cantilevermz">Figure  10</a>. We see that the double-node method allows a discontinuity to develop in the rotation at the beam center.</p>
+<div class="figure align-center" id="id10">
+<span id="plastichinge-cantilevermz"></span><a class="reference internal image-reference" href="common\sel\test3d\Beam\PlasticHinge\plastichinge-cantilevermz.png"><img alt="common\sel\test3d\Beam\PlasticHinge\plastichinge-cantilevermz.png" src="common\sel\test3d\Beam\PlasticHinge\plastichinge-cantilevermz.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 10: Final structural configuration and moment distribution in cantilever (double-node method).</span></p>
+</div>
+<p class="h2 rubric" id="plastichingedata">Data Files</p>
+<p id="plastichinge-single"><strong>PlasticHinge-Single.dat</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model large-strain</span><span class="n"> </span><span class="sx">off</span>
+<span class="nb">model title</span><span class="n"> </span><span class="s">&quot;Plastic hinge formation (single-node method)&quot;</span>
+<span class="c">; Create beam and assign properties</span>
+<span class="nb">struct beam create</span><span class="n"> by</span><span class="o">-</span><span class="n">line </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">10</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> segments</span><span class="p">=</span><span class="m m-Double">2</span>
+<span class="nb">struct beam property</span><span class="n"> young</span><span class="p">=</span><span class="m m-Double">2.0e11</span><span class="n"> poisson</span><span class="p">=</span><span class="m m-Double">0.30</span>
+<span class="nb">struct beam property</span><span class="n"> cross</span><span class="o">-</span><span class="n">sectional</span><span class="o">-</span><span class="n">area</span><span class="p">=</span><span class="m m-Double">6e-3</span><span class="n"> moi</span><span class="o">-</span><span class="n">z</span><span class="p">=</span><span class="m m-Double">200e-6</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                     moi</span><span class="o">-</span><span class="n">y</span><span class="p">=</span><span class="m m-Double">200e-6</span><span class="n"> moi</span><span class="o">-</span><span class="n">polar</span><span class="p">=</span><span class="m m-Double">0.0</span>
+<span class="nb">struct beam property</span><span class="n"> plastic</span><span class="o">-</span><span class="n">moment</span><span class="p">=</span><span class="m m-Double">25e3</span>
+<span class="c">; Assign boundary conditions</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">z rotation</span><span class="o">-</span><span class="n">x rotation</span><span class="o">-</span><span class="n">y  </span>
+<span class="n">                           </span><span class="c">; restrict all non-beam modes</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">y range union position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0.0</span><span class="n"> position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">10</span><span class="n"> </span>
+<span class="n">                           </span><span class="c">; simple support at left and right end</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">y range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">5</span><span class="n">  </span>
+<span class="n">                           </span><span class="c">; apply constant vertical velocity</span>
+<span class="nb">struct node initialize</span><span class="n"> velocity</span><span class="o">-</span><span class="n">y </span><span class="o">-</span><span class="m m-Double">5e-6</span><span class="n"> local range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">5</span><span class="n"> </span>
+<span class="n">                           </span><span class="c">; to center node</span>
+<span class="c">; Take histories</span>
+<span class="nb">struct node history</span><span class="n"> name</span><span class="p">=</span><span class="s">&#39;disp&#39;</span><span class="n">  displacement</span><span class="o">-</span><span class="n">y position </span><span class="p">(</span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n">  </span>
+<span class="n">                           </span><span class="c">; y-displacement of center node</span>
+<span class="nb">struct beam history</span><span class="n"> name</span><span class="p">=</span><span class="s">&#39;mom&#39;</span><span class="n">   moment</span><span class="o">-</span><span class="n">z end </span><span class="m m-Double">2</span><span class="n"> position </span><span class="p">(</span><span class="m m-Double">2.5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n">  </span>
+<span class="n">                           </span><span class="c">; moment</span>
+<span class="nb">struct beam history</span><span class="n"> name</span><span class="p">=</span><span class="s">&#39;force&#39;</span><span class="n"> force</span><span class="o">-</span><span class="n">y end </span><span class="m m-Double">2</span><span class="n"> position </span><span class="p">(</span><span class="m m-Double">2.5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n">  </span>
+<span class="n">                           </span><span class="c">; shear force</span>
+<span class="c">; Set damping, and cycle </span>
+<span class="nb">struct mechanical</span><span class="n"> damping combined</span><span class="o">-</span><span class="n">local</span>
+<span class="nb">model </span><span class="ss">cycle</span><span class="n"> </span><span class="m m-Double">3000</span><span class="n"> </span><span class="c">; .015 total displacmeent</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;Single&#39;</span>
+</pre></div>
+</div>
+<p id="plastichinge-double"><strong>PlasticHinge-Double.dat</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="c">; File for Plastic hinge formation (double-node method)</span>
+<span class="nb">model new</span>
+<span class="nb">model large-strain</span><span class="n"> </span><span class="sx">off</span>
+<span class="nb">model title</span><span class="n"> </span><span class="s">&quot;Plastic hinge formation (double-node method)&quot;</span>
+<span class="c">; Create beams</span>
+<span class="nb">struct beam create</span><span class="n"> by</span><span class="o">-</span><span class="n">line </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n">  id</span><span class="p">=</span><span class="m m-Double">1</span><span class="n"> segments</span><span class="p">=</span><span class="m m-Double">1</span>
+<span class="nb">struct beam create</span><span class="n"> by</span><span class="o">-</span><span class="n">line </span><span class="p">(</span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">10</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> id</span><span class="p">=</span><span class="m m-Double">2</span><span class="n"> segments</span><span class="p">=</span><span class="m m-Double">1</span>
+<span class="c">; Join nodes, and make the z rot link plastic</span>
+<span class="nb">struct node join</span>
+<span class="nb">struct link attach</span><span class="n"> rotation</span><span class="o">-</span><span class="n">z</span><span class="p">=</span><span class="n">normal</span><span class="o">-</span><span class="n">yield</span>
+<span class="nb">struct link property</span><span class="n"> rotation</span><span class="o">-</span><span class="n">z area</span><span class="p">=</span><span class="m m-Double">1.0</span><span class="n"> stiffness</span><span class="p">=</span><span class="m m-Double">6.4e8</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                     yield</span><span class="o">-</span><span class="n">compression</span><span class="p">=</span><span class="m m-Double">25e3</span><span class="n"> yield</span><span class="o">-</span><span class="n">tension</span><span class="p">=</span><span class="m m-Double">25e3</span>
+<span class="c">; Assign beam properties</span>
+<span class="nb">struct beam property</span><span class="n"> young</span><span class="p">=</span><span class="m m-Double">2.0e11</span><span class="n"> poisson</span><span class="p">=</span><span class="m m-Double">0.30</span>
+<span class="nb">struct beam property</span><span class="n"> cross</span><span class="o">-</span><span class="n">sectional</span><span class="o">-</span><span class="n">area</span><span class="p">=</span><span class="m m-Double">6e-3</span><span class="n"> moi</span><span class="o">-</span><span class="n">z</span><span class="p">=</span><span class="m m-Double">200e-6</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                     moi</span><span class="o">-</span><span class="n">y</span><span class="p">=</span><span class="m m-Double">200e-6</span><span class="n"> moi</span><span class="o">-</span><span class="n">polar</span><span class="p">=</span><span class="m m-Double">0.0</span>
+<span class="c">; Assign beam boundary conditions</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">z rotation</span><span class="o">-</span><span class="n">x rotation</span><span class="o">-</span><span class="n">y  </span>
+<span class="n">                     </span><span class="c">; restrict all non-beam modes</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">y range union position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0.0</span><span class="n"> position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">10</span><span class="n"> </span>
+<span class="n">                     </span><span class="c">; simple support at left and right end</span>
+<span class="c">; apply constant vertical velocity to center node-3 --- </span>
+<span class="c">; must apply velocity to target node.</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">y range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">5</span><span class="n">  </span>
+<span class="n">                     </span><span class="c">; apply constant vertical velocity</span>
+<span class="nb">struct node initialize</span><span class="n"> velocity</span><span class="o">-</span><span class="n">y </span><span class="o">-</span><span class="m m-Double">5e-6</span><span class="n"> local range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">5</span><span class="n"> </span>
+<span class="n">                     </span><span class="c">; to center node</span>
+<span class="c">; Take histories</span>
+<span class="nb">struct node history</span><span class="n"> name</span><span class="p">=</span><span class="s">&#39;disp&#39;</span><span class="n">  displacement</span><span class="o">-</span><span class="n">y position </span><span class="p">(</span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n">  </span>
+<span class="n">                     </span><span class="c">; y-displacement of center node</span>
+<span class="nb">struct beam history</span><span class="n"> name</span><span class="p">=</span><span class="s">&#39;mom&#39;</span><span class="n">   moment</span><span class="o">-</span><span class="n">z end </span><span class="m m-Double">2</span><span class="n"> position </span><span class="p">(</span><span class="m m-Double">2.5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n">  </span>
+<span class="n">                     </span><span class="c">; moment</span>
+<span class="nb">struct beam history</span><span class="n"> name</span><span class="p">=</span><span class="s">&#39;force&#39;</span><span class="n"> force</span><span class="o">-</span><span class="n">y end </span><span class="m m-Double">2</span><span class="n"> position </span><span class="p">(</span><span class="m m-Double">2.5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n">  </span>
+<span class="n">                     </span><span class="c">; shear force</span>
+<span class="c">; Set damping and cycle</span>
+<span class="nb">struct mechanical</span><span class="n"> damping combined</span><span class="o">-</span><span class="n">local</span>
+<span class="nb">model </span><span class="ss">cycle</span><span class="n"> </span><span class="m m-Double">3000</span><span class="n"> </span><span class="c">; .015 total displacement</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;Double&#39;</span>
+</pre></div>
+</div>
+<p id="plastichinge-cantilever"><strong>PlasticHinge-Cantilever.dat</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="c">; file for Plastic hinge formation in cantilever (double-node method)</span>
+<span class="nb">model new</span>
+<span class="nb">model title</span><span class="n"> </span><span class="s">&quot;Plastic hinge formation in cantilever (double-node method)&quot;</span>
+<span class="c">; Create two beams</span>
+<span class="nb">struct beam create</span><span class="n"> by</span><span class="o">-</span><span class="n">line </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n">  id</span><span class="p">=</span><span class="m m-Double">1</span><span class="n"> segments</span><span class="p">=</span><span class="m m-Double">1</span>
+<span class="nb">struct beam create</span><span class="n"> by</span><span class="o">-</span><span class="n">line </span><span class="p">(</span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">10</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> id</span><span class="p">=</span><span class="m m-Double">2</span><span class="n"> segments</span><span class="p">=</span><span class="m m-Double">1</span>
+<span class="c">; Join nodes, and make the z rot link plastic</span>
+<span class="nb">struct node join</span>
+<span class="nb">struct link attach</span><span class="n"> rotation</span><span class="o">-</span><span class="n">z</span><span class="p">=</span><span class="n">normal</span><span class="o">-</span><span class="n">yield</span>
+<span class="nb">struct link property</span><span class="n"> rotation</span><span class="o">-</span><span class="n">z area</span><span class="p">=</span><span class="m m-Double">1.0</span><span class="n"> stiffness</span><span class="p">=</span><span class="m m-Double">6.4e8</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                     yield</span><span class="o">-</span><span class="n">compression</span><span class="p">=</span><span class="m m-Double">25e3</span><span class="n"> yield</span><span class="o">-</span><span class="n">tension</span><span class="p">=</span><span class="m m-Double">25e3</span>
+<span class="c">; Assign beam properties</span>
+<span class="nb">struct beam property</span><span class="n"> young</span><span class="p">=</span><span class="m m-Double">2.0e11</span><span class="n"> poisson</span><span class="p">=</span><span class="m m-Double">0.30</span>
+<span class="nb">struct beam property</span><span class="n"> cross</span><span class="o">-</span><span class="n">sectional</span><span class="o">-</span><span class="n">area</span><span class="p">=</span><span class="m m-Double">6e-3</span><span class="n"> moi</span><span class="o">-</span><span class="n">z</span><span class="p">=</span><span class="m m-Double">200e-6</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                     moi</span><span class="o">-</span><span class="n">y</span><span class="p">=</span><span class="m m-Double">200e-6</span><span class="n"> moi</span><span class="o">-</span><span class="n">polar</span><span class="p">=</span><span class="m m-Double">0.0</span>
+<span class="c">; Assign boundary conditions</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">z rotation</span><span class="o">-</span><span class="n">x rotation</span><span class="o">-</span><span class="n">y </span><span class="c">; restrict all non-beam modes</span>
+<span class="nb">struct node fix</span><span class="n"> velocity rotation range position</span><span class="o">-</span><span class="n">x</span><span class="p">=</span><span class="m m-Double">0</span><span class="n">      </span><span class="c">; fully fix left end</span>
+<span class="nb">struct node apply</span><span class="n"> force</span><span class="p">=(</span><span class="m m-Double">0</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">5.5e3</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> range position</span><span class="o">-</span><span class="n">x</span><span class="p">=</span><span class="m m-Double">10</span><span class="n">  </span><span class="c">; apply force at tip</span>
+<span class="c">; Assign damping, and cycle</span>
+<span class="nb">struct mechanical</span><span class="n"> damping combined</span><span class="o">-</span><span class="n">local</span>
+<span class="nb">model large-strain</span><span class="n"> </span><span class="sx">on</span>
+<span class="nb">model </span><span class="ss">solve</span><span class="n"> ratio</span><span class="o">-</span><span class="n">local </span><span class="m m-Double">1e-4</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;Cantilever&#39;</span>
+</pre></div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Plastic Hinge Formation in a Beam Structure" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

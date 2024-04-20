@@ -1,0 +1,152 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The State Record Pane &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../search.html" />
+    <link rel="next" title="Tools in the State Record Pane" href="staterecordtoolbar.html" />
+    <link rel="prev" title="Save File Handling" href="../savefilehandling.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="the-state-record-pane">
+<span id="thestaterecordpane"></span><h1>The <em>State Record</em> Pane</h1>
+<p class="h3 rubric">Overview</p>
+<p>The <em>State Record</em> pane tracks the input that has created the current model state. Some or all of the contents of the pane may be copied and pasted elsewhere as needed, or saved as a new file in either record file format or data file format. If the current model state is part of an existing save file, the name of the file is shown in the pane title bar.</p>
+<p class="h2 rubric" id="staterecordpane"><em>State Record</em> Pane Components</p>
+<div class="figure" id="srpaneimage">
+<a class="reference internal image-reference" href="../../../../../../../../_images/statrecordpane_Udec7.png"><img alt="../../../../../../../../_images/statrecordpane_Udec7.png" src="../../../../../../../../_images/statrecordpane_Udec7.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: The <em>State Record</em> pane.</span></p>
+</div>
+<p>The pane has two parts. The “State Record” panel (top) lists the commands that have created the present model state. The “Input Files” panel (right) list the input files that have been used in the process of arriving at the present model state.</p>
+<p class="h2 rubric" id="staterecord-section"><em>State Record</em> Panel</p>
+<p>The command listing here <em>does not</em> expand the commands contained within a <a class="reference internal" href="../../../../../../../kernel/doc/manual/program/commands/cmd_program.call.html#command:program.call" title="Process the specified data file(s)."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">call</span></code></a>-ed data file — a called 1000-line data file will appear as a single-line <a class="reference internal" href="../../../../../../../kernel/doc/manual/program/commands/cmd_program.call.html#command:program.call" title="Process the specified data file(s)."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">call</span></code></a> command in this view. Output here will likely use the optional <span class="cmdkey">line</span> keyword with the <a class="reference internal" href="../../../../../../../kernel/doc/manual/program/commands/cmd_program.call.html#command:program.call" title="Process the specified data file(s)."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">call</span></code></a> command to follow a single or nested <a class="reference internal" href="../../../../../../../kernel/doc/manual/program/commands/cmd_program.call.html#command:program.call" title="Process the specified data file(s)."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">call</span></code></a> command(s) to track the command path that creates the current state. See the <a class="reference internal" href="../../../../../../../kernel/doc/manual/program/commands/cmd_program.call.html#command:program.call" title="Process the specified data file(s)."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">call</span></code></a> command reference information for an explanation of how the <span class="cmdkey">line</span> keyword is used. The contents of this view may be copied or saved using the tools available on the toolbar.</p>
+<p class="h2 rubric" id="inputfiles-section"><em>Input Files</em> Panel</p>
+<p>This view tabulates the files that have been called or imported to create the current model state. Unless sorted, the panel will  show files in the order that they are used — reflected by the first column (“Order”) on the table. Columns for file name, date, and size also appear. The list can be sorted in ascending or descending order of any column by clicking the column’s heading.</p>
+<p class="h3 rubric" id="visual-indicators">Indicator Icons</p>
+<p>The icons in <em>Input Files</em> communicate state information about the file listed, according to the following legend.</p>
+<dl class="docutils">
+<dt><img alt="open" src="../../../../../../../../_images/item_saved.png" /> Open, Unchanged</dt>
+<dd>Item is open and unchanged since it was used to create the current model state.</dd>
+<dt><img alt="chng" src="../../../../../../../../_images/item_open_mod.png" /> Open, Changed</dt>
+<dd>Item is open and has changed since it was used to create the current model state.</dd>
+<dt><img alt="clos" src="../../../../../../../../_images/item_closed.png" /> Closed, Unchanged</dt>
+<dd>Item is closed and unchanged since it was used to create the current model state.</dd>
+<dt><img alt="clch" src="../../../../../../../../_images/item_closed_mod.png" /> Closed, Changed</dt>
+<dd>Item is closed and has changed since it was used to create the current model state.</dd>
+<dt><img alt="brok" src="../../../../../../../../_images/item_broken.png" /> Broken</dt>
+<dd>Link broken; the file cannot be found at its location as currently recorded in the project.</dd>
+</dl>
+<p>If a file has been modified since it was used to create the current model state (indicated above by the two states that show a red dot), there is no assurance it may be used, at this point, to reproduce the current model state.</p>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="staterecordtoolbar.html">Tools in the <em>State Record</em> Pane</a></li>
+</ul>
+</div>
+<script>
+   //and now, some filth of the highest order (setting an attribute)
+   $('div#srpaneimage').attr('title','State Record pane. Click image to enlarge in new window.');
+</script></div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../savedstates.html" accesskey="U">Saving</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../savefilehandling.html"
+                           title="previous chapter"> Save File Handling</a> |    
+       <a href="staterecordtoolbar.html"
+                           title="next chapter">Tools in the <em>State Record</em> Pane</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?The State Record Pane" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

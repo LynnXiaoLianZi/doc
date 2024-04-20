@@ -1,0 +1,205 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Liner Structural Elements &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="liner-structural-elements">
+<span id="id1"></span><h1>Liner Structural Elements</h1>
+<p>Note that shell structural elements are based on the <a class="reference internal" href="../shelltypes/shelltypes.html#shelltype-structural-elements"><span class="std std-ref">Shell-Type Structural Element</span></a> and share the underlying formulation and implementation.</p>
+<div class="section" id="mechanical-behavior">
+<h2>Mechanical Behavior</h2>
+<p class="h3 rubric">Single-Side Liner-Grid Interaction</p>
+<p>The mechanical behavior of each liner element can be divided into the structural response of the liner material itself (see <a class="reference internal" href="../shelltypes/shelltypes.html#shell-type-mechanical-behavior"><span class="std std-ref">Shell-Type Mechanical Behavior</span></a>), and the way in which the liner element interacts with the model grid. By default, liner elements are assigned the DKT-CST shell element that resists both membrane and bending loading (see <a class="reference internal" href="../formulation/formulation.html#struct-shell-finite-elements"><span class="std std-ref">Shell Finite Elements</span></a>). A physical liner can be modeled as a collection of liner elements that are attached to the surface of the model grid. In addition to providing the structural behavior of a shell, a shear-directed (in the tangent plane to the liner surface) frictional interaction occurs between the liner and the model grid. Also, in the normal direction, both compressive and tensile forces can be carried, and the liner may break free from (and subsequently come back into contact with) the grid. Liners are used to model thin liners for which both normal-directed compressive/tensile interaction and shear-directed frictional interaction with the host medium occurs, such as shotcrete-lined tunnels or retaining walls.</p>
+<p>The orientation of the node-local system for all nodes used by liner elements is set automatically at the start of a set of cycles (or when the <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">cycle</span></code> <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">0</span></span></a> command is executed) such that the <span class="math">\(z\)</span>-axis is aligned with the average normal direction of all liner elements using the node, and the <span class="math">\(xy\)</span>-axes are arbitrarily oriented in the liner element tangent plane (see <a href="#liner-interface-idealization">Figure  2</a> (a)).</p>
+<p>A liner is attached to the surface of the model grid. The behavior at the liner-zone interface is summarized in <a href="#liner-stresses">Figure  1</a> to <a href="#liner-interface-idealization"> 2</a>. The stresses acting on the liner are shown in <a href="#liner-stresses">Figure  1</a>. These stresses, consisting of a normal stress, <span class="math">\(\sigma_n\)</span>, and a shear stress, <span class="math">\(\tau\)</span>, are balanced by stresses that develop within the liner itself (these stress resultants — see <span class="xref std std-ref">Stresses in Shells</span> — are denoted by <span class="math">\(\bar R\)</span> in <a href="#liner-interface-idealization">Figure  2</a>). The interface behavior is represented numerically at each liner node by a linear spring with finite tensile strength in the normal direction, and a spring-slider in the tangent plane to the liner surface. The orientation of the spring-slider changes in response to relative shear displacement <span class="math">\({\bf u}_s\)</span> between the liner and the host medium, as shown in <a href="#liner-interface-idealization">Figure  2</a>. (Note that the liner is drawn below the zones in <a href="#liner-stresses">Figure  1</a> and above the zones in <a href="#liner-interface-idealization">Figure  2</a>.)</p>
+<div class="figure" id="id2">
+<span id="liner-stresses"></span><img alt="../../../../../../_images/stresses1.png" src="../../../../../../_images/stresses1.png" />
+<p class="caption"><span class="caption-text">Figure 1: Stresses acting on the liner elements surrounding a node</span></p>
+</div>
+<div class="figure" id="id3">
+<span id="liner-interface-idealization"></span><a class="reference internal image-reference" href="../../../../../../_images/interface-idealization1.png"><img alt="../../../../../../_images/interface-idealization1.png" src="../../../../../../_images/interface-idealization1.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Idealization of interface behavior at a liner node</span></p>
+</div>
+<p>The normal behavior of the liner-zone interface (see <a href="#liner-normal-interface-behavior">Figure  3</a>) is controlled by the normal coupling spring properties of (1) stiffness per unit area, <span class="math">\(k_n\)</span>, and (2) tensile strength, <span class="math">\(f_t\)</span>. The shear behavior of the liner-zone interface (see <a href="#liner-shear-interface-behavior">Figure  4</a>) is cohesive and frictional in nature, and is controlled by the shear coupling spring properties of (1) stiffness per unit area, <span class="math">\(k_s\)</span>, (2) cohesive strength, <span class="math">\(c\)</span>, (3) residual cohesive strength, <span class="math">\(c_r\)</span>, and (4) friction angle, <span class="math">\(\phi\)</span>, and by the interface normal stress, <span class="math">\(\sigma_n\)</span>. If the liner fails in tension, then the effective cohesion drops from <span class="math">\(c\)</span> to <span class="math">\(c_r\)</span>, and the tensile strength is set to zero. The total relative normal displacement, <span class="math">\(u_n\)</span>, continues to be tracked such that compressive normal stresses will again develop when the gap closes. Note that the coupling spring properties associated with each liner element are averaged at liner nodes.</p>
+<div class="figure" id="id4">
+<span id="liner-normal-interface-behavior"></span><img alt="../../../../../../_images/normal-interface-behavior.png" src="../../../../../../_images/normal-interface-behavior.png" />
+<p class="caption"><span class="caption-text">Figure 3: Normal-directional interface behavior for liner elements</span></p>
+</div>
+<div class="figure" id="id5">
+<span id="liner-shear-interface-behavior"></span><a class="reference internal image-reference" href="../../../../../../_images/shear-interface-behavior.png"><img alt="../../../../../../_images/shear-interface-behavior.png" src="../../../../../../_images/shear-interface-behavior.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-text">Figure 4: Shear-directional interface behavior for liner elements</span></p>
+</div>
+<p>In computing the relative displacement at the liner-zone interface, an interpolation scheme is used to calculate the grid displacement, based on the displacement field in the zone to which the node is linked. The interpolation scheme uses weighting factors that are determined by the distance to each of the zone gridpoints. The same interpolation scheme is used to apply forces developed in the liner-zone interface back to the gridpoints of the zone.</p>
+<p>Liners support large-strain sliding (by setting the <span class="cmdkey">slide</span> property to <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>), whereby the interpolation locations (used by the liner nodes to transfer forces and velocities to and from the zones — see <a class="reference internal" href="../links/links.html#structural-element-links"><span class="std std-ref">Structural Element Links</span></a>) will migrate through the grid when running in large-strain mode. This allows one to calculate the large-strain, post-failure behavior of a liner, whereby substantial sliding between the liner nodes and the zones occurs. At each liner node, if large-strain sliding is on and the tensile stress exceeds the interface tensile strength, then the link that joins this liner node to a zone surface will be deleted; however, if this node later comes back into contact with any zone face, the connection will be reestablished (via a new link with appropriate liner properties).</p>
+<p class="h3 rubric">Embedded Liner Behavior</p>
+<p>The liner structural element can also be made to interact with zones on both sides of the liner. Additional coupling springs are added to the embedded liner for this capability. (The default liner only provides a single link on each node, whereas the embedded liner provides two links on each node.) Independent properties are specified on each side of the embedded liner (side 1 and side 2). The embedded liner mechanical behavior is similar to the default liner behavior described above, except that the zone-liner interface is active on both sides of the embedded liner.</p>
+</div>
+<div class="section" id="response-quantities">
+<h2>Response Quantities</h2>
+<p>Liner responses include stresses in the liner itself, as well as stress, displacement, yield state and loading direction in both the normal and shear coupling springs. The liner responses can be accessed via <span class="codename">FISH</span>, and</p>
+<ol class="arabic simple">
+<li>printed with the <a class="reference internal" href="commands/cmd_structure.liner.list.html#command:structure.liner.list" title="List properties and responses of each liner element in the range."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">liner</span> <span class="pre">list</span></code></a> command,</li>
+<li>monitored with the <a class="reference internal" href="commands/cmd_structure.liner.history.html#command:structure.liner.history" title="Sample liner responses.  The nodes of an element will be ordered counterclockwise&#013;&#010;with respect to the outside of the zone faces upon which the liner was created."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">liner</span> <span class="pre">history</span></code></a> command, and</li>
+<li>plotted with the Liner plot item.</li>
+</ol>
+<p>Refer to <a class="reference internal" href="../shelltypes/shelltypes.html#shell-type-response-quantities"><span class="std std-ref">Shell-Type Response Quantities</span></a> for a summary of the commands that support recovery of stresses acting in the liner itself.</p>
+<p class="h3 rubric">Embedded Liner Response Quantities</p>
+<p>Embedded liner response quantities are similar to the default liner response quantities described above, except that links or associated quantities can be associated with side 2 as well as side 1, or can be specified with <a class="reference internal" href="commands/cmd_structure.liner.history.html#command:structure.liner.history" title="Sample liner responses.  The nodes of an element will be ordered counterclockwise&#013;&#010;with respect to the outside of the zone faces upon which the liner was created."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">liner</span> <span class="pre">history</span></code></a> command.</p>
+<p>The Liner plot item may be colored differently on each side to help identify side 1 and side 2.</p>
+</div>
+<div class="section" id="properties">
+<span id="sec-linerproperties"></span><h2>Properties</h2>
+<p>Each liner elements has 8 or 14 (if embedded) properties in addition to those common to all shell-type elements described in <a class="reference internal" href="../shelltypes/shelltypes.html#shell-type-properties"><span class="std std-ref">Shell-Type Properties</span></a>.  These properties control the shear and normal behavior of the liner-soil interface.</p>
+<ol class="arabic simple" start="5">
+<li><span class="cmdkey">coupling-yield-normal</span>, normal coupling spring tensile strength (stress units), <span class="math">\(f_t\)</span> [F/L<sup>2</sup>]</li>
+<li><span class="cmdkey">coupling-yield-normal-2</span>, normal coupling spring tensile strength on side 2 (stress units), <span class="math">\(f_t\)</span> [F/L<sup>2</sup>]</li>
+<li><span class="cmdkey">coupling-stiffness-normal</span>, normal coupling spring stiffness per unit area, <span class="math">\(k_n\)</span> [F/L<sup>3</sup>]</li>
+<li><span class="cmdkey">coupling-stiffness-normal-2</span>, normal coupling spring stiffness per unit area on side 2, <span class="math">\(k_n\)</span> [F/L<sup>3</sup>]</li>
+<li><span class="cmdkey">coupling-cohesion-shear</span>, shear coupling spring cohesion (stress units), <span class="math">\(c\)</span> [F/L<sup>2</sup>]</li>
+<li><span class="cmdkey">coupling-cohesion-shear-2</span>, shear coupling spring cohesion on side 2 (stress units), <span class="math">\(c\)</span> [F/L<sup>2</sup>]</li>
+<li><span class="cmdkey">coupling-cohesion-shear-residual</span>, shear coupling spring residual cohesion (stress units), <span class="math">\(c_r\)</span> [F/L<sup>2</sup>]</li>
+<li><span class="cmdkey">coupling-cohesion-shear-residual-2</span>, shear coupling spring residual cohesion on side 2 (stress units), <span class="math">\(c_r\)</span> [F/L<sup>2</sup>]</li>
+<li><span class="cmdkey">coupling-friction-shear</span>, shear coupling spring friction angle, <span class="math">\(\phi\)</span> [degrees]</li>
+<li><span class="cmdkey">coupling-friction-shear-2</span>, shear coupling spring friction angle on side 2, <span class="math">\(\phi\)</span> [degrees]</li>
+<li><span class="cmdkey">coupling-stiffness-shear</span>, shear coupling spring stiffness per unit area, <span class="math">\(k_s\)</span> [F/L<sup>3</sup>]</li>
+<li><span class="cmdkey">coupling-stiffness-shear-2</span>, shear coupling spring stiffness per unit area on side 2, <span class="math">\(k_s\)</span> [F/L<sup>3</sup>]</li>
+<li><span class="cmdkey">slide</span>, large-strain sliding flag (default: <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a>)</li>
+<li><span class="cmdkey">slide-tolerance</span>, large-strain sliding tolerance</li>
+</ol>
+<p>These properties can be divided into strength (<span class="math">\(f_t\)</span>, <span class="math">\(c\)</span>, <span class="math">\(c_r\)</span>, <span class="math">\(\phi\)</span>) and stiffness (<span class="math">\(k_n\)</span>, <span class="math">\(k_s\)</span>) properties. Choice of appropriate strength properties should be relatively straightforward, as these correspond with measurable macroscopic strength properties of the real physical system. Choice of the stiffness properties is more complex and will be discussed below (refer to <span class="xref std std-ref">Interfaces</span> for a more detailed discussion).</p>
+<p>Typically, we want the liner-zone interface to be stiff compared to the surrounding material, but able to slip and perhaps open in response to the anticipated loading. For this situation, we simply need to provide a means by which the liner elements can slide and/or open relative to the zone surfaces. The strength properties are important, but the elastic stiffnesses are not. It is recommended that the lowest stiffness consistent with small interface deformation be used. A good rule-of-thumb is that <span class="math">\(k_n\)</span> and <span class="math">\(k_s\)</span> be set to <em>ten times</em> the equivalent stiffness of the stiffest neighboring zone. The apparent stiffness (expressed in stress-per-distance units) of a zone in the direction normal to the surface is</p>
+<div class="math" id="equation-liner-interface-stiffness-eq">
+<span id="linerinterfacestiffeq"></span><span class="eqno">(1)</span>\[\max \left[ {(K + {4\over3}G) \over \Delta z_{\rm min}} \right]\]</div>
+<table border="1" class="colwidths-auto blank docutils">
+<tbody valign="top">
+<tr class="row-odd"><td>where:</td>
+<td><span class="math">\(K\)</span> and <span class="math">\(G\)</span></td>
+<td>=</td>
+<td>the bulk and shear modulus, respectively; and</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><span class="math">\(\Delta z_{\rm min}\)</span></td>
+<td>=</td>
+<td>the smallest dimension of an adjoining zone in the normal direction.</td>
+</tr>
+</tbody>
+</table>
+<p>The max [ ] notation indicates that the maximum value over all zones adjacent to the liner is to be used (e.g., there may be several materials adjoining the liner). Note that <a class="reference internal" href="#equation-liner-interface-stiffness-eq">(1)</a> strictly applies only to a planar surface subjected to normal penetration. If the surface is curved, as is the case surrounding a circular excavation, the apparent stiffness should be increased by a factor of 10 to 100. For a particular problem, it is recommended that one confirm that the interface deformation (i.e., the displacement in the coupling spring) is small relative to the zone deformation. (The coupling spring displacement is obtained via the <a class="reference internal" href="commands/cmd_structure.liner.list.html#kwd:structure.liner.list.coupling-normal" title="information about the normal coupling springs connecting the liner to the zones.&#013;&#010; The confining stress, displacement, and direction is given."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">liner</span> <span class="pre">list</span> <span class="pre">coupling-normal</span></code></a> command; the zone deformation is obtained via the <code class="xref fish fish-cmd docutils literal"><span class="pre">zone</span> <span class="pre">gridpoint</span> <span class="pre">list</span> <span class="pre">displacement</span></code> command.)</p>
+</div>
+<div class="section" id="example-applications">
+<h2>Example Applications</h2>
+<p>Simple examples are given to illustrate the use of liner.</p>
+<div class="toctree-wrapper compound">
+</div>
+<p>A complete list of examples that use liner elements is available in <span class="xref std std-ref">Structural Liner Examples</span>.</p>
+</div>
+<div class="section" id="commands-fish">
+<h2>Commands &amp; FISH</h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commands/liner_commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fish/liner_fish.html"><span class="codename">FISH</span> Functions</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Liner Structural Elements" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

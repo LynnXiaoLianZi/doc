@@ -1,0 +1,246 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>program call command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="program continue command" href="cmd_program.continue.html" />
+    <link rel="prev" title="Commands" href="commands.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="program-call-command">
+<span id="call-command"></span><h1><span class="fishcmd">program call</span> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="program command">
+<dt id="command:program.call">
+<span class="cmdname"><span class="pref">p</span><span class="pref">r</span><span class="pref">o</span><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">m</span><span class="null"> </span></span><span class="cmdname"><span class="pref">c</span><span class="pref">a</span><span class="null">l</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span></span>></span><span class="null"> </span></dt>
+<dd><p>Process the specified data file(s).</p>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As with all <span class="cmdkey">program</span> commands, use of the command word <span class="cmdkey">program</span> is optional; <span class="cmdkey">program call</span> and <span class="cmdkey">call</span> are both valid.</p>
+</div>
+<p>If the file name <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a> is supplied without an extension, then the code will look for the string both with the “.dat” extension and with the code specific extension (“.uddat” for <span class="codename">UDEC</span>).</p>
+<p>A file that is called with a relative rather than an explicit path will be searched for first
+in the folder containing the data file currently being processed, then in the <em>current directory</em>.<a class="footnote-reference" href="#id2" id="id1">[1]</a>
+<span class="flag3">[this is something that should be its own topic *somewhere*, and once it is this will be changed to a link to that topic.]</span></p>
+<p>Any series of input instructions can be placed in a data file. Additional files may, in turn,
+be called from a data file; there is no limit to the levels of nesting. However, files must not
+call each other recursively (e.g., file “ABC” calls file “DEF,” which then calls file “ABC”).</p>
+<p>The <a class="reference internal" href="cmd_program.pause.html#command:program.pause" title="Pause command processing."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">pause</span></code></a> and <a class="reference internal" href="cmd_program.return.html#command:program.return" title="Return program control."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">return</span></code></a> commands can be used to interrupt data file
+processing; the <a class="reference internal" href="cmd_program.continue.html#command:program.continue" title="Resume processing after a program pause."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">continue</span></code></a> command can be given at the command prompt in the
+console to resume processing.  See those commands for details, particularly with regard to the
+call stack.  Pressing <code class="docutils literal"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Esc</span></code> terminates input from data files and returns program
+control to the command prompt, no matter to what level calls have been nested.</p>
+<dl class="keyword">
+<dt id="kwd:program.call.call">
+<span class="cmdkey"><span class="pref">c</span><span class="null">a</span><span class="null">l</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span></span>></span><span class="null"> </span></dt>
+<dd><p>Using two or more <span class="cmdkey">call</span> keywords allows multiple files to be called on one line. The called files will processed in the order that they appear in the command, <em>from last to first</em>.  Multiple-file calls each start with the <span class="fishcmd">program call</span> command word — the multiple-file call is, in effect, a string of individual calls.  The keywords available for each are the same as allowed for the <span class="fishcmd">program call</span> command.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:program.call.line">
+<span class="cmdkey"><span class="pref">l</span><span class="pref">i</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>If the <span class="cmdkey">line</span> keyword is specified, then the data file starts reading at the line
+<a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a>. If the line is past the end of the file, the file returns instantly, as if you
+had processed to the end of the file.  This cannot be used with the <span class="cmdkey">label</span> option.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:program.call.label">
+<span class="cmdkey"><span class="pref">l</span><span class="pref">a</span><span class="null">b</span><span class="null">e</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">sl</span><span class="null"> </span></span></a></dt>
+<dd><p>If the <span class="cmdkey">label</span> keyword is specified, then the data file starts reading at the label
+<a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">sl</span></span></a>. To place a label in a data file, use the syntax “<span class="cmdkey">:label</span>” (where the colon must be the first character in the line). The data file will be read starting with the first line after the label. Lines containing a label are ignored (as if the colon were a comment). If the label is not found in the data file, an error is indicated.  This cannot be used with the <span class="cmdkey">line</span> option.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:program.call.suppress">
+<span class="cmdkey"><span class="pref">s</span><span class="null">u</span><span class="null">p</span><span class="null">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>If the optional keyword <span class="cmdkey">suppress</span> is added once in a command, then the command processor will not echo the contents of the called file(s) to the screen while it processes the file(s) (and any files called by it/them).</p>
+</dd></dl>
+
+</dd></dl>
+
+<p class="h2 rubric">Usage Example</p>
+<p>The example file “call_use.dat” below shows a number of possible <code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">call</span></code> commands. It uses two data files, “table_w1.dat” and “table_w2.dat” — which are shown below for reference.  In reviewing the example, it is important to observe that “table_w2.dat” calls “table_w1.dat” in its fourth line.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="c">;call_use.dat</span>
+
+<span class="c">;basic calls:</span>
+<span class="nb">program call</span><span class="n"> </span><span class="s">&#39;table_w2.dat&#39;</span><span class="n">                                 </span><span class="c">;(a)    </span>
+<span class="c">;call &#39;table_w2&#39;                                     (b) </span>
+<span class="c">;call &#39;c:\projects\flac3d\examples\table_w2&#39;         (c)</span>
+<span class="c">;call &#39;c:\\projects/flac3d//examples\table_w2.dat&#39;   (d)   </span>
+<span class="c">;call &#39;folder\table_w2.dat&#39;             -- ERROR!!   (e)</span>
+
+<span class="c">;using line keyword</span>
+<span class="n">new</span>
+<span class="nb">program call</span><span class="n"> </span><span class="s">&#39;table_w1&#39;</span><span class="n"> call </span><span class="s">&#39;table_w2&#39;</span><span class="n"> line </span><span class="m m-Double">5</span><span class="n">                </span><span class="c">;(f)</span>
+<span class="n">new</span>
+<span class="nb">program call</span><span class="n"> </span><span class="s">&#39;table_w2&#39;</span><span class="n"> line </span><span class="m m-Double">5</span><span class="n">                              </span><span class="c">;(g)</span>
+
+<span class="c">;using suppress keyword</span>
+<span class="n">new</span>
+<span class="nb">program call</span><span class="n"> </span><span class="s">&#39;table_w1&#39;</span><span class="n"> suppress call </span><span class="s">&#39;table_w2&#39;</span><span class="n"> line </span><span class="m m-Double">5</span><span class="n">       </span><span class="c">;(h)</span>
+</pre></div>
+</div>
+<p>The section of the file marked “basic calls” shows five uses of <code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">call</span></code>.  The first four are valid ways to call the file “table_w2.dat”, assuming the <em>current directory</em> is the path “c:\projects\udec\examples” as shown in (c) and (d).  The fifth use (e) produces an error because the supplied relative path is incorrect.  Case (c) illustrates that file paths may be demarcated using any of “&quot;, “/”, “\”, or “//” <em>interchangeably</em>.</p>
+<p>The next group is marked <span class="cmdkey">;using line keyword</span>.  Usage (f) achieves the same result as the basic calls in cases (a-d). First “table_w2.dat” is processed (starting at line 5, <em>after</em> its own call to “table_w1.dat” in line 4), then “table1.dat”.  Note the variance in the processing order means that the “world” tables are created first, therefore they have lower indices and are listed first when the final  <a class="reference internal" href="cmd_program.list.html#command:program.list" title="Print program information."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">list</span></code></a> <span class="cmdkey">table</span> command is processed in “table_w2.dat”. Case (g) uses the line keyword to bypass the call in “table_w2.dat” to “table_w1.dat”, so in this case only the tables that spell out “world” are created.</p>
+<p>The last usage (h) illustrates the <span class="cmdkey">suppress</span> keyword.  Its call procedure is the same as usage (f), however, the console only shows the results of the <a class="reference internal" href="cmd_program.list.html#command:program.list" title="Print program information."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">list</span></code></a> commands with this usage.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="c">;table_w1.dat</span>
+
+<span class="n">table letter_h </span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">12</span><span class="n"> </span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">8</span><span class="n"> </span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">10</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">10</span><span class="n"> </span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">12</span><span class="n"> </span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">8</span>
+<span class="n">table letter_e </span><span class="m m-Double">7</span><span class="p">,</span><span class="m m-Double">12</span><span class="n"> </span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">12</span><span class="n"> </span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">10</span><span class="n"> </span><span class="m m-Double">7</span><span class="p">,</span><span class="m m-Double">10</span><span class="n"> </span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">10</span><span class="n"> </span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">8</span><span class="n"> </span><span class="m m-Double">7</span><span class="p">,</span><span class="m m-Double">8</span>
+<span class="n">table letter_l1 </span><span class="m m-Double">8</span><span class="p">,</span><span class="m m-Double">12</span><span class="n"> </span><span class="m m-Double">8</span><span class="p">,</span><span class="m m-Double">8</span><span class="n"> </span><span class="m m-Double">10</span><span class="p">,</span><span class="m m-Double">8</span>
+<span class="n">table letter_l2 </span><span class="m m-Double">11</span><span class="p">,</span><span class="m m-Double">12</span><span class="n"> </span><span class="m m-Double">11</span><span class="p">,</span><span class="m m-Double">8</span><span class="n"> </span><span class="m m-Double">13</span><span class="p">,</span><span class="m m-Double">8</span>
+<span class="n">table letter_o1 </span><span class="m m-Double">15</span><span class="p">,</span><span class="m m-Double">12</span><span class="n"> </span><span class="m m-Double">14</span><span class="p">,</span><span class="m m-Double">11</span><span class="n"> </span><span class="m m-Double">14</span><span class="p">,</span><span class="m m-Double">9</span><span class="n"> </span><span class="m m-Double">15</span><span class="p">,</span><span class="m m-Double">8</span><span class="n"> </span><span class="m m-Double">16</span><span class="p">,</span><span class="m m-Double">8</span><span class="n"> </span><span class="m m-Double">17</span><span class="p">,</span><span class="m m-Double">9</span><span class="n"> </span><span class="m m-Double">17</span><span class="p">,</span><span class="m m-Double">11</span><span class="n"> </span><span class="m m-Double">16</span><span class="p">,</span><span class="m m-Double">12</span><span class="n"> </span><span class="m m-Double">15</span><span class="p">,</span><span class="m m-Double">12</span>
+
+<span class="nb">list</span><span class="n"> table</span>
+</pre></div>
+</div>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="c">;table_w2.dat</span>
+
+<span class="n">new</span>
+<span class="nb">program call</span><span class="n"> </span><span class="s">&#39;table_w1&#39;</span>
+
+<span class="n">table letter_w </span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">7</span><span class="n"> </span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">7</span><span class="n"> </span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">6</span><span class="p">,</span><span class="m m-Double">7</span>
+<span class="n">table letter_o2 </span><span class="m m-Double">8</span><span class="p">,</span><span class="m m-Double">7</span><span class="n"> </span><span class="m m-Double">7</span><span class="p">,</span><span class="m m-Double">6</span><span class="n"> </span><span class="m m-Double">7</span><span class="p">,</span><span class="m m-Double">4</span><span class="n"> </span><span class="m m-Double">8</span><span class="p">,</span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">9</span><span class="p">,</span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">10</span><span class="p">,</span><span class="m m-Double">4</span><span class="n"> </span><span class="m m-Double">10</span><span class="p">,</span><span class="m m-Double">6</span><span class="n"> </span><span class="m m-Double">9</span><span class="p">,</span><span class="m m-Double">7</span><span class="n"> </span><span class="m m-Double">8</span><span class="p">,</span><span class="m m-Double">7</span>
+<span class="n">table letter_r </span><span class="m m-Double">11</span><span class="p">,</span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">11</span><span class="p">,</span><span class="m m-Double">7</span><span class="n"> </span><span class="m m-Double">12</span><span class="p">,</span><span class="m m-Double">7</span><span class="n"> </span><span class="m m-Double">13</span><span class="p">,</span><span class="m m-Double">6</span><span class="n"> </span><span class="m m-Double">12</span><span class="p">,</span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">11</span><span class="p">,</span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">13</span><span class="p">,</span><span class="m m-Double">3</span>
+<span class="n">table letter_l3 </span><span class="m m-Double">14</span><span class="p">,</span><span class="m m-Double">7</span><span class="n"> </span><span class="m m-Double">14</span><span class="p">,</span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">16</span><span class="p">,</span><span class="m m-Double">3</span>
+<span class="n">table letter_d </span><span class="m m-Double">17</span><span class="p">,</span><span class="m m-Double">7</span><span class="n"> </span><span class="m m-Double">17</span><span class="p">,</span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">19</span><span class="p">,</span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">20</span><span class="p">,</span><span class="m m-Double">4</span><span class="n"> </span><span class="m m-Double">20</span><span class="p">,</span><span class="m m-Double">6</span><span class="n"> </span><span class="m m-Double">19</span><span class="p">,</span><span class="m m-Double">7</span><span class="n"> </span><span class="m m-Double">17</span><span class="p">,</span><span class="m m-Double">7</span>
+
+<span class="nb">list</span><span class="n"> table</span>
+
+<span class="nb">plot create</span>
+<span class="nb">plot clear</span>
+<span class="nb">plot item</span><span class="n"> create chart</span><span class="o">-</span><span class="n">table table </span><span class="s">&#39;1&#39;</span><span class="n"> table </span><span class="s">&#39;2&#39;</span><span class="n"> table </span><span class="s">&#39;3&#39;</span><span class="n"> table </span><span class="s">&#39;4&#39;</span><span class="n"> </span><span class="sx">...</span>
+<span class="nb">                             table</span><span class="n"> </span><span class="s">&#39;5&#39;</span><span class="n"> table </span><span class="s">&#39;6&#39;</span><span class="n"> table </span><span class="s">&#39;7&#39;</span><span class="n"> table </span><span class="s">&#39;8&#39;</span><span class="n"> </span><span class="sx">...</span>
+<span class="nb">                             table</span><span class="n"> </span><span class="s">&#39;9&#39;</span><span class="n"> </span><span class="m m-Double">10</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                             xaxis log </span><span class="sx">off</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                             minimum </span><span class="m m-Double">0</span><span class="n"> maximum </span><span class="m m-Double">22</span><span class="n"> label </span><span class="s">&quot;X-Axis&quot;</span><span class="n"> inside </span><span class="sx">on</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                             yaxis log </span><span class="sx">off</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                             minimum </span><span class="m m-Double">0</span><span class="n"> maximum </span><span class="m m-Double">14</span><span class="n"> label </span><span class="s">&quot;Y-Axis&quot;</span><span class="n"> inside </span><span class="sx">on</span>
+</pre></div>
+</div>
+<p class="endnotesection rubric">Endnotes</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><p class="first">The <em>current directory</em> is defined as:</p>
+<ul class="simple">
+<li>the folder containing the current project file, <em>unless</em></li>
+<li>a project file is not in use, in which case it is the folder containing the program, <em>unless</em></li>
+<li>the program is in a folder secured by Windows (such as the “program files” folder, which is common), in which case it is the folder where the <a class="reference internal" href="../../../../../docproject/source/manual/program_guide/programwindow/dialogs/copyappdata.html#dlg-copyappdata"><span class="std std-ref">application data was copied</span></a>, <em>unless</em></li>
+<li>the application data has not been copied, in which case it is the base folder for the profile of the current user on the computer (the location of this folder differs among the versions of Windows available)</li>
+</ul>
+<p class="last">Using the <a class="reference internal" href="cmd_program.directory.html#command:program.directory" title="Set the working directory. This setting defaults to the location of the current&#013;&#010;project file."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">directory</span></code></a> command will override any of the above to the location specified in the command.  Use <code class="xref fish fish-cmd docutils literal"><span class="pre">list</span> <span class="pre">directory</span></code> to determine the current directory.</p>
+</td></tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../program.html" >Program</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="commands.html"
+                           title="previous chapter"> Commands</a> |    
+       <a href="cmd_program.continue.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">program</span> <span class="pre">continue</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?program call command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

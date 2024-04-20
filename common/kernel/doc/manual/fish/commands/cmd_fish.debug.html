@@ -1,0 +1,254 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>fish debug command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="fish define command" href="cmd_fish.define.html" />
+    <link rel="prev" title="fish callback command" href="cmd_fish.callback.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fish-debug-command">
+<h1><code class="docutils literal"><span class="pre">fish</span> <span class="pre">debug</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="fish command">
+<dt id="command:fish.debug">
+<span class="cmdname"><span class="pref">f</span><span class="pref">i</span><span class="null">s</span><span class="null">h</span><span class="null"> </span></span><span class="cmdname"><span class="pref">d</span><span class="pref">e</span><span class="pref">b</span><span class="null">u</span><span class="null">g</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Launch the <span class="codename">FISH</span> function <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a> in debug mode. Debugging is discussed <a class="reference internal" href="../../../../../docproject/source/manual/scripting/fish_scripting/fish_debugging.html#fish-debugging"><span class="std std-ref">FISH Debugging</span></a>. <span class="flag3">[CS: given its prevalence in the below, a introduction/definition of the term pseudo-code (or possibly a glossary entry for it) might be nice]</span></p>
+<dl class="keyword">
+<dt id="kwd:fish.debug.break">
+<span class="cmdkey"><span class="pref">b</span><span class="null">r</span><span class="null">e</span><span class="null">a</span><span class="null">k</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span></dt>
+<dd><p>This function sets and clears breakpoints in a number of ways. A breakpoint is set in a pseudo-code object, and causes <span class="codename">FISH</span> to stop before
+the object is executed, and to provide the <code class="kbd docutils literal"><span class="pre">Debug&gt;</span></code> prompt. Note that breakpoints only function in debug mode.</p>
+<dl class="keyword">
+<dt id="kwd:fish.debug.break.clear">
+<span class="cmdkey"><span class="pref">c</span><span class="pref">l</span><span class="null">e</span><span class="null">a</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>Remove all breakpoints from all pseudo-code objects.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fish.debug.break.code">
+<span class="cmdkey"><span class="pref">c</span><span class="pref">o</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a>></span><span class="null"> </span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><p>Set or clear a breakpoint at a pseudo-code object with ID number <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a>. If <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> is not specified, then the current pseudo-code object is used.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fish.debug.break.fish">
+<span class="cmdkey"><span class="pref">f</span><span class="null">i</span><span class="null">s</span><span class="null">h</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><p>Set or clear a breakpoint at the first pseudo-code object in the <span class="codename">FISH</span> function.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fish.debug.break.line">
+<span class="cmdkey"><span class="pref">l</span><span class="null">i</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a>></span><span class="null"> </span><span class="cmdkey"><span class="null">o</span><span class="null">n</span><span class="null">/</span><span class="null">o</span><span class="null">f</span><span class="null">f</span><span class="null"> </span></span></dt>
+<dd><p>Set or clear a breakpoint at the first pseudo-code object from line <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> in the current source file. If <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> is not specified,
+then the current line is used.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fish.debug.codeinto">
+<span class="cmdkey"><span class="pref">c</span><span class="pref">o</span><span class="pref">d</span><span class="pref">e</span><span class="pref">i</span><span class="null">n</span><span class="null">t</span><span class="null">o</span><span class="null"> </span></span></dt>
+<dd><p>Execute a single pseudo-code object. If a function call is made in that object, then execution is stopped at the start of that function.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fish.debug.codeover">
+<span class="cmdkey"><span class="pref">c</span><span class="pref">o</span><span class="pref">d</span><span class="pref">e</span><span class="pref">o</span><span class="null">v</span><span class="null">e</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>Execute a single pseudo-code object, and execution is not stopped if a function call is made in that object.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fish.debug.codeto">
+<span class="cmdkey"><span class="pref">c</span><span class="pref">o</span><span class="pref">d</span><span class="pref">e</span><span class="pref">t</span><span class="null">o</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Execute until the pseudo-code object with ID <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> is about to be executed. If that object is never reached, then the original function
+call will end, as will the debugging mode.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fish.debug.lineinto">
+<span class="cmdkey"><span class="pref">l</span><span class="pref">i</span><span class="pref">n</span><span class="pref">e</span><span class="pref">i</span><span class="null">n</span><span class="null">t</span><span class="null">o</span><span class="null"> </span></span></dt>
+<dd><p>Execute all pseudo-code objects originating from the current source line, and stop when the next pseudo-code object would have originated from the next
+line. If a function call is made, the debugger stops upon entry to that function.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fish.debug.lineover">
+<span class="cmdkey"><span class="pref">l</span><span class="pref">i</span><span class="pref">n</span><span class="pref">e</span><span class="pref">o</span><span class="null">v</span><span class="null">e</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>Execute all pseudo-code objects originating from the current source line, and stop when the next pseudo-code object originates from the next line.
+It does not stop if function calls that cause code to be executed in other functions are made.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fish.debug.lineto">
+<span class="cmdkey"><span class="pref">l</span><span class="pref">i</span><span class="pref">n</span><span class="pref">e</span><span class="pref">t</span><span class="null">o</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Execute until code originating from the current source file at line <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> is reached. If that line is never reached, then the original function call
+will end, as will the debugging mode.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fish.debug.list">
+<span class="cmdkey"><span class="pref">l</span><span class="pref">i</span><span class="pref">s</span><span class="null">t</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span></dt>
+<dd><dl class="keyword">
+<dt id="kwd:fish.debug.list.call">
+<span class="cmdkey"><span class="pref">c</span><span class="pref">a</span><span class="null">l</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>Output the current call stack. For instance, if function <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">fred</span></span></a> calls function <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">george</span></span></a>, and execution is halted in function <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">george</span></span></a>,
+the call stack will read:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">fred</span>
+<span class="n">george</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fish.debug.list.code">
+<span class="cmdkey"><span class="pref">c</span><span class="pref">o</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i1</span><span class="null"> </span></span></a>></span><span class="null"> </span><span class="cmdopt"><<a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i2</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Output the pseudo-code object with ID <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i1</span></span></a>; or if <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i1</span></span></a> is not specified, output the pseudo-code object that will be executed next.
+If <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i2</span></span></a> is specified, the pseudo-code from <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i1</span></span></a> to <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i2</span></span></a> is to be output.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fish.debug.list.fish">
+<span class="cmdkey"><span class="pref">f</span><span class="null">i</span><span class="null">s</span><span class="null">h</span><span class="null"> </span></span></dt>
+<dd><p>Output the current value of <span class="codename">FISH</span> symbol <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">fish</span></span></a>. The leading &#64; symbol is not necessary here, but it will be accepted. If the symbol is a function, it will not be executed;
+instead, its current value will be used.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fish.debug.list.register">
+<span class="cmdkey"><span class="pref">r</span><span class="null">e</span><span class="null">g</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>Output the current contents of the register. The register is used to store <span class="codename">FISH</span> values that are going to be passed as arguments to <span class="codename">FISH</span>
+intrinsics, used for array access, or passed as arguments to functions.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fish.debug.list.source">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">o</span><span class="null">u</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i1</span><span class="null"> </span></span></a>></span><span class="null"> </span><span class="cmdopt"><<a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i2</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Output the line from the source file that was used to create the <span class="codename">FISH</span> function. If the source file is unavailable, an error will occur.
+If <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i1</span></span></a> is not specified, then the line corresponding to the current execution point is used. If <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i2</span></span></a> is specified, then lines from
+<a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i1</span></span></a> to <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i2</span></span></a> are output.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fish.debug.list.stack">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">t</span><span class="null">a</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span></dt>
+<dd><p>The current contents of the stack are output. The stack is used to store local variables and arguments during function execution. At present, the names of stack variables are not available.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fish.debug.run">
+<span class="cmdkey"><span class="pref">r</span><span class="null">u</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>Continue execution until a breakpoint is reached, or until the original function ends.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../fish.html" ><span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="commands.html" accesskey="U"><span class="codename">FISH</span> Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_fish.callback.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">fish</span> <span class="pre">callback</span></code> command</a> |    
+       <a href="cmd_fish.define.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">fish</span> <span class="pre">define</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?fish debug command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

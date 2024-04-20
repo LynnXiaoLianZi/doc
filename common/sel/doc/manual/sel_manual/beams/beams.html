@@ -1,0 +1,202 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Beam Structural Elements &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="beam-structural-elements">
+<span id="id1"></span><h1>Beam Structural Elements</h1>
+<div class="section" id="mechanical-behavior">
+<h2>Mechanical Behavior</h2>
+<p>Each beam structural element is defined by its geometric and material properties. A beam element is assumed to be a straight segment of uniform bisymmetrical cross-sectional properties lying between two nodal points. An arbitrarily curved structural beam can be modeled as a curvilinear structure composed of a collection of beam elements. By default, each beam element behaves as an isotropic, linearly elastic material with no failure limit; however, one can specify a limiting plastic moment or introduce a plastic-hinge location (across which a discontinuity in rotation may develop) between beam elements (see <a class="reference internal" href="../../../../test3d/Beam/PlasticHinge/PlasticHinge.html#plastichinge"><span class="std std-ref">Plastic Hinge Formation in a Beam Structure</span></a> ). The general properties of the finite element used by each beam element are described in <a class="reference internal" href="../formulation/formulation.html#sel-beam-finite-element"><span class="std std-ref">Beam Finite Element</span></a>. Beam elements are suitable for modeling structural beams in which the displacements caused by transverse-shearing deformations and out-of-plane (longitudinal) warping of the cross section can be neglected.</p>
+<p>Like all structural elements (and unlike zones), individual elements are identified by their <span class="cmdkey">component-id</span> numbers.  Groups of beams are identified by <span class="cmdkey">id</span> numbers.  Individual structural nodes and links are also identified by <span class="cmdkey">component-id</span> numbers.  Nodes and links can also be selected by the <span class="cmdkey">id</span> number of the elements they are attached to.</p>
+<p>Each beam element has its own local coordinate system, shown in <a href="#sel-beam-coordinate-system">Figure  1</a>. This system is used to specify both the cross-sectional moments of inertia and applied distributed loading, and to define the sign convention for force and moment distributions across beam elements that make up a single beam (see <a href="#beam-sign-convention">Figure  2</a>). The beam element coordinate system is defined by the locations of its two nodal points (labeled 1 and 2 in <a href="#sel-beam-coordinate-system">Figure  1</a>), and by the vector <span class="math">\(\bf Y\)</span>. The beam element coordinate system is defined such that</p>
+<ol class="arabic simple">
+<li>the centroidal axis coincides with the <span class="math">\(x\)</span>-axis,</li>
+<li>the <span class="math">\(x\)</span>-axis is directed from node-1 to node-2, and</li>
+<li>the <span class="math">\(y\)</span>-axis is aligned with the projection of <span class="math">\(\bf Y\)</span> onto the cross-sectional plane (i.e., the plane whose normal is directed along the <span class="math">\(x\)</span>-axis).</li>
+</ol>
+<div class="figure align-center" id="id2">
+<span id="sel-beam-coordinate-system"></span><img alt="../../../../../../_images/coordinate-system.png" src="../../../../../../_images/coordinate-system.png" />
+<p class="caption"><span class="caption-text">Figure 1: Beam element coordinate system and 12 active degrees-of-freedom of the beam finite element</span></p>
+</div>
+<div class="figure align-center" id="id3">
+<span id="beam-sign-convention"></span><img alt="../../../../../../_images/sign-convention.png" src="../../../../../../_images/sign-convention.png" />
+<p class="caption"><span class="caption-text">Figure 2: Sign convention for forces and moments at the ends of a beam element (Axes show beam element coordinate system, ends 1 and 2 correspond with order in nodal connectivity list, and all quantities are drawn acting in their positive sense.)</span></p>
+</div>
+<p>The beam element coordinate system can be modified with the <a class="reference internal" href="commands/cmd_structure.beam.property.html#kwd:structure.beam.property.direction-y" title="`y`-axis vector components (*Yx*, *Yy*, *Yz*) whose projection onto the element&#013;&#010;cross-section defines the `y`-axis of the element system"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">beam</span> <span class="pre">property</span> <span class="pre">direction-y</span></code></a> command. (If <span class="math">\(\bf Y\)</span> is not specified, or is parallel with the local <span class="math">\(x\)</span>-axis, then <span class="math">\(\bf Y\)</span> defaults to the global <span class="math">\(y\)</span>- or <span class="math">\(x\)</span>-direction, whichever is not parallel with the local <span class="math">\(x\)</span>-axis.) The beam element coordinate system can be viewed with the Beam plot item and printed with the <a class="reference internal" href="commands/cmd_structure.beam.list.html#kwd:structure.beam.list.system-local" title="the element local coordinate system"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">beam</span> <span class="pre">list</span> <span class="pre">system-local</span></code></a> command. The nodal connectivity can be printed with the <a class="reference internal" href="commands/cmd_structure.beam.list.html#kwd:structure.beam.list.information" title="lists general element information, including  id  and  component-id &#013;&#010;numbers, connected nodes, centroids, surface area, volume, and the hide and&#013;&#010;select status"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">beam</span> <span class="pre">list</span> <span class="pre">information</span></code></a> command.</p>
+<p>The 12 active degrees-of-freedom of the beam finite element are shown in <a href="#sel-beam-coordinate-system">Figure  1</a>. For each generalized displacement (translation and rotation) shown in the figure, there is a corresponding generalized force (force and moment). The stiffness matrix of the beam finite element includes all six degrees of freedom at each node to represent axial, shear and bending action within a beam structure.</p>
+</div>
+<div class="section" id="response-quantities">
+<h2>Response Quantities</h2>
+<p>Beam responses include force and moment vectors that act at the end of each beam element. These quantities can be expressed in the global system or in the beam element coordinate system. The beam responses can be accessed via <span class="codename">FISH</span> and</p>
+<ol class="arabic simple">
+<li>printed with the <a class="reference internal" href="commands/cmd_structure.beam.list.html#command:structure.beam.list" title="List information about beam elements."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">beam</span> <span class="pre">list</span></code></a> command, using the subsequent keywords <span class="cmdkey">force-node</span> or <span class="cmdkey">force-end</span>,</li>
+<li>monitored with the <a class="reference internal" href="commands/cmd_structure.beam.history.html#command:structure.beam.history" title="Samples beam responses that include force and moment carried by the beam. The&#013;&#010;force and moment vectors are expressed in the element local coordinate system&#013;&#010;(see Figure 1.17 for sign convention). If a beam is created using the  structure.beam.create &#013;&#010;command, then the nodes of each element so created will be ordered such that&#013;&#010;the overall beam direction goes from the first point to the second point (i.e.,&#013;&#010;the nodal connectivity of each element will be"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">beam</span> <span class="pre">history</span></code></a> command, and</li>
+<li>visualized with the Beam plot item.</li>
+</ol>
+<p>The sign convention in <a href="#beam-sign-convention">Figure  2</a> provides a continuous description of force and moment distributions across beam elements that make up a single beam. It assumes that the set of beam elements making up the beam are oriented consistently, such that their local coordinate systems form a continuous description of the beam orientation. Such will be the case if the beam is created using the <a class="reference internal" href="commands/cmd_structure.beam.create.html#command:structure.beam.create" title="Create a beam represented by one or more elements."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">beam</span> <span class="pre">create</span></code></a> command. The nodes of each beam element so created will be ordered such that the overall beam direction goes from the first point to the second point specified. The nodal connectivity can be printed with the <a class="reference internal" href="commands/cmd_structure.beam.list.html#kwd:structure.beam.list.information" title="lists general element information, including  id  and  component-id &#013;&#010;numbers, connected nodes, centroids, surface area, volume, and the hide and&#013;&#010;select status"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">beam</span> <span class="pre">list</span> <span class="pre">information</span></code></a> command.</p>
+</div>
+<div class="section" id="properties">
+<span id="beam-properties"></span><h2>Properties</h2>
+<p>Each beam element has 12 properties:</p>
+<ol class="arabic simple">
+<li><span class="cmdkey">density</span>, mass density, <span class="math">\(\rho\)</span> (optional — needed if dynamic mode or gravity is active) [M/L<sup>3</sup>]</li>
+<li><span class="cmdkey">young</span>, Young’s modulus, <span class="math">\(E\)</span> [F/L<sup>2</sup>]</li>
+<li><span class="cmdkey">poisson</span>, Poisson’s ratio, <span class="math">\(\nu\)</span></li>
+<li><span class="cmdkey">plastic-moment</span>, plastic moment capacity in Y and Z , <span class="math">\(M^P\)</span> (optional — if not specified; <span class="math">\(M^P\)</span> is assumed to be infinite) [F<span class="math">\(\cdot\)</span>L]    If plastic moment was specified in Y and Z directions separately then this value is the maximum of those components.   If assigned the value is given to both the y and z components.</li>
+<li><span class="cmdkey">plastic-moment-y</span>, plastic moment capacity in Y only, <span class="math">\(M^P\)</span> (optional — if not specified; <span class="math">\(M^P\)</span> is assumed to be infinite) [F<span class="math">\(\cdot\)</span>L]</li>
+<li><span class="cmdkey">plastic-moment-z</span>, plastic moment capacity in Z only, <span class="math">\(M^P\)</span> (optional — if not specified; <span class="math">\(M^P\)</span> is assumed to be infinite) [F<span class="math">\(\cdot\)</span>L]</li>
+<li><span class="cmdkey">thermal-expansion</span>, thermal expansion coefficient , <span class="math">\(\alpha_t [1/T]\)</span> (optional — used for thermal analysis)</li>
+<li><span class="cmdkey">cross-sectional-area</span>, cross-sectional area, <span class="math">\(A\)</span> [L<sup>2</sup>]</li>
+<li><span class="cmdkey">moi-y</span>, second moment with respect to beam element <span class="math">\(y\)</span>-axis; <span class="math">\(I_y\)</span> [L<sup>4</sup>]</li>
+<li><span class="cmdkey">moi-z</span>, second moment with respect to beam element <span class="math">\(z\)</span>-axis; <span class="math">\(I_z\)</span> [L<sup>4</sup>]</li>
+<li><span class="cmdkey">moi-polar</span>, polar moment of inertia, <span class="math">\(J\)</span> [L<sup>4</sup>]</li>
+<li><span class="cmdkey">direction-y</span>, vector <span class="math">\(\bf Y\)</span> whose projection onto the beam element cross-section defines the element <span class="math">\(y\)</span>-axis (optional — if not specified, <span class="math">\(\bf Y\)</span> defaults to the global <span class="math">\(y\)</span>- or <span class="math">\(x\)</span>-direction, whichever is not parallel with the element <span class="math">\(x\)</span>-axis)</li>
+</ol>
+<p>The material behavior is described by properties 1-5, and the cross-sectional geometry is described by properties 6-10. For the general beam element cross-section shown in <a href="#sel-beam-cross-section">Figure  3</a>, the polar moment of inertia, <span class="math">\(J\)</span>, and second moments, <span class="math">\(I_y\)</span> and <span class="math">\(I_z\)</span>, are defined in the element coordinate system <span class="math">\(xyz\)</span> by the integrals</p>
+<div class="math" id="beam-moi-integrals">
+\[\begin{split}\begin{split}
+   J   &amp;= \int_A r^2 \,dA  \\
+   I_y &amp;= \int_A z^2 \,dA  \\
+   I_z &amp;= \int_A y^2 \,dA
+\end{split}\end{split}\]</div>
+<p>in which the two principal axes of the cross section are defined by the beam element <span class="math">\(y\)</span>- and <span class="math">\(z\)</span>-axes.</p>
+<div class="figure align-center" id="id4">
+<span id="sel-beam-cross-section"></span><img alt="../../../../../../_images/cross-section.png" src="../../../../../../_images/cross-section.png" />
+<p class="caption"><span class="caption-text">Figure 3: General beam element cross-section in the element yz-plane</span></p>
+</div>
+<p>Beam properties are easily calculated, or obtained from handbooks. For example, typical values for structural steel are 200 GPa for Young’s modulus, and 0.3 for Poisson’s ratio. For concrete, typical values are 25 to 35 GPa for Young’s modulus, 0.15 to 0.2 for Poisson’s ratio, and 2100 to 2400 kg/m<sup>3</sup> for mass density. Composite systems, such as reinforced concrete, should be based on the transformed section.</p>
+<p>If a plastic moment is specified, the value may be calculated as follows. Consider a flexural member of width, <span class="math">\(b\)</span>, and height, <span class="math">\(h\)</span>. If the member is composed of a material that behaves in an elastic-perfectly plastic manner, the elastic and plastic resisting moments can be computed. The moment necessary to produce yield stress, <span class="math">\(\sigma_y\)</span>, in the outer fibers is defined as the elastic moment, <span class="math">\(M^E\)</span>, and is calculated as</p>
+<div class="math">
+\[M^E\ =\ \sigma_y\ {bh^2 \over{6}}\]</div>
+<p>For yielding to occur throughout the section, the yield stress must act on the entire section, and the location of the resultant force on one-half of the section must be <span class="math">\(h/4\)</span> from the neutral surface. The resisting moment, defined as the plastic moment, <span class="math">\(M^P\)</span>, is</p>
+<div class="math">
+\[M^P\ =\ \sigma_y\ {bh^2 \over {4}}\]</div>
+<p>The section at which the plastic moment occurs can continue to deform without inducing additional resistance after it reaches <span class="math">\(M^P\)</span>. The plastic-moment capacity limits the internal moment carried by each beam element.</p>
+<p>In order to limit the moment that is transmitted between beam elements, the moment capacity at the nodes must also be restricted. The condition of increasing deformation with a limiting resisting moment that results in a discontinuity in the rotational motion is called a plastic hinge. Potential plastic-hinge locations can be defined by creating double nodes at each hinge location, adding a node-to-node link between these nodes, and then specifying appropriate link attachment conditions. If the limiting moment is reached at beam element connected by such a plastic hinge double-node, then a discontinuity in the rotational motion will develop. See <a class="reference internal" href="../../../../test3d/Beam/PlasticHinge/PlasticHinge.html#plastichinge"><span class="std std-ref">Plastic Hinge Formation in a Beam Structure</span></a> for an example application of plastic hinges modeled with both single and double nodes.</p>
+<p>The preceding discussion assumes a section that is symmetric about the neutral axis. However, if the section is not symmetric (for example, a T-section), or if the stress-strain relations for tension and compression differ appreciably (for example, reinforced concrete), the neutral axis shifts away from the fibers that yield first, and it is necessary to relocate the neutral axis before the resisting moment can be evaluated. The neutral axis may be found by integrating the stress profile over the section and solving for the location of the axis at which stress is zero. In some cases, the integral can be expressed in terms of one unknown (in which case, the solution may not be difficult). However, if the stress-strain relation for the material does not resemble an ideal elasto-plastic diagram, the solution may involve a number of trials. Nearly all texts on reinforced concrete or steel design provide procedures and examples for calculating plastic moments.</p>
+<p>The present formulation in the program assumes that beam elements behave elastically until they reach the plastic moment. This assumption is reasonably valid for symmetric rolled-steel sections, because the difference between <span class="math">\(M^P\)</span> and <span class="math">\(M^E\)</span> is not large. However, for reinforced concrete, the plastic moment may be as much as an order of magnitude greater than the elastic moment.</p>
+</div>
+<div class="section" id="example-applications">
+<h2>Example Applications</h2>
+<p>Simple examples are given to illustrate the use of beams.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../test3d/Beam/ConcentratedLoads/ConcentratedLoads.html">Simple Beam — Two Equal Concentrated Loads — Beam Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../test3d/Beam/Cantilever/Cantilever.html">Cantilever Beam with Applied Moment at Tip — Beam Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../test3d/Beam/AxialBuckling/AxialBuckling.html">Buckling of an Axially Loaded Beam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../test3d/Beam/PlasticHinge/PlasticHinge.html">Plastic Hinge Formation in a Beam Structure</a></li>
+</ul>
+</div>
+<p>A complete list of examples that use beam elements is available in <span class="xref std std-ref">Structural Beam Examples</span>.</p>
+</div>
+<div class="section" id="commands-fish">
+<h2>Commands &amp; FISH</h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commands/beam_commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fish/beam_fish.html"><span class="codename">FISH</span> Functions</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Beam Structural Elements" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

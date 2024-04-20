@@ -1,0 +1,202 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Operators: Multi-threaded function support &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Redefining FISH Functions" href="fish_redefining.html" />
+    <link rel="prev" title="Splitting: Automatic Execution of Functions on Type Contents" href="fish_splitting.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="operators-multi-threaded-function-support">
+<span id="fish-operators"></span><h1>Operators: Multi-threaded function support</h1>
+<p><span class="codename">FISH</span> operators are a special class of function designed to be executed in a multi-threaded environment.</p>
+<p>On a repeated function call made using <a class="reference internal" href="fish_splitting.html#fish-splitting"><span class="std std-ref">splitting</span></a>, if the symbol was declared as an operator these separate executions will be distributed on all available threads (see the <a class="reference internal" href="../../../../../kernel/doc/manual/program/commands/cmd_program.threads.html#command:program.threads" title="Set the number of threads for calculations and plotting."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">threads</span></code></a> command).  On a typical modern multi-core computer and a large set of data this can result in a very large increase in speed.</p>
+<p>Because the functions need to be safe when multiple threads are running simultaneously, they operate in a restricted environment.    There are a number of rules that make operators different from normal functions:</p>
+<ol class="arabic simple">
+<li>Operators must always take at least one argument.</li>
+<li>Operators can not call normal <span class="codename">FISH</span> functions.   They can call other operators.</li>
+<li>Operators can only call <span class="codename">FISH</span> library functions if they are tagged as being thread safe.  Library functions are tagged as thread safe if the ‘=’ sign is preceded by a ‘:’ in the documentation description.</li>
+<li>Operators can only write to global symbols when the <span class="fishname">lock</span> statement is used.</li>
+<li>Operators cannot modify the values passed as arguments.</li>
+<li>Operators cannot call library functions on assignment (on the left hand side of an equality operator) and pass a pointer to an object, <em>unless</em> that object was passed in as an argument.</li>
+<li>Operators cannot call other operators and pass a pointer to an object, <em>unless</em> that object was passed in as an argument.</li>
+</ol>
+<p>Be aware that reading <em>or</em> writing to global symbols must be synchronized across all executions running simultaneously, and can therefore severely affect overall performance. It is recommended that local variables be used exclusively where possible.</p>
+<p>Operators are created using the <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.operator.html#command:fish.operator" title="Define a new |FISH| operator."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">operator</span></code></a> command, with arguments following just like <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.define.html#command:fish.define" title="Define a new |FISH| function.   The function will be named  s , and must&#013;&#010;be a valid symbol name.  Tokens following are assumed to be arguments that the&#013;&#010;function will take.  Please see  fish_scripting .  [CS: this needs&#013;&#010;'common-izing  for use with PFC] and the ref-basicclifishtutorial.`"><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">define</span></code></a>.
+The <span class="codename">FISH</span> lines in the definition are the same as for a normal function, subject to the restrictions above.</p>
+<p>In order to give examples of operators, we will first generate some data to operate upon.
+The following <span class="codename">FISH</span> function will generate <a class="reference internal" href="../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">100,000</span></span></a> data scalars at random points in a 10x10x10 cube and give them random values from <a class="reference internal" href="../../../../utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">0.0</span></span></a> to <a class="reference internal" href="../../../../utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">10.0</span></span></a>.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model random</span><span class="n"> </span><span class="m m-Double">12000</span>
+<span class="nb">fish define</span><span class="ni"> generate</span><span class="p">(</span><span class="ni">n</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> x </span><span class="p">=</span><span class="ni"> </span><span class="k">math.random.uniform</span><span class="p">(</span><span class="ni">n</span><span class="p">)</span><span class="ni"> </span><span class="o">*</span><span class="ni"> </span><span class="m m-Double">10.0</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> y </span><span class="p">=</span><span class="ni"> </span><span class="k">math.random.uniform</span><span class="p">(</span><span class="ni">n</span><span class="p">)</span><span class="ni"> </span><span class="o">*</span><span class="ni"> </span><span class="m m-Double">10.0</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> z </span><span class="p">=</span><span class="ni"> </span><span class="k">math.random.uniform</span><span class="p">(</span><span class="ni">n</span><span class="p">)</span><span class="ni"> </span><span class="o">*</span><span class="ni"> </span><span class="m m-Double">10.0</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> scalars </span><span class="p">=</span><span class="ni"> data</span><span class="p">.</span><span class="ni">scalar</span><span class="p">.</span><span class="ni">create</span><span class="p">(::</span><span class="ni">vector</span><span class="p">(::</span><span class="ni">x</span><span class="p">,::</span><span class="ni">y</span><span class="p">,::</span><span class="ni">z</span><span class="p">))</span>
+<span class="ni">    data</span><span class="p">.</span><span class="ni">scalar</span><span class="p">.</span><span class="ni">value</span><span class="p">(::</span><span class="ni">scalars</span><span class="p">)</span><span class="ni"> </span><span class="p">=::</span><span class="ni"> </span><span class="k">math.random.uniform</span><span class="p">(</span><span class="ni">n</span><span class="p">)</span><span class="ni"> </span><span class="o">*</span><span class="ni"> </span><span class="m m-Double">10.0</span>
+<span class="nb">end</span>
+<span class="ni">[generate</span><span class="p">(</span><span class="m m-Double">100000</span><span class="p">)</span><span class="ni">]</span><span class="n"> </span>
+</pre></div>
+</div>
+<p>The following example operator determines if the x-coordinate of a particular scalar object falls within a given range, and if so it both assigns it to the group <a class="reference internal" href="../../../../utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">inside</span></span></a> in slot <a class="reference internal" href="../../../../utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">mark</span></span></a> and returns <a class="reference internal" href="../../../../utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">true</span></span></a>, or assigns it to the group <a class="reference internal" href="../../../../utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">outside</span></span></a> and returns <a class="reference internal" href="../../../../utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">false</span></span></a>.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">fish operator</span><span class="n"> labeldata</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">low</span><span class="p">,</span><span class="n">high</span><span class="p">)</span>
+<span class="n">    local x </span><span class="p">=</span><span class="n"> data</span><span class="p">.</span><span class="n">scalar</span><span class="p">.</span><span class="n">pos</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">x</span>
+<span class="n">    if math</span><span class="p">.</span><span class="n">in</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="n">low</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">high</span><span class="p">)</span><span class="n"> then</span>
+<span class="n">        data</span><span class="p">.</span><span class="n">scalar</span><span class="p">.</span><span class="n">group</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="s">&#39;mark&#39;</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> </span><span class="s">&#39;inside&#39;</span>
+<span class="n">        return </span><span class="sx">true</span>
+<span class="n">    endif</span>
+<span class="n">    data</span><span class="p">.</span><span class="n">scalar</span><span class="p">.</span><span class="n">group</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="s">&#39;mark&#39;</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> </span><span class="s">&#39;outside&#39;</span>
+<span class="n">    return </span><span class="sx">false</span>
+<span class="nb">end</span>
+</pre></div>
+</div>
+<p>To execute the operator, call it as a normal <span class="codename">FISH</span> symbol with a <a class="reference internal" href="fish_splitting.html#fish-splitting"><span class="std std-ref">split</span></a> argument.  Since it is an operator, the repeated calls will be executed on all available threads.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="ni">[labeldata</span><span class="p">(::</span><span class="ni">data</span><span class="p">.</span><span class="ni">scalar</span><span class="p">.</span><span class="ni">list</span><span class="p">,</span><span class="m m-Double">4.0</span><span class="p">,</span><span class="m m-Double">6.0</span><span class="p">)</span><span class="ni">]</span>
+</pre></div>
+</div>
+<p>Note the use of the <span class="cmdkey">return</span> statement in the operator.   Since an operator is also a global symbol (just like a function), assigning a value to it would require the use of a <span class="fishname">lock</span> statement and incur significant synchronization overhead.  Instead, operators should always use the <span class="cmdkey">return</span> statement to return values from the operation.  As with all splitting, the return values are collected into a list.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>There are occasions when reading and/or writing to a global symbol is unavoidable.
+In such cases, the <span class="cmdkey">fwd</span> statment needs to be used inside an operator to allow a global symbol to be written to.
+The following example uses a <span class="codename">FISH</span> operator to scan the scalar data for values inside a box given by a cartesian extent, and returns the maximum, minimum, accumulated, and last value found in global symbols.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="ni">[</span><span class="k">global</span><span class="ni"> maxval </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0.0</span><span class="ni">]</span>
+<span class="ni">[</span><span class="k">global</span><span class="ni"> minval </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1e30</span><span class="ni">]</span>
+<span class="ni">[</span><span class="k">global</span><span class="ni"> accval </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0.0</span><span class="ni">]</span>
+<span class="ni">[</span><span class="k">global</span><span class="ni"> setval </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0.0</span><span class="ni">]</span>
+<span class="nb">fish operator</span><span class="n"> maxdata</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">low</span><span class="p">,</span><span class="n">high</span><span class="p">)</span>
+<span class="n">    local p </span><span class="p">=</span><span class="n"> data</span><span class="p">.</span><span class="n">scalar</span><span class="p">.</span><span class="n">pos</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">    if math</span><span class="p">.</span><span class="n">in</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="n">low</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">high</span><span class="p">)</span><span class="n"> then</span>
+<span class="n">        lock maxval </span><span class="p">=</span><span class="n"> math</span><span class="p">.</span><span class="n">max</span><span class="p">(</span><span class="n">maxval</span><span class="p">,</span><span class="n">data</span><span class="p">.</span><span class="n">scalar</span><span class="p">.</span><span class="n">val</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="n"> </span><span class="c">; Max value</span>
+<span class="n">        lock minval </span><span class="p">=</span><span class="n"> math</span><span class="p">.</span><span class="n">min</span><span class="p">(</span><span class="n">minval</span><span class="p">,</span><span class="n">data</span><span class="p">.</span><span class="n">scalar</span><span class="p">.</span><span class="n">val</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="n"> </span><span class="c">; Min value</span>
+<span class="n">        lock accval </span><span class="o">+=</span><span class="n"> data</span><span class="p">.</span><span class="n">scalar</span><span class="p">.</span><span class="n">val</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="n">         </span><span class="c">; Accumulated value</span>
+<span class="n">        lock setval </span><span class="p">=</span><span class="n"> data</span><span class="p">.</span><span class="n">scalar</span><span class="p">.</span><span class="n">val</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="n">   </span><span class="c">; Set value (should be</span>
+<span class="n">                                              </span><span class="c">; last value in list)</span>
+<span class="n">    endif</span>
+<span class="nb">end</span>
+<span class="ni">[maxdata</span><span class="p">(::</span><span class="ni">data</span><span class="p">.</span><span class="ni">scalar</span><span class="p">.</span><span class="ni">list</span><span class="p">,(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">),(</span><span class="m m-Double">6</span><span class="p">,</span><span class="m m-Double">6</span><span class="p">,</span><span class="m m-Double">6</span><span class="p">))</span><span class="ni">]</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Finally, one of the most common and important uses of <span class="codename">FISH</span> operators (and indeed their primary reason for creation) is to use during cycling.
+Otherwise a single threaded <span class="codename">FISH</span> function that checks or changes all objects in a model will easily dominate the run time of the system.</p>
+<p>To assign an operator to execute during cycling, use either the <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.callback.html#command:fish.callback" title="Add/remove functions to be executed in response to callback events."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">callback</span></code></a> command or the <span class="cmdkey">fish-call</span> keyword to the <a class="reference internal" href="../../../../../kernel/doc/manual/model/commands/cmd_model.solve.html#command:model.solve" title="Enable the automatic detection of the steady-state solution for mechanical&#013;&#010;problems. A calculation is performed until the limiting conditions, as defined&#013;&#010;by the following keywords, are reached. SOLVE force must be used for rigid block&#013;&#010;models. The SOLVE command does not monitor fluid flow. It is possible that mechanical&#013;&#010;equilibrium may be reached prior to fluid-flow equilibrium for steady-state&#013;&#010;flow. CYCLE ftime should be used for transient fluid flow."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">solve</span></code></a> command.
+Specify the name of the operator, followed by the argument(s) that will be passed for each execution.</p>
+<p>Generally the argument assigning the list of objects to iterate over is indicated using a <span class="codename">FISH</span> library function, which is not directly recognized by the command processor.
+This must therefore be indicated using <a class="reference internal" href="fish_inline.html#fish-inline"><span class="std std-ref">inline fish</span></a>.
+The <a class="reference internal" href="../../../../utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">::</span></span></a> prefix must be used to indicate that the argument is to be split, as always (see <a class="reference internal" href="fish_splitting.html#fish-splitting"><span class="std std-ref">Splitting</span></a>).
+Note that these values are evaluated when the command is processed, and stored for execution during cycling.</p>
+<p>An example of this is below:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="c">;; Persistent fish call entry</span>
+<span class="nb">fish callback</span><span class="n"> add my_function</span><span class="p">(</span><span class="ni">[</span><span class="p">::</span><span class="ni">data</span><span class="p">.</span><span class="ni">scalar</span><span class="p">.</span><span class="ni">list]</span><span class="p">)</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">100</span>
+<span class="c">;; fish call added to a single solve command</span>
+<span class="nb">model </span><span class="ss">solve</span><span class="n"> fish</span><span class="o">-</span><span class="n">call </span><span class="o">-</span><span class="m m-Double">100</span><span class="n"> my_function</span><span class="p">(</span><span class="ni">[</span><span class="p">::</span><span class="ni">data</span><span class="p">.</span><span class="ni">scalar</span><span class="p">.</span><span class="ni">list]</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="fish.html" ><span class="codename">FISH</span> Scripting Reference</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="fish_languagerules.html" accesskey="U"><span class="codename">FISH</span> Rules and Usage</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="fish_splitting.html"
+                           title="previous chapter"> Splitting: Automatic Execution of Functions on Type Contents</a> |    
+       <a href="fish_redefining.html"
+                           title="next chapter">Redefining <span class="codename">FISH</span> Functions</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Operators: Multi-threaded function support" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

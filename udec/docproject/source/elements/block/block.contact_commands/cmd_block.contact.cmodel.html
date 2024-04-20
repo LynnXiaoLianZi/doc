@@ -1,0 +1,597 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block contact cmodel command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block contact cy-substepping command" href="cmd_block.contact.cy-substepping.html" />
+    <link rel="prev" title="block contact change command" href="cmd_block.contact.change.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-contact-cmodel-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">cmodel</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="blockcontact command">
+<dt id="command:block.contact.cmodel">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">c</span><span class="null">o</span><span class="null">n</span><span class="null">t</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null"> </span></span><span class="cmdname"><span class="null">c</span><span class="null">m</span><span class="null">o</span><span class="null">d</span><span class="null">e</span><span class="null">l</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.contact.cmodel.assign" title="block contact cmodel assign">assign</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.cmodel.default" title="block contact cmodel default">default</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#There was a problem" title="block contact cmodel default">default</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.cmodel.list" title="block contact cmodel list">list</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.cmodel.load" title="block contact cmodel load">load</a></p>
+</div>
+<p>There are presently two independant methods for assigning constitutive models and properties to contacts[1]. The method described here assigns a constitutive model to each contact and that contact has its own local set of properties.  This method uses more memory, but is more flexible.  Using this method, FISH may be used to modify the properties during cycling.  The basic form of this command will associate a constitutive model with contacts in the specified range.  This command can also be used to assign properties to the contacts by following the model name with the property keywords. Contact model properties may also be assigned using the <a class="reference internal" href="cmd_block.contact.property.material.html#command:block.contact.property" title="Assign properties to material models for contacts. This command is used to define&#013;&#010;the material property arrays for contacts that have been assigned a constitutive&#013;&#010;model number and a material porperty number usine the  block.contact.change &#013;&#010;command. The first parameter must be the specification of the joint material&#013;&#010;number  i  (1-50). Unless otherwise stated, the default value for all properites&#013;&#010;is zero.  The properties for the contact models follow."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">property</span></code></a> command. At present, five joint constitutive models are available through the use of this command: Coulomb slip (point contact); Coulomb slip (area contact); Coulomb slip with residual strength (area contact); continuously yielding; and Barton-Bandis (optional model).</p>
+<p>This command is also used to load and assign user defined contact (joint) models.  The user defined contact models is an optional feature in <span class="codename">UDEC</span>.  At present, one example user defined joint constitutive model is available through use of this command. This model is described in Section 4.2.2 in Constitutive Models.</p>
+<p>The model must be assigned before assigning properties. If properties that are not consistent with the chosen model are given, a warning message will be issued to inform the user that the unneeded properties were not accepted. If a required property is not specified, the default will be used.    WARNING: When a model is invoked over a specified range, all properties associated with that model are initialized to zero in that range. Properties previously assigned to that range must be specified again, even if their values have not changed.</p>
+<p>Examples of this command are:</p>
+<p>block contact cmodel assign area</p>
+<p>block contact cmodel assign area stiffness-normal 2e9 stiffness-shear 1e9</p>
+<p>The model and properties that are assigned to new contacts that are formed during cycling can also be specified using this command. An example of this usage is:</p>
+<p>block contact cmodel default area stiffness-normal 2e9 stiffness-shear 1e9</p>
+<p>block comtact cmodel default 2 material 1</p>
+<p>The Coulomb slip models are described in Section 1.2.4 in Theory and Background, the continuously yielding model is described in Section 2 in Constitutive Models, and the Barton-Bandis model is described in Section 3 in Constitutive Models.
+Any joint constitutive model that already exists for some or all of the contacts in the given range (as specified by the <a class="reference internal" href="cmd_block.contact.change.html#kwd:block.contact.change.model" title="Constitutive number  i  is assigned to designated deformable blocks according&#013;&#010;to the following table."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">change</span> <span class="pre">model</span></code></a> command) is ignored. The <code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">default-model</span></code> command may be used to specify a model and properties to be used for new contacts.</p>
+<dl class="keyword">
+<dt id="kwd:block.contact.cmodel.assign">
+<span class="cmdkey"><span class="pref">a</span><span class="null">s</span><span class="null">s</span><span class="null">i</span><span class="null">g</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>Assign constitutive models via the following names.</p>
+<dl class="keyword">
+<dt id="kwd:block.contact.cmodel.assign.area">
+<span class="cmdkey"><span class="pref">a</span><span class="null">r</span><span class="null">e</span><span class="null">a</span><span class="null"> </span></span></dt>
+<dd><p>Assign the Coulomb slip (area) contact model. This model differs from the point model by having a length (and width of 1).  This allows stress to be calculated. The property keywords for the area model may be found <a class="reference internal" href="#contact-model-area-properties"><span class="std std-ref">here</span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.cmodel.assign.barton-bandis">
+<span class="cmdkey"><span class="pref">b</span><span class="null">a</span><span class="null">r</span><span class="null">t</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">b</span><span class="null">a</span><span class="null">n</span><span class="null">d</span><span class="null">i</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>Assign the Barton-Bandis contact model (optional model). The property keywords for the Barton-Bandis model may be found <a class="reference internal" href="#contact-model-bb-properties"><span class="std std-ref">here</span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.cmodel.assign.continuously-yielding">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">n</span><span class="null">t</span><span class="null">i</span><span class="null">n</span><span class="null">u</span><span class="null">o</span><span class="null">u</span><span class="null">s</span><span class="null">l</span><span class="null">y</span><span class="null">-</span><span class="pref">y</span><span class="null">i</span><span class="null">e</span><span class="null">l</span><span class="null">d</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span></dt>
+<dd><p>Assign the continuously yielding contact model. The property keywords for the c-y model may be found <a class="reference internal" href="#contact-model-cy-properties"><span class="std std-ref">here</span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.cmodel.assign.point">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">i</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>Assign the Coulomb slip (point contact) model.</p>
+<p>Assign the elastic contact model. The property keywords for the elastic model may be found <a class="reference internal" href="#contact-model-point-properties"><span class="std std-ref">here</span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.cmodel.assign.residual">
+<span class="cmdkey"><span class="pref">r</span><span class="null">e</span><span class="null">s</span><span class="null">i</span><span class="null">d</span><span class="null">u</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>Assign the Coulomb slip with residual strength model. This model difers from the Coulomb model by having post peak (residual) properties. The property keywords for the residual model may be found <a class="reference internal" href="#contact-model-residual-properties"><span class="std std-ref">here</span></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.cmodel.default">
+<span class="cmdkey"><span class="pref">d</span><span class="null">e</span><span class="null">f</span><span class="null">a</span><span class="null">u</span><span class="null">l</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">imodel</span><span class="null"> </span></span></a><span class="cmdkey"><span class="pref">m</span><span class="pref">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">imat</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the default material number for new contacts (created after cycle 1). If <span class="cmdkey">material</span> is not specified, it is assumed equal to the block material number on one side of the joint.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt>
+<span class="cmdkey"><span class="pref">d</span><span class="null">e</span><span class="null">f</span><span class="null">a</span><span class="null">u</span><span class="null">l</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">smodel</span><span class="null"> </span></span></a><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span><span class="cmdkey"><span class="null">:</span><span class="null">s</span><span class="null">t</span><span class="null">r</span><span class="null">:</span><span class="null">'</span><span class="null">s</span><span class="null">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">'</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fvalue</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the default constitutive relation for new contacts (created after cycle 1). If <span class="cmdkey">default</span> is not specified, it is assumed equal to 2. Thhe property keywords and values must also be included.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.cmodel.list">
+<span class="cmdkey"><span class="pref">l</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><dl class="keyword">
+<dt id="kwd:block.contact.cmodel.list.names">
+<span class="cmdkey"><span class="pref">n</span><span class="null">a</span><span class="null">m</span><span class="null">e</span><span class="null">s</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>This will list all of the models that are availble to be assigned using this command.  This wil include any  user defined models that have been loaded (if any).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.cmodel.list.properties">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">i</span><span class="null">e</span><span class="null">s</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>This will list all of the models and the poperty keyword names that are availble to be assigned using this command.  This wil include any  user defined models that have been loaded (if any).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.cmodel.list.states">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">s</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>This will list the names of the model states associated associated with the available contact (joint) models.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.cmodel.load">
+<span class="cmdkey"><span class="pref">l</span><span class="null">o</span><span class="null">a</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Load a user-defined joint constitutive model (UDM).  The UDM option is required to use this command. Also, CONFIG cppudm must be used for the command to be accepted. Models exist as dynamic linked libraries, and must be loaded prior to assignment. Models that are placed in the “pluginsjmodels” folder are be automatically loaded at runtime. Models loaded with the <span class="cmdkey">load</span> keyword are designated by their file name (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>).</p>
+</dd></dl>
+
+</dd></dl>
+
+<table border="1" class="colwidths-given docutils" id="contact-model-area-properties">
+<caption><span class="caption-text">Table 1: Property keywords for Area Coulomb slip constitutive model</span></caption>
+<colgroup>
+<col width="1%" />
+<col width="30%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">keyword</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>(1)</td>
+<td>aperture-residual</td>
+<td>residual aperture at high normal stress [length]</td>
+</tr>
+<tr class="row-odd"><td>(2)</td>
+<td>aperture-zero-load</td>
+<td>aperture for zero normal stress [length]</td>
+</tr>
+<tr class="row-even"><td>(3)</td>
+<td>cohesion</td>
+<td>joint cohesion [stress]</td>
+</tr>
+<tr class="row-odd"><td>(4)</td>
+<td>constant-b</td>
+<td>emperical multiplier for fluid flow cubic law (default = 1)</td>
+</tr>
+<tr class="row-even"><td>(5)</td>
+<td>dilation-limit</td>
+<td>shear displacement at which joint stops dilating. (default=0) (no limit if = 0) [length]</td>
+</tr>
+<tr class="row-odd"><td>(6)</td>
+<td>exponent</td>
+<td>exponent for fluid flow cubic law (default = 3)</td>
+</tr>
+<tr class="row-even"><td>(7)</td>
+<td>friction</td>
+<td>joint friction [degrees]</td>
+</tr>
+<tr class="row-odd"><td>(8)</td>
+<td>friction-residual</td>
+<td>residual joint friction [degrees]. The residual joint friction (if specified)cannot be exactly equal to zero (use a small nonzero value)</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td>nonwetting-permeabilty-factor</td>
+<td>non-wetting fluid joint permeability constant (see eq. 2.3 in Special Features Manual).  also called joint permeability factor [1/(stress*time)]</td>
+</tr>
+<tr class="row-odd"><td>(9)</td>
+<td>permeability-factor</td>
+<td>wetting fluid joint permeability constant (see eq. 2.3 in Special Features Manual). Also called joint permeability factor [1/(stress*time)]</td>
+</tr>
+<tr class="row-even"><td>(10)</td>
+<td>stiffness-normal</td>
+<td>joint normal stiffness [stress/length]</td>
+</tr>
+<tr class="row-odd"><td>(11)</td>
+<td>stiffness-normal-table</td>
+<td>joint normal stiffness table</td>
+</tr>
+<tr class="row-even"><td>(12)</td>
+<td>stiffness-shear</td>
+<td>joint shear stiffness [stress/length]</td>
+</tr>
+<tr class="row-odd"><td>(13)</td>
+<td>tension</td>
+<td>joint tensile strength [stress]</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The default value for these properties (with the exception, as noted, of constant-b, exponent and friction-residual) is zero. Joint model 5 is similar to joint model 2, except that when the joint tensile or shear strength is exceeded, then joint tensile strength, joint friction angle and joint cohesion are set to residual values. For joint model 2, joint tensile strength, joint friction angle and joint cohesion are preserved regardless of loading path. To limit fluid flow to broken joint segments use the command <code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">crackflow</span></code> <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>.</p>
+</div>
+<table border="1" class="colwidths-given docutils" id="contact-model-bb-properties">
+<caption><span class="caption-text">Table 2: Property keywords for Barton Bandis constitutive model</span></caption>
+<colgroup>
+<col width="1%" />
+<col width="30%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">keyword</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>(1)</td>
+<td>aperture</td>
+<td>initial aperture for Barton Bandis joint.  This value will be calculated from an emperical formula if not specified [length]</td>
+</tr>
+<tr class="row-odd"><td>(2)</td>
+<td>bbdmax</td>
+<td>maximum value of dilation angle [degrees]</td>
+</tr>
+<tr class="row-even"><td>(3)</td>
+<td>bbdmin</td>
+<td>minimum value of dilation angle [degrees]</td>
+</tr>
+<tr class="row-odd"><td>(4)</td>
+<td>bbdplateau</td>
+<td>determines whether the damage factors are applied to the plateau region of the shear stress values during shear reversal. Setting this parameter equal to 1 will result in more realistic dilation calculations. The default (bbdplateau = 0) is consistent with the original definition of the Barton-Bandis model.</td>
+</tr>
+<tr class="row-even"><td>(5)</td>
+<td>bbdtable</td>
+<td>Barton-Bandis shear damage factor table. Up to 10 damage factors may be specified in a table by using the TABLE command. The factors are used to reduce the peak shear for each shear cycle. The first value is normally 1.0 and is applied to shear cycle 1. Each additional value will apply to the next shear cycle. The last value given will be used for all subsequent cycles. The default factors are: 1.0; 0.75; 0.625; 0.5625; and 0.53125</td>
+</tr>
+<tr class="row-odd"><td>(6)</td>
+<td>jcso</td>
+<td>laboratory scale joint wall compressive strength [stress]</td>
+</tr>
+<tr class="row-even"><td>(7)</td>
+<td>jkn</td>
+<td>joint normal stiffness [stress/length]</td>
+</tr>
+<tr class="row-odd"><td>(8)</td>
+<td>jks</td>
+<td>joint shear stiffness [stress/length]</td>
+</tr>
+<tr class="row-even"><td>(9)</td>
+<td>jrco</td>
+<td>laboratory scale joint roughness coefficient</td>
+</tr>
+<tr class="row-odd"><td>(10)</td>
+<td>ln</td>
+<td>field scale join length [length]</td>
+</tr>
+<tr class="row-even"><td>(11)</td>
+<td>lo</td>
+<td>laboratory scale joint length [length]</td>
+</tr>
+<tr class="row-odd"><td>(12)</td>
+<td>phir</td>
+<td>residual friction angle [degrees]</td>
+</tr>
+<tr class="row-even"><td>(13)</td>
+<td>sigmac</td>
+<td>intact rock uniaxial compressive strength [stress]</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The default value for these properties (with the exceptions, as noted) is zero.</p>
+</div>
+<table border="1" class="colwidths-given docutils" id="contact-model-cy-properties">
+<caption><span class="caption-text">Table 3: Property keywords for Continuously Yielding constitutive model</span></caption>
+<colgroup>
+<col width="1%" />
+<col width="30%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">keyword</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>(1)</td>
+<td>aperture-residual</td>
+<td>residual aperture at high normal stress [length]</td>
+</tr>
+<tr class="row-odd"><td>(2)</td>
+<td>aperture- zero-load</td>
+<td>aperture for zero normal stress [length]</td>
+</tr>
+<tr class="row-even"><td>(3)</td>
+<td>constant-b</td>
+<td>emperical multiplier for fluid flow cubic law (default = 1)</td>
+</tr>
+<tr class="row-odd"><td>(4)</td>
+<td>exponent</td>
+<td>exponent for fluid flow cubic law (default = 3)</td>
+</tr>
+<tr class="row-even"><td>(5)</td>
+<td>exponent-normal</td>
+<td>exponent of joint elastic normal stiffness</td>
+</tr>
+<tr class="row-odd"><td>(6)</td>
+<td>exponent-shear</td>
+<td>exponent of joint elastic shear stiffness</td>
+</tr>
+<tr class="row-even"><td>(7)</td>
+<td>friction</td>
+<td>joint friction [degrees]</td>
+</tr>
+<tr class="row-odd"><td>(8)</td>
+<td>friction-initial</td>
+<td>initial joint friction [degrees]</td>
+</tr>
+<tr class="row-even"><td>(9)</td>
+<td>nonwetting-permeabilty-factor</td>
+<td>non-wetting fluid joint permeability constant (see eq. 2.3 in Special Features Manual).  also called joint permeability factor [1/(stress*time)]</td>
+</tr>
+<tr class="row-odd"><td>(10)</td>
+<td>permeability-factor</td>
+<td>wetting fluid joint permeability constant (see eq. 2.3 in Special Features Manual).  also called joint permeability factor [1/(stress*time)]</td>
+</tr>
+<tr class="row-even"><td>(11)</td>
+<td>roughness</td>
+<td>joint roughness parameter [length]</td>
+</tr>
+<tr class="row-odd"><td>(12)</td>
+<td>stiffness-normal</td>
+<td>joint normal stiffness [stress/length]</td>
+</tr>
+<tr class="row-even"><td>(13)</td>
+<td>stiffness-normal-maximum</td>
+<td>upper limit on joint normal stiffness [stress/length]</td>
+</tr>
+<tr class="row-odd"><td>(14)</td>
+<td>stiffness-normal-minimum</td>
+<td>lower limit on joint normal stiffness [stress/length]</td>
+</tr>
+<tr class="row-even"><td>(15)</td>
+<td>stiffness-shear</td>
+<td>joint shear stiffness [stress/length]</td>
+</tr>
+<tr class="row-odd"><td>(16)</td>
+<td>stiffness-shear-maximum</td>
+<td>upper limit on joint shear stiffness [stress/length]</td>
+</tr>
+<tr class="row-even"><td>(17)</td>
+<td>stiffness-shear-minimum</td>
+<td>lower limit on joint shear stiffness [stress/length]</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The default values for exponent-normal, exponent-shear, friction-initial and friction-residual are zero. If neither stiffness-normal-minimum nor stiffness-normal-maximum is defined, joint normal stiffness will be constant (i.e., exponent-normal will have no effect). Joint shear stiffness is defined in a similar manner. Timestep calculations for cy joints are based on the values of stiffness-normal-maximum and stiffness-shear-maximum. In general, it will not be necessary to further reduce the timestep for numerical stability. The user should avoid very large values for stiffness-normal-maximum or stiffness-shear-maximum, as these might result in very small timesteps.</p>
+</div>
+<table border="1" class="colwidths-given docutils" id="contact-model-point-properties">
+<caption><span class="caption-text">Table 4: Property keywords for Point Coulomb slip constitutive model</span></caption>
+<colgroup>
+<col width="1%" />
+<col width="30%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">keyword</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>(1)</td>
+<td>nonwetting-point-perm-fact</td>
+<td>non-wetting fluid permeability constant for point contacts (see eq. 2.3 in Special Features Manual).  [length <sup>2</sup>/(stress*time)]</td>
+</tr>
+<tr class="row-odd"><td>(2)</td>
+<td>point-cohesion</td>
+<td>point contact cohesion [stress]</td>
+</tr>
+<tr class="row-even"><td>(3)</td>
+<td>point-dilation</td>
+<td>point contact dilation [degrees]</td>
+</tr>
+<tr class="row-odd"><td>(4)</td>
+<td>point-friction</td>
+<td>point contact friction [degrees]</td>
+</tr>
+<tr class="row-even"><td>(5)</td>
+<td>point-pemeability-factor</td>
+<td>wetting fluid permeability constant for point contacts (see eq. 2.3 in Special Features Manual).  [length <sup>2</sup>/(stress*time)]</td>
+</tr>
+<tr class="row-odd"><td>(6)</td>
+<td>point-stiffness-normal</td>
+<td>point contact normal stiffness [force/length]</td>
+</tr>
+<tr class="row-even"><td>(7)</td>
+<td>point-stiffness-shear</td>
+<td>point contact shear stiffness [force/length]</td>
+</tr>
+<tr class="row-odd"><td>(8)</td>
+<td>point-tension</td>
+<td>point contact tensile strength [force]</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The default value for these properties (with the exceptions, as noted) is zero.</p>
+</div>
+<table border="1" class="colwidths-given docutils" id="contact-model-residual-properties">
+<caption><span class="caption-text">Table 5: Property keywords for Residual Coulomb slip constitutive model</span></caption>
+<colgroup>
+<col width="1%" />
+<col width="30%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">keyword</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>(1)</td>
+<td>aperture-residual</td>
+<td>residual aperture at high normal stress [length]</td>
+</tr>
+<tr class="row-odd"><td>(2)</td>
+<td>aperture-zero-load</td>
+<td>aperture for zero normal stress [length]</td>
+</tr>
+<tr class="row-even"><td>(3)</td>
+<td>cohesion</td>
+<td>joint cohesion [stress]</td>
+</tr>
+<tr class="row-odd"><td>(4)</td>
+<td>cohesion-residual</td>
+<td>joint cohesion after failure [stress]</td>
+</tr>
+<tr class="row-even"><td>(5)</td>
+<td>constant-b</td>
+<td>emperical multiplier for fluid flow cubic law (default = 1)</td>
+</tr>
+<tr class="row-odd"><td>(6)</td>
+<td>dilation-limit</td>
+<td>shear displacement at which joint stops dilating. (default=0) (no limit if = 0) [length]</td>
+</tr>
+<tr class="row-even"><td>(7)</td>
+<td>exponent</td>
+<td>exponent for fluid flow cubic law (default = 3)</td>
+</tr>
+<tr class="row-odd"><td>(8)</td>
+<td>friction</td>
+<td>joint friction [degrees]</td>
+</tr>
+<tr class="row-even"><td>(9)</td>
+<td>friction-residual</td>
+<td>joint friction after failure occurs [degrees]</td>
+</tr>
+<tr class="row-odd"><td>(10)</td>
+<td>nonwetting-permeabilty-factor</td>
+<td>non-wetting fluid joint permeability constant (see eq. 2.3 in Special Features Manual).  also called joint permeability factor [1/(stress*time)]</td>
+</tr>
+<tr class="row-even"><td>(11)</td>
+<td>permeability-factor</td>
+<td>wetting fluid joint permeability constant (see eq. 2.3 in Special Features Manual). Also called joint permeability factor [1/(stress*time)]</td>
+</tr>
+<tr class="row-odd"><td>(12)</td>
+<td>stiffness-normal</td>
+<td>joint normal stiffness [stress/length]</td>
+</tr>
+<tr class="row-even"><td>(13)</td>
+<td>stiffness-normal-table</td>
+<td>joint normal stiffness table</td>
+</tr>
+<tr class="row-odd"><td>(14)</td>
+<td>stiffness-shear</td>
+<td>joint shear stiffness [stress/length]</td>
+</tr>
+<tr class="row-even"><td>(15)</td>
+<td>tension</td>
+<td>joint tensile strength [stress]</td>
+</tr>
+<tr class="row-odd"><td>(16)</td>
+<td>tension-residual</td>
+<td>joint tensile strength after failure [stress]</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The default value for these properties (with the exception, as noted, of constant-b, exponent and friction-residual) is zero. Joint model residual is similar to joint model area, except that when the joint tensile or shear strength is exceeded, then joint tensile strength, joint friction angle and joint cohesion are set to residual values. For joint model area, joint tensile strength, joint friction angle and joint cohesion are preserved regardless of loading path. To limit fluid flow to broken joint segments use the command <code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">crackflow</span></code> <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>.</p>
+</div>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td>The other method of assigning models and properties uses property arrays.  To see information on that method see <a class="reference internal" href="cmd_block.contact.change.html#command:block.contact.change" title="Set or change joint models or material numbers. All joints with contact coordinates&#013;&#010;lying within the optional range have material numbers changed. If no range is&#013;&#010;specified, all joints will have material numbers changed according to the keywords&#013;&#010;given below.To change block material numbers, see  block.change ; for cable&#013;&#010;material numbers, see  cable.change ; for domain material numbers, see&#013;&#010; domain.change .  See  block.contact.cmodel  for extended joint models,&#013;&#010;and local storage joint models. To assign properties to the"><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">change</span></code></a>.</td></tr>
+</tbody>
+</table>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../block_commands/block_commands.html" >Block Commands</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../block_commands/cmd_block.contact.html" accesskey="U"><span class="fishcmd">block contact</span> commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_block.contact.change.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">change</span></code> command</a> |    
+       <a href="cmd_block.contact.cy-substepping.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">cy-substepping</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block contact cmodel command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

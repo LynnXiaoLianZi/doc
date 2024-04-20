@@ -1,0 +1,162 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Bundle Report &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../search.html" />
+    <link rel="next" title="FISH Global Symbols Control Set" href="../../../programwindow/controlpanel/fishglobals.html" />
+    <link rel="prev" title="Open a Bundle" href="openbundle.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="bundle-report">
+<span id="dlg-bundlereport"></span><h1>Bundle Report</h1>
+<div class="enlarge figure align-center" id="id1">
+<a class="reference internal image-reference" href="../../../../../../../../_images/bundle_up.png"><img alt="../../../../../../../../_images/bundle_up.png" src="../../../../../../../../_images/bundle_up.png" style="width: 350px;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: The Bundle Report dialog. Click to enlarge in a new window.</span></p>
+</div>
+<p>This dialog appears when either <span class="menuselection">Tools —&gt; Bundle —&gt; Pack</span> or <span class="menuselection">Tools —&gt; Bundle —&gt; Unpack</span> are used. In either case, it provides a listing of the files that are included in the present operation. All files in the bundle are reported to exist in one of the following five categories (though note that a category will not be shown if there are no files within it):</p>
+<dl class="docutils">
+<dt>ERROR: FILES CANNOT BE LOCATED (LINK BROKEN)</dt>
+<dd>Files listed in this section are tracked within the project but cannot be located at the path stored in the project. These files will not be included in the bundle.</dd>
+<dt>WARNING: FILES MODIFIED BUT NOT SAVED</dt>
+<dd>Files listed in this section have been changed but not yet saved.</dd>
+<dt>WARNING: ITEM HAS CHANGED AND MAY NO LONGER MATCH MODEL STATE(S) ASSOCIATED WITH IT</dt>
+<dd>A file in this section has been changed such that a model state associated with it may no longer be able to be accurately reproduced.</dd>
+<dt>WARNING: SOURCE FILES ARE STORED IN PATHS THAT MAY BE DIFFICULT TO UNPACK</dt>
+<dd>Files listed in this section are in a potentially unusual location or a location that is difficult to recreate. This can be due to being located on a root drive other than the one containing the project file. It is also reported when a file is stored in a very lengthy folder structure relative to the project file and therefore may encounter a folder-depth problem when being unpacked, depending on where the user attempts to unpack the bundle.</dd>
+<dt>OK: FILES READY FOR BUNDLE</dt>
+<dd>These files are ready to go and should pose no problem in either a “pack” or an “unpack” operation.</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Project files may be pulled, on “packing,” from a number of different folders, and all path information is stored relative to the location of the project file. The “unpack” operation will attempt to restore this path information if possible, automatically creating folders as needed to do so (again, if possible).</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p class="h3 rubric">Troubleshooting Packing</p>
+<p>Thanks to the complexities of the command stream, it is sometimes nearly impossible to eliminate some of the troubles that are reported in the error and warning categories. However, it is optimal to eliminate these errors/warnings as much as possible when “packing.”  To do so, note the information in the dialog, cancel it, and attempt any of the following as seems appropriate:</p>
+<ul class="simple">
+<li>Save the project.  This should eliminate “Files Modified But Not Saved” errors.</li>
+<li>For broken links, replace files <em>as possible</em>. If you are certain you possess a file listed in the “Link Broken” group that is an <em>exact</em> copy of the file in question, you can restore it to the reported location to fix the problem for that file.</li>
+<li>Re-run all project data files as needed to freshly recreate all model states (SAV files), immediately save the project upon completion, and then pack. This may be the only means to eliminate “Item has changed and may no longer match…” warnings. Problems in this category are likely to be the most difficult to resolve.</li>
+</ul>
+<p class="h3 rubric">Troubleshooting Unpacking</p>
+<p>Since the Bundle Report on “unpack” is identical to the one shown for the “pack,” the user who is unpacking can use it to attempt to fix troubles in the report. The following should be considered:</p>
+<ul class="simple">
+<li>Files that were in the “Source Files Are Stored in Paths that May Be Difficult to Unpack” are included in the bundle. However, if they were in this group on “packing,” then on “unpacking” they are placed into a folder named “Dislocated Files” that is situated with the project file. At that point, the user may attempt to re-create the needed directory structure by hand to restore these files to usability.</li>
+<li>Files still in the “Item Has Changed and May No Longer Match” category cannot be assured to faithfully recreate any model data that originates from them.  If possible, users should contact the creator of the bundle to discuss these items. If re-running the project is a possibility (as described in the section above), this may be the only resolution.</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>See the topic “<a class="reference internal" href="../bundle.html#bundle"><span class="std std-ref">Bundle Files</span></a>” for a general description of bundle files and their uses.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../projects.html" >Projects</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../bundle.html" accesskey="U">Project Bundle Files</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="openbundle.html"
+                           title="previous chapter"> Open a Bundle</a> |    
+       <a href="../../../programwindow/controlpanel/fishglobals.html"
+                           title="next chapter"><span class="codename">FISH</span> <em>Global Symbols</em> Control Set</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Bundle Report" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

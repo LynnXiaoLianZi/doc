@@ -1,0 +1,126 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>struct.shell.depth.factor &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="struct-shell-depth-factor">
+<h1><code class="docutils literal"><span class="pre">struct.shell.depth.factor</span></code></h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="sel.shell intrinsics function">
+<dt id="function:struct.shell.depth.factor">
+<a class="reference internal" href="../../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a><span class="null"> := </span><span class="fishname">struct.shell.depth.factor</span><span class="fishparamlist"><big>(</big><span class="varfishsym">p</span><big>)</big></span></dt>
+<dd><p>Get the depth factor at which stresses have been recovered.  The depth equals <span class="math">\(Ft/2\)</span> where <span class="math">\(t\)</span> is the shell element thickness.  <span class="math">\(F\)</span> values equal to <a class="reference internal" href="../../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">+1.0</span></span></a> or <a class="reference internal" href="../../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">-1.0</span></span></a> correspond to the outer/inner shell surface.  The outer surface is defined by the positive <span class="math">\(z\)</span>-direction of the local shell element system.  <span class="math">\(F\)</span> values of <a class="reference internal" href="../../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">0.0</span></span></a> corresponds to the shell mid-surface.  The depth factor can be modified with the <a class="reference internal" href="../../commands/cmd_structure.shell.recover.html#kwd:structure.shell.recover.stress" title="recover a stress tensor (expressed in global coordinate system) at a specified&#013;&#010;depth in all elements in the optional range. The depth equals `v` times `t`\&#013;&#010;/2, where `t` is shell thickness. The depth factor, `v`, must be in the range&#013;&#010;[-1, +1]. `v` equal to +1 / -1 corresponds with the outer/inner shell surface&#013;&#010;(outer surface defined by positive surface system `z`-direction), and `v` equal&#013;&#010;to zero corresponds with the shell mid-surface. If `v`"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">shell</span> <span class="pre">recover</span> <span class="pre">stress</span></code></a>, <a class="reference internal" href="../../../geogrids/commands/cmd_structure.geogrid.recover.html#kwd:structure.geogrid.recover.stress" title="recover a stress tensor (expressed in global coordinate system) at a specified&#013;&#010;depth in all elements in the optional range. The depth equals `v` times `t`\&#013;&#010;/2, where `t` is shell thickness. The depth factor, `v`, must be in the range&#013;&#010;[-1, +1]. `v` equal to +1 / -1 corresponds with the outer/inner shell surface&#013;&#010;(outer surface defined by positive surface system `z`-direction), and `v` equal&#013;&#010;to zero corresponds with the shell mid-surface. If `v`"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">geogrid</span> <span class="pre">recover</span> <span class="pre">stress</span></code></a>, or the <a class="reference internal" href="../../../liners/commands/cmd_structure.liner.recover.html#kwd:structure.liner.recover.stress" title="recover a stress tensor (expressed in global coordinate system) at a specified&#013;&#010;depth in all elements in the optional range. The depth equals `v` times `t`\&#013;&#010;/2, where `t` is shell thickness. The depth factor, `v`, must be in the range&#013;&#010;[-1, +1]. `v` equal to +1/-1 corresponds with the outer/inner shell surface&#013;&#010;(outer surface defined by positive surface system `z`-direction), and `v` equal&#013;&#010;to zero corresponds with the shell mid-surface. If `v` is not"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">liner</span> <span class="pre">recover</span> <span class="pre">stress</span></code></a> commands.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="../../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> - the depth factor at which stresses have been recovered</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Arguments:</th><td class="field-body"><a class="reference internal" href="../../../../../../../docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">p</span></span></a> - a pointer to a shell element</td>
+</tr>
+</tbody>
+</table>
+<p><span class="flag3">[URGENT: DR: in above, there was :flag2:-Ft/2-, which has been “corrected”. Why was it flagged?]</span></p>
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?struct.shell.depth.factor" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

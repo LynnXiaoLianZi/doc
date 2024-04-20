@@ -1,0 +1,507 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block domain command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block dynamic commands" href="cmd_block.dynamic.html" />
+    <link rel="prev" title="block delete command" href="cmd_block.delete.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-domain-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">domain</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="block command">
+<dt id="command:block.domain">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">d</span><span class="null">o</span><span class="null">m</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.domain.fix" title="block domain fix">fix</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.domain.fix-nonwetting" title="block domain fix-nonwetting">fix-nonwetting</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.domain.free" title="block domain free">free</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.domain.free-nonwetting" title="block domain free-nonwetting">free-nonwetting</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.domain.group" title="block domain group">group</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.domain.history" title="block domain history">history</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.domain.initialize" title="block domain initialize">initialize</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.domain.list" title="block domain list">list</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.domain.material" title="block domain material">material</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.domain.property" title="block domain property">property</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.domain.tolerance" title="block domain tolerance">tolerance</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.domain.update" title="block domain update">update</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.domain.well" title="block domain well">well</a></p>
+</div>
+<p>This command allows fluid pressures to be controled within domains (i.e., “open” spaces between blocks) within the optional range. If the range is omitted, the command applies to all domains except the outer domain. To avoid forming or deleting contacts, use the <a class="reference internal" href="../block.contact_commands/cmd_block.contact.freeze-new.html#command:block.contact.freeze-new" title="Disallow contact creation or deletion.  If set  on , |udec| will not&#013;&#010;create or delete any contacts. This may be useful for some fluid flow or thermal&#013;&#010;models. It is recommended that the model be in static equilibrium prior to issuing&#013;&#010;this command. The default is  off ."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">freeze-new</span></code></a> command. When domain pressures are changed, there may be an imbalance between block (total) stresses and joint (effective) stresses. Some cycling may be necessary to bring the model to equilibrium. This command does not change pressures in zones, use the <a class="reference internal" href="cmd_block.insitu.html#command:block.insitu" title="Initializes block zone and contact stresses, domain pressures, zone pore pressures,&#013;&#010;and hydraulic apertures. Initial zone stresses in all deformable blocks and&#013;&#010;stresses along joints between rigid blocks and/or deformable blocks in the optional&#013;&#010;range are set. If no range is specified, stresses are initialized for the entire&#013;&#010;model. Remember that compressive stresses are negative. The following keywords&#013;&#010;apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">insitu</span></code></a> command to do that.</p>
+<blockquote>
+<div><p>Total wetting fluid pressure, (<span class="math">\(ppw\)</span>), in a domain is determined by:</p>
+<div class="math">
+\[ppw = pw + dwx · x + dwy · y\]</div>
+<p>Total nonwetting fluid pressure, <span class="math">\(ppnw\)</span>, in a domain is determined by:</p>
+<div class="math">
+\[ppnw = pnw + dnwx · x + dnwy · y\]</div>
+</div></blockquote>
+<dl class="keyword">
+<dt id="kwd:block.domain.fix">
+<span class="cmdkey"><span class="pref">f</span><span class="pref">i</span><span class="null">x</span><span class="null"> </span></span></dt>
+<dd><p>Prevent the wetting fluid pressure from changing.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.fix-nonwetting">
+<span class="cmdkey"><span class="pref">f</span><span class="pref">i</span><span class="null">x</span><span class="null">-</span><span class="pref">n</span><span class="null">o</span><span class="null">n</span><span class="null">w</span><span class="null">e</span><span class="null">t</span><span class="null">t</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span></dt>
+<dd><p>Specify fixed fluid pressure in nonwetting fluid.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.free">
+<span class="cmdkey"><span class="pref">f</span><span class="pref">r</span><span class="null">e</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Specify that wetting fluid pressure is not controlled in the domains within the range. If the range is omitted, the command applies to all domains except the outer domain.
+Two things will cause domain pressures to change:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>fluid flow; or</li>
+<li>domain volume changes (if <a class="reference internal" href="../block.fluid_commands/cmd_block.fluid.flow.html#command:block.fluid.flow" title="Turn on fluid flow calculation. The fluid-flow modes are controlled with the&#013;&#010;specific commands  block.fluid.fast-flow ,  block.fluid.incompressible ,&#013;&#010; block.fluid.compressible ,  block.fluid.steady ,  block.fluid.clear ,&#013;&#010; block.fluid.gas , and  block.fluid.twophase ."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">fluid</span> <span class="pre">flow</span></code></a> <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a>).</li>
+</ol>
+</div></blockquote>
+<p>In both cases, the fluid bulk modulus must be nonzero.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.free-nonwetting">
+<span class="cmdkey"><span class="pref">f</span><span class="pref">r</span><span class="null">e</span><span class="null">e</span><span class="null">-</span><span class="pref">n</span><span class="null">o</span><span class="null">n</span><span class="null">w</span><span class="null">e</span><span class="null">t</span><span class="null">t</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span></dt>
+<dd><p>Specify that nonwetting fluid pressure is not controlled in the domains within the range. If the range is omitted, the command applies to all domains except the outer domain. (See also <a class="reference internal" href="#kwd:block.domain.free" title="Specify that wetting fluid pressure is not controlled in the domains within&#013;&#010;the range. If the range is omitted, the command applies to all domains except&#013;&#010;the outer domain."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">domain</span> <span class="pre">free</span></code></a> above.)</p>
+<p>Two things will cause domain nonwetting pressures to change:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>fluid flow; or</li>
+<li>domain volume changes (if <a class="reference internal" href="../block.fluid_commands/cmd_block.fluid.flow.html#command:block.fluid.flow" title="Turn on fluid flow calculation. The fluid-flow modes are controlled with the&#013;&#010;specific commands  block.fluid.fast-flow ,  block.fluid.incompressible ,&#013;&#010; block.fluid.compressible ,  block.fluid.steady ,  block.fluid.clear ,&#013;&#010; block.fluid.gas , and  block.fluid.twophase ."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">fluid</span> <span class="pre">flow</span></code></a> <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a>).</li>
+</ol>
+</div></blockquote>
+<p>In both cases, the fluid bulk modulus must be nonzero.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.group">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Add domains to a specified group.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.history">
+<span class="cmdkey"><span class="pref">h</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>A time history of domain quantities is stored at regular intervals. The interval default is 10 and can be modified using the <a class="reference internal" href="../../../../../../common/kernel/doc/manual/history_manual/history_commands/cmd_history.interval.html#command:history.interval" title="Specifies the history-sampling interval."><code class="xref fish fish-cmd docutils literal"><span class="pre">history</span> <span class="pre">interval</span></code></a> command.  The following keywords for domain quanitities are available.</p>
+<dl class="keyword">
+<dt id="kwd:block.domain.history.fluid-pressure">
+<span class="cmdkey"><span class="pref">f</span><span class="null">l</span><span class="null">u</span><span class="null">i</span><span class="null">d</span><span class="null">-</span><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Domain wetting fluid pressure.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.history.nonwetting-pressure">
+<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">n</span><span class="null">w</span><span class="null">e</span><span class="null">t</span><span class="null">t</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">-</span><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Domain nonwetting fluid pressure.  This will only be active if two phase fluid flow is used.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.history.saturation">
+<span class="cmdkey"><span class="pref">s</span><span class="null">a</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>Domain fluid saturation.  This will only be active if two phase fluid flow is used. If two phase flow is not used, all domains are assumed to be fully saturated.  This is true even if the fluid pressure is zero.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.initialize">
+<span class="cmdkey"><span class="pref">i</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null">i</span><span class="null">z</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="null">a</span><span class="null">d</span><span class="null">d</span><span class="null">&gt;</span><span class="null">&lt;</span><span class="null">m</span><span class="null">u</span><span class="null">l</span></span>></span><span class="null"> </span><span class="cmdkey"><span class="null">:</span><span class="null">f</span><span class="null">l</span><span class="null">t</span><span class="null">:</span><span class="null">'</span><span class="null">f</span><span class="null">'</span><span class="null"> </span></span></dt>
+<dd><p>Set initial conditions within domains. If no range is supplied, the command applies to all domains except the outer domain.</p>
+<dl class="keyword">
+<dt id="kwd:block.domain.initialize.density">
+<span class="cmdkey"><span class="pref">d</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the fluid density (<span class="math">\(ρ\)</span>) to be used with <a class="reference internal" href="#kwd:block.domain.initialize.table" title="Specify that table  i  defines the surface of the water table. The command&#013;&#010;provides fluid pressures in domains corresponding to a static head below the&#013;&#010;water table surface. The fluid density,  ρ  (see the  block.domain.initialize.density &#013;&#010;keyword above), and gravity ( block.mechanical.gravity ) must be specified&#013;&#010;prior to the use of this command. This command does not initialize fluid pressures&#013;&#010;in zones, use the  block.insitu  command to set pressures in zones."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">domain</span> <span class="pre">initialize</span> <span class="pre">table</span></code></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.initialize.fluid-temperature">
+<span class="cmdkey"><span class="pref">f</span><span class="null">l</span><span class="null">u</span><span class="null">i</span><span class="null">d</span><span class="null">-</span><span class="pref">t</span><span class="null">e</span><span class="null">m</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set domain fluid temperature.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.initialize.gradient-x">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify wetting fluid pressure gradient (<span class="math">\(dwx\)</span>) in the <span class="math">\(x\)</span>-direction.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.initialize.gradient-y">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify wetting fluid pressure gradient (<span class="math">\(dwy\)</span>) in the <span class="math">\(y\)</span>-direction.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.initialize.history">
+<span class="cmdkey"><span class="pref">h</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Apply a time history multiplier using one of the following keywords.</p>
+<dl class="keyword">
+<dt id="kwd:block.domain.initialize.history.cosine">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span><span class="null"> </span></span></a></dt>
+<dd><p>Get a history of cosine wave load with frequency <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span></span></a> (cycles/sec) applied for a problem time period of <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.initialize.history.funcname">
+<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">f</span><span class="null">u</span><span class="null">n</span><span class="null">c</span><span class="null">n</span><span class="null">a</span><span class="null">m</span><span class="null">e</span><span class="null"> </span></span></a></dt>
+<dd><p>Use the user-defined <span class="codename">FISH</span> function named <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">funcname</span></span></a> as the history multiplier.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.initialize.history.sine">
+<span class="cmdkey"><span class="pref">s</span><span class="null">i</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span><span class="null"> </span></span></a></dt>
+<dd><p>Get a history of cosine wave load with frequency <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span></span></a> (cycles/sec) applied for a problem time period of <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.initialize.history.table">
+<span class="cmdkey"><span class="pref">t</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Input the history via the <span class="flag3">trick</span> <a class="reference internal" href="../../../../../../common/kernel/doc/manual/table_manual/table_commands/commands.html#table-commands"><span class="std std-ref">table</span></a> commands. Table <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> consists of a list of pairs: <span class="math">\(time\)</span>, <span class="math">\(f(time)\)</span>. Linear interpolation is performed between the given discrete points.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.initialize.nonwetting-free">
+<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">n</span><span class="null">w</span><span class="null">e</span><span class="null">t</span><span class="null">t</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">-</span><span class="pref">f</span><span class="pref">r</span><span class="null">e</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Specify that nonwetting fluid pressure is not controlled in the domains within the range. If the range is omitted, the command applies to all domains except the outer domain. (See also <code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">domain</span> <span class="pre">initialize</span> <span class="pre">free</span></code> above.)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.initialize.nonwetting-gradient-x">
+<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">n</span><span class="null">w</span><span class="null">e</span><span class="null">t</span><span class="null">t</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">-</span><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span></dt>
+<dd><p>Specify nonwetting fluid pressure gradient (<span class="math">\(dnwx\)</span>) in the <span class="math">\(x\)</span>-direction.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.initialize.nonwetting-gradient-y">
+<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">n</span><span class="null">w</span><span class="null">e</span><span class="null">t</span><span class="null">t</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">-</span><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span></dt>
+<dd><p>Specify nonwetting fluid pressure gradient (<span class="math">\(dnwy\)</span>) in the <span class="math">\(y\)</span>-direction.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.initialize.nonwetting-pressure">
+<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">n</span><span class="null">w</span><span class="null">e</span><span class="null">t</span><span class="null">t</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">-</span><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify nonwetting fluid pressure (<span class="math">\(pnw\)</span>).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.initialize.pore-pressure">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">r</span><span class="null">e</span><span class="null">-</span><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify wetting fluid pressure (<span class="math">\(pw\)</span>).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.initialize.saturation">
+<span class="cmdkey"><span class="pref">s</span><span class="null">a</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the domain saturation for two phase fluid flow (SET flow compressible and SET flow incompressible). <span class="flag3">replace preceding commands</span> The default is 1.0 (saturated).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.initialize.seepage">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">e</span><span class="null">e</span><span class="null">p</span><span class="null">a</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>The seepage condition is prescribed on the boundaries of the domain. If a seepage condition is assigned to a domain, then (1) wetting and nonwetting fluid pressures are fixed (wetting fluid pressure is equal to nonwetting fluid pressure); and (2) wetting fluid can inflow into the domain only from saturated domains.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.initialize.table">
+<span class="cmdkey"><span class="pref">t</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify that table <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> defines the surface of the water table. The command provides fluid pressures in domains corresponding to a static head below the water table surface. The fluid density, <span class="math">\(ρ\)</span> (see the <a class="reference internal" href="#kwd:block.domain.initialize.density" title="Set the fluid density ( ρ ) to be used with  block.domain.initialize.table ."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">domain</span> <span class="pre">initialize</span> <span class="pre">density</span></code></a> keyword above), and gravity (<a class="reference internal" href="../block.mechanical_commands/cmd_block.mechanical.gravity.html#command:block.mechanical.gravity" title="Set gravitational accelerations for the  x - and  y -directions."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">mechanical</span> <span class="pre">gravity</span></code></a>) must be specified prior to the use of this command. This command does not initialize fluid pressures in zones, use the <a class="reference internal" href="cmd_block.insitu.html#command:block.insitu" title="Initializes block zone and contact stresses, domain pressures, zone pore pressures,&#013;&#010;and hydraulic apertures. Initial zone stresses in all deformable blocks and&#013;&#010;stresses along joints between rigid blocks and/or deformable blocks in the optional&#013;&#010;range are set. If no range is specified, stresses are initialized for the entire&#013;&#010;model. Remember that compressive stresses are negative. The following keywords&#013;&#010;apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">insitu</span></code></a> command to set pressures in zones.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.initialize.geometry">
+<span class="cmdkey"><span class="pref">g</span><span class="null">e</span><span class="null">o</span><span class="null">m</span><span class="null">e</span><span class="null">t</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Domains below the surface defined by the geometry :str:’s‘ are assigned pore pressure in domains according to fluid unit weight and the depth below the surface. The fluid density, <span class="math">\(ρ\)</span> (see the <a class="reference internal" href="#kwd:block.domain.initialize.density" title="Set the fluid density ( ρ ) to be used with  block.domain.initialize.table ."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">domain</span> <span class="pre">initialize</span> <span class="pre">density</span></code></a> keyword above), and gravity (<a class="reference internal" href="../block.mechanical_commands/cmd_block.mechanical.gravity.html#command:block.mechanical.gravity" title="Set gravitational accelerations for the  x - and  y -directions."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">mechanical</span> <span class="pre">gravity</span></code></a>) must be specified prior to the use of this command. This command does not initialize fluid pressures in zones, use the <a class="reference internal" href="cmd_block.insitu.html#command:block.insitu" title="Initializes block zone and contact stresses, domain pressures, zone pore pressures,&#013;&#010;and hydraulic apertures. Initial zone stresses in all deformable blocks and&#013;&#010;stresses along joints between rigid blocks and/or deformable blocks in the optional&#013;&#010;range are set. If no range is specified, stresses are initialized for the entire&#013;&#010;model. Remember that compressive stresses are negative. The following keywords&#013;&#010;apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">insitu</span></code></a> command to set pressures in zones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.list">
+<span class="cmdkey"><span class="pref">l</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>List information about wetting or nonwetting fluid in the domains.</p>
+<dl class="keyword">
+<dt id="kwd:block.domain.list.nonwetting">
+<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">n</span><span class="null">w</span><span class="null">e</span><span class="null">t</span><span class="null">t</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span></dt>
+<dd><p>List nonwetting fluid information, with the following column headings.</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>domain index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>domain pressure code:</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>0&nbsp;&nbsp; pressure not controlled</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>1&nbsp;&nbsp; pressure controlled</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>pressure history type</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>domain pressure</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>domain area (volume)</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>flow into (positive) or out of (negative) domain</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>fictitious domain displacement or, if fluid flow is active, domain area (double precision)</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td>x-coordinate of domain center</td>
+</tr>
+<tr class="row-odd"><td>(9)</td>
+<td>y-coordinate of domain center</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.list.wetting">
+<span class="cmdkey"><span class="pref">w</span><span class="null">e</span><span class="null">t</span><span class="null">t</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span></dt>
+<dd><p>List wetting fluid information, with the following column headings.</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>domain index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>domain pressure code:</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>0&nbsp;&nbsp; pressure not controlled</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>1&nbsp;&nbsp; pressure controlled</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>2&nbsp;&nbsp; seepage condition</td>
+</tr>
+<tr class="row-even"><td>(3)</td>
+<td>pressure history type</td>
+</tr>
+<tr class="row-odd"><td>(4)</td>
+<td>domain pressure</td>
+</tr>
+<tr class="row-even"><td>(5)</td>
+<td>domain area (volume)</td>
+</tr>
+<tr class="row-odd"><td>(6)</td>
+<td>flow into (positive) or out of (negative) domain</td>
+</tr>
+<tr class="row-even"><td>(7)</td>
+<td>fictitious domain displacement or, if fluid flow is active, domain area (double precision)</td>
+</tr>
+<tr class="row-odd"><td>(8)</td>
+<td>x-coordinate of domain center</td>
+</tr>
+<tr class="row-even"><td>(9)</td>
+<td>y-coordinate of domain center</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.material">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Material property number <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> is assigned to designated domains. (All domains initially default to <span class="cmdkey">material</span> = <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a>. The maximum value for <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> is 50.)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.property">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Capillary pressure parameters in the domain.  See Section 2 in the <em>Special Features</em> volume of the <span class="codename">UDEC</span> <em>Manual</em> for a detailed explanation of the capillary pressure curve and its use in <span class="codename">UDEC</span>.</p>
+<dl class="keyword">
+<dt id="kwd:block.domain.property.capillary-alpha">
+<span class="cmdkey"><span class="pref">c</span><span class="null">a</span><span class="null">p</span><span class="null">i</span><span class="null">l</span><span class="null">l</span><span class="null">a</span><span class="null">r</span><span class="null">y</span><span class="null">-</span><span class="pref">a</span><span class="null">l</span><span class="null">p</span><span class="null">h</span><span class="null">a</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set capillary pressure reference hydraulic aperture [length] for material <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.property.capillary-beta">
+<span class="cmdkey"><span class="pref">c</span><span class="null">a</span><span class="null">p</span><span class="null">i</span><span class="null">l</span><span class="null">l</span><span class="null">a</span><span class="null">r</span><span class="null">y</span><span class="null">-</span><span class="pref">b</span><span class="null">e</span><span class="null">t</span><span class="null">a</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the <span class="math">\(β\)</span> coefficient from the definition of the capillary pressure curve.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.property.capillary-gamma">
+<span class="cmdkey"><span class="pref">c</span><span class="null">a</span><span class="null">p</span><span class="null">i</span><span class="null">l</span><span class="null">l</span><span class="null">a</span><span class="null">r</span><span class="null">y</span><span class="null">-</span><span class="pref">g</span><span class="null">a</span><span class="null">m</span><span class="null">m</span><span class="null">a</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the <span class="math">\(γ\)</span> coefficient from the definition of the capillary pressure curve [length]</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.tolerance">
+<span class="cmdkey"><span class="pref">t</span><span class="null">o</span><span class="null">l</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><dl class="keyword">
+<dt id="kwd:block.domain.tolerance.minimum-volume">
+<span class="cmdkey"><span class="null">m</span><span class="null">i</span><span class="null">n</span><span class="null">i</span><span class="null">m</span><span class="null">u</span><span class="null">m</span><span class="null">-</span><span class="null">v</span><span class="null">o</span><span class="null">l</span><span class="null">u</span><span class="null">m</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the minimum domain volume used in the plotting of interior boundaries. (Has no effect on calculation.) PLOT boundary will plot domains that are 50 times this value.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.update">
+<span class="cmdkey"><span class="pref">u</span><span class="null">p</span><span class="null">d</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the frequency of domain check. The default is every three cycles.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.well">
+<span class="cmdkey"><span class="pref">w</span><span class="null">e</span><span class="null">l</span><span class="null">l</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Configure a fluid source within a domain.</p>
+<dl class="keyword">
+<dt id="kwd:block.domain.well.atdomain">
+<span class="cmdkey"><span class="pref">a</span><span class="null">t</span><span class="null">d</span><span class="null">o</span><span class="null">m</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span><span class="null"> </span></span></a></dt>
+<dd><p>Locate the fluid source in the domain at position <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.well.delete">
+<span class="cmdkey"><span class="pref">d</span><span class="pref">e</span><span class="null">l</span><span class="null">e</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Delete the fluid source in the domain at position <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.well.domain">
+<span class="cmdkey"><span class="pref">d</span><span class="null">o</span><span class="null">m</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Locate the fluid source in the domain with index <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.well.flow">
+<span class="cmdkey"><span class="pref">f</span><span class="null">l</span><span class="null">o</span><span class="null">w</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the flow rate of the fluid source. If this value is negative, a sink is assumed.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.domain.well.temperature">
+<span class="cmdkey"><span class="pref">t</span><span class="null">e</span><span class="null">m</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Specify temperature of fluid at well.</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="block_commands.html" accesskey="U">Block Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_block.delete.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">delete</span></code> command</a> |    
+       <a href="cmd_block.dynamic.html"
+                           title="next chapter"><span class="fishcmd">block dynamic</span> commands</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block domain command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

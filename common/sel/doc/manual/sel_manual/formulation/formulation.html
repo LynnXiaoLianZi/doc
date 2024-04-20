@@ -1,0 +1,612 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>General Formulation of Structural-Element Logic &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="general-formulation-of-structural-element-logic">
+<span id="sel-formulation"></span><h1>General Formulation of Structural-Element Logic</h1>
+<p>The low-level implementation details of the structural-element logic are presented here. This information need only be read by users interested in gaining a thorough understanding of the implementation (perhaps, in order to implement nonstandard interaction between structural elements and the grid). The structural-element logic has been developed in a general and flexible fashion in order to support various (as yet unforeseen) application scenarios.</p>
+<div class="section" id="structural-element-links">
+<span id="sel-links"></span><h2>Structural-Element Links</h2>
+<p>Structural elements only interact with one another via nodes; and nodes, in turn, only interact with the grid via links. Thus, structural-element links provide the sole means by which structural elements interact with the grid. Each link connects a node to a target entity. Each node may only have one link associated with itself. There are two types of links: (1) <em>node-to-zone</em>, which connect nodes to zones (not simply to gridpoints); and (2) <em>node-to-node</em>, which connect nodes to other nodes.</p>
+<p>In addition to localizing the interaction between structural elements and the grid, links also provide a general mechanism for implementing nonlinear constitutive behavior at a node, in terms of that node’s local coordinate system. A link supports the following three attachment conditions, which are specified independently for each local direction of its source node:</p>
+<ol class="arabic simple">
+<li><strong>free</strong>  <a href="#id5"><span class="problematic" id="id6">|sp3|</span></a> Velocity of the source node in this local direction is unrelated to the velocity of the target entity.</li>
+<li><strong>rigid</strong>  <a href="#id7"><span class="problematic" id="id8">|sp3|</span></a> Velocity of the source node in this local direction is slaved to remain equal to the component of the velocity of the target entity in this direction (see <a href="#sel-rigid-attachment">Figure  1</a>).</li>
+<li><strong>deformable</strong>  <a href="#id9"><span class="problematic" id="id10">|sp3|</span></a> Denote the attachment direction by <span class="math">\({\bf n}^{[{\rm S}]}\)</span>. The source node and target entity are connected by a spring oriented in the direction <span class="math">\({\bf n}^{[{\rm S}]}\)</span>. The spring stiffness is an average stiffness per unit area associated with the link (see <a href="#sel-deformable-attachment">Figure  2</a>).</li>
+</ol>
+<div class="figure" id="id1">
+<span id="sel-rigid-attachment"></span><a class="reference internal image-reference" href="../../../../../../_images/rigid-attachment.png"><img alt="../../../../../../_images/rigid-attachment.png" src="../../../../../../_images/rigid-attachment.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Physical analog of a rigid attachment condition</span></p>
+</div>
+<div class="figure" id="id2">
+<span id="sel-deformable-attachment"></span><a class="reference internal image-reference" href="../../../../../../_images/deformable-attachment.png"><img alt="../../../../../../_images/deformable-attachment.png" src="../../../../../../_images/deformable-attachment.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Physical analog of a deformable attachment condition</span></p>
+</div>
+<p>Deformable attachment conditions allow generalized constitutive models, which relate increments of displacement and total force in a particular local direction, to be included in the model. There are a total of five such models used to implement the grid interactions of cables, piles, geogrids and liners (see <a href="#sel-attachment-conditions">Table  1</a>). Only the linear and normal-yield springs are available for general use (see the <a class="reference internal" href="../links/commands/cmd_structure.link.attach.html#command:structure.link.attach" title="Set attachment conditions for the specified link directions. The current attachment&#013;&#010;condition will be replaced by the condition specified here. Conditions are specified&#013;&#010;in keyword pairs, the first ( keyword ) being the degree-of-freedom and&#013;&#010;the second ([linkattachblock]) being the type of condition to use.  The following&#013;&#010;keywords are available to specify the degree-of-freedom:"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">link</span> <span class="pre">attach</span></code></a> command). A normal-yield spring can be used to introduce plastic hinges between beam elements or pile elements (see <a class="reference internal" href="../../../../test3d/Beam/PlasticHinge/PlasticHinge.html#plastichinge"><span class="std std-ref">Plastic Hinge Formation in a Beam Structure</span></a>), and plastic-hinge lines along edges between shell-type elements (see <a class="reference internal" href="../../../../test3d/Shell/PlasticHinge/PlasticHinge.html#shellplastichinge"><span class="std std-ref">Plastic Hinge Formation in a Shell Structure</span></a>). The normal-yield spring provides elastic perfectly plastic behavior in both tension and compression, as well as the ability to track the formation of a gap that may form during yield in each direction.</p>
+<span id="sel-attachment-conditions"></span><table border="1" class="colwidths-given icg1 docutils" id="id3">
+<caption><span class="caption-text">Table 1: Default link attachment conditions for element types</span></caption>
+<colgroup>
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">DOF</th>
+<th class="head">beam</th>
+<th class="head">cable</th>
+<th class="head">pile</th>
+<th class="head">shell</th>
+<th class="head">geogrid</th>
+<th class="head">liner</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>rigid</td>
+<td>SY</td>
+<td>SY</td>
+<td>rigid</td>
+<td>PY</td>
+<td>PY</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>rigid</td>
+<td>rigid</td>
+<td>PY</td>
+<td>rigid</td>
+<td>PYDP</td>
+<td>PYDP</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>rigid</td>
+<td>rigid</td>
+<td>PYDP</td>
+<td>rigid</td>
+<td>rigid</td>
+<td>NY</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>free</td>
+<td>free</td>
+<td>free</td>
+<td>free</td>
+<td>free</td>
+<td>free</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>free</td>
+<td>free</td>
+<td>free</td>
+<td>free</td>
+<td>free</td>
+<td>free</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>free</td>
+<td>free</td>
+<td>free</td>
+<td>free</td>
+<td>free</td>
+<td>free</td>
+</tr>
+</tbody>
+</table>
+<p>In <a href="#sel-attachment-conditions">Table  1</a>, the symbols are defined as follows. “Rigid” means rigidly connected to the zone in which the element is embedded; “free” means that there is no connection in this degree of freedom. SY means shear-yield spring. PY and PYDP mean pile-yield and pile-yield dependent springs, which act together to produce the behavior of a single nonlinear spring acting in the plane defined by these two directions. NY means normal-yield spring. The nonlinear spring behaviors are not described here; instead, the overall element-to-grid interaction behavior of each element type that uses these springs is described in its own section.</p>
+<p>A plastic hinge may be introduced between two nodes by creating a node-to-node link between the two nodes, aligning the node-local system for the target node such that a normal-yield spring can be inserted in the direction of the axis about which the hinge is to rotate, while all other directions are kept free (see <a class="reference internal" href="../../../../test3d/Beam/PlasticHinge/PlasticHinge.html#plastichinge"><span class="std std-ref">Plastic Hinge Formation in a Beam Structure</span></a> and <a class="reference internal" href="../../../../test3d/Shell/PlasticHinge/PlasticHinge.html#shellplastichinge"><span class="std std-ref">Plastic Hinge Formation in a Shell Structure</span></a>). The properties of the normal-yield spring should be set:</p>
+<ol class="arabic simple">
+<li>Set the area equal to unity, and set the stiffness per unit area approximately ten times larger than the stiffness of the structural components using the node.</li>
+<li>Set the compressive- and tensile-yield strengths equal to the plastic-moment capacity (for beams and piles), or plastic-moment capacity per unit length (for shell-type elements).</li>
+</ol>
+<p>The orientation of the node-local system is set automatically at the start of a set of cycles (or when the <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">cycle</span></code> <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">0</span></span></a> command is executed), based on the type of elements that use the node (see <a class="reference internal" href="../nodes/nodes.html#structural-element-nodes"><span class="std std-ref">Structural Element Nodes</span></a>). When using the element creation commands (<a class="reference internal" href="../shells/commands/cmd_structure.shell.create.html#command:structure.shell.create" title="Create a shell. The four main keywords articulate four different techniques&#013;&#010;of creation: by creating a collection of elements from a group of zone faces&#013;&#010;( by-face ); by creating a single element from four existing nodes ( by-nodes );&#013;&#010;from a specified quadrilateral ( by-quadrilateral ); or from a triangle&#013;&#010;( by-triangle )."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">shell</span> <span class="pre">create</span></code></a> etc.), if any of the nodes making up the newly created elements lie within zones, then node-to-zone links will be created and assigned the default attachment conditions shown in <a href="#sel-rigid-attachment">Figure  1</a>:</p>
+<p>Element-to-grid interaction occurs via node-to-zone links. These links store the zone, and an interpolation location within the zone, to allow transfer of forces and velocities between the nodes and the zones. By default, these interpolation locations will not change, even if running in large-strain mode. The interpolation locations can be allowed to migrate through the grid by setting the large-strain sliding flag of the link to <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>. Typically, one sets this flag to <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a> for cables, piles, geogrids and liners, which then automatically set the flag to <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a> for all links used by these elements. The migration process employs the large-strain sliding tolerance (see the <span class="cmdkey">tolerance</span> options available to the <a class="reference internal" href="../links/commands/link_commands.html#sel-link-commands"><span class="std std-ref">structure link</span></a> command).</p>
+</div>
+<div class="section" id="finite-element-stiffness-matrices">
+<span id="sel-finite-element-stiffness-matrices"></span><h2>Finite Element Stiffness Matrices</h2>
+<p>The structural response of each structural element is described by the stiffness that it provides to the surrounding system by means of its nodes. Each structural element has an associated stiffness matrix that is formed using finite-element techniques. The stiffness matrix <span class="math">\([\bf k]\)</span> relates generalized nodal displacements (translations and rotations) <span class="math">\(\{\bf d \}\)</span> to generalized nodal forces (forces and moments) <span class="math">\(\{\bf F \}\)</span> by means of the relation <span class="math">\(\{ {\bf F} \} = [{\bf k}] \{ {\bf d} \}\)</span>, in which <span class="math">\([\bf k]\)</span> is a square symmetric matrix of a size equal to the number of degrees of freedom associated with the finite element.</p>
+<p>Six finite-element stiffness matrices have been implemented: a 2-noded beam finite element, and five 3-noded shell finite elements. These stiffness-matrix formulations are described in the following two subsections. Beam elements and pile elements utilize the beam finite element; cable elements utilize a degenerate form of the beam finite element in which only the local axially directed degrees-of-freedom are employed; and, shell elements, geogrid elements and liner elements utilize different shell finite elements. Note that the elements-to-grid interaction occurs by means of the links which connect the nodes used by elements to the zones.</p>
+<p class="h3 rubric" id="sel-beam-finite-element">Beam Finite Element</p>
+<p>The beam finite element in the program is a two-noded, straight, finite element with six degrees of freedom per node: three translational components and three rotational components (see <a class="reference internal" href="../beams/beams.html#beam-sign-convention"><span class="std std-ref">Beam Sign Convention</span></a>). The beam finite element stiffness matrix formulation is given in explicit form by McGuire and Gallagher (1979, pp. 81-91). The element models the structural behavior of a beam that is straight, prismatic and symmetrical about both principal cross-sectional axes (bisymmetrical), and composed of isotropic material. The formulation considers displacements resulting from uniform axial deformation, flexural deformation, and twisting deformation. It neglects displacements resulting from transverse-shearing deformations, and displacements resulting from the out-of-plane (longitudinal) warping of a cross section that torsional forces may cause. According to McGuire and Gallagher, the equations embodied by the resulting stiffness matrix are sufficient for the analysis of the large majority of the frameworks encountered in structural-engineering practice.</p>
+<p class="h3 rubric" id="struct-shell-finite-elements">Shell Finite Elements</p>
+<p>There are five 3-noded, triangular finite elements available for shell-type elements: 2 plane-stress elements, 1 plate-bending element and 2 shell elements. The plane-stress elements model membrane action only, the plate-bending element models bending action only, and the shell elements model general shell behavior as a superposition of membrane and bending actions (see <span class="xref std std-ref">Bending Action</span> and <span class="xref std std-ref">Membrance Action</span>). These elements operate upon the 18 degrees of freedom available to the shell-type elements (see <a class="reference internal" href="../shelltypes/shelltypes.html#shell-type-coordinate-system"><span class="std std-ref">Shell-Type Coordinate System</span></a>).</p>
+<p><em>CST Plane-Stress Element (6 degrees of freedom)</em></p>
+<p>The CST plane-stress element is a three-noded plane-stress finite element with two translational degrees-of-freedom per node (shown in <a href="#sel-dkt-cst-element">Figure  3</a> (a) by removing the rotational degree-of-freedom). The CST hybrid element is described, and an explicit formulation of <span class="math">\([{\bf k}_{\rm CST}]\)</span> is given by Cook et al. (1989).</p>
+<p><em>CST Hybrid Plane-Stress Element (9 degrees of freedom)</em></p>
+<p>The CST hybrid plane-stress element is a three-noded plane-stress finite element with three degrees of freedom per node: two translational components and one rotational component (shown in <a href="#sel-dkt-cst-element">Figure  3</a> (a)). The CST hybrid plane-stress element is formulated by the assumed-stress hybrid approach. It provides a more competent membrane response than a constant strain triangle (CST) through the inclusion of “drilling freedoms,” <span class="math">\(\theta_z\)</span>, among its degrees of freedom. The CST hybrid element is described, and an explicit formulation of <span class="math">\([{\bf k}_{\rm CSTH}]\)</span> is given by Cook (1987).</p>
+<p id="struct-shell-dkt-element"><em>DKT Plate Bending Element (9 degrees of freedom)</em></p>
+<p>The DKT plate bending element is a three-noded plate finite element with three degrees of freedom per node: one translational component and two rotational components (shown in <a href="#sel-dkt-cst-element">Figure  3</a> (b)). The DKT plate bending element enforces the Kirchhoff plate theory assumptions at six discrete locations (corners and mid-sides) within the element; thus, the designation DKT for Discrete Kirchhoff Triangle. The element is described by Batoz et al. (1980), who conclude that it is one of the most efficient and reliable three-node (9 degrees of freedom) plate bending elements available at the time of publication. An explicit formulation of <span class="math">\([{\bf k}_{\rm DKT}]\)</span> is given by Batoz (1982).</p>
+<p id="struct-shell-dkt-cst-element"><em>DKT-CST Hybrid Shell Element (18 degrees of freedom)</em></p>
+<p>The DKT-CST hybrid shell element is a three-noded, flat, thin-shell finite element with six degrees of freedom per node: three translational components and three rotational components. It combines a nine degrees-of-freedom CST hybrid plane element to model membrane action in the shell with a nine degrees-of-freedom DKT plate element to model bending action in the shell. This composite flat shell element is referred to as a DKT-CST hybrid, and is described by Cook et al. (1989, pp. 351-352).</p>
+<p>Let a typical element lie in the <span class="math">\(xy\)</span>-plane of a local coordinate system <span class="math">\(xyz\)</span>. Nodal degrees-of-freedom are shown in <a href="#sel-dkt-cst-element">Figure  3</a>, where <span class="math">\(\lfloor \theta_x \quad \theta_y \rfloor = \lfloor {\partial w \over \partial y} \quad -{\partial w \over \partial x} \rfloor\)</span>. Let these degrees of freedom be called <span class="math">\(\{{\bf d'} \}\)</span>, and be arranged in the order</p>
+<div class="math">
+\[\begin{Bmatrix} {\bf d^{\prime}} \end{Bmatrix} =
+{\lfloor {\bf u}_i \; {\bf v}_i \; {\bf \theta}_{zi} \; {\bf w}_i \; {\bf \theta}_{xi} \; {\bf \theta}_{yi} \rfloor}^T\]</div>
+<p>where <span class="math">\(\lfloor {\bf u}_i \rfloor = \lfloor u_1\quad u_2 \quad u_3 \rfloor\)</span>, <span class="math">\(\lfloor {\bf\theta}_{xi} \rfloor = \lfloor \theta_{x1}\quad \theta_{x2} \quad \theta_{x3} \rfloor\)</span>, and so on. For the DKT-CST hybrid shell element, whose stiffness matrix in local <span class="math">\(xyz\)</span>-coordinates is called <span class="math">\([{\bf k'}]\)</span>, we have</p>
+<div class="math" id="equation-dkt-csth-stiffness-matrix">
+<span class="eqno">(1)</span>\[\begin{split}\begin{bmatrix} {\bf k^{\prime}} \end{bmatrix} \begin{Bmatrix} {\bf d^{\prime}} \end{Bmatrix} =
+\begin{bmatrix} \begin{matrix} \begin{bmatrix} {\bf k}_{CSTH} \end{bmatrix} \\
+                              9\times 9 \end{matrix} &amp;
+               \begin{matrix} \begin{bmatrix} {\bf 0} \end{bmatrix} \\
+                              9\times 9 \end{matrix} \\
+               \begin{matrix} \begin{bmatrix} {\bf 0} \end{bmatrix} \\
+                              9\times 9 \end{matrix} &amp;
+               \begin{matrix} \begin{bmatrix} {\bf k}_{DKT} \end{bmatrix} \\
+                              9\times 9 \end{matrix} \end{bmatrix}
+\begin{Bmatrix} {\bf u}_i \\ {\bf v}_i \\  {\bf \theta}_{zi} \\ {\bf w}_i \\ {\bf \theta}_{xi} \\ {\bf \theta}_{yi} \end{Bmatrix}\end{split}\]</div>
+<p>where <span class="math">\([{\bf k}_{\rm CSTH}]\)</span> is the stiffness matrix of a CST hybrid plane-stress element, and <span class="math">\([{\bf k}_{\rm DKT}]\)</span> is the stiffness matrix of a DKT plate-bending element.</p>
+<p>The following observations about the DKT-CST hybrid element are appropriate (also see the observations about the DKT-CST element in the next section).</p>
+<ol class="arabic simple">
+<li><span class="math">\([{\bf k}_{\rm CSTH}]\)</span> only contains degrees of freedom associated with membrane action, and <span class="math">\([{\bf k}_{\rm DKT}]\)</span> only contains degrees of freedom associated with bending action. Although membrane-bending coupling is present throughout an actual curved shell, it is absent in an individual element (as evidenced by the 9 by 9 null matrices of <a class="reference internal" href="#equation-dkt-csth-stiffness-matrix">(1)</a>). Nevertheless, the element works well enough to be competitive with curved elements, as demonstrated by Carpenter et al. (1986).</li>
+<li>The element provides a solution which converges to the classical Kirchhoff thin-plate solution. Thus, the element is appropriate for modeling thin shells in which the displacements caused by  transverse-shearing deformations can be neglected.</li>
+</ol>
+<div class="figure" id="id4">
+<span id="sel-dkt-cst-element"></span><a class="reference internal image-reference" href="../../../../../../_images/dkt-cst-element.png"><img alt="../../../../../../_images/dkt-cst-element.png" src="../../../../../../_images/dkt-cst-element.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-text">Figure 3: DKT-CST hybrid flat shell finite element in a local xy-plane: (a) degrees of freedom associated with membrane action (CST hybrid sub-element); (b) degrees of freedom associated with bending action (DKT sub-element)</span></p>
+</div>
+<p><em>DKT-CST Shell Element (15 degrees of freedom)</em></p>
+<p>The DKT-CST shell element is a three-noded, flat, thin-shell finite element with five degrees of freedom per node: three translational components and two rotational components. It combines a six degrees-of-freedom CST plane element to model membrane action in the shell with a nine degrees-of-freedom DKT plate element to model bending action in the shell. This composite flat shell element is referred to as a DKT-CST, and is described by Cook et al. (1989, pp. 351-352).</p>
+<p>Let a typical element lie in the <span class="math">\(xy\)</span>-plane of a local coordinate system <span class="math">\(xyz\)</span>. Nodal degrees-of-freedom are shown in <a href="#sel-dkt-cst-element">Figure  3</a> by removing <span class="math">\(\theta_z\)</span>, where <span class="math">\(\lfloor \theta_x \quad \theta_y \rfloor = \lfloor {\partial w \over \partial y} \quad -{\partial w \over \partial x} \rfloor\)</span>. Let these degrees of freedom be called <span class="math">\(\{{\bf d^\star} \}\)</span>, and be arranged in the order</p>
+<div class="math">
+\[\begin{Bmatrix} {\bf d^{\star}} \end{Bmatrix} =
+{\lfloor {\bf u}_i \, {\bf v}_i \, {\bf w}_i \, {\bf \theta}_{xi} \, {\bf \theta}_{yi} \rfloor}^T\]</div>
+<p>where $lfloor {bf u}_i rfloor = lfloor u_1quad u_2 quad u_3 rfloor$, $lfloor {ubmtheta}_{xi} rfloor = lfloor theta_{x1}quad theta_{x2} quad theta_{x3} rfloor$, and so on. For the DKT-CST shell element, whose stiffness matrix in local $xyz$-coordinates is called $[{bf k^star}]$, we have</p>
+<div class="math" id="equation-dkt-cst-stiffness-matrix">
+<span class="eqno">(2)</span>\[\begin{split}\begin{bmatrix} {\bf k^{\prime}} \end{bmatrix} \begin{Bmatrix} {\bf d^{\star}} \end{Bmatrix} =
+\begin{bmatrix} \begin{matrix} \begin{bmatrix} {\bf k}_{CST} \end{bmatrix} \\
+                              6\times 6 \end{matrix} &amp;
+               \begin{matrix} \begin{bmatrix} {\bf 0} \end{bmatrix} \\
+                              6\times 9 \end{matrix} \\
+               \begin{matrix} \begin{bmatrix} {\bf 0} \end{bmatrix} \\
+                              9\times 6 \end{matrix} &amp;
+               \begin{matrix} \begin{bmatrix} {\bf k}_{DKT} \end{bmatrix} \\
+                              9\times 9 \end{matrix} \end{bmatrix}
+\begin{Bmatrix} {\bf u}_i \\ {\bf v}_i \\  {\bf w}_i \\ {\bf \theta}_{xi} \\ {\bf \theta}_{yi} \end{Bmatrix}\end{split}\]</div>
+<p>where <span class="math">\([{\bf k}_{\rm CST}]\)</span> is the stiffness matrix of a CST plane-stress element, and <span class="math">\([{\bf k}_{\rm DKT}]\)</span> is the stiffness matrix of a DKT plate bending element.</p>
+<p>The following observations about the DKT-CST element are appropriate.</p>
+<ol class="arabic simple">
+<li><span class="math">\([{\bf k}_{\rm CST}]\)</span> only contains degrees of freedom associated with membrane action, and <span class="math">\([{\bf k}_{\rm DKT}]\)</span> only contains degrees of freedom associated with bending action. Although membrane-bending coupling is present throughout an actual curved shell, it is absent in an individual element (as evidenced by the null matrices of <a class="reference internal" href="#equation-dkt-cst-stiffness-matrix">(2)</a>.</li>
+<li>The element provides a solution which converges to the classical Kirchhoff thin-plate solution. Thus, the element is appropriate for modeling thin shells in which the displacements caused by transverse-shearing deformations can be neglected.</li>
+<li>The element differs from the DKT-CST hybrid element by not having drilling degrees-of-freedom. This makes the element overly stiff for problems with large membrane-stress gradients. For such problems, the DKT-CST hybrid element will perform better. For problems without large membrane-stress gradients, the performance of the DKT-CST element will be much improved, making it competitive with the DKT-CST hybrid element.</li>
+<li>The lack of drilling degrees-of-freedom makes this element more suitable for coupling with the model grid than the DKT-CST hybrid element. The zones have a linear displacement variation, and the 3 drilling degrees-of-freedom give the DKT-CST hybrid a quadratic in-plane displacement variation along its edges. When a shell-type element is rigidly connected to the grid, only the translational degrees-of-freedom are slaved to move with the grid, while the rotational degrees-of-freedom are left free. Because we are not constraining the drilling degrees-of-freedom, it is possible for gaps to form between the element and the grid. These incompatibilities seem to be activated when shell-type elements of different sizes meet along a common line. The DKT-CST element has a linear in-plane displacement variation along its edges, which is fully compatible with that of the zones and, thus, gaps cannot form when these elements are rigidly connected to zones.</li>
+<li>The two preceding observations lead to the following general recommendation regarding choice of shell finite element. For problems in which a shell element is being connected to zones, use the DKT-CST element. For all other problems, use the DKT-CST hybrid element.</li>
+</ol>
+</div>
+<div class="section" id="stress-recovery-procedure">
+<span id="sel-stress-recovery-formulation"></span><h2>Stress Recovery Procedure</h2>
+<p>The stress-recovery procedure is outlined in <span class="xref std std-ref">Stress Recovery Procecure</span>. A more detailed description of the process is provided here. Stress recovery is applied to a group of shell-type elements. Nodal averaging of bending and membrane stress resultants only occurs for elements within this group. Stress recovery consists of two steps:</p>
+<ol class="arabic">
+<li><p class="first">Compute stress-resultant field.</p>
+<ol class="loweralpha">
+<li><p class="first">Define the surface coordinate system at each node.</p>
+<p>This system has its <span class="math">\(z\)</span>-direction equal to the average <span class="math">\(z\)</span>-direction of all shell-type elements using the node, and has its <span class="math">\(x\)</span>-direction equal to the projection of a user-specified <span class="cmdkey">surface</span> vector onto the <span class="math">\(z\)</span>-plane.</p>
+</li>
+<li><p class="first">Compute the bending and membrane stress resultants</p>
+<p>(<span class="math">\(M_x\)</span>, <span class="math">\(M_y\)</span>, <span class="math">\(M_{xy}\)</span>, <span class="math">\(N_x\)</span>, <span class="math">\(N_y\)</span>, and <span class="math">\(N_{xy}\)</span>) at each node.    These values are found by first computing them within each shell-type element at its nodes, and then averaging the contributions from all shell-type elements that use each node.</p>
+<p>Note that these six stress resultants vary linearly over each element.</p>
+<p>The bending and membrane stress resultants within each shell-type element are found using the flexibility-stiffness transformation from McGuire and Gallagher (1979, pp. 76-77) to determine which displacements are consistent with a given set of nodal forces acting on the element. This is done by forming a flexibility matrix that is derived from the element stiffness matrix. The flexibilities are derived from the stiffnesses by defining a stable, statically determinate support system, removing from the stiffness matrix the rows and columns corresponding to the support components, and inverting the remainder. These displacements are then fed into stress-recovery procedures appropriate to the particular finite element.</p>
+</li>
+<li><p class="first">Compute the transverse-shear stress resultants (<span class="math">\(Q_x\)</span> and <span class="math">\(Q_y\)</span>)  within each shell-type element by enforcing the equilibrium equations</p>
+<div class="math">
+\[ \begin{align}\begin{aligned}Q_x =   {\partial M_x \over \partial x} + {\partial M_{xy} \over \partial y}\\Q_y =   {\partial M_y \over \partial y} + {\partial M_{xy} \over \partial x}\end{aligned}\end{align} \]</div>
+<p>by assuming that the bending resultant field varies linearly over each element. Note that <span class="math">\(Q_x\)</span> and <span class="math">\(Q_y\)</span> are constant over each shell-type element, and are not averaged at nodes.</p>
+</li>
+</ol>
+</li>
+<li><p class="first">Compute stress field at specified shell depth using <span class="xref std std-ref">Stresses From Resultants</span>, and then rotating the stresses into the global system.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="governing-equations">
+<h2>Governing Equations</h2>
+<p>The discretization and time integration of the equations that govern the dynamic response of the structural elements and their associated entities (i.e., nodes and links) utilize standard finite-element practice. The description given here is similar to that given in Chapter 13 of Cook et al. (1989).</p>
+<p>The equations that govern the dynamic response of a structure can be derived by requiring the work of external forces to be absorbed by the work of internal, inertial and damping forces for any small, kinematically admissible motion. For a single element, this work balance becomes</p>
+<div class="math" id="equation-sel-work-balance">
+<span class="eqno">(3)</span>\[\begin{split}\int_{V_e} \begin{Bmatrix} \delta {\bf u} \end{Bmatrix}^T \begin{Bmatrix} {\bf F} \end{Bmatrix} dV +
+\int_{S_e} \begin{Bmatrix} \delta {\bf u} \end{Bmatrix}^T \begin{Bmatrix} {\bf \Phi} \end{Bmatrix} dS +\
+\sum_{i=1}^n \begin{Bmatrix} \delta {\bf u} \end{Bmatrix}_i^T \begin{Bmatrix} {\bf p} \end{Bmatrix}_i
+= \\
+\qquad \qquad \int_{V_e} \bigg( \begin{Bmatrix} \delta {\bf \epsilon} \end{Bmatrix}^T  \begin{Bmatrix} {\bf \sigma} \end{Bmatrix} +
+\begin{Bmatrix} \delta {\bf u} \end{Bmatrix}^T \rho \begin{Bmatrix} {\ddot{\bf u}} \end{Bmatrix} +
+\begin{Bmatrix} \delta {\bf u} \end{Bmatrix}^T \kappa_d  \begin{Bmatrix} {\dot{\bf u}} \end{Bmatrix} \bigg) dV\end{split}\]</div>
+<p>where <span class="math">\(\{ \delta {\bf u} \}\)</span> and <span class="math">\(\{ \delta {\bf \epsilon} \}\)</span> are, respectively, small arbitrary displacements and their corresponding strains, <span class="math">\(\{ {\bf F} \}\)</span> are body forces, <span class="math">\(\{ {\bf \Phi} \}\)</span>  are prescribed surface tractions that act over a portion of the element surface <span class="math">\(S_e\)</span>, <span class="math">\(\{ {\bf p}_i \}\)</span> are concentrated loads that act at a total of <span class="math">\(n\)</span> points on the element, <span class="math">\(\{ {\bf u} \}_i^T\)</span> is the displacement of the point at which load <span class="math">\(\{ {\bf p}_i \}\)</span> is applied, <span class="math">\(\{ {\bf \sigma} \}\)</span> are stresses, <span class="math">\(\rho\)</span> is the mass density of the material, <span class="math">\(\kappa_d\)</span> is a material-damping parameter analogous to viscosity, and volume integration is carried out over the element volume, <span class="math">\(V_e\)</span>.</p>
+<p>If we express the displacement field <span class="math">\(\{ {\bf u} \}\)</span> (which is a function of both space and time) and its first two time derivatives as</p>
+<div class="math" id="equation-sel-disp-field-eq">
+<span class="eqno">(4)</span>\[\{      {\bf u} \} = [{\bf N}] \{      {\bf d} \} \quad\quad
+\{  \dot{\bf u} \} = [{\bf N}] \{  \dot{\bf d} \} \quad\quad
+\{ \ddot{\bf u} \} = [{\bf N}] \{ \ddot{\bf d} \}\]</div>
+<p>where shape functions <span class="math">\([{\bf N}]\)</span> are functions of space only, and nodal degrees-of-freedom <span class="math">\(\{{\bf d}\}\)</span> are functions of time only, then <a class="reference internal" href="#equation-sel-disp-field-eq">(4)</a> represent a local separation of variables. By substituting <a class="reference internal" href="#equation-sel-disp-field-eq">(4)</a> into <a class="reference internal" href="#equation-sel-work-balance">(3)</a>, and noting that <span class="math">\(\{ \delta{\bf u} \}\)</span>, and thus <span class="math">\(\{ \delta{\bf d} \}\)</span>, are arbitrary, one obtains</p>
+<div class="math" id="equation-shell-finite-system">
+<span class="eqno">(5)</span>\[[{\bf m}] \{ \ddot{\bf d} \} + [{\bf c}] \{ \dot{\bf d} \} + \{ {\bf r}^{\rm int} \} = \{ {\bf r}^{\rm ext} \}\]</div>
+<p>where the element mass and damping matrices are defined as</p>
+<div class="math">
+\[[{\bf m}] = \int_{V\!{\scriptscriptstyle e}} \rho [{\bf N}]^T [{\bf N}]\,dV\]</div>
+<div class="math" id="equation-shell-damping-matrix">
+<span class="eqno">(6)</span>\[[{\bf c}] = \int_{V\!{\scriptscriptstyle e}} \kappa_{\scriptscriptstyle d} [{\bf N}]^T [{\bf N}]\,dV\]</div>
+<p>and the element internal force and external load vectors are defined as</p>
+<div class="math" id="equation-shell-mrleftout">
+<span class="eqno">(7)</span>\[\begin{Bmatrix} {\bf r}^{int} \end{Bmatrix} =
+\int_{V_e} \begin{bmatrix} {\bf B} \end{bmatrix}^T \begin{Bmatrix} {\bf \sigma} \end{Bmatrix} dV\]</div>
+<div class="math" id="equation-shell-mrleftout2">
+<span class="eqno">(8)</span>\[\begin{Bmatrix} {\bf r}^{ext} \end{Bmatrix} =
+\int_{V_e} \begin{bmatrix} {\bf N} \end{bmatrix}^T \begin{Bmatrix} {\bf F} \end{Bmatrix} dV +
+\int_{S_e} \begin{bmatrix} {\bf N} \end{bmatrix}^T \begin{Bmatrix} {\bf \Phi} \end{Bmatrix} dS +
+\sum_{i=1}^{n} \begin{bmatrix} {\bf p} \end{bmatrix}_i\]</div>
+<p>where <span class="math">\([{\bf B}]\)</span> is the strain-displacement matrix that satisfies <span class="math">\(\{\delta {\bf \epsilon}\} = [{\bf B}]\{{\bf d}\}\)</span>.</p>
+<p><a class="reference internal" href="#equation-shell-finite-system">(5)</a> is a system of coupled, second-order, ordinary differential equations in time, and is called a finite-element semi-discretization because, although displacements <span class="math">\([{\bf d}]\)</span> are discrete functions of space, they are still continuous functions of time. The structural-element logic employs an explicit, direct-integration method which discretizes <a class="reference internal" href="#equation-shell-finite-system">(5)</a> in time, using the central-difference method to obtain a sequence of uncoupled algebraic equations.</p>
+<p>Recall that <a class="reference internal" href="#equation-shell-finite-system">(5)</a> was written for a single element. Equations for the assembled structural system can be written as</p>
+<div class="math" id="equation-sel-equations-of-motion">
+<span class="eqno">(9)</span>\[\begin{bmatrix} {\bf M} \end{bmatrix} \begin{Bmatrix} \ddot{\bf D} \end{Bmatrix} +
+\begin{bmatrix} {\bf C} \end{bmatrix} \begin{Bmatrix} \dot{\bf D} \end{Bmatrix} =
+\begin{Bmatrix} {\bf R}^{ext} \end{Bmatrix} - \begin{Bmatrix} {\bf R}^{int} \end{Bmatrix} =
+\begin{Bmatrix} {\bf A} \end{Bmatrix}\]</div>
+<p>where <span class="math">\(\{{\bf A}\}\)</span> designates the accumulated out-of-balance force, and uppercase English alphabet characters designate structure matrices which are constructed by the conceptual expansion of element matrices to “structure size,” followed by addition of overlapping coefficients. See any standard finite-element text (e.g., Cook et al. 1989) for a detailed description of the assembly procedure.</p>
+<p>The equations of motion, <a class="reference internal" href="#equation-sel-equations-of-motion">(9)</a>, are written for a specific instant of time:</p>
+<div class="math" id="equation-sel-eom-discretized">
+<span class="eqno">(10)</span>\[\begin{bmatrix} {\bf M} \end{bmatrix} \begin{Bmatrix} \ddot{\bf D} \end{Bmatrix}_n +
+\begin{bmatrix} {\bf C} \end{bmatrix} \begin{Bmatrix} \dot{\bf D} \end{Bmatrix}_n =
+\begin{Bmatrix} {\bf A} \end{Bmatrix}_n\]</div>
+<p>where subscript <span class="math">\(n\)</span> denotes time <span class="math">\(n\Delta t\)</span>, and <span class="math">\(\Delta t\)</span> is the size of the time increment or timestep.</p>
+</div>
+<div class="section" id="central-difference-approximations">
+<h2>Central-Difference Approximations</h2>
+<p>The central-difference approximations for acceleration at time <span class="math">\(n\Delta t\)</span>, velocity at time <span class="math">\((n - {\scriptstyle 1/2})\Delta t\)</span>, and velocity at time <span class="math">\(n\Delta t\)</span> are given by</p>
+<div class="math" id="equation-sel-central-difference-acc">
+<span class="eqno">(11)</span>\[\{ \ddot{\bf D} \}_n = {1\over\Delta t} \biggl( \{ \dot{\bf D} \}_{n \scriptscriptstyle + 1/2} - \{ \dot{\bf D} \}_{n \scriptscriptstyle - 1/2} \biggr) + O( \Delta t^2 )\]</div>
+<div class="math" id="equation-sel-central-difference-vel">
+<span class="eqno">(12)</span>\[\{ \dot{\bf D} \}_{n \scriptscriptstyle - 1/2} = {1\over\Delta t} \biggl( \{ {\bf D} \}_{n} - \{ {\bf D} \}_{n \scriptscriptstyle - 1} \biggr) + O( \Delta t^2 )\]</div>
+<div class="math" id="equation-sel-final-vel">
+<span class="eqno">(13)</span>\[\{ \dot{\bf D} \}_n = {1\over2} \biggl( \{ \dot{\bf D} \}_{n \scriptscriptstyle - 1/2} + \{ \dot{\bf D} \}_{n \scriptscriptstyle + 1/2} \biggr) + O( \Delta t^2 )\]</div>
+<p>These expressions are second-order accurate, which implies that halving the timestep should approximately quarter the error in the approximation.</p>
+</div>
+<div class="section" id="accumulated-out-of-balance-force-vector">
+<span id="sel-out-of-balance-force"></span><h2>Accumulated Out-of-Balance Force Vector</h2>
+<p>The structure internal force vector that makes up one portion of the accumulated out-of-balance force vector <span class="math">\(\{{\bf A}\}_n\)</span> in <a class="reference internal" href="#equation-sel-eom-discretized">(10)</a> is obtained by assembling the contributions from each structural element and from each deformable direction of each link</p>
+<div class="math">
+\[\{ {\bf R}^{\rm int} \}_n = \sum_{j} \left( \{ {\bf r}^{\rm int} \}_n \right)_j\]</div>
+<p>with</p>
+<div class="math">
+\[ \begin{align}\begin{aligned}\{ {\bf r}^{\rm int} \}_n &amp;= \{ {\bf r}^{\rm int} \}_{n \scriptscriptstyle - 1} + \{ \Delta {\bf r}^{\rm int} \}\\= \{ {\bf r}^{\rm int} \}_{n \scriptscriptstyle - 1} + [{\bf k}]_{n \scriptscriptstyle - 1/2} \bigl( \{ {\bf d} \}_n - \{ {\bf d} \}_{n \scriptscriptstyle - 1} \bigr)\\= \{ {\bf r}^{\rm int} \}_{n \scriptscriptstyle - 1} + [{\bf k}]_{n \scriptscriptstyle - 1/2} \{ \dot{\bf d} \}_{n \scriptscriptstyle - 1/2} \Delta t\end{aligned}\end{align} \]</div>
+<p>in which the central-difference approximation of <a class="reference internal" href="#equation-sel-central-difference-vel">(12)</a> has been employed. The internal-force vector <span class="math">\(\{ {\bf r}^{\rm int} \}\)</span> that is maintained by each structural element and each deformable direction of each link is also updated during the computation of <span class="math">\(\{ {\bf R}^{\rm int} \}\)</span>.</p>
+<p>After distributing all of the internal forces to the appropriate nodes, each rigidly attached direction, <span class="math">\({\bf n}^{[{\rm S}]}\)</span>, of each link contributes the following portion of the accumulated out-of-balance force of its source node <span class="math">\({\bf A}^{[{\rm S}]}\)</span> to the accumulated out-of-balance force <span class="math">\({\bf A}^{[{\rm T}]}\)</span> of its target entity as</p>
+<div class="math">
+\[{\bf A}^{[{\rm T}]} \leftarrow {\bf A}^{[{\rm T}]} + \left( {\bf A}^{[{\rm S}]} \cdot {\bf n}^{[{\rm S}]} \right) {\bf n}^{[{\rm S}]}\]</div>
+</div>
+<div class="section" id="mass-matrix">
+<span id="sel-mass-matrix"></span><h2>Mass Matrix</h2>
+<p>The structure mass matrix in <a class="reference internal" href="#equation-sel-eom-discretized">(10)</a> is obtained by utilizing a nodal-lumping scheme, and assembling the contributions from each structural element</p>
+<div class="math">
+\[[ {\bf M} ] = \lceil {\bf M} \rfloor = \sum_{j=1}^{\rm numel} \lceil {\bf m} \rfloor_j\]</div>
+<p>with</p>
+<div class="math">
+\[\begin{split}\lceil {\bf m} \rfloor_j = \begin{cases} \frac{\rho_j V_j}{n_j}, &amp; \text{all 3 translational d.o.f.} \\
+                                         \frac{2}{5}\Bigg(\frac{\rho_j V_j}{n_j}\Bigg)\Bigg(\frac{3V_j}{4\pi n_j}\Bigg)^{2/3}, &amp; \text{all 3 rotational d.o.f.} \end{cases}\end{split}\]</div>
+<p>where <span class="math">\(\rho_j\)</span>, <span class="math">\(V_j\)</span> and <span class="math">\(n_j\)</span> are the mass density, volume and number of nodes of element <span class="math">\(j\)</span>. The rotational inertias are found by assuming that the portion of element mass seen by each node is distributed as a sphere.</p>
+<p>After distributing the mass associated with all of the structural elements to the appropriate nodes, each rigidly attached direction of each link contributes the following portion of its source mass in direction- <span class="math">\(k\)</span> <span class="math">\(m_k^{[{\rm S}]}\)</span> to the accumulated mass in target direction-<span class="math">\(i\)</span> <span class="math">\(m_i^{[{\rm T}]}\)</span>, using the weighting function</p>
+<div class="math" id="equation-sel-weighting-function">
+<span class="eqno">(14)</span>\[m_i^{[{\rm T}]} \leftarrow m_i^{[{\rm T}]} + m_k^{[{\rm S}]} \left( { \left| {\bf n}_k^{[{\rm S}]} \cdot {\bf n}_i^{[{\rm T}]} \right| \over \sum^3_{l=1} \left| {\bf n}_k^{[{\rm S}]} \cdot {\bf n}_l^{[{\rm T}]} \right| } \right)\]</div>
+<p>where <span class="math">\({\bf n}_i^{[{\rm S}]}\)</span> and <span class="math">\({\bf n}_i^{[{\rm T}]}\)</span> are, respectively, the unit-vector triads of the source and target local coordinate systems.</p>
+</div>
+<div class="section" id="damping-formulation">
+<h2>Damping Formulation</h2>
+<p>The derivation of equation <a class="reference internal" href="#equation-shell-damping-matrix">(6)</a> utilized a viscous-damping parameter that is suitable for modeling a Newtonian fluid; however, when modeling structural systems, we are less interested in viscous damping than in dry friction and hysteresis loss. These energy-loss mechanisms are not well-understood and, from a practical standpoint, <a class="reference internal" href="#equation-shell-damping-matrix">(6)</a> does not correctly represent structural damping. Thus, three ad hoc damping schemes (local damping, combined local damping and Rayleigh or proportional damping) are provided. The implementation details of the three damping schemes are presented here; refer to <span class="xref std std-ref">Mechanical Damping</span> and <span class="xref std std-ref">Rayleigh Damping</span> for a description of the rationale behind each scheme.</p>
+<p>The starting point for all three damping schemes is given by rewriting <a class="reference internal" href="#equation-sel-eom-discretized">(10)</a> as</p>
+<div class="math" id="equation-damping-starting-eq">
+<span class="eqno">(15)</span>\[[{\bf M}] \{ \ddot{\bf D} \}_n + \{ {\bf R}^{\rm d} \}_n = \{ {\bf A} \}_n\]</div>
+<p>where <span class="math">\(\{ {\bf R}^{\rm d} \}_n\)</span> represents the force produced by the damping mechanism at time <span class="math">\(n\Delta t\)</span>.</p>
+<p class="h3 rubric">Local Damping</p>
+<p>Substitution of <a class="reference internal" href="#equation-sel-central-difference-acc">(11)</a> into <a class="reference internal" href="#equation-damping-starting-eq">(15)</a> yields</p>
+<div class="math" id="equation-sel-local-damping-2">
+<span class="eqno">(16)</span>\[\{ \dot{\bf D} \}_{n \scriptscriptstyle + 1/2} = \{ \dot{\bf D} \}_{n \scriptscriptstyle - 1/2} + \Delta t [{\bf M}]^{-1} \left( \{ {\bf A} \}_n - \{ {\bf R}^{\rm d} \}_n \right)\]</div>
+<p>The use of a diagonal mass matrix (as described in <a class="reference internal" href="#sel-mass-matrix"><span class="std std-ref">Mass Matrix</span></a>) uncouples this set of equations such that we can rewrite them for a single degree of freedom <span class="math">\(i\)</span> as</p>
+<div class="math">
+\[( \dot D_i )_{n \scriptscriptstyle + 1/2} = ( \dot D_i )_{n \scriptscriptstyle - 1/2} + {\Delta t \over M_i}  \left( (A_i)_n - ( R_i^{\rm d} )_n \right)\]</div>
+<p>Local damping is provided by setting</p>
+<div class="math" id="equation-sel-local-damping-1">
+<span class="eqno">(17)</span>\[( R_i^{\rm d} )_n = \lambda_i \&gt; \bigl| (A_i)_n \bigr| \&gt; {\rm sgn}  ( \dot D_i )_n\]</div>
+<p>where <span class="math">\(\lambda_i\)</span> is the local-damping factor for degree-of-freedom <span class="math">\(i\)</span>, and</p>
+<div class="math">
+\[\begin{split}{\rm sgn}(x) =
+\begin{cases} +1, &amp; \text{if} x \geq 0 \\
+              -1, &amp; \text{if} x &lt; 0 \end{cases}\end{split}\]</div>
+<p>The local-damping formulation is implemented by computing an undamped <span class="math">\((\dot D_i )^{\rm ud}\)</span> and a damped <span class="math">\(( \dot D_i )^{\rm d}\)</span> new velocity:</p>
+<div class="math">
+\[ \begin{align}\begin{aligned}( \dot D_i )^{\rm ud} = ( \dot D_i )_{n \scriptscriptstyle - 1/2} + {\Delta t \over M_i} (A_i)_n\\( \dot D_i )^{\rm d} = ( \dot D_i )_{n \scriptscriptstyle - 1/2} + {\Delta t \over M_i} \biggl( (A_i)_n - \lambda_i \&gt; | (A_i)_n | \&gt; {\rm sgn}  ( \dot D_i )_{n \scriptscriptstyle - 1/2} \biggr)\end{aligned}\end{align} \]</div>
+<p>and setting the actual new velocity equal to the damped velocity (only if the velocity has not changed sign) as</p>
+<div class="math" id="equation-sel-new-velocity-1">
+<span class="eqno">(18)</span>\[\begin{split}\begin{pmatrix} \dot{D}_i \end{pmatrix}_{n+1/2} =
+\begin{cases} \begin{pmatrix} \dot{D}_i \end{pmatrix}^{ud}, &amp;
+              \text{if} \begin{pmatrix} \dot{D}_i \end{pmatrix}_{n-1/2}\begin{pmatrix} \dot{D}_i \end{pmatrix}^d \leq 0 \\
+              \begin{pmatrix} \dot{D}_i \end{pmatrix}^{d}, &amp;
+              \text{otherwise} \end{cases}\end{split}\]</div>
+<p>It can be shown that this implementation maintains second-order accuracy as follows. Assume that</p>
+<div class="math" id="equation-sel-local-damping-assumption">
+<span class="eqno">(19)</span>\[( \dot D_i )_{n \scriptscriptstyle + 1/2} ( \dot D_i )_{n \scriptscriptstyle - 1/2} &gt; 0\]</div>
+<p>This implies that</p>
+<div class="math">
+\[{\rm sgn}( \dot D_i )_n = {\rm sgn}( \dot D_i )_{n \scriptscriptstyle - 1/2}\]</div>
+<p>which makes <a class="reference internal" href="#equation-sel-new-velocity-1">(18)</a> an exact expression of <a class="reference internal" href="#equation-sel-local-damping-1">(17)</a>. Note that if the assumption of <a class="reference internal" href="#equation-sel-local-damping-assumption">(19)</a> is not satisfied (i.e., the velocity either changes sign or is zero), then no damping is applied to this degree of freedom.</p>
+<p class="h3 rubric">Combined Local Damping</p>
+<p>Combined local damping is provided by utilizing the same procedure as described for local damping, but with <a class="reference internal" href="#equation-sel-local-damping-1">(17)</a> replaced by</p>
+<div class="math">
+\[( R_i^{\rm d} )_n = \lambda_i \&gt; \bigl| (A_i)_n \bigr| \&gt; {1\over2} \bigl( {\rm sgn} ( \dot D_i )_n - {\rm sgn} ( \dot A_i )_n \bigr)\]</div>
+<p>where</p>
+<div class="math">
+\[{\rm sgn} ( \dot A_i )_n = {\rm sgn} \bigl( ( A_i )_n - ( A_i )_{n-1} \bigr)\]</div>
+<p class="h3 rubric">Rayleigh Damping</p>
+<p>Rayleigh damping results by forming the damping matrix <span class="math">\([ {\bf C} ]\)</span> as a linear combination of the stiffness and mass matrices:</p>
+<div class="math">
+\[[ {\bf C} ] = \beta [ {\bf K} ]  +  \alpha [ {\bf M} ]\]</div>
+<p>where <span class="math">\(\beta\)</span> and <span class="math">\(\alpha\)</span> are called, respectively, the stiffness- and mass-proportional damping constants. The relation between <span class="math">\(\beta\)</span>, <span class="math">\(\alpha\)</span> and the fraction of critical damping <span class="math">\(\xi\)</span> at frequency <span class="math">\(\omega\)</span> is given by</p>
+<div class="math">
+\[\xi = {1\over2} \left( \beta\omega + {\alpha\over\omega} \right)\]</div>
+<p>Damping attributable to stiffness increases with increasing frequency, whereas damping attributable to mass increases with decreasing frequency.</p>
+<p>Damping constants <span class="math">\(\beta\)</span> and <span class="math">\(\alpha\)</span> are related to the fractions of critical damping (<span class="math">\(\xi_1\)</span> and <span class="math">\(\xi_2\)</span>) at frequencies (<span class="math">\(\omega_1\)</span> and <span class="math">\(\omega_2\)</span>) by</p>
+<div class="math">
+\[ \begin{align}\begin{aligned}\beta  &amp;= 2(\xi_2\omega_2 - \xi_1\omega_1) / (\omega_2^2 - \omega_1^2)\\\alpha &amp;= 2\omega_1\omega_2(\xi_1\omega_2 - \xi_2\omega_1) / (\omega_2^2 - \omega_1^2)\end{aligned}\end{align} \]</div>
+<p>The governing equation of motion used when Rayleigh damping is active is derived as follows. Express the force produced by the damping mechanism (<span class="math">\(\{ {\bf R}^{\rm d} \}_n\)</span> in <a class="reference internal" href="#equation-damping-starting-eq">(15)</a>) as the sum of the stiffness and mass contributions:</p>
+<div class="math">
+\[\{ {\bf R}^{\rm d} \}_n = \{ {\bf R}^{\beta} \}_n + \{ {\bf R}^{\alpha} \}_n = \{ {\bf R}^{\beta} \}_n + \alpha [{\bf M}] \{ \dot{\bf D} \}_n\]</div>
+<p>and substitute this expression into <a class="reference internal" href="#equation-damping-starting-eq">(15)</a> to obtain</p>
+<div class="math" id="equation-sel-rayleigh-system">
+<span class="eqno">(20)</span>\[[{\bf M}] \{ \ddot{\bf D} \}_n + \alpha [{\bf M}] \{ \dot{\bf D} \}_n = \{ {\bf A} \}_n - \{ {\bf R}^{\alpha} \}_n\]</div>
+<p>Substitution of the central-difference approximations given by <a class="reference internal" href="#equation-sel-central-difference-acc">(11)</a> and <a class="reference internal" href="#equation-sel-final-vel">(13)</a> into <a class="reference internal" href="#equation-sel-rayleigh-system">(20)</a>, followed by rearrangement of terms, yields</p>
+<div class="math" id="equation-sel-rayleigh-system-2">
+<span class="eqno">(21)</span>\[\{ \dot{\bf D} \}_{n \scriptscriptstyle + 1/2} = \left( {2 - \alpha\Delta t \over 2 + \alpha\Delta t} \right) \{ \dot{\bf D} \}_{n \scriptscriptstyle - 1/2} + \left( {2\Delta t \over 2 + \alpha\Delta t} \right) [{\bf M}]^{-1} \biggl( \{ {\bf A} \}_n - \{ {\bf R}^{\beta} \}_n \biggr)\]</div>
+<p>in which the stiffness contribution to the damping force is obtained by assembling the contributions from each structural element and from each deformable direction of each link:</p>
+<div class="math" id="equation-rayleigh-eq-1">
+<span class="eqno">(22)</span>\[\{ {\bf R}^{\beta} \}_n = \sum_j \left( \{ {\bf r}^{\beta} \}_n \right)_j\]</div>
+<p>with</p>
+<div class="math" id="equation-rayleigh-eq-2">
+<span class="eqno">(23)</span>\[ \begin{align}\begin{aligned}\{ {\bf r}^{\beta} \}_n &amp; = \beta [{\bf k}]_{n \scriptscriptstyle - 1/2} \bigl( \{ {\bf d} \}_n - \{ {\bf d} \}_{n \scriptscriptstyle - 1} \bigr) / \Delta t\\&amp; = \beta [{\bf k}]_{n \scriptscriptstyle - 1/2} \{ \dot{\bf d} \}_{n \scriptscriptstyle - 1/2}\end{aligned}\end{align} \]</div>
+</div>
+<div class="section" id="computation-of-stable-timestep">
+<span id="sel-timestep"></span><h2>Computation of Stable Timestep</h2>
+<p>Time integration carried out using the central-difference method is a conditionally stable process. The stable timestep for our central-difference equations (<a class="reference internal" href="#equation-sel-local-damping-2">(16)</a> if local or combined local damping is active, or <a class="reference internal" href="#equation-sel-rayleigh-system">(20)</a> if Rayleigh damping is active) is given by (Belytschko 1983)</p>
+<div class="math" id="equation-sel-timestep-1">
+<span class="eqno">(24)</span>\[\Delta t_{\rm stab} = {2\over\omega_{\rm max}} F(\xi_{\rm max})\quad\hbox{where } F(\xi) = \sqrt{1+\xi^2} - \xi\]</div>
+<p>where <span class="math">\(\omega_{\rm max}\)</span> is the highest natural frequency of the discretized system, and <span class="math">\(\xi_{\rm max}\)</span> is the fraction of critical damping at <span class="math">\(\omega_{\rm max}\)</span>. The value of <span class="math">\(\xi_{\rm max}\)</span> is dependent upon the damping scheme,</p>
+<div class="math" id="equation-sel-timestep-2">
+<span class="eqno">(25)</span>\[\begin{split}\xi_{max} =
+\begin{cases} \frac{1}{2} ( \beta\omega_{max} + \alpha /  \omega_{max} ), &amp; \text{(Rayleigh Damping)} \\
+                             \text{max} \lambda_i / \pi,                  &amp; \text{(local or combined local damping)} \end{cases}\end{split}\]</div>
+<p>The natural frequencies, <span class="math">\(\omega_n\)</span>, of the discretized system are given by solution of the eigenproblem,</p>
+<div class="math" id="equation-sel-timestep-eigenproblem">
+<span class="eqno">(26)</span>\[\left( [{\bf K}] - \omega^2 [{\bf M}] \right) \{ \tilde{\bf D} \} = \{ {\bf 0} \}\]</div>
+<p>The maximum frequency can be bounded by applying Gerschgorin’s Theorem (Isaacson and Keller 1963) to <a class="reference internal" href="#equation-sel-timestep-eigenproblem">(26)</a> which, for a diagonal mass matrix, states that</p>
+<div class="math" id="equation-sel-timestep-3">
+<span class="eqno">(27)</span>\[\omega_{\rm max}^2 \leq \max_i \left( G_i / M_i \right) \qquad\hbox{with}\quad i = 1,2,\ldots,n_e\]</div>
+<p>where <span class="math">\(n_e\)</span> is the number of degrees of freedom, and <span class="math">\(G_i\)</span> is the stiffness sum for the <span class="math">\(i\)</span>th row of the assembled stiffness matrix</p>
+<div class="math">
+\[G_i = K_{ii} + \sum_{j=1 \atop j \neq i}^{n_e} \left| K_{ij} \right|\]</div>
+<p>The six components of <span class="math">\(G_i\)</span> are stored at each structural-element node and expressed in terms of the node-local system. Stiffness contributions are provided by all structural elements and by all deformable directions of all links. After distributing all of the stiffnesses to the appropriate nodes, each rigidly attached direction of each link contributes the following portion of its source stiffness in direction-<span class="math">\(k\)</span> <span class="math">\(G_k^{[{\rm S}]}\)</span> to the accumulated stiffness in target direction-<span class="math">\(i\)</span> <span class="math">\(G_i^{[{\rm T}]}\)</span>, using the same weighting function as given by <a class="reference internal" href="#equation-sel-weighting-function">(14)</a>, namely</p>
+<div class="math">
+\[G_i^{[{\rm T}]} \leftarrow G_i^{[{\rm T}]} + G_k^{[{\rm S}]} \left( { \left| {\bf n}_k^{[{\rm S}]} \cdot {\bf n}_i^{[{\rm T}]} \right| \over \sum^3_{l=1} \left| {\bf n}_k^{[{\rm S}]} \cdot {\bf n}_l^{[{\rm T}]} \right| } \right)\]</div>
+<p>where <span class="math">\({\bf n}_i^{[{\rm S}]}\)</span> and <span class="math">\({\bf n}_i^{[{\rm T}]}\)</span> are, respectively, the unit-vector triads of the source and target local coordinate systems.</p>
+<p>The final timestep computed by the structural-element portion of the program is</p>
+<div class="math">
+\[\Delta t = \beta_u \Delta t_{\rm stab}\]</div>
+<p>where <span class="math">\(\beta_u\)</span> is a user-specified safety factor, and <span class="math">\(\Delta t_{\rm stab}\)</span> is computed using <a class="reference internal" href="#equation-sel-timestep-1">(24)</a>, <a class="reference internal" href="#equation-sel-timestep-2">(25)</a> and <a class="reference internal" href="#equation-sel-timestep-3">(27)</a>, in which <a class="reference internal" href="#equation-sel-timestep-3">(27)</a> is only applied to active degrees-of-freedom.</p>
+</div>
+<div class="section" id="mass-scaling">
+<span id="sel-mass-scaling"></span><h2>Mass Scaling</h2>
+<p>The structural-element portion of the program may be run in one of three modes (fully dynamic, fully static or partially dynamic):</p>
+<ul class="simple">
+<li>When run in the fully dynamic mode (<a class="reference internal" href="../sel_commands/cmd_structure.scale-rotational-mass.html#command:structure.scale-rotational-mass" title="This value applies to dynamic analysis only. If set to off, then the rotational&#013;&#010;degree-of-freedom masses are computed using a sphere with a volume equal to&#013;&#010;that contributed by elements using the node. This is described as fully dynamic&#013;&#010;mode in  Mass Scaling &lt;sel-mass-scaling&gt; . If set to on, then the rotational&#013;&#010;degree-of-freedom masses are scaled based on rotational stiffnesses. This is&#013;&#010;described as partially dynamic mode in the structural element section  Mass&#013;&#010;Scaling &lt;sel-mass-scaling&gt; ."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">scale-rotational-mass</span></code></a> <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a>), mass scaling is not applied; instead, the mass matrix reflects the actual mass of the structural system and is assembled as described in <a class="reference internal" href="#sel-mass-matrix"><span class="std std-ref">Mass Matrix</span></a>. The timestep necessary to ensure a stable integration of the equations of motion is determined as described in <a class="reference internal" href="#sel-timestep"><span class="std std-ref">Computation of Stable Timestep</span></a>.</li>
+<li>When run in the fully static mode, the values in the mass matrix are adjusted to ensure that all degrees of freedom have the same frequency response — one that is appropriate to ensure a stable integration of the equations of motion for a fixed value of timestep. The procedure by which this is accomplished is described below.</li>
+<li>When run in the partially dynamic mode (<a class="reference internal" href="../sel_commands/cmd_structure.scale-rotational-mass.html#command:structure.scale-rotational-mass" title="This value applies to dynamic analysis only. If set to off, then the rotational&#013;&#010;degree-of-freedom masses are computed using a sphere with a volume equal to&#013;&#010;that contributed by elements using the node. This is described as fully dynamic&#013;&#010;mode in  Mass Scaling &lt;sel-mass-scaling&gt; . If set to on, then the rotational&#013;&#010;degree-of-freedom masses are scaled based on rotational stiffnesses. This is&#013;&#010;described as partially dynamic mode in the structural element section  Mass&#013;&#010;Scaling &lt;sel-mass-scaling&gt; ."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">scale-rotational-mass</span></code></a> <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>), the mass matrix reflects the actual mass of the translational degrees-of-freedom, and only the translational degrees-of-freedom are considered when determining the timestep necessary to ensure a stable integration of the equations of motion. The masses of the rotational degrees-of-freedom are adjusted to ensure that all rotational degrees-of-freedom have the same frequency response — one that is appropriate to ensure a stable integration of the equations of motion for the fixed value of timestep determined for the translational degrees-of-freedom. The procedure by which this is accomplished is described below.</li>
+</ul>
+<p><em>Fully Static Mode</em></p>
+<p>For a given value of timestep <span class="math">\(\Delta\tilde t\)</span>, stability requires that</p>
+<div class="math">
+\[\Delta t_{\rm stab} = {2\Delta\tilde t \over \beta_u} = {2\over\omega_{\rm max}} F(\xi_{\rm max})\]</div>
+<p>where the estimated stable timestep has been multiplied by a safety factor of one-half.</p>
+<p>By setting the maximum frequency equal to its bounding value provided by <a class="reference internal" href="#equation-sel-timestep-3">(27)</a>, one can write</p>
+<div class="math">
+\[\omega_{\rm max}^2 = \left( {F(\xi_{\rm max}) \beta_u \over \Delta\tilde t} \right)^2 \equiv \psi^2 = \max_i \left( G_i / M_i \right)\]</div>
+<p>in which <span class="math">\(\psi\)</span> has been introduced to represent the second term. One can ensure that all degrees of freedom have the same frequency response by setting each <span class="math">\(M_i\)</span> such that</p>
+<div class="math">
+\[M_i = G_i / \psi^2\]</div>
+<p><span class="math">\(\psi\)</span> can be computed directly because <span class="math">\(\xi_{\rm max}\)</span> is given by <a class="reference internal" href="#equation-sel-timestep-2">(25)</a>.</p>
+<p><em>Partially Dynamic Mode</em></p>
+<ol class="arabic">
+<li><p class="first">Set all translational masses using the procedure described in <a class="reference internal" href="#sel-mass-matrix"><span class="std std-ref">Mass Matrix</span></a>.</p>
+</li>
+<li><p class="first">Determine the timestep necessary to ensure a stable integration of the equations
+of motion by only considering the translational degrees-of-freedom when using the procedure described in <a class="reference internal" href="#sel-timestep"><span class="std std-ref">Computation of Stable Timestep</span></a>.</p>
+</li>
+<li><p class="first">Determine the highest natural frequency of the discretized system by applying <a class="reference internal" href="#equation-sel-timestep-3">(27)</a> to only the translational degrees-of-freedom, and call this value <span class="math">\(\omega^\star\)</span>. Set all masses associated with rotational degrees-of-freedom such that they satisfy</p>
+<div class="math">
+\[M_i = G_i / {\omega^\star}^2\]</div>
+<p>in order to ensure that the rotational degrees-of-freedom do not produce a larger natural frequency than <span class="math">\(\omega^\star\)</span>.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="computational-algorithm">
+<h2>Computational Algorithm</h2>
+<ol class="arabic simple">
+<li>Assume that boundary conditions consisting of externally applied loads, <span class="math">\(\{{\bf R}^{\rm ext}\}\)</span>, as well as structural element, link and nodal properties have been specified.</li>
+<li>Set initial conditions:</li>
+</ol>
+<div class="math">
+\[\begin{split}\begin{split}
+   n &amp;= 0 \\
+   \{ {\bf D} \}_0 &amp;= \{ {\bf D}(t = 0) \} \\
+   \{ \dot{\bf D} \}_{\scriptscriptstyle - 1/2} &amp;= \{ \dot{\bf D}(t = 0) \} \\
+   [{\bf k}]_{\scriptscriptstyle - 1/2} &amp;=   [{\bf k}(t=0)] \quad \hbox{for all elements} \\
+   \{ {\bf r}^{\rm int} \}_{\scriptscriptstyle - 1} &amp;=  \{ {\bf 0} \} \quad\qquad\hbox{for all elements}
+\end{split}\end{split}\]</div>
+<ol class="arabic" start="3">
+<li><p class="first">Assemble the structure mass matrix <span class="math">\(\lceil {\bf M} \rfloor\)</span> by considering the mode in which the structural-element portion of the program is being run. For the fully dynamic case, employ the procedure described in <a class="reference internal" href="#sel-mass-matrix"><span class="std std-ref">Mass Matrix</span></a>. For the fully static or partially dynamic cases, employ the procedures described in <a class="reference internal" href="#sel-mass-scaling"><span class="std std-ref">Mass Scaling</span></a>.</p>
+</li>
+<li><p class="first">Compute stable timestep <span class="math">\(\Delta t\)</span>, as described in <a class="reference internal" href="#sel-timestep"><span class="std std-ref">Computation of Stable Timestep</span></a>.</p>
+</li>
+<li><p class="first">Compute the accumulated out-of-balance force vector <span class="math">\(\{ {\bf A} \}_n\)</span>:</p>
+<ol class="loweralpha simple">
+<li>Set <span class="math">\(\{ {\bf A} \}_n = \{ {\bf R}^{\rm ext} \}_n\)</span>.</li>
+<li>Assemble the contributions from each structural element,
+each deformable direction of each link, and each rigidly attached direction of each link, as described in <a class="reference internal" href="#sel-out-of-balance-force"><span class="std std-ref">Accumulated Out-of-Balance Force Vector</span></a>.</li>
+<li>If Rayleigh damping is active,
+assemble the stiffness contribution to the damping force <span class="math">\(\{ {\bf R}^{\beta} \}_n\)</span> using <a class="reference internal" href="#equation-rayleigh-eq-1">(22)</a> and <a class="reference internal" href="#equation-rayleigh-eq-2">(23)</a>.</li>
+</ol>
+</li>
+<li><p class="first">Update all nodal velocities <span class="math">\(\{ \dot{\bf D} \}_{n \scriptscriptstyle + 1/2}\)</span>:</p>
+<ol class="loweralpha simple">
+<li>For all active degrees-of-freedom (i.e., those that are not fixed and are not slaved),
+update velocities using <a class="reference internal" href="#equation-sel-local-damping-2">(16)</a> if local or combined local damping is active, or <a class="reference internal" href="#equation-sel-rayleigh-system">(20)</a> if Rayleigh damping is active.</li>
+<li>For each rigidly attached direction <span class="math">\({\bf n}^{[{\rm S}]}\)</span> of each link, set velocity of source node <span class="math">\(\dot{\bf D}^{[{\rm S}]}\)</span> equal to component of velocity of target entity in the attached direction: <span class="math">\(\quad\dot{\bf D}^{[{\rm S}]} = \left( \dot{\bf D}^{[{\rm T}]} \cdot {\bf n}^{[{\rm S}]} \right) {\bf n}^{[{\rm S}]}\)</span></li>
+</ol>
+</li>
+<li><p class="first">Update all nodal positions.
+Each node stores:</p>
+<ol class="arabic simple">
+<li>its reference position <span class="math">\({\bf x}^{\rm ref}\)</span>, which corresponds to its position at the time
+that all related stiffness matrices were formed,</li>
+<li>its current position <span class="math">\({\bf x}^{\rm cur}\)</span>, and</li>
+<li>its accumulated rotation <span class="math">\({\bf \theta}^{\text{cur}}\)</span> since the last update of <span class="math">\({\bf x}^{\text{ref}}\)</span>.</li>
+</ol>
+<p>The displacement that has occurred since the last update of <span class="math">\({\bf x}^{\text{ref}}\)</span> is given by</p>
+<div class="math">
+\[\begin{split}\begin{Bmatrix} {\bf d} \end{Bmatrix} =
+\begin{Bmatrix} {\bf d}^{\text{tran}} \\ {\bf d}^{\text{rot}} \end{Bmatrix} =
+\begin{Bmatrix} {\bf x}^{\text{cur}} - {\bf x}^{\text{ref}} \\ {\bf \theta}^{\text{cur}} \end{Bmatrix}\end{split}\]</div>
+<p>and the current positions and rotations are updated using the central-difference approximation of <a class="reference internal" href="#equation-sel-central-difference-vel">(12)</a>:</p>
+<div class="math">
+\[ \begin{align}\begin{aligned}\begin{Bmatrix} {\bf x}^{\text{cur}} \end{Bmatrix}_{n+1} =
+\begin{Bmatrix} {\bf x}^{\text{cur}} \end{Bmatrix}_n + \begin{Bmatrix} {\bf \dot{d}}^{\text{tran}} \end{Bmatrix}_{n+1/2} \Delta t\\\begin{Bmatrix} {\bf \theta}^{\text{cur}} \end{Bmatrix}_{n+1} =
+\begin{Bmatrix} {\bf \theta}^{\text{cur}} \end{Bmatrix}_n + \begin{Bmatrix} {\bf \dot{d}}^{\text{rot}} \end{Bmatrix}_{n+1/2} \Delta t\end{aligned}\end{align} \]</div>
+</li>
+<li><p class="first">Update all structural element stiffness matrices if a large-strain update is due;
+otherwise, set</p>
+<div class="math">
+\[[{\bf k}]_{n \scriptscriptstyle + 1/2} = [{\bf k}]_{n \scriptscriptstyle - 1/2} \;  \text{for all elements}\]</div>
+</li>
+<li><p class="first">Set <span class="math">\(n \leftarrow n + 1\)</span>, and go to step 3.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="references">
+<h1>References</h1>
+<p>AISC. <span class="bi">Manual of Steel Construction</span>, Eighth Edition. Chicago: American Institute of Steel Construction Inc. (1980).</p>
+<p>Batoz, J. L. “An Explicit Formulation for an Efficient Triangular Plate-Bending Element,” <em>Int. J. Num. Meth. Engng.</em>, <span class="bi">18</span>(7), 1077-1089 (1982).</p>
+<p>Batoz, J. L., K. J. Bathe and L. W. Lo. “A Study of Three-Node Triangular Plate Bending Elements,” <em>Int. J. Num. Meth. Engng.</em>, <span class="bi">15</span>(12), 1771-1812 (1980).</p>
+<p>Belytschko, T. “An Overview of Semidiscretization and Time Integration Procedures,” in <span class="bi">Computational Methods for Transient Analysis</span>, Chapter 1, pp. 1-65. T. Belytschko and T. J. R. Hughes, eds. New York: Elsevier Science Publishers, B. V. (1983).</p>
+<p>Beneito, C. and Ph. Gotteland. “Three-Dimensional Numerical Modeling of Geosynthetics Mechanical Behavior,” in <span class="bi">FLAC and Numerical Modeling in Geomechanics (Proceedings of the Second International FLAC Symposium on Numerical Modeling in Geomechanics, Lyon, France, 29-31 October 2001)</span>. D. Billaux et al., eds. Lisse: Balkema (2001).</p>
+<p>Carpenter, N., H. Stolarski and T. Belytschko. “Improvements in 3-Node Triangular Shell Elements,” <em>Int. J. Num. Meth. Engng.</em>, <span class="bi">23</span>(9), 1643-1667 (1986).</p>
+<p>Cernica, J. N. <span class="bi">Geotechnical Engineering: Foundation Design</span>, New York: John Wiley &amp; Sons Inc. (1995).</p>
+<p>Clayton, C. R. I., J. Milititsky and R. T. Woods. <span class="bi">Earth Pressure and Earth-Retaining Structures</span>, pp. 145-148. London: Blackie Academic &amp; Professional (1993).</p>
+<p>Cook, R. D. “A Plane Hybrid Element with Rotational D. O. F. and Adjustable Stiffness,” <em>Int. J. Num. Meth. Engng.</em>, <span class="bi">24</span>(8), 1499-1508 (1987).</p>
+<p>Cook, R. D., D. S. Malkus and M. E. Plesha. <span class="bi">Concepts and Applications of Finite Element Analysis</span>, Third Edition. New York: John Wiley &amp; Sons Inc. (1989).</p>
+<p>Isaacson, E., and H. B. Keller. <span class="bi">Analysis of Numerical Methods</span>, pp. 135-136. New York: John Wiley &amp; Sons Inc. (1963).</p>
+<p>Massonnet, C. E. <span class="bi">Résistance Des Matériaux</span>. Sciences Et Lettres, Liége (1960).</p>
+<p>McGuire, W., and R. H. Gallagher. <span class="bi">Matrix Structural Analysis</span>. New York: John Wiley &amp; Sons Inc. (1979).</p>
+<p>St. John, C. M., and D. E. Van Dillen. “Rockbolts: A New Numerical Representation and Its Application in Tunnel Design,” in <span class="bi">Rock Mechanics — Theory - Experiment - Practice (Proceedings of the 24th U.S. Symposium on Rock Mechanics, Texas A&amp;M University, June 1983)</span>, pp. 13-26. New York: Association of Engineering Geologists (1983).</p>
+<p>Ugural, A. C. <span class="bi">Stresses in Plates and Shells</span>, pp. 1-16. New York: McGraw-Hill Publishing Company Inc. (1981).</p>
+<script>
+   //and now, some filth of the highest order (setting a style-sheet attribute)
+   $("ol ol").css("list-style","lower-alpha");
+</script></div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?General Formulation of Structural-Element Logic" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

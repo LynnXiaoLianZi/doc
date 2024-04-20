@@ -1,0 +1,143 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Common Model Objects &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Data" href="../../../../kernel/doc/manual/data/data.html" />
+    <link rel="prev" title="References" href="models/theory/references.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="common-model-objects">
+<span id="general-components"></span><h1>Common Model Objects</h1>
+<p>The model objects described in this section are not specific to any one program but are commonly available to Itasca programs, hence the appellation “common.”  This means that there is a significant amount of knowledge transferability between these programs. Grasp of the way <a class="reference internal" href="../../../../module/doc/manual/group_manual/groupkwd.html#group-manual"><span class="std std-ref">groups</span></a> work in <span class="codename">PFC</span>, for instance, is sufficient to confer an understanding of how they will work in <span class="codename">FLAC3D</span>.  In any of these programs the objects found here achieve the same kinds of purposes, have the same underlying logic, and operate under the same assumptions.</p>
+<p>This documentation, therefore, is split such that everything that is common to the programs is contained in the section <a class="reference internal" href="program_guide.html#programguide"><span class="std std-ref">Program Guide</span></a>, and the aspects that are specific to specific programs are in sections that follow (that is, <span class="xref std std-ref">FLAC3D</span>, <span class="xref std std-ref">PFC</span>, and <span class="xref std std-ref">3DEC</span>). This partitioning helps to easily identify the distinction between program-specific objects and Itasca-software-wide modeling constructs.  For commands and <span class="codename">FISH</span> that are specific to <span class="codename">PFC</span>, <span class="codename">FLAC3D</span>, and <span class="codename">3DEC</span> respectively, see <span class="xref std std-ref">pfcmodelobjects</span>, <span class="xref std std-ref">flac3dcommandsandfishfrontpage</span>, and <span class="xref std std-ref">3deccommandsandfish</span>.</p>
+<p><span class="flag3">[CS: candidate for complete removal here] Users who do have experience with past versions may wish to visit the ref-Application &lt;application&gt;- element first, as this contains the largest remnant of the old “Command Reference” material within the current documentation.</span></p>
+<p>This section contains the following topics.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../kernel/doc/manual/data/data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn.html">Discrete Fracture Network (DFN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../kernel/doc/manual/domain_manual/domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../kernel/doc/manual/fish/fish.html"><span class="codename">FISH</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../geometry/doc/manual/geometry.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../module/doc/manual/group_manual/group.html">Group</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../kernel/doc/manual/history_manual/history.html">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../kernel/doc/manual/model/model.html">Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/plot.html">Plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../kernel/doc/manual/program/program.html">Program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../kernel/doc/manual/project/project.html">Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table.html">Table</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../kernel/doc/manual/trace_manual/trace.html">Trace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../module/doc/manual/extra_manual/extravariables.html">Extra (keyword)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../module/doc/manual/group_manual/groupkwd.html">Group (keyword/command word)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../module/doc/manual/list_manual/lists.html">List (keyword/command word)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../module/doc/manual/range_manual/range.html">Range (keyword)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../module/doc/manual/select_manual/selecthide.html">Select &amp; Hide (keywords)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../module/doc/manual/modifier_manual/modulations.html">Value Modifiers (add, multiply, gradient, &amp; vary keywords)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deprecatedfish.html">Deprecated Commands and FISH</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="program_guide.html" accesskey="U">Program Guide</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="models/theory/references.html"
+                           title="previous chapter"> References</a> |    
+       <a href="../../../../kernel/doc/manual/data/data.html"
+                           title="next chapter">Data</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Common Model Objects" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

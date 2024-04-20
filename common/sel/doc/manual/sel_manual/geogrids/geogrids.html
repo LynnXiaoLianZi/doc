@@ -1,0 +1,171 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Geogrid Structural Elements &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="geogrid-structural-elements">
+<span id="id1"></span><h1>Geogrid Structural Elements</h1>
+<p>Note that shell structural elements are based on the <a class="reference internal" href="../shelltypes/shelltypes.html#shelltype-structural-elements"><span class="std std-ref">Shell-Type Structural Element</span></a> and share the underlying formulation and implementation.</p>
+<div class="section" id="mechanical-behavior">
+<h2>Mechanical Behavior</h2>
+<p>The mechanical behavior of each geogrid element can be divided into the structural response of the geogrid material itself (see <a class="reference internal" href="../shelltypes/shelltypes.html#shell-type-mechanical-behavior"><span class="std std-ref">Shell-Type Mechanical Behavior</span></a>) and the way in which the geogrid element interacts with the model grid. By default, geogrid elements are assigned the CST plane-stress element that resists membrane but does not resist bending loading (see <a class="reference internal" href="../formulation/formulation.html#struct-shell-finite-elements"><span class="std std-ref">Shell Finite Elements</span></a>). A membrane structure can be modeled as a collection of geogrid elements. The geogrid behaves as an isotropic or orthotropic, linear elastic material with no failure limit. A shear-directed (in the tangent plane to the geogrid surface) frictional interaction occurs between the geogrid and the model grid, and the geogrid is slaved to the grid motion in the normal direction. The geogrid can be thought of as the two-dimensional analog of a one-dimensional cable. Geogrids are used to model flexible membranes whose shear interaction with the soil are important, such as geotextiles and geogrids.</p>
+<p>The orientation of the node-local system for all nodes used by geogrid elements is set automatically at the start of a set of cycles (or when the <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">cycle</span></code> <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">0</span></span></a> command is executed), such that the <span class="math">\(z\)</span>-axis is aligned with the average normal direction of all geogrid elements using the node, and the <span class="math">\(xy\)</span>-axes are arbitrarily oriented in the geogrid tangent plane (see <a href="#geogrid-interface-idealization">Figure  2</a>).</p>
+<p>A geogrid is embedded in the interior of the model grid. The behavior at the geogrid-soil interface is summarized in <a href="#geogrid-stresses">Figures  1</a> to <a href="#geogrid-interface-idealization"> 2</a>. The stresses acting on the geogrid are shown in <a href="#geogrid-stresses">Figure  1</a>. These stresses, consisting of an effective confining stress, <span class="math">\(\sigma_m\)</span>, and a total shear stress, <span class="math">\(\tau\)</span>, are balanced by the membrane stresses that develop within the geogrid itself. These membrane stress resultants (see <span class="xref std std-ref">Stresses in Shells</span>) are denoted by <span class="math">\(\bar N\)</span> in <a href="#geogrid-stresses">Figure  1</a>. The interface behavior is represented numerically at each geogrid node by a rigid attachment in the normal direction and a spring-slider in the tangent plane to the geogrid surface. The orientation of the spring-slider changes in response to relative shear displacement <span class="math">\({\bf u}_s\)</span> between the geogrid and the host medium, as shown in <a href="#geogrid-interface-idealization">Figure  2</a>. The fact that there is only a <em>single</em> spring slider at each node makes the geogrid behave in a fashion similar to a coarse mesh of cross-linked bars. The spring-slider carries the total shear force acting over the tributary area on <em>both</em> sides of the geogrid surface. Also, the effective confining stress is assumed to be acting equally on both sides of the geogrid surface.</p>
+<div class="figure" id="id2">
+<span id="geogrid-stresses"></span><img alt="../../../../../../_images/stresses.png" src="../../../../../../_images/stresses.png" />
+<p class="caption"><span class="caption-text">Figure 1: Stresses acting on the geogrid elements surrounding a node</span></p>
+</div>
+<div class="figure" id="id3">
+<span id="geogrid-interface-idealization"></span><a class="reference internal image-reference" href="../../../../../../_images/interface-idealization.png"><img alt="../../../../../../_images/interface-idealization.png" src="../../../../../../_images/interface-idealization.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Idealization of interface behavior at a geogrid node</span></p>
+</div>
+<p>The normal behavior of the geogrid-soil interface is described below. The shear behavior of the geogrid-soil interface (see <a href="#geogrid-interface-behavior">Figure  3</a>) is cohesive and frictional in nature, and is controlled by the coupling spring properties of (1) stiffness per unit area, <span class="math">\(k\)</span>, (2) cohesive strength, <span class="math">\(c\)</span>, (3) friction angle, <span class="math">\(\phi\)</span>, and (4) effective confining stress, <span class="math">\(\sigma_m\)</span>. Note that the coupling-spring properties associated with each geogrid element are averaged at geogrid nodes.</p>
+<p>The effective confining stress, <span class="math">\(\sigma_m\)</span>, acts perpendicular to the geogrid surface, and is computed at each geogrid node, based on the stress acting in the single zone to which the node is linked. Denote the geogrid surface normal direction as <span class="math">\(z\)</span>. The value of <span class="math">\(\sigma_m\)</span> is taken as</p>
+<div class="math">
+\[\sigma_m = \sigma_{zz} + p\]</div>
+<p>where: <a href="#id5"><span class="problematic" id="id6">|sp3|</span></a> <span class="math">\(p\)</span> = pore pressure</p>
+<div class="figure" id="id4">
+<span id="geogrid-interface-behavior"></span><a class="reference internal image-reference" href="../../../../../../_images/interface-behavior.png"><img alt="../../../../../../_images/interface-behavior.png" src="../../../../../../_images/interface-behavior.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-text">Figure 3: Shear-directional interface behavior for geogrid elements</span></p>
+</div>
+<p>In computing the relative displacement at the geogrid-soil interface, an interpolation scheme is used to calculate the grid displacement, based on the displacement field in the zone to which the node is linked. The interpolation scheme uses weighting factors that are determined by the distance to each of the zone gridpoints. The same interpolation scheme is used to apply forces developed in the geogrid-soil interface back to the gridpoints of the zone.</p>
+<p>As explained above, an interpolated estimate of grid velocity is made at each geogrid node. The velocity normal to the geogrid surface is transferred directly to the node (i.e., the geogrid node is slaved to the grid motion in the normal direction). The node exerts no normal force on the grid if all the geogrid elements that share the node are coplanar; however, if they are not coplanar, then a proportion of their membrane force will act in the normal direction. This net force acts both on the grid and on the geogrid node (in opposite directions). Thus, an initially flat geogrid can sustain normal loading if it is allowed finite deflection, using the large-strain solution mode. This normal force is transferred to the gridpoints of the single zone to which the node is attached. The attachment is to only one zone on one side of the geogrid surface, and this side may not correspond with the side going into compression. There is no provision for the formation or tracking of gaps between the geogrid and the soil (i.e., the geogrid is assumed to be fully embedded within the soil at all times).</p>
+<p>Geogrids support large-strain sliding (by setting the <span class="cmdkey">slide</span> property to <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>), whereby the interpolation locations (used by the geogrid nodes to transfer forces and velocities to and from the zones — see <a class="reference internal" href="../links/links.html#structural-element-links"><span class="std std-ref">Structural Element Links</span></a>) will migrate through the grid when running in large-strain mode. This allows one to calculate the large-strain, post-failure behavior of a geogrid, whereby substantial sliding between the geogrid nodes and the zones occurs. If a geogrid node moves out of all zones, then a connection with the zones will not be reestablished if the node is later moved back into zones; however, the connection remains intact as the geogrid nodes slide between zones.</p>
+</div>
+<div class="section" id="response-quantities">
+<h2>Response Quantities</h2>
+<p>Geogrid responses include stresses in the geogrid itself, as well as stress, displacement and yield state in the shear coupling springs. Additional coupling-spring information includes the current loading direction and the effective confining stress. The geogrid responses can be accessed via <span class="codename">FISH</span>, and</p>
+<ol class="arabic simple">
+<li>printed with the <a class="reference internal" href="commands/cmd_structure.geogrid.list.html#command:structure.geogrid.list" title="List properties and response of each geogrid element in the range."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">geogrid</span> <span class="pre">list</span></code></a> command,</li>
+<li>monitored with the <a class="reference internal" href="commands/cmd_structure.geogrid.history.html#command:structure.geogrid.history" title="Sample geogrid responses.  The nodes of an element will be ordered counterclockwise&#013;&#010;with respect to the outside of the zone faces upon which the geogrid was created."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">geogrid</span> <span class="pre">history</span></code></a> command, and</li>
+<li>plotted with the Geogrid plot item.</li>
+</ol>
+<p>Refer to <a class="reference internal" href="../shelltypes/shelltypes.html#shell-type-response-quantities"><span class="std std-ref">Shell-Type Response Quantities</span></a> for a summary of the commands that support recovery of stresses acting in the geogrid itself.</p>
+</div>
+<div class="section" id="properties">
+<h2>Properties</h2>
+<p>Each geogrid element possesses 5 properties in addition to those common to all shell-type elements described in <a class="reference internal" href="../shelltypes/shelltypes.html#shell-type-properties"><span class="std std-ref">Shell-Type Properties</span></a>.  These properties control the shear behavior of the geogrid-soil interface.</p>
+<ol class="arabic simple" start="5">
+<li><span class="cmdkey">coupling-cohesion-shear</span>, coupling spring cohesion (stress units), <span class="math">\(c\)</span> [F/L<sup>2</sup>]</li>
+<li><span class="cmdkey">coupling-friction-shear</span>, coupling spring friction angle, <span class="math">\(\phi\)</span> [degrees]</li>
+<li><span class="cmdkey">copling-stiffness-shear</span>, coupling spring stiffness per unit area, <span class="math">\(k\)</span> [F/L<sup>3</sup>]</li>
+<li><span class="cmdkey">slide</span>, large-strain sliding flag (default: <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a>)</li>
+<li><span class="cmdkey">slide-tolerance</span>, large-strain sliding tolerance</li>
+</ol>
+</div>
+<div class="section" id="example-applications">
+<h2>Example Applications</h2>
+<div class="toctree-wrapper compound">
+</div>
+<p>A complete list of examples that use geogrid elements is available in <span class="xref std std-ref">Structural Geogrid Examples</span>.</p>
+</div>
+<div class="section" id="commands-fish">
+<h2>Commands &amp; FISH</h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commands/geogrid_commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fish/geogrid_fish.html"><span class="codename">FISH</span> Functions</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Geogrid Structural Elements" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

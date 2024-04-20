@@ -1,0 +1,878 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block contact list command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block contact material-table command" href="cmd_block.contact.model-table.html" />
+    <link rel="prev" title="block contact length-miniumum command" href="cmd_block.contact.length-miniumum.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-contact-list-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">list</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="blockcontact command">
+<dt id="command:block.contact.list">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">c</span><span class="null">o</span><span class="null">n</span><span class="null">t</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null"> </span></span><span class="cmdname"><span class="null">l</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.contact.list.n" title="block contact list n">n</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.list.aperture" title="block contact list aperture">aperture</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.list.on-line" title="block contact list on-line">on-line</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.list.barton-bandis" title="block contact list barton-bandis">barton-bandis</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.list.corner" title="block contact list corner">corner</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.list.displacement" title="block contact list displacement">displacement</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.list.extra" title="block contact list extra">extra</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.list.force" title="block contact list force">force</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.list.group" title="block contact list group">group</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.list.hydraulic" title="block contact list hydraulic">hydraulic</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.list.model" title="block contact list model">model</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.list.material-table" title="block contact list material-table">material-table</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.list.neighbor" title="block contact list neighbor">neighbor</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.list.orientation" title="block contact list orientation">orientation</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.list.property" title="block contact list property">property</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.list.joint-set" title="block contact list joint-set">joint-set</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.list.position" title="block contact list position">position</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.list.radii" title="block contact list radii">radii</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.list.state" title="block contact list state">state</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.list.stiff" title="block contact list stiff">stiff</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.list.stress" title="block contact list stress">stress</a></p>
+</div>
+<p>List contact data.</p>
+<dl class="keyword">
+<dt id="kwd:block.contact.list.n">
+<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:num" title="A number ( n ), for which either a  flt  or an  int  is valid.&#013;&#010; Multiple instances in a command are numbered ( n1   n2   n3 &#013;&#010;etc.)."><span class="varfloat"><span class="null">n</span><span class="null"> </span></span></a></dt>
+<dd><p>List <em>all</em> the data for contact index <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n</span></span></a>.  Separate parts of this data may be listed using the keywords that follow.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.aperture">
+<span class="cmdkey"><span class="pref">a</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>List current contact hydraulic apertures and aperture for zero normal stress.</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>contact index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>joint material number</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>joint constitutive number</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>x-coordinate of contact</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>y-coordinate of contact</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>hydraulic aperture</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>aperture at zero stress (aperture-zero-load)</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td>contact normal displacement</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.on-line">
+<span class="cmdkey"><span class="pref">o</span><span class="null">n</span><span class="null">-</span><span class="pref">l</span><span class="null">i</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f2</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f3</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f4</span><span class="null"> </span></span></a><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span></span>></span><span class="null"> </span><span class="cmdopt"><<span class="cmdkey"><span class="null">t</span><span class="null">o</span><span class="null">l</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>If no keyword is specified, contact data (e.g., state, displacement and force) will be printed for a single joint along the line from (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f1</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f2</span></span></a>) to (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f3</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f4</span></span></a>) within a band, <span class="cmdkey">tolerance</span> <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">f</span></span></a>, perpendicular to the line (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f1</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f2</span></span></a>), (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f3</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f4</span></span></a>). The default value for <span class="cmdkey">tolerance</span> is twice the corner-round-length.  The data are given at distance (R) from joint endpoint (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f1</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f2</span></span></a>).The following keywords can also be given to print specific data for contacts along a single joint.</p>
+<dl class="keyword">
+<dt id="kwd:block.contact.list.on-line.aperture">
+<span class="cmdkey"><span class="pref">a</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>List aperture.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.on-line.flow">
+<span class="cmdkey"><span class="pref">f</span><span class="null">l</span><span class="null">o</span><span class="null">w</span><span class="null"> </span></span></dt>
+<dd><p>List flow rate.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.on-line.pore-pressure">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">r</span><span class="null">e</span><span class="null">-</span><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>List domain pressure.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.on-line.stress-normal">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">n</span><span class="null">o</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>List normal stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.on-line.stress-shear">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">s</span><span class="null">h</span><span class="null">e</span><span class="null">a</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>List shear stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.on-line.velocity">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>List mean fluid flow velocity.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.barton-bandis">
+<span class="cmdkey"><span class="pref">b</span><span class="null">a</span><span class="null">r</span><span class="null">t</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">b</span><span class="null">a</span><span class="null">n</span><span class="null">d</span><span class="null">i</span><span class="null">s</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span></span>></span><span class="null"> </span></dt>
+<dd><p>List joint model contact parameter for Barton-Bandis joints (see Section 3 in Constitutive Models for details).</p>
+<dl class="keyword">
+<dt id="kwd:block.contact.list.barton-bandis.aperture">
+<span class="cmdkey"><span class="pref">a</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>List aperture data for Barton-Bandis joints.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.barton-bandis.normal">
+<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>List normal direction data for Barton-Bandis joints.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.barton-bandis.shear">
+<span class="cmdkey"><span class="pref">s</span><span class="null">h</span><span class="null">e</span><span class="null">a</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>List shear direction data for Barton-Bandis joints.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.corner">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">r</span><span class="null">n</span><span class="null">e</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>List corner links. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>contact index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>joint material number</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>joint constitutive model number (negative if JOINT model)</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>contact type:</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>1 &nbsp;&nbsp;corner-corner</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>2 &nbsp;&nbsp;corner-edge</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>3 &nbsp;&nbsp;edge-corner</td>
+</tr>
+<tr class="row-even"><td>(5)</td>
+<td>index of one corner next to contact in one block</td>
+</tr>
+<tr class="row-odd"><td>(6)</td>
+<td>index of one corner next to contact in the other block</td>
+</tr>
+<tr class="row-even"><td>(7)</td>
+<td>index of corner linked to contact in one block</td>
+</tr>
+<tr class="row-odd"><td>(8)</td>
+<td>index of corner linked to contact in the other block</td>
+</tr>
+<tr class="row-even"><td>(9)</td>
+<td>interpolation factor for contact at one block</td>
+</tr>
+<tr class="row-odd"><td>(10)</td>
+<td>interpolation factor for contact at the other block</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.displacement">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>List contact displacements. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>contact index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td><span class="math">\(x\)</span>-coordinate of contact</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(y\)</span>-coordinate of contact</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>relative normal displacement of contact</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>relative shear displacement of contact</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.extra">
+<span class="cmdkey"><span class="pref">e</span><span class="null">x</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null"> </span></span></dt>
+<dd><p>This has not been implemented.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.force">
+<span class="cmdkey"><span class="pref">f</span><span class="null">o</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>List contact forces/stresses. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>contact index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td><span class="math">\(x\)</span>-coordinate of contact</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(y\)</span>-coordinate of contact</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>normal stress at contact</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>shear stress at contact</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>normal force at contact</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>shear force at contact</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.group">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null"> </span></span></dt>
+<dd><p>List contact group name. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>contact index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>x-coordinate</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>y-coordinate</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>group name</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>group slot</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.hydraulic">
+<span class="cmdkey"><span class="pref">h</span><span class="null">y</span><span class="null">d</span><span class="null">r</span><span class="null">a</span><span class="null">u</span><span class="null">l</span><span class="null">i</span><span class="null">c</span><span class="null"> </span></span></dt>
+<dd><p>List hydraulic data. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>contact index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>joint material number (negative if JOINT model)</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>joint constitutive model number</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td><span class="math">\(x\)</span>-coordinate of contact</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td><span class="math">\(y\)</span>-coordinate of contact</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>normal displacement at contact</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>hydraulic extension index</td>
+</tr>
+</tbody>
+</table>
+<dl class="keyword">
+<dt id="kwd:block.contact.list.hydraulic.information">
+<span class="cmdkey"><span class="pref">i</span><span class="null">n</span><span class="null">f</span><span class="null">o</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>List contact information</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>contact index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>joint material number</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>joint constitutive model number (negative if JOINT model)</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>x-coordinate</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>y-coordinate</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>ratio of shear to normal stress</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>contact length</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td>contact angle (measured counter-clockwise from positive x axis)</td>
+</tr>
+<tr class="row-odd"><td>(9)</td>
+<td>block 1 index</td>
+</tr>
+<tr class="row-even"><td>(10)</td>
+<td>block 2 index</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.model">
+<span class="cmdkey"><span class="pref">m</span><span class="null">o</span><span class="null">d</span><span class="null">e</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>List contact model name. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>contact index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>x-coordinate</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>y-coordinate</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>model name</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>group slot</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.material-table">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">t</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Lists table which is used (if defined) to assign properties and models to newly formed contacts based on the property numbers of the blocks in contact.</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>material number for block 1</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>material number for block 2</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>contact material number</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>contact model</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.neighbor">
+<span class="cmdkey"><span class="pref">n</span><span class="null">e</span><span class="null">i</span><span class="null">g</span><span class="null">h</span><span class="null">b</span><span class="null">o</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>List information on neighboring contacts and vertices. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>contact index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>block 1 index</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>block 2 index</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>1st item for block 1</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>2nd item for block 1</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>next contact on block</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>1st item for block 2</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td>2nd item for block 2</td>
+</tr>
+<tr class="row-odd"><td>(9)</td>
+<td>next contact for block 2</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.orientation">
+<span class="cmdkey"><span class="pref">o</span><span class="null">r</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>List contact orientation</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>contact index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>joint material number</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>joint constitutive model number (negative if JOINT model)</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>x-coordinate</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>y-coordinate</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>ratio of shear to normal stress</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>contact length</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td>contact angle (measured counter-clockwise from positive x axis)</td>
+</tr>
+<tr class="row-odd"><td>(9)</td>
+<td>block 1 index</td>
+</tr>
+<tr class="row-even"><td>(10)</td>
+<td>block 2 index</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.property">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>List the values of named property (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>) for each contact in the specified range.</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>contact index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>x-coordinate</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>y-coordinate</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>model name</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>property name (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>)</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>property value</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.joint-set">
+<span class="cmdkey"><span class="pref">j</span><span class="null">o</span><span class="null">i</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">s</span><span class="null">e</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>contact index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>jointset-id</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>x-coordinate</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>y-coordinate</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>block 1 index</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>block 2 index</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.position">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>contact index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>joint material number</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>joint constitutive model number (negative if JOINT model)</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>x-coordinate</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>y-coordinate</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>ratio of shear to normal stress</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>contact length</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td>contact angle (measured counter-clockwise from positive x asis)</td>
+</tr>
+<tr class="row-odd"><td>(9)</td>
+<td>block 1 index</td>
+</tr>
+<tr class="row-even"><td>(10)</td>
+<td>block 2 index</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.radii">
+<span class="cmdkey"><span class="pref">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">i</span><span class="null"> </span></span></dt>
+<dd><p>List corner radii at contact. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>contact index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>joint material number (negative if JOINT model)</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>joint constitutive model number (negative if JOINT model)</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>contact type:</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&nbsp;&nbsp;1&nbsp;&nbsp;corner-corner</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&nbsp;&nbsp;2&nbsp;&nbsp;corner-edge</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&nbsp;&nbsp;3&nbsp;&nbsp;edge-corner</td>
+</tr>
+<tr class="row-even"><td>(5)</td>
+<td>contact overlap</td>
+</tr>
+<tr class="row-odd"><td>(6)</td>
+<td>radius of one corner</td>
+</tr>
+<tr class="row-even"><td>(7)</td>
+<td>radius of other corner</td>
+</tr>
+<tr class="row-odd"><td>(8)</td>
+<td>distance from contact to one corner center of radius</td>
+</tr>
+<tr class="row-even"><td>(9)</td>
+<td>distance from contact to other corner center of radius</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.state">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>List contact state. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>contact index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>joint material number (negative if JOINT model)</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>joint constitutive model number (negative if JOINT model)</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>x-coordinate of contact</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>y-coordinate of contact</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>ratio of shear/normal force</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>contact state</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&nbsp;&nbsp;1&nbsp;&nbsp;shear failure current</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&nbsp;&nbsp;2&nbsp;&nbsp;tension failure current</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&nbsp;&nbsp;4&nbsp;&nbsp;shear failure past</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&nbsp;&nbsp;8&nbsp;&nbsp;tension failure past</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.stiff">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">i</span><span class="null">f</span><span class="null">f</span><span class="null"> </span></span></dt>
+<dd><p>List information on normal stiffness when applied with the <a class="reference internal" href="cmd_block.contact.property.material.html#command:block.contact.property" title="Assign properties to material models for contacts. This command is used to define&#013;&#010;the material property arrays for contacts that have been assigned a constitutive&#013;&#010;model number and a material porperty number usine the  block.contact.change &#013;&#010;command. The first parameter must be the specification of the joint material&#013;&#010;number  i  (1-50). Unless otherwise stated, the default value for all properites&#013;&#010;is zero.  The properties for the contact models follow."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">property</span></code></a> material stiffness-normal-table command. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>contact index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>material number</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>stiffness table number</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>current joint normal stiffness</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>maximum normal closure in past.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.list.stress">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>List contact stresses/forces (If the joint length = 0.0, then the contact force is printed; otherwise, the joint stress is printed.) The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>contact index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td><span class="math">\(x\)</span>-coordinate of contact</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(y\)</span>-coordinate of contact</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>normal stress at contact</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>shear stress at contact</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>normal force at contact</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>shear force at contact</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../block_commands/block_commands.html" >Block Commands</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../block_commands/cmd_block.contact.html" accesskey="U"><span class="fishcmd">block contact</span> commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_block.contact.length-miniumum.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">length-miniumum</span></code> command</a> |    
+       <a href="cmd_block.contact.model-table.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">material-table</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block contact list command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

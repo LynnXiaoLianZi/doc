@@ -1,0 +1,164 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Commands &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="table add command" href="cmd_table.add.html" />
+    <link rel="prev" title="Table" href="../table.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="commands">
+<span id="table-commands"></span><h1>Commands</h1>
+<p>Tables are essentially a named list of (x,y) value pairs.   These pairs can be in any order and looked up by index.  It is more common for these pairs to be ordered by increasing <em>x</em> values, in which case an efficient general lookup of a <em>y</em> value based on an <em>x</em> value can be performed by linearly interpolating between given values.</p>
+<p>Tables are used in many constitutive models to specify general material behavior as a function of an evolution parameter.   They can also be used to store data for later display.</p>
+<p class="rubric">Table Commands</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="cmd_table.add.html#table.add" title="Add an entry to the end of table  s . The x- and y- values of the entry are&#013;&#010;the x- and y- components of the two-dimensional vector  v2 . Any number of two-dimensional&#013;&#010;vectors can be specified."><span class="fishcmd">table add</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_table.clear.html#table.clear" title="Remove all entries of from table  s ."><span class="fishcmd">table clear</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_table.delete.html#table.delete" title="Delete table  s ."><span class="fishcmd">table delete</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_table.export.html#table.export" title="The contents of the specified table are output to file  sfile , with default&#013;&#010;file extension “.tab”. The format of the output is compatible with the  table&#013;&#010;import  command. The output assumes that the x-increment is irregular so that&#013;&#010;the values are output as (x,y) pairs. If the file  s  already exists, data will&#013;&#010;be appended to the end of the file (default behavior or when the optional keyword&#013;&#010; append  is given). The file will be overwritten if"><span class="fishcmd">table export</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_table.import.html#table.import" title="Read file  sfile  into table  s ."><span class="fishcmd">table import</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_table.insert.html#table.insert" title="Insert an entry into table  s , sorted by its x-value."><span class="fishcmd">table insert</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_table.label.html#table.label" title="Set a label for table  s ."><span class="fishcmd">table label</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_table.list.html#table.list" title="List table information."><span class="fishcmd">table list</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_table.position.html#table.position" title="Substitute the specified (x,y) pair for the stored x- and y-values in the  i &#013;&#010;th entry of table  s ."><span class="fishcmd">table position</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_table.results.html#table.results" title="Determines if the contents of tables are included in any result file export."><span class="fishcmd">table results</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_table.sort.html#table.sort" title="Cause all entries in table  s  to be sorted in order of increasing x-value."><span class="fishcmd">table sort</span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cmd_table.add.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">add</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_table.clear.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">clear</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_table.delete.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_table.export.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">export</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_table.import.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">import</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_table.insert.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">insert</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_table.label.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">label</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_table.list.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_table.position.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">position</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_table.results.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">results</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_table.sort.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">sort</span></code> command</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../table.html" accesskey="U">Table</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../table.html"
+                           title="previous chapter"> Table</a> |    
+       <a href="cmd_table.add.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">table</span> <span class="pre">add</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Commands" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

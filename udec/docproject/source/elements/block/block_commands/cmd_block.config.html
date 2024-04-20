@@ -1,0 +1,189 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block config command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block contact commands" href="cmd_block.contact.html" />
+    <link rel="prev" title="block change command" href="cmd_block.change.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-config-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">config</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="block command">
+<dt id="command:block.config">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">c</span><span class="null">o</span><span class="null">n</span><span class="null">f</span><span class="null">i</span><span class="null">g</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.config.array" title="block config array">array</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.config.axisymmetry" title="block config axisymmetry">axisymmetry</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.config.barton-bandis" title="block config barton-bandis">barton-bandis</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.config.cellspace" title="block config cellspace">cellspace</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.config.cpp" title="block config cpp">cpp</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.config.creep" title="block config creep">creep</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.config.energy" title="block config energy">energy</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.config.fluid" title="block config fluid">fluid</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.config.plane-stress" title="block config plane-stress">plane-stress</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.config.thermal" title="block config thermal">thermal</a></p>
+</div>
+<p>Specify optional calculation modes.  These require specifying in advance to allow extra memory to be assigned to each zone or gridpoint. The options are cell space detection logic, plane stress, fluid flow, creep, user-defined models and heat transfer. If any of these options are desired, CONFIG must be given before the BLOCK command. The following keywords apply.</p>
+<dl class="keyword">
+<dt id="kwd:block.config.array">
+<span class="cmdkey"><span class="pref">a</span><span class="pref">r</span><span class="null">r</span><span class="null">a</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the amount of memory (in MB) available in <span class="codename">UDEC</span>. This value will be stored in the registry, and will be used for all future <span class="codename">UDEC</span> instances. (<span class="codename">UDEC</span> must be restarted for this to take effect.)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.config.axisymmetry">
+<span class="cmdkey"><span class="pref">a</span><span class="pref">x</span><span class="null">i</span><span class="null">s</span><span class="null">y</span><span class="null">m</span><span class="null">m</span><span class="null">e</span><span class="null">t</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>Turn on axisymmetry mode. This mode works for mechanical calculation for deformable blocks only. It cannot be used with fluid flow or thermal calculation. Neither is it valid for any structural elements.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.config.barton-bandis">
+<span class="cmdkey"><span class="pref">b</span><span class="null">a</span><span class="null">r</span><span class="null">t</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">b</span><span class="null">a</span><span class="null">n</span><span class="null">d</span><span class="null">i</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>Turn on optional Barton-Bandis joint constitutive model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.config.cellspace">
+<span class="cmdkey"><span class="pref">c</span><span class="pref">e</span><span class="null">l</span><span class="null">l</span><span class="null">s</span><span class="null">p</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n2</span><span class="null"> </span></span></a></dt>
+<dd><p>Set alternate contact detection logic. <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n1</span></span></a> and <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n2</span></span></a> refer to the number of cells in the <span class="math">\(x\)</span>- and <span class="math">\(y\)</span>-directions. This refers to the method used in <span class="codename">UDEC</span> to determine which blocks to consider for contact. This method is slower than the “domain” logic, but allows models with blocks that may bounce from one block to another. Fluid flow is not available with the cell logic.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.config.cpp">
+<span class="cmdkey"><span class="pref">c</span><span class="null">p</span><span class="null">p</span><span class="null"> </span></span></dt>
+<dd><p>Turn on extended and user-defined constitutive models.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.config.creep">
+<span class="cmdkey"><span class="pref">c</span><span class="null">r</span><span class="null">e</span><span class="null">e</span><span class="null">p</span><span class="null"> </span></span></dt>
+<dd><p>Turn on creep analysis.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.config.energy">
+<span class="cmdkey"><span class="pref">e</span><span class="null">n</span><span class="null">e</span><span class="null">r</span><span class="null">g</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>Turn on energy summation.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.config.fluid">
+<span class="cmdkey"><span class="pref">f</span><span class="null">l</span><span class="null">u</span><span class="null">i</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Allocate additional memory structures used for fluid-flow logic in <span class="codename">UDEC</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.config.plane-stress">
+<span class="cmdkey"><span class="pref">p</span><span class="null">l</span><span class="null">a</span><span class="null">n</span><span class="null">e</span><span class="null">-</span><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>plane stress (only for elastic analysis or zone model strain-softening).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.config.thermal">
+<span class="cmdkey"><span class="pref">t</span><span class="null">h</span><span class="null">e</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>Turn on thermal analysis.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="block_commands.html" accesskey="U">Block Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_block.change.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">change</span></code> command</a> |    
+       <a href="cmd_block.contact.html"
+                           title="next chapter"><span class="fishcmd">block contact</span> commands</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block config command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

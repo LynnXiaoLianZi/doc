@@ -1,0 +1,136 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Projects and Item Tracking &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="Project Bundle Files" href="bundle.html" />
+    <link rel="prev" title="Open into Project Dialog" href="openintoprojectdialog.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="projects-and-item-tracking">
+<span id="projectsanditemtracking"></span><span id="savingprojects"></span><h1>Projects and Item Tracking</h1>
+<p>Project files and project items (data files, saved states, and so on) may be saved to any location. They do not need to be saved in the same location.  The project file tracks the location of all project items.</p>
+<p>The key to all project management, with regard to files and file storage, is the idea of the current working directory.  At any time, the program has a specific path that it uses as the current working directory.  This has two key impacts.</p>
+<ul class="simple">
+<li>Any item requested by the program (by the <a class="reference internal" href="../../../../../../kernel/doc/manual/program/commands/cmd_program.call.html#command:program.call" title="Process the specified data file(s)."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">call</span></code></a> or <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.restore.html#command:model.restore" title="Restore program-state information. The state information, resulting from a previous"><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">restore</span></code></a> commands, for instance) will be searched for in the current working directory, unless a full path for the item is explicitly given.</li>
+<li>Any item to be saved by the program (again, by commands such as <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.save.html#command:model.save" title="Save all model-state information. The file  s  is created and, if no extension&#013;&#010;is provided, the extension is set to &quot;.sav&quot;. This information includes any defined&#013;&#010;|FISH| functions/variables, histories, tables, and other model components."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">save</span></code></a> or <a class="reference internal" href="../../../../../../guimodule/doc/manual/plot/cmd_plot.export.html#command:plot.export" title="The contents of the plot named  s  is exported to a file.  If no plot name&#013;&#010;is specified, the current view is assumed."><code class="xref fish fish-cmd docutils literal"><span class="pre">plot</span> <span class="pre">export</span></code></a>, for instance) will be saved to the current working directory, unless a full path for the item is explicitly given.</li>
+</ul>
+<p>The illustrations above involve commands.  When in the user interface (for instance, using the <span class="menuselection">File -&gt; Open Item…</span> dialog), the current working directory will be the folder initially presented in any file handling dialog when called.</p>
+<p><em>By default, the folder containing the project file is used by the program as the current working directory.</em></p>
+<p>Given this information, when working with projects and the items it tracks, the following additional notes are worth keeping in mind.</p>
+<p class="h2 rubric">Opening an Item Outside the Project Folder</p>
+<p>A project item that is brought into the project using the <span class="menuselection">File -&gt; Open Item…</span> command is not moved or copied into the folder containing the project file. Users who wish to utilize a file-handling scheme where all project items are stored in the same location as the project file should move any preexisting items to be used into the project file folder before using “Open Item…” to open them into the project.</p>
+<p class="h2 rubric">Saving Files When Closing the Project</p>
+<p>Currently, all open items are saved when a project is closed. Users should be aware of this if they intend to handle data files in an outside editor while also editing them in the program.</p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p><em>About File Handling Outside</em> the Program</p>
+<p>Moving, renaming, or deleting an item using facilities outside the program (for instance, using the Windows Explorer file browser) will break the link to that file in any project that uses it.</p>
+<p class="last">Edits to a data file outside the program will be reflected to an open instance of that file in the program when focus is returned to the <em>Editor</em> pane containing the file, <span class="bi">if</span> it was in a saved state when the edits were made. If the file was not in a saved state (i.e., changes had been made to it in the program but not yet saved), then a warning dialog will appear requesting that the user determine how to handle the file.</p>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="projects.html" accesskey="U">Projects</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="openintoprojectdialog.html"
+                           title="previous chapter"> <em>Open into Project</em> Dialog</a> |    
+       <a href="bundle.html"
+                           title="next chapter">Project Bundle Files</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Projects and Item Tracking" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,144 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tensors &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Matrices" href="fish_matrices.html" />
+    <link rel="prev" title="Vectors" href="fish_vectors.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="tensors">
+<span id="fish-tensordesc"></span><h1>Tensors</h1>
+<p><span class="codename">FISH</span> supports 3x3 symmetric tensors, to represent stress and strain states.</p>
+<p>Tensors can also be created from matrices and lists, see the <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/constructors/fish_tensor.html#function:tensor" title="Gets a new tensor type."><code class="xref fish fish-func docutils literal"><span class="pre">tensor</span></code></a> library function.</p>
+<p class="h2 rubric" id="tensormemberaccess">Component Access</p>
+<p>Tensor components can be accessed using parentheses, either using a single argument index int the range <a class="reference internal" href="../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">1</span></span></a> to <a class="reference internal" href="../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">6</span></span></a> (component order <code class="docutils literal"><span class="pre">xx</span></code>, <code class="docutils literal"><span class="pre">yy</span></code>, <code class="docutils literal"><span class="pre">zz</span></code>, <code class="docutils literal"><span class="pre">xy</span></code>, <code class="docutils literal"><span class="pre">xz</span></code>, <code class="docutils literal"><span class="pre">yz</span></code>) or using two arguments each in the range <a class="reference internal" href="../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">1</span></span></a> to <a class="reference internal" href="../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">3</span></span></a>.</p>
+<p>Tensor components can also be accessed using the <span class="flag3">c</span> <a class="reference internal" href="fish_arithmetic.html#typememberaccess"><span class="std std-ref">-&gt;</span></a> operator and the <code class="docutils literal"><span class="pre">xx</span></code>, <code class="docutils literal"><span class="pre">yy</span></code>, <code class="docutils literal"><span class="pre">zz</span></code>, <code class="docutils literal"><span class="pre">xy</span></code>, <code class="docutils literal"><span class="pre">xz</span></code>, <code class="docutils literal"><span class="pre">yz</span></code>, <code class="docutils literal"><span class="pre">yx</span></code>, <code class="docutils literal"><span class="pre">zx</span></code>, <code class="docutils literal"><span class="pre">zy</span></code> accessors.</p>
+<p>The example below illustrates the various method of accessing individual components of tensors.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">    local a </span><span class="p">=</span><span class="n"> tensor</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">6</span><span class="p">,</span><span class="m m-Double">5</span><span class="p">)</span>
+<span class="n">    local b </span><span class="p">=</span><span class="n"> tensor</span><span class="p">(</span><span class="m m-Double">8</span><span class="p">,</span><span class="m m-Double">8</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">7</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">5</span><span class="p">)</span>
+<span class="n">	</span>
+<span class="n">    local c </span><span class="p">=</span><span class="n"> a</span><span class="p">(</span><span class="m m-Double">5</span><span class="p">)</span><span class="n">   </span><span class="c">; c = 6.0</span>
+<span class="n">    local d </span><span class="p">=</span><span class="n"> a</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> </span><span class="c">; d = 6.0</span>
+<span class="n">    local e </span><span class="p">=</span><span class="n"> a</span><span class="o">-&gt;</span><span class="n">xz  </span><span class="c">; e = 6.0</span>
+<span class="n">	</span>
+<span class="n">    a</span><span class="p">(</span><span class="m m-Double">5</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">6.0</span><span class="n">    </span><span class="c">; These are all equivalent</span>
+<span class="n">    a</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">6.0</span>
+<span class="n">    a</span><span class="o">-&gt;</span><span class="n">xz </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">6.0</span>
+</pre></div>
+</div>
+<p class="h2 rubric" id="tensormathops">Mathematical Operations</p>
+<p>Tensors can be added and multiplied.</p>
+<p>A tensor can be multiplied by a <a class="reference internal" href="fish_vectors.html#fish-vectordesc"><span class="std std-ref">vector</span></a> to get another vector.</p>
+<p>Note that the result of a tensor multiplication is a <a class="reference internal" href="fish_matrices.html#fish-matrixdesc"><span class="std std-ref">matrix</span></a>.</p>
+<p>Please see <a class="reference internal" href="fish_arithmetic.html#fish-arithmetic"><span class="std std-ref">Arithmetic</span></a> for a complete table of operator support.</p>
+<p>See the <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/fish_fish.html#fish-tensor"><span class="std std-ref">Tensor Utilities</span></a> for available methods.</p>
+<p class="h2 rubric" id="vectoriteration">Iteration</p>
+<p>Tensors are an iterable type.  This means you can use it as the target of a <span class="cmdkey">loop foreach</span> statement (see <a class="reference internal" href="statements/loopendloop.html#fish-statement-loopforeach"><span class="std std-ref">Loop ForEach</span></a>) and can be split (see <a class="reference internal" href="fish_splitting.html#fish-splitting"><span class="std std-ref">Splitting</span></a>).  Each component of the tensor is iterated in the order <a class="reference internal" href="../../../../utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">xx</span></span></a>, <a class="reference internal" href="../../../../utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">yy</span></span></a>, <a class="reference internal" href="../../../../utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">zz</span></span></a>, <a class="reference internal" href="../../../../utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">xy</span></span></a>, <a class="reference internal" href="../../../../utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">xz</span></span></a>, <a class="reference internal" href="../../../../utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">yz</span></span></a>.</p>
+<p>As with most aggregate types, when the value is listed it will simply indicate <a class="reference internal" href="../../../../utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">Tensor</span></span></a>.  To see the contents of the tensor use the <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.list.html#kwd:fish.list.contents" title="For |FISH| values of an aggregate type (arrays, matrices, structures, maps,&#013;&#010;etc.) this will list the contents of the type in a structured way."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">list</span> <span class="pre">contents</span></code></a> command.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="fish.html" ><span class="codename">FISH</span> Scripting Reference</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="fish_languagerules.html" ><span class="codename">FISH</span> Rules and Usage</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="fish_datatypes.html" accesskey="U">Data Types</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="fish_vectors.html"
+                           title="previous chapter"> Vectors</a> |    
+       <a href="fish_matrices.html"
+                           title="next chapter">Matrices</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Tensors" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

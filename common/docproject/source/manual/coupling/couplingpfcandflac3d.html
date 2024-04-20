@@ -1,0 +1,147 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Coupling PFC and FLAC3D &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="coupling-pfc-and-flac3d">
+<span id="pfc-flac3d-cpl"></span><h1>Coupling <span class="codename">PFC</span> and <span class="codename">FLAC3D</span></h1>
+<p>The <span class="codename">FLAC3D</span> and <span class="codename">PFC</span> computational and plotting engines have been designed as plugins to a common graphical user interface and cycling system. This architecture means that <span class="codename">FLAC3D</span> and <span class="codename">PFC</span> can be simultaneously loaded into the same graphical user interface and cycled, allowing for continuum and DEM model components to exist at the same time within one instance of <span class="codename">FLAC3D</span>. Valid licenses for both <span class="codename">PFC</span> and <span class="codename">FLAC3D</span> are required for cycling <span class="codename">PFC</span>-<span class="codename">FLAC3D</span> coupled models above the demonstration limits. In the <span class="codename">FLAC3D</span> graphical user interface, <span class="codename">PFC</span> can be loaded via the <span class="menuselection">Tools ‣ Load PFC</span> menu item. Similarly, <span class="codename">FLAC3D</span> can be loaded via the <span class="menuselection">Tools ‣ Load FLAC3D</span> menu item in the <span class="codename">PFC</span> graphical user interface. Alternatively, individual modules can be loaded with the <a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.load.html#command:program.load" title="Load a compatible DLL."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">load</span></code></a> command. Project files record which modules have been loaded. Note that if a save file is loaded without all modules present, the user will be warned and the model state will likely be inoperable.</p>
+<p>In order for <span class="codename">PFC</span> model components (balls, clumps and rigid blocks) to interact with <span class="codename">FLAC3D</span> zones, separate coupling modules (i.e., separate from the <span class="codename">PFC</span> and <span class="codename">FLAC3D</span> computational and plotting modules) have been created to sit between <span class="codename">FLAC3D</span> and <span class="codename">PFC</span>. Four coupling modules have been created, corresponding to three different coupling schemes:</p>
+<ul class="simple">
+<li>A scheme to couple <span class="codename">PFC</span> model components with 1D structural elements.</li>
+<li>A scheme to couple <span class="codename">PFC</span> model components with shell-based <span class="codename">FLAC3D</span> structural elements and/or <span class="codename">FLAC3D</span> zone faces.</li>
+<li>A scheme to couple <span class="codename">PFC</span> balls with <span class="codename">FLAC3D</span> zones.</li>
+</ul>
+<p>All example applications using <span class="codename">PFC</span>-<span class="codename">FLAC3D</span> coupling can be found <a class="reference internal" href="couplingexamples.html#couplingexamples"><span class="std std-ref">here</span></a></p>
+<p>The three schemes are described in the following sections:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="schemes/onedim/onedim.html">1D Structural Element Coupling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schemes/wallzone/wallzone.html">Wall-Zone Coupling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schemes/ballzone/ballzone.html">Ball-Zone Coupling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="couplingexamples.html">Examples</a></li>
+</ul>
+</div>
+<p class="h2 rubric">Commands and <span class="codename">FISH</span> References</p>
+<p><em>Common</em></p>
+<ul class="simple">
+<li><a class="reference internal" href="../program_guide/command_summary.html#core-command-summary"><span class="std std-ref">Index: Common Commands</span></a> for commands common to all Itasca software (<span class="flag3">c</span> <a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.call.html#call-command"><span class="std std-ref">call</span></a>, <span class="flag3">c</span> <a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.restore.html#restore-command"><span class="std std-ref">restore</span></a>, <span class="flag3">c</span> <a class="reference internal" href="../program_guide/command_summary.html#geometry-idx"><span class="std std-ref">geometry</span></a>, <span class="flag3">c</span> <a class="reference internal" href="../program_guide/command_summary.html#dfn-idx"><span class="std std-ref">fracture</span></a>, <span class="flag3">c</span> <a class="reference internal" href="../program_guide/command_summary.html#model-idx"><span class="std std-ref">model</span></a>, <span class="flag3">c</span> <a class="reference internal" href="../program_guide/command_summary.html#program-idx"><span class="std std-ref">program</span></a>, <span class="flag3">c</span> <a class="reference internal" href="../program_guide/command_summary.html#table-idx"><span class="std std-ref">table</span></a>, etc.)</li>
+<li><a class="reference internal" href="../program_guide/fish_summary.html#core-fish-summary"><span class="std std-ref">Index: Common FISH</span></a> for all <span class="codename">FISH</span> functions associated with common commands.</li>
+</ul>
+<p><em>PFC</em></p>
+<ul class="simple">
+<li><span class="xref std std-ref">pfc_command_summary</span> for <span class="codename">PFC</span> commands (<span class="flag3">c</span> <span class="xref std std-ref">ball</span>, <span class="flag3">c</span> <span class="xref std std-ref">wall</span>, <span class="flag3">c</span> <span class="xref std std-ref">clump</span>, etc.)</li>
+<li><span class="xref std std-ref">pfc_fish_summary</span> for <span class="codename">PFC</span> <span class="codename">FISH</span> functions.</li>
+</ul>
+<p><em>FLAC</em></p>
+<ul class="simple">
+<li><span class="xref std std-ref">flac3d_command_summary</span> for FLAC3D commands (<span class="flag3">c</span> <span class="xref std std-ref">zone</span>, <span class="flag3">c</span> <span class="xref std std-ref">structure</span>, <span class="flag3">c</span> <span class="xref std std-ref">extrude block</span>, etc.)</li>
+<li><span class="xref std std-ref">flac3d_fish_summary</span> for all FLAC3D <span class="codename">FISH</span> functions.</li>
+</ul>
+<p><em>Scripting</em></p>
+<ul class="simple">
+<li><a class="reference internal" href="../scripting/fish_scripting/fish.html#fish-scripting"><span class="std std-ref">FISH Scripting Reference</span></a> for the general reference on <span class="codename">FISH</span>;</li>
+<li><a class="reference internal" href="../../../../fish/doc/fish_manual/fish_fish/fish_fish.html#fish-fish"><span class="std std-ref">FISH Functions</span></a> for an index of all functions built directly into the <span class="codename">FISH</span> language (that are not associated with the set found with the common commands (see above)).</li>
+<li><span class="xref std std-ref">pfc_python</span> for the general reference on Python in Itasca software.</li>
+</ul>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Coupling PFC and FLAC3D" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

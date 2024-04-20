@@ -1,0 +1,198 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Mouse Tools &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../search.html" />
+    <link rel="next" title="Information Control Set" href="information.html" />
+    <link rel="prev" title="Plotting Utilities" href="plottingtools.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="mouse-tools">
+<span id="mousemodes"></span><h1>Mouse Tools</h1>
+<p>When a <em>Plot</em> pane is active, the toolbar includes a group of buttons to set the current mouse tool. At any time, one mouse tools is active and operable from the <em>left</em> mouse button. At all times, the view of the plot <a class="reference internal" href="quickref.html#ui-viewpane-quickref"><span class="std std-ref">may be manipulated</span></a> (rotated, magnified, etc.) using the <em>right</em> mouse button (and right mouse button + keystrokes), in conjunction with the active mouse tool.</p>
+<p>Because the mouse is always set to one of the five tools, one of the five buttons will always appear pressed on the toolbar.  The image below shows that the <em>Select</em> tool is currently active. The five tools are <a class="reference internal" href="#select-tool-definition"><span class="std std-ref">Select</span></a>, <a class="reference internal" href="#query-tool-definition"><span class="std std-ref">Query</span></a>, <a class="reference internal" href="#center-tool-definition"><span class="std std-ref">Center</span></a>, <a class="reference internal" href="#distance-tool-definition"><span class="std std-ref">Distance</span></a>, and <a class="reference internal" href="#plane-tool-definition"><span class="std std-ref">Plane</span></a>.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../../../../../../../../_images/viewpane_mousemodetoolbar.png"><img alt="mouse mode toolbar image" src="../../../../../../../../_images/viewpane_mousemodetoolbar.png" style="width: 117px;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: A <em>Plot</em> pane’s five mouse tools as they appear in the toolbar. <br>
+The <em>Select</em> tool is currently active.</span></p>
+</div>
+<p><em>Select</em> tool is the default mouse tool, and it is persistent. The other mouse tools are, by design, single-use tools, meaning that when they have completed the function they were selected to perform, the mouse will revert to <em>Select</em> tool.</p>
+<p class="h3 rubric" id="mouse-cursors-explained">Mouse Readiness and Cursors</p>
+<p>All mouse tools use a specific cursor to indicate readiness to perform a left-click operation. If the mouse at its current position cannot sensibly do anything when the left mouse button is clicked—most commonly, because it is pointing at “space” and not at any specific model or plot object—the mouse cursor will revert to the base <em>Select</em> tool cursor (the first in the table below), regardless of the currently selected mouse tool.</p>
+<table border="1" class="colwidths-given icg1 docutils" id="cursor-legend">
+<caption><span class="caption-text">Table 1: Mouse tool Cursors</span></caption>
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Cursor Image</th>
+<th class="head">Meaning/When in Use</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><img alt="curs_arrow" src="../../../../../../../../_images/cursor_arrow.png" /></td>
+<td>The mouse is either not over an object or is not over an object that is susceptible to the current mouse tool (that is, left-clicking when the mouse appears like this will do nothing). Used with all mouse tools.</td>
+</tr>
+<tr class="row-odd"><td><img alt="curs_arract" src="../../../../../../../../_images/cursor_arrow_active.png" /></td>
+<td>The mouse is over a plot item that may be selected. Used with <em>Select</em> tool.</td>
+</tr>
+<tr class="row-even"><td><img alt="curs_grab" src="../../../../../../../../_images/cursor_grabable.png" /></td>
+<td>The object under the mouse is the currently selected plot item, and it may be dragged to a new position or resized on left-click. Used with the <em>Select</em> mouse tool.</td>
+</tr>
+<tr class="row-odd"><td><img alt="curs_query" src="../../../../../../../../_images/cursor_query.png" /></td>
+<td>The object under the mouse may be queried. Used with the <em>Query</em> mouse tool.</td>
+</tr>
+<tr class="row-even"><td><img alt="curs_targ" src="../../../../../../../../_images/cursor_target.png" /></td>
+<td>The object under the mouse may be specified as the view center (<em>Center</em> tool), be part of a linear measurement (<em>Distance</em> tool), or be one of the three defining points of a plane (<em>Plane</em> tool). Used in common by the <em>Center</em>, <em>Distance</em>, and <em>Plane</em> tools.</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p class="h2 rubric" id="mousetool-definitions">The Mouse tools</p>
+<p class="h3 rubric" id="select-tool-definition"><img alt="select_icon" src="../../../../../../../../_images/icon_selectmode.png" /> Select</p>
+<p>When the mouse is in <em>Select</em> tool, left-clicking objects in the view will select them. When a regular plot item is selected
+using the mouse, the associated plot item in the <em>Plot Items</em> list in the <em>Control Panel</em> will be highlighted to indicate the
+selection.</p>
+<p>Some plot items in a view (e.g., axes, history) are interactive, which means they can be moved and resized by the mouse once selected.  These objects will display a red outline with handlepoints indicating their readiness to be moved or sized when they are selected.  Click one of the handle points and drag to resize the
+object; click anywhere inside the handle box and drag to move the object to a new location.  The <em>Legend</em> is also
+an interactive element, but it cannot be selected this way; it must be selected by picking it from the <em>Plot Items</em> list in
+the <em>Control Panel</em>.</p>
+<p>The first line of the <em>Information</em> control set in the <em>Control Panel</em> also indicates what plot item
+the mouse is currently over. Once selected, the item may be right-clicked to access a context menu.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The transparency attribute of a plot item must be off (unchecked) in order for the item to be selectable.  If a plot item is using transparency <em>at all</em>, it cannot be selected.</p>
+</div>
+<p class="h3 rubric" id="query-tool-definition"><img alt="query_icon" src="../../../../../../../../_images/icon_querymode.png" /> Query</p>
+<div class="enlarge figure align-right" id="id2">
+<a class="reference internal image-reference" href="../../../../../../../../_images/queryresultdialog.png"><img alt="Query Result Dialog" src="../../../../../../../../_images/queryresultdialog.png" style="width: 200px;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Dialog result from a mouse query.  Click to enlarge.</span></p>
+</div>
+<p><em>Query</em> can be used to get model information. When active, clicking on a location in the model will generally pop up a
+dialog with information on the clicked item (as seen in the adjacent image). It may be that there is ambiguity about what
+was clicked, in which case a pop-up menu will appear with a set of choices from which the user may select the item of
+interest. This menu may be dismissed by clicking the mouse in any location outside the model. Selecting
+an item from the menu will open a dialog that contains model information pertinent to the selected item.</p>
+<p>Logging: The information appearing in the dialog can be stored in a text file using the <span class="button">New Log</span> button.
+If the user has previously started a log file, the additional option to append the current dialog’s information
+(<span class="button">Add to log</span>) to the log file will be available. Note that saving a new log file or adding to a log file will also
+dismiss the dialog. The log file is accessible to the information dialogs that are created using the <em>Query</em>, <em>Distance</em>,
+and <em>Plane</em> mouse tools.</p>
+<p class="h3 rubric" id="center-tool-definition"><img alt="center_icon" src="../../../../../../../../_images/icon_centermode.png" /> Center</p>
+<p>In <em>Center</em> tool, the view’s center may be redefined by clicking the mouse on the desired location on the model;
+nothing occurs if the mouse is clicked while positioned outside the model.</p>
+<p class="h3 rubric" id="distance-tool-definition"><img alt="distance_icon" src="../../../../../../../../_images/icon_measuremode.png" /> Distance</p>
+<p><em>Distance</em> will report, via pop-up dialog, the distance between any two clicked points and the position of the
+points themselves within the model. The output may be saved to a log. Subsequent measurements may be added to the log
+or stored in a new log.</p>
+<p class="h3 rubric" id="plane-tool-definition"><img alt="plane_icon" src="../../../../../../../../_images/icon_planemode.png" /> Plane</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../plotting.html" >Plotting</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="plottingtools.html" accesskey="U">Plotting Utilities</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="plottingtools.html"
+                           title="previous chapter"> Plotting Utilities</a> |    
+       <a href="information.html"
+                           title="next chapter"><em>Information</em> Control Set</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Mouse Tools" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

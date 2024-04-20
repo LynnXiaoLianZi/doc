@@ -1,0 +1,1068 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>UDEC FISH Data Program Guide &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Command Index" href="../../../../../common/docproject/source/manual/commandindex.html" />
+    <link rel="prev" title="Tutorial: Working with FISH" href="../Tutorial/basicclifish.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="udec-fish-data-program-guide">
+<span id="udecprogramguide"></span><h1>UDEC FISH Data Program Guide</h1>
+<p>Variables in <span class="codename">UDEC</span> are stored in linked lists, which consist of indexes (the first
+memory location for a particular item – e.g., block or contact) and offsets (which
+prescribe the memory location of the variable relative to the index). The program guide
+contains the contents of these linked-list groups in the data structure. <a href="#fig-main-array">Figure  1</a>
+through <a href="#fig-contact-array">Figure  4</a> schematically show the linkage of these various groups, and should assist the user in following through the data groups and parameters. <a href="#fig-main-array">Figure  1</a> shows the linked-list arrangement of the main data arrays. Figures 2, 3, and 4 illustrate the conventions for linkages in the block data, domain data, and contact data arrays, respectively.</p>
+<p class="h2 rubric" id="linklists">Linked-List Indexes and Offsets</p>
+<p>Indexes for data objects can be found using the list commands for the varous objects.
+In most cases, the first integer given is the index. Commands in <span class="codename">UDEC</span> allow commonly used real
+variables to be tracked (using history keywords) or changed using apply or initialize commands.
+It is also possible to access variables via <span class="codename">FISH</span> to track or change less commonly used variables,
+or to define a dependency of one variable on another (e.g., shear displacement-dependent joint friction; see Section 3.7.3 in the Users’ Guide for an example).</p>
+<p>As mentioned in the <span class="codename">FISH</span> documentation, <span class="codename">FISH</span> functions have access to some of <span class="codename">UDEC</span> ‘s
+linked-list data structures. The global indexes that point to these data structures are provided as <span class="codename">FISH</span> scalar variables.
+The various data blocks, and the offsets of items within the blocks, are contained in a
+series of files supplied with <span class="codename">UDEC</span>. These files have the extension “.FIN” (for
+(F)ish (IN)clude file); they provide symbolic names for offsets and
+current numerical values (which may change in future versions of <span class="codename">UDEC</span>).[1]
+The “.FIN” files serve two purposes: first, they document the meanings of the various data
+items; second, the files may be CALLed from a data file – they automatically
+execute and define appropriate symbols. The symbols are all preceded by the $ character,
+so that they are invisible to the casual user who gives a List fish command.
+The <span class="codename">FISH</span> programmer may simply use numbers or the symbols provided in the
+“.FIN” files for offsets. It is better to specify offsets in symbolic form because the
+resulting <span class="codename">FISH</span> program will work correctly with future versions of <span class="codename">UDEC</span> in which offsets
+and block sizes may be different. (Itasca will make every effort to retain the same
+symbolic names in future versions of <span class="codename">UDEC</span>.)</p>
+<p>Access to the data structure is via the fmem, imem, and xmem functions.
+Be sure to note whether the variable in the “.FIN” file is of floating-point, integer, or Index
+type before using these functions. Also note that uncontrolled alterations of memory
+contents can crash the computer. So, any operations that alter memory contents should be
+undertaken with care.</p>
+<blockquote>
+<div><div class="figure align-center" id="id1">
+<span id="fig-main-array"></span><a class="reference internal image-reference" href="../../../../../_images/main_array.png"><img alt="../../../../../_images/main_array.png" src="../../../../../_images/main_array.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Linked lists for main data arrays
+IBPNT: block.head
+IDPNT: block.domain.head
+ICPNT: block.contact.head</span></p>
+</div>
+<div class="figure align-center" id="id2">
+<span id="fig-block-array"></span><a class="reference internal image-reference" href="../../../../../_images/block_array.png"><img alt="../../../../../_images/block_array.png" src="../../../../../_images/block_array.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Block linkage and reverse corner links</span></p>
+</div>
+<div class="figure align-center" id="id3">
+<span id="fig-domain-array"></span><a class="reference internal image-reference" href="../../../../../_images/domain_array.png"><img alt="../../../../../_images/domain_array.png" src="../../../../../_images/domain_array.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 3: Domain linkages</span></p>
+</div>
+<div class="figure align-center" id="id4">
+<span id="fig-contact-array"></span><a class="reference internal image-reference" href="../../../../../_images/contact_array.png"><img alt="../../../../../_images/contact_array.png" src="../../../../../_images/contact_array.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 4: Convention used for linkages within a contact array</span></p>
+</div>
+</div></blockquote>
+<p>The list in table 1 provides the names of <span class="codename">FISH</span> scalar headers and file names for
+the main data groups: blocks, boundary corners, contacts and domains.</p>
+<table border="1" class="colwidths-given docutils" id="id5">
+<caption><span class="caption-text">Table 1: Global indexes and fin file names for main data groups</span></caption>
+<colgroup>
+<col width="22%" />
+<col width="22%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Global index</th>
+<th class="head">File Name</th>
+<th class="head">Data Structure</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>block.head</td>
+<td>block.fin</td>
+<td>lists of block, corner, gridpoint and zone data</td>
+</tr>
+<tr class="row-odd"><td>bou.head</td>
+<td>boucnr.fin</td>
+<td>lists of boundary corner and boundary condition data</td>
+</tr>
+<tr class="row-even"><td>contact.head</td>
+<td>contact.fin</td>
+<td>list of contact data</td>
+</tr>
+<tr class="row-odd"><td>domain.head</td>
+<td>domain.fin</td>
+<td>list of domain data</td>
+</tr>
+</tbody>
+</table>
+<p>The list in table 2 provides the names of <span class="codename">FISH</span> scalar headers and file names for
+the structural element data groups: reinforcement, cables, structural elements and support
+elements.</p>
+<table border="1" class="colwidths-given docutils" id="id6">
+<caption><span class="caption-text">Table 2: Global indices and include file names for structural element data groups</span></caption>
+<colgroup>
+<col width="22%" />
+<col width="22%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Global index</th>
+<th class="head">File Name</th>
+<th class="head">Data Structure</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>block.struct.cable.elem.head</td>
+<td>cable.fin</td>
+<td>list of cable element data</td>
+</tr>
+<tr class="row-odd"><td>block.struct.cable.node.head</td>
+<td>cable.fin</td>
+<td>list of cable node data</td>
+</tr>
+<tr class="row-even"><td>block.struct.rein.head</td>
+<td>reinf.fin</td>
+<td>list of reinforcement data</td>
+</tr>
+<tr class="row-odd"><td>block.struct.beam.elem.head</td>
+<td>str.fin</td>
+<td>list of structural element data</td>
+</tr>
+<tr class="row-even"><td>block.struct.beam.node.head</td>
+<td>str.fin</td>
+<td>list of structural node data</td>
+</tr>
+<tr class="row-odd"><td>block.struct.liner.elem.head</td>
+<td>str.fin</td>
+<td>list of structural element data</td>
+</tr>
+<tr class="row-even"><td>block.struct.liner.node.head</td>
+<td>str.fin</td>
+<td>list of structural node data</td>
+</tr>
+<tr class="row-odd"><td>block.struct.inter.head</td>
+<td>str.fin</td>
+<td>list of structural element interface data</td>
+</tr>
+<tr class="row-even"><td>block.struct.sup.head</td>
+<td>support.fin</td>
+<td>list of support element data</td>
+</tr>
+</tbody>
+</table>
+<p>It is also possible to access and change material properties that are stored locally for
+block zones and joint contacts (via the bl.zone.prop, and zone.cont.prop functions).</p>
+<p class="h2 rubric" id="maindata">Main Data Group “.FIN” Files</p>
+<p>BLOCK.FIN provides access to block, corner, gridpoint and zone data. The block data
+array is accessed via the block.head, <span class="codename">FISH</span> variable. The corner data array is
+accessed from the bl.corner, <span class="codename">FISH</span> variable. The gridpoint data array is accessed
+from the b.gp, <span class="codename">FISH</span> variable, and the zone data array is accessed from the
+b.zone, <span class="codename">FISH</span> variable.</p>
+<p>Data file BLOCK.FIN</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">program echo</span><span class="n"> </span><span class="sx">off</span>
+<span class="nb">def</span><span class="ni"> $block_fin</span>
+<span class="c">; Block data array --- FISH include file</span>
+<span class="c">;----------------------------------------</span>
+<span class="c">; index to top of block data array is block_head</span>
+<span class="c">;    all values are floating-point type unless</span>
+<span class="c">;    it is declared otherwise</span>
+<span class="ni">$KTYPE    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">0</span><span class="ni"> </span><span class="c">; block type number (integer)</span>
+<span class="ni">               </span><span class="c">; MRIG=1(rigid block)</span>
+<span class="ni">               </span><span class="c">; MFDEF=3(fully-deformable)</span>
+<span class="ni">$KBNEXT   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">1</span><span class="ni"> </span><span class="c">; index of  next block in block list (integer)</span>
+<span class="ni">$KP       </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">2</span><span class="ni"> </span><span class="c">; index of one corner in block&#39;s corner list (integer)</span>
+<span class="ni">$KMAT     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">3</span><span class="ni"> </span><span class="c">; material number (integer)</span>
+<span class="ni">$KCONS    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">4</span><span class="ni"> </span><span class="c">; constitutive number (integer)</span>
+<span class="ni">$KBCOD    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">5</span><span class="ni"> </span><span class="c">; code number (integer) :</span>
+<span class="ni">               </span><span class="c">; 0 (free block)</span>
+<span class="ni">               </span><span class="c">; 1 (fixed block)</span>
+<span class="ni">$KX       </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">6</span><span class="ni"> </span><span class="c">; x-coordinate of centroid</span>
+<span class="ni">$KY       </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">7</span><span class="ni"> </span><span class="c">; y-coordinate of centroid</span>
+<span class="ni">$KXD      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">8</span><span class="ni"> </span><span class="c">; x-velocity</span>
+<span class="ni">$KYD      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">9</span><span class="ni"> </span><span class="c">; y-velocity</span>
+<span class="ni">$KTD      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">10</span><span class="ni"> </span><span class="c">; angular velocity (counterclockwise positive)</span>
+<span class="ni">$KAREA    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">11</span><span class="ni"> </span><span class="c">; block area</span>
+<span class="ni">$KBM      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">12</span><span class="ni"> </span><span class="c">; block mass</span>
+<span class="ni">$KBI      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">13</span><span class="ni"> </span><span class="c">; moment of inertia</span>
+<span class="ni">$KBDSF    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">14</span><span class="ni"> </span><span class="c">; density scaling factor</span>
+<span class="ni">$KBFX     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">15</span><span class="ni"> </span><span class="c">; x-centroid force-sum</span>
+<span class="ni">$KBFY     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">16</span><span class="ni"> </span><span class="c">; y-centroid force-sum</span>
+<span class="ni">$KBFT     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">17</span><span class="ni"> </span><span class="c">; centroid moment sum</span>
+<span class="ni">$KXL      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">18</span><span class="ni"> </span><span class="c">; x-load applied to block centroid</span>
+<span class="ni">$KYL      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">19</span><span class="ni"> </span><span class="c">; y-load applied to block centroid</span>
+<span class="ni">$KBEX     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">20</span><span class="ni"> </span><span class="c">; extension pointer (to data) (integer)</span>
+<span class="ni">$KBFRAGMENT</span><span class="p">=</span><span class="m m-Double">21</span><span class="ni"> </span><span class="c">; block fragment id</span>
+<span class="ni">$KBPOR    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">22</span><span class="ni"> </span><span class="c">; code number (integer) :</span>
+<span class="ni">               </span><span class="c">; 0 non-porous block</span>
+<span class="ni">               </span><span class="c">; 1 porous block</span>
+<span class="ni">$KBFMAG   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">23</span><span class="ni"> </span><span class="c">; block out of balance force</span>
+<span class="ni">$KBLEXTRA </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">24</span><span class="ni"> </span><span class="c">; unused offset available to users</span>
+<span class="ni">$KBID     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">25</span><span class="ni"> </span><span class="c">; Block ID used by GIIC (integer)</span>
+<span class="ni">$KBGROUP  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">26</span><span class="ni"> </span><span class="c">; pointer to group name (integer)</span>
+<span class="ni">$KBSEQ    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">27</span><span class="ni"> </span><span class="c">; Block code used for hiding (integer)</span>
+<span class="ni">$KBFIX    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">28</span><span class="ni"> </span><span class="c">; Block fixity state bits (integer)</span>
+<span class="ni">               </span><span class="c">;  = 1 all</span>
+<span class="ni">               </span><span class="c">;  = 2 X</span>
+<span class="ni">               </span><span class="c">;  = 4 Y</span>
+<span class="ni">               </span><span class="c">;  = 8 Rotation</span>
+<span class="ni">$KBTEM    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">38</span><span class="ni"> </span><span class="c">; block centroid temperature</span>
+<span class="ni">$KBDT1    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">39</span><span class="ni"> </span><span class="c">; block centroid temperature change in one cycle</span>
+<span class="ni">$KBTHM    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">40</span><span class="ni"> </span><span class="c">; block centroid ``thermal mass&#39;&#39;</span>
+<span class="ni">$KBTFIX   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">41</span><span class="ni"> </span><span class="c">; flag for fixed centroid temperature (integer)</span>
+<span class="ni">$KBDTEM   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">42</span><span class="ni"> </span><span class="c">; accumulated block centroid temperature change</span>
+<span class="nb">end</span>
+<span class="p">@</span><span class="n">$block_fin</span>
+
+
+<span class="nb">def</span><span class="ni"> $corner_fin</span>
+<span class="c">; Corner data array --- FISH include file</span>
+<span class="c">;----------------------------------------</span>
+<span class="c">; index to top of corner data array is via the FISH function b_corner(ib)</span>
+<span class="c">;    all values are floating-point type unless</span>
+<span class="c">;    it is declared otherwise</span>
+<span class="c">;</span>
+<span class="ni">$MCOR     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">0</span><span class="ni"> </span><span class="c">; = 4, denotes corner (integer)</span>
+<span class="ni">$KL       </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">1</span><span class="ni"> </span><span class="c">; index of next corner or contact on block,</span>
+<span class="ni">               </span><span class="c">; in clockwise direction (integer)</span>
+<span class="ni">$KR	  </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">2</span><span class="ni"> </span><span class="c">; index of next corner in counterclockwise</span>
+<span class="ni">               </span><span class="c">; direction (integer)</span>
+<span class="ni">$KNB      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">3</span><span class="ni"> </span><span class="c">; index of host block (integer)</span>
+<span class="ni">$KXP      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">4</span><span class="ni"> </span><span class="c">; x-coordinate of corner</span>
+<span class="ni">$KYP      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">5</span><span class="ni"> </span><span class="c">; y-coordinate of corner</span>
+<span class="ni">$KXCP     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">6</span><span class="ni"> </span><span class="c">; x-coordinate of local circle center</span>
+<span class="ni">$KYCP     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">7</span><span class="ni"> </span><span class="c">; y-coordinate of local circle center</span>
+<span class="ni">$KRAD     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">8</span><span class="ni"> </span><span class="c">; radius of local circle</span>
+<span class="ni">$KXDP     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">9</span><span class="ni"> </span><span class="c">; x-velocity of corner</span>
+<span class="ni">$KYDP     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">10</span><span class="ni"> </span><span class="c">; y-velocity of corner</span>
+<span class="ni">$KGP      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">11</span><span class="ni"> </span><span class="c">; index of corresponding gridpoint if block</span>
+<span class="ni">               </span><span class="c">; is deformable (integer)</span>
+<span class="ni">$KBDEX    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">12</span><span class="ni"> </span><span class="c">; extension pointer to boundary corner array (integer)</span>
+<span class="ni">               </span><span class="c">; &gt;0 for exterior boundaries</span>
+<span class="ni">               </span><span class="c">; &lt;0 for interior boundaries</span>
+<span class="ni">$KPUX     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">13</span><span class="ni"> </span><span class="c">; x-displacement of corner</span>
+<span class="ni">$KPUY     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">14</span><span class="ni"> </span><span class="c">; y-displacement of corner</span>
+<span class="ni">$KCOREXTRA</span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">15</span><span class="ni"> </span><span class="c">; unused offset available to users</span>
+<span class="ni">$KPID     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">16</span><span class="ni"> </span><span class="c">; corner ID (integer)</span>
+<span class="ni">$KTHPF    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">21</span><span class="ni"> </span><span class="c">; flag for fixed corner temperature (integer)</span>
+<span class="ni">$KTEMP    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">22</span><span class="ni"> </span><span class="c">; corner temperature</span>
+<span class="ni">$KDTEM1   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">23</span><span class="ni"> </span><span class="c">; corner temperature change in one cycle</span>
+<span class="ni">$KTHMA    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">24</span><span class="ni"> </span><span class="c">; corner ``thermal mass&#39;&#39;</span>
+<span class="ni">$KDTEM    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">25</span><span class="ni"> </span><span class="c">; accumulated corner temperature change</span>
+<span class="nb">end</span>
+<span class="p">@</span><span class="n">$corner_fin</span>
+
+
+<span class="nb">def</span><span class="ni"> $grid_fin</span>
+<span class="c">; Gridpoint data array --- FISH include file</span>
+<span class="c">;-------------------------------------------</span>
+<span class="c">; index to gridpoint data array is via the FISH function b_gp(ib)</span>
+<span class="c">;    all values are floating-point type unless</span>
+<span class="c">;    it is declared otherwise</span>
+<span class="c">;</span>
+<span class="ni">$KGNEXT   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">0</span><span class="ni"> </span><span class="c">; index of next gridpoint in gridpoint list (integer)</span>
+<span class="ni">$KCOR     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">1</span><span class="ni"> </span><span class="c">; index of corresponding block corner (integer)</span>
+<span class="ni">$KXG      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">2</span><span class="ni"> </span><span class="c">; x-coordinate</span>
+<span class="ni">$KYG      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">3</span><span class="ni"> </span><span class="c">; y-coordinate</span>
+<span class="ni">$KXDG     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">4</span><span class="ni"> </span><span class="c">; x-velocity</span>
+<span class="ni">$KYDG     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">5</span><span class="ni"> </span><span class="c">; y-velocity</span>
+<span class="ni">$KGFX     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">6</span><span class="ni"> </span><span class="c">; x-force sum</span>
+<span class="ni">$KGFY     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">7</span><span class="ni"> </span><span class="c">; y-force sum</span>
+<span class="ni">$KGPM     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">8</span><span class="ni"> </span><span class="c">; gridpoint mass</span>
+<span class="ni">$KGDSF    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">9</span><span class="ni"> </span><span class="c">; density scaling factor</span>
+<span class="ni">$KGUX     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">10</span><span class="ni"> </span><span class="c">; x-displacement</span>
+<span class="ni">$KGUY     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">11</span><span class="ni"> </span><span class="c">; y-displacement</span>
+<span class="ni">$KGFMAG   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">12</span><span class="ni"> </span><span class="c">; accumulated gridpoint force magnitude</span>
+<span class="ni">$KGPEXTRA </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">13</span><span class="ni"> </span><span class="c">; unused offset available to users</span>
+<span class="ni">$KGFOR1   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">18</span><span class="ni"> </span><span class="c">; force used in calculating damping</span>
+<span class="ni">$KGFOR2   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">19</span><span class="ni"> </span><span class="c">; force used in calculating damping</span>
+<span class="ni">$KGID     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">20</span><span class="ni"> </span><span class="c">; grid point ID assigned by GIIC. (integer)</span>
+<span class="ni">$KGSTR    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">21</span><span class="ni"> </span><span class="c">; projected gridpoint stress</span>
+<span class="ni">$KGXACC   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">27</span><span class="ni"> </span><span class="c">; x acceleration</span>
+<span class="ni">$KGYACC   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">28</span><span class="ni"> </span><span class="c">; y acceleration</span>
+<span class="ni">$KGBLOCK  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">30</span><span class="ni"> </span><span class="c">; index of host block</span>
+<span class="ni">$KTHGF    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">31</span><span class="ni"> </span><span class="c">; flag for fixed gridpoint temperature (integer)</span>
+<span class="ni">$KGZLIST  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">32</span><span class="ni"> </span><span class="c">; list of zones that use this gridpoint(integer)</span>
+<span class="ni">$KGTEMP   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">33</span><span class="ni"> </span><span class="c">; gridpoint temperature</span>
+<span class="ni">$KGDTEM1  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">34</span><span class="ni"> </span><span class="c">; gridpoint temperature change in one cycle</span>
+<span class="ni">$KTHMG    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">35</span><span class="ni"> </span><span class="c">; gridpoint &#39;thermal mass&#39;</span>
+<span class="ni">$KGDTEM   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">36</span><span class="ni"> </span><span class="c">; accumulated gridpoint temperature change</span>
+<span class="nb">end</span>
+<span class="p">@</span><span class="n">$grid_fin</span>
+
+
+<span class="nb">def</span><span class="ni"> $zone_fin</span>
+<span class="c">; Zone data array --- FISH include file</span>
+<span class="c">;--------------------------------------</span>
+<span class="c">; index to zone data array is via the FISH function b_zone(ib)</span>
+<span class="c">;    all values are floating-point type unless</span>
+<span class="c">;    it is declared otherwise</span>
+<span class="c">;</span>
+<span class="ni">$KZNEXT   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">0</span><span class="ni"> </span><span class="c">; index of next zone in zone list (integer)</span>
+<span class="ni">$KZG      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">1</span><span class="ni"> </span><span class="c">; start of triple pointer to 3 surrounding</span>
+<span class="ni">               </span><span class="c">; gridpoints (integer)</span>
+<span class="ni">$KZS1</span><span class="m m-Double">1</span><span class="ni">    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">4</span><span class="ni"> </span><span class="c">; xx-stress component</span>
+<span class="ni">$KZS1</span><span class="m m-Double">2</span><span class="ni">    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">5</span><span class="ni"> </span><span class="c">; xy-stress component</span>
+<span class="ni">$KZS2</span><span class="m m-Double">2</span><span class="ni">    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">6</span><span class="ni"> </span><span class="c">; yy-stress component</span>
+<span class="ni">$KZM      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">7</span><span class="ni"> </span><span class="c">; zone mass</span>
+<span class="ni">$KZROT    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">8</span><span class="ni"> </span><span class="c">; zone rotation</span>
+<span class="ni">$KZPP     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">9</span><span class="ni"> </span><span class="c">; zone pore pressure</span>
+<span class="ni">$KZPLAS   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">10</span><span class="ni"> </span><span class="c">; plasticity indicator (integer):</span>
+<span class="ni">               </span><span class="c">;0   elastic</span>
+<span class="ni">               </span><span class="c">;1   currently at yield in shear and/or volume</span>
+<span class="ni">               </span><span class="c">;2   tensile failure now</span>
+<span class="ni">               </span><span class="c">;4   shear failure past</span>
+<span class="ni">               </span><span class="c">;8   tensile failure past</span>
+<span class="ni">               </span><span class="c">;16  ubiquitous joint shear failure now</span>
+<span class="ni">               </span><span class="c">;32  ubiquitous joint tensile failure now</span>
+<span class="ni">               </span><span class="c">;64  ubiquitous joint shear failure past</span>
+<span class="ni">               </span><span class="c">;182 ubiquitous joint tensile failure past</span>
+<span class="ni">               </span><span class="c">;256 volumetric failure now</span>
+<span class="ni">$KZEX     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">11</span><span class="ni"> </span><span class="c">; extension index to other constitutive relations (integer)</span>
+<span class="ni">$KZS3</span><span class="m m-Double">3</span><span class="ni">    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">12</span><span class="ni"> </span><span class="c">; out-of-plane stress component</span>
+<span class="ni">$KZONEXTRA</span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">13</span><span class="ni"> </span><span class="c">; unused offset available to users</span>
+<span class="ni">$KZMDCOD  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">14</span><span class="ni"> </span><span class="c">; code used in mixed discretization (integer)</span>
+<span class="ni">$KZMDZ2   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">15</span><span class="ni"> </span><span class="c">; index of other zone in pair (integer)</span>
+<span class="ni">$KZMDZ4   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">16</span><span class="ni"> </span><span class="c">; index of zone in overlay pair (integer)</span>
+<span class="ni">$KZID     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">17</span><span class="ni"> </span><span class="c">; zone ID used by GIIC (integer)</span>
+<span class="ni">$KZGROUP  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">18</span><span class="ni"> </span><span class="c">; pointer to zone group name (integer)</span>
+<span class="ni">$KZDENS   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">19</span><span class="ni"> </span><span class="c">; zone density</span>
+<span class="ni">$KZSTR    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">20</span><span class="ni"> </span><span class="c">; used in stress contouring</span>
+<span class="ni">$KZBIOT   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">22</span><span class="ni"> </span><span class="c">; Biot&#39;s constant for zone</span>
+<span class="ni">$KZBLOCK  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">24</span><span class="ni"> </span><span class="c">; index of host block</span>
+<span class="c">;</span>
+<span class="c">; Thermal extension to Zone data array ---</span>
+<span class="c">;-----------------------------------------</span>
+<span class="c">; This data will only be present if CONFIG THERMAL is used</span>
+<span class="c">;</span>
+<span class="ni">$KZCOND   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">25</span><span class="ni"> </span><span class="c">; Thermal conductivity (if same in X and Y)</span>
+<span class="ni">$KZSPEC   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">26</span><span class="ni"> </span><span class="c">; Specific heat</span>
+<span class="ni">$KZTHEXP  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">27</span><span class="ni"> </span><span class="c">; Thermal expansion coefficient</span>
+<span class="ni">$KZXCOND  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">28</span><span class="ni"> </span><span class="c">; X direction thermal conductivity</span>
+<span class="ni">$KZYCOND  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">29</span><span class="ni"> </span><span class="c">; Y direction thermal conductivity</span>
+<span class="nb">end</span>
+<span class="p">@</span><span class="n">$zone_fin</span>
+<span class="nb">program echo</span><span class="n"> </span><span class="sx">on</span>
+</pre></div>
+</div>
+<p class="h3 rubric" id="boundarydata">BOUNCR.FIN</p>
+<p>BOUCNR.FIN provides access to boundary corner data. The boundary corner array is
+accessed with the bl.bou.head, <span class="codename">FISH</span> variable. The generalized boundary condition
+array is accessed from the $KBDROT, offset index. Note that unlike most linked
+lists in <span class="codename">UDEC</span>, the outer boundary corner list is circular and is not terminated by a zero
+index. You need to test the index from the start of the loop to detect that the entire
+list has been covered. Also unlike the outer boundary corner list, the interior boundary
+corner list is terminated with a zero index.</p>
+<p>Data file BOUCNR.FIN</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">program echo</span><span class="n"> </span><span class="sx">off</span>
+<span class="nb">def</span><span class="ni"> $boucnr_fin</span>
+<span class="c">; Boundary corner array --- FISH include file</span>
+<span class="c">;---------------------------------------------</span>
+<span class="c">; index to top of boundary corner array is bou_head</span>
+<span class="c">;   (all values are floating-point type unless declared otherwise)</span>
+<span class="c">;</span>
+<span class="ni">$KBDC     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">0</span><span class="ni"> </span><span class="c">; index of next boundary corner (integer)</span>
+<span class="ni">$KBDCOR   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">1</span><span class="ni"> </span><span class="c">; index of block corner (integer)</span>
+<span class="ni">$KBDX     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">2</span><span class="ni"> </span><span class="c">; type of boundary condition in the x-direction (integer)</span>
+<span class="ni">$KBDY     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">3</span><span class="ni"> </span><span class="c">; type of boundary condition in the y-direction (integer)</span>
+<span class="ni">               </span><span class="c">; Boundary Conditions:</span>
+<span class="ni">               </span><span class="c">; 1 (load boundary)</span>
+<span class="ni">               </span><span class="c">; 2 (boundary element boundary)</span>
+<span class="ni">               </span><span class="c">; 3 (viscous boundary)</span>
+<span class="ni">               </span><span class="c">; 4 (velocity boundary)</span>
+<span class="ni">$KBDFX    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">4</span><span class="ni"> </span><span class="c">; total x-force</span>
+<span class="ni">$KBDFY    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">5</span><span class="ni"> </span><span class="c">; total y-force</span>
+<span class="ni">$KBDAPX   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">6</span><span class="ni"> </span><span class="c">; applied x-force increment or x-velocity</span>
+<span class="ni">$KBDAPY   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">7</span><span class="ni"> </span><span class="c">; applied y-force increment or y-velocity</span>
+<span class="ni">$KBDXH    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">8</span><span class="ni"> </span><span class="c">; x-load history</span>
+<span class="ni">$KBDYH    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">9</span><span class="ni"> </span><span class="c">; y-load history</span>
+<span class="ni">$KBEN     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">10</span><span class="ni"> </span><span class="c">; index of boundary element node (integer)</span>
+<span class="ni">$KBE2     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">11</span><span class="ni"> </span><span class="c">; index of second boundary element node (integer)</span>
+<span class="ni">$KBEF     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">12</span><span class="ni"> </span><span class="c">; boundary element load distribution factor</span>
+<span class="ni">$KBDROT   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">13</span><span class="ni"> </span><span class="c">; index of generalized boundary condition array (integer)</span>
+<span class="ni">$KBDFF    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">14</span><span class="ni"> </span><span class="c">; free-field indicator (integer)</span>
+<span class="ni">$KBDPP    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">15</span><span class="ni"> </span><span class="c">; pore pressure</span>
+<span class="ni">$KBDNWPP  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">16</span><span class="ni"> </span><span class="c">; nonwetting pore pressure</span>
+<span class="ni">$KBDPER   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">17</span><span class="ni"> </span><span class="c">; permeability condition (integer):</span>
+<span class="ni">               </span><span class="c">; 0 (permeable)</span>
+<span class="ni">               </span><span class="c">; 1 (impermeable)</span>
+<span class="ni">$KBDNWPER </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">18</span><span class="ni"> </span><span class="c">; nonwetting permeability condition (integer)</span>
+<span class="ni">               </span><span class="c">; 0 (permeable)</span>
+<span class="ni">               </span><span class="c">; 1 (impermeable)</span>
+<span class="ni">$KBDSAT   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">19</span><span class="ni"> </span><span class="c">; fluid saturation</span>
+<span class="ni">$KBDPH    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">20</span><span class="ni"> </span><span class="c">; pore pressure history (integer)</span>
+<span class="ni">$KBDNWPH  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">21</span><span class="ni"> </span><span class="c">; non wetting pore pressure history (integer)</span>
+<span class="ni">$KBDPF    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">22</span><span class="ni"> </span><span class="c">; pore pressure history value</span>
+<span class="nb">end</span>
+<span class="p">@</span><span class="n">$boucnr_fin</span>
+
+
+<span class="nb">def</span><span class="ni"> $genbou_fin</span>
+<span class="c">; Generalized boundary condition array --- FISH include file</span>
+<span class="c">;-----------------------------------------------------------</span>
+<span class="c">; index to top of boundary corner array is via the</span>
+<span class="c">; boundary corner array index $KBDROT</span>
+<span class="c">;   (all values are floating-point type unless declared otherwise)</span>
+<span class="ni">$KBDRS    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">0</span><span class="ni"> </span><span class="c">; rotated shear boundary condition (integer)</span>
+<span class="ni">$KBDRN    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">1</span><span class="ni"> </span><span class="c">; rotated normal boundary condition (integer)</span>
+<span class="ni">               </span><span class="c">; Boundary Conditions:</span>
+<span class="ni">               </span><span class="c">; 4 (velocity boundary)</span>
+<span class="ni">$KBDRVS   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">2</span><span class="ni"> </span><span class="c">; boundary shear velocity</span>
+<span class="ni">$KBDRVN   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">3</span><span class="ni"> </span><span class="c">; boundary normal velocity</span>
+<span class="ni">$KBDRA    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">4</span><span class="ni"> </span><span class="c">; boundary angle</span>
+<span class="ni">$KBDRCS   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">5</span><span class="ni"> </span><span class="c">; boundary cosine</span>
+<span class="ni">$KBDRSN   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">6</span><span class="ni"> </span><span class="c">; boundary sine</span>
+<span class="ni">$KBDR8    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">7</span><span class="ni"> </span><span class="c">; not used</span>
+<span class="nb">end</span>
+<span class="p">@</span><span class="n">$genbou_fin</span>
+
+<span class="nb">def</span><span class="ni"> $iboucnr_fin</span>
+<span class="c">; Interior boundary corner array --- FISH include file</span>
+<span class="c">;-----------------------------------------------------</span>
+<span class="c">; index to top of interior boundary corner array is ibou_head</span>
+<span class="c">;   (all values are floating-point type unless declared otherwise)</span>
+<span class="c">;</span>
+<span class="ni">$KBIN     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">0</span><span class="ni"> </span><span class="c">; index of next interior boundary corner (integer)</span>
+<span class="ni">$KBICOR   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">1</span><span class="ni"> </span><span class="c">; index of block corner (integer)</span>
+<span class="ni">$KBIX     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">2</span><span class="ni"> </span><span class="c">; type of boundary condition in the x-direction (integer)</span>
+<span class="ni">$KBIY     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">3</span><span class="ni"> </span><span class="c">; type of boundary condition in the y-direction (integer)</span>
+<span class="ni">               </span><span class="c">; Boundary Conditions:</span>
+<span class="ni">               </span><span class="c">; 1 (load boundary)</span>
+<span class="ni">               </span><span class="c">; 2 (boundary element boundary)</span>
+<span class="ni">               </span><span class="c">; 3 (viscous boundary)</span>
+<span class="ni">               </span><span class="c">; 4 (velocity boundary)</span>
+<span class="ni">$KBIFX    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">4</span><span class="ni"> </span><span class="c">; total x-force</span>
+<span class="ni">$KBIFY    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">5</span><span class="ni"> </span><span class="c">; total y-force</span>
+<span class="ni">$KBIFXT   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">6</span><span class="ni"> </span><span class="c">; applied x-force increment</span>
+<span class="ni">$KBIFYT   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">7</span><span class="ni"> </span><span class="c">; applied y-force increment</span>
+<span class="ni">$KBIVX    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">8</span><span class="ni"> </span><span class="c">; specified x velocity</span>
+<span class="ni">$KBIVY    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">9</span><span class="ni"> </span><span class="c">; specified y velocity</span>
+<span class="ni">$KBIXH    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">10</span><span class="ni"> </span><span class="c">; x-load history</span>
+<span class="ni">$KBIYH    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">11</span><span class="ni"> </span><span class="c">; y-load history</span>
+<span class="ni">$KBIGP    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">12</span><span class="ni"> </span><span class="c">; index of associated grid point</span>
+<span class="ni">$KBIBD    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">13</span><span class="ni"> </span><span class="c">; not used</span>
+<span class="ni">$KBIROT   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">14</span><span class="ni"> </span><span class="c">; index of generalized interior</span>
+<span class="ni">               </span><span class="c">; boundary condition array (integer)</span>
+<span class="ni">$KBIPP    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">15</span><span class="ni"> </span><span class="c">; interior boundary pressure (not currently used)</span>
+<span class="ni">$KBIPER   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">16</span><span class="ni"> </span><span class="c">; interior boundary permeability (not currently used)</span>
+<span class="ni">$KBIPH    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">17</span><span class="ni"> </span><span class="c">; interior pressure history (not currently used)</span>
+<span class="ni">$KBIPF    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">18</span><span class="ni"> </span><span class="c">; interior pore pressure history value (not currently used)</span>
+<span class="nb">end</span>
+<span class="p">@</span><span class="n">$iboucnr_fin</span>
+<span class="nb">program echo</span><span class="n"> </span><span class="sx">on</span>
+</pre></div>
+</div>
+<p class="h3 rubric" id="contactdata">CONTACT.FIN</p>
+<p>CONTACT.FIN provides access to contact data. The contact array is accessed with the
+block.contact.head, <span class="codename">FISH</span> variable. The hydraulic location array is accessed from the
+$KCH offset. The continuously yielding joint model extension array is
+accessed from the $KEX offset.</p>
+<p>Data file CONTACT.FIN</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">program echo</span><span class="n"> </span><span class="sx">off</span>
+<span class="nb">def</span><span class="ni"> $contact_fin</span>
+<span class="c">; Contact data array --- FISH include file</span>
+<span class="c">;-----------------------------------------</span>
+<span class="c">; index to top of contact data array is contact_head</span>
+<span class="c">;   (all values are floating-point type unless declared otherwise)</span>
+<span class="c">;</span>
+<span class="ni">$MCON     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">0</span><span class="ni"> </span><span class="c">; = 5, denotes contact (integer)</span>
+<span class="ni">$KCNEXT   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">1</span><span class="ni"> </span><span class="c">; index of next contact in contact list (integer)</span>
+<span class="ni">$KB1      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">2</span><span class="ni"> </span><span class="c">; index of first block involved in contact (integer)</span>
+<span class="ni">$KB2      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">3</span><span class="ni"> </span><span class="c">; index of second block involved in contact (integer)</span>
+<span class="ni">$KL1      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">4</span><span class="ni"> </span><span class="c">; index of next item in clockwise list of block</span>
+<span class="ni">               </span><span class="c">;  corresponding to KB1 (integer)</span>
+<span class="ni">$KL2      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">5</span><span class="ni"> </span><span class="c">; same as KL1 but for block KB2 (integer)</span>
+<span class="ni">$KD1      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">6</span><span class="ni"> </span><span class="c">; index of domain to left of contact going from</span>
+<span class="ni">               </span><span class="c">; block KB1 to KB2 (integer)</span>
+<span class="ni">$KD2      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">7</span><span class="ni"> </span><span class="c">; index of domain to right of contact going from</span>
+<span class="ni">               </span><span class="c">; block KB2 to KB1 (integer)</span>
+<span class="ni">$KCM      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">8</span><span class="ni"> </span><span class="c">; material type number (integer)</span>
+<span class="ni">$KCC      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">9</span><span class="ni"> </span><span class="c">; constitutive number (integer)</span>
+<span class="ni">$KXC      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">10</span><span class="ni"> </span><span class="c">; contact x-coordinate</span>
+<span class="ni">$KYC      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">11</span><span class="ni"> </span><span class="c">; contact y-coordinate</span>
+<span class="ni">$KXDC     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">12</span><span class="ni"> </span><span class="c">; relative x-velocity (of block KB2 relative to block KB1)</span>
+<span class="ni">$KYDC     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">13</span><span class="ni"> </span><span class="c">; relative y-velocity</span>
+<span class="ni">$KCS      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">14</span><span class="ni"> </span><span class="c">; relative shear displacement</span>
+<span class="ni">$KCN      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">15</span><span class="ni"> </span><span class="c">; relative normal displacement</span>
+<span class="ni">$KCFS     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">16</span><span class="ni"> </span><span class="c">; shear force</span>
+<span class="ni">$KCFN     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">17</span><span class="ni"> </span><span class="c">; normal force (compression positive)</span>
+<span class="ni">$KCCOD    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">18</span><span class="ni"> </span><span class="c">; code number (integer):</span>
+<span class="ni">               </span><span class="c">; 1 (corner/corner contact)</span>
+<span class="ni">               </span><span class="c">; 2 (corner/edge contact)(KB1 ... corner, KB2 ... edge)</span>
+<span class="ni">               </span><span class="c">; 3 (edge/corner contact)(KB1 ... edge, KB2 ... corner)</span>
+<span class="ni">$KCAP     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">19</span><span class="ni"> </span><span class="c">; mean aperture for joint</span>
+<span class="ni">$KCQ      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">20</span><span class="ni"> </span><span class="c">; flow-rate across joint or contact</span>
+<span class="ni">$KCL      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">21</span><span class="ni"> </span><span class="c">; length associated with joint</span>
+<span class="ni">$KGAM     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">22</span><span class="ni"> </span><span class="c">; fracture indicator for CLJ5 (stored as real):</span>
+<span class="ni">               </span><span class="c">; 0.0 (unfractured)</span>
+<span class="ni">               </span><span class="c">; 1.0 (fractured)</span>
+<span class="ni">$KCNX     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">23</span><span class="ni"> </span><span class="c">; contact normal cosines</span>
+<span class="ni">$KCNY     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">24</span><span class="ni"> </span><span class="c">; contact normal cosines</span>
+<span class="ni">$KCRAT1   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">25</span><span class="ni"> </span><span class="c">; interpolation factor</span>
+<span class="ni">$KCRAT2   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">26</span><span class="ni"> </span><span class="c">; interpolation factor</span>
+<span class="ni">$KC1A     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">27</span><span class="ni"> </span><span class="c">; index of corner in block 1 (integer)</span>
+<span class="ni">$KC2A     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">28</span><span class="ni"> </span><span class="c">; index of corner in block 2 (integer)</span>
+<span class="ni">$KCOP     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">29</span><span class="ni"> </span><span class="c">; normal displacement at zero normal stress</span>
+<span class="ni">$KCNMIN   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">30</span><span class="ni"> </span><span class="c">; maximum closure</span>
+<span class="ni">$KHEX     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">31</span><span class="ni"> </span><span class="c">; extension index for other constitutive model</span>
+<span class="ni">               </span><span class="c">; parameters (integer):</span>
+<span class="ni">               </span><span class="c">; see $CY_JME_fin  if CHANGE JCONS = 3 command used</span>
+<span class="ni">$KCH      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">32</span><span class="ni"> </span><span class="c">; extension index for hydraulic array (integer)</span>
+<span class="ni">$KCAZ     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">33</span><span class="ni"> </span><span class="c">; contact aperture at zero normal stress</span>
+<span class="ni">$KCONEXTRA</span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">36</span><span class="ni"> </span><span class="c">; unused offset available to users</span>
+<span class="ni">$KCQNW    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">37</span><span class="ni"> </span><span class="c">; non wetting flow rate</span>
+<span class="ni">$KCID     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">38</span><span class="ni"> </span><span class="c">; joint ID (integer)</span>
+<span class="ni">$KCGROUP  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">39</span><span class="ni"> </span><span class="c">; pointer to group name (integer)</span>
+<span class="nb">end</span>
+<span class="p">@</span><span class="n">$contact_fin</span>
+
+
+<span class="nb">def</span><span class="ni"> $hydraulic_fin</span>
+<span class="c">; Hydraulic location array --- FISH include file</span>
+<span class="c">;-----------------------------------------------</span>
+<span class="c">; index to hydraulic location array is via the contact data</span>
+<span class="c">; array index $KCH</span>
+<span class="c">;   (all values are floating-point type)</span>
+<span class="c">;</span>
+<span class="ni">$KCHN     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">0</span><span class="ni"> </span><span class="c">; contact normal displacement</span>
+<span class="ni">$KCHX     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">1</span><span class="ni"> </span><span class="c">; contact hydraulic x-location</span>
+<span class="ni">$KCHY     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">2</span><span class="ni"> </span><span class="c">; contact hydraulic y-location</span>
+<span class="ni">$KCHVN    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">3</span><span class="ni"> </span><span class="c">; contact hydraulic volume</span>
+<span class="ni">$KCHSNP   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">4</span><span class="ni"> </span><span class="c">; contact adjusted normal stress</span>
+<span class="c">; The following are allocated only if incompressible transient</span>
+<span class="c">; flow is used</span>
+<span class="ni">$KCHAO    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">5</span><span class="ni"> </span><span class="c">; old aperture</span>
+<span class="ni">$KCHPDO   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">6</span><span class="ni"> </span><span class="c">; old pressure difference</span>
+<span class="ni">$KCHPD1   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">7</span><span class="ni"> </span><span class="c">; new pressure difference</span>
+<span class="nb">end</span>
+<span class="p">@</span><span class="n">$hydraulic_fin</span>
+
+
+<span class="nb">def</span><span class="ni"> $CY_JME_fin</span>
+<span class="c">; CY joint model extension --- FISH include file</span>
+<span class="c">;------------------------------------------------</span>
+<span class="c">; index to CY joint model extension is via the contact data</span>
+<span class="c">; array index $KHEX</span>
+<span class="c">;   (all values are floating-point type)</span>
+<span class="ni">$KECYF    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">1</span><span class="ni"> </span><span class="c">; bounding friction angle in radians</span>
+<span class="ni">$KECYR    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">2</span><span class="ni"> </span><span class="c">; reversal factor</span>
+<span class="ni">$KECYDS   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">3</span><span class="ni"> </span><span class="c">; old shear displacement increment</span>
+<span class="nb">end</span>
+<span class="p">@</span><span class="n">$CY_JME_fin</span>
+<span class="nb">program echo</span><span class="n"> </span><span class="sx">on</span>
+</pre></div>
+</div>
+<p class="h3 rubric" id="domaindata">DOMAIN.FIN</p>
+<p>DOMAIN.FIN provides access to domain data. The domain array is accessed with the
+block.domain.head, <span class="codename">FISH</span> variable. The domain extension for fluid flow is accessed from
+the $KDH offset.</p>
+<p>Data file DOMAIN.FIN</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">program echo</span><span class="n"> </span><span class="sx">off</span>
+<span class="nb">def</span><span class="ni"> $domain_fin</span>
+<span class="c">; Domain data array --- FISH include file</span>
+<span class="c">;----------------------------------------</span>
+<span class="c">; index to top of domain data array is domain_head</span>
+<span class="c">;   (all values are floating-point type unless declared otherwise)</span>
+<span class="c">;</span>
+<span class="ni">$MDOM     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">0</span><span class="ni"> </span><span class="c">; =6, denotes domain (integer)</span>
+<span class="ni">$KDNEXT   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">1</span><span class="ni"> </span><span class="c">; index of next domain in domain list (integer)</span>
+<span class="ni">$KDAR     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">2</span><span class="ni"> </span><span class="c">; domain area</span>
+<span class="ni">$KPP      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">3</span><span class="ni"> </span><span class="c">; pore pressure for domain</span>
+<span class="ni">$KUMAX    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">4</span><span class="ni"> </span><span class="c">; fictitious domain displacement</span>
+<span class="ni">$KDLOOP   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">5</span><span class="ni"> </span><span class="c">; index of one object in counterclockwise list</span>
+<span class="ni">               </span><span class="c">; around domain (contact or corner)(integer)</span>
+<span class="ni">               </span><span class="c">; 0&#39;th offset of object array indicates the type of data</span>
+<span class="ni">               </span><span class="c">; where:</span>
+<span class="ni">               </span><span class="c">; 4 = corner array</span>
+<span class="ni">               </span><span class="c">; 5 = contact array</span>
+<span class="ni">$KDCOD    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">6</span><span class="ni"> </span><span class="c">; code number(integer):</span>
+<span class="ni">               </span><span class="c">; 0 (domain pressure not controlled)</span>
+<span class="ni">               </span><span class="c">; 1 (domain pressure controlled)</span>
+<span class="ni">$KDH      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">7</span><span class="ni"> </span><span class="c">; domain hydraulic extension (integer)</span>
+<span class="ni">$KDX      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">8</span><span class="ni"> </span><span class="c">; x-coordinate of domain center</span>
+<span class="ni">$KDY      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">9</span><span class="ni"> </span><span class="c">; y-coordinate of domain center</span>
+<span class="ni">$KDOMEXTRA</span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">10</span><span class="ni"> </span><span class="c">; unused offset available to users</span>
+<span class="ni">$KNWPP    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">11</span><span class="ni"> </span><span class="c">; non wetting domain pressure</span>
+<span class="ni">$KDNWCOD  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">12</span><span class="ni"> </span><span class="c">; non wetting code (integer)</span>
+<span class="ni">$KDAPER   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">13</span><span class="ni"> </span><span class="c">; domain aperture</span>
+<span class="ni">$KDM      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">14</span><span class="ni"> </span><span class="c">; domain material property number (integer)</span>
+<span class="ni">$KDINI    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">15</span><span class="ni"> </span><span class="c">; pressure initialization flag (integer)</span>
+<span class="ni">$KDID     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">16</span><span class="ni"> </span><span class="c">; domain ID (integer)</span>
+<span class="nb">end</span>
+<span class="p">@</span><span class="n">$domain_fin</span>
+
+
+<span class="nb">def</span><span class="ni"> $dom_ext_fin</span>
+<span class="c">; Domain extension for fluid flow --- FISH include file</span>
+<span class="c">;------------------------------------------------------</span>
+<span class="c">; index to domain extension for fluid flow is via the</span>
+<span class="c">; domain data array index $KDH</span>
+<span class="c">;   (all values are floating-point type unless declared otherwise)</span>
+<span class="c">;</span>
+<span class="ni">$KPPO     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">0</span><span class="ni"> </span><span class="c">; domain pore pressure used with history</span>
+<span class="ni">$KDHIS    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">1</span><span class="ni"> </span><span class="c">; pore pressure history index (integer)</span>
+<span class="ni">$KDHSAT   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">2</span><span class="ni"> </span><span class="c">; domain saturation</span>
+<span class="ni">$KPPNWO   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">3</span><span class="ni"> </span><span class="c">; non wetting pore pressure used with pressure history</span>
+<span class="ni">$KDNWHIS  </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">4</span><span class="ni"> </span><span class="c">; non wetting pressure history (integer)</span>
+<span class="ni">$KDFTEMP  </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">5</span><span class="ni"> </span><span class="c">; fluid temperature</span>
+<span class="c">; the following are only allocated if incompressible transient</span>
+<span class="c">; flow is used</span>
+<span class="ni">$KDHDENS  </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">6</span><span class="ni"> </span><span class="c">; fluid density</span>
+<span class="ni">$KDHBULK  </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">7</span><span class="ni"> </span><span class="c">; fluid bulk modulus</span>
+<span class="ni">$KDHVF    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">13</span><span class="ni"> </span><span class="c">; unbalanced domain volume due to flow</span>
+<span class="ni">$KDHDV    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">14</span><span class="ni"> </span><span class="c">; residual unbalanced domain volume</span>
+<span class="ni">$KDHPP    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">15</span><span class="ni"> </span><span class="c">; new domain fluid pressure</span>
+<span class="ni">$KDHVU    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">16</span><span class="ni"> </span><span class="c">; unbalanced volume</span>
+<span class="ni">$KDHVO    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">17</span><span class="ni"> </span><span class="c">; old unbalanced volume</span>
+<span class="ni">$KDHPO    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">18</span><span class="ni"> </span><span class="c">; old domain fluid pressure</span>
+<span class="ni">$KDHFAC   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">19</span><span class="ni"> </span><span class="c">; permeability factor</span>
+<span class="nb">end</span>
+<span class="p">@</span><span class="n">$dom_ext_fin</span>
+<span class="nb">program echo</span><span class="n"> </span><span class="sx">on</span>
+</pre></div>
+</div>
+<p class="h2 rubric" id="structdata">Structural Element Data Group FIN Files</p>
+<p class="h3 rubric" id="cabledata">CABLE.FIN</p>
+<p>CABLE.FIN provides access to cable element data. The cable element data array is
+accessed via the block.struct.cable.elem.head, <span class="codename">FISH</span> variable. The cable node data array is
+accessed from the block.struct.cable.node.head, <span class="codename">FISH</span> variable.</p>
+<p>Data file CABLE.FIN</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">program echo</span><span class="n"> </span><span class="sx">off</span>
+<span class="nb">def</span><span class="ni"> $cab_el_fin</span>
+<span class="c">; Cable reinforcing axial element array --- FISH include file</span>
+<span class="c">;-------------------------------------------------------------</span>
+<span class="c">; index to top of cable element array is cable_elem_head</span>
+<span class="c">;   (all values are floating-point type unless declared otherwise)</span>
+<span class="c">;</span>
+<span class="ni">$KELNEXT  </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">0</span><span class="ni"> </span><span class="c">; index of next node on list (integer)</span>
+<span class="ni">$KELID    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">1</span><span class="ni"> </span><span class="c">; user-given (or generated) ID num (integer)</span>
+<span class="ni">$KELN1    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">2</span><span class="ni"> </span><span class="c">; index of end-1 node (integer)</span>
+<span class="ni">$KELN2    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">3</span><span class="ni"> </span><span class="c">; index of end-2 node (integer)</span>
+<span class="ni">$KELMAT   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">4</span><span class="ni"> </span><span class="c">; material number - steel (integer)</span>
+<span class="ni">$KELARS   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">5</span><span class="ni"> </span><span class="c">; area of steel cable (now a property)</span>
+<span class="ni">$KELFAX   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">6</span><span class="ni"> </span><span class="c">; axial force</span>
+<span class="ni">$KELUT1   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">7</span><span class="ni"> </span><span class="c">; x-component of tangential unit vector</span>
+<span class="ni">$KELUT2   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">8</span><span class="ni"> </span><span class="c">; y-component of tangential unit vector</span>
+<span class="ni">$KELLEN   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">9</span><span class="ni"> </span><span class="c">; current length</span>
+<span class="ni">$KELFAL   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">10</span><span class="ni"> </span><span class="c">; failure (state) flag (integer)</span>
+<span class="ni">$KELEAX   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">11</span><span class="ni"> </span><span class="c">; axial strain (steel)</span>
+<span class="ni">$KELSTF   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">12</span><span class="ni"> </span><span class="c">; current stiffness (force / strain) for steel element</span>
+<span class="ni">$KELCOLID </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">13</span><span class="ni"> </span><span class="c">; structure collection ID, identifies an entire bolt or liner.</span>
+<span class="nb">end</span>
+<span class="p">@</span><span class="n">$cab_el_fin</span>
+
+
+<span class="nb">def</span><span class="ni"> $cab_nd_fin</span>
+<span class="c">; Cable node array --- FISH include file</span>
+<span class="c">;---------------------------------------</span>
+<span class="c">; index to top of cable node array is cable_node_head</span>
+<span class="c">;   (all values are floating-point type unless declared otherwise)</span>
+<span class="c">;</span>
+<span class="ni">$KNDID    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">1</span><span class="ni"> </span><span class="c">; user-given (or generated) ID num (integer)</span>
+<span class="ni">$KNDX     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">2</span><span class="ni"> </span><span class="c">; x-coordinate</span>
+<span class="ni">$KNDY     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">3</span><span class="ni"> </span><span class="c">; y-coordinate</span>
+<span class="ni">$KNDUD1   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">4</span><span class="ni"> </span><span class="c">; x-velocity</span>
+<span class="ni">$KNDUD2   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">5</span><span class="ni"> </span><span class="c">; y-velocity</span>
+<span class="ni">$KNDU1    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">6</span><span class="ni"> </span><span class="c">; x-displacement</span>
+<span class="ni">$KNDU2    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">7</span><span class="ni"> </span><span class="c">; y-displacement</span>
+<span class="ni">$KNDSMS   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">8</span><span class="ni"> </span><span class="c">; stiffness-scaled mass (tangential direction)</span>
+<span class="ni">$KNDMAT   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">9</span><span class="ni"> </span><span class="c">; material number - grout (integer)</span>
+<span class="ni">$KNDZON   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">10</span><span class="ni"> </span><span class="c">; zone index the node maps into (integer)</span>
+<span class="ni">$KNDF1    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">11</span><span class="ni"> </span><span class="c">; unbalanced x-force</span>
+<span class="ni">$KNDF2    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">12</span><span class="ni"> </span><span class="c">; unbalanced y-force</span>
+<span class="ni">$KNDAP1   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">13</span><span class="ni"> </span><span class="c">; applied x-force</span>
+<span class="ni">$KNDAP2   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">14</span><span class="ni"> </span><span class="c">; applied y-force</span>
+<span class="ni">$KNDXFX   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">15</span><span class="ni"> </span><span class="c">; = 1 if fixed in x (integer) (not implemented in UDEC)</span>
+<span class="ni">$KNDYFX   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">16</span><span class="ni"> </span><span class="c">; = 1 if fixed in y (integer) (not implemented in UDEC)</span>
+<span class="ni">$KNDEFL   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">17</span><span class="ni"> </span><span class="c">; effective length</span>
+<span class="ni">$KNDT1    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">18</span><span class="ni"> </span><span class="c">; x-component of tangential unit vector</span>
+<span class="ni">$KNDT2    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">19</span><span class="ni"> </span><span class="c">; y-component of tangential unit vector</span>
+<span class="ni">$KNDBFL   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">20</span><span class="ni"> </span><span class="c">; flag to indicate if grout has failed (integer)</span>
+<span class="ni">$KNDW1    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">21</span><span class="ni"> </span><span class="c">; weight-1</span>
+<span class="ni">$KNDW2    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">22</span><span class="ni"> </span><span class="c">; weight-2</span>
+<span class="ni">$KNDW3    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">23</span><span class="ni"> </span><span class="c">; weight-3</span>
+<span class="ni">$KNDFS    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">24</span><span class="ni"> </span><span class="c">; grout (shear) force</span>
+<span class="ni">$KNDDMS   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">25</span><span class="ni"> </span><span class="c">; &#39;correct&#39; dynamic mass (tangential direction)</span>
+<span class="ni">$KNDRSV   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">26</span><span class="ni"> </span><span class="c">; tangential relative velocity (node relative to grid)</span>
+<span class="nb">end</span>
+<span class="p">@</span><span class="n">$cab_nd_fin</span>
+<span class="nb">program echo</span><span class="n"> </span><span class="sx">on</span>
+</pre></div>
+</div>
+<p class="h3 rubric" id="reinfdata">REINF.FIN</p>
+<p>REINF.FIN provides access to reinforcement data. The reinforcement data array is
+accessed via the block.struct.reinforecement.head, <span class="codename">FISH</span> variable.</p>
+<p>Data file REINF.FIN</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">program echo</span><span class="n"> </span><span class="sx">off</span>
+<span class="nb">def</span><span class="ni"> $reinf_fin</span>
+<span class="c">; Local reinforcement data array --- FISH include file</span>
+<span class="c">;-----------------------------------------------------</span>
+<span class="c">; index to top of local reinforcement data array is r_head</span>
+<span class="c">;   (all values are floating-point type unless declared otherwise)</span>
+<span class="c">;</span>
+<span class="ni">$MLRCON   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">0</span><span class="ni"> </span><span class="c">; = 6, denotes local reinforcement (integer)</span>
+<span class="ni">$KLRCNEXT </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">1</span><span class="ni"> </span><span class="c">; index of next reinforcement in the list (integer)</span>
+<span class="ni">$KLRB1    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">2</span><span class="ni"> </span><span class="c">; index of first block involved in reinforcement (integer)</span>
+<span class="ni">$KLRB2    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">3</span><span class="ni"> </span><span class="c">; index of second block involved in reinforcement (integer)</span>
+<span class="ni">$KLRL1    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">4</span><span class="ni"> </span><span class="c">; index of next item in clockwise list of block</span>
+<span class="ni">               </span><span class="c">;  corresponding to KB1 (integer)</span>
+<span class="ni">$KLRL2    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">5</span><span class="ni"> </span><span class="c">; same as KL1 but for block KB2 (integer)</span>
+<span class="ni">$KLRD1    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">6</span><span class="ni"> </span><span class="c">; index of domain to left of reinforcement going from</span>
+<span class="ni">               </span><span class="c">;  block KB1 to KB2 (integer)</span>
+<span class="ni">$KLRD2    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">7</span><span class="ni"> </span><span class="c">; index of domain to right of reinforcement going from</span>
+<span class="ni">               </span><span class="c">;  block KB2 to KB1 (integer)</span>
+<span class="ni">$KLRCM    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">8</span><span class="ni"> </span><span class="c">; material type number (integer)</span>
+<span class="ni">$KLRCC    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">9</span><span class="ni"> </span><span class="c">; constitutive number (integer)</span>
+<span class="ni">$KLRXC    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">10</span><span class="ni"> </span><span class="c">; x-coordinate</span>
+<span class="ni">$KLRYC    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">11</span><span class="ni"> </span><span class="c">; y-coordinate</span>
+<span class="ni">$KLRXDC   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">12</span><span class="ni"> </span><span class="c">; relative x-velocity (of block KB2 relative to block KB1)</span>
+<span class="ni">$KLRYDC   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">13</span><span class="ni"> </span><span class="c">; relative y-velocity</span>
+<span class="ni">$KLRCS    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">14</span><span class="ni"> </span><span class="c">; relative shear displacement on joint</span>
+<span class="ni">$KLRCN    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">15</span><span class="ni"> </span><span class="c">; relative normal displacement on joint</span>
+<span class="ni">$KLRCFS   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">16</span><span class="ni"> </span><span class="c">; shear force at joint</span>
+<span class="ni">$KLRCFN   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">17</span><span class="ni"> </span><span class="c">; normal force at joint</span>
+
+<span class="ni">$KLRCAP   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">19</span><span class="ni"> </span><span class="c">; orientation of reinforcement relative to joint</span>
+<span class="ni">$KLRCQ    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">20</span><span class="ni"> </span><span class="c">; total axial displacement of reinforcement</span>
+<span class="ni">$KLRCL    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">21</span><span class="ni"> </span><span class="c">; axial force on reinforcement</span>
+<span class="ni">$KLRGAM   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">22</span><span class="ni"> </span><span class="c">; shear force on reinforcement</span>
+<span class="nb">end</span>
+<span class="p">@</span><span class="n">$reinf_fin</span>
+<span class="nb">program echo</span><span class="n"> </span><span class="sx">on</span>
+<span class="c">;</span>
+</pre></div>
+</div>
+<p class="h3 rubric" id="beamdata">STR.FIN</p>
+<p>STR.FIN provides access to structural element data. This includes beams, liners and rockbolts.
+The structural element lumped mass
+(node) array is accessed via the block.struct.node.head, <span class="codename">FISH</span> variable. The structural
+element data array is accessed from the block.struct.elem.head, <span class="codename">FISH</span> variable. The
+structural element interface array is accessed from the blo.struct.int.head, <span class="codename">FISH</span>
+variable.</p>
+<p>Data file STR.FIN</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">program echo</span><span class="n"> </span><span class="sx">off</span>
+<span class="nb">def</span><span class="ni"> $str_fin</span>
+<span class="c">;  Structural element parameters -- FISH Include file</span>
+<span class="c">;  ---------------------------------------------------</span>
+<span class="c">; Structural element lumped mass array accessed via str_node_head</span>
+<span class="c">;   (all values are floating-point type unless declared otherwise)</span>
+<span class="c">;</span>
+<span class="ni">$SNDNEXT    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">0</span><span class="ni"> </span><span class="c">; index of next node on list (integer)</span>
+<span class="ni">$SNDID      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">1</span><span class="ni"> </span><span class="c">; nodal point ID number (integer)</span>
+<span class="ni">$SNDX       </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">2</span><span class="ni"> </span><span class="c">; x-coordinate of nodal point</span>
+<span class="ni">$SNDY       </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">3</span><span class="ni"> </span><span class="c">; y-coordinate of nodal point</span>
+<span class="ni">$SNDUD1     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">4</span><span class="ni"> </span><span class="c">; x-velocity of nodal point</span>
+<span class="ni">$SNDUD2     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">5</span><span class="ni"> </span><span class="c">; y-velocity of nodal point</span>
+<span class="ni">$SNDU1      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">6</span><span class="ni"> </span><span class="c">; x-displacement of nodal point</span>
+<span class="ni">$SNDU2      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">7</span><span class="ni"> </span><span class="c">; y-displacement of nodal point</span>
+<span class="ni">$SNDSMS     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">8</span><span class="ni"> </span><span class="c">; stiffness scaled mass (tangential direction)</span>
+<span class="ni">$SNDF1      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">11</span><span class="ni"> </span><span class="c">; unbalanced x-force</span>
+<span class="ni">$SNDF2      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">12</span><span class="ni"> </span><span class="c">; unbalanced y-force</span>
+<span class="ni">$SNDAP1     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">13</span><span class="ni"> </span><span class="c">; applied x-force</span>
+<span class="ni">$SNDAP2     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">14</span><span class="ni"> </span><span class="c">; applied y-force</span>
+<span class="ni">$SNDEFL     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">17</span><span class="ni"> </span><span class="c">; effective length</span>
+<span class="ni">$SNDT1      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">18</span><span class="ni"> </span><span class="c">; x-component of tangential unit vector</span>
+<span class="ni">$SNDT2      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">19</span><span class="ni"> </span><span class="c">; y-component of tangential unit vector</span>
+<span class="ni">$SNDDMS     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">25</span><span class="ni"> </span><span class="c">; actual mass (tangential direction)</span>
+<span class="ni">$SNDUDR     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">27</span><span class="ni"> </span><span class="c">; rotational velocity</span>
+<span class="ni">$SNDUR      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">28</span><span class="ni"> </span><span class="c">; rotational displacement</span>
+<span class="ni">$SNDFR      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">29</span><span class="ni"> </span><span class="c">; unbalanced moment force</span>
+<span class="ni">$SNDAPR     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">30</span><span class="ni"> </span><span class="c">; applied moment force</span>
+<span class="ni">$SNDDIN     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">31</span><span class="ni"> </span><span class="c">; dynamic rotational inertia</span>
+<span class="ni">$SNDSIN     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">32</span><span class="ni"> </span><span class="c">; maximum of scaled mass or dynamic inertia</span>
+<span class="ni">$SNDTINC    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">34</span><span class="ni"> </span><span class="c">; temperature increment of node</span>
+<span class="ni">$SNDILYR    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">35</span><span class="ni"> </span><span class="c">; multiple layer temp flag used in thermal</span>
+<span class="ni">$SNDEXTRA   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">36</span><span class="ni"> </span><span class="c">; unused offset available to users</span>
+<span class="c">; The following are used for Rock bolts only</span>
+<span class="c">; --- rockbolt node data array ---</span>
+<span class="c">;    (uses structural/cable element offset names for first 36 items)</span>
+<span class="ni">$KNDTYP     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">37</span><span class="ni"> </span><span class="c">; property ID</span>
+<span class="ni">$KNDTAD     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">38</span><span class="ni"> </span><span class="c">; index for property data array</span>
+<span class="ni">$KNDCOD     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">39</span><span class="ni"> </span><span class="c">; = 1 rockbolt node outside of any zones</span>
+<span class="c">;                  = 4 rockbolt node inside a zone</span>
+<span class="ni">$KNDCOD2    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">40</span><span class="ni"> </span><span class="c">; = 5 node in zone</span>
+<span class="ni">$KNDPIN     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">41</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDMA1     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">42</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDMA2     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">43</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDNFL     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">44</span><span class="ni"> </span><span class="c">; = 0 normal spring elastic</span>
+<span class="c">;                  = 2 normal spring yielding</span>
+<span class="ni">$KNDFN      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">45</span><span class="ni"> </span><span class="c">; contact spring normal force</span>
+<span class="ni">$KNDUP      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">46</span><span class="ni"> </span><span class="c">; contact spring normal gap</span>
+<span class="ni">$KNDUM      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">47</span><span class="ni"> </span><span class="c">; contact spring ?</span>
+<span class="ni">$KNDUA      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">48</span><span class="ni"> </span><span class="c">; contact spring shear displacement</span>
+<span class="ni">$KNDUNR     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">49</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDHFR     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">50</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDHTD     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">51</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDHTH     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">52</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDHIN     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">53</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDHMI     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">54</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDHTR     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">55</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDEP      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">56</span><span class="ni"> </span><span class="c">; mean effective pressure in plane</span>
+<span class="ni">                 </span><span class="c">; perpendicular to rockbolt</span>
+<span class="ni">$KNDNC      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">57</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDNC1     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">58</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDLO1     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">59</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDLO2     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">60</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDFOR1    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">61</span><span class="ni"> </span><span class="c">; X direction nodal force sum</span>
+<span class="ni">$KNDFOR2    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">62</span><span class="ni"> </span><span class="c">; Y direction nodal force sum</span>
+<span class="ni">$KNDUS      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">63</span><span class="ni"> </span><span class="c">; spring shear displacement</span>
+<span class="ni">$KNDCSTR    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">64</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDCAREA   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">65</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDSFCE    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">66</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDDT      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">67</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDGP      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">68</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDSXXI    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">69</span><span class="ni"> </span><span class="c">; XX stress in zone when node was added</span>
+<span class="ni">$KNDSXYI    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">70</span><span class="ni"> </span><span class="c">; XY stress in zone when node was added</span>
+<span class="ni">$KNDSYYI    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">71</span><span class="ni"> </span><span class="c">; YY stress in zone when node was added</span>
+<span class="ni">$KNDSZZI    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">72</span><span class="ni"> </span><span class="c">; ZZ stress in zone when node was added</span>
+<span class="ni">$KNDPPI     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">73</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDSI      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">74</span><span class="ni"> </span><span class="c">; flag used to indicate installation stress assigned</span>
+<span class="ni">$KNDCFAC    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">75</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDAXF1    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">76</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDAXF2    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">77</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDRSD     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">78</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDXO      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">79</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDYO      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">80</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDACC1    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">81</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDACC2    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">82</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDACCTH   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">83</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDSP7     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">84</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDSP8     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">85</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="ni">$KNDSP9     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">86</span><span class="ni"> </span><span class="c">; not currently used in UDEC</span>
+<span class="c">;</span>
+<span class="c">;</span>
+<span class="c">;Structural element array access via str_elem_head</span>
+<span class="c">;   (all values are floating-point type unless declared otherwise)</span>
+<span class="c">;   (beams and cables use only the first 24 offsets, Rockbolts use all 41)</span>
+<span class="c">;</span>
+<span class="ni">$SELNEXT    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">0</span><span class="ni"> </span><span class="c">; index of next element (integer)</span>
+<span class="ni">$SELID      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">1</span><span class="ni"> </span><span class="c">; structural element ID number (integer)</span>
+<span class="ni">$SELN1      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">2</span><span class="ni"> </span><span class="c">; index of lumped mass 1 (integer)</span>
+<span class="ni">$SELN2      </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">3</span><span class="ni"> </span><span class="c">; index of lumped mass 2 (integer)</span>
+<span class="ni">$SELMAT     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">4</span><span class="ni"> </span><span class="c">; material number (integer)</span>
+<span class="ni">$SELARS     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">5</span><span class="ni"> </span><span class="c">; area of structural element</span>
+<span class="ni">$SELFAX     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">6</span><span class="ni"> </span><span class="c">; axial force </span>
+<span class="c">;                  Compression negative for beams, </span>
+<span class="c">;                  Compression positive for cables and rockbolts.</span>
+<span class="ni">$SELUT1     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">7</span><span class="ni"> </span><span class="c">; x-component of tangential unit vector</span>
+<span class="ni">$SELUT2     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">8</span><span class="ni"> </span><span class="c">; y-component of tangential unit vector</span>
+<span class="ni">$SELLEN     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">9</span><span class="ni"> </span><span class="c">; length of element</span>
+<span class="ni">$SELFAL     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">10</span><span class="ni"> </span><span class="c">; axial failure indicator (integer):</span>
+<span class="ni">                 </span><span class="c">; 0  (elastic)</span>
+<span class="ni">                 </span><span class="c">; 1  (yield tension)</span>
+<span class="ni">                 </span><span class="c">; 2  (yield compression)</span>
+<span class="ni">$KELEAX     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">11</span><span class="ni"> </span><span class="c">; axial strain (steel) (cables and rockbolts only)</span>
+<span class="ni">$SELSTF     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">12</span><span class="ni"> </span><span class="c">; element stiffness</span>
+<span class="ni">$SELCOLID   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">13</span><span class="ni"> </span><span class="c">; structure collection ID, identifies an entire bolt or liner.</span>
+<span class="ni">$SELFS      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">14</span><span class="ni"> </span><span class="c">; shear force</span>
+<span class="ni">$SELM1      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">15</span><span class="ni"> </span><span class="c">; total moment at node 1</span>
+<span class="ni">$SELM2      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">16</span><span class="ni"> </span><span class="c">; total moment at node 2</span>
+<span class="ni">$SELTH      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">17</span><span class="ni"> </span><span class="c">; structural element thickness</span>
+<span class="ni">$SELIN      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">18</span><span class="ni"> </span><span class="c">; structural element second moment of area</span>
+<span class="ni">$SELSH      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">19</span><span class="ni"> </span><span class="c">; structural element shape ratio</span>
+<span class="ni">$SELFAL2    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">20</span><span class="ni"> </span><span class="c">; second axial failure indicator (integer):</span>
+<span class="ni">                 </span><span class="c">; 0  (elastic)</span>
+<span class="ni">                 </span><span class="c">; 1  (yield tension)</span>
+<span class="ni">                 </span><span class="c">; 2  (yield compression)</span>
+<span class="ni">$SELCONS    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">21</span><span class="ni"> </span><span class="c">; structural element constitutive model (integer)</span>
+<span class="ni">$SELEXTRA   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">22</span><span class="ni"> </span><span class="c">; unused offset available to users</span>
+<span class="ni">$KELCOD     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">24</span><span class="ni"> </span><span class="c">; type code (beam = 3, rockbolt = 4) </span>
+<span class="c">;</span>
+<span class="c">;--- additional offsets for rockbolts</span>
+<span class="c">;    </span>
+<span class="ni">$KELCOD2    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">25</span><span class="ni"> </span><span class="c">; internal use</span>
+<span class="ni">$KELTYP     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">26</span><span class="ni"> </span><span class="c">; property type number</span>
+<span class="ni">$KELTAD     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">27</span><span class="ni"> </span><span class="c">; offset pointing to list of properties</span>
+<span class="ni">$KELHIN     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">28</span><span class="ni"> </span><span class="c">; not currently used</span>
+<span class="ni">$KELHM1     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">29</span><span class="ni"> </span><span class="c">; not currently used</span>
+<span class="ni">$KELHM2     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">30</span><span class="ni"> </span><span class="c">; not currently used</span>
+<span class="ni">$KELPSS     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">31</span><span class="ni"> </span><span class="c">; plastic shear strain</span>
+<span class="ni">$KELPAX     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">32</span><span class="ni"> </span><span class="c">; axial plastic strain</span>
+<span class="ni">$KELPBE1    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">33</span><span class="ni"> </span><span class="c">; node 1 plastic bending strain</span>
+<span class="ni">$KELPBE2    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">34</span><span class="ni"> </span><span class="c">; node 2 plastic bending strain</span>
+<span class="ni">$KELSTA1    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">35</span><span class="ni"> </span><span class="c">; not currently used</span>
+<span class="ni">$KELSTA2    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">36</span><span class="ni"> </span><span class="c">; not currently used</span>
+<span class="ni">$KELPRET    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">37</span><span class="ni"> </span><span class="c">; not currently used</span>
+<span class="ni">$KELSIDE    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">38</span><span class="ni"> </span><span class="c">; not currently used</span>
+<span class="ni">$KELFIXAXIAL</span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">39</span><span class="ni"> </span><span class="c">; used for pretensioning process</span>
+<span class="ni">$KELSP2     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">40</span><span class="ni"> </span><span class="c">; not currently used</span>
+<span class="ni">$KELSP3     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">41</span><span class="ni"> </span><span class="c">; not currently used</span>
+<span class="c">;</span>
+<span class="c">; structural element Interface array accessed via str_int_head</span>
+<span class="c">;   (all values are floating-point type unless declared otherwise)</span>
+<span class="c">;</span>
+<span class="ni">$SCCONT     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">0</span><span class="ni"> </span><span class="c">; contact type (integer)</span>
+<span class="ni">$SCNEXT     </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">1</span><span class="ni"> </span><span class="c">; index of next interface (integer)</span>
+<span class="ni">$SB1        </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">2</span><span class="ni"> </span><span class="c">; index of lumped mass (integer)</span>
+<span class="ni">$SB2        </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">3</span><span class="ni"> </span><span class="c">; index of block (integer)</span>
+<span class="ni">$SL2        </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">5</span><span class="ni"> </span><span class="c">; index of next item in clockwise list of block (integer)</span>
+<span class="ni">$SCM        </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">8</span><span class="ni"> </span><span class="c">; material number (integer)</span>
+<span class="ni">$SCC        </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">9</span><span class="ni"> </span><span class="c">; constitutive number (= 1) (integer)</span>
+<span class="ni">$SXC        </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">10</span><span class="ni"> </span><span class="c">; x-coordinate of contact</span>
+<span class="ni">$SYC        </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">11</span><span class="ni"> </span><span class="c">; y-coordinate of contact</span>
+<span class="ni">$SXDC       </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">12</span><span class="ni"> </span><span class="c">; relative x velocity (of block relative to lumped mass)</span>
+<span class="ni">$SYDC       </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">13</span><span class="ni"> </span><span class="c">; relative y velocity (of block relative to lumped mass)</span>
+<span class="ni">$SCS        </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">14</span><span class="ni"> </span><span class="c">; relative shear displacement</span>
+<span class="ni">$SCN        </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">15</span><span class="ni"> </span><span class="c">; relative normal displacement</span>
+<span class="ni">$SCFS       </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">16</span><span class="ni"> </span><span class="c">; shear force</span>
+<span class="ni">$SCFN       </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">17</span><span class="ni"> </span><span class="c">; normal force</span>
+<span class="ni">$SCCOD      </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">18</span><span class="ni"> </span><span class="c">; contact type (integer)</span>
+<span class="ni">$SCNX       </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">23</span><span class="ni"> </span><span class="c">; x shift due to element thickness</span>
+<span class="ni">$SCNY       </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">24</span><span class="ni"> </span><span class="c">; y shift due to element thickness</span>
+<span class="ni">$SCRAT1     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">25</span><span class="ni"> </span><span class="c">; force weighting factor 1</span>
+<span class="ni">$SCRAT2     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">26</span><span class="ni"> </span><span class="c">; force weighting factor 2</span>
+<span class="c">;</span>
+<span class="nb">end</span>
+<span class="p">@</span><span class="n">$str_fin</span>
+<span class="nb">program echo</span><span class="n"> </span><span class="sx">on</span>
+</pre></div>
+</div>
+<p class="h3 rubric" id="supportdata">SUPPORT.FIN</p>
+<p>SUPPORT.FIN provides access to support element data. The support element array is
+accessed via the block.struct.support.head, <span class="codename">FISH</span> variable.</p>
+<p>Data file SUPPORT.FIN</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">program echo</span><span class="n"> </span><span class="sx">off</span>
+<span class="nb">def</span><span class="ni"> $support_fin</span>
+<span class="c">; Support element data array --- FISH include file</span>
+<span class="c">;-----------------------------------------------------</span>
+<span class="c">; index to top of support element data array is sup_head</span>
+<span class="c">;   (all values are floating-point type unless declared otherwise)</span>
+<span class="c">;</span>
+<span class="ni">$KSUEXT   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">1</span><span class="ni"> </span><span class="c">; spare extension (not used)</span>
+<span class="ni">$KSUT1    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">2</span><span class="ni"> </span><span class="c">; x-component unit vector</span>
+<span class="ni">$KSUT2    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">3</span><span class="ni"> </span><span class="c">; y-component unit vector</span>
+<span class="ni">$KSUMAT   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">4</span><span class="ni"> </span><span class="c">; material number (integer)</span>
+<span class="ni">$KSUFN    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">5</span><span class="ni"> </span><span class="c">; normal force (compression positive)</span>
+<span class="ni">$KSUFS    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">6</span><span class="ni"> </span><span class="c">; shear force (not used)</span>
+<span class="ni">$KSUUN    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">7</span><span class="ni"> </span><span class="c">; total normal displacement</span>
+<span class="ni">$KSUUS    </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">8</span><span class="ni"> </span><span class="c">; total shear displacement</span>
+<span class="ni">$KSUTAD   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">9</span><span class="ni"> </span><span class="c">; index of top block (integer)</span>
+<span class="ni">$KSUBAD   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">10</span><span class="ni"> </span><span class="c">; index of bottom block (integer)</span>
+<span class="ni">$KSUTRA   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">11</span><span class="ni"> </span><span class="c">; ratio (i.e., weighting factor) for top</span>
+<span class="ni">$KSUBRA   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">12</span><span class="ni"> </span><span class="c">; ratio (i.e., weighting factor) for bottom</span>
+<span class="ni">$KSUTCO   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">13</span><span class="ni"> </span><span class="c">; index of top corner (integer)</span>
+<span class="ni">$KSUBCO   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">14</span><span class="ni"> </span><span class="c">; index of bottom corner (integer)</span>
+<span class="ni">$KSUSUB   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">15</span><span class="ni"> </span><span class="c">; pointer to sub-elements (integer)</span>
+<span class="ni">$KSUNSM   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">16</span><span class="ni"> </span><span class="c">; number of elements (integer)</span>
+<span class="ni">$KSUNMX   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">17</span><span class="ni"> </span><span class="c">; max normal displacement in past</span>
+<span class="ni">$KSULIM   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">18</span><span class="ni"> </span><span class="c">; axial displacement at maximum force</span>
+<span class="ni">$KSUTYP   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">19</span><span class="ni"> </span><span class="c">; support type (1 = rate dependent) (integer)</span>
+<span class="ni">$KSUFSTAT </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">20</span><span class="ni"> </span><span class="c">; maximum static force</span>
+<span class="ni">$KSUCSTIF </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">21</span><span class="ni"> </span><span class="c">; stiffness constant</span>
+<span class="ni">$KSUDE1</span><span class="m m-Double">0</span><span class="ni">  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">22</span><span class="ni"> </span><span class="c">; previous force increment</span>
+<span class="ni">$KSUTBMX  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">23</span><span class="ni"> </span><span class="c">; maximum x-value in table</span>
+<span class="ni">$KSULDMX  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">24</span><span class="ni"> </span><span class="c">; maximum axial force achieved in past</span>
+<span class="ni">$KSUN0    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">25</span><span class="ni"> </span><span class="c">; axial displacement at zero axial force</span>
+<span class="ni">$KSUMAS   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">26</span><span class="ni"> </span><span class="c">; support deletion flag (integer)</span>
+<span class="ni">$KSUEXTRA </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">27</span><span class="ni"> </span><span class="c">; unused offset available to users</span>
+<span class="ni">$KSU2</span><span class="m m-Double">8</span><span class="ni">    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">28</span><span class="ni"> </span><span class="c">; not used</span>
+<span class="ni">$KSU2</span><span class="m m-Double">9</span><span class="ni">    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">29</span><span class="ni"> </span><span class="c">; not used</span>
+<span class="nb">end</span>
+<span class="p">@</span><span class="n">$support_fin</span>
+<span class="nb">program echo</span><span class="n"> </span><span class="sx">on</span>
+<span class="c">;</span>
+</pre></div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../common/docproject/source/manual/scripting/fish_scripting/fish.html" accesskey="U"><span class="codename">FISH</span> Scripting Reference</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../Tutorial/basicclifish.html"
+                           title="previous chapter"> Tutorial: Working with <span class="codename">FISH</span></a> |    
+       <a href="../../../../../common/docproject/source/manual/commandindex.html"
+                           title="next chapter">Command Index</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?UDEC FISH Data Program Guide" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

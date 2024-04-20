@@ -1,0 +1,215 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>fracture compute command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="fracture connectivity command" href="cmd_fracture_connectivity.html" />
+    <link rel="prev" title="fracture combine command" href="cmd_fracture_combine.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fracture-compute-command">
+<h1><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">compute</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="dfn command">
+<dt id="command:fracture.compute">
+<span class="cmdname"><span class="pref">f</span><span class="pref">r</span><span class="pref">a</span><span class="pref">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">c</span><span class="pref">o</span><span class="pref">m</span><span class="null">p</span><span class="null">u</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="pref">r</span><span class="pref">a</span><span class="pref">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:fracture.compute.average-trace-length" title="fracture compute average-trace-length">average-trace-length</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.compute.center-density" title="fracture compute center-density">center-density</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.compute.mass-density" title="fracture compute mass-density">mass-density</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.compute.p10" title="fracture compute p10">p10</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.compute.trace-center-density" title="fracture compute trace-center-density">trace-center-density</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.compute.trace-mass-density" title="fracture compute trace-mass-density">trace-mass-density</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.compute.percolation" title="fracture compute percolation">percolation</a></p>
+</div>
+<p>Compute fracture statistics. Various density measures of fractures, filtered by
+range, can be computed.</p>
+<dl class="keyword">
+<dt id="kwd:fracture.compute.average-trace-length">
+<span class="cmdkey"><span class="pref">a</span><span class="null">v</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">g</span><span class="null">e</span><span class="null">-</span><span class="pref">t</span><span class="null">r</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">-</span><span class="pref">l</span><span class="null">e</span><span class="null">n</span><span class="null">g</span><span class="null">t</span><span class="null">h</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">3D<span class="null"> </span></span><span class="cmdextraparam">only</span>)</span><span class="null"> </span></dt>
+<dd><p>Return the average trace length, where traces are the intersections between the fractures and
+the planar geometry set with name <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.compute.center-density">
+<span class="cmdkey"><span class="pref">c</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">-</span><span class="pref">d</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>Return the fracture center density (i.e, P20 in 2D and P30 in 3D).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.compute.mass-density">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">d</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>Return the fracture mass density (i.e., P21 in 2D and P32 in 3D).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.compute.p10">
+<span class="cmdkey"><span class="pref">p</span><span class="null">1</span><span class="null">0</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Return the P10 along the line defined by <span class="cmdkey">begin</span> and <span class="cmdkey">end</span>, or along the geometry
+edges defined with the <span class="cmdkey">geometry</span> keyword.</p>
+<dl class="keyword">
+<dt id="kwd:fracture.compute.p10.geometry">
+<span class="cmdkey"><span class="pref">g</span><span class="pref">e</span><span class="null">o</span><span class="null">m</span><span class="null">e</span><span class="null">t</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>P10 is measured along the edges of the geometry set with name <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>. Cannot be given with the <span class="cmdkey">begin</span> or <span class="cmdkey">end</span> keywords.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.compute.p10.begin">
+<span class="cmdkey"><span class="pref">b</span><span class="null">e</span><span class="null">g</span><span class="null">i</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>Define the starting point of the reference line where P10 is measured. Cannot be given with the <span class="cmdkey">geometry</span> keyword.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.compute.p10.end">
+<span class="cmdkey"><span class="pref">e</span><span class="null">n</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>Define the ending point of the reference line where P10 is measured. Cannot be given with
+the <span class="cmdkey">geometry</span> keyword.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.compute.trace-center-density">
+<span class="cmdkey"><span class="pref">t</span><span class="null">r</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">-</span><span class="pref">c</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">-</span><span class="pref">d</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">3D<span class="null"> </span></span><span class="cmdextraparam">only</span>)</span><span class="null"> </span></dt>
+<dd><p>Return the trace center density (i.e., P20), where traces are the intersections between
+fractures and the planar geometry set with name <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.compute.trace-mass-density">
+<span class="cmdkey"><span class="pref">t</span><span class="null">r</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">-</span><span class="pref">m</span><span class="null">a</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">d</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">3D<span class="null"> </span></span><span class="cmdextraparam">only</span>)</span><span class="null"> </span></dt>
+<dd><p>Return the trace mass density (i.e., P21), where traces are the intersections between the
+fractures and the planar geometry set with name <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.compute.percolation">
+<span class="cmdkey"><span class="pref">p</span><span class="pref">e</span><span class="null">r</span><span class="null">c</span><span class="null">o</span><span class="null">l</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>Return the percolation parameter.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p class="h2 rubric">Usage Example</p>
+<p>The following example illustrates how the <a class="reference internal" href="#command:fracture.compute" title="Compute fracture statistics. Various density measures of fractures, filtered&#013;&#010;by"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">compute</span></code></a> command can be
+used to print fracture statistics (3D).</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model random</span><span class="n"> </span><span class="m m-Double">10000</span>
+<span class="nb">model domain</span><span class="n"> extent </span><span class="o">-</span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">5</span>
+<span class="c">;Generate fractures using the default template</span>
+<span class="nb">fracture generate</span><span class="n"> fracture</span><span class="o">-</span><span class="n">count </span><span class="m m-Double">100</span>
+<span class="c">;Create a line for p10 calculation</span>
+<span class="nb">geometry set</span><span class="n"> </span><span class="s">&#39;p10line&#39;</span>
+<span class="nb">geometry edge</span><span class="n"> create by</span><span class="o">-</span><span class="n">position </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span>
+<span class="c">;List some information</span>
+<span class="nb">fracture compute</span><span class="n"> mass</span><span class="o">-</span><span class="n">density</span>
+<span class="nb">fracture compute</span><span class="n"> center</span><span class="o">-</span><span class="n">density</span>
+<span class="c">;List the p10 for both the line and by specifying the line ends</span>
+<span class="nb">fracture compute</span><span class="n"> p10 begin </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> end </span><span class="p">(</span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span>
+<span class="nb">fracture compute</span><span class="n"> p10 geometry </span><span class="s">&#39;p10line&#39;</span>
+</pre></div>
+</div>
+<p class="h3 rubric">See Also: <a class="reference internal" href="cmd_fracture_verify-file.html#command:fracture.verify-file" title="Verify a DFN file. Before importing fractures from a DFN file, one should use&#013;&#010;the"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">verify-file</span></code></a> | <a class="reference internal" href="cmd_fracture_export.html#command:fracture.export" title="Export fractures to file. By default, fractures are exported in the Itasca DFN&#013;&#010;data file format"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">export</span></code></a> | <a class="reference internal" href="cmd_fracture_import.html#command:fracture.import" title="Import fractures."><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">import</span></code></a></p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../dfn.html" >Discrete Fracture Network (DFN)</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="dfn_commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_fracture_combine.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">fracture</span> <span class="pre">combine</span></code> command</a> |    
+       <a href="cmd_fracture_connectivity.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">connectivity</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?fracture compute command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

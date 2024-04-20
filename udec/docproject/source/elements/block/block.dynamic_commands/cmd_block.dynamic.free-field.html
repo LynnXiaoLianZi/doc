@@ -1,0 +1,552 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block dynamic free-field command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="block-dynamic-free-field-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">dynamic</span> <span class="pre">free-field</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="blockdynamic command">
+<dt id="command:block.dynamic.free-field">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">d</span><span class="null">y</span><span class="null">n</span><span class="null">a</span><span class="null">m</span><span class="null">i</span><span class="null">c</span><span class="null"> </span></span><span class="cmdname"><span class="null">f</span><span class="null">r</span><span class="null">e</span><span class="null">e</span><span class="null">-</span><span class="null">f</span><span class="null">i</span><span class="null">e</span><span class="null">l</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a>></span><span class="null"> </span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.dynamic.free-field.base" title="block dynamic free-field base">base</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.dynamic.free-field.change" title="block dynamic free-field change">change</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.dynamic.free-field.delete" title="block dynamic free-field delete">delete</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.dynamic.free-field.generate" title="block dynamic free-field generate">generate</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.dynamic.free-field.history" title="block dynamic free-field history">history</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.dynamic.free-field.initial" title="block dynamic free-field initial">initial</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.dynamic.free-field.list" title="block dynamic free-field list">list</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.dynamic.free-field.properties" title="block dynamic free-field properties">properties</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.dynamic.free-field.range" title="block dynamic free-field range">range</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.dynamic.free-field.reference" title="block dynamic free-field reference">reference</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.dynamic.free-field.top" title="block dynamic free-field top">top</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#There was a problem" title="block dynamic free-field history">history</a></p>
+</div>
+<p>Manually manipulate the free-field boundaries. In most cases, it is easier to use the automatic free field (see <code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">edge</span> <span class="pre">apply</span> <span class="pre">free-field</span></code>). The dynamic free field consists of a one-dimensional finite-difference calculation executed in parallel with the main calculation, and provides the lateral boundary conditions for dynamic analysis in which a vertically propagating plane wave is applied to the base of the model. The boundary nodes to be linked to the free field should be defined by using the <code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">edge</span> <span class="pre">apply</span> <span class="pre">free-field</span></code> command. The free-field boundary may be applied to one or both lateral boundaries of the model. Both lateral boundaries should be vertical, but they may have different heights. See Section 4 in Special Features and Section 4 in the Example Applications for further explanation and application of this command.</p>
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.base">
+<span class="cmdkey"><span class="pref">b</span><span class="null">a</span><span class="null">s</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Apply free field boundary conditions to the base.</p>
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.base.history">
+<span class="cmdkey"><span class="pref">h</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span></span>></span><span class="null"> </span></dt>
+<dd><p>Time varied history (see note 1).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.base.stress-xy">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">x</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set <span class="math">\(xy\)</span>-stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.base.stress-yy">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">y</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set <span class="math">\(yy\)</span>-stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.base.velocity-x">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set <span class="math">\(x\)</span>-velocity.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.base.velocity-y">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set <span class="math">\(y\)</span>-velocity.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.base.viscosity-x">
+<span class="cmdkey"><span class="pref">v</span><span class="null">i</span><span class="null">s</span><span class="null">c</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the viscous boundary in the <span class="math">\(x\)</span>-direction.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.base.viscosity-y">
+<span class="cmdkey"><span class="pref">v</span><span class="null">i</span><span class="null">s</span><span class="null">c</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the viscous boundary in the <span class="math">\(y\)</span>-direction.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.change">
+<span class="cmdkey"><span class="pref">c</span><span class="null">h</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.change.material">
+<span class="cmdkey"><span class="pref">m</span><span class="pref">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Assign material number <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> to free-field zones.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.change.model">
+<span class="cmdkey"><span class="pref">m</span><span class="pref">o</span><span class="null">d</span><span class="null">e</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Assign constitutive model <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> to free-field zones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.delete">
+<span class="cmdkey"><span class="pref">d</span><span class="null">e</span><span class="null">l</span><span class="null">e</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Delete the free-field boundary.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.generate">
+<span class="cmdkey"><span class="pref">g</span><span class="null">e</span><span class="null">n</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Generate the free-field mesh.</p>
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.generate.left">
+<span class="cmdkey"><span class="pref">l</span><span class="null">e</span><span class="null">f</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>Generate only the left-hand side free-field (optional).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.generate.npoints">
+<span class="cmdkey"><span class="pref">n</span><span class="null">p</span><span class="null">o</span><span class="null">i</span><span class="null">n</span><span class="null">t</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the number of free-field gridpoints (required).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.generate.right">
+<span class="cmdkey"><span class="pref">r</span><span class="null">i</span><span class="null">g</span><span class="null">h</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>Generate only the right-hand side free-field (optional).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.generate.yrange">
+<span class="cmdkey"><span class="pref">y</span><span class="pref">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the lower and upper <span class="math">\(y\)</span>-coordinates (required).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.history">
+<span class="cmdkey"><span class="pref">h</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Get a free-field history of one of the following quantities.</p>
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.history.acceleration-x">
+<span class="cmdkey"><span class="pref">a</span><span class="null">c</span><span class="null">c</span><span class="null">e</span><span class="null">l</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Get history of free-field <span class="math">\(x\)</span>-acceleration at <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span></span></a> for side <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> (1 = left, 2 = right).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.history.acceleration-y">
+<span class="cmdkey"><span class="pref">a</span><span class="null">c</span><span class="null">c</span><span class="null">e</span><span class="null">l</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Get history of free-field <span class="math">\(y\)</span>-acceleration at <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span></span></a> for side <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> (1 = left, 2 = right).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.history.displacement-x">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Get history of free-field <span class="math">\(x\)</span>-displacement at <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span></span></a> for side <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> (1 = left, 2 = right).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.history.displacement-y">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Get history of free-field <span class="math">\(y\)</span>-displacement at <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span></span></a> for side <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> (1 = left, 2 = right).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.history.stress-xx">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">x</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Get history of free-field <span class="math">\(xx\)</span>-stress at <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span></span></a> for side <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> (1 = left, 2 = right).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.history.stress-xy">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">x</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Get history of free-field <span class="math">\(xy\)</span>-stress at <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span></span></a> for side <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> (1 = left, 2 = right).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.history.stress-yy">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">y</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Get history of free-field <span class="math">\(yy\)</span>-stress at <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span></span></a> for side <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> (1 = left, 2 = right).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.history.velocity-x">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Get history of free-field <span class="math">\(x\)</span>-velocity at <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span></span></a> for side <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> (1 = left, 2 = right).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.history.velocity-y">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Get history of free-field <span class="math">\(y\)</span>-velocity at <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span></span></a> for side <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> (1 = left, 2 = right).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.initial">
+<span class="cmdkey"><span class="pref">i</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Initialize free field stresses, pore-pressures, displacements, and velocities.</p>
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.initial.displacement-x">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set gridpoint <span class="math">\(x\)</span>-displacement.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.initial.displacement-y">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set gridpoint <span class="math">\(y\)</span>-displacement.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.initial.pore-pressure">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">r</span><span class="null">e</span><span class="null">-</span><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Set zone pore-pressure.</p>
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.initial.pore-pressure.fgrad">
+<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null"> </span></span></a></dt>
+<dd><p>Add gradient to value such that actual_value = value + <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fgrad</span></span></a> <span class="math">\(\cdot y\)</span>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.initial.stress-xx">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">x</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set zone <span class="math">\(xx\)</span>-stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.initial.stress-yy">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">y</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set zone <span class="math">\(yy\)</span>-stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.initial.stress-xy">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">x</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set zone <span class="math">\(xy\)</span>-stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.initial.stress-zz">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">z</span><span class="null">z</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set zone <span class="math">\(zz\)</span>-stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.initial.velocity-x">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set gridpoint <span class="math">\(x\)</span>-velocity.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.initial.velocity-y">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set gridpoint <span class="math">\(y\)</span>-velocity.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.list">
+<span class="cmdkey"><span class="pref">l</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>List free-field data. The following keywords are available.</p>
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.list.boundary">
+<span class="cmdkey"><span class="pref">b</span><span class="null">o</span><span class="null">u</span><span class="null">n</span><span class="null">d</span><span class="null">a</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>List free-field boundary conditions.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.list.displacement">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>List free-field displacements.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.list.property">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>List</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.list.reference">
+<span class="cmdkey"><span class="pref">r</span><span class="null">e</span><span class="null">f</span><span class="null">e</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>List reference stresses.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.list.state">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>List free-field general data.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.list.stress">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>List free-field stresses.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.properties">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">i</span><span class="null">e</span><span class="null">s</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Set far-field properties.</p>
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.properties.bulk">
+<span class="cmdkey"><span class="pref">b</span><span class="null">u</span><span class="null">l</span><span class="null">k</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set far-field bulk modulus.*</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.properties.density">
+<span class="cmdkey"><span class="pref">d</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set far-field density.*</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.properties.poisson">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">i</span><span class="null">s</span><span class="null">s</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set far-field Poisson’s ratio.*</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.properties.shear">
+<span class="cmdkey"><span class="pref">s</span><span class="null">h</span><span class="null">e</span><span class="null">a</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set far-field shear modulus.*</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.properties.young">
+<span class="cmdkey"><span class="pref">y</span><span class="null">o</span><span class="null">u</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set far-field Young’s modulus.*</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.properties.material">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Set far-field property number.</p>
+</dd></dl>
+
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><a href="#id1"><span class="problematic" id="id2">*</span></a>Far-field elastic properties can be specified in three ways: by material number (in which case the properties are specified using the PROPERTY command); by bulk and shear modulus; and by Young’s modulus and Poisson’s ratio.</p>
+</div>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.range">
+<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="pref">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span></a><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>For the properties set with the <span class="cmdkey">property</span> keyword, an optional far field range may be specified using the following <a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><code class="xref fish fish-tok docutils literal"><span class="pre">range</span></code></a> phrases.</p>
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.range.left">
+<span class="cmdkey"><span class="pref">l</span><span class="null">e</span><span class="null">f</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>Apply only to left-hand side free-field mesh.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.range.right">
+<span class="cmdkey"><span class="pref">r</span><span class="null">i</span><span class="null">g</span><span class="null">h</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>Apply only to right-hand side free-field mesh.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.range.yrange">
+<span class="cmdkey"><span class="pref">y</span><span class="pref">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyl</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyu</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply the range to the region <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyu</span></span></a> &lt; <span class="math">\(y\)</span> &lt; <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyl</span></span></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.reference">
+<span class="cmdkey"><span class="pref">r</span><span class="null">e</span><span class="null">f</span><span class="null">e</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>Take current free-field stresses as static reference stresses. This command is automatically executed when the free-field is applied to the grid (i.e., <code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">edge</span> <span class="pre">apply</span> <span class="pre">free-field</span></code>).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.top">
+<span class="cmdkey"><span class="pref">t</span><span class="null">o</span><span class="null">p</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Apply free field boundary conditions to the top.</p>
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.top.history">
+<span class="cmdkey"><span class="pref">h</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span></span>></span><span class="null"> </span></dt>
+<dd><p>Time varied history (see note 1).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.top.stress-xy">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">x</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set <span class="math">\(xy\)</span>-stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.top.stress-yy">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">y</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set <span class="math">\(yy\)</span>-stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.top.velocity-x">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set <span class="math">\(x\)</span>-velocity.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.top.velocity-y">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set <span class="math">\(y\)</span>-velocity.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.top.viscosity-x">
+<span class="cmdkey"><span class="pref">v</span><span class="null">i</span><span class="null">s</span><span class="null">c</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the viscous boundary in the <span class="math">\(x\)</span>-direction.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.top.viscosity-y">
+<span class="cmdkey"><span class="pref">v</span><span class="null">i</span><span class="null">s</span><span class="null">c</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the viscous boundary in the <span class="math">\(y\)</span>-direction.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="admonition-note-1 admonition">
+<p class="first admonition-title">Note 1</p>
+<p>Histories - A time varying history may be applied to a free-field top or bottom.</p>
+<blockquote class="last">
+<div><dl class="keyword">
+<dt>
+<span class="cmdkey"><span class="pref">h</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>The keyword history defines a time history that is a multiplier for all the stresses and x- and y-velocities given on the same input line.</p>
+<p>stresses and velocities can be applied as a constant, sinusoidal or user-defined FISH function, or they may consist of a series of points given by a TABLE command or read from a file. The keywords must be given on the same line specifying the load, stress or velocity.</p>
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.history.cosine">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span><span class="null"> </span></span></a></dt>
+<dd><p>Get a history of cosine wave load with frequency <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span></span></a> (cycles/sec) applied for a problem time period of <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.history.">
+<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null"> </span></span></a><span class="cmdkey"><span class="null">&#64;</span><span class="null">f</span><span class="null">u</span><span class="null">n</span><span class="null">c</span><span class="null">n</span><span class="null">a</span><span class="null">m</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Use the user-defined fish function named <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">funcname</span></span></a> as the history multiplier.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.history.sine">
+<span class="cmdkey"><span class="pref">s</span><span class="null">i</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span><span class="null"> </span></span></a></dt>
+<dd><p>Get a history of cosine wave load with frequency <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span></span></a> (cycles/sec) applied for a problem time period of <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.dynamic.free-field.history.table">
+<span class="cmdkey"><span class="pref">t</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Input the history via the <span class="flag3">trick</span> <a class="reference internal" href="../../../../../../common/kernel/doc/manual/table_manual/table_commands/commands.html#table-commands"><span class="std std-ref">table</span></a> commands. Table <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> consists of a list of pairs: <span class="math">\(time\)</span>, <span class="math">\(f(time)\)</span>. Linear interpolation is performed between the given discrete points.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div></blockquote>
+</div>
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block dynamic free-field command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

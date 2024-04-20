@@ -1,0 +1,351 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Soft-Soil Model* &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../contents.html"><img id="cornerlogo" src="../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="hide sectionname docutils container">
+<span class="codename">FLAC3D</span> Theory and Background • Constitutive Models</div>
+<div class="section" id="soft-soil-model">
+<span id="modelsoftsoil"></span><h1>Soft-Soil Model*</h1>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">*This model is available in <span class="codename">FLAC3D</span> only.</p>
+</div>
+<p>Soft soils generally refer to normally consolidated or slightly over-consolidated clays, silty-clays, clayey silts, and peats.
+Significant compression (e.g., <span class="math">\(E^{ref}_{oed} &lt; 0.5 E^{ref}_{50}\)</span>) is one of the main engineering characteristics of the soft soils.
+The soft-soil (SS) model has the following features:
+(a) pressure-dependent moduli;
+(b) unloading-reloading distinct from the virgin loading;
+(c) expansion of the volumetric yield ellipse-shaped cap; and
+(d) conventional Mohr-Coulomb shear failure and tension failure criteria.</p>
+<p>In the SS model, the virgin compression assumes the relation</p>
+<div class="math" id="equation-modelsseqdev">
+<span class="eqno">(1)</span>\[\Delta \epsilon_v = - \frac{\lambda^* \Delta p}{p+c\cot{\phi}}\]</div>
+<p>where <span class="math">\(\Delta \epsilon_v\)</span> is the increment of the volumetric strain,
+<span class="math">\(\Delta p\)</span> is the increment of the mean pressure,
+and material parameters <span class="math">\(c\)</span> and <span class="math">\(\phi\)</span> are the cohesion and friction angle of the soil, respectively.
+The material parameter <span class="math">\(\lambda^*\)</span> is the modified compression index.</p>
+<p>The unloading and reloading compression assumes</p>
+<div class="math" id="equation-modelsseqdeev">
+<span class="eqno">(2)</span>\[\Delta \epsilon^e_v = - \frac{\kappa^* \Delta p}{p+c\cot{\phi}}\]</div>
+<p>where <span class="math">\(\Delta \epsilon^e_v\)</span> is the increment of the elastic volumetric strain,
+and the material parameter <span class="math">\(\kappa^*\)</span> is the modified swelling index.
+Equation <a class="reference internal" href="#equation-modelsseqdeev">(2)</a> implies that the elastic bulk modulus is pressure-dependent and with the form</p>
+<div class="math" id="equation-modelsseqk">
+<span class="eqno">(3)</span>\[K = \frac{p+c\cot{\phi}}{\kappa^*}\]</div>
+<p>It is noted that the material parameters <span class="math">\(\lambda^*\)</span> and <span class="math">\(\kappa^*\)</span> (using the superscript asterisk to denote “modified”)
+are based on the increment of volumetric strains (<a href="#modelss-1">Figure  1</a>);
+they are different from the material parameters <span class="math">\(\lambda\)</span> and <span class="math">\(\kappa\)</span> used in the modified Cam-Clay model
+which are based on the increment of void ratios.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="figure align-center" id="id1">
+<span id="modelss-1"></span><a class="reference internal image-reference" href="../../../../_images/modelss-1.png"><img alt="../../../../_images/modelss-1.png" src="../../../../_images/modelss-1.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Relation between the volumetric strain <span class="math">\(\epsilon_v^p\)</span> and the effective mean pressure <span class="math">\(p\)</span>.</span></p>
+</div>
+<p>The model assumes a constant Poisson’s ratio <span class="math">\(\nu\)</span> , so the elastic shear modulus is</p>
+<div class="math" id="equation-modelsseqg">
+<span class="eqno">(4)</span>\[G = \frac{3(1-2\nu)}{2(1+\nu)} K\]</div>
+<p>The pre-consolidation pressure, or cap pressure, <span class="math">\(p_c\)</span>, is the largest pressure level experienced by the soil. During the virgin (primary) loading, <span class="math">\(p_c\)</span> increases with the stress level and causes the plastic (irreversible) volumetric strains. By Equations <a class="reference internal" href="#equation-modelsseqdev">(1)</a> and <a class="reference internal" href="#equation-modelsseqdeev">(2)</a> together with <span class="math">\(\Delta \epsilon_v = \Delta \epsilon^e_v + \Delta \epsilon^p_v\)</span>, it can be derived that</p>
+<div class="math" id="equation-modelsseqdpc">
+<span class="eqno">(5)</span>\[\Delta p_c = -p_c \frac{\Delta \epsilon^p_v}{\lambda^* - \kappa^*}\]</div>
+<p>The yield surface of the SS model is an ellipse in the <span class="math">\((p,\tilde{q})\)</span> plane (<a href="#modelss-1">Figure  1</a>) expressed as</p>
+<div class="math" id="equation-modelsseqf">
+<span class="eqno">(6)</span>\[f = p_{eq} - p_c\]</div>
+<p>where the equivalent pressure is defined as</p>
+<div class="math" id="equation-modelsseqpeq">
+<span class="eqno">(7)</span>\[p_{eq} = p + \frac{\tilde{q}^2}{M^2(p+c\cot{\phi})}\]</div>
+<p>and <span class="math">\(p=-(\sigma_1+\sigma_2+\sigma_3)/3\)</span>,
+<span class="math">\(\tilde{q}=-[\sigma_1+(\delta-1)\sigma_2-\delta\sigma_3]\)</span>,
+where <span class="math">\(\sigma_1\)</span>, <span class="math">\(\sigma_2\)</span>, and <span class="math">\(\sigma_3\)</span> are effective principal stress with the order <span class="math">\(\sigma_1 \leq \sigma_2 \leq \sigma_3\)</span>,
+<span class="math">\(\delta=(3+\sin{\phi})/(3-\sin{\phi})\)</span>,  and <span class="math">\(M\)</span> determines the ratio of the radius of the ellipse defined by the yield function as Equation <a class="reference internal" href="#equation-modelsseqf">(6)</a>.
+Here <span class="math">\(M\)</span> is different from the value of <span class="math">\(6\sin{\phi}/(3-\sin{\phi})\)</span> in the modified Cam-Clay model.
+Instead, <span class="math">\(M\)</span> is not an input material parameter but internally determined by other material parameters by the relation (Brinkgreve, 1994)</p>
+<div class="math" id="equation-modelsseqm">
+<span class="eqno">(8)</span>\[M = 3 \sqrt{\frac{(1-K_{nc})^2}{(1+2K_{nc})^2} + \frac{(1-K_{nc})(1-2\nu)(\lambda^*-\kappa^*)}{(1+2K_{nc})(1-2\nu)\lambda^* - (1-K_{nc})(1+\nu)\kappa^*}}\]</div>
+<p>where <span class="math">\(K_{nc}\)</span> is the coefficient of lateral earth pressure in a normally consolidated condition,
+and the user can input a value or its default value is <span class="math">\(K_{nc} = 1 - \sin{\phi}\)</span> if not assigned.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="figure align-center" id="id2">
+<span id="modelss-2"></span><a class="reference internal image-reference" href="../../../../_images/modelss-2.png"><img alt="../../../../_images/modelss-2.png" src="../../../../_images/modelss-2.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Yield and failure surfaces of the Soft-Soil model in the <span class="math">\((p, \tilde{q})\)</span> plane.</span></p>
+</div>
+<p>The SS model uses the associated flow rule for the volumetric evolution,
+so the potential function <span class="math">\(g\)</span> for volumetric plasticity is the same as the yield function in Equation <a class="reference internal" href="#equation-modelsseqf">(6)</a></p>
+<div class="math" id="equation-modelsseqg2">
+<span class="eqno">(9)</span>\[g = f = p_{eq} - p_c\]</div>
+<p>The conventional Mohr-Coulomb shear failure and tension failure criteria are also adopted in the SS model.
+The elastic region is defined by the volumetric yield ellipse,
+the Mohr-Coulomb shear failure line,
+and the tension failure line in the <span class="math">\((p,\tilde{q})\)</span> plane.</p>
+<p>If the creep effect of the secondary compression would be taken into account, the <a class="reference internal" href="../../softsoilcreep/doc/modelsoftsoilcreep.html#modelsoftsoilcreep"><span class="std std-ref">Soft-Soil-Creep model</span></a> is recommended.</p>
+<p class="h3 rubric">References</p>
+<p>Brinkgreve, R.B.J. <span class="bi">Geomaterial models and numerical analysis of softening.</span> Ph.D. Thesis. Univ., Delft, Netherlands (1994).</p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<p class="h3 rubric" id="softsoilmodelprops"><span class="cmdkey">soft-soil</span> Model Properties</p>
+<p>Use the following keywords with the <code class="xref fish fish-cmd docutils literal"><span class="pre">zone</span> <span class="pre">property</span></code> command to set these properties of the Soft-Soil model.</p>
+<span class="target" id="softsoilprops"></span><dl class="command">
+<dt id="command:soft-soil">
+<span class="cmdname"><span class="hide">s</span><span class="hide">o</span><span class="hide">f</span><span class="hide">t</span><span class="hide">-</span><span class="hide">s</span><span class="hide">o</span><span class="hide">i</span><span class="hide">l</span><span class="hide"> </span></span></dt>
+<dd><dl class="keyword">
+<dt id="kwd:soft-soil.friction">
+<span class="cmdkey"><span class="pref">f</span><span class="null">r</span><span class="null">i</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>friction angle, <span class="math">\(\phi\)</span>, The default value is 30 [in degrees]. The recommended input value is the critical-state friction angle rather than a higher value at small strains. Input of a zero value is not allowed.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.kappa-modified">
+<span class="cmdkey"><span class="pref">k</span><span class="null">a</span><span class="null">p</span><span class="null">p</span><span class="null">a</span><span class="null">-</span><span class="pref">m</span><span class="null">o</span><span class="null">d</span><span class="null">i</span><span class="null">f</span><span class="null">i</span><span class="null">e</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>modified swelling index, or slope of elastic swelling line, <span class="math">\(\kappa^*=\kappa/(1+e)\)</span>, where <span class="math">\(\kappa\)</span> is the swelling index in the Cam-Clay model, and <span class="math">\(e\)</span> can be approximately the initial or average void ratio during a swelling path; or <span class="math">\(\kappa^* \approx [(1+2K_0)(1-\nu)/(1+\nu)] C_s/[(\ln{10})(1+e)]\)</span>, where <span class="math">\(C_s\)</span> is the 1-D swelling index, <span class="math">\(\nu\)</span> is the Poisson’s ratio and <span class="math">\(K_0\)</span> is the at-rest earth pressure coefficient.  Typical value of <span class="math">\(C_s\)</span> is <span class="math">\(C_s \approx (1/5) \sim (1/10) C_c\)</span>. A good estimation is <span class="math">\(C_s \approx PI(\%)/370\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.lambda-modified">
+<span class="cmdkey"><span class="pref">l</span><span class="null">a</span><span class="null">m</span><span class="null">b</span><span class="null">d</span><span class="null">a</span><span class="null">-</span><span class="pref">m</span><span class="null">o</span><span class="null">d</span><span class="null">i</span><span class="null">f</span><span class="null">i</span><span class="null">e</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>modified compression index, or slope of elastic compression line, <span class="math">\(\lambda^*=\lambda/(1+e)\)</span>, where <span class="math">\(\lambda\)</span> is the compression index in the Cam-Clay model, and <span class="math">\(e\)</span> can be approximately the initial or average void ratio during a compression path; or <span class="math">\(\lambda^*=C_c/[(\ln{10})(1+e)]\)</span>, where <span class="math">\(C_c\)</span> is the 1-D compression index. Typical value of <span class="math">\(C_c\)</span> can be estimated (Terzaphi &amp; Peck 1967) as <span class="math">\(C_c=0.009(LL-100)\)</span> for normally consolidated clay where <span class="math">\(LL\)</span> is the liquid limit. Based on the modified Cam-Clay model, it can estimated that <span class="math">\(C_c \approx PI(\%)/74\)</span>, where <span class="math">\(PI\)</span> is the plastic index.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.poisson">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">i</span><span class="null">s</span><span class="null">s</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Poisson’s ratio, <span class="math">\(\nu\)</span>, The default value is 0.15.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.stress-1-effective">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">1</span><span class="null">-</span><span class="pref">e</span><span class="null">f</span><span class="null">f</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">v</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>initial minimum effective principal stress, <span class="math">\(\sigma^0_1\)</span>. Only for calculation of the initial moduli, will not be update once assigned.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.stress-2-effective">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">2</span><span class="null">-</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>initial median effective principal stress, <span class="math">\(\sigma^0_2\)</span>. Only for calculation of the initial moduli, will not be update once assigned.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.stress-3-effective">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">3</span><span class="null">-</span><span class="pref">e</span><span class="null">f</span><span class="null">f</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">v</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>initial maximum effective principal stress, <span class="math">\(\sigma^0_3\)</span>. Only for calculation of the initial moduli, will not be update once assigned.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.coefficient-normally-consolidation">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">e</span><span class="null">f</span><span class="null">f</span><span class="null">i</span><span class="null">c</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">n</span><span class="null">o</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">l</span><span class="null">l</span><span class="null">y</span><span class="null">-</span><span class="pref">c</span><span class="null">o</span><span class="null">n</span><span class="null">s</span><span class="null">o</span><span class="null">l</span><span class="null">i</span><span class="null">d</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>normal consolidation coefficient, <span class="math">\(K_{nc}\)</span>.
+It is not allowed to be less than  <span class="math">\(\nu / (1-\nu)\)</span>, a range <a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">0.5</span></span></a> to <a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">0.7</span></span></a> is common.
+The default is <span class="math">\(K_{nc} = 1 - \sin \phi\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.cohesion">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">h</span><span class="null">e</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>effective cohesion, <span class="math">\(c\)</span>. The default value is 0. Remember that this model is mainly for normally consolidated or slightly over-consolidated soft soils, so <span class="math">\(c\)</span> should be zero or a small value, and a large value may be not realistic.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.dilation">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">l</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>dilation angle, <span class="math">\(\psi\)</span>. The default value is 0 [in degrees]. The zero dilation angle is the standard setting in the SS model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.flag-brittle">
+<span class="cmdkey"><span class="pref">f</span><span class="null">l</span><span class="null">a</span><span class="null">g</span><span class="null">-</span><span class="pref">b</span><span class="null">r</span><span class="null">i</span><span class="null">t</span><span class="null">t</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>If <span class="cmdkey">true</span>, the tension limit is set to 0 in the event of tensile failure. The default is <span class="cmdkey">false</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.over-consolidation-ratio">
+<span class="cmdkey"><span class="pref">o</span><span class="null">v</span><span class="null">e</span><span class="null">r</span><span class="null">-</span><span class="pref">c</span><span class="null">o</span><span class="null">n</span><span class="null">s</span><span class="null">o</span><span class="null">l</span><span class="null">i</span><span class="null">d</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>over consolidation ratio, <span class="math">\(OCR\)</span>. The default is <a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">1.0</span></span></a>, which corresponds to the normally consolidated soils. The input <span class="math">\(OCR\)</span> will be used to determine the initial cap pressure so that <span class="math">\(p_{c}^0=OCR \times p_{eq}^0\)</span>. <span class="math">\(OCR\)</span> will be updated during calculation.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.pressure-cutoff">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null">-</span><span class="pref">c</span><span class="pref">u</span><span class="null">t</span><span class="null">o</span><span class="null">f</span><span class="null">f</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>cut-off pressure for cap pressure, <span class="math">\(p_{cut}\)</span>. The default value is <a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">1.0</span></span></a> (of the stress unit used in the model). This is the lower-bound of the cap pressure. The actual minimum cap pressure used in the model is <span class="math">\(max(p_{cut}, c\cot{\phi})\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.tension">
+<span class="cmdkey"><span class="pref">t</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>tensile strength, <span class="math">\(\sigma^t\)</span>. The default value is 0, which is for most cases.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.void-initial">
+<span class="cmdkey"><span class="pref">v</span><span class="null">o</span><span class="null">i</span><span class="null">d</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>initial void ratio, <span class="math">\(e_{ini}\)</span>. The default is <a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">1.0</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.bulk">
+<span class="cmdkey"><span class="pref">b</span><span class="null">u</span><span class="null">l</span><span class="null">k</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>current elastic bulk modulus, <span class="math">\(K\)</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.pressure-cap">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null">-</span><span class="pref">c</span><span class="null">a</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>current cap (apparent pre-consolidation) pressure, <span class="math">\(p_c\)</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.pressure-effective">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null">-</span><span class="pref">e</span><span class="pref">f</span><span class="null">f</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">v</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>current effective pressure, <span class="math">\(p\)</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.pressure-equivalent">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null">-</span><span class="pref">e</span><span class="pref">q</span><span class="null">u</span><span class="null">i</span><span class="null">v</span><span class="null">a</span><span class="null">l</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>current equivalent pressure, <span class="math">\(p_{eq}\)</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.ratio-radius">
+<span class="cmdkey"><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">-</span><span class="pref">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">u</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>current elastic shear modulus, <span class="math">\(M\)</span>, which will be calculated internally.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.shear">
+<span class="cmdkey"><span class="pref">s</span><span class="null">h</span><span class="null">e</span><span class="null">a</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>current elastic shear modulus, <span class="math">\(G\)</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.strain-volume-plastic">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null">-</span><span class="pref">v</span><span class="null">o</span><span class="null">l</span><span class="null">u</span><span class="null">m</span><span class="null">e</span><span class="null">-</span><span class="pref">p</span><span class="null">l</span><span class="null">a</span><span class="null">s</span><span class="null">t</span><span class="null">i</span><span class="null">c</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>accumulated plastic volumetric strain, <span class="math">\(\epsilon_v^p\)</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.stress-deviatoric-equivalent">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">d</span><span class="null">e</span><span class="null">v</span><span class="null">i</span><span class="null">a</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">i</span><span class="null">c</span><span class="null">-</span><span class="pref">e</span><span class="null">q</span><span class="null">u</span><span class="null">i</span><span class="null">v</span><span class="null">a</span><span class="null">l</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>current equivalent deviatoric stress, <span class="math">\(\tilde{q}\)</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:soft-soil.void">
+<span class="cmdkey"><span class="pref">v</span><span class="null">o</span><span class="null">i</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>current void ratio, <span class="math">\(e\)</span></p>
+</dd></dl>
+
+<p><strong>Key</strong></p>
+<dl class="docutils">
+<dt>(a) Advanced property.</dt>
+<dd>This property has a default value; simpler applications of the model do not need to provide a value for it.</dd>
+<dt>(r) Read-only property.</dt>
+<dd>This property cannot be set by the user. Instead, it can be listed, plotted, or accessed through <span class="codename">FISH</span>.</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Soft-Soil Model*" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

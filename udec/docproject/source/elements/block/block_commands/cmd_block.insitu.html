@@ -1,0 +1,384 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block insitu command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block join-block command" href="cmd_block.join-block.html" />
+    <link rel="prev" title="block history command" href="cmd_block.history.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-insitu-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">insitu</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="block command">
+<dt id="command:block.insitu">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">i</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">u</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.insitu.aperture" title="block insitu aperture">aperture</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.insitu.block-only" title="block insitu block-only">block-only</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.insitu.joint-only" title="block insitu joint-only">joint-only</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.insitu.nodis" title="block insitu nodis">nodis</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.insitu.pore-pressure" title="block insitu pore-pressure">pore-pressure</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.insitu.stress-principal" title="block insitu stress-principal">stress-principal</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.insitu.stress" title="block insitu stress">stress</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.insitu.stress-zz" title="block insitu stress-zz">stress-zz</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.insitu.water-table" title="block insitu water-table">water-table</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.insitu.zone-pressure" title="block insitu zone-pressure">zone-pressure</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.insitu.stress-topography" title="block insitu stress-topography">stress-topography</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.insitu.stress-topography.overburden.overburden-xx" title="block insitu stress-topography overburden overburden-xx">overburden-xx</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.insitu.stress-topography.overburden.overburden-yy" title="block insitu stress-topography overburden overburden-yy">overburden-yy</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.insitu.stress-topography.overburden.overburden-zz" title="block insitu stress-topography overburden overburden-zz">overburden-zz</a></p>
+</div>
+<p>Initializes block zone and contact stresses, domain pressures, zone pore pressures, and hydraulic apertures. Initial zone stresses in all deformable blocks and stresses along joints between rigid blocks and/or deformable blocks in the optional range are set. If no range is specified, stresses are initialized for the entire model. Remember that compressive stresses are negative. The following keywords apply.</p>
+<dl class="keyword">
+<dt id="kwd:block.insitu.aperture">
+<span class="cmdkey"><span class="pref">a</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set contact hydraulic aperture. This also sets the APERTURE-ZERO-LOAD parameter for each contact so that <span class="math">\(aperture = aperture-zero-load + u_n\)</span>, where <span class="math">\(u_n\)</span> is the normal displacement.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.block-only">
+<span class="cmdkey"><span class="pref">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null">-</span><span class="pref">o</span><span class="null">n</span><span class="null">l</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>Initialize stresses only in block zones (not in contacts).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.joint-only">
+<span class="cmdkey"><span class="pref">j</span><span class="null">o</span><span class="null">i</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">o</span><span class="null">n</span><span class="null">l</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>Initialize stresses only in contacts (not in block zones).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.nodis">
+<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">d</span><span class="null">i</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>Inhibit calculation of joint normal displacements (i.e., joint initial closure).</p>
+</dd></dl>
+
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Domain pressures may be initialized with the following pore-pressure keywords. These keywords should be given by the same INSITU command that initializes stresses (see Note 1, below).</p>
+<p>Pressures in all domains except the outer domain will be initialized to</p>
+<div class="math">
+\[p = po + x · xg + y · yg\]</div>
+<p class="last">where (<span class="math">\(x\)</span>,:math:<span class="math">\(y\)</span>) are the coordinates of the domain center.</p>
+</div>
+<dl class="keyword">
+<dt id="kwd:block.insitu.pore-pressure">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">r</span><span class="null">e</span><span class="null">-</span><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span></span>></span><span class="null"> </span></dt>
+<dd><p>Set fluid pressure in domains (default is <span class="math">\(p_o\)</span> = 0.0).</p>
+<dl class="keyword">
+<dt id="kwd:block.insitu.pore-pressure.pressure-gradient-x">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null">-</span><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set fluid pressure gradient in the <span class="math">\(x\)</span>-direction (default is <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> = 0.0)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.pore-pressure.pressure-gradient-y">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null">-</span><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set fluid pressure gradient in the <span class="math">\(y\)</span>-direction (default is <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> = 0.0)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress-principal">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">p</span><span class="null">r</span><span class="null">i</span><span class="null">n</span><span class="null">c</span><span class="null">i</span><span class="null">p</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>Alternate method to define the stress state is by specifying a stress measurement at a point and an optional gradient.  The use of this command requires that the global orientation of the <span class="codename">UDEC</span> plane be specified using the commands <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">orientation</span> <span class="pre">dip-direction</span></code> and <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">orientation</span> <span class="pre">origin</span></code>. The keywords are:</p>
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress-principal.s1">
+<span class="cmdkey"><span class="pref">s</span><span class="null">1</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>major principal stress</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress-principal.s2">
+<span class="cmdkey"><span class="pref">s</span><span class="null">2</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>intermediate principal stress</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress-principal.s3">
+<span class="cmdkey"><span class="pref">s</span><span class="null">3</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>minor principal stress</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress-principal.dip-s1">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">p</span><span class="null">-</span><span class="pref">s</span><span class="null">1</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>major principal stress dip</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress-principal.dip-direction-s1">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">p</span><span class="null">-</span><span class="pref">d</span><span class="null">i</span><span class="null">r</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">s</span><span class="null">1</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>major principal stress direction</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress-principal.dip-s2">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">p</span><span class="null">-</span><span class="pref">s</span><span class="null">2</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>dip intermediate principal stress dip</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress-principal.dip-direction-s2">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">p</span><span class="null">-</span><span class="pref">d</span><span class="null">i</span><span class="null">r</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">s</span><span class="null">2</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>intermediate principal stress direction</p>
+<p>The following are optional keywords:</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress-principal.gradient-vertical">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">v</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">i</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>gradient in the veritcal direction</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress-principal.location">
+<span class="cmdkey"><span class="pref">l</span><span class="null">o</span><span class="null">c</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fz</span><span class="null"> </span></span></a></dt>
+<dd><p>The location specifies the coordinates of the stress measurement. The gradient is the stress change in the vertical direction. All other stresses are incremented proportionately by the gradient to prevent stress rotation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxxo</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxyo</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyyo</span><span class="null"> </span></span></a><span class="cmdopt"><<span class="cmdkey"><span class="null">n</span><span class="null">o</span><span class="null">d</span><span class="null">i</span><span class="null">s</span></span>></span><span class="null"> </span></dt>
+<dd><p>Initialize the <span class="math">\(xx\)</span>-stress, <span class="math">\(xy\)</span>-stress and <span class="math">\(yy\)</span>-stress components to the values <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxxo</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxyo</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyyo</span></span></a>.</p>
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress.gradient-x">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxxx</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxyx</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyyx</span><span class="null"> </span></span></a></dt>
+<dd><p>Lineary vary initial stress initialized at origin (0,0) in the <span class="math">\(x\)</span>-direction (and see next equation).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress.gradient-y">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxxy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxyy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyyy</span><span class="null"> </span></span></a></dt>
+<dd><p>Lineary vary initial stress initialized at origin (0,0) in the <span class="math">\(y\)</span>-direction.</p>
+<div class="math">
+\[\begin{split}fxx = fxxo + (fxxx · x) + (fxxy · y) \\
+fxy = fxyo + (fxyx · x) + (fxyy · y) \\
+fyy = fyyo + (fyyx · x) + (fyyy · y)\end{split}\]</div>
+<p>The keywords <span class="cmdkey">gradient-x</span> and <span class="cmdkey">gradient-y</span> must be given in the same command as the <span class="cmdkey">stress</span> keyword. (Use … for line continuation if input is too long.)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress-zz">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">z</span><span class="null">z</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Initialize the <span class="math">\(zz\)</span>-component of stress. The initial out-of-plane stresses in all deformable blocks are set to zero. These stresses can be prescribed with this keyword.</p>
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress-zz.gradient-z">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fzzx</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fzzy</span><span class="null"> </span></span></a></dt>
+<dd><p>where</p>
+<div class="math">
+\[fzz = fzzo + (fzzx · x) + (fzzy · y)\]</div>
+<p><span class="cmdkey">gradient-z</span> must be given in the same command as the <span class="cmdkey">szz</span> keyword.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.water-table">
+<span class="cmdkey"><span class="pref">w</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">-</span><span class="pref">t</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyw</span><span class="null"> </span></span></a></dt>
+<dd><p>Domains with a <span class="math">\(y\)</span>-coordinate below <span class="math">\(y_w\)</span> are assigned pressure, <span class="math">\(p\)</span>, in which</p>
+<div class="math">
+\[p = −ρwgy(yw − y)\]</div>
+<dl class="keyword">
+<dt id="kwd:block.insitu.water-table.table">
+<span class="cmdkey"><span class="pref">t</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Domains below the surface defined by table :int:’i’ are assigned pore pressure according to fluid unit weight and the depth below the surface. The fluid density, <span class="math">\(ρ\)</span> (see the <a class="reference internal" href="cmd_block.domain.html#kwd:block.domain.initialize.density" title="Set the fluid density ( ρ ) to be used with  block.domain.initialize.table ."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">domain</span> <span class="pre">initialize</span> <span class="pre">density</span></code></a> keyword above), and gravity (<a class="reference internal" href="../block.mechanical_commands/cmd_block.mechanical.gravity.html#command:block.mechanical.gravity" title="Set gravitational accelerations for the  x - and  y -directions."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">mechanical</span> <span class="pre">gravity</span></code></a>) must be specified prior to the use of this command. if the <span class="math">\(zone-Pressure\)</span> keyword has also been used, pore pressures will also be assigned to the zones.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.water-table.geometry">
+<span class="cmdkey"><span class="pref">g</span><span class="null">e</span><span class="null">o</span><span class="null">m</span><span class="null">e</span><span class="null">t</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Domains below the surface defined by the geometry :str:’s‘ are assigned pore pressure according to fluid unit weight and the depth below the surface. The fluid density, <span class="math">\(ρ\)</span> (see the <a class="reference internal" href="cmd_block.domain.html#kwd:block.domain.initialize.density" title="Set the fluid density ( ρ ) to be used with  block.domain.initialize.table ."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">domain</span> <span class="pre">initialize</span> <span class="pre">density</span></code></a> keyword above), and gravity (<a class="reference internal" href="../block.mechanical_commands/cmd_block.mechanical.gravity.html#command:block.mechanical.gravity" title="Set gravitational accelerations for the  x - and  y -directions."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">mechanical</span> <span class="pre">gravity</span></code></a>) must be specified prior to the use of this command. if the <span class="math">\(zone-Pressure\)</span> keyword has also been used, pore pressures will also be assigned to the zones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.zone-pressure">
+<span class="cmdkey"><span class="pref">z</span><span class="null">o</span><span class="null">n</span><span class="null">e</span><span class="null">-</span><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>If this keyword is included pore-pressures will also be added to the zones. If pore-pressures are specified in the same command as the stresses, this will be interpreted as an initialization of pressure.  If the pore-pressure are specified in a separate command (no stress keyword), it will be interpreted as a pore-pressure change and the zone stresses will be adjusted to simulate consolidation or expansion.  Note this effect is dependant on the value of Biot’s constant (see block zone property command).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress-topography">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">t</span><span class="null">o</span><span class="null">p</span><span class="null">o</span><span class="null">g</span><span class="null">r</span><span class="null">a</span><span class="null">p</span><span class="null">h</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>Enables the setting of in-situ stresses based on the density of overburden. This command is used in models where the top surface is irregular, giving rise to significant variation in stress due to overburden. Gravity and material densities must be defined prior to use of this command. The following keyword is available:</p>
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress-topography.kox">
+<span class="cmdkey"><span class="pref">k</span><span class="pref">o</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Horizontal stress ratio in the x-direction.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress-topography.koy">
+<span class="cmdkey"><span class="pref">k</span><span class="pref">o</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Horizontal stress ratio (if XUP has been selected).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress-topography.koz">
+<span class="cmdkey"><span class="pref">k</span><span class="pref">o</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Horizontal stress ratio in the z-direction.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress-topography.xup">
+<span class="cmdkey"><span class="pref">x</span><span class="null">u</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><p>Secifies that x is the vertical direction.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress-topography.yup">
+<span class="cmdkey"><span class="pref">y</span><span class="null">u</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><p>Secifies that y is the vertical direction (default is y).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.insitu.stress-topography.overburden">
+<span class="cmdkey"><span class="pref">o</span><span class="null">v</span><span class="null">e</span><span class="null">r</span><span class="null">b</span><span class="null">u</span><span class="null">r</span><span class="null">d</span><span class="null">e</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><dl class="docutils">
+<dt>Set vertical overburden stress to be added to topographic stresses.  This is useful if your model does not extend to the actual ground surface.  Remember that compressive stresses are negative.</dt>
+<dd><blockquote class="first">
+<div>Overburden stresses in the horizontal directions are calculated from the specified ratios.</div></blockquote>
+<dl class="last keyword">
+<dt id="kwd:block.insitu.stress-topography.overburden.overburden-xx">
+<span class="cmdkey"><span class="pref">o</span><span class="null">v</span><span class="null">e</span><span class="null">r</span><span class="null">b</span><span class="null">u</span><span class="null">r</span><span class="null">d</span><span class="null">e</span><span class="null">n</span><span class="null">-</span><span class="null">x</span><span class="null">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd></dd></dl>
+
+</dd>
+</dl>
+<p>Set xx component of overburden stress.  Remember that compressive stresses are negative.</p>
+<blockquote>
+<div><dl class="keyword">
+<dt id="kwd:block.insitu.stress-topography.overburden.overburden-yy">
+<span class="cmdkey"><span class="pref">o</span><span class="null">v</span><span class="null">e</span><span class="null">r</span><span class="null">b</span><span class="null">u</span><span class="null">r</span><span class="null">d</span><span class="null">e</span><span class="null">n</span><span class="null">-</span><span class="null">y</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+<p>Set yy component of overburden stress.  Remember that compressive stresses are negative.</p>
+<blockquote>
+<div><dl class="keyword">
+<dt id="kwd:block.insitu.stress-topography.overburden.overburden-zz">
+<span class="cmdkey"><span class="pref">o</span><span class="null">v</span><span class="null">e</span><span class="null">r</span><span class="null">b</span><span class="null">u</span><span class="null">r</span><span class="null">d</span><span class="null">e</span><span class="null">n</span><span class="null">-</span><span class="null">z</span><span class="null">z</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+<p>Set zz component of overburden stress.  Remember that compressive stresses are negative.</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<div class="admonition-notes admonition">
+<p class="first admonition-title">Notes</p>
+<ol class="last arabic simple">
+<li>UDEC assumes block zone stresses to be total stresses, and joint stresses to be effective stresses. Therefore, the initialization of domain pressures and block/zone stresses must be done by a single INSITU command. Stresses specified by the stress keyword are assumed to be total stresses. Joint stresses are calculated by adding the specified domain pressures to these stresses.</li>
+<li>If only stress keywords are given, only zone and contact stresses are set; pore pressures are not changed.</li>
+<li>If only pore pressure keywords are given, then only domain pore-pressure conditions are changed, without changing contact/zone effective stresses. If the zone-pressure keyword is given, then zone pore pressures are set. Zone stresses are added to the zone pore-pressure increment, so effective stresses are unchanged. Immediately after the command, the system will not be balanced (e.g., if the water table rises, domain pore pressure will increase, and joints will have to open to accommodate the change). Zones also have to expand as a result of the pore pressure increase.</li>
+<li>If stress and pore pressure keywords are given, then stresses are total stresses. Domain pressures, zone total stresses and contact effective stresses are set. If the zone-pressure keyword is present, then zone pore pressures are also set.</li>
+<li>Contact stiffnesses and constitutive models must be specified prior to the BLOCK INSITU command in order to calculate joint normal displacement, un, due to in-situ stresses.</li>
+<li>For the continuously-yielding joint model, joint initial closure is only calculated for the BLOCK INSITU command if joint normal stiffness is constant (i.e., jen = 0).</li>
+</ol>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="block_commands.html" accesskey="U">Block Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_block.history.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">history</span></code> command</a> |    
+       <a href="cmd_block.join-block.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">block</span> <span class="pre">join-block</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block insitu command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

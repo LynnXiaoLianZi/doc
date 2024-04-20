@@ -1,0 +1,198 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Commands, a Rationale &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="Projects" href="../projects/projects.html" />
+    <link rel="prev" title="Control Panel in the Console Pane" href="console_pane/console_cp.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="commands-a-rationale">
+<span id="whycommands"></span><h1>Commands, a Rationale</h1>
+<p>At this juncture, users who have reviewed the preceding material should have a good working understanding of program commands and how to use the <em>Console</em> pane to issue them.  However, it may not be entirely clear <em>why</em> the program is designed to utilize commands this way in the first place.  The following discussions are provided to give insight into this question.</p>
+<div class="section" id="why-a-command-driven-interface">
+<span id="whycli"></span><h2>Why A Command-Driven Interface?</h2>
+<p>Whether generated interactively or manually, the basic description of any <span class="codename">UDEC</span> model is a data file. A data file is a standard text file containing commands that completely specify a <span class="codename">UDEC</span> model, from model creation to additional sequential operations required to undertake physical simulations.</p>
+<p>At first exposure, the fact that <span class="codename">UDEC</span> uses data files to describe the model may seem antiquated, perhaps a relic of 1970s program design. To the contrary, this form of model description has proven to be quite valuable and is considered an integral part of what makes <span class="codename">UDEC</span>, and Itasca codes in general, powerful modeling tools. As our user interface design matures, our goal is not to remove the command-driven interface but, instead, to simplify its use, making simulations easier to undertake while retaining the flexibility this design embodies.</p>
+<p>Below are a few reasons that using a data file description is advantageous.</p>
+<ul>
+<li><p class="first">Compact representation</p>
+<blockquote>
+<div><p>Even the most complex models can be created by a set of data files that are generally not more than a few hundred lines in length. In fact, the vast majority of models are far smaller. This fact means that the complete description of your <span class="codename">UDEC</span> model resides in a text file that is only a few kilobytes in size. As a result, it is trivial to share your model with others, email it to Itasca for support, archive your model for future reference, and use versioning software to track changes.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Repeatability</p>
+<blockquote>
+<div><p>Itasca works very hard to ensure that the same version of the code and the same data file will always produce the same result to machine precision. This means that when you send Itasca, your colleagues, or your clients a data file, you know that the result will be unchanging. Thus it is not necessary to archive the complete results of a modeling effort, which may be many gigabytes of save and result files. Instead, one can just retain the data file and the code version used to execute it.</p>
+</div></blockquote>
+</li>
+<li><p class="first">History and Path Dependence</p>
+<blockquote>
+<div><p>Except for the most trivial models using the simplest of materials, the <em>path</em> used to reach the solution is a very important part of the model description.  A data file allows the sequence of events to be described clearly and flexibly.  Many programs may offer excavation sequence options,  but the data file allows <em>any</em> sequence of events to be made if necessary.  This includes changes to boundary conditions, changes to material properties, changes to fluid interactions, etc. as well as changes to the excavation sequencing. If one were to design a graphical user interface to include the entire list of options available via a data file, the result would be complex, requiring clumsy tools to edit and change.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Flexibility</p>
+<blockquote>
+<div><p>The data file allows the user maximum flexibility in how they choose to create and process a model, including the order in which things are specified. While there is a standard sequence of simulation steps recommended for simple models (e.g., geometry creation, naming of regions, material and property specification, boundary conditions, initial conditions, solving, excavating, solving, etc.), every model is different. Often complex models require modifications to the standard simulation progression. Itasca is committed to the idea of not constraining users to a small set of simulation options, providing users with the ability and tools to undertake physical simulations in the way they see fit.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Scripting</p>
+<blockquote>
+<div><p>The ability to combine model-creation commands with scripting in <span class="codename">UDEC</span> is tremendously powerful. For instance, an entire class of models can be investigated by trivially changing a set of initial parameters within a data file. Application of complex sequences, geometries, property distributions, etc. may be automated with a script in a way that would be very time consuming and difficult to replicate in a traditional graphical user interface. In addition, in-depth model querying and the inclusion of new physical phenomena, not included in <span class="codename">UDEC</span>, can be introduced via user-created scripts that execute during cycling.</p>
+</div></blockquote>
+</li>
+</ul>
+<p>The downside to such a command-driven interface is that it can be imposing for new users, who
+may have the impression that mastery of a large number of complex commands is necessary to
+undertake the simplest of modeling efforts. In truth, the learning curve is faster than being
+confronted by a complex graphical user interface that has numerous tools with a plethora of
+buttons in different panes—something we have all experienced. The commands have been
+purposefully structured using descriptive and consistent terminology, making it easy to read a
+data file and understand the operations it invokes. In addition, interactive command
+documentation is available as you create and edit a data file from within <span class="codename">UDEC</span>, simplifying
+the process substantially.</p>
+<p>In order to make creating and editing data files as easy as possible, <span class="codename">UDEC</span> contains the
+following features:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="../datafiles/editor_pane/editoroverview.html#editoroverview"><span class="std std-ref">A powerful, built-in editor with syntax highlighting support</span></a>.</li>
+<li><a class="reference internal" href="commandsyntax.html#commandsyntax"><span class="std std-ref">Updated command syntax, leading to increased clarity</span></a>.</li>
+<li><a class="reference internal" href="../datafiles/editor_pane/inline_help.html#inline-help"><span class="std std-ref">CTRL-SPACE interactive inline help system</span></a>.</li>
+<li>F1 context sensitive help.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="why-fish">
+<span id="whyfish"></span><h2>Why <span class="codename">FISH</span>?</h2>
+<p class="h3 rubric">Introduction</p>
+<p><span class="codename">FISH</span> is a built-in scripting language that gives the <span class="codename">UDEC</span> user powerful control over most
+every aspect of program operation.  <span class="codename">FISH</span> is short for “FLAC-ISH” (or the language of <span class="codename">FLAC</span>),
+the code for which it was first developed.  Now, in addition to <span class="codename">FLAC</span> and <span class="codename">UDEC</span>, <span class="codename">FISH</span> is
+also integrated into all Itasca commercial programs.</p>
+<p><span class="codename">FISH</span> is embedded deeply into <span class="codename">UDEC</span> at nearly every level.  It can be used to parameterize
+data files so that a number of varying cases can be built into the same basic model.   Every
+data type that makes up a <span class="codename">UDEC</span> model is also available for <span class="codename">FISH</span> to manipulate
+directly—before, after, and during the solution. This means that not only can <span class="codename">FISH</span> be used to
+create custom complex models and customized results, it can also be used to add custom physics
+to the solution process that is not part of the standard package.</p>
+<p><span class="codename">FISH</span> includes constructs to embed <span class="codename">UDEC</span> commands within <span class="codename">FISH</span> functions (see the command – end command)</p>
+<p><span class="codename">FISH</span> is a semi-compiled language that uses dynamic typing for variables – syntax and use is similar to (but not exactly the same as) Python.  It has been created to be very simple for small needs, but it provides structure and data types needed to support large and complex programs if necessary.</p>
+<p>The following illustrations give just an idea of the power of <span class="codename">FISH</span>.  More complete information
+is available in the sections <a class="reference internal" href="../../../../../../../udec/docproject/source/fish/Tutorial/basicclifish.html#basicclifishtutorial"><span class="std std-ref">Tutorial: Working with FISH</span></a> and <a class="reference internal" href="../../../scripting/fish_scripting/fish.html#fish-scripting"><span class="std std-ref">FISH Scripting Reference</span></a>.  Examples
+below are given to represent five general areas of application:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Model Creation</li>
+<li>Parameterization</li>
+<li>Custom Visualization</li>
+<li>Physics Extension</li>
+<li>Run Control</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="console_pane/console_cp.html"
+                           title="previous chapter"> <em>Control Panel</em> in the <em>Console</em> Pane</a> |    
+       <a href="../projects/projects.html"
+                           title="next chapter">Projects</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Commands, a Rationale" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

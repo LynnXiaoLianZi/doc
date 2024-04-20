@@ -1,0 +1,609 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>System of Units &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Precision Limits" href="precisionlimits.html" />
+    <link rel="prev" title="Stress/Strain Invariants" href="stressstraininvariants.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="system-of-units">
+<span id="commonsystemofunits"></span><h1>System of Units</h1>
+<p>The program accepts any consistent set of engineering units. Examples of consistent sets of units for basic parameters are shown in the tables below. The user should use great care when converting from one system of units to another. An excellent reference on the subject of units and conversion between the imperial and SI systems can be found in <a class="reference internal" href="#jpt1977" id="id1">[JPT1977]</a>. The program does not perform conversions.</p>
+<div class="section" id="mechanical-analysis">
+<h2>Mechanical Analysis</h2>
+<span class="target" id="id2"></span><table border="1" class="underrow mech docutils" id="id3">
+<caption><span class="caption-text">Table 1: System of Units - Mechanical Parameters</span></caption>
+<colgroup>
+<col width="13%" />
+<col width="10%" />
+<col width="17%" />
+<col width="17%" />
+<col width="16%" />
+<col width="16%" />
+<col width="12%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Property</th>
+<th class="head" colspan="4">SI</th>
+<th class="head" colspan="2">Imperial</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Length</td>
+<td>m</td>
+<td>m</td>
+<td>m</td>
+<td>cm</td>
+<td>ft</td>
+<td>in</td>
+</tr>
+<tr class="row-odd"><td>Density</td>
+<td>kg/m<sup>3</sup></td>
+<td>10<sup>3</sup> kg/m<sup>3</sup></td>
+<td>10<sup>6</sup> kg/m<sup>3</sup></td>
+<td>10<sup>6</sup> g/cm<sup>3</sup></td>
+<td>slugs/ft<sup>3</sup></td>
+<td>snails/in<sup>3</sup></td>
+</tr>
+<tr class="row-even"><td>Force</td>
+<td>N</td>
+<td>kN</td>
+<td>MN</td>
+<td>Mdynes</td>
+<td>lb<sub>f</sub></td>
+<td>lb<sub>f</sub></td>
+</tr>
+<tr class="row-odd"><td>Stress</td>
+<td>Pa</td>
+<td>kPa</td>
+<td>MPa</td>
+<td>bar</td>
+<td>lb<sub>f</sub> /ft<sup>2</sup></td>
+<td>psi</td>
+</tr>
+<tr class="row-even"><td>Gravity</td>
+<td>m/sec<sup>2</sup></td>
+<td>m/sec<sup>2</sup></td>
+<td>m/sec<sup>2</sup></td>
+<td>cm/sec<sup>2</sup></td>
+<td>ft/sec<sup>2</sup></td>
+<td>in/sec<sup>2</sup></td>
+</tr>
+<tr class="row-odd"><td>Ball stiffness</td>
+<td>N/m</td>
+<td>kN/m</td>
+<td>MN/m</td>
+<td>Mdynes/cm</td>
+<td>lb<sub>f</sub>/ft</td>
+<td>lb<sub>f</sub>/in</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="colwidths-given blank docutils">
+<colgroup>
+<col width="10%" />
+<col width="20%" />
+<col width="70%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>where:</td>
+<td>1 bar</td>
+<td>= 10<sup>6</sup> dynes/cm<sup>2</sup> = 10<sup>5</sup> N/m<sup>2</sup> = 10<sup>5</sup> Pa ;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>1 atm</td>
+<td>= 1.013 bars = 14.7 psi = 2116 lb<sub>f</sub>/ft<sup>2</sup> = 1.01325 <span class="math">\(\times\)</span> 10<sup>5</sup> Pa ;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>1 slug</td>
+<td>= 1 lb<sub>f</sub>-sec<sup>2</sup> /ft = 14.59 kg ;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>1 snail</td>
+<td>= 1 lb<sub>f</sub>-sec<sup>2</sup> /in ; and</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>1 gravity</td>
+<td>= 9.81 m/sec<sup>2</sup> =  981 cm/sec<sup>2</sup>  = 32.17 ft/sec<sup>2</sup></td>
+</tr>
+</tbody>
+</table>
+<style>
+   table.mech th.head {border-right: 2px solid white}
+   table.mech tr td:nth-child(n+2):nth-child(-n+7) {text-align: center}
+</style><p>One exception to the conversion rule above: for quantities representing angles, conversions are performed in <span class="codename">UDEC</span>.</p>
+<p>Angles are always entered on the command line (and in the user interface) in degrees, though they may be stored and used in radians. The exception is <span class="codename">FISH</span>, which (like most programming languages) assumes all angle values are in radians.</p>
+</div>
+<div class="section" id="thermal-analysis">
+<h2>Thermal Analysis</h2>
+<p>All thermal quantities must be given in a consistent system of units.
+No conversions are performed by the program. The tables below present examples of consistent sets of units for thermal parameters.</p>
+<table border="1" class="colwidths-given underrow lefthead docutils" id="id4">
+<caption><span class="caption-text">Table 3: System of SI units for thermal problems</span></caption>
+<colgroup>
+<col width="30%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Property</th>
+<th class="head">Units</th>
+<th class="head">&#160;</th>
+<th class="head">&#160;</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Length</td>
+<td>m</td>
+<td>m</td>
+<td>m</td>
+<td>cm</td>
+</tr>
+<tr class="row-odd"><td>Density</td>
+<td>kg/m<sup>3</sup></td>
+<td>10<sup>3</sup> kg/m<sup>3</sup></td>
+<td>10<sup>6</sup> kg/m<sup>3</sup></td>
+<td>10<sup>6</sup> g/cm<sup>3</sup></td>
+</tr>
+<tr class="row-even"><td>Stress</td>
+<td>Pa</td>
+<td>kPa</td>
+<td>MPa</td>
+<td>bar</td>
+</tr>
+<tr class="row-odd"><td>Temperature</td>
+<td>K</td>
+<td>K</td>
+<td>K</td>
+<td>K</td>
+</tr>
+<tr class="row-even"><td>Time</td>
+<td>s</td>
+<td>s</td>
+<td>s</td>
+<td>s</td>
+</tr>
+<tr class="row-odd"><td>Specific Heat</td>
+<td>J/(kg K)</td>
+<td>10<sup>-3</sup> J/(kg K)</td>
+<td>10<sup>-6</sup> J/(kg K)</td>
+<td>10<sup>-6</sup> cal/(g K)</td>
+</tr>
+<tr class="row-even"><td>Thermal Conductivity</td>
+<td>(W/mK)</td>
+<td>(W/mK)</td>
+<td>(W/mK)</td>
+<td>(cal/s)/cm<sup>2</sup> K<sup>4</sup></td>
+</tr>
+<tr class="row-odd"><td>Convective Heat-Trans. Coefficient</td>
+<td>(W/m<sup>2</sup> K)</td>
+<td>(W/m<sup>2</sup> K)</td>
+<td>(W/m<sup>2</sup> K)</td>
+<td>(cal/s)/(cm<sup>2</sup> K)</td>
+</tr>
+<tr class="row-even"><td>Radiative Heat-Trans. Coefficient</td>
+<td>(W/m<sup>2</sup> K<sup>4</sup>)</td>
+<td>(W/m<sup>2</sup> K<sup>4</sup>)</td>
+<td>(W/m<sup>2</sup> K<sup>4</sup>)</td>
+<td>(cal/s)/cm<sup>2</sup> K<sup>4</sup></td>
+</tr>
+<tr class="row-odd"><td>Flux Strength</td>
+<td>W/m<sup>2</sup></td>
+<td>W/m<sup>2</sup></td>
+<td>W/m<sup>2</sup></td>
+<td>(cal/s)/cm<sup>2</sup></td>
+</tr>
+<tr class="row-even"><td>Source Strength</td>
+<td>W/m<sup>3</sup></td>
+<td>W/m<sup>3</sup></td>
+<td>W/m<sup>3</sup></td>
+<td>(cal/s)/cm<sup>3</sup></td>
+</tr>
+<tr class="row-odd"><td>Decay Constant</td>
+<td>s<sup>-1</sup></td>
+<td>s<sup>-1</sup></td>
+<td>s<sup>-1</sup></td>
+<td>s<sup>-1</sup></td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="colwidths-given underrow lefthead docutils" id="id5">
+<caption><span class="caption-text">Table 4: System of imperial units for thermal problems</span></caption>
+<colgroup>
+<col width="41%" />
+<col width="29%" />
+<col width="29%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Property</th>
+<th class="head">Units</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Length</td>
+<td>ft</td>
+<td>in</td>
+</tr>
+<tr class="row-odd"><td>Density</td>
+<td>slugs/ft<sup>3</sup></td>
+<td>snails/in<sup>3</sup></td>
+</tr>
+<tr class="row-even"><td>Stress</td>
+<td>lb<sub>f</sub></td>
+<td>psi</td>
+</tr>
+<tr class="row-odd"><td>Temperature</td>
+<td>R</td>
+<td>R</td>
+</tr>
+<tr class="row-even"><td>Time</td>
+<td>hr</td>
+<td>hr</td>
+</tr>
+<tr class="row-odd"><td>Specific Heat</td>
+<td>(32.17)<sup>-1</sup> Btu/(lb R)</td>
+<td>(32.17)<sup>-1</sup> Btu/(lb R)</td>
+</tr>
+<tr class="row-even"><td>Thermal Conductivity</td>
+<td>(Btu/hr)/(ft R)</td>
+<td>(Btu/hr)/(in R)</td>
+</tr>
+<tr class="row-odd"><td>Convective Heat-Trans. Coefficient</td>
+<td>(Btu/hr)/(ft<sup>2</sup> R)</td>
+<td>(Btu/hr)/(in<sup>2</sup> R)</td>
+</tr>
+<tr class="row-even"><td>Radiative Heat-Trans. Coefficient</td>
+<td>(Btu/hr)/(ft<sup>2</sup> R<sup>4</sup>)</td>
+<td>(Btu/hr)/(in<sup>2</sup> R<sup>4</sup>)</td>
+</tr>
+<tr class="row-odd"><td>Flux Strength</td>
+<td>(Btu/hr)/ft<sup>2</sup></td>
+<td>(Btu/hr)/in<sup>2</sup></td>
+</tr>
+<tr class="row-even"><td>Source Strength</td>
+<td>(Btu/hr)/ft<sup>3</sup></td>
+<td>(Btu/hr)/in<sup>3</sup></td>
+</tr>
+<tr class="row-odd"><td>Decay Constant</td>
+<td>hr<sup>-1</sup></td>
+<td>hr<sup>-1</sup></td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="colwidths-given blank docutils">
+<colgroup>
+<col width="10%" />
+<col width="20%" />
+<col width="70%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>where:</td>
+<td>1K</td>
+<td>= 1.8 R;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>1J</td>
+<td>= 0.239 cal = 9.48 × 10<sup>-4</sup> Btu;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>1J/kg K</td>
+<td>= 2.39 × 10<sup>-4</sup> btu/lb R;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>1W</td>
+<td>= 1 J/s = 0.239 cal/s = 3.412 Btu/hr;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>1W/m K</td>
+<td>= 0.578 Btu/(ft/hr R); and</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>1W/m<sup>2</sup> K</td>
+<td>= 0.176 Btu/ft<sup>2</sup> hr R.</td>
+</tr>
+</tbody>
+</table>
+<p>Note that temperatures may be quoted in the more common units of °C (instead of K) or °F (instead of R),</p>
+<table border="1" class="colwidths-given blank docutils">
+<colgroup>
+<col width="10%" />
+<col width="20%" />
+<col width="70%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>where:</td>
+<td>Temp(°C)</td>
+<td>= [Temp(°F) - 32]×(5/9);</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>Temp(°F)</td>
+<td>= [1.8 Temp(°C) + 32];</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>Temp(°C)</td>
+<td>= Temp(K) - 273; and</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>Temp(°F)</td>
+<td>= Temp(R) - 460.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="fluid-analysis">
+<h2>Fluid Analysis</h2>
+<p>Any set of units can be used as long as they are consistent with the units used in the mechanical calculation.</p>
+<table border="1" class="colwidths-given underrow col2center col3center docutils" id="id6">
+<caption><span class="caption-text">Table 7: System of SI units for fluid flow</span></caption>
+<colgroup>
+<col width="40%" />
+<col width="30%" />
+<col width="30%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Property</th>
+<th class="head">Unit</th>
+<th class="head">Symbol</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Length</td>
+<td>m</td>
+<td>l</td>
+</tr>
+<tr class="row-odd"><td>Fluid Density</td>
+<td>kg/m<sup>3</sup></td>
+<td><span class="math">\(\rho_f\)</span></td>
+</tr>
+<tr class="row-even"><td>Time</td>
+<td>s</td>
+<td>t</td>
+</tr>
+<tr class="row-odd"><td>Fluid Velocity</td>
+<td>m/s</td>
+<td><span class="math">\(\vec{v}\)</span></td>
+</tr>
+<tr class="row-even"><td>Particle Velocity</td>
+<td>m/s</td>
+<td><span class="math">\(\vec{u}\)</span></td>
+</tr>
+<tr class="row-odd"><td>Porosity</td>
+<td>&#160;</td>
+<td><span class="math">\(\epsilon\)</span></td>
+</tr>
+<tr class="row-even"><td>Dynamic Viscosity</td>
+<td>Pa·s</td>
+<td><span class="math">\(\mu\)</span></td>
+</tr>
+<tr class="row-odd"><td>Drag Coefficient</td>
+<td>&#160;</td>
+<td><span class="math">\(C_d\)</span></td>
+</tr>
+<tr class="row-even"><td>Reynolds Number</td>
+<td>&#160;</td>
+<td><span class="math">\(Re\)</span></td>
+</tr>
+<tr class="row-odd"><td>Fluid Pressure</td>
+<td>Pa</td>
+<td>p</td>
+</tr>
+<tr class="row-even"><td>Fluid Pressure Gradient</td>
+<td>Pa/m</td>
+<td><span class="math">\(\vec{\nabla}p\)</span></td>
+</tr>
+<tr class="row-odd"><td>Fluid Kinematic Pressure</td>
+<td>m<sup>2</sup>/s <sup>2</sup></td>
+<td>P</td>
+</tr>
+<tr class="row-even"><td>Kinematic Viscosity</td>
+<td>m<sup>2</sup>/s</td>
+<td><span class="math">\(\nu\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="structural-elements">
+<h2>Structural Elements</h2>
+<table border="1" class="col3center col4center col5center col6center col7center col8center underrow colwidths-given docutils">
+<colgroup>
+<col width="23%" />
+<col width="14%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="14%" />
+<col width="14%" />
+<col width="9%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Property</th>
+<th class="head">Unit</th>
+<th class="head" colspan="4">SI</th>
+<th class="head" colspan="2">Imperial</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>area</td>
+<td>length<sup>2</sup></td>
+<td>m<sup>2</sup></td>
+<td>m<sup>2</sup></td>
+<td>m<sup>2</sup></td>
+<td>cm<sup>2</sup></td>
+<td>ft<sup>2</sup></td>
+<td>in<sup>2</sup></td>
+</tr>
+<tr class="row-odd"><td>axial or shear stiffness</td>
+<td>force/disp</td>
+<td>N/m</td>
+<td>kN/m</td>
+<td>MN/m</td>
+<td>Mdynes/cm</td>
+<td>lb<sub>f</sub> /ft</td>
+<td>lb<sub>f</sub>/in</td>
+</tr>
+<tr class="row-even"><td>exposed perimeter</td>
+<td>length</td>
+<td>m</td>
+<td>m</td>
+<td>m</td>
+<td>cm</td>
+<td>ft</td>
+<td>in</td>
+</tr>
+<tr class="row-odd"><td>moment of inertia</td>
+<td>length<sup>4</sup></td>
+<td>m<sup>4</sup></td>
+<td>m<sup>4</sup></td>
+<td>m<sup>4</sup></td>
+<td>cm<sup>4</sup></td>
+<td>ft<sup>4</sup></td>
+<td>in<sup>4</sup></td>
+</tr>
+<tr class="row-even"><td>plastic moment</td>
+<td>force-length</td>
+<td>N-m</td>
+<td>kN-m</td>
+<td>MN-m</td>
+<td>Mdynes-cm</td>
+<td>ft-lb<sub>f</sub></td>
+<td>in-lb<sub>f</sub></td>
+</tr>
+<tr class="row-odd"><td>yield strength</td>
+<td>force</td>
+<td>N</td>
+<td>kN</td>
+<td>MN</td>
+<td>Mdynes</td>
+<td>lb<sub>f</sub></td>
+<td>lb<sub>f</sub></td>
+</tr>
+<tr class="row-even"><td>Young’s modulus</td>
+<td>stress</td>
+<td>Pa</td>
+<td>kPa</td>
+<td>MPa</td>
+<td>bar</td>
+<td>lb<sub>f</sub> /ft<sup>2</sup></td>
+<td>psi</td>
+</tr>
+</tbody>
+</table>
+<p>where, 1 bar = 10<sup>6</sup> dynes/cm<sup>2</sup> = 10<sup>5</sup> N/m<sup>2</sup> = 10<sup>5</sup> Pa.</p>
+<p class="h3 rubric">Reference</p>
+<table class="docutils citation" frame="void" id="jpt1977" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[JPT1977]</a></td><td>Journal of Petroleum Technology. “The SI Metric System of Units and SPE’s Tentative Metric Standard”, 1575-1616 (December 1977).</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="formulation.html" accesskey="U">Underpinnings</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="stressstraininvariants.html"
+                           title="previous chapter"> Stress/Strain Invariants</a> |    
+       <a href="precisionlimits.html"
+                           title="next chapter">Precision Limits</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?System of Units" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

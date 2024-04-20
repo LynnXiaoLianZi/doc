@@ -1,0 +1,217 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>General Approach &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="General Solution Procedure, Illustrated" href="generalsolutionprocedure.html" />
+    <link rel="prev" title="Modeling Methodology" href="methodology.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="general-approach">
+<span id="frameworkgeneralapproach"></span><h1>General Approach</h1>
+<p>The modeling of mechanical processes — such as those associated with geo-engineering — involves special considerations and a design philosophy different from that followed for design with fabricated materials. Analyses and designs for structures and excavations in or on rocks and soils, for example, must be achieved with relatively little site-specific data and an awareness that deformability and strength properties may vary considerably. It is impossible to obtain complete field data at a rock or soil site; information on stresses, properties, and discontinuities can only be partially known, at best.</p>
+<p><span class="flag2">This dilemma is seen in applications in other fields besides geo-engineering, whether the numerical method involves a continuum approach or uses discrete elements.</span> <span class="flag3">preceding line is an addition to try to tie in non-geo field for DEM</span> In powder technology, for instance, contact behavior at high packing densities is generally unknown. In bulk flow of material, the effect on the flow of the distribution of irregularities in the flow material cannot easily be quantified. In cases such as these, when the input data necessary for design predictions is limited, a numerical model should be used primarily to understand the dominant mechanisms affecting the behavior of the modeled system. Once the behavior of the system is understood, it is then appropriate to develop simple calculations for a design process.</p>
+<p>This approach is oriented toward engineering applications in which there is an insuperable lack of data.  In other applications it may be possible to use the numerical modeling software directly in design if sufficient data, as well as an understanding of material behavior, are available.  In any field, modelers should recognize that there is a continuous spectrum of situations. The figure below illustrates what that spectrum looks like in the specific area of geo-engineering.</p>
+<div class="figure align-center" id="id1">
+<span id="fig-modeling-spectrum"></span><a class="reference internal image-reference" href="../../../../../../_images/spectrum.svg"><img alt="spectrum of modeling situations" src="../../../../../../_images/spectrum.svg" width="85%" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Spectrum of modeling situations.</span></p>
+</div>
+<p>Itasca codes may be used either in a fully predictive mode (the right-hand side of the figure) or as a “numerical laboratory” to test ideas (the left-hand side). It is the field situation (and budget), rather than the program, that determines the types of use. If enough data of a high quality is available, the software can give good predictions.</p>
+<p><span class="flag2">Because many applications will involve situations in which little data are available, the succeeding discussion enumerates the recommended approach for treating a numerical model as if it were a laboratory test for a geo-engeering problem — though consideration of problems in other fields can be determined easily by analogy</span>. <span class="flag3">again, the preceding attempt to include non-geo fields</span> The model should never be considered to be a “black box” that accepts data input at one end and produces a prediction of behavior at the other. The numerical “sample” must be prepared carefully, and several samples tested, to gain an understanding of the problem. <span class="flag3">[originally, this line followed, but it should be deleted: The table below lists the steps recommended to perform a successful numerical experiment; each step treated individually in the discussion that follows.] [PFC omits this whole paragraph, but I think it should be included with edits as shown]</span></p>
+<table border="1" class="colwidths-given icg1 docutils" id="id2">
+<caption><span class="caption-text">Table 1: Recommended Steps for Numerical Analysis in Geomechanics</span></caption>
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Step 1</td>
+<td>Define the objectives for the model analysis.</td>
+</tr>
+<tr class="row-even"><td>Step 2</td>
+<td>Create a conceptual picture of the physical system.</td>
+</tr>
+<tr class="row-odd"><td>Step 3</td>
+<td>Construct and run simple idealized models.</td>
+</tr>
+<tr class="row-even"><td>Step 4</td>
+<td>Assemble problem-specific data.</td>
+</tr>
+<tr class="row-odd"><td>Step 5</td>
+<td>Prepare a series of detailed model runs.</td>
+</tr>
+<tr class="row-even"><td>Step 6</td>
+<td>Perform the model calculations.</td>
+</tr>
+<tr class="row-odd"><td>Step 7</td>
+<td>Present results for interpretation.</td>
+</tr>
+</tbody>
+</table>
+<p class="h3 rubric">Step 1: Define the Objectives for the Model Analysis</p>
+<p>The level of detail to be included in a model often depends on the purpose of the analysis. For
+example, if the objective is to decide between two conflicting mechanisms that are proposed to
+explain the behavior of a system, then a crude model may be constructed, provided that it allows
+the mechanisms to occur. It is tempting to include complexity in a model just because it exists
+in reality. However, complicating features should be omitted if they are likely to have little
+influence on the response of the model, or if they are irrelevant to the model’s purpose. Start
+with a global view and add refinement as (and if) necessary.</p>
+<p class="h3 rubric">Step 2: Create a Conceptual Picture of the Physical System</p>
+<p>It is important to have a conceptual picture of the problem to provide an initial estimate of
+the expected behavior under the imposed conditions. Several questions should be asked when
+preparing this picture. For example: Is it anticipated that the system could become unstable? Is
+the predominant mechanical response linear or nonlinear? Are movements expected to be large or
+small in comparison with the sizes of objects within the problem region? Are there well-defined
+discontinuities that may affect the behavior, or does the material behave essentially as a
+continuum? Are there fluid interactions with the system? Is the system bounded by physical
+structures, or do its boundaries extend to infinity? Is there any geometric symmetry in the
+physical structure of the system?</p>
+<p>These considerations will dictate the gross characteristics of the numerical model, such as the
+design of the model geometry (<span class="codename">FLAC3D</span>, <span class="codename">UDEC</span> or <span class="codename">3DEC</span>) or the design of the particle assembly (<span class="codename">PFC</span>), the types of material models (<span class="codename">FLAC3D</span>. <span class="codename">UDEC</span>  or <span class="codename">3DEC</span>) or contact models, the boundary conditions and the initial equilibrium state for the analysis. They will determine whether a three-dimensional
+model is required, or a two-dimensional model can be used to take advantage of symmetry or other geometric conditions
+in the physical system.</p>
+<p class="h3 rubric">Step 3: Construct and Run Simple Idealized Models</p>
+<p>When idealizing a physical system for numerical analysis, it is more efficient to construct and
+run simple test models first, before building the detailed model. Simple models should be
+created at the earliest possible stage in a project, to generate both data and understanding.
+The results can provide further insight into the conceptual picture of the system; Step 2 may
+need to be repeated after simple models are run.</p>
+<p>Simple models can reveal shortcomings that can be remedied before any significant effort is
+invested in the analysis. For example, do the selected material or contact models sufficiently represent
+the expected behavior? Are the boundary conditions influencing the model response? The results
+from the simple models can also help guide the plan for data collection by identifying types of data and which
+parameters have the most influence on the analysis.</p>
+<p class="h3 rubric">Step 4: Assemble Problem-Specific Data</p>
+<p>The types of data required for a model analysis include the following:</p>
+<ul class="simple">
+<li>details of the geometry (e.g., profile of underground openings, surface topography, dam profile, rock/soil structure);</li>
+<li>locations of geologic structure (e.g., faults, bedding planes, joint sets);</li>
+<li>material behavior (e.g., elastic/plastic properties, post-failure behavior);</li>
+<li>initial conditions (e.g., in-situ state of stress, pore pressures, saturation); and</li>
+<li>external loading (e.g., explosive loading, pressurized cavern).</li>
+</ul>
+<p>Since typically there are large uncertainties associated with specific conditions (in
+particular, state of stress, deformability, and strength properties), a reasonable range of
+parameters must be selected for the investigation. The results from the simple model runs (in
+Step 3) can often prove helpful in determining this range, and in providing insight for the
+design of laboratory and field experiments to collect the needed data.</p>
+<p class="h3 rubric">Step 5: Prepare a Series of Detailed Model Runs</p>
+<p>Most often, the numerical analysis will involve a series of computer simulations that include the different mechanisms under investigation and span the range of parameters derived from the assembled database. When preparing a set of model runs for calculation, several aspects, such as the following, should be considered:</p>
+<blockquote>
+<div><ul class="simple">
+<li>How much time is required to perform each model calculation? It can be difficult to obtain sufficient information to arrive at a useful conclusion if model runtimes are excessive. Consideration should be given to performing parameter variations on multiple computers to shorten the total computation time.</li>
+<li>The state of the model should be saved at several intermediate stages so that the entire run does not have to be repeated for each parameter variation. For example, if the analysis involves several loading/unloading stages, the user should be able to return to any stage, change a parameter, and continue the analysis from that stage. The amount of disk space required for save files should be considered.</li>
+<li>Are there a sufficient number of monitoring locations in the model to provide for a clear interpretation of model results and for comparison with physical data? It is helpful to locate several points in the model at which a record of the change of a parameter (such as displacement, velocity, force, or stress) can be monitored during the calculation. Also, the maximum unbalanced force in the model should always be monitored to check the equilibrium or failure state at each stage of an analysis.</li>
+</ul>
+</div></blockquote>
+<p class="h3 rubric">Step 6: Perform the Model Calculations</p>
+<p>It is best to first make one or two detailed model runs separately before launching a series of runs. These runs should be stopped and checked intermittently, or at each stage, to ensure that the response is as expected. Once there is assurance that the model is performing correctly, several model data files can be linked together to run a number of calculations in sequence. At any time during a sequence of runs, it should be possible to interrupt the calculation, view the results, and then continue or modify the model as appropriate.</p>
+<p class="h3 rubric">Step 7: Present Results for Interpretation</p>
+<p>The final stage of problem solving is the presentation of the results for a clear interpretation of the analysis. This is best accomplished by displaying the results graphically. <span class="flag3">[cut this, which was the end of the preceding sentence: , either directly on the computer screen or as output to a hardcopy plotting device.]</span> Graphical output should be presented in a format that can be directly compared to field measurements and observations. Plots should clearly identify regions of interest from the analysis, such as locations of calculated stress concentrations, or areas of stable movement versus unstable movement in the model. The numeric values of any variable in the model should also be readily available for more detailed interpretation by the modeler.</p>
+<p>These seven steps describe an efficient arc for any numerical modeling process.  Our own consulting work with our software routinely advances along this sequence; exceptions to or omission of any step is a rarity.</p>
+<p><span class="flag3">We recommend that these seven steps be followed to solve geo-engineering problems efficiently. The following sections describe the application of |flac3d| to meet the specific aspects of each of these steps in this modeling approach.</span> <span class="flag3">this used to be the last line from flac3d, but it is too flac3d- and geoengineering-specific</span></p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="methodology.html" accesskey="U">Modeling Methodology</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="methodology.html"
+                           title="previous chapter"> Modeling Methodology</a> |    
+       <a href="generalsolutionprocedure.html"
+                           title="next chapter">General Solution Procedure, Illustrated</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?General Approach" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

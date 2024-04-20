@@ -1,0 +1,1008 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>UDEC 6.0 to 7.0 FISH Mapping &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="FISH Scripting Reference" href="../../../common/docproject/source/manual/scripting/fish_scripting/fish.html" />
+    <link rel="prev" title="UDEC 6.0 to 7.0 Commands Map" href="commandsmap.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../contents.html"><img id="cornerlogo" src="../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="udec-6-0-to-7-0-fish-mapping">
+<span id="fishmap"></span><h1><span class="codename">UDEC</span> 6.0 to 7.0 <span class="codename">FISH</span> Mapping</h1>
+<p>The mapping of <span class="codename">FISH</span> function names from version 6.0 to version 7.0 are grouped by kind: <a class="reference internal" href="#fish-generalmap"><span class="std std-ref">General</span></a>, <a class="reference internal" href="#fish-blockmap"><span class="std std-ref">block</span></a>, <a class="reference internal" href="#fish-boundarymap"><span class="std std-ref">boundary (apply)</span></a>, <a class="reference internal" href="#fish-contactsmap"><span class="std std-ref">contacts</span></a>, <a class="reference internal" href="#fish-cornersmap"><span class="std std-ref">corners</span></a>, <a class="reference internal" href="#fish-domainsmap"><span class="std std-ref">domains</span></a>, <a class="reference internal" href="#fish-gridpointsmap"><span class="std std-ref">gridpoints</span></a>, <a class="reference internal" href="#fish-propertiesmap"><span class="std std-ref">properties</span></a>, <a class="reference internal" href="#fish-thermalmap"><span class="std std-ref">thermal</span></a>, <a class="reference internal" href="#fish-zonemap"><span class="std std-ref">zone</span></a>.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Old</th>
+<th class="head">New</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td></td>
+<td id="fish-generalmap">&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>General</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>block_head</td>
+<td><a class="reference internal" href="elements/block/block.block_fish/fish_block.head.html#function:block.head" title="Get the index to the first block in the list of blocks."><code class="xref fish fish-func docutils literal"><span class="pre">block.head</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>bou_head</td>
+<td><a class="reference internal" href="elements/block/block.boundary_fish/fish_block.boundary.head.html#function:block.boundary.head" title="Get the index to the list of boundary corners."><code class="xref fish fish-func docutils literal"><span class="pre">block.boundary.head</span></code></a></td>
+</tr>
+<tr class="row-even"><td>bou_near</td>
+<td><a class="reference internal" href="elements/block/block.boundary_fish/fish_block.boundary.near.html#function:block.boundary.near" title="Get the index of the block boundary closest to ( fx ,  fy )."><code class="xref fish fish-func docutils literal"><span class="pre">block.boundary.near</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>b_near</td>
+<td><a class="reference internal" href="elements/block/block.block_fish/fish_block.near.html#function:block.near" title="Get the index of the block closest to ( fx ,  fy )."><code class="xref fish fish-func docutils literal"><span class="pre">block.near</span></code></a></td>
+</tr>
+<tr class="row-even"><td>cable_elem_head</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.structure.cable.element.head</span></code></td>
+</tr>
+<tr class="row-odd"><td>cable_node_head</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.structure.cable.node.head</span></code></td>
+</tr>
+<tr class="row-even"><td>cf_axi</td>
+<td><a class="reference internal" href="elements/block/block.config_fish/fish_block.config.axisymmetry.html#function:block.config.axisymmetry" title="If function returns 1 config axisymmetry is true."><code class="xref fish fish-func docutils literal"><span class="pre">block.config.axisymmetry</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>cf_cell</td>
+<td><a class="reference internal" href="elements/block/block.config_fish/fish_block.config.cell.html#function:block.config.cell" title="If function returns 1 config creep is true."><code class="xref fish fish-func docutils literal"><span class="pre">block.config.cell</span></code></a></td>
+</tr>
+<tr class="row-even"><td>cf_creep</td>
+<td><a class="reference internal" href="elements/block/block.config_fish/fish_block.config.creep.html#function:block.config.creep" title="If function returns 1 config creep is true."><code class="xref fish fish-func docutils literal"><span class="pre">block.config.creep</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>cf_fluid</td>
+<td><a class="reference internal" href="elements/block/block.config_fish/fish_block.config.fluid.html#function:block.config.fluid" title="If function returns 1 config fluid is true."><code class="xref fish fish-func docutils literal"><span class="pre">block.config.fluid</span></code></a></td>
+</tr>
+<tr class="row-even"><td>cf_p_stress</td>
+<td><a class="reference internal" href="elements/block/block.config_fish/fish_block.config.pstress.html#function:block.config.pstress" title="If function returns 1 config pstress is true."><code class="xref fish fish-func docutils literal"><span class="pre">block.config.pstress</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>cf_thermal</td>
+<td><a class="reference internal" href="elements/block/block.config_fish/fish_block.config.thermal.html#function:block.config.thermal" title="If function returns 1 config thermal is true."><code class="xref fish fish-func docutils literal"><span class="pre">block.config.thermal</span></code></a></td>
+</tr>
+<tr class="row-even"><td>contact_head</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.head.html#function:block.contact.head" title="Get the index to the first contact in the list of all contacts."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.head</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>cor_near</td>
+<td><a class="reference internal" href="elements/block/block.corner_fish/fish_block.corner.near.html#function:block.corner.near" title="Get the index of the block corner closest to ( fx ,  fy )."><code class="xref fish fish-func docutils literal"><span class="pre">block.corner.near</span></code></a></td>
+</tr>
+<tr class="row-even"><td>crtdel</td>
+<td><a class="reference internal" href="elements/block/block.creep_fish/fish_block.creep.timestep.html#function:block.creep.timestep" title="Get the creep timestep."><code class="xref fish fish-func docutils literal"><span class="pre">block.creep.timestep</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>crtime</td>
+<td><a class="reference internal" href="elements/block/block.creep_fish/fish_block.creep.time.total.html#function:block.creep.time.total" title="Get/set the creep time."><code class="xref fish fish-func docutils literal"><span class="pre">block.creep.time.total</span></code></a></td>
+</tr>
+<tr class="row-even"><td>cycle</td>
+<td><a class="reference internal" href="elements/block/block.global_fish/fish_cycle.html#function:cycle" title="Get the cycle count (same as step)."><code class="xref fish fish-func docutils literal"><span class="pre">cycle</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>c_near</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.near.html#function:block.contact.near" title="Get the index of the block contact closest to ( fx ,  fy )."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.near</span></code></a></td>
+</tr>
+<tr class="row-even"><td>domain_head</td>
+<td><a class="reference internal" href="elements/block/block.domain_fish/fish_block.domain.head.html#function:block.domain.head" title="Get the index to the list of domains."><code class="xref fish fish-func docutils literal"><span class="pre">block.domain.head</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>d_near</td>
+<td><a class="reference internal" href="elements/block/block.domain_fish/fish_block.domain.near.html#function:block.domain.near" title="Get the index of the block domain closest to ( fx ,  fy )."><code class="xref fish fish-func docutils literal"><span class="pre">block.domain.near</span></code></a></td>
+</tr>
+<tr class="row-even"><td>fluid_bulk</td>
+<td><a class="reference internal" href="elements/block/block.fluid_fish/fish_block.fluid.bulk.html#function:block.fluid.bulk" title="Get/set the fluid bulk modulus."><code class="xref fish fish-func docutils literal"><span class="pre">block.fluid.bulk</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>fluid_density</td>
+<td><a class="reference internal" href="elements/block/block.fluid_fish/fish_block.fluid.density.html#function:block.fluid.density" title="Get/set the fluid density."><code class="xref fish fish-func docutils literal"><span class="pre">block.fluid.density</span></code></a></td>
+</tr>
+<tr class="row-even"><td>fmem</td>
+<td><a class="reference internal" href="elements/block/block.global_fish/fish_fmem.html#function:fmem" title="This function gives direct acccess to the main array that holds model data in&#013;&#010;|udec|.  See the program guide of the list of objects and offsets required to&#013;&#010;use this function."><code class="xref fish fish-func docutils literal"><span class="pre">fmem</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>fracb</td>
+<td><a class="reference internal" href="elements/block/block.global_fish/fish_fracb.html#function:fracb" title="Get/set the fraction of the critical block timstep to use for the cycle timestep."><code class="xref fish fish-func docutils literal"><span class="pre">fracb</span></code></a></td>
+</tr>
+<tr class="row-even"><td>fracz</td>
+<td><a class="reference internal" href="elements/block/block.global_fish/fish_fracz.html#function:fracz" title="Get/set the fraction of the critical block timstep to use for the cycle timestep."><code class="xref fish fish-func docutils literal"><span class="pre">fracz</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>ftime</td>
+<td><a class="reference internal" href="elements/block/block.fluid_fish/fish_block.fluid.time.total.html#function:block.fluid.time.total" title="Get the fluid flow time."><code class="xref fish fish-func docutils literal"><span class="pre">block.fluid.time.total</span></code></a></td>
+</tr>
+<tr class="row-even"><td>gp_near</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.near.html#function:block.gp.near" title="Get the index of index of gridpoint closest to ( fx ,  fy )."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.near</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>grav_x</td>
+<td><a class="reference internal" href="elements/block/block.global_fish/fish_gravity.html#function:gravity.x" title="Get/set the  x - component of gravity."><code class="xref fish fish-func docutils literal"><span class="pre">gravity.x</span></code></a></td>
+</tr>
+<tr class="row-even"><td>grav_y</td>
+<td><a class="reference internal" href="elements/block/block.global_fish/fish_gravity.html#function:gravity.y" title="Get/set the  y - component of gravity."><code class="xref fish fish-func docutils literal"><span class="pre">gravity.y</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>ibou_head</td>
+<td><a class="reference internal" href="elements/block/block.boundary_fish/fish_block.boundary.internal.head.html#function:block.boundary.internal.head" title="Get the index to the list of internal boundary corners."><code class="xref fish fish-func docutils literal"><span class="pre">block.boundary.internal.head</span></code></a></td>
+</tr>
+<tr class="row-even"><td>imem</td>
+<td><a class="reference internal" href="elements/block/block.global_fish/fish_imem.html#function:imem" title="This function gives direct acccess to the main array that holds model data in&#013;&#010;|udec|.  See the program guide of the list of objects and offsets required to&#013;&#010;use this function."><code class="xref fish fish-func docutils literal"><span class="pre">imem</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>outer_domain</td>
+<td><a class="reference internal" href="elements/block/block.domain_fish/fish_block.domain.outer.html#function:block.domain.outer" title="Get the index of the block outer domain."><code class="xref fish fish-func docutils literal"><span class="pre">block.domain.outer</span></code></a></td>
+</tr>
+<tr class="row-even"><td>r_head</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.structure.reinforce.head</span></code></td>
+</tr>
+<tr class="row-odd"><td>sol_fmag</td>
+<td><a class="reference internal" href="elements/block/block.global_fish/fish_solve_force_mag.html#function:solve.force.magnitude" title="Get the magnitude of the sum of gridpoint forces in the model."><code class="xref fish fish-func docutils literal"><span class="pre">solve.force.magnitude</span></code></a></td>
+</tr>
+<tr class="row-even"><td>sol_fob</td>
+<td><a class="reference internal" href="elements/block/block.global_fish/fish_solve_force_balance.html#function:solve.force.balance" title="Get the sum of the unbalanced forces in the model."><code class="xref fish fish-func docutils literal"><span class="pre">solve.force.balance</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>sol_ratio</td>
+<td><a class="reference internal" href="elements/block/block.global_fish/fish_solve_ratio.html#function:solve.ratio" title="Get current out of balanced force ratio limit."><code class="xref fish fish-func docutils literal"><span class="pre">solve.ratio</span></code></a></td>
+</tr>
+<tr class="row-even"><td>sol_rloc</td>
+<td><a class="reference internal" href="elements/block/block.global_fish/fish_solve_ratio_local.html#function:solve.ratio.local" title="Get the maximum ratio of out-of-balance total forces for a single gridpoint."><code class="xref fish fish-func docutils literal"><span class="pre">solve.ratio.local</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>sol_rmax</td>
+<td><a class="reference internal" href="elements/block/block.global_fish/fish_solve_ratio_max.html#function:solve.ratio.maximum" title="Get the current solve ratio."><code class="xref fish fish-func docutils literal"><span class="pre">solve.ratio.maximum</span></code></a></td>
+</tr>
+<tr class="row-even"><td>step</td>
+<td><a class="reference internal" href="elements/block/block.global_fish/fish_step.html#function:step" title="Get the step count (same as cycle)."><code class="xref fish fish-func docutils literal"><span class="pre">step</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>str_elem_head</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.structure.element.head</span></code></td>
+</tr>
+<tr class="row-even"><td>str_int_head</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.structure.interface.head</span></code></td>
+</tr>
+<tr class="row-odd"><td>str_node_head</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.structure.node.head</span></code></td>
+</tr>
+<tr class="row-even"><td>sup_head</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.structure.support.head</span></code></td>
+</tr>
+<tr class="row-odd"><td>tdel</td>
+<td><a class="reference internal" href="elements/block/block.mechanical_fish/fish_block.mechanical.timestep.html#function:block.mechanical.timestep" title="Get the mechanical timestep."><code class="xref fish fish-func docutils literal"><span class="pre">block.mechanical.timestep</span></code></a></td>
+</tr>
+<tr class="row-even"><td>tgps_head</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.thermal.source.head</span></code></td>
+</tr>
+<tr class="row-odd"><td>thdt</td>
+<td><a class="reference internal" href="elements/block/block.thermal_fish/fish_block.thermal.timestep.html#function:block.thermal.timestep" title="Get the thermal timestep."><code class="xref fish fish-func docutils literal"><span class="pre">block.thermal.timestep</span></code></a></td>
+</tr>
+<tr class="row-even"><td>thtime</td>
+<td><a class="reference internal" href="elements/block/block.thermal_fish/fish_block.thermal.time.total.html#function:block.thermal.time.total" title="Get the thermal time."><code class="xref fish fish-func docutils literal"><span class="pre">block.thermal.time.total</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>time</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.mechanical.time.total</span></code></td>
+</tr>
+<tr class="row-even"><td>unbal</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">unbalanced.force</span></code></td>
+</tr>
+<tr class="row-odd"><td>xgrav</td>
+<td><a class="reference internal" href="elements/block/block.global_fish/fish_gravity.html#function:gravity.x" title="Get/set the  x - component of gravity."><code class="xref fish fish-func docutils literal"><span class="pre">gravity.x</span></code></a></td>
+</tr>
+<tr class="row-even"><td>xmem</td>
+<td><a class="reference internal" href="elements/block/block.global_fish/fish_xmem .html#function:xmem" title="This function gives direct acccess to the main array that holds model data in&#013;&#010;|udec|.  See the program guide of the list of objects and offsets required to&#013;&#010;use this function."><code class="xref fish fish-func docutils literal"><span class="pre">xmem</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>ygrav</td>
+<td><a class="reference internal" href="elements/block/block.global_fish/fish_gravity.html#function:gravity.y" title="Get/set the  y - component of gravity."><code class="xref fish fish-func docutils literal"><span class="pre">gravity.y</span></code></a></td>
+</tr>
+<tr class="row-even"><td>z_inside</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.inside.html#function:block.zone.inside" title="Get the index of the block zone containing the point ( fx ,  fy )."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.inside</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>z_near</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.near.html#function:block.zone.near" title="Get the index of the block zone closest to ( fx ,  fy )."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.near</span></code></a></td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td id="fish-blockmap">&#160;</td>
+</tr>
+<tr class="row-even"><td><strong>blocks</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>b_area</td>
+<td><a class="reference internal" href="elements/block/block.block_fish/fish_block.area.html#function:block.area" title="Get the block area."><code class="xref fish fish-func docutils literal"><span class="pre">block.area</span></code></a></td>
+</tr>
+<tr class="row-even"><td>b_bex</td>
+<td><a class="reference internal" href="elements/block/block.block_fish/fish_block.bex.html#function:block.bex" title="Get the index pointing to zone and gridpoint list indexes. This is not much&#013;&#010;used. The zone list index = imem( indbex ). The gridpoint lisr index =&#013;&#010;imem( indbex  + 1).  It is easier to use block.zone(ind:ind) and block.gridpoint(ind:ind)."><code class="xref fish fish-func docutils literal"><span class="pre">block.bex</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>b_cent</td>
+<td><a class="reference internal" href="elements/block/block_fish/fish_block.pos.html#function:block.pos" title="Get the block centroid position vector."><code class="xref fish fish-func docutils literal"><span class="pre">block.pos</span></code></a></td>
+</tr>
+<tr class="row-even"><td>b_cons</td>
+<td><a class="reference internal" href="elements/block/block.block_fish/fish_block.model.html#function:block.model" title="Get/set the constitutive model number of a block."><code class="xref fish fish-func docutils literal"><span class="pre">block.model</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>b_corner</td>
+<td><a class="reference internal" href="elements/block/block_fish/fish_block.corner_intrinsics .html#function:block.corner" title="scoobydoo"><code class="xref fish fish-func docutils literal"><span class="pre">block.corner</span></code></a></td>
+</tr>
+<tr class="row-even"><td>b_dsf</td>
+<td><a class="reference internal" href="elements/block/block.block_fish/fish_block.densityscaling.html#function:block.densityscaling" title="Get the density scaling factor."><code class="xref fish fish-func docutils literal"><span class="pre">block.densityscaling</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>b_extra</td>
+<td><a class="reference internal" href="elements/block/block.block_fish/fish_block.extra.html#function:block.extra" title="Get/set the value of block extra variable at (optional) position  i ."><code class="xref fish fish-func docutils literal"><span class="pre">block.extra</span></code></a></td>
+</tr>
+<tr class="row-even"><td>b_fix</td>
+<td><a class="reference internal" href="elements/block/block.block_fish/fish_block.fix.html#function:block.fix" title="Get/set the rigid block fix condition (= 1 fixed, = 0 free)."><code class="xref fish fish-func docutils literal"><span class="pre">block.fix</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>b_force</td>
+<td><a class="reference internal" href="elements/block/block_fish/fish_block.force.html#function:block.force" title="Get/set the block force vector."><code class="xref fish fish-func docutils literal"><span class="pre">block.force</span></code></a></td>
+</tr>
+<tr class="row-even"><td>b_gp</td>
+<td><a class="reference internal" href="elements/block/block_fish/fish_block.gridpoint.html#function:block.gp" title="scoobydoo"><code class="xref fish fish-func docutils literal"><span class="pre">block.gp</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>b_group</td>
+<td><a class="reference internal" href="elements/block/block.block_fish/fish_block.group.html#function:block.group" title="Get/set the group name assigned to block  index  in slot  slot . Use&#013;&#010;of the group logic is described in  group_manual ."><code class="xref fish fish-func docutils literal"><span class="pre">block.group</span></code></a></td>
+</tr>
+<tr class="row-even"><td>b_hidden</td>
+<td><a class="reference internal" href="elements/block/block.block_fish/fish_block.hidden.html#function:block.hidden" title="Get/set ..."><code class="xref fish fish-func docutils literal"><span class="pre">block.hidden</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>b_load</td>
+<td><a class="reference internal" href="elements/block/block_fish/fish_block.load.html#function:block.load" title="Get/set the block applied force vector."><code class="xref fish fish-func docutils literal"><span class="pre">block.load</span></code></a></td>
+</tr>
+<tr class="row-even"><td>b_mass</td>
+<td><a class="reference internal" href="elements/block/block.block_fish/fish_block.mass.html#function:block.mass" title="Get the block mass."><code class="xref fish fish-func docutils literal"><span class="pre">block.mass</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>b_mat</td>
+<td><a class="reference internal" href="elements/block/block.block_fish/fish_block.material.html#function:block.mat" title="Get/set the material number."><code class="xref fish fish-func docutils literal"><span class="pre">block.mat</span></code></a></td>
+</tr>
+<tr class="row-even"><td>b_moi</td>
+<td><a class="reference internal" href="elements/block/block.block_fish/fish_block.moi.html#function:block.moi" title="Get the block moment of inertia."><code class="xref fish fish-func docutils literal"><span class="pre">block.moi</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>b_mom</td>
+<td><a class="reference internal" href="elements/block/block.block_fish/fish_block.moment.html#function:block.moment" title="Get/set the block moment."><code class="xref fish fish-func docutils literal"><span class="pre">block.moment</span></code></a></td>
+</tr>
+<tr class="row-even"><td>b_next</td>
+<td><a class="reference internal" href="elements/block/block.block_fish/fish_block.next.html#function:block.next" title="Get the index of the next block in main list from block."><code class="xref fish fish-func docutils literal"><span class="pre">block.next</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>b_rvel</td>
+<td><a class="reference internal" href="elements/block/block.block_fish/fish_block.vel.rot.html#function:block.vel.rot" title="Get/set the angular velocity of the rigid block."><code class="xref fish fish-func docutils literal"><span class="pre">block.vel.rot</span></code></a></td>
+</tr>
+<tr class="row-even"><td>b_type</td>
+<td><a class="reference internal" href="elements/block/block.block_fish/fish_block.type.html#function:block.type" title="Get the block type (1 = rigid, 3 = deformable)."><code class="xref fish fish-func docutils literal"><span class="pre">block.type</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>b_vel</td>
+<td><a class="reference internal" href="elements/block/block_fish/fish_block.vel.html#function:block.vel" title="Get/set the rigid block velocity vector."><code class="xref fish fish-func docutils literal"><span class="pre">block.vel</span></code></a></td>
+</tr>
+<tr class="row-even"><td>b_x</td>
+<td><a class="reference internal" href="elements/block/block_fish/fish_block.pos.html#function:block.pos.x" title="Get the  x -coordinate of the block centroid."><code class="xref fish fish-func docutils literal"><span class="pre">block.pos.x</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>b_xforce</td>
+<td><a class="reference internal" href="elements/block/block_fish/fish_block.force.html#function:block.force.x" title="Get/set the  x -force on the block."><code class="xref fish fish-func docutils literal"><span class="pre">block.force.x</span></code></a></td>
+</tr>
+<tr class="row-even"><td>b_xload</td>
+<td><a class="reference internal" href="elements/block/block_fish/fish_block.load.html#function:block.load.x" title="Get/set the applied  x -force on the block."><code class="xref fish fish-func docutils literal"><span class="pre">block.load.x</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>b_xvel</td>
+<td><a class="reference internal" href="elements/block/block_fish/fish_block.vel.html#function:block.vel.x" title="Get/set the  x -velocity of the rigid block."><code class="xref fish fish-func docutils literal"><span class="pre">block.vel.x</span></code></a></td>
+</tr>
+<tr class="row-even"><td>b_y</td>
+<td><a class="reference internal" href="elements/block/block_fish/fish_block.pos.html#function:block.pos.y" title="Get the  y -coordinate of the block centroid."><code class="xref fish fish-func docutils literal"><span class="pre">block.pos.y</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>b_yforce</td>
+<td><a class="reference internal" href="elements/block/block_fish/fish_block.force.html#function:block.force.y" title="Get/set the  y -force on the block."><code class="xref fish fish-func docutils literal"><span class="pre">block.force.y</span></code></a></td>
+</tr>
+<tr class="row-even"><td>b_yload</td>
+<td><a class="reference internal" href="elements/block/block_fish/fish_block.load.html#function:block.load.y" title="Get/set the applied  y -force on the block."><code class="xref fish fish-func docutils literal"><span class="pre">block.load.y</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>b_yvel</td>
+<td><a class="reference internal" href="elements/block/block_fish/fish_block.vel.html#function:block.vel.y" title="Get/set the  y -velocity of the rigid block."><code class="xref fish fish-func docutils literal"><span class="pre">block.vel.y</span></code></a></td>
+</tr>
+<tr class="row-even"><td>b_zone</td>
+<td><a class="reference internal" href="elements/block/block_fish/fish_block.zone_intrinsics.html#function:block.zone" title="scoobydoo"><code class="xref fish fish-func docutils literal"><span class="pre">block.zone</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td></td>
+<td id="fish-boundarymap">&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>boundary (apply)</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>bou_finc</td>
+<td><a class="reference internal" href="elements/block/block.boundary_fish/fish_block.boundary.increment.html#function:block.boundary.increment" title="Get/set the boundary incremental change value vector."><code class="xref fish fish-func docutils literal"><span class="pre">block.boundary.increment</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>bou_force</td>
+<td><a class="reference internal" href="elements/block/block.boundary_fish/fish_block.boundary.force.html#function:block.boundary.force" title="Get/set the boundary force vector."><code class="xref fish fish-func docutils literal"><span class="pre">block.boundary.force</span></code></a></td>
+</tr>
+<tr class="row-even"><td>bou_gp</td>
+<td><a class="reference internal" href="elements/block/block.boundary_fish/fish_block.boundary.gp.html#function:block.boundary.gp" title="Get the index of the gridpoint associated with the boundary corner."><code class="xref fish fish-func docutils literal"><span class="pre">block.boundary.gp</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>bou_next</td>
+<td><a class="reference internal" href="elements/block/block.boundary_fish/fish_block.boundary.next.html#function:block.boundary.next" title="Get the index of the next boundary corner from the main list."><code class="xref fish fish-func docutils literal"><span class="pre">block.boundary.next</span></code></a></td>
+</tr>
+<tr class="row-even"><td>bou_vel</td>
+<td><a class="reference internal" href="elements/block/block.boundary_fish/fish_block.boundary.vel.html#function:block.boundary.vel" title="Get/set the boundary velocity vector."><code class="xref fish fish-func docutils literal"><span class="pre">block.boundary.vel</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>bou_xfinc</td>
+<td><a class="reference internal" href="elements/block/block.boundary_fish/fish_block.boundary.increment.html#function:block.boundary.increment.x" title="Get/set the incremental change value in the  x -direction."><code class="xref fish fish-func docutils literal"><span class="pre">block.boundary.increment.x</span></code></a></td>
+</tr>
+<tr class="row-even"><td>bou_xforce</td>
+<td><a class="reference internal" href="elements/block/block.boundary_fish/fish_block.boundary.force.html#function:block.boundary.force.x" title="Get/set the  x -force at the boundary."><code class="xref fish fish-func docutils literal"><span class="pre">block.boundary.force.x</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>bou_xhadd</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.boundary.history.index.x</span></code></td>
+</tr>
+<tr class="row-even"><td>bou_xreact</td>
+<td><a class="reference internal" href="elements/block/block.boundary_fish/fish_block.boundary.reaction.x.html#function:block.boundary.reaction.x" title="Get the  x -direction reaction force at boundary corner for a fixed velocity&#013;&#010;boundary."><code class="xref fish fish-func docutils literal"><span class="pre">block.boundary.reaction.x</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>bou_xtype</td>
+<td><a class="reference internal" href="elements/block/block.boundary_fish/fish_block.boundary.type.x.html#function:block.boundary.type.x" title="Get the boundary type in the  x -direction."><code class="xref fish fish-func docutils literal"><span class="pre">block.boundary.type.x</span></code></a></td>
+</tr>
+<tr class="row-even"><td>bou_xvel</td>
+<td><a class="reference internal" href="elements/block/block.boundary_fish/fish_block.boundary.vel.html#function:block.boundary.vel.x" title="Get/set the  x -velocity at the boundary."><code class="xref fish fish-func docutils literal"><span class="pre">block.boundary.vel.x</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>bou_yfinc</td>
+<td><a class="reference internal" href="elements/block/block.boundary_fish/fish_block.boundary.increment.html#function:block.boundary.increment.y" title="Get/set the incremental change value in the  y -direction."><code class="xref fish fish-func docutils literal"><span class="pre">block.boundary.increment.y</span></code></a></td>
+</tr>
+<tr class="row-even"><td>bou_yforce</td>
+<td><a class="reference internal" href="elements/block/block.boundary_fish/fish_block.boundary.force.html#function:block.boundary.force.y" title="Get/set the  y -force at the boundary."><code class="xref fish fish-func docutils literal"><span class="pre">block.boundary.force.y</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>bou_yhadd</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.boundary.history.index.y</span></code></td>
+</tr>
+<tr class="row-even"><td>bou_yreact</td>
+<td><a class="reference internal" href="elements/block/block.boundary_fish/fish_block.boundary.reaction.y.html#function:block.boundary.reaction.y" title="Get the  y -direction reaction force at boundary corner for a fixed velocity&#013;&#010;boundary."><code class="xref fish fish-func docutils literal"><span class="pre">block.boundary.reaction.y</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>bou_ytype</td>
+<td><a class="reference internal" href="elements/block/block.boundary_fish/fish_block.boundary.type.y.html#function:block.boundary.type.y" title="Get the boundary type in the  y -direction."><code class="xref fish fish-func docutils literal"><span class="pre">block.boundary.type.y</span></code></a></td>
+</tr>
+<tr class="row-even"><td>bou_yvel</td>
+<td><a class="reference internal" href="elements/block/block.boundary_fish/fish_block.boundary.vel.html#function:block.boundary.vel.y" title="Get/set the  y -velocity at the boundary."><code class="xref fish fish-func docutils literal"><span class="pre">block.boundary.vel.y</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td></td>
+<td id="fish-contactsmap">&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>contacts</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>c_b1</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.block1.html#function:block.contact.block1" title="Get block1 associated with the contact."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.block1</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>c_b2</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.block2.html#function:block.contact.block2" title="Get block2 associated with the contact."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.block2</span></code></a></td>
+</tr>
+<tr class="row-even"><td>c_cons</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.jmodel.html#function:block.contact.model" title="Get/set the constitutive model number associated with the contact."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.model</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>c_d1</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.domain1.html#function:block.contact.domain1" title="Get the index of domain 1 associated with the contact."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.domain1</span></code></a></td>
+</tr>
+<tr class="row-even"><td>c_d2</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.domain2.html#function:block.contact.domain2" title="Get the index of domain 2 associated with the contact."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.domain2</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>c_extra</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.extra.html#function:block.contact.extra" title="Get/set the value of contact extra variable at (optional) position  i ."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.extra</span></code></a></td>
+</tr>
+<tr class="row-even"><td>c_fid</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>c_group</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.group.html#function:block.contact.group" title="Get/set the group name assigned to contact  index  in slot  slot .&#013;&#010;Use of the group logic is described in  group_manual ."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.group</span></code></a></td>
+</tr>
+<tr class="row-even"><td>c_id</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>c_ispare</td>
+<td>n/a</td>
+</tr>
+<tr class="row-even"><td>c_jex</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.extension</span></code></td>
+</tr>
+<tr class="row-odd"><td>c_length</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.length.html#function:block.contact.length" title="Get the contact length."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.length</span></code></a></td>
+</tr>
+<tr class="row-even"><td>c_link1</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.link</span></code></td>
+</tr>
+<tr class="row-odd"><td>c_link2</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.link-reverse</span></code></td>
+</tr>
+<tr class="row-even"><td>c_link2</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.next.html#function:block.contact.next" title="Get the index of the next contact in main list from  ind ."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.next</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>c_mat</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.material</span></code></td>
+</tr>
+<tr class="row-even"><td>c_n</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.normal.html#function:block.contact.normal" title="Get/set the contact normal vector."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.normal</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>c_ndis</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.disp.normal.html#function:block.contact.disp.normal" title="Get/set the normal displacement at the contact. Positive is opening, negative&#013;&#010;is closure."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.disp.normal</span></code></a></td>
+</tr>
+<tr class="row-even"><td>c_next</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.next.html#function:block.contact.next" title="Get the index of the next contact in main list from  ind ."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.next</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>c_nforce</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.force.normal.html#function:block.contact.force.normal" title="Get/set the normal force at the contact."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.force.normal</span></code></a></td>
+</tr>
+<tr class="row-even"><td>c_nx</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.normal.html#function:block.contact.normal.x" title="Get/set the  x -component of unit normal."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.normal.x</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>c_ny</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.normal.html#function:block.contact.normal.y" title="Get/set the  y -component of unit normal."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.normal.y</span></code></a></td>
+</tr>
+<tr class="row-even"><td>c_obj_type</td>
+<td>n/a (???)</td>
+</tr>
+<tr class="row-odd"><td>c_pos</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.pos.html#function:block.contact.pos" title="Get/set the contact position vector."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.pos</span></code></a></td>
+</tr>
+<tr class="row-even"><td>c_rspare</td>
+<td>n/a</td>
+</tr>
+<tr class="row-odd"><td>c_sdis</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.disp.shear.html#function:block.contact.disp.shear" title="Get/set the shear displacement at the contact."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.disp.shear</span></code></a></td>
+</tr>
+<tr class="row-even"><td>c_sforce</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.force.shear.html#function:block.contact.force.shear" title="Get/set the shear force at the contact."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.force.shear</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>c_thsource</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.thermal.source.html#function:block.contact.thermal.source" title="Set a thermal source at the location of the given contact."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.thermal.source</span></code></a></td>
+</tr>
+<tr class="row-even"><td>c_type</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.type</span></code></td>
+</tr>
+<tr class="row-odd"><td>c_x</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.pos.html#function:block.contact.pos.x" title="Get/set the  x -component of contact position."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.pos.x</span></code></a></td>
+</tr>
+<tr class="row-even"><td>c_y</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.pos.html#function:block.contact.pos.y" title="Get/set the  y -component of contact position."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.pos.y</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>j_model</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.jmodel.html#function:block.contact.model" title="Get/set the constitutive model number associated with the contact."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.model</span></code></a></td>
+</tr>
+<tr class="row-even"><td>j_prop</td>
+<td><a class="reference internal" href="elements/block/block.contact_fish/fish_block.contact.prop.html#function:block.contact.prop" title="Get/set the joint model property value. This is used for the local storage models&#013;&#010;(defined using the block contact cmodel assign command) and user-defined joint&#013;&#010;constitutive models.  For built-in models, use  block.contact.mat ."><code class="xref fish fish-func docutils literal"><span class="pre">block.contact.prop</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td></td>
+<td id="fish-cornersmap">&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>corners</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cor_block</td>
+<td><a class="reference internal" href="elements/block/block.corner_fish/fish_block.corner.block.html#function:block.corner.block" title="Get the index of the block associated with the corner."><code class="xref fish fish-func docutils literal"><span class="pre">block.corner.block</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>cor_bou</td>
+<td><a class="reference internal" href="elements/block/block.corner_fish/fish_block.corner.boundary.html#function:block.corner.boundary" title="Get the index of the boundary corner array. Returns zero if the corner does&#013;&#010;not have a boundary condition applied to it."><code class="xref fish fish-func docutils literal"><span class="pre">block.corner.boundary</span></code></a></td>
+</tr>
+<tr class="row-even"><td>cor_contact</td>
+<td><a class="reference internal" href="elements/block/block.corner_fish/fish_block.corner.contact.html#function:block.corner.contact" title="Get the index of the contact associated with the corner."><code class="xref fish fish-func docutils literal"><span class="pre">block.corner.contact</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>cor_dis</td>
+<td><a class="reference internal" href="elements/block/block.corner_fish/fish_block.corner.disp.html#function:block.corner.disp" title="Get/set the corner displacement vector."><code class="xref fish fish-func docutils literal"><span class="pre">block.corner.disp</span></code></a></td>
+</tr>
+<tr class="row-even"><td>cor_gp</td>
+<td><a class="reference internal" href="elements/block/block.corner_fish/fish_block.corner.gp.html#function:block.corner.gp" title="Get the index of the gridpoint associated with the corner."><code class="xref fish fish-func docutils literal"><span class="pre">block.corner.gp</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>cor_ispare</td>
+<td>n/a</td>
+</tr>
+<tr class="row-even"><td>cor_link</td>
+<td><a class="reference internal" href="elements/block/block.corner_fish/fish_block.corner.link.html#function:block.corner.link" title="Get the index of the next corner or contact in a clockwise direction."><code class="xref fish fish-func docutils literal"><span class="pre">block.corner.link</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>cor_pos</td>
+<td><a class="reference internal" href="elements/block/block.corner_fish/fish_block.corner.pos.html#function:block.corner.pos" title="Get the corner centroid position vector."><code class="xref fish fish-func docutils literal"><span class="pre">block.corner.pos</span></code></a></td>
+</tr>
+<tr class="row-even"><td>cor_rlink</td>
+<td><a class="reference internal" href="elements/block/block.corner_fish/fish_block.corner.link.reverse.html#function:block.corner.link.reverse" title="Get the index of the next corner in a counterclockwise direction."><code class="xref fish fish-func docutils literal"><span class="pre">block.corner.link.reverse</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>cor_rspare</td>
+<td>n/a</td>
+</tr>
+<tr class="row-even"><td>cor_vel</td>
+<td><a class="reference internal" href="elements/block/block.corner_fish/fish_block.corner.vel.html#function:block.corner.vel" title="Get/set the corner velocity vector."><code class="xref fish fish-func docutils literal"><span class="pre">block.corner.vel</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>cor_x</td>
+<td><a class="reference internal" href="elements/block/block.corner_fish/fish_block.corner.pos.html#function:block.corner.pos.x" title="Get the  x -coordinate of the corner centroid."><code class="xref fish fish-func docutils literal"><span class="pre">block.corner.pos.x</span></code></a></td>
+</tr>
+<tr class="row-even"><td>cor_xdis</td>
+<td><a class="reference internal" href="elements/block/block.corner_fish/fish_block.corner.disp.html#function:block.corner.disp.x" title="Get/set the  x -displacement of the corner."><code class="xref fish fish-func docutils literal"><span class="pre">block.corner.disp.x</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>cor_xvel</td>
+<td><a class="reference internal" href="elements/block/block.corner_fish/fish_block.corner.vel.html#function:block.corner.vel.x" title="Get/set the  x -velocity of the corner."><code class="xref fish fish-func docutils literal"><span class="pre">block.corner.vel.x</span></code></a></td>
+</tr>
+<tr class="row-even"><td>cor_y</td>
+<td><a class="reference internal" href="elements/block/block.corner_fish/fish_block.corner.pos.html#function:block.corner.pos.y" title="Get the  y -coordinate of the corner centroid."><code class="xref fish fish-func docutils literal"><span class="pre">block.corner.pos.y</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>cor_ydis</td>
+<td><a class="reference internal" href="elements/block/block.corner_fish/fish_block.corner.disp.html#function:block.corner.disp.y" title="Get/set the  y -displacement of the corner."><code class="xref fish fish-func docutils literal"><span class="pre">block.corner.disp.y</span></code></a></td>
+</tr>
+<tr class="row-even"><td>cor_yvel</td>
+<td><a class="reference internal" href="elements/block/block.corner_fish/fish_block.corner.vel.html#function:block.corner.vel.y" title="Get/set the  y -velocity of the corner."><code class="xref fish fish-func docutils literal"><span class="pre">block.corner.vel.y</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td></td>
+<td id="fish-domainsmap">&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>domains</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>d_contact</td>
+<td><a class="reference internal" href="elements/block/block.domain_fish/fish_block.domain.contact.html#function:block.domain.contact" title="Get the next contact in a domain.  If  ind3  is 0, the function returns&#013;&#010;the first contact in counterclockwise list around the domain. If  ind3 &#013;&#010;is a contact, the function returns the next contact in the domain."><code class="xref fish fish-func docutils literal"><span class="pre">block.domain.contact</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>d_fix</td>
+<td><a class="reference internal" href="elements/block/block.domain_fish/fish_block.domain.fix.html#function:block.domain.fix" title="Get/set a fixed wetting fluid pressure condition (1 = fixed, 0 = free) in the&#013;&#010;domain."><code class="xref fish fish-func docutils literal"><span class="pre">block.domain.fix</span></code></a></td>
+</tr>
+<tr class="row-even"><td>d_ispare</td>
+<td>n/a</td>
+</tr>
+<tr class="row-odd"><td>d_next</td>
+<td><a class="reference internal" href="elements/block/block.domain_fish/fish_block.domain.next.html#function:block.domain.next" title="Get the index of the next domain in the main list from the given domain."><code class="xref fish fish-func docutils literal"><span class="pre">block.domain.next</span></code></a></td>
+</tr>
+<tr class="row-even"><td>d_nw_fix</td>
+<td><a class="reference internal" href="elements/block/block.domain_fish/fish_block.domain.fix.nonwetting.html#function:block.domain.fix.nonwetting" title="Get/set a fixed nonwetting fluid pressure condition (1 = fixed, 0 = free) in&#013;&#010;the domain."><code class="xref fish fish-func docutils literal"><span class="pre">block.domain.fix.nonwetting</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>d_nw_pp</td>
+<td><a class="reference internal" href="elements/block/block.domain_fish/fish_block.domain.pp.nonwetting.html#function:block.domain.pp.nonwetting" title="Get/set domain nonwetting fluid pressure."><code class="xref fish fish-func docutils literal"><span class="pre">block.domain.pp.nonwetting</span></code></a></td>
+</tr>
+<tr class="row-even"><td>d_obj_type</td>
+<td>n/a</td>
+</tr>
+<tr class="row-odd"><td>d_pos</td>
+<td><a class="reference internal" href="elements/block/block.domain_fish/fish_block.domain.pos.html#function:block.domain.pos" title="Get the domain centroid position vector."><code class="xref fish fish-func docutils literal"><span class="pre">block.domain.pos</span></code></a></td>
+</tr>
+<tr class="row-even"><td>d_pp</td>
+<td><a class="reference internal" href="elements/block/block.domain_fish/fish_block.domain.pp.html#function:block.domain.pp" title="Get/set domain wetting fluid pressure."><code class="xref fish fish-func docutils literal"><span class="pre">block.domain.pp</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>d_rspare</td>
+<td>n/a</td>
+</tr>
+<tr class="row-even"><td>d_sat</td>
+<td><a class="reference internal" href="elements/block/block.domain_fish/fish_block.domain.saturation.html#function:block.domain.saturation" title="Get domain fluid saturation."><code class="xref fish fish-func docutils literal"><span class="pre">block.domain.saturation</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>d_temp</td>
+<td><a class="reference internal" href="elements/block/block.domain_fish/fish_block.domain.temp.html#function:block.domain.temp" title="Get the domain temperature."><code class="xref fish fish-func docutils literal"><span class="pre">block.domain.temp</span></code></a></td>
+</tr>
+<tr class="row-even"><td>d_vol</td>
+<td><a class="reference internal" href="elements/block/block.domain_fish/fish_block.domain.volume.html#function:block.domain.volume" title="Get domain volume."><code class="xref fish fish-func docutils literal"><span class="pre">block.domain.volume</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>d_x</td>
+<td><a class="reference internal" href="elements/block/block.domain_fish/fish_block.domain.pos.html#function:block.domain.pos.x" title="Get the  x -coordinate of the domain centroid."><code class="xref fish fish-func docutils literal"><span class="pre">block.domain.pos.x</span></code></a></td>
+</tr>
+<tr class="row-even"><td>d_y</td>
+<td><a class="reference internal" href="elements/block/block.domain_fish/fish_block.domain.pos.html#function:block.domain.pos.y" title="Get the  y -coordinate of the domain centroid."><code class="xref fish fish-func docutils literal"><span class="pre">block.domain.pos.y</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>f_bulk</td>
+<td><a class="reference internal" href="elements/block/block.domain_fish/fish_block.domain.fluid.bulk.html#function:block.domain.fluid.bulk" title="Get domain fluid bulk."><code class="xref fish fish-func docutils literal"><span class="pre">block.domain.fluid.bulk</span></code></a></td>
+</tr>
+<tr class="row-even"><td>f_dens</td>
+<td><a class="reference internal" href="elements/block/block.domain_fish/fish_block.domain.fluid.density.html#function:block.domain.fluid.density" title="Get domain fluid density."><code class="xref fish fish-func docutils literal"><span class="pre">block.domain.fluid.density</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td></td>
+<td id="fish-gridpointsmap">&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>gridpoints</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>gp_addxmass</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.dynamic.mass.html#function:block.gp.dynamic.mass" title="Get/set the dynamic mass at the gridpoint."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.dynamic.mass</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>gp_block</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.block.html#function:block.gp.block" title="Get the index of the block associated with the gridpoint."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.block</span></code></a></td>
+</tr>
+<tr class="row-even"><td>gp_bou</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.boundary.corner.html#function:block.gp.boundary.corner" title="Get the index of the boundary corner associated with the gridpoint."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.boundary.corner</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>gp_corner</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.corner.html#function:block.gp.corner" title="Get the index of the corner associated with the gridpoint."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.corner</span></code></a></td>
+</tr>
+<tr class="row-even"><td>gp_dis</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.disp.html#function:block.gp.disp" title="Get/set the gridpoint displacement vector."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.disp</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>gp_dsf</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.density.scaling.html#function:block.gp.density.scaling" title="Get the density scaling factor."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.density.scaling</span></code></a></td>
+</tr>
+<tr class="row-even"><td>gp_extra</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.extra.html#function:block.gp.extra" title="Get/set the value of gridpoint extra variable at (optional) position  i ."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.extra</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>gp_force</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.force.html#function:block.gp.force" title="Get/set the gridpoint force vector."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.force</span></code></a></td>
+</tr>
+<tr class="row-even"><td>gp_group</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.group.html#function:block.gp.group" title="Get/set the group name assigned to gridpoint  index  in slot  slot .&#013;&#010;Use of the group logic is described in  group_manual ."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.group</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>gp_ibou</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.boundaryt.internal.html#function:block.gp.boundary.internal" title="Get the index of the internal boundary nearest the gridpoint."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.boundary.internal</span></code></a></td>
+</tr>
+<tr class="row-even"><td>gp_id</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.id.html#function:block.gp.id" title="Get the ID of the gridpoint."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.id</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>gp_ispare</td>
+<td>n/a</td>
+</tr>
+<tr class="row-even"><td>gp_mass</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.mass.html#function:block.gp.mass" title="Get the gridpoint mass."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.mass</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>gp_mkbou</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.boundary.corner.make.html#function:block.gp.boundary.corner.make" title="Make a new boundary corner at the gridpoint and return its index."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.boundary.corner.make</span></code></a></td>
+</tr>
+<tr class="row-even"><td>gp_next</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.next.html#function:block.gp.next" title="Get the index of the next gridpoint in main list from  ind ."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.next</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>gp_pos</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.pos.html#function:block.gp.pos" title="Get the gridpoint centroid position vector."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.pos</span></code></a></td>
+</tr>
+<tr class="row-even"><td>gp_rspare</td>
+<td>n/a</td>
+</tr>
+<tr class="row-odd"><td>gp_temp</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.temp.html#function:block.gp.temp" title="Get the temperature at the gridpoint."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.temp</span></code></a></td>
+</tr>
+<tr class="row-even"><td>gp_thmass</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.thermal.mass.html#function:block.gp.thermal.mass" title="Get the thermal mass at the gridpoint."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.thermal.mass</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>gp_vel</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.vel.html#function:block.gp.vel" title="Get/set the gridpoint velocity vector."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.vel</span></code></a></td>
+</tr>
+<tr class="row-even"><td>gp_x</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.pos.html#function:block.gp.pos.x" title="Get the  x -coordinate of the gridpoint centroid."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.pos.x</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>gp_xdis</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.disp.html#function:block.gp.disp.x" title="Get/set the  x -displacement of the gridpoint."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.disp.x</span></code></a></td>
+</tr>
+<tr class="row-even"><td>gp_xforce</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.force.html#function:block.gp.force.x" title="Get/set the  x -force of the gridpoint."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.force.x</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>gp_xreaction</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.xreaction.html#function:block.gp.reaction.x" title="Get the  x -reaction force at the gridpoint."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.reaction.x</span></code></a></td>
+</tr>
+<tr class="row-even"><td>gp_xvel</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.vel.html#function:block.gp.vel.x" title="Get/set the  x -velocity of the gridpoint."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.vel.x</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>gp_y</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.pos.html#function:block.gp.pos.y" title="Get the  y -coordinate of the gridpoint centroid."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.pos.y</span></code></a></td>
+</tr>
+<tr class="row-even"><td>gp_ydis</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.disp.html#function:block.gp.disp.y" title="Get/set the  y -displacement of the gridpoint."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.disp.y</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>gp_yforce</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.force.html#function:block.gp.force.y" title="Get/set the  y -force of the gridpoint."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.force.y</span></code></a></td>
+</tr>
+<tr class="row-even"><td>gp_yreaction</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.yreaction.html#function:block.gp.reaction.y" title="Get the  y -reaction force at the gridpoint."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.reaction.y</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>gp_yvel</td>
+<td><a class="reference internal" href="elements/block/block.gp_fish/fish_block.gp.vel.html#function:block.gp.vel.y" title="Get/set the  y -velocity of the gridpoint."><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.vel.y</span></code></a></td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td id="fish-propertiesmap">&#160;</td>
+</tr>
+<tr class="row-even"><td><strong>properties</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>(using material numbers)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>m_bulk</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.block.bulk.html#function:prop.block.bulk" title="Get/set the bulk property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.block.bulk</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>m_cohesion</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.block.cohesion.html#function:prop.block.cohesion" title="Get/set the cohesion property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.block.cohesion</span></code></a></td>
+</tr>
+<tr class="row-even"><td>m_density</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.block.density.html#function:prop.block.density" title="Get/set the density property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.block.density</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>m_dilaton</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.block.dilation.html#function:prop.block.dilation" title="Get/set the tan (dilation) property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.block.dilation</span></code></a></td>
+</tr>
+<tr class="row-even"><td>m_friction</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.block.friction.html#function:prop.block.friction" title="Get/set the coefficient (not angle) of friction property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.block.friction</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>m_jcohesion</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.contact.cohesion.html#function:prop.contact.cohesion" title="Get/set the contact cohesion property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.contact.cohesion</span></code></a></td>
+</tr>
+<tr class="row-even"><td>m_jdilation</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.contact.dilation.html#function:prop.contact.dilation" title="Get/set the contact dilation property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.contact.dilation</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>m_jfriction</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.contact.friction.html#function:prop.contact.friction" title="Get/set the contact coefficient of friction property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.contact.friction</span></code></a></td>
+</tr>
+<tr class="row-even"><td>m_jkn</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.contact.stiffness.normal.html#function:prop.contact.stiffness.normal" title="Get/set the contact normal stiffness property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.contact.stiffness.normal</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>m_jks</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.contact.stiffness.shear.html#function:prop.contact.stiffness.shear" title="Get/set the contact shear stiffness property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.contact.stiffness.shear</span></code></a></td>
+</tr>
+<tr class="row-even"><td>m_jrescoh</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.contact.cohesion.residual.html#function:prop.contact.cohesion.residual" title="Get/set the contact residual cohesion stiffness property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.contact.cohesion.residual</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>m_jrfriction</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.contact.friction.residual.html#function:prop.contact.friction.residual" title="Get/set the contact coefficient of residual friction property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.contact.friction.residual</span></code></a></td>
+</tr>
+<tr class="row-even"><td>m_jrtension</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.contact.tension.residual.html#function:prop.contact.tension.residual" title="Get/set the contact residual tensile strength property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.contact.tension.residual</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>m_jtension</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.contact.tension.html#function:prop.contact.tension" title="Get/set the contact tension property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.contact.tension</span></code></a></td>
+</tr>
+<tr class="row-even"><td>m_shear</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.block.shear.html#function:prop.block.shear" title="Get/set the shear property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.block.shear</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>m_tension</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.block.tension.html#function:prop.block.tension" title="Get/set the tension property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.block.tension</span></code></a></td>
+</tr>
+<tr class="row-even"><td>r_aexp</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.structure.axial.stiffness.exp.html#function:prop.reinf.stiffness.axial.exp" title="Get/set the axial stiffness exponent property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.reinf.stiffness.axial.exp</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>r_astiff</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.structure.axial.stiffness.html#function:prop.reinf.stiffness.axial" title="Get/set the axial stiffness property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.reinf.stiffness.axial</span></code></a></td>
+</tr>
+<tr class="row-even"><td>r_length</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.structure.length.html#function:prop.reinf.length" title="Get/set the active length property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.reinf.length</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>r_prop</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">prop.reinf.number</span></code></td>
+</tr>
+<tr class="row-even"><td>r_rfac</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.structure.reversal.factor.html#function:prop.reinf.reversal.factor" title="Get/set the reversal factor property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.reinf.reversal.factor</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>r_sexp</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">prop.reinf.stiffness.shear.exp</span></code></td>
+</tr>
+<tr class="row-even"><td>r_sstif</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">prop.reinf.stiffness.shear</span></code></td>
+</tr>
+<tr class="row-odd"><td>r_str</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.structure.strain.html#function:prop.reinf.strain" title="Get/set the ultimate axial failure strain property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.reinf.strain</span></code></a></td>
+</tr>
+<tr class="row-even"><td>r_uaxial</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.structure.yield.normal.html#function:prop.reinf.yield.normal" title="Get/set the ultimate axial force limit property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.reinf.yield.normal</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>r_ushear</td>
+<td><a class="reference internal" href="elements/block/prop_fish/fish_prop.structure.yield.shear.html#function:prop.reinf.yield.shear" title="Get/set the ultimate shear force property of material  i ."><code class="xref fish fish-func docutils literal"><span class="pre">prop.reinf.yield.shear</span></code></a></td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td id="fish-thermalmap">&#160;</td>
+</tr>
+<tr class="row-even"><td><strong>thermal</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>tgps_cor</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.thermal.source.corner</span></code></td>
+</tr>
+<tr class="row-even"><td>tgps_decay</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.thermal.source.decay</span></code></td>
+</tr>
+<tr class="row-odd"><td>tgps_gp</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.thermal.source.gridpoint</span></code></td>
+</tr>
+<tr class="row-even"><td>tgps_next</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.thermal.source.next</span></code></td>
+</tr>
+<tr class="row-odd"><td>tgps_strength</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.thermal.source.strength</span></code></td>
+</tr>
+<tr class="row-even"><td>tgps_timeth</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.thermal.source.time.thermal</span></code></td>
+</tr>
+<tr class="row-odd"><td>tgps_type</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.thermal.source.type</span></code></td>
+</tr>
+<tr class="row-even"><td>tgps_con</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.gp.thermal.source.contact</span></code></td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td></td>
+<td id="fish-zonemap">&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>zones</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>z_area</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.area.html#function:block.zone.area" title="Get the ..."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.area</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>z_biot</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.biot.html#function:block.zone.biot" title="Get/set Biot's constant for the block zone."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.biot</span></code></a></td>
+</tr>
+<tr class="row-even"><td>z_block</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.block.html#function:block.zone.block" title="Get the index of the block associated with a block zone."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.block</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>z_bulk</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.bulk.html#function:block.zone.bulk" title="Get the block zone bulk modulus (returns 0.0 if properties are assigned by the&#013;&#010; block.zone.property  command)."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.bulk</span></code></a></td>
+</tr>
+<tr class="row-even"><td>z_cen</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.pos.html#function:block.zone.pos" title="Get the zone centroid position vector."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.pos</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>z_density</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.density.html#function:block.zone.density" title="Get/set the block zone density.  Note: gridpoint masses are recalculated when&#013;&#010;the next CYCLE command is given."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.density</span></code></a></td>
+</tr>
+<tr class="row-even"><td>z_extra</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.extra.html#function:block.zone.extra" title="Get/set the value of block zone extra variable at (optional) position  i ."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.extra</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>z_fsi</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.fill.strain.increment.html#function:block.zone.strain.increment" title="Fill array (4)  a  with the strain increment components. (1 =  \epsilon&#013;&#010;xx , 2 =  \epsilon xy , 3 =  \epsilon xy , 4 =  \epsilon yy )&#013;&#010;Strains are calculated from the current gridpoint displacements."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.strain.increment</span></code></a></td>
+</tr>
+<tr class="row-even"><td>z_fsr</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.fill.strain.rate.html#function:block.zone.strain.rate" title="Fill array (4)  a  with the strain rate components. (1 =  \dot{\epsilon}&#013;&#010;xx , 2 =  \dot{\epsilon}xy , 3 =  \dot{\epsilon}xy , 4 =  \dot{\epsilon}yy )&#013;&#010;Strain rates are calculated from the current gridpoint velocities."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.strain.rate</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>z_geo_metric</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.metric.html#function:block.zone.metric" title="Get one of the metrics of the zone shape."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.metric</span></code></a></td>
+</tr>
+<tr class="row-even"><td>z_gp</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.gp.html#function:block.zone.gp" title="Get the index of a zone gridpoint."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.gp</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>z_group</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.group.html#function:block.zone.group" title="Get/set the group name assigned to zones  index  in slot  slot . Use&#013;&#010;of the group logic is described in  group_manual ."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.group</span></code></a></td>
+</tr>
+<tr class="row-even"><td>z_ispare</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">--</span></code></td>
+</tr>
+<tr class="row-odd"><td>z_mass</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.mass.html#function:block.zone.mass" title="Get the block zone mass."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.mass</span></code></a></td>
+</tr>
+<tr class="row-even"><td>z_mat</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.material.html#function:block.zone.mat" title="Get the material number for a zone (returns  -1  if the properties are&#013;&#010;assigned by the  block.zone.property  command)."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.mat</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>z_model</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.model.html#function:block.zone.model" title="Get/set the zone model."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.model</span></code></a></td>
+</tr>
+<tr class="row-even"><td>z_next</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.next.html#function:block.zone.next" title="Get the index of the next zone in main list."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.next</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>z_pp</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.pp.html#function:block.zone.pp" title="Get/set the block zone pore pressure."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.pp</span></code></a></td>
+</tr>
+<tr class="row-even"><td>z_prop</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.property</span></code></td>
+</tr>
+<tr class="row-odd"><td>z_rot</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.rotation.html#function:block.zone.rotation" title="Get/set the block zone rotation."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.rotation</span></code></a></td>
+</tr>
+<tr class="row-even"><td>z_rspare</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">--</span></code></td>
+</tr>
+<tr class="row-odd"><td>z_shear</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.shear.html#function:block.zone.shear" title="Get the zone shear modulus (returns 0.0 if properties are assigned by the  block.zone.property &#013;&#010;command)."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.shear</span></code></a></td>
+</tr>
+<tr class="row-even"><td>z_state</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.state.html#function:block.zone.state" title="Get/set the zone plasticity state indicator.  The state indicator is the sum&#013;&#010;of the current conditions (bitwise operation) as more than one may apply."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.state</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>z_sxx</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.stress.xx.html#function:block.zone.stress.xx" title="Get/set the  xx -stress of a zone."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.stress.xx</span></code></a></td>
+</tr>
+<tr class="row-even"><td>z_sxy</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.stress.xy.html#function:block.zone.stress.xy" title="Get/set the  xy -stress of a zone."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.stress.xy</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>z_syy</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.stress.yy.html#function:block.zone.stress.yy" title="Get/set the  yy -stress of a zone."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.stress.yy</span></code></a></td>
+</tr>
+<tr class="row-even"><td>z_szz</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.stress.zz.html#function:block.zone.stress.zz" title="Get/set the  zz -stress of a zone."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.stress.zz</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>z_total_strain</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.total.strain.html#function:block.zone.strain.total" title="Get the ..."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.strain.total</span></code></a></td>
+</tr>
+<tr class="row-even"><td>z_x</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.pos.html#function:block.zone.pos.x" title="Get the  x -coordinate of the zone centroid."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.pos.x</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>z_y</td>
+<td><a class="reference internal" href="elements/block/block.zone_fish/fish_block.zone.pos.html#function:block.zone.pos.y" title="Get the  y -coordinate of the zone centroid."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.pos.y</span></code></a></td>
+</tr>
+<tr class="row-even"><td>z_zex</td>
+<td><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.extension</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="udechome.html" accesskey="U"><em>UDEC</em></a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="commandsmap.html"
+                           title="previous chapter"> <span class="codename">UDEC</span> 6.0 to 7.0 Commands Map</a> |    
+       <a href="../../../common/docproject/source/manual/scripting/fish_scripting/fish.html"
+                           title="next chapter"><span class="codename">FISH</span> Scripting Reference</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?UDEC 6.0 to 7.0 FISH Mapping" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

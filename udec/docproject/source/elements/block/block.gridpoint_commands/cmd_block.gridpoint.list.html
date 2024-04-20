@@ -1,0 +1,911 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block gridpoint list command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block gridpoint slave command" href="cmd_block.gridpoint.slave.html" />
+    <link rel="prev" title="block gridpoint initialize command" href="cmd_block.gridpoint.initialize.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-gridpoint-list-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">gridpoint</span> <span class="pre">list</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="blockgridpoint command">
+<dt id="command:block.gridpoint.list">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">g</span><span class="null">r</span><span class="null">i</span><span class="null">d</span><span class="null">p</span><span class="null">o</span><span class="null">i</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><span class="cmdname"><span class="null">l</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.gridpoint.list.apply" title="block gridpoint list apply">apply</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.list.density-scaling-factors" title="block gridpoint list density-scaling-factors">density-scaling-factors</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.list.displacement" title="block gridpoint list displacement">displacement</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.list.force" title="block gridpoint list force">force</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.list.joined" title="block gridpoint list joined">joined</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.list.mass" title="block gridpoint list mass">mass</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.list.position" title="block gridpoint list position">position</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.list.temperature" title="block gridpoint list temperature">temperature</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.list.velocity" title="block gridpoint list velocity">velocity</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.gridpoint.list.group" title="block gridpoint list group">group</a></p>
+</div>
+<p>List information regarding gridpoints.</p>
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.apply">
+<span class="cmdkey"><span class="pref">a</span><span class="null">p</span><span class="null">p</span><span class="null">l</span><span class="null">y</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span></span>></span><span class="null"> </span></dt>
+<dd><p>List boundary condition information by the following keywords.</p>
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.apply.boundary-elements">
+<span class="cmdkey"><span class="pref">b</span><span class="null">o</span><span class="null">u</span><span class="null">n</span><span class="null">d</span><span class="null">a</span><span class="null">r</span><span class="null">y</span><span class="null">-</span><span class="pref">e</span><span class="null">l</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>List boundary element conditions. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>boundary corner index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>associated block corner index</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>associated gridpoint index</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td><span class="math">\(x\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td><span class="math">\(y\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>associated boundary element node</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>second boundary element node</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td>boundary element load-distribution factor</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.apply.displacements">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>List displacement at boundary. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>boundary corner index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td><span class="math">\(x\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(y\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td><span class="math">\(x\)</span>-displacement of boundary corner</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td><span class="math">\(y\)</span>-displacement of boundary corner</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.apply.fluid">
+<span class="cmdkey"><span class="pref">f</span><span class="null">l</span><span class="null">u</span><span class="null">i</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>List displacement at boundary. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>boundary corner index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td><span class="math">\(x\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(y\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td><span class="math">\(x\)</span>-displacement of boundary corner</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td><span class="math">\(y\)</span>-displacement of boundary corner</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.apply.free-field">
+<span class="cmdkey"><span class="pref">f</span><span class="null">r</span><span class="null">e</span><span class="null">e</span><span class="null">-</span><span class="pref">f</span><span class="null">i</span><span class="null">e</span><span class="null">l</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd></dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.apply.force">
+<span class="cmdkey"><span class="pref">f</span><span class="null">o</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>forces at boundary. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>boundary corner index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td><span class="math">\(x\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(y\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>total <span class="math">\(x\)</span>-component of force at boundary</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>total <span class="math">\(y\)</span>-component of force at boundary</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td><span class="math">\(x\)</span>-component of force added for transient loading</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td><span class="math">\(x\)</span>-history applied type</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td><span class="math">\(y\)</span>-component of force added for transient loading</td>
+</tr>
+<tr class="row-odd"><td>(9)</td>
+<td><span class="math">\(y\)</span>-history applied type</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The total forces also include the force induced by displacement boundary conditions.</p>
+</div>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.apply.history">
+<span class="cmdkey"><span class="pref">h</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>List histories* used to apply transient loads. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>history index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>history type</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>current value of history</td>
+</tr>
+</tbody>
+</table>
+<p>History <em>types</em> are: sine function, cosine function, history record, table, and fish function.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.apply.interior">
+<span class="cmdkey"><span class="pref">i</span><span class="null">n</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">o</span><span class="null">r</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span></span>></span><span class="null"> </span></dt>
+<dd><p>List interior boundaries.  The keywords are:</p>
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.apply.interior.displacement">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>List interior boundary displacements. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>boundary corner index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td><span class="math">\(x\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(y\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td><span class="math">\(x\)</span>-component of displacement at boundary</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td><span class="math">\(y\)</span>-component of displacement at boundary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.apply.interior.force">
+<span class="cmdkey"><span class="pref">f</span><span class="null">o</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>List interior boundary forces. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>boundary corner index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td><span class="math">\(x\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(y\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>total <span class="math">\(x\)</span>-component of force at boundary</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>total <span class="math">\(y\)</span>-component of force at boundary</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td><span class="math">\(x\)</span>-component of force added for transient loading</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td><span class="math">\(x\)</span>-history type*</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td><span class="math">\(y\)</span>-component of force added for transient loading</td>
+</tr>
+<tr class="row-odd"><td>(9)</td>
+<td><span class="math">\(y\)</span>-history type*</td>
+</tr>
+</tbody>
+</table>
+<p>History <em>types</em> are: sine function, cosine function, history record, table, and fish functions.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.apply.interior.history">
+<span class="cmdkey"><span class="pref">h</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>List histories* used to apply transient loads to interior boundaries. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>history index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>history type</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>current value of history</td>
+</tr>
+</tbody>
+</table>
+<p>History <em>types</em> are: sine function, cosine function, history record, table, and fish functions.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.apply.interior.state">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>List interior boundary condition state. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>boundary corner index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>associated block corner index</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>associated gridpoint index</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td><span class="math">\(x\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td><span class="math">\(y\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>boundary condition in the <span class="math">\(x\)</span>-direction</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>boundary condition in the <span class="math">\(y\)</span>-direction</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td>boundary condition in the shear direction</td>
+</tr>
+<tr class="row-odd"><td>(9)</td>
+<td>boundary condition in the normal direction</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The condition numbers for <span class="math">\(x\)</span>-, <span class="math">\(y\)</span>-, normal and shear directions are:</p>
+<blockquote class="last">
+<div><p>0      free</p>
+<p>1      stress (or force)</p>
+<p>2      boundary element</p>
+<p>3      viscous</p>
+<p>4      velocity</p>
+</div></blockquote>
+</div>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.apply.interior.velocity">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>List velocities* at interior boundary corners.</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>boundary corner index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td><span class="math">\(x\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(y\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td><span class="math">\(x\)</span>-velocity of boundary corner</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td><span class="math">\(x\)</span>-history type*</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td><span class="math">\(y\)</span>-velocity of boundary corner</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td><span class="math">\(y\)</span>-history type*</td>
+</tr>
+</tbody>
+</table>
+<p>History <em>types</em> are: sine function, cosine function, history record, table, and fish functions.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.apply.nonwetting-fluid">
+<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">n</span><span class="null">w</span><span class="null">e</span><span class="null">t</span><span class="null">t</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">-</span><span class="pref">f</span><span class="null">l</span><span class="null">u</span><span class="null">i</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>List non-wetting fluid pressure and permeability condition. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>boundary corner index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td><span class="math">\(x\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(y\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>permeability conditions at boundary corner:</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&nbsp;0&nbsp;&nbsp;&nbsp;permeable</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&nbsp;1&nbsp;&nbsp;&nbsp;impermeable</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>pore pressure at boundary corner</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.apply.state">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>List boundary condition state. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>boundary corner index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>associated block corner index</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>associated block index</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>associated gridpoint index</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td><span class="math">\(x\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td><span class="math">\(y\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>boundary condition in the <span class="math">\(x\)</span>-direction</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td>boundary condition in the <span class="math">\(y\)</span>-direction</td>
+</tr>
+<tr class="row-odd"><td>(9)</td>
+<td>free-field boundary condition</td>
+</tr>
+<tr class="row-even"><td>(10)</td>
+<td>boundary condition in the shear direction</td>
+</tr>
+<tr class="row-odd"><td>(11)</td>
+<td>boundary condition in the normal direction</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The condition numbers for <span class="math">\(x\)</span>-, <span class="math">\(y\)</span>-, normal and shear directions are:</p>
+<blockquote>
+<div><p>0      free</p>
+<p>1      stress (or force)</p>
+<p>2      boundary element</p>
+<p>3      viscous</p>
+<p>4      velocity</p>
+</div></blockquote>
+<p>The free-field indicator numbers are:</p>
+<blockquote class="last">
+<div><p>0      free field turned off</p>
+<p>1 or 2 free field turned on</p>
+</div></blockquote>
+</div>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.apply.thermal">
+<span class="cmdkey"><span class="pref">t</span><span class="null">h</span><span class="null">e</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>List temperature at boundary. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>boundary corner index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td><span class="math">\(x\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(y\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>temperature at boundary corner</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.apply.velocity">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>List velocities* at boundary corners.</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>boundary corner index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td><span class="math">\(x\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(y\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td><span class="math">\(x\)</span>-velocity of boundary corner</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td><span class="math">\(x\)</span>-history type*</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td><span class="math">\(y\)</span>-velocity of boundary corner</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td><span class="math">\(y\)</span>-history type*</td>
+</tr>
+</tbody>
+</table>
+<p>History <em>types</em> are: sine function, cosine function, history record, table, and fish functions.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.density-scaling-factors">
+<span class="cmdkey"><span class="pref">d</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">s</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">-</span><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>List gridpoint state data. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>gridpoint index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>index of linked corner</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(x\)</span>-coordinate of gridpoint</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td><span class="math">\(y\)</span>-coordinate of gridpoint</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>gridpoint mass</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>density scaling factor</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.displacement">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>List gridpoint displacements and velocities. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>gridpoint index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td><span class="math">\(x\)</span>-coordinate of gridpoint</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(y\)</span>-coordinate of gridpoint</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td><span class="math">\(x\)</span>-velocity of gridpoint</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td><span class="math">\(y\)</span>-velocity of gridpoint</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td><span class="math">\(x\)</span>-displacement of gridpoint</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td><span class="math">\(y\)</span>-displacement of gridpoint</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.force">
+<span class="cmdkey"><span class="pref">f</span><span class="null">o</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>List gridpoint forces. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>gridpoint index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td><span class="math">\(x\)</span>-coordinate of gridpoint</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(y\)</span>-coordinate of gridpoint</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td><span class="math">\(x\)</span>-direction force at gridpoint</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td><span class="math">\(y\)</span>-direction force at gridpoint</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.joined">
+<span class="cmdkey"><span class="pref">j</span><span class="null">o</span><span class="null">i</span><span class="null">n</span><span class="null">e</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>List all zone gridpoints that are slaved due to the blocks being joined.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.mass">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>List gridpoint state data. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>gridpoint index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>index of linked corner</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(x\)</span>-coordinate of gridpoint</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td><span class="math">\(y\)</span>-coordinate of gridpoint</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>gridpoint mass</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>density scaling factor</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.position">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>List gridpoint state data. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>gridpoint index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>index of linked corner</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(x\)</span>-coordinate of gridpoint</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td><span class="math">\(y\)</span>-coordinate of gridpoint</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>gridpoint mass</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>density scaling factor</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.temperature">
+<span class="cmdkey"><span class="pref">t</span><span class="null">e</span><span class="null">m</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>List gridpoint temperature (see Section 3 in Special Features). The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>gridpoint index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td><span class="math">\(x\)</span>-coordinate of gridpoint</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(y\)</span>-coordinate of gridpoint</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>temperature at gridpoint</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.velocity">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>List gridpoint displacements and velocities. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>gridpoint index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td><span class="math">\(x\)</span>-coordinate of gridpoint</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(y\)</span>-coordinate of gridpoint</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td><span class="math">\(x\)</span>-velocity of gridpoint</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td><span class="math">\(y\)</span>-velocity of gridpoint</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td><span class="math">\(x\)</span>-displacement of gridpoint</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td><span class="math">\(y\)</span>-displacement of gridpoint</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.gridpoint.list.group">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null"> </span></span></dt>
+<dd><p>List gridpoint group. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>gridpoint index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td><span class="math">\(x\)</span>-coordinate of gridpoint</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(y\)</span>-coordinate of gridpoint</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>group name</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>group slot</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../block_commands/block_commands.html" >Block Commands</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../block_commands/cmd_block.gridpoint.html" accesskey="U"><span class="fishcmd">block gridpoint</span> commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_block.gridpoint.initialize.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">gridpoint</span> <span class="pre">initialize</span></code> command</a> |    
+       <a href="cmd_block.gridpoint.slave.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">block</span> <span class="pre">gridpoint</span> <span class="pre">slave</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block gridpoint list command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

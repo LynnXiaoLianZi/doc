@@ -1,0 +1,483 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block list command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block mechanical commands" href="cmd_block.mechanical.html" />
+    <link rel="prev" title="block link command" href="cmd_block.link.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-list-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">list</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="block command">
+<dt id="command:block.list">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">l</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span></span>></span><span class="null"> </span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.list.at" title="block list at">at</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.list.energy" title="block list energy">energy</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.list.fos" title="block list fos">fos</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.list.group" title="block list group">group</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.list.information" title="block list information">information</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.list.linked-list" title="block list linked-list">linked-list</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.list.maxima" title="block list maxima">maxima</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.list.memory" title="block list memory">memory</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.list.on-grid" title="block list on-grid">on-grid</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.list.on-line" title="block list on-line">on-line</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.list.position" title="block list position">position</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.list.property" title="block list property">property</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.list.velocity" title="block list velocity">velocity</a></p>
+</div>
+<p>Display information in the program console pane for all variables defined by the keywords described below.</p>
+<p>If no range is given, then all output for the prescribed keyword will be displayed. Listing can be interrupted at any time by pressing the <code class="kbd docutils literal"><span class="pre">&lt;Esc&gt;</span></code> key.</p>
+<p><span class="codename">UDEC</span> model variables (e.g., blocks, contacts, domains, zones and gridpoints) are identified by index numbers in the “linked-list” data structure. These indexes uniquely define each variable in the model; the indexes are given with the LIST command.</p>
+<p>The following keywords may be used.</p>
+<dl class="keyword">
+<dt id="kwd:block.list.at">
+<span class="cmdkey"><span class="pref">a</span><span class="pref">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span><span class="null"> </span></span></a></dt>
+<dd><p>Model information is displayed for location (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span></span></a>). Data are displayed on the blocks and zone <span class="flag3">is ‘zone’ true? &amp; ditto ahead w/ contact &amp; gridpoint</span> whose centroid is closest to (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span></span></a>), and on the contact and gridpoint whose locations are closest to (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span></span></a>). See keywords blocks, zone, contact and gridpoint for a description of the output.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.energy">
+<span class="cmdkey"><span class="pref">e</span><span class="null">n</span><span class="null">e</span><span class="null">r</span><span class="null">g</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>totals for energy components stored and dissipated in the model. The components are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>current kinetic energy (Uk)</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>total block strain energy (Ucb)</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>total fill strain energy (Ucf)</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>total joint strain energy (Ucj)</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>total material strain energy (Uc = Ucb + Ucf + Ucj)</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>total block energy excavated (Umb)</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>total joint energy excavated (Umj)</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td>total strain energy excavated (Um = Umb + Umj)</td>
+</tr>
+<tr class="row-odd"><td>(9)</td>
+<td>total block volume excavated (Vm)</td>
+</tr>
+<tr class="row-even"><td>(10)</td>
+<td>total change in potential energy (Ub)</td>
+</tr>
+<tr class="row-odd"><td>(11)</td>
+<td>total mass damping work (Wk)</td>
+</tr>
+<tr class="row-even"><td>(12)</td>
+<td>total viscous boundary work (Wv)</td>
+</tr>
+<tr class="row-odd"><td>(13)</td>
+<td>total friction work (Wj)</td>
+</tr>
+<tr class="row-even"><td>(14)</td>
+<td>total plastic strain work (Wp)</td>
+</tr>
+<tr class="row-odd"><td>(15)</td>
+<td>total boundary loading work (W)</td>
+</tr>
+<tr class="row-even"><td>(16)</td>
+<td>total energy released (Wr = W − Uc − Ub − Wj − Wp)</td>
+</tr>
+<tr class="row-odd"><td>(17)</td>
+<td>total energy released (Wr = Uk + Wk + Wv + Um)</td>
+</tr>
+<tr class="row-even"><td>breakdown of energy stored in joints (Ucj):</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>(18)</td>
+<td>total energy stored in tension (Ujt)</td>
+</tr>
+<tr class="row-even"><td>(19)</td>
+<td>total energy stored in compression (Ujc)</td>
+</tr>
+<tr class="row-odd"><td>(20)</td>
+<td>total energy stored in shear (Ujs)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.fos">
+<span class="cmdkey"><span class="pref">f</span><span class="pref">o</span><span class="pref">s</span><span class="null"> </span></span></dt>
+<dd><p>List the current value of the factor of safety. This value is calculated by the SOLVE fos command.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.group">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null"> </span></span></dt>
+<dd><p>Lists all group names.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.information">
+<span class="cmdkey"><span class="pref">i</span><span class="null">n</span><span class="null">f</span><span class="null">o</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>List present status of global variables. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>configure settings</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>mechanical settings</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>gravity</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>block tolerances</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>model update frequencies</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>timestep parameters</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>solve setting</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td>hardcopy parameters</td>
+</tr>
+<tr class="row-odd"><td>(9)</td>
+<td>creep timestep parameters</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.linked-list">
+<span class="cmdkey"><span class="pref">l</span><span class="null">i</span><span class="null">n</span><span class="null">k</span><span class="null">e</span><span class="null">d</span><span class="null">-</span><span class="pref">l</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>List the block linked-list. A list is printed for all corner and contact indexes associated with each block.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.maxima">
+<span class="cmdkey"><span class="pref">m</span><span class="pref">a</span><span class="null">x</span><span class="null">i</span><span class="null">m</span><span class="null">a</span><span class="null"> </span></span></dt>
+<dd><p>List maxima, minima and average values of block and zone data, and summary of contact data. The memory currently used for the model (mfree in words) and the total memory available (mtop in words) are also printed.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.memory">
+<span class="cmdkey"><span class="pref">m</span><span class="pref">e</span><span class="null">m</span><span class="null">o</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>List memory currently in use by the model, and total memory available.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.on-grid">
+<span class="cmdkey"><span class="pref">o</span><span class="null">n</span><span class="null">-</span><span class="pref">g</span><span class="null">r</span><span class="null">i</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxl</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxu</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyl</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyu</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">ix</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">iy</span><span class="null"> </span></span></a></dt>
+<dd><dl class="keyword">
+<dt id="kwd:block.list.on-grid.stress">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>List principal stresses in the range <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxl</span></span></a> &lt; <span class="math">\(x\)</span> &lt; <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxu</span></span></a> and <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyl</span></span></a> &lt; <span class="math">\(y\)</span> &lt; <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyu</span></span></a> are printed on grid  <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">ix</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">iy</span></span></a>. The data are also sent to a file named “STRESS.”</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.on-line">
+<span class="cmdkey"><span class="pref">o</span><span class="null">n</span><span class="null">-</span><span class="pref">l</span><span class="null">i</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Selected zone or gridpoint variables of deformable blocks may be printed versus distance along a line. The line is defined by the <span class="cmdkey">define</span> keyword (below). The line is identified by its line number, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> . If <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a>  is omitted, all lines will be printed. The following keywords are available to print selected variables.</p>
+<dl class="keyword">
+<dt id="kwd:block.list.on-line.displacement-magnitude">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">m</span><span class="null">a</span><span class="null">g</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">u</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>List gridpoint displacement.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.on-line.displacement-x">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span></dt>
+<dd><p>List gridpoint <span class="math">\(x\)</span>-displacement.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.on-line.displacement-y">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span></dt>
+<dd><p>List gridpoint <span class="math">\(y\)</span>-displacement.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.on-line.define">
+<span class="cmdkey"><span class="pref">d</span><span class="null">e</span><span class="null">f</span><span class="null">i</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx2</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy2</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Define the line through the model listing or plotting specific problem variables for a deformable block model. The line is defined by the endpoints (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx1</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy1</span></span></a>) and (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx2</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy2</span></span></a>). The line is divided into <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> points. No interpolation is made – the value of the nearest data point to the search point on the pline is selected.</p>
+<p><span class="flag3">is following line true???</span> By typing <a class="reference internal" href="#kwd:block.list.on-line" title="Selected zone or gridpoint variables of deformable blocks may be printed versus&#013;&#010;distance along a line. The line is defined by the  define  keyword (below).&#013;&#010;The line is identified by its line number,  i  . If  i   is omitted,&#013;&#010;all lines will be printed. The following keywords are available to print selected&#013;&#010;variables."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">list</span> <span class="pre">on-line</span></code></a> without the parameters, a list of the current plot lines will be printed. If the keyword <span class="cmdkey">off</span> is specified, the <span class="cmdkey">on-line</span> list is deleted.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.on-line.stress-normal">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">n</span><span class="null">o</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>List normal stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.on-line.stress-shear">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">s</span><span class="null">h</span><span class="null">e</span><span class="null">a</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>List shear stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.on-line.stress-principal-major">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">p</span><span class="null">r</span><span class="null">i</span><span class="null">n</span><span class="null">c</span><span class="null">i</span><span class="null">p</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">m</span><span class="null">a</span><span class="null">j</span><span class="null">o</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>List major principal stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.on-line.stress-principal-minor">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">p</span><span class="null">r</span><span class="null">i</span><span class="null">n</span><span class="null">c</span><span class="null">i</span><span class="null">p</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">m</span><span class="null">i</span><span class="null">n</span><span class="null">o</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>List minor principal stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.on-line.stress-principal-intermediate">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">p</span><span class="null">r</span><span class="null">i</span><span class="null">n</span><span class="null">c</span><span class="null">i</span><span class="null">p</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">m</span><span class="null">e</span><span class="null">d</span><span class="null">i</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>List intermediate principal stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.on-line.stress-xx">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">x</span><span class="pref">x</span><span class="null"> </span></span></dt>
+<dd><p>List zone <span class="math">\(xx\)</span>-stress component.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.on-line.stress-xy">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">x</span><span class="pref">y</span><span class="null"> </span></span></dt>
+<dd><p>List zone <span class="math">\(xy\)</span>-stress component.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.on-line.stress-yy">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">y</span><span class="pref">y</span><span class="null"> </span></span></dt>
+<dd><p>List zone <span class="math">\(yy\)</span>-stress component.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.on-line.velocity-x">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span></dt>
+<dd><p>List gridpoint <span class="math">\(x\)</span>-velocity.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.on-line.velocity-y">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span></dt>
+<dd><p>List gridpoint <span class="math">\(y\)</span>-velocity.</p>
+</dd></dl>
+
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">No interpolation is made — the value of the nearest data point to the search point on the <span class="cmdkey">on-line</span> is printed.</p>
+</div>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.position">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>List current position of the block centers. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>block index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>Material property index</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>constiutive model number</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td><span class="math">\(x\)</span>-centroid</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td><span class="math">\(y\)</span>-centroid</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>mass</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>Polar moment of inertia</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td>Type (rigid or deformable)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.property">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i1</span><span class="null"> </span></span></a><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">in</span><span class="null"> </span></span></a>></span></dt>
+<dd><p>List property arrays. Optional parameters <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i1</span></span></a> … <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">in</span></span></a> can be used to define the material number range to be listed.</p>
+<dl class="keyword">
+<dt id="kwd:block.list.property.anisotropic">
+<span class="cmdkey"><span class="pref">a</span><span class="null">n</span><span class="null">i</span><span class="null">s</span><span class="null">o</span><span class="null">t</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">i</span><span class="null">c</span><span class="null"> </span></span></dt>
+<dd><p>List anisotropic elastic properties.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.property.block">
+<span class="cmdkey"><span class="pref">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span></dt>
+<dd><p>List block properties.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.list.velocity">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>List rigid block  centroid velocity data. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>block index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td><span class="math">\(x\)</span>-velocity at centroid</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(y\)</span>-velocity at centroid</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>angular velocity at centroid</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td><span class="math">\(x\)</span>-force at centroid</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td><span class="math">\(y\)</span>-force at centroid</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>centroid moment</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="block_commands.html" accesskey="U">Block Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_block.link.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">link</span></code> command</a> |    
+       <a href="cmd_block.mechanical.html"
+                           title="next chapter"><span class="fishcmd">block mechanical</span> commands</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block list command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,538 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Running a Code on Amazon Web Services (AWS) &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Security" href="securitykey.html" />
+    <link rel="prev" title="Web License Configuration" href="web.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="running-a-code-on-amazon-web-services-aws">
+<span id="awssetup"></span><h1>Running a Code on Amazon Web Services (AWS)</h1>
+<p class="h2 rubric">Introduction</p>
+<p>With the introduction of web licenses, it is now possible to run <span class="codename">FLAC3D</span> and <span class="codename">3DEC</span> on a remote, potentially virtual computer (i.e., in the cloud).  Web licenses will also be available for future releases of the other Itasca programs.  The two most popular cloud services are currently Amazon Web Services (AWS) and Microsoft Azure.  This document describes how to set up and use <span class="codename">FLAC3D</span> on AWS.</p>
+<p>Amazon Elastic Compute Cloud (Amazon EC2) provides scalable computing capacity in the Amazon Web Services (AWS) cloud. You can use Amazon EC2 to launch as many or as few virtual computers as you need. Amazon EC2 enables you to scale up or down to handle changes in requirements, reducing your need to forecast computing needs.  More information on Amazon EC2 is <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/concepts.html">available on Amazon’s web site</a>.</p>
+<p>The content of this document is broken into the following major topics.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#setupaws"><span class="std std-ref">Set Up Accounts</span></a></li>
+<li><a class="reference internal" href="#instancesaws"><span class="std std-ref">Instances</span></a></li>
+<li><a class="reference internal" href="#storageaws"><span class="std std-ref">Storage</span></a></li>
+<li><a class="reference internal" href="#amiaws"><span class="std std-ref">Amazon Machine Images (AMI)</span></a></li>
+<li><a class="reference internal" href="#costsaws"><span class="std std-ref">Costs and Billing</span></a></li>
+</ul>
+<p class="h2 rubric" id="setupaws">Set Up Accounts</p>
+<div class="aside admonition">
+<p class="first admonition-title">Note</p>
+<blockquote class="last">
+<div>See <a class="reference external" href="https://docs.aws.amazon.com/general/latest/gr/aws_tasks-that-require-root.html">Tasks that require root user credentials</a> on the Amazon web site for details on Root account functions.</div></blockquote>
+</div>
+<p>AWS assumes that the resources will be used by a company with more than one person.  Therefore, it is best to first set up a <strong>Root</strong> account and then one or more sub-accounts called <strong>IAM</strong> s (Identity and Access Management). Operations for setting up <span class="codename">FLAC3D</span> to run on AWS can be done with an IAM account. Viewing billing information and other account-holder administrative tasks require root access.</p>
+<p class="h3 rubric">Root Account</p>
+<p>Follow these steps to set up a Root account.</p>
+<ol class="arabic simple">
+<li>Open <a class="reference external" href="https://portal.aws.amazon.com/billing/signup">https://portal.aws.amazon.com/billing/signup</a>.</li>
+<li>Follow the online instructions.  You will need to enter credit card information to sign up.</li>
+</ol>
+<p class="h3 rubric">IAM Account</p>
+<p>With a Root account established, it is recommended to set up an IAM account per user.  A company with several employees using AWS will likely set up multiple IAM accounts under one Root. The following instructions describe how to set up a first IAM account.</p>
+<ol class="arabic simple">
+<li>If not already logged in, go aws.amazon.com, click <strong>Sign In to the Console</strong> and log in as the <strong>Root</strong> user.</li>
+<li>Go to the IAM Console (<a class="reference external" href="https://console.aws.amazon.com/iam/">https://console.aws.amazon.com/iam/</a>)</li>
+<li>In the navigation pane, under <strong>Access management</strong>, choose <strong>Users</strong> and then choose <strong>Add user</strong>.</li>
+<li>For User Name, enter <span class="flag">Administrator</span>.</li>
+<li>Select the check box next to <strong>AWS Management Console access</strong>. Then select <strong>Custom password</strong>, and then enter a new password for the account in the text box.</li>
+<li>(Optional) By default, AWS requires the new user to create a new password when first signing in. Clear the check box next to <strong>Require password reset</strong> to allow the new user to reset their password after they sign in.</li>
+<li>Choose <strong>Next: Permissions</strong>.</li>
+<li>Under <strong>Set permissions</strong>, choose <strong>Add user to group</strong>.</li>
+<li>Choose <strong>Create group</strong>.</li>
+<li>In the <strong>Create group</strong> dialog box, for Group name enter <span class="flag">Administrators</span>.</li>
+<li>Choose <strong>Filter policies</strong>, and then select <strong>AWS managed - job function</strong> to filter the table contents.</li>
+<li>In the policy list, select the check box for <strong>Administrator Access</strong>. Then choose <strong>Create group</strong>.</li>
+<li>Back in the list of groups, select the check box for your new group. If necessary, choose <strong>Refresh</strong> to see the group in the list.</li>
+<li>Choose <strong>Next: Tags</strong>.</li>
+<li>(Optional) Add metadata to the user by attaching tags as key-value pairs. For more information about using tags in IAM, see <a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM Entities</a> in the <em>IAM User Guide</em>.</li>
+<li>Choose <strong>Next: Review</strong> to see the list of group memberships to be added to the new user. When ready to proceed, choose <strong>Create user</strong>.</li>
+<li>The <strong>Add User</strong> screen is shown with a link for logging in with the IAM credentials.  Write down this link or email it by clicking the <strong>Send email</strong> link.</li>
+<li>Now click the <strong>Sign In to the Console</strong> button, select the drop down menu next to the root name, and <strong>Sign Out</strong>.</li>
+<li>Click the link from Step 17 and enter the IAM username (“Administrator”) and password.</li>
+</ol>
+<p class="h3 rubric">Key Pairs</p>
+<p>AWS uses public-key cryptography to secure the login information. The user specifies the name of the key pair when launching an instance, then provides the private key to obtain the administrator password for the current Windows instance to allow logging in via Windows Remote Desktop (RDP).  Set up a key pair following these steps.  This task is performed once only.</p>
+<ol class="arabic">
+<li><p class="first">Sign in to the IAM user account by clicking on the link from the previous section, or else go to aws.amazon.com, click <strong>Sign In to the Console</strong> and log in as an <strong>IAM user</strong>.</p>
+</li>
+<li><p class="first">Open the Amazon EC2 console at <a class="reference external" href="https://console.aws.amazon.com/ec2/">https://console.aws.amazon.com/ec2/</a>.</p>
+</li>
+<li><p class="first">In the navigation pane under <strong>Network &amp; Security</strong>, choose <strong>Key Pairs</strong>.</p>
+</li>
+<li><p class="first">Choose <strong>Create key pair</strong>.</p>
+</li>
+<li><p class="first">For Name, enter a descriptive name for the key pair. Amazon EC2 associates the public key with the name specified as the key name. A key name can include up to 255 ASCII characters. It cannot include leading or trailing spaces.</p>
+<div class="aside admonition">
+<p class="first admonition-title">Note</p>
+<p class="last">By default, this is set to PuTTY format.  If key pair with a .ppk extension is accidentally created, see <a class="reference external" href="https://aws.amazon.com/premiumsupport/knowledge-center/convert-pem-file-into-ppk/">this article</a> to convert it to a .pem file.</p>
+</div>
+</li>
+<li><p class="first">For <strong>File format</strong>, choose the format  in which to save the private key. To save the private key in a format that can be used with OpenSSH, choose <strong>pem</strong>.</p>
+</li>
+<li><p class="first">Choose <strong>Create key pair</strong>.</p>
+</li>
+<li><p class="first">The private key file is automatically downloaded by the browser. The base file name is the name specified as the name of the key pair, and the file name extension is determined by the file format chosen. Save the private key file in a safe place.</p>
+</li>
+</ol>
+<p class="h3 rubric">Security Groups (Optional)</p>
+<p>Set up a Security Group that restricts access to instances to given IP addresses.  To create a security group with the least privilege, follow these steps.</p>
+<ol class="arabic simple">
+<li>Open the Amazon EC2 console at <a class="reference external" href="https://console.aws.amazon.com/ec2/">https://console.aws.amazon.com/ec2/</a>.</li>
+<li>In the navigation pane under <strong>Network &amp; Security</strong>, choose <strong>Security Groups</strong>.</li>
+<li>Choose <strong>Create security group</strong>.</li>
+<li>In the <strong>Basic details</strong> section, do the following.<ol class="loweralpha">
+<li>Enter a name for the new security group and a description. Use a name that is easy to remember, such as the account user name, followed by _SG_, plus the Region name. For example, <span class="flag">me_SG_uswest2</span>.</li>
+<li>In the <strong>VPC</strong> list, select the default VPC for the Region.</li>
+</ol>
+</li>
+<li>In the Inbound rules section, create the following rules (choose <strong>Add rule</strong> for each new rule).<ol class="loweralpha">
+<li>Choose <strong>HTTP</strong> from the <strong>Type</strong> list, and make sure that <strong>Source</strong> is set to <strong>Anywhere</strong> (0.0.0.0/0).</li>
+<li>Choose <strong>HTTPS</strong> from the <strong>Type</strong> list, and make sure that <strong>Source</strong> is set to <strong>Anywhere</strong> (0.0.0.0/0).</li>
+<li>Choose <strong>RDP</strong> from the <strong>Type</strong> list. In the <strong>Source</strong> box, choose <strong>My IP</strong> to automatically populate the field with the public IPv4 address of the local computer. (On a network that allocates addresses in a range, specify the entire range, such as 203.0.113.0/24.)</li>
+</ol>
+</li>
+<li>Choose <strong>Create security group</strong>.</li>
+</ol>
+<p>For more information, see <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-security-groups.html">Amazon EC2 security groups for Windows instances</a>.</p>
+<p class="h2 rubric" id="instancesaws">Instances</p>
+<p>Once set up, it is possible to launch one or more instances.  An instance is simply a remote computer with Windows installed that can be accessed with Windows Remote Desktop (RDP).</p>
+<p class="h3 rubric">Launching An Instance</p>
+<ol class="arabic simple">
+<li>In the <a class="reference external" href="https://console.aws.amazon.com/ec2/">EC2 Console</a>, go to <strong>Instances – Instances</strong>.  Click the button to <strong>Launch Instance</strong>.</li>
+<li>Select Microsoft Windows Server 2019 Base.<ol class="loweralpha">
+<li>If a machine image is set up (see the section below, <em>Amazon Machine Images (AMI)</em>), click on <strong>My AMIs</strong> to select the existing image.</li>
+</ol>
+</li>
+<li>Choose an Instance Type (see the table <span class="flag4">i</span> <a class="reference internal" href="#awsmachinecosts"><span class="std std-ref">Recommended Instance Types</span></a> below for reference).  Click <strong>Next: Configure Instance</strong> Details.</li>
+<li>Configure Instance Details.  Leave these as default values.  Click <strong>Next: Add Storage</strong>.</li>
+<li>Add Storage. This is done to increase the storage capacity of the root drive.  It is also possible to add one or more additional virtual drives (see EBS Storage). Click <strong>Next: Add Tags</strong>.</li>
+<li>Add Tags. This is optional and can be skipped. Click <strong>Next: Configure Security Group</strong>.</li>
+<li>Configure Security Group.  Choose <strong>Select an existing security group</strong>.  For the security group, choose the security group set up in the steps above to restrict the users of this instance to certain IP addresses.  Otherwise, just choose Default.   Click <strong>Review and Launch</strong>.  Click <strong>Launch</strong>.</li>
+<li>Choose the key pair from the dropdown menu and click the box to acknowledge access to the <em>pem</em> file.  Click <strong>Launch Instances</strong>.</li>
+<li>On the Launch Status screen, click the <strong>View Instances</strong> button at the bottom-right corner.</li>
+<li>The instance is now listed in a table.  When the <strong>Instance State</strong> is running, and the <strong>Status Checks</strong> say <strong>2/2 checks …</strong>, select the instance and click the <strong>Connect</strong> button.</li>
+</ol>
+<blockquote>
+<div><div class="figure">
+<a class="reference internal image-reference" href="../../../../../../_images/f1.png"><img alt="../../../../../../_images/f1.png" src="../../../../../../_images/f1.png" style="width: 100%;" /></a>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="11">
+<li>Click <strong>Get Password</strong>.  Click <strong>Choose File</strong> and navigate to the key file (.pem extension).  Click <strong>Decrypt password</strong>.  When the password appears, click just to the right of it to copy the password to the clipboard.</li>
+<li>Click <strong>Download Remote Desktop File</strong>.  Open the file, click <strong>Connect</strong>, paste in the password and click <strong>OK</strong>.  Click <strong>Yes</strong> to ignore the certificate warning.</li>
+</ol>
+<p>More detailed instructions are <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html">available on Amazon’s web site</a>.</p>
+<p class="h3 rubric">Stopping An Instance</p>
+<p>Closing the Remote Desktop session will not stop the instance.  To terminate the instance, go to the console, click on the running instance, and choose <strong>Actions -&gt; Instance State -&gt; Terminate</strong>. To keep the instance for later, but not incur charges, choose <strong>Stop</strong> instead of <strong>Terminate</strong>.</p>
+<p class="h2 rubric" id="storageaws">Storage</p>
+<p>Short term storage can use the root drive that is automatically set up when the instance is created. This drive disappears when the instance is terminated.  But to use the same data across instances, EBS Storage (medium term storage of moderate sized files) or S3 storage (longer term storage of larger files) will be desirable. Details of these two options are described below.</p>
+<p class="h3 rubric">EBS Storage</p>
+<p>Amazon Elastic Block Store (Amazon EBS) provides storage volumes for use with EC2 instances. These are essentially like hard drives that can persist independently of an instance, so the same EBS for different instances (in the same region) may be used.</p>
+<p class="h4 rubric">Initialize EBS Storage</p>
+<div class="aside admonition">
+<p class="first admonition-title">Note</p>
+<p class="last">See <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-creating-volume.html">Amazon documentation</a> for instructions on creating an EBS volume outside of creating an instance.  Make sure to choose the same Availability Zone as the instance.  It will not necessarily be the default.</p>
+</div>
+<p>The easiest way to create a volume is during creation of a new instance (see “Launching An Instance” above) .  After starting the instance, follow these steps to use the volume.</p>
+<ol class="arabic">
+<li><p class="first">On the Windows logo, right-click and choose <strong>Disk Management</strong>.</p>
+</li>
+<li><p class="first">The program should now ask whether to initialize Disk 1. Click <strong>OK</strong>.  If this does not occur, right-click in the left panel for Disk 1 and select <strong>Initialize</strong>.</p>
+</li>
+<li><p class="first">The disk should automatically be online as shown in the left panel. If this is not the case, right-click on the left panel and select <strong>Online</strong>.</p>
+</li>
+<li><p class="first">Now, right-click on the right panel and select <strong>New Simple Volume…</strong> . Complete the wizard.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../../../../../../_images/f2.png"><img alt="../../../../../../_images/f2.png" src="../../../../../../_images/f2.png" style="width: 100%;" /></a>
+</div>
+</li>
+</ol>
+<p class="h4 rubric">Mount Storage Volume On A Different Instance</p>
+<p>Once a volume is created as above, it can be mounted on a different instance.  This is an easy way to share data between instances (note that it cannot be mounted on two instances at the same time).</p>
+<p>To mount an existing EBS volume on a new instance, follow these steps.</p>
+<ol class="arabic simple">
+<li>In the <a class="reference external" href="https://console.aws.amazon.com/ec2/">EC2 console</a>, in the navigation pane, choose <strong>Elastic Block Store, Volumes</strong>.</li>
+<li>Select an available volume. If the volume is already mounted to an instance, choose <strong>Actions</strong>, <strong>Detach Volume</strong> and then <strong>Actions, Attach Volume</strong>. If not, choose <strong>Actions, Attach Volume</strong>.</li>
+<li>For <strong>Instance</strong>, start typing the name or ID of the instance. Select the instance from the list of options (only instances that are in the same Availability Zone as the volume are displayed).</li>
+<li>For <strong>Device</strong>, keep the suggested device name.</li>
+<li>Choose <strong>Attach</strong>.</li>
+<li>Connect to the current instance and bring the volume online as described above (<span class="flag">WARNING: Do not initialize the volume if it has data on it</span>).</li>
+</ol>
+<p class="h4 rubric">Detaching Storage Volume</p>
+<p>If the instance is to be terminated, detach the EBS volume.  Follow these steps before logging out of the current instance.</p>
+<ol class="arabic simple">
+<li>While logged in, start the Disk Management utility.</li>
+<li>Right-click the disk (for example, right-click <strong>Disk 1</strong>) and then choose <strong>Offline</strong>. Wait for the disk status to change to <strong>Offline</strong> before opening the Amazon EC2 console.</li>
+<li>In the <a class="reference external" href="https://console.aws.amazon.com/ec2/">EC2 console</a>, in the navigation pane, choose <strong>Volumes</strong>.</li>
+<li>Select a volume and choose <strong>Actions, Detach Volume</strong>.  Click <strong>Yes, Detach</strong>.</li>
+</ol>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><strong>Note</strong></p>
+<p class="last"><strong>A detached volume persists after logging out. Charges continue to accrue for use of the volume until it is deleted.  Persistent EBS storage volumes are useful for short term storage during a project.  For long-term storage, moving data to S3 storage is recommended (see S3 below). After moving, the EBS volume may be deleted.</strong></p>
+</div>
+<p class="h4 rubric">Deleting EBS Storage Volume</p>
+<p>To delete the volume, In the <a class="reference external" href="https://console.aws.amazon.com/ec2/">EC2 console</a>, in the navigation pane, choose <strong>Volumes</strong>. Select a volume and choose <strong>Actions, Delete Volume</strong>.  Click <strong>Yes, Delete</strong>.</p>
+<p class="h3 rubric">S3 Storage</p>
+<p>Amazon Simple Storage Service (Amazon S3) is a storage service that costs significantly less than EBS (see <span class="flag4">i</span> <a class="reference internal" href="#pricingaws"><span class="std std-ref">Storage Pricing</span></a> below).  This is a viable method for storing large files (such as <span class="codename">FLAC3D</span> save files) for long time periods.</p>
+<p>On creation an AWS account is automatically signed up for all services in AWS, including Amazon S3. However, charges only accrue for services used.</p>
+<p>It is possible to move files into and out of S3 storage using the <a class="reference external" href="https://s3.console.aws.amazon.com/s3/home">S3 console</a>.  Instructions can be found <span class="xref std std-ref">on the Amazon web site</span>. There are also many third-party programs that will make data transfer to S3 much easier.  We recommend the <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> program.  Instructions for setting up and using Cyberduck are given below.</p>
+<p class="h4 rubric">Access Key</p>
+<p>To use Cyberduck, an AWS account access key is needed.  Access keys consist of two parts: an access key ID (for example, AKIAIOSFODNN7EXAMPLE) and a secret access key (for example, wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY). Like a user name and password, both the access key ID and secret access key are required to authenticate requests. Manage access keys with the same vigilance as is used for username and password.</p>
+<p>Follow these steps to get the access key.</p>
+<ol class="arabic simple">
+<li>Log in as an IAM user (see above).</li>
+<li>Go to the <a class="reference external" href="https://console.aws.amazon.com/iam">IAM Console</a>.</li>
+<li>In the navigation bar on the upper right, choose the user name (Administrator), then choose <strong>My Security Credentials</strong>.</li>
+<li>Under <strong>Access keys for CLI, SDK, &amp; API access</strong>, choose <strong>Create Access Key</strong>.</li>
+<li>Record the access key and the secret access key.  The access key may be (re)retrieved later. But this is the only time the secret key may be obtained.</li>
+<li>To see the access key in the future, go to the IAM Console.  Under <strong>Access management</strong> on the left, select Users.  Select the name (Administrator) and then select <strong>Security credentials</strong>.</li>
+</ol>
+<p>Find more information on access keys <a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey">on the Amazon web site</a>.</p>
+<p class="h4 rubric">Using Cyberduck To Access S3 Storage</p>
+<p>To use Cyberduck, follow these steps.</p>
+<ol class="arabic">
+<li><p class="first">Download the Windows version from <a class="reference external" href="https://cyberduck.io/download/">the Cyberduck website</a>.  Install it on the local computer.</p>
+</li>
+<li><p class="first">Open the Cyberduck program and click the <strong>Open Connection</strong> button.</p>
+</li>
+<li><p class="first">From the drop-down menu, select <strong>Amazon S3</strong>.</p>
+</li>
+<li><p class="first">Enter the Access Key and Secret Access Key.  Click <strong>Connect</strong>.</p>
+<div class="aside admonition">
+<p class="first admonition-title">Note</p>
+<p class="last">Folders in S3 are known as buckets. Bucket names must be universally unique, therefore the operation might fail if the name is already taken by someone else (e.g., it is safe to assume any common name like “media” or “images” is unavailable).</p>
+</div>
+</li>
+<li><p class="first">Click <strong>Action – Create Folder</strong>. Enter the name of a folder and select the appropriate region.  Click <strong>Create</strong>.</p>
+</li>
+<li><p class="first">Click the <strong>Upload</strong> button to upload file and folders.  Click <strong>Action – Download</strong> to download files and folders.</p>
+</li>
+<li><p class="first">Start an AWS EC2 instance and follow the same steps except install it on the remote computer.</p>
+</li>
+</ol>
+<p class="h3 rubric" id="pricingaws">Storage Pricing</p>
+<p>General Purpose SSD (gp2) EBS Volumes are $0.10 per GB per month, charged per hour.  Standard S3 storage is $0.023/Gb per month.  See  for more information.</p>
+<p>Full pricing details for <a class="reference external" href="https://aws.amazon.com/ebs/pricing/">EBS storage</a> and <a class="reference external" href="https://aws.amazon.com/s3/pricing/">S3 storage</a> are available on the Amazon web site.</p>
+<p class="h2 rubric" id="amiaws">Amazon Machine Images (AMI)</p>
+<p>Once software is installed and projects set up, it may be desirable to make an image of the instance.  Down the line the image can be restarted rather than a new instance, which eliminates the need to install software and drives each time. An image may include one or more EBS volumes.</p>
+<p class="h3 rubric">Creating An AMI</p>
+<ol class="arabic">
+<li><p class="first">To create an AMI, start with an instance and install all necessary software (e.g., <span class="codename">FLAC3D</span>, Cyberduck, etc.) and add EBS storage drives as needed.</p>
+</li>
+<li><p class="first">IMPORTANT – by default, when creating an AMI from an instance, each new instance created from this AMI will require the same Administrator password as the original instance. To prevent this from happening, follow these steps:</p>
+<ol class="loweralpha simple">
+<li>In the open instance, in the Windows search bar, search for <strong>EC2Launch</strong>.</li>
+<li>Under <strong>Administrator Password</strong>, select <strong>Random</strong>.</li>
+<li>Click <strong>Shutdown with Sysprep</strong> and wait for the instance to become <strong>Stopped</strong>.</li>
+</ol>
+<div class="figure">
+<a class="reference internal image-reference" href="../../../../../../_images/f3.png"><img alt="../../../../../../_images/f3.png" src="../../../../../../_images/f3.png" style="width: 65%;" /></a>
+</div>
+</li>
+<li><p class="first">From the <a class="reference external" href="https://console.aws.amazon.com/ec2/">EC2 console</a>, choose <strong>Instances</strong> and select the instance. When the <strong>Instance State</strong> shows <strong>Stopped</strong>, choose <strong>Actions, Image</strong>, and <strong>Create Image</strong>.</p>
+</li>
+<li><p class="first">Specify a unique name for the image and an optional description (up to 255 characters).</p>
+</li>
+<li><p class="first">Click <strong>Create Image</strong>.  By default, Amazon EC2 shuts down the instance, takes snapshots of any attached volumes, creates and registers the AMI, and then reboots the instance. Choose <strong>No reboot</strong> to prevent the instance from shutting down.  <strong>Warning</strong>: When choosing <strong>No reboot</strong>, AWS cannot guarantee the file system integrity of the created image.</p>
+</li>
+<li><p class="first">While the AMI is being created, choose AMIs in the navigation pane to view its status (change the dropdown menu to show <strong>Owned by me</strong>). Initially, this is pending. After a few minutes, the status should change to available.</p>
+</li>
+</ol>
+<p>To launch a new instance based on the AMI, in the console go to <strong>Images – AMIs</strong>, select the AMI, and choose <strong>Launch</strong>.</p>
+<p>Note there is a small charge to maintain an AMI.  To delete an AMI, in the Console go to <strong>Images – AMIs</strong>, elect the AMI and choose <strong>Actions – Deregister</strong>.</p>
+<p>For more details on creating and using AMIs <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/Creating_EBSbacked_WinAMI.html">see the Amazon web site</a>.</p>
+<p class="h3 rubric" id="costsaws">Costs And Billing</p>
+<p>To view current incurred costs, log in as the <strong>Root</strong> user.  To view accumulated spending, click on the username at the top of the console page and select <strong>My Billing Dashboard</strong>.</p>
+<table border="1" class="col2right col3right col4right col5right col6right col7right docutils" id="awsmachinecosts">
+<caption><span class="caption-text">Table 1: Recommended Instance Types</span></caption>
+<colgroup>
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">VM Type</th>
+<th class="head">RAM <br> (Gb)</th>
+<th class="head">Threads</th>
+<th class="head"><span class="codename">FLAC3D</span> Speed <br> (kzone/s)</th>
+<th class="head"><span class="codename">3DEC</span> speed*</th>
+<th class="head">Price/hour</th>
+<th class="head">Price/day</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>r4.2xlarge</td>
+<td>61</td>
+<td>8</td>
+<td>1000</td>
+<td>&#160;</td>
+<td>$0.900</td>
+<td>$21.60</td>
+</tr>
+<tr class="row-odd"><td>r4.4xlarge</td>
+<td>122</td>
+<td>16</td>
+<td>2900</td>
+<td>&#160;</td>
+<td>$1.800</td>
+<td>$43.20</td>
+</tr>
+<tr class="row-even"><td>r4.8xlarge</td>
+<td>244</td>
+<td>32</td>
+<td>4200</td>
+<td>&#160;</td>
+<td>$3.600</td>
+<td>$86.40</td>
+</tr>
+<tr class="row-odd"><td>c4.large</td>
+<td>3.75</td>
+<td>2</td>
+<td>500</td>
+<td>&#160;</td>
+<td>$0.192</td>
+<td>$4.61</td>
+</tr>
+<tr class="row-even"><td>c4.2xlarge</td>
+<td>15</td>
+<td>8</td>
+<td>1000</td>
+<td>&#160;</td>
+<td>$0.770</td>
+<td>$18.48</td>
+</tr>
+<tr class="row-odd"><td>c4.4xlarge</td>
+<td>30</td>
+<td>16</td>
+<td>2950</td>
+<td>&#160;</td>
+<td>$1.530</td>
+<td>$36.77</td>
+</tr>
+<tr class="row-even"><td>c4.8xlarge</td>
+<td>60</td>
+<td>36</td>
+<td>3850</td>
+<td>&#160;</td>
+<td>$3.091</td>
+<td>$74.18</td>
+</tr>
+<tr class="row-odd"><td>c5.large</td>
+<td>4</td>
+<td>2</td>
+<td>600</td>
+<td>600</td>
+<td>$0.177</td>
+<td>$ 4.25</td>
+</tr>
+<tr class="row-even"><td>c5.xlarge</td>
+<td>8</td>
+<td>4</td>
+<td>1100</td>
+<td>775</td>
+<td>$0.354</td>
+<td>$ 8.51</td>
+</tr>
+<tr class="row-odd"><td>c5.2xlarge</td>
+<td>16</td>
+<td>8</td>
+<td>2000</td>
+<td>1000</td>
+<td>$0.710</td>
+<td>$ 17.04</td>
+</tr>
+<tr class="row-even"><td>c5.4xlarge</td>
+<td>32</td>
+<td>16</td>
+<td>3750</td>
+<td>1100</td>
+<td>$1.416</td>
+<td>$ 33.98</td>
+</tr>
+<tr class="row-odd"><td>c5.9xlarge</td>
+<td>72</td>
+<td>36</td>
+<td>5900</td>
+<td>&#160;</td>
+<td>$3.186</td>
+<td>$ 76.47</td>
+</tr>
+<tr class="row-even"><td>c5.12xlarge</td>
+<td>96</td>
+<td>48</td>
+<td>??</td>
+<td>&#160;</td>
+<td>$4.248</td>
+<td>$ 101.95</td>
+</tr>
+<tr class="row-odd"><td>c5.18xlarge</td>
+<td>144</td>
+<td>72</td>
+<td>??</td>
+<td>&#160;</td>
+<td>$6.372</td>
+<td>$ 152.93</td>
+</tr>
+<tr class="row-even"><td>z1d.xlarge</td>
+<td>32</td>
+<td>4</td>
+<td>1150</td>
+<td>800</td>
+<td>$0.556</td>
+<td>$ 13.34</td>
+</tr>
+<tr class="row-odd"><td>z1d.2xlarge</td>
+<td>64</td>
+<td>8</td>
+<td>2380</td>
+<td>1020</td>
+<td>$1.112</td>
+<td>$ 26.69</td>
+</tr>
+<tr class="row-even"><td>z1d.3xlarge</td>
+<td>96</td>
+<td>12</td>
+<td>?</td>
+<td>1030</td>
+<td>$1.668</td>
+<td>$ 40.03</td>
+</tr>
+<tr class="row-odd"><td>z1d.6xlarge</td>
+<td>192</td>
+<td>24</td>
+<td>?</td>
+<td>&#160;</td>
+<td>$3.336</td>
+<td>$ 80.06</td>
+</tr>
+<tr class="row-even"><td>z1d.12xlarge</td>
+<td>384</td>
+<td>48</td>
+<td>?</td>
+<td>&#160;</td>
+<td>$6.672</td>
+<td>$ 160.13</td>
+</tr>
+</tbody>
+</table>
+<p>*<span class="codename">3DEC</span> speed depends on number of zones, contacts, and subcontacts. Numbers listed are for a specific test.</p>
+<p>Costs reported above correct as of September 30, 2020. Visit the Amazon web site to get <a class="reference external" href="ec2instances.info">current pricing information</a>.</p>
+<p>Note that new AWS accounts may start with CPU limits.  See the current limits by going to the <a class="reference external" href="https://console.aws.amazon.com/ec2/">EC2 console</a>, selecting <strong>Limits</strong> from the left panel, and then clicking <strong>Calculate CPU Limits</strong>.  One can also request a limit increase from the calculator.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../mechanics/program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../support/support.html" >Support</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="installation.html" >Installation</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="web.html" accesskey="U">Web License Configuration</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="web.html"
+                           title="previous chapter"> Web License Configuration</a> |    
+       <a href="securitykey.html"
+                           title="next chapter">Security</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Running a Code on Amazon Web Services (AWS)" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,153 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Modeling Chaotic Systems &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Localization, Physical Instability, and Path-Dependence" href="localizationandpath.html" />
+    <link rel="prev" title="Modeling Data-Limited Systems" href="modelingdatalimitedsystems.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="modeling-chaotic-systems">
+<h1>Modeling Chaotic Systems</h1>
+<p>In some calculations, especially in those involving discontinuous materials, the results can be
+extremely sensitive to very small changes in initial conditions or trivial changes in loading sequence.
+After a cursory review, this situation may seem unsatisfactory and may be taken as a reason to
+mistrust the computer simulations. However, the sensitivity exists in the physical system being
+modeled. There appear to be a least two sources for the seemingly erratic behavior:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">There are certain geometric patterns of discontinuities that force the system to
+choose, apparently at random, between two alternative outcomes. The subsequent evolution depends on which choice is made.
+For example, <a href="#fig-modeling-chaotic">Figure  1</a> illustrates a small portion of a jointed rock mass.
+If block A is forced to move down relative to B, it can either go to the left or to the right of B. The choice
+will depend on microscopic irregularities in geometry, properties, or kinetic
+energy.</p>
+<div class="figure align-center" id="id3">
+<span id="fig-modeling-chaotic"></span><a class="reference internal image-reference" href="../../../../../../_images/chaotic.svg"><img alt="../../../../../../_images/chaotic.svg" src="../../../../../../_images/chaotic.svg" width="85%" /></a>
+<p class="caption"><span class="caption-text">Figure 1: A small portion of a jointed rock mass.</span></p>
+</div>
+</li>
+<li><p class="first">There are processes in the system that can be described as “softening” or, more
+generally, as cases of positive feedback. In a fairly uniform stress field, small
+perturbations are magnified in the subsequent evolution because a region that
+has more strain softens more and thereby attracts more strain, and so on, in a
+cycle of positive feedback.</p>
+</li>
+</ol>
+</div></blockquote>
+<p>Both phenomena give rise to behavior that is chaotic in its extreme form (<a class="reference internal" href="referencesmodelingmethodology.html#gleick1987" id="id1">[Gleick1987]</a>, <a class="reference internal" href="referencesmodelingmethodology.html#thompson1986" id="id2">[Thompson1986]</a>).
+The study of chaotic systems reveals that the detailed evolution of such a system
+is not predictable, <em>even in principle</em>. The observed sensitivity of the computer model to small
+changes in initial conditions or numerical factors is simply a reflection of a similar sensitivity in the
+real world to small irregularities. There is no point in pursuing ever more “accurate” calculations,
+because the resulting model would be unrepresentative of the real world, where conditions are not
+perfect. What should our modeling strategy be in the face of a chaotic system? It appears that the
+best we can expect from such a model is a finite <em>spectrum</em> of expected behavior; the <em>statistics</em> of a
+chaotic system are well-defined. We need to construct models that contain distributions of initial
+irregularities.  <span class="flag3">maybe omit this, which used to be at the end of the preceding sentence (e.g., by using FLAC3D’s gauss_dev or uniform_dev parameter on the property command, or by specifying given distributions with a special FISH function).</span> Each model should be run several times, with different distributions of irregularities. <span class="flag3">PFC has here: particle assemblies</span> Under these conditions, we may expect the fluctuations in behavior to be triggered by the imposed irregularities
+rather than by artifacts of the numerical solution scheme. We can express the results in a statistical form.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="methodology.html" accesskey="U">Modeling Methodology</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="modelingdatalimitedsystems.html"
+                           title="previous chapter"> Modeling Data-Limited Systems</a> |    
+       <a href="localizationandpath.html"
+                           title="next chapter">Localization, Physical Instability, and Path-Dependence</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Modeling Chaotic Systems" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

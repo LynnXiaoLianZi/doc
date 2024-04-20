@@ -1,0 +1,325 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>fracture import command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="fracture initialize command" href="cmd_fracture_initialize.html" />
+    <link rel="prev" title="fracture group command" href="cmd_fracture_group.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fracture-import-command">
+<h1><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">import</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="dfn command">
+<dt id="command:fracture.import">
+<span class="cmdname"><span class="pref">f</span><span class="pref">r</span><span class="pref">a</span><span class="pref">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">i</span><span class="pref">m</span><span class="null">p</span><span class="null">o</span><span class="null">r</span><span class="null">t</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:fracture.import.center" title="fracture import center">center</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.import.clean" title="fracture import clean">clean</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.import.dfn" title="fracture import dfn">dfn</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.import.dfn-dominance" title="fracture import dfn-dominance">dfn-dominance</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.import.dominance" title="fracture import dominance">dominance</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.import.from-file" title="fracture import from-file">from-file</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.import.from-geometry" title="fracture import from-geometry">from-geometry</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.import.make-disk" title="fracture import make-disk">make-disk</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.import.make-planar" title="fracture import make-planar">make-planar</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.import.offset" title="fracture import offset">offset</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.import.property-file" title="fracture import property-file">property-file</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.import.skip-errors" title="fracture import skip-errors">skip-errors</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.import.template-file" title="fracture import template-file">template-file</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.import.truncate" title="fracture import truncate">truncate</a></p>
+</div>
+<p>Import fractures.</p>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>A model domain must be specified prior to importation, and all fractures must fall completely within the model domain unless the <span class="cmdkey">skip-errors</span> or <span class="cmdkey">truncate</span> keywords are given.</li>
+<li>The main characteristics of the DFN (e.g., center, spatial extent, etc.) can be investigated prior to loading with the <a class="reference internal" href="cmd_fracture_compute.html#command:fracture.compute" title="Compute fracture statistics. Various density measures of fractures, filtered&#013;&#010;by"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">compute</span></code></a> command.</li>
+</ul>
+</div>
+<p>Fractures can either be imported from a file (see the <span class="cmdkey">file</span> keyword ) or a geometry set (see the <span class="cmdkey">geometry</span> keyword). Fractures cannot be imported into existing DFNs. If a DFN is not specified then one is created with the next available ID and automatically named based either on the file name specified or the geometry set name. In addition to the fractures geometries, the DFN can be associated with a fracture generation template via a fracture generation template file (see <span class="cmdkey">template</span>, <a class="reference internal" href="cmd_fracture_template.create.html#command:fracture.template.create" title="Create a fracture generation template. The name of the template is  s .&#013;&#010;A fracture generation"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">template</span> <span class="pre">create</span></code></a> and <a class="reference internal" href="cmd_fracture_export.html#command:fracture.export" title="Export fractures to file. By default, fractures are exported in the Itasca DFN&#013;&#010;data file format"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">export</span></code></a> for further details). Fracture
+properties can also be assigned via a property file (see <span class="cmdkey">property-file</span> and <a class="reference internal" href="cmd_fracture_export.html#command:fracture.export" title="Export fractures to file. By default, fractures are exported in the Itasca DFN&#013;&#010;data file format"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">export</span></code></a> for further details).</p>
+<dl class="keyword">
+<dt id="kwd:fracture.import.center">
+<span class="cmdkey"><span class="pref">c</span><span class="pref">e</span><span class="null">n</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>The DFN will be “centered,” wherein the average location of the fracture centers is aligned with the origin. This location is taken for all fractures prior to modification (e.g., truncation or omission).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.import.clean">
+<span class="cmdkey"><span class="pref">c</span><span class="pref">l</span><span class="null">e</span><span class="null">a</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>Specify that the geometry set, from which fractures have been imported, is to be deleted after
+successful importation. This keyword only applies when the <span class="cmdkey">from-geometry</span> keyword has
+been specified.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.import.dfn">
+<span class="cmdkey"><span class="pref">d</span><span class="pref">f</span><span class="pref">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify the DFN name to be created. If a name is not specified then the DFN name is derived from the import file name or geometry set name specified.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.import.dfn-dominance">
+<span class="cmdkey"><span class="pref">d</span><span class="null">f</span><span class="null">n</span><span class="null">-</span><span class="pref">d</span><span class="null">o</span><span class="null">m</span><span class="null">i</span><span class="null">n</span><span class="null">a</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>The DFN dominance is set to <a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> where <a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> ≥ 1. The dominance is used during contact model assignment when a contact intersects multiple fractures from different DFNs. The fractures from the DFN with the lowest DFN dominance will be further scrutinized by their individual dominance values to assign the appropriate contact model properties. If not specified, then the next available dominance is used. See the <a class="reference internal" href="cmd_fracture_contact-model.html#command:fracture.contact-model" title="Assign contact models via fractures. The command only applies to |PFC|. In order&#013;&#010;for the contact"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">contact-model</span></code></a> command for further details.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.import.dominance">
+<span class="cmdkey"><span class="pref">d</span><span class="pref">o</span><span class="null">m</span><span class="null">i</span><span class="null">n</span><span class="null">a</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Specify the mode to set the fracture dominance. Should a contact intersect numerous fractures from a single DFN, then the fracture with the lowest dominance is used to assign the appropriate contact model properties. The default behavior is <span class="cmdkey">ordered</span>. See the <a class="reference internal" href="cmd_fracture_contact-model.html#command:fracture.contact-model" title="Assign contact models via fractures. The command only applies to |PFC|. In order&#013;&#010;for the contact"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">contact-model</span></code></a> command for further details.</p>
+<dl class="keyword">
+<dt id="kwd:fracture.import.dominance.ordered">
+<span class="cmdkey"><span class="pref">o</span><span class="null">r</span><span class="null">d</span><span class="null">e</span><span class="null">r</span><span class="null">e</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>The fracture dominance in assigned based on the order of importation, where the dominance values increase as importation continues.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.import.dominance.random">
+<span class="cmdkey"><span class="pref">r</span><span class="null">a</span><span class="null">n</span><span class="null">d</span><span class="null">o</span><span class="null">m</span><span class="null"> </span></span></dt>
+<dd><p>Specify that the fracture dominance is set in a random fashion, independent of the order of fracture importation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.import.from-file">
+<span class="cmdkey"><span class="pref">f</span><span class="null">r</span><span class="null">o</span><span class="null">m</span><span class="null">-</span><span class="pref">f</span><span class="null">i</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s1</span><span class="null"> </span></span></a><span class="cmdopt"><<span class="cmdkey"><span class="pref">f</span><span class="null">o</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">t</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span></span>></span><span class="null"> </span></dt>
+<dd><p>Import fractures from file <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s1</span></span></a>. The format can optionally be specified with the <span class="cmdkey">format</span> keyword. If no format is specified, then the file extension of the name specified with the file keyword is used to determine the file format. A ‘.dat’ file extension is assumed to be in the <span class="cmdkey">itasca</span> format, a ‘.flab’ file extension is assumed to be in the <span class="cmdkey">fishlab</span> format, and a ‘.fab’ file extension is assumed to be in the <span class="cmdkey">fracman</span> format.</p>
+<dl class="keyword">
+<dt id="kwd:fracture.import.from-file.itasca">
+<span class="cmdkey"><span class="pref">i</span><span class="null">t</span><span class="null">a</span><span class="null">s</span><span class="null">c</span><span class="null">a</span><span class="null"> </span></span></dt>
+<dd><p>The <span class="cmdkey">itasca</span> format is as specified in <a class="reference internal" href="../../../../docproject/source/manual/program_guide/mechanics/otherinputs/dfnfileformats.html#dfnfileformats"><span class="std std-ref">DFN-Related File Formats</span></a>, and
+is the default format.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.import.from-file.fishlab">
+<span class="cmdkey"><span class="pref">f</span><span class="pref">i</span><span class="null">s</span><span class="null">h</span><span class="null">l</span><span class="null">a</span><span class="null">b</span><span class="null"> </span></span><span class="cmdextra">(<span class="cmdextraparam">3D<span class="null"> </span></span><span class="cmdextraparam">ONLY</span>)</span><span class="null"> </span></dt>
+<dd><p>The <span class="cmdkey">fishlab</span> format is the flowplane format used in FISHLab.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.import.from-file.fracman">
+<span class="cmdkey"><span class="pref">f</span><span class="pref">r</span><span class="null">a</span><span class="null">c</span><span class="null">m</span><span class="null">a</span><span class="null">n</span><span class="null"> </span></span><span class="cmdextra">(<span class="cmdextraparam">3D<span class="null"> </span></span><span class="cmdextraparam">ONLY</span>)</span><span class="null"> </span></dt>
+<dd><p>The <span class="cmdkey">fracman</span> format follows the FracMan ASCII output format.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.import.from-file.rockmass">
+<span class="cmdkey"><span class="pref">r</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null">m</span><span class="null">a</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="pref">s</span><span class="null">i</span><span class="null">z</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a>></span><span class="null"> </span><span class="cmdopt"><<span class="cmdkey"><span class="pref">a</span><span class="null">v</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a>></span><span class="null"> </span><span class="cmdextra">(<span class="cmdextraparam">3D<span class="null"> </span></span><span class="cmdextraparam">ONLY</span>)</span><span class="null"> </span></dt>
+<dd><p>The <span class="cmdkey">rockmass</span> format refers to a file format resulting from field measurements.
+The format is produced by Rockmass Technologies or Leapfrog, as specified in <a class="reference internal" href="../../../../docproject/source/manual/program_guide/mechanics/otherinputs/dfnfileformats.html#dfnfileformats"><span class="std std-ref">DFN-Related File Formats</span></a>.
+Because this is from field data, no fracture size is given in the file.  An optional diameter for all fractures may be given with the <span class="cmdkey">size</span> keyword.
+If no size is specified, all imported fractures will have a diamter of 1.  Additionally, you can specify whether or not all meaurements for the same feature and window are averaged to produce a single fracture by using the <span class="cmdkey">average</span> keyword.  The default is <a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">true</span></span></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.import.from-geometry">
+<span class="cmdkey"><span class="pref">f</span><span class="null">r</span><span class="null">o</span><span class="null">m</span><span class="null">-</span><span class="pref">g</span><span class="null">e</span><span class="null">o</span><span class="null">m</span><span class="null">e</span><span class="null">t</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Import fractures from the geometry set <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>. In 2D, the geometry edges are queried and turned into fractures. In 3D, this command attempts to import fractures as both planar polygons and disks. Planar polygon importation scans the geometry polygons. Disk importation occurs by scanning all geometry points and investigating the extra variables. If there are 3 extra variables that are doubles in extra slots 1, 2 and 3, then the point is deemed to represent a disk where the extra variables are the radius, dip (in degrees) and dip direction (in degrees), respectively.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.import.make-disk">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">k</span><span class="null">e</span><span class="null">-</span><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">k</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">3D<span class="null"> </span></span><span class="cmdextraparam">only</span>)</span><span class="null"> </span></dt>
+<dd><p>Fractures with <a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> vertices or more are made into disks with radii equal to the average distance from the centroid to the vertices and dip/dip direction, as specified.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.import.make-planar">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">k</span><span class="null">e</span><span class="null">-</span><span class="pref">p</span><span class="null">l</span><span class="null">a</span><span class="null">n</span><span class="null">a</span><span class="null">r</span><span class="null"> </span></span><span class="cmdextra">(<span class="cmdextraparam">3D<span class="null"> </span></span><span class="cmdextraparam">only</span>)</span><span class="null"> </span></dt>
+<dd><p>Planarity is forced for all fractures that are not disks. The fracture normal is as defined in the data file, and the fracture position is set to the average position of the vertices. The vertices are adjusted so that they fall on the plane.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.import.offset">
+<span class="cmdkey"><span class="pref">o</span><span class="null">f</span><span class="null">f</span><span class="null">s</span><span class="null">e</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>Offset all fracture locations by <a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.import.property-file">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">f</span><span class="null">i</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Indicate that the properties of fractures are set via a property file. See <a class="reference internal" href="../../../../docproject/source/manual/program_guide/mechanics/otherinputs/dfnfileformats.html#dfnfileformats"><span class="std std-ref">DFN-Related File Formats</span></a> for a definition of the property file format. This cannot be used with the <span class="cmdkey">geometry</span> keyword.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.import.skip-errors">
+<span class="cmdkey"><span class="pref">s</span><span class="null">k</span><span class="null">i</span><span class="null">p</span><span class="null">-</span><span class="pref">e</span><span class="null">r</span><span class="null">r</span><span class="null">o</span><span class="null">r</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>Indicate that the importation will continue in spite of fractures lying outside the model domain. The offending fractures will not be imported.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.import.template-file">
+<span class="cmdkey"><span class="pref">t</span><span class="pref">e</span><span class="null">m</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">f</span><span class="null">i</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Indicate that the provided DFN has been generated according to the fracture generation template defined in the file <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>. The template file format is specified in <a class="reference internal" href="../../../../docproject/source/manual/program_guide/mechanics/otherinputs/dfnfileformats.html#dfnfileformats"><span class="std std-ref">DFN-Related File Formats</span></a>. This cannot be used with the <span class="cmdkey">geometry</span> keyword.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.import.truncate">
+<span class="cmdkey"><span class="pref">t</span><span class="null">r</span><span class="null">u</span><span class="null">n</span><span class="null">c</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Indicate that fractures intersecting the model domain boundary are truncated (i.e., disk fractures in 3D can be converted to polygonal fractures).</p>
+</dd></dl>
+
+</dd></dl>
+
+<p class="h2 rubric">Usage Example</p>
+<p>The following example illustrates how the <a class="reference internal" href="#command:fracture.import" title="Import fractures."><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">import</span></code></a> command can be used to import a DFN linked with a template
+and two property sets (files generated with the example in the <a class="reference internal" href="cmd_fracture_export.html#command:fracture.export" title="Export fractures to file. By default, fractures are exported in the Itasca DFN&#013;&#010;data file format"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">export</span></code></a> command).
+The DFN here is truncated in a smaller domain than the domain of generation.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model domain</span><span class="n"> extent </span><span class="o">-</span><span class="m m-Double">4</span><span class="n"> </span><span class="m m-Double">4</span>
+<span class="c">;Import fractures from a file</span>
+<span class="nb">fracture import</span><span class="n"> from</span><span class="o">-</span><span class="n">file </span><span class="s">&#39;example.dat&#39;</span><span class="n"> format itasca </span><span class="sx">...</span>
+<span class="n">                property</span><span class="o">-</span><span class="n">file </span><span class="s">&#39;example_prop.dat&#39;</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                template</span><span class="o">-</span><span class="n">file </span><span class="s">&#39;example_temp&#39;</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                dfn </span><span class="s">&#39;dfn_import&#39;</span><span class="n"> truncate</span>
+<span class="nb">program </span><span class="se">return</span><span class="n">   </span>
+</pre></div>
+</div>
+<p>The following example illustrates how the <a class="reference internal" href="#command:fracture.import" title="Import fractures."><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">import</span></code></a> command can be used to create a DFN of disks by using geometries
+(3D). First, geometrical nodes are created and extras are associated to them (extra <a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">1</span></span></a> is size, extra <a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">2</span></span></a> is dip and extra
+<a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">3</span></span></a> is dip direction). These nodes are transformed into disk-shaped fractures with the <a class="reference internal" href="#command:fracture.import" title="Import fractures."><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">import</span></code></a> command.
+The <span class="cmdkey">truncate</span> keyword is used to truncate the new fractures at the system limits.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+
+<span class="nb">model domain</span><span class="n"> extent </span><span class="o">-</span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">5</span>
+<span class="c">;Create geometry with extra variables corresponding to disks</span>
+<span class="c">;First us radius, then dip, then dip direction</span>
+<span class="nb">geometry set</span><span class="n"> </span><span class="s">&#39;disks&#39;</span>
+<span class="nb">geometry node</span><span class="n"> create </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">4</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">4</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">4</span><span class="p">)</span><span class="n"> extra </span><span class="m m-Double">1</span><span class="n"> </span><span class="m m-Double">1.0</span><span class="n"> extra </span><span class="m m-Double">2</span><span class="n"> </span><span class="m m-Double">90.0</span><span class="n"> extra </span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">270.0</span>
+<span class="nb">geometry node</span><span class="n"> create </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">3</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">3</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> extra </span><span class="m m-Double">1</span><span class="n"> </span><span class="m m-Double">1.5</span><span class="n"> extra </span><span class="m m-Double">2</span><span class="n"> </span><span class="m m-Double">85.0</span><span class="n"> extra </span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">250.0</span>
+<span class="nb">geometry node</span><span class="n"> create </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">2</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">2</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">2</span><span class="p">)</span><span class="n"> extra </span><span class="m m-Double">1</span><span class="n"> </span><span class="m m-Double">2.0</span><span class="n"> extra </span><span class="m m-Double">2</span><span class="n"> </span><span class="m m-Double">80.0</span><span class="n"> extra </span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">230.0</span>
+<span class="nb">geometry node</span><span class="n"> create </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="n"> extra </span><span class="m m-Double">1</span><span class="n"> </span><span class="m m-Double">2.5</span><span class="n"> extra </span><span class="m m-Double">2</span><span class="n"> </span><span class="m m-Double">75.0</span><span class="n"> extra </span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">210.0</span>
+<span class="nb">geometry node</span><span class="n"> create </span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">)</span><span class="n"> extra </span><span class="m m-Double">1</span><span class="n"> </span><span class="m m-Double">3.0</span><span class="n"> extra </span><span class="m m-Double">2</span><span class="n"> </span><span class="m m-Double">70.0</span><span class="n"> extra </span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">190.0</span>
+<span class="nb">geometry node</span><span class="n"> create </span><span class="p">(</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> extra </span><span class="m m-Double">1</span><span class="n"> </span><span class="m m-Double">3.5</span><span class="n"> extra </span><span class="m m-Double">2</span><span class="n"> </span><span class="m m-Double">65.0</span><span class="n"> extra </span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">170.0</span>
+<span class="nb">geometry node</span><span class="n"> create </span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">)</span><span class="n"> extra </span><span class="m m-Double">1</span><span class="n"> </span><span class="m m-Double">4.0</span><span class="n"> extra </span><span class="m m-Double">2</span><span class="n"> </span><span class="m m-Double">60.0</span><span class="n"> extra </span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">150.0</span>
+<span class="c">;Import these fractures from the geometry set</span>
+<span class="nb">fracture import</span><span class="n"> from</span><span class="o">-</span><span class="n">geometry </span><span class="s">&#39;disks&#39;</span><span class="n"> dominance ordered </span><span class="sx">...</span>
+<span class="n">                dfn </span><span class="s">&#39;from_geometry&#39;</span><span class="n"> truncate</span>
+<span class="nb">program </span><span class="se">return</span><span class="n"> </span>
+</pre></div>
+</div>
+<p>The following example illustrates how the <a class="reference internal" href="#command:fracture.import" title="Import fractures."><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">import</span></code></a> command can be
+used to create a DFN of polygons by using geometries, and automatically calculate intersections.
+The polygons are directly created with the geometry logic, and transformed into fractures with the <a class="reference internal" href="#command:fracture.import" title="Import fractures."><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">import</span></code></a> command. The <span class="cmdkey">clean</span> keyword is used to delete the geometry once fractures are created.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+
+<span class="nb">model domain</span><span class="n"> extent </span><span class="o">-</span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">5</span>
+<span class="c">;Create geometry as polygons</span>
+<span class="nb">geometry set</span><span class="n"> </span><span class="s">&#39;polygons&#39;</span>
+<span class="nb">geometry polygon</span><span class="n"> create by</span><span class="o">-</span><span class="n">positions  </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">4</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">4</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">4</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">4</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">4</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">4</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">4</span><span class="p">)</span>
+<span class="nb">geometry polygon</span><span class="n"> create by</span><span class="o">-</span><span class="n">positions  </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">3</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">3</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">3</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">3</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">3</span><span class="p">)</span>
+<span class="nb">geometry polygon</span><span class="n"> create by</span><span class="o">-</span><span class="n">positions  </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">2</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">2</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">2</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">2</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">2</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">2</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">2</span><span class="p">)</span>
+<span class="nb">geometry polygon</span><span class="n"> create by</span><span class="o">-</span><span class="n">positions  </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">1</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">1</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">1</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">1</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">1</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">1</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">1</span><span class="p">)</span>
+<span class="nb">geometry polygon</span><span class="n"> create by</span><span class="o">-</span><span class="n">positions  </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">4</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">4</span><span class="p">)</span>
+<span class="nb">geometry polygon</span><span class="n"> create by</span><span class="o">-</span><span class="n">positions  </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">3</span><span class="p">)</span>
+<span class="nb">geometry polygon</span><span class="n"> create by</span><span class="o">-</span><span class="n">positions  </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">2</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">2</span><span class="p">)</span>
+<span class="nb">geometry polygon</span><span class="n"> create by</span><span class="o">-</span><span class="n">positions  </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">1</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">1</span><span class="p">)</span>
+<span class="c">;Import polygons as fractures</span>
+<span class="nb">fracture import</span><span class="n"> from</span><span class="o">-</span><span class="n">geometry </span><span class="s">&#39;polygons&#39;</span><span class="n"> clean dominance ordered </span><span class="sx">...</span>
+<span class="n">                dfn </span><span class="s">&#39;from_geometry&#39;</span><span class="n"> truncate</span>
+<span class="nb">program </span><span class="se">return</span><span class="n"> </span>
+<span class="n"> </span>
+</pre></div>
+</div>
+<p class="h3 rubric">See Also: <a class="reference internal" href="cmd_fracture_attribute.html#command:fracture.attribute" title="Modify fracture attributes. This command is a synonym for the  fracture.initialize &#013;&#010;command."><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">attribute</span></code></a> | <a class="reference internal" href="cmd_fracture_export.html#command:fracture.export" title="Export fractures to file. By default, fractures are exported in the Itasca DFN&#013;&#010;data file format"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">export</span></code></a> | <a class="reference internal" href="cmd_fracture_property.html#command:fracture.property" title="Assign fracture surface properties. The value  a  is assigned to the surface&#013;&#010;property"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">property</span></code></a></p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../dfn.html" >Discrete Fracture Network (DFN)</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="dfn_commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_fracture_group.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">fracture</span> <span class="pre">group</span></code> command</a> |    
+       <a href="cmd_fracture_initialize.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">initialize</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?fracture import command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

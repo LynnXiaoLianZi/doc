@@ -1,0 +1,245 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Simple Beam — Two Equal Concentrated Loads — Shell Elements &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <span class="target" id="shellloads"></span><div class="section" id="simple-beam-two-equal-concentrated-loads-shell-elements">
+<h1>Simple Beam — Two Equal Concentrated Loads — Shell Elements</h1>
+<p class="h2 rubric">Problem Statement</p>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To view this project in <span class="codename">FLAC3D</span>, use the menu command <span class="menuselection">Help ► Examples…</span>.  Choose “Structure/Shell/ConcentratedLoads” and select “ConcentratedLoads.prj” to load.
+The <a class="reference internal" href="#shellloadsdata"><span class="std std-ref">main data files</span></a> used are shown at the end of this example. The remaining data files can be found in the project.</p>
+</div>
+<p>A simply supported beam is loaded by two equal concentrated loads symmetrically placed, as
+described in <a class="reference internal" href="../../Beam/ConcentratedLoads/ConcentratedLoads.html#beam-concentrated-loads"><span class="std std-ref">Simple Beam — Two Equal Concentrated Loads — Beam Elements</span></a>. Here this problem is replicated using shell elements to compute maximum mid-span deflection along with moment and shear distributions, which are compared with the analytical solution.</p>
+<p>The analytical solution corresponds with beam-theory assumptions; therefore, we must assign boundary conditions and properties to the shell model to replicate these conditions. We create a shell model of the beam shown in <a href="#shellloads-diagram">Figure  1</a>, such that length equals 9 m and depth, <span class="math">\(d\)</span>, equals 1 m. There are two issues to consider:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>A plate manifests greater stiffness than a beam by a factor of <span class="math">\(1/(1-\nu^2)\)</span>, because the plate material through the depth (the <span class="math">\(z\)</span>-direction in <a href="#shellloads-diagram">Figure  1</a>) inhibits development of anticlastic curvature, <span class="math">\(\kappa_z\)</span> (Ugural 1981, p. 8). Therefore, we set <span class="math">\(\nu\)</span> =0 in our shell model.</li>
+<li>If the <span class="math">\(x\)</span>-direction of the surface coordinate system is aligned with the beam axis (the <span class="math">\(x\)</span>-direction of <a href="#shellloads-diagram">Figure  1</a>), then the shear force, <span class="math">\(V\)</span>, equals <span class="math">\(Q_x d\)</span>, where <span class="math">\(Q_x\)</span> is the transverse-shear stress resultant, and the moment, <span class="math">\(M\)</span>, equals <span class="math">\(M_x d\)</span>, where <span class="math">\(M_x\)</span> is the bending stress resultant. Note that the equilibrium equations for a plate give</li>
+</ol>
+<div class="math">
+\[Q_x =   {\partial M_x \over \partial x} + {\partial M_{xy} \over \partial y}\]</div>
+<p>The beam-theory solution assumes that <span class="math">\(M_{xy}=0\)</span>. But in our plate, the sides are slightly less stiff than the inside, which produces inward twist (with curvature <span class="math">\(\kappa_z\)</span>) along each side edge. We can minimize this effect by restraining rotation about the <span class="math">\(x\)</span>-axis, but the nodes at the cross-diagonal points away from the edges still displace slightly less than those along the edges, to produce small twisting moments, <span class="math">\(M_{xy}\)</span>. The values of <span class="math">\(Q_x\)</span> that we compute will be correct on the inside, but incorrect for elements along the edges. The only way to completely eliminate <span class="math">\(M_{xy}\)</span> would be to impose the exact non-twist beam-theory deformation field. In our case, we are imposing the loading and computing the deformation field, so we expect the slight error in <span class="math">\(Q_x\)</span> along the edges.</p>
+</div></blockquote>
+<div class="figure align-center" id="id1">
+<span id="shellloads-diagram"></span><a class="reference internal image-reference" href="../../../../../_images/shellloads-diagram.png"><img alt="../../../../../_images/shellloads-diagram.png" src="../../../../../_images/shellloads-diagram.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Simply supported beam with two equal concentrated loads (distance in units of meters).</span></p>
+</div>
+<p>The <span class="codename">FLAC3D</span> model contains 144 shell elements and 88 nodes, as shown in
+<a href="#shellloads-geom">Figure  2</a>. We utilize a cross-diagonal mesh pattern to ensure symmetric
+response, and we utilize a <a class="reference internal" href="../../../doc/manual/sel_manual/formulation/formulation.html#struct-shell-dkt-element"><span class="std std-ref">DKT plate bending</span></a> finite element
+because this is a small-strain, plate-bending problem. The same results would be produced if we
+used either of the shell finite elements, because no membrane loading occurs. We set the Young’s
+modulus and Poisson’s ratio equal to 200 GPa and 0, respectively. We set the shell thickness
+equal to 0.133887 m to produce a second moment of inertia, <span class="math">\(I\)</span>, equal to 200
+<span class="math">\(\times\)</span> 10<sup>-6</sup>  m<sup>4</sup>. Boundary conditions consist of simple supports at the
+beam ends, and two point loads, each of which is 10,000 N. The point loads are distributed to
+the four nodes along each load line based on tributary length associated with each node. Thus,
+the inner nodes carry twice the load of the outer nodes.</p>
+<div class="figure align-center" id="id2">
+<span id="shellloads-geom"></span><a class="reference internal image-reference" href="common\sel\test3d\Shell\ConcentratedLoads\shellloads-geom.png"><img alt="common\sel\test3d\Shell\ConcentratedLoads\shellloads-geom.png" src="common\sel\test3d\Shell\ConcentratedLoads\shellloads-geom.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: <span class="codename">FLAC3D</span> model for simple beam problem modeled with shell elements.</span></p>
+</div>
+<p>The displacement field is shown in <a href="#shellloads-disp">Figure  3</a>. The maximum displacement
+occurs at the beam center and equals 6.469 <span class="math">\(\times\)</span> 10<sup>-3</sup> m, which corresponds
+exactly with the <a class="reference internal" href="../../Beam/ConcentratedLoads/ConcentratedLoads.html#beamloads-eq1-hard"><span class="std std-ref">theoretical value</span></a>.</p>
+<p>An alternative means of visualizing the displacement field for a small-strain simulation is to
+use the <em>Shell</em> plot item and specify a nonzero value for the deformation factor. <a href="#shellloads-deform">Figure  4</a> shows both the undeformed and the deformed shape by adding two <em>Shell</em> plot items to the view and specifying deformation factors of zero and 100, respectively.</p>
+<div class="figure align-center" id="id3">
+<span id="shellloads-disp"></span><a class="reference internal image-reference" href="common\sel\test3d\Shell\ConcentratedLoads\shellloads-disp.png"><img alt="common\sel\test3d\Shell\ConcentratedLoads\shellloads-disp.png" src="common\sel\test3d\Shell\ConcentratedLoads\shellloads-disp.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 3: Displacement field of simple beam modeled with shell elements.</span></p>
+</div>
+<div class="figure align-center" id="id4">
+<span id="shellloads-deform"></span><a class="reference internal image-reference" href="common\sel\test3d\Shell\ConcentratedLoads\shellloads-deform.png"><img alt="common\sel\test3d\Shell\ConcentratedLoads\shellloads-deform.png" src="common\sel\test3d\Shell\ConcentratedLoads\shellloads-deform.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 4: Deformed (factor of 100) and undeformed shapes of simple beam modeled with shell elements.</span></p>
+</div>
+<p><a href="#shellloads-shear">Figure  5</a> and <a href="#shellloads-moment">Figure  6</a> show the shear force and
+moment distributions. Based on this scale, they correspond with the theoretical solutions. These
+plot items display these quantities in the surface coordinate system that is specified with the
+“Surf X” attribute, set such that the surface <span class="math">\(x\)</span>-direction corresponds with the global
+<span class="math">\(x\)</span>-direction, the surface <span class="math">\(y\)</span>-direction corresponds with the global
+<span class="math">\(z\)</span>-direction, and the surface <span class="math">\(z\)</span>-direction corresponds with the negative global
+<span class="math">\(y\)</span>-direction. The sign convention for these stress resultants is shown
+<span class="xref std std-ref">here</span>. We see that positive <span class="math">\(M_x\)</span> corresponds with
+stretching of the fibers in the positive <span class="math">\(z\)</span>-direction of the surface, and positive
+<span class="math">\(Q_x\)</span> corresponds with shear forces acting in the positive <span class="math">\(z\)</span>-direction of the
+positive <span class="math">\(x\)</span>-directed surface.</p>
+<div class="figure align-center" id="id5">
+<span id="shellloads-shear"></span><a class="reference internal image-reference" href="common\sel\test3d\Shell\ConcentratedLoads\shellloads-shear.png"><img alt="common\sel\test3d\Shell\ConcentratedLoads\shellloads-shear.png" src="common\sel\test3d\Shell\ConcentratedLoads\shellloads-shear.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 5: Shear force distribution in simple beam modeled with shell elements.</span></p>
+</div>
+<div class="figure align-center" id="id6">
+<span id="shellloads-moment"></span><a class="reference internal image-reference" href="common\sel\test3d\Shell\ConcentratedLoads\shellloads-moment.png"><img alt="common\sel\test3d\Shell\ConcentratedLoads\shellloads-moment.png" src="common\sel\test3d\Shell\ConcentratedLoads\shellloads-moment.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 6: Moment distribution in simple beam modeled with shell elements.</span></p>
+</div>
+<p>A closer examination of the shear force and moment distributions in the left third of the beam is provided in <a href="#shellloads-momentclose">Figure  8</a> and <a href="#shellloads-shearclose">Figure  7</a>. The moment distribution is constant across the depth and varies linearly from zero at the support to 3 <span class="math">\(\times\)</span> 10<sup>4</sup> at the third point, which corresponds exactly with the theoretical solution. The shear distribution is not constant across the depth. It has the correct value away from the edges, but deviates from the beam-theory solution along the edges.</p>
+<p>At <span class="math">\(x\)</span> =1.5 away from the edge, the values of <span class="math">\(Q_x\)</span> and <span class="math">\(M_x\)</span> are found to be
+1.0 <span class="math">\(\times\)</span> 10<sup>4</sup> and 1.5 x 10<sup>4</sup>, respectively, which correspond exactly
+with the theoretical values. At <span class="math">\(x\)</span> =1.5 near the edge, the values of <span class="math">\(Q_x\)</span> and
+<span class="math">\(M_x\)</span> are found to be 9.25 <span class="math">\(\times\)</span> 10<sup>3</sup> and 1.5 <span class="math">\(\times\)</span> 10<sup>4</sup>,
+respectively. We see that there is an error of 7.5% in the value of shear force along the edge.
+This deviation from the beam-theory solution arises from the nonzero value of <span class="math">\(M_{xy}\)</span>
+that develops at the nodes along the edge (see <a href="#shellloads-momentclose">Figure  8</a>).</p>
+<div class="figure align-center" id="id7">
+<span id="shellloads-shearclose"></span><a class="reference internal image-reference" href="common\sel\test3d\Shell\ConcentratedLoads\shellloads-shearclose.png"><img alt="common\sel\test3d\Shell\ConcentratedLoads\shellloads-shearclose.png" src="common\sel\test3d\Shell\ConcentratedLoads\shellloads-shearclose.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 7: Shear force distribution in left third of simple beam modeled with shell elements.</span></p>
+</div>
+<div class="figure align-center" id="id8">
+<span id="shellloads-momentclose"></span><a class="reference internal image-reference" href="common\sel\test3d\Shell\ConcentratedLoads\shellloads-momentclose.png"><img alt="common\sel\test3d\Shell\ConcentratedLoads\shellloads-momentclose.png" src="common\sel\test3d\Shell\ConcentratedLoads\shellloads-momentclose.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 8: Moment distribution in left third of simple beam modeled with shell elements.</span></p>
+</div>
+<div class="figure align-center" id="id9">
+<span id="shellloads-twist"></span><a class="reference internal image-reference" href="common\sel\test3d\Shell\ConcentratedLoads\shellloads-twist.png"><img alt="common\sel\test3d\Shell\ConcentratedLoads\shellloads-twist.png" src="common\sel\test3d\Shell\ConcentratedLoads\shellloads-twist.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 9: Twisting moment distribution in left third of simple beam modeled with shell elements.</span></p>
+</div>
+<p>The stress-recovery procedure smooths bending and membrane resultants at the nodes and then uses
+the bending resultants to compute the constant value of transverse-shear resultants within each
+shell element. The best accuracy is obtained by smoothing these values over each surface patch
+for which the stresses will vary continuously. In this problem, when we compute stresses using
+the <a class="reference internal" href="../../../doc/manual/sel_manual/shells/commands/cmd_structure.shell.recover.html#command:structure.shell.recover" title="Stress-recovery for shell elements.  The stress-recovery procedure can be applied&#013;&#010;to all elements to compute both the stress resultants and the stresses acting&#013;&#010;at a specified depth. The range keyword identifies the patch of elements to&#013;&#010;which the command will apply. Note that the recovered quantities will depend&#013;&#010;upon the range of elements over which these quantities are being recovered,&#013;&#010;because nodal averaging only occurs for elements within this range."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">shell</span> <span class="pre">recover</span></code></a> command, by default, stresses are recovered, and thus
+smoothed, for all shell elements in the model. The <a class="reference internal" href="../../../doc/manual/sel_manual/shells/commands/cmd_structure.shell.history.html#command:structure.shell.history" title="Sample shell responses.  The nodes of a shell element will be ordered counter-clockwise&#013;&#010;with respect to the outside of the zone faces upon which the shell was created."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">shell</span> <span class="pre">history</span></code></a>
+<span class="cmdkey">resultant-qx</span> command, however, only recovers stresses for the particular element
+identified; therefore, smoothing does not occur. In this problem, we sampled a history of
+<span class="math">\(Q_x\)</span> in one element using the command</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">struct shell history</span><span class="n"> resultant</span><span class="o">-</span><span class="n">qx surface</span><span class="o">-</span><span class="n">x </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> position </span><span class="p">(</span><span class="m m-Double">1.625</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A plot of this quantity is shown in <a href="#shellloads-history">Figure  10</a>, where we see that the
+value does not equal the value of 1.0 <span class="math">\(\times\)</span> 10<sup>4</sup>, which we obtained above from
+the plot item and from the <a class="reference internal" href="../../../doc/manual/sel_manual/shells/commands/cmd_structure.shell.recover.html#kwd:structure.shell.recover.resultants" title="recover the eight stress resultants for all elements in the optional range.&#013;&#010;The stress resultants are expressed in terms of the surface coordinate system.&#013;&#010;This command assumes that a consistent surface coordinate system has been established&#013;&#010;for the group of elements in the range (see the  surface  keyword). The&#013;&#010;bending and membrane stress resultants (`M_x`\ , `M_y`\ , `M_{xy}`\ , `N_x`\&#013;&#010;, `N_y`, and `N_{xy}`\ ) vary linearly over each element, whereas the transverse-shear&#013;&#010;stress"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">shell</span> <span class="pre">recover</span> <span class="pre">resultants</span></code></a> command.  For this problem,
+the smoothing process is necessary to produce good values of <span class="math">\(Q_x\)</span>.</p>
+<div class="figure align-center" id="id10">
+<span id="shellloads-history"></span><a class="reference internal image-reference" href="common\sel\test3d\Shell\ConcentratedLoads\shellloads-history.png"><img alt="common\sel\test3d\Shell\ConcentratedLoads\shellloads-history.png" src="common\sel\test3d\Shell\ConcentratedLoads\shellloads-history.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 10: Evolution of shear force at centroid of a shell element (computed with no nodal smoothing).</span></p>
+</div>
+<p class="h2 rubric">Reference</p>
+<p>Ugural, A. C. <span class="bi">Stresses in Plates and Shells</span>. New York: McGraw-Hill Publishing Company Inc. (1981).</p>
+<p class="h2 rubric" id="shellloadsdata">Data File</p>
+<p><strong>ConcentratedLoads.dat</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model large-strain</span><span class="n"> </span><span class="sx">off</span>
+<span class="nb">model title</span><span class="n"> </span><span class="s">&quot;Simple Beam (modeled using shell elements)&quot;</span>
+<span class="c">; Create shell elements and assign material properties</span>
+<span class="nb">struct shell create</span><span class="n"> by</span><span class="o">-</span><span class="n">quadrilateral </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">9</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">9</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                    size</span><span class="p">=(</span><span class="m m-Double">12</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> cross</span><span class="o">-</span><span class="n">diagonal element</span><span class="o">-</span><span class="n">type</span><span class="p">=</span><span class="n">dkt</span>
+<span class="nb">struct shell property</span><span class="n"> isotropic</span><span class="p">=(</span><span class="m m-Double">2e11</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">0.0</span><span class="p">)</span><span class="n"> thickness</span><span class="p">=</span><span class="m m-Double">0.133887</span>
+<span class="c">; Boundary conditions</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">x velocity</span><span class="o">-</span><span class="n">y rotation</span><span class="o">-</span><span class="n">x rotation</span><span class="o">-</span><span class="n">y </span><span class="sx">...</span>
+<span class="n">                range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0.0</span><span class="n"> </span><span class="c">; support at left end - hinge</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">y rotation</span><span class="o">-</span><span class="n">x rotation</span><span class="o">-</span><span class="n">y range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">9.0</span><span class="n"> </span>
+<span class="n">                                      </span><span class="c">; support at right end - roller</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">z rotation</span><span class="o">-</span><span class="n">x rotation</span><span class="o">-</span><span class="n">y</span>
+<span class="n">           </span><span class="c">; restrict non-beam deformation modes</span>
+<span class="c">; Applied loads</span>
+<span class="nb">struct node apply</span><span class="n"> force</span><span class="o">-</span><span class="n">edge </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">1e4</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> range union position</span><span class="o">-</span><span class="n">x</span><span class="p">=</span><span class="m m-Double">3</span><span class="n"> position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">6</span>
+<span class="c">; History</span>
+<span class="nb">history interval</span><span class="n"> </span><span class="m m-Double">1</span>
+<span class="nb">struct shell history</span><span class="n"> resultant</span><span class="o">-</span><span class="n">qx surface</span><span class="o">-</span><span class="n">x </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> position </span><span class="p">(</span><span class="m m-Double">1.625</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0.5</span><span class="p">)</span>
+<span class="c">; Solve to equilibrium</span>
+<span class="nb">model </span><span class="ss">solve</span><span class="n"> ratio</span><span class="o">-</span><span class="n">local </span><span class="m m-Double">1e-6</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;ConcentratedLoads&#39;</span>
+</pre></div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Simple Beam — Two Equal Concentrated Loads — Shell Elements" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,364 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block cut command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block cycle command" href="cmd_block.cycle.html" />
+    <link rel="prev" title="block creep timestep command" href="../block.creep_commands/cmd_block.creep.timestep.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-cut-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">cut</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="block command">
+<dt id="command:block.cut">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">c</span><span class="null">u</span><span class="null">t</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.cut.arc" title="block cut arc">arc</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.cut.crack" title="block cut crack">crack</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.cut.cutting" title="block cut cutting">cutting</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.cut.dfn" title="block cut dfn">dfn</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.cut.geometry" title="block cut geometry">geometry</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.cut.join" title="block cut join">join</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.cut.jointset-id" title="block cut jointset-id">jointset-id</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.cut.joint-set" title="block cut joint-set">joint-set</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.cut.split" title="block cut split">split</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.cut.table" title="block cut table">table</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.cut.tunnel" title="block cut tunnel">tunnel</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.cut.voronoi" title="block cut voronoi">voronoi</a></p>
+</div>
+<p>Cut blocks.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Block cutting commands must be issued before blocks are made deformable.</p>
+<p>If no range is given, the entire model is used for generation. In most cases, the range is defined by <code class="xref fish fish-cmd docutils literal"><span class="pre">range</span> <span class="pre">joint-region</span> <span class="pre">n</span></code>, where n refers to the id in a previous <a class="reference internal" href="cmd_block.joint-region.html#command:block.joint-region" title="Define a joint region. A convex quadrilateral region is defined for generation&#013;&#010;of a joint set (or sets) and assigned id n. The coordinates of the four corners&#013;&#010;(in a clockwise direction) delimit the boundary of the region. The region boundary&#013;&#010;must be convex. A joint set defined by the BLOCK CUT JOINT-SET command will&#013;&#010;be generated in all blocks or portions of blocks within this region. If the&#013;&#010;region is not specified, it is"><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">joint-region</span></code></a> command. Other range keywords (e.g., mat n) may also be used to restrict the blocks to be cut. Joint segments that do not cut blocks are stored to be used in conjunction with succeeding <a class="reference internal" href="#command:block.cut" title="Cut blocks."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">cut</span></code></a> commands. The area of block cutting is controlled by the range keywords. The area of storage is not affected by the range keywords. Only totally unsuccessful joint segments are stored. The remainder ends of joint segments that do not cut blocks are not stored. The stored joint segments can be removed by the <a class="reference internal" href="cmd_block.joint-delete.html#command:block.joint-delete" title="Joints that do not completely intersect a block are deleted. (This command is&#013;&#010;performed automatically when the BLOCK ZONE GENERATE command and BLOCK STEP,&#013;&#010;BLOCK CYCLE or BLOCK SOLVE commands are issued.)"><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">joint-delete</span></code></a> command. All incomplete joint segments are discarded automatically before zone generation or cycling. Partial cracks are not modeled in <span class="codename">UDEC</span> (only completed blocks). A block that wraps completely around another block will not behave correctly. This is because a block cannot form contacts with itself.</p>
+<p>The <a class="reference internal" href="../block.contact_commands/cmd_block.contact.change.html#command:block.contact.change" title="Set or change joint models or material numbers. All joints with contact coordinates&#013;&#010;lying within the optional range have material numbers changed. If no range is&#013;&#010;specified, all joints will have material numbers changed according to the keywords&#013;&#010;given below.To change block material numbers, see  block.change ; for cable&#013;&#010;material numbers, see  cable.change ; for domain material numbers, see&#013;&#010; domain.change .  See  block.contact.cmodel  for extended joint models,&#013;&#010;and local storage joint models. To assign properties to the"><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">change</span></code></a> command can be used to assign material properties and constitutive models to the contacts along the crack.</p>
+<p>The optional Jointset-ID number is used to specify the jointset ID for any contacts created by use of this command. If no ID is specified, a sequential number is used.</p>
+<p class="last">If the optional join keyword is used, any new contacts formed because of the crack will be joined contacts. Contacts that have been joined will be listed as having a constitutive model of 10.</p>
+</div>
+<dl class="keyword">
+<dt id="kwd:block.cut.arc">
+<span class="cmdkey"><span class="pref">a</span><span class="null">r</span><span class="null">c</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxc</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyc</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxb</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyb</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftheta</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Create an arc pattern of cracks.  <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> cracks are created, which conform to an arc of a circle centered at (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxc</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyc</span></span></a>), with a beginning point of (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxb</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyb</span></span></a>) and a counterclockwise angle of <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftheta</span></span></a> degrees.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.crack">
+<span class="cmdkey"><span class="pref">c</span><span class="null">r</span><span class="null">a</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx2</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy2</span><span class="null"> </span></span></a></dt>
+<dd><p>Create a crack. A crack is created between points (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx1</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy1</span></span></a>) and (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx2</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy2</span></span></a>). This command can be used to create a discontinuous fracture in part of a block. Two cracks will be connected if their endpoint locations are within a distance of twice the corner-round-length from each other. All discontinuous cracks that do not link to form blocks are deleted when the <a class="reference internal" href="../block.zone_commands/cmd_block.zone.generate.html#command:block.zone.generate" title="Generate zones in blocks.  All blocks with centroids lying within the optional&#013;&#010; range  are discretized into deformable triangular finite-difference zones.&#013;&#010;If no range is given, then all blocks will be discretized."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">generate</span></code></a> or <a class="reference internal" href="cmd_block.cycle.html#command:block.cycle" title="Executes  i  timesteps. ( block.cycle   0   is permitted as&#013;&#010;a check on data.) If the  &lt;Esc&gt;  key is pressed during execution, |udec|&#013;&#010;will return control to the user after the current cycle is completed. (Also&#013;&#010;see  block.solve .)"><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">cycle</span></code></a> command is executed.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.cutting">
+<span class="cmdkey"><span class="pref">c</span><span class="null">u</span><span class="null">t</span><span class="null">t</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><p>Allow cutting of blocks created via the <code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">fill</span></code> command to occur after cycling. Default is <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.dfn">
+<span class="cmdkey"><span class="pref">d</span><span class="null">f</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p><span class="flag3">need text here</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.geometry">
+<span class="cmdkey"><span class="pref">g</span><span class="null">e</span><span class="null">o</span><span class="null">m</span><span class="null">e</span><span class="null">t</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p><span class="flag3">need text here</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.join">
+<span class="cmdkey"><span class="pref">j</span><span class="null">o</span><span class="null">i</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>If the optional join keyword is used, any new contacts formed because of the crack will be joined contacts. Contacts that have been joined will be listed as having a constitutive model of 10.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.jointset-id">
+<span class="cmdkey"><span class="pref">j</span><span class="null">o</span><span class="null">i</span><span class="null">n</span><span class="null">t</span><span class="null">s</span><span class="null">e</span><span class="null">t</span><span class="null">-</span><span class="pref">i</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>The optional jointset id number is used to specify a specifiic id to be assigned by the cut commands and will be applied to any contacts created by use of these commands. If no jointset id is specified, a sequential number is used.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.joint-set">
+<span class="cmdkey"><span class="pref">j</span><span class="null">o</span><span class="null">i</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">s</span><span class="null">e</span><span class="null">t</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Generate a joint set in the <a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><code class="xref fish fish-tok docutils literal"><span class="pre">range</span></code></a> with characteristics defined by the following keywords (see <a href="#cut-jointset">Figure  1</a> for illustration of parameters).</p>
+<dl class="keyword">
+<dt id="kwd:block.cut.joint-set.angle-deviation">
+<span class="cmdkey"><span class="pref">a</span><span class="null">n</span><span class="null">g</span><span class="null">l</span><span class="null">e</span><span class="null">-</span><span class="pref">d</span><span class="null">e</span><span class="null">v</span><span class="null">i</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set local deviation of angle of all joints (the deviation is around the center of the segment) from the direction given for the global joint track, <span class="math">\(a\)</span><sub>m</sub>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.joint-set.angle">
+<span class="cmdkey"><span class="pref">a</span><span class="null">n</span><span class="null">g</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span></span>></span><span class="null"> </span></dt>
+<dd><p>Set the angle of joint track (<span class="math">\(a\)</span><sub>m</sub>) to the global <span class="math">\(x\)</span>-axis (default = 0).  The orientation of joints may also be specified using <span class="cmdkey">dip</span>, <span class="cmdkey">dd</span>, and <span class="cmdkey">location</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.joint-set.brick">
+<span class="cmdkey"><span class="pref">b</span><span class="null">r</span><span class="null">i</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span></span>></span><span class="null"> </span></dt>
+<dd><p>Creates a brick like joint pattern.  Keywords are:</p>
+<dl class="keyword">
+<dt id="kwd:block.cut.joint-set.brick.angle">
+<span class="cmdkey"><span class="pref">a</span><span class="null">n</span><span class="null">g</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the angle of brick base to the global <span class="math">\(x\)</span>-axis (default = 0).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.joint-set.brick.height">
+<span class="cmdkey"><span class="pref">h</span><span class="null">e</span><span class="null">i</span><span class="null">g</span><span class="null">h</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>height of the bricks</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.joint-set.brick.origin">
+<span class="cmdkey"><span class="pref">o</span><span class="null">r</span><span class="null">i</span><span class="null">g</span><span class="null">i</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span><span class="null"> </span></span></a></dt>
+<dd><blockquote>
+<div>shift the origin of the bricks</div></blockquote>
+<dl class="keyword">
+<dt id="kwd:block.cut.joint-set.brick.origin.width">
+<span class="cmdkey"><span class="pref">w</span><span class="null">i</span><span class="null">d</span><span class="null">t</span><span class="null">h</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>width of bricks.</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.joint-set.dd">
+<span class="cmdkey"><span class="pref">d</span><span class="pref">d</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>specifies the dip direction of the joint set in 3D space.  This can be used in conjunction with <span class="cmdkey">dip</span> and <span class="cmdkey">location</span> to generate joint trace intersection with the plane of the model in <span class="codename">UDEC</span>.  The global orientation of the <span class="codename">UDEC</span> plane must have previously been defined using the <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">orientation</span> <span class="pre">dip-direction</span></code> and <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">orientation</span> <span class="pre">origin</span></code> commands.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.joint-set.dip">
+<span class="cmdkey"><span class="pref">d</span><span class="pref">i</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>specifies the dip of the joint set in 3D space.  This can be used in conjunction with <span class="cmdkey">dd</span> and <span class="cmdkey">location</span> to generate joint trace intersection with the plane of the model in <span class="codename">UDEC</span>.  The global orientation of the <span class="codename">UDEC</span> plane must have previously been defined using the <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">orientation</span> <span class="pre">dip-direction</span></code> and <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">orientation</span> <span class="pre">origin</span></code> commands.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.joint-set.gap">
+<span class="cmdkey"><span class="pref">g</span><span class="null">a</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span></span>></span><span class="null"> </span></dt>
+<dd><p>Set the gap length (<span class="math">\(g\)</span><sub>m</sub>) between joint segments (default = 0).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.joint-set.location">
+<span class="cmdkey"><span class="pref">l</span><span class="null">o</span><span class="null">c</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fz</span><span class="null"> </span></span></a></dt>
+<dd><p>specifies a point on a plane in 3D space.  This can be used in conjunction with <span class="cmdkey">dip</span> and <span class="cmdkey">dd</span> to generate joint trace intersection with the plane of the model in <span class="codename">UDEC</span>.  The global orientation of the <span class="codename">UDEC</span> plane must have previously been defined using the <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">orientation</span> <span class="pre">dip-direction</span></code> and <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">orientation</span> <span class="pre">origin</span></code> commands.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.joint-set.origin">
+<span class="cmdkey"><span class="pref">o</span><span class="null">r</span><span class="null">i</span><span class="null">g</span><span class="null">i</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span><span class="null"> </span></span></a></dt>
+<dd><p>Sets the coordinates (global axis) of the start of one joint trace. A joint will be generated starting at (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span></span></a>); additional joints will be generated to fill the specified range. (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span></span></a>) does not have to be inside of a specified range.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.joint-set.trace">
+<span class="cmdkey"><span class="pref">t</span><span class="null">r</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span></span>></span><span class="null"> </span></dt>
+<dd><p>Set the trace length (<span class="math">\(t\)</span><sub>m</sub>) of joint segment (default = model size).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.joint-set.spacing">
+<span class="cmdkey"><span class="pref">s</span><span class="null">p</span><span class="null">a</span><span class="null">c</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span></span>></span><span class="null"> </span></dt>
+<dd><p>Set spacing (<span class="math">\(s\)</span><sub>m</sub>) normal to joint tracks (default = model size).</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="figure" id="id1">
+<span id="cut-jointset"></span><img alt="../../../../../../_images/Cutjointset01.png" src="../../../../../../_images/Cutjointset01.png" />
+<p class="caption"><span class="caption-text">Figure 1: Joint set parameters (joint region is defined by JREGION id 1 x1,y1 x2,y2 x3,y3 x4,y4)</span></p>
+</div>
+<dl class="keyword">
+<dt id="kwd:block.cut.split">
+<span class="cmdkey"><span class="pref">s</span><span class="null">p</span><span class="null">l</span><span class="null">i</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx2</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy2</span><span class="null"> </span></span></a></dt>
+<dd><p>Cut blocks along a line from <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx1</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy1</span></span></a> to <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx2</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy2</span></span></a>. It is similar to the <span class="cmdkey">crack</span> command, except that blocks must be entirely cut by the line. Partial cuts are not retained for future possible intersections as in the case of the <span class="cmdkey">crack</span> command.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.table">
+<span class="cmdkey"><span class="pref">t</span><span class="pref">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Create a crack from a table.  The coordinates in table <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> are used to generate a continuous crack. The data in the table must be previously defined (see the <span class="flag3">trick</span> <a class="reference internal" href="../../../../../../common/kernel/doc/manual/table_manual/table_commands/commands.html#table-commands"><span class="std std-ref">table</span></a> commands).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.tunnel">
+<span class="cmdkey"><span class="pref">t</span><span class="pref">u</span><span class="null">n</span><span class="null">n</span><span class="null">e</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">frad</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Create a circular joint or crack pattern. <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span></span></a> is  the center of the circle, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">frad</span></span></a> is the radius and <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> is the number of segments or sides defining the circle. Following execution of this command, future cracks or joints will not penetrate the tunnel periphery. To allow cracks to penetrate the periphery, specify a second tunnel with zero radius at some point outside the problem domain.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.voronoi">
+<span class="cmdkey"><span class="pref">v</span><span class="null">o</span><span class="null">r</span><span class="null">o</span><span class="null">n</span><span class="null">o</span><span class="null">i</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Voronoi tesselation is used to create randomly sized polygonal blocks. One or more blocks in a <span class="codename">UDEC</span> model can be subdivided into Voronoi sub-blocks of arbitrary size. A Voronoi tessellation is generated within the range specified. If no range is given, the entire model is covered by the tessellation. The range is typically given by <a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html#kwd:range.joint-region" title="applies to objects inside joint-region  i . Joint-regions are defined with&#013;&#010;the  block.contact.joint-region  command. Joint-regions are used to control&#013;&#010;cutting of blocks.  It works by clipping the cut segments.  It can also be used&#013;&#010;for assigning properties to joints and blocks. It does not work with the :cmd:&#013;&#010;'block.cut.voronoi' command."><code class="xref fish fish-cmd docutils literal"><span class="pre">range</span> <span class="pre">joint-region</span></code></a>, referring to a previous <a class="reference internal" href="cmd_block.joint-region.html#command:block.joint-region" title="Define a joint region. A convex quadrilateral region is defined for generation&#013;&#010;of a joint set (or sets) and assigned id n. The coordinates of the four corners&#013;&#010;(in a clockwise direction) delimit the boundary of the region. The region boundary&#013;&#010;must be convex. A joint set defined by the BLOCK CUT JOINT-SET command will&#013;&#010;be generated in all blocks or portions of blocks within this region. If the&#013;&#010;region is not specified, it is"><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">joint-region</span></code></a> command. The time required to generate blocks (<span class="math">\(n\)</span>) is proportional to <span class="math">\(n^2\)</span>.</p>
+<dl class="keyword">
+<dt id="kwd:block.cut.voronoi.angle">
+<span class="cmdkey"><span class="pref">a</span><span class="null">n</span><span class="null">g</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>rotates the voronoi tesselation.   The rotation is positive counter-clockwise fronm the positive x axis. (default = 0.0)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.voronoi.aspect-ratio">
+<span class="cmdkey"><span class="pref">a</span><span class="null">s</span><span class="null">p</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">-</span><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>specifies an asymmetry in the voronoi blocks (default = 1.0).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.voronoi.crack-store">
+<span class="cmdkey"><span class="pref">c</span><span class="null">r</span><span class="null">a</span><span class="null">c</span><span class="null">k</span><span class="null">-</span><span class="pref">s</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">:</span><span class="null">f</span><span class="null">l</span><span class="null">t</span><span class="null">:</span><span class="null">'</span><span class="null">f</span><span class="null">'</span><span class="null"> </span></span></dt>
+<dd><p>Sets the distance from left edge of current crack generation that used cracks will be saved. Deleting saved cracks too far from current crack “face’ saves time. However, if cracks are not being generated on the left side of blocks, this value may be increased (default = 2 × edge).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.voronoi.edge-maximum">
+<span class="cmdkey"><span class="pref">e</span><span class="null">d</span><span class="null">g</span><span class="null">e</span><span class="null">-</span><span class="pref">m</span><span class="null">a</span><span class="null">x</span><span class="null">i</span><span class="null">m</span><span class="null">u</span><span class="null">m</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the maximum-edge length of the Voronoi polygons. This length must be given, and must be at least 20 times the corner-round-length.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.voronoi.expand-x">
+<span class="cmdkey"><span class="pref">e</span><span class="null">x</span><span class="null">p</span><span class="null">a</span><span class="null">n</span><span class="null">d</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span></dt>
+<dd><p>Allows the user to increase the space (in the x direction) around the source block area used to generate the voronoi cuts.  This is sometimes necessary when rotating or stretching the voronoi block (default = 0).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.voronoi.expand-y">
+<span class="cmdkey"><span class="pref">e</span><span class="null">x</span><span class="null">p</span><span class="null">a</span><span class="null">n</span><span class="null">d</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span></dt>
+<dd><p>Allows the user to modify the space (in the y direction) around the source block area used to generate the voronoi cuts.  This is sometimes necessary when rotating or stretching the voronoi block (default = 0).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.voronoi.iterations">
+<span class="cmdkey"><span class="pref">i</span><span class="pref">t</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>specifies the number of iterations used by the voronoi generator to move the teselation points to be equidistant.  The points start out randomly spaced and will move to be equally spaced (default = 5).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.voronoi.round">
+<span class="cmdkey"><span class="pref">r</span><span class="null">o</span><span class="null">u</span><span class="null">n</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>corner-round-length for generated blocks (the default is 0.5). This can also be set via the ROUND command.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.voronoi.tolerance-block">
+<span class="cmdkey"><span class="pref">t</span><span class="null">o</span><span class="null">l</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null">-</span><span class="pref">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the tolerance used for blocks. This should be less than corner-round-length (default = 0.02 × round).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.voronoi.random-seed">
+<span class="cmdkey"><span class="pref">r</span><span class="null">a</span><span class="null">n</span><span class="null">d</span><span class="null">o</span><span class="null">m</span><span class="null">-</span><span class="pref">s</span><span class="null">e</span><span class="null">e</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the seed for random number generation used by the Voronoi tesselation.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cut.voronoi.trigon">
+<span class="cmdkey"><span class="pref">t</span><span class="null">r</span><span class="null">i</span><span class="null">g</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>Create triangular blocks based on the Delaunay triangles that are normally used to generate the Voronoi blocks.</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="block_commands.html" accesskey="U">Block Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../block.creep_commands/cmd_block.creep.timestep.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">creep</span> <span class="pre">timestep</span></code> command</a> |    
+       <a href="cmd_block.cycle.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">block</span> <span class="pre">cycle</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block cut command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

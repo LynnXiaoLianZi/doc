@@ -1,0 +1,181 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Printing Selected Structural-Element Variables &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="printing-selected-structural-element-variables">
+<span id="printingselvars"></span><h1>Printing Selected Structural-Element Variables</h1>
+<p>The user can select specific variables to be printed from a <span class="codename">UDEC</span> model, even though they may not be directly available from the PRINT command. This can be done by accessing the data structure in <span class="codename">UDEC</span> directly, as described in the FISH help. For example, the user may wish to print maximum and minimum stresses associated with structural elements for the case of structural elements installed on a regular spacing in the out-of-plane direction. The structural element variables stored by <span class="codename">UDEC</span> are scaled axial, shear forces and moments. In order to determine the actual forces and moments in the beams, the <span class="codename">UDEC</span> forces and moments must be multiplied by the spacing. Actual axial stresses are then derived using the moment of inertia and area of the beam cross-section. (See Section 1.5.1 in Special Features for further discussion on scaling a 2D <span class="codename">UDEC</span> model to simulate a 3D problem with regularly spaced structural elements.)</p>
+<p>The file “<code class="docutils literal"><span class="pre">prstruc.fis</span></code>” contains a <span class="codename">FISH</span> function pstruct that calculates the extreme values of axial stresses at the midpoint of beams, assuming a regular spacing defined by <code class="docutils literal"><span class="pre">b_space</span></code>, and a cross-sectional height specified by <code class="docutils literal"><span class="pre">b_height</span></code>. (Note that the beam formulation in <span class="codename">UDEC</span> assumes a linear variation of moment along the beam element.)  The actual minimum and maximum axial stresses for each beam element are then printed in a list.</p>
+<p>The following data file illustrates the application of “<code class="docutils literal"><span class="pre">prstruc.fis</span></code>.”</p>
+<p><strong>Data File:</strong> <code class="docutils literal"><span class="pre">prstruc.dat</span></code></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">block tolerance</span><span class="n"> corner</span><span class="o">-</span><span class="n">round</span><span class="o">-</span><span class="n">length </span><span class="m m-Double">0.05</span>
+<span class="nb">block create</span><span class="n"> polygon </span><span class="o">-</span><span class="m m-Double">8</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">8</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">8</span><span class="n"> </span><span class="m m-Double">8</span><span class="n"> </span><span class="m m-Double">8</span><span class="n"> </span><span class="m m-Double">8</span><span class="n"> </span><span class="m m-Double">8</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">8</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="o">-</span><span class="m m-Double">3</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">8</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">8</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="m m-Double">3</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">8</span><span class="n"> </span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">8</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="o">-</span><span class="m m-Double">8</span><span class="n"> </span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">8</span><span class="n"> </span><span class="m m-Double">3</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="o">-</span><span class="m m-Double">8</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">8</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">3</span>
+<span class="nb">block delete</span><span class="n"> range position</span><span class="o">-</span><span class="n">x </span><span class="o">-</span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">3</span><span class="n"> position</span><span class="o">-</span><span class="n">y </span><span class="o">-</span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">3</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="o">-</span><span class="m m-Double">1</span><span class="n"> </span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">1.5</span><span class="n"> </span><span class="m m-Double">8</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="m m-Double">1</span><span class="n"> </span><span class="m m-Double">3</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">1.5</span><span class="n"> </span><span class="m m-Double">8</span>
+<span class="nb">block fix</span><span class="n"> all range position</span><span class="o">-</span><span class="n">x </span><span class="o">-</span><span class="m m-Double">8</span><span class="n"> </span><span class="m m-Double">8</span><span class="n"> position</span><span class="o">-</span><span class="n">y </span><span class="o">-</span><span class="m m-Double">8</span><span class="n"> </span><span class="m m-Double">0</span>
+<span class="nb">block fix</span><span class="n"> all range position</span><span class="o">-</span><span class="n">x </span><span class="o">-</span><span class="m m-Double">8</span><span class="n"> </span><span class="m m-Double">8</span><span class="n"> position</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">8</span>
+<span class="c">; rock properties</span>
+<span class="nb">block property</span><span class="n"> material </span><span class="m m-Double">1</span><span class="n"> density </span><span class="m m-Double">0.0027</span><span class="n"> bulk </span><span class="m m-Double">2e3</span><span class="n"> shear </span><span class="m m-Double">1e3</span>
+<span class="nb">block contact property</span><span class="n"> material </span><span class="m m-Double">1</span><span class="n"> stiffness</span><span class="o">-</span><span class="n">normal </span><span class="m m-Double">1e4</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">  stiffness</span><span class="o">-</span><span class="n">shear </span><span class="m m-Double">1e4</span><span class="n"> friction </span><span class="m m-Double">10</span><span class="n"> cohesion </span><span class="m m-Double">0</span><span class="n"> tension </span><span class="m m-Double">0</span>
+<span class="c">;</span>
+<span class="c">; structural liner properties</span>
+<span class="nb">block structure</span><span class="n"> liner create by</span><span class="o">-</span><span class="n">angle center </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> points </span><span class="m m-Double">20</span><span class="n"> mat</span><span class="o">-</span><span class="n">beam </span><span class="m m-Double">10</span>
+<span class="nb">block structure</span><span class="n"> beam property material </span><span class="m m-Double">10</span><span class="n"> density </span><span class="m m-Double">0.000025</span><span class="n"> thickness </span><span class="m m-Double">0.1</span>
+<span class="nb">block structure</span><span class="n"> beam property material </span><span class="m m-Double">10</span><span class="n"> young </span><span class="m m-Double">210000</span><span class="n"> poisson </span><span class="m m-Double">0.15</span>
+<span class="nb">block structure</span><span class="n"> beam property material </span><span class="m m-Double">10</span><span class="n"> yield</span><span class="o">-</span><span class="n">tension </span><span class="m m-Double">40</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">  yield</span><span class="o">-</span><span class="n">tension</span><span class="o">-</span><span class="n">residual </span><span class="m m-Double">40</span><span class="n"> yield</span><span class="o">-</span><span class="n">compression </span><span class="m m-Double">40</span>
+<span class="nb">block structure</span><span class="n"> beam property material </span><span class="m m-Double">10</span><span class="n"> coupling</span><span class="o">-</span><span class="n">stiffness</span><span class="o">-</span><span class="n">normal </span><span class="m m-Double">1e4</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">  coupling</span><span class="o">-</span><span class="n">stiffness</span><span class="o">-</span><span class="n">shear </span><span class="m m-Double">1e4</span><span class="n"> coupling</span><span class="o">-</span><span class="n">tension </span><span class="m m-Double">0</span><span class="n"> coupling</span><span class="o">-</span><span class="n">friction </span><span class="m m-Double">50</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">  coupling</span><span class="o">-</span><span class="n">cohesion </span><span class="m m-Double">0</span>
+<span class="c">;</span>
+<span class="c">; gravity load</span>
+<span class="nb">model gravity</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">10</span>
+<span class="c">;</span>
+<span class="nb">block gridpoint history</span><span class="n"> displacement</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">3</span>
+<span class="nb">block gridpoint history</span><span class="n"> velocity</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">3</span>
+<span class="c">;</span>
+<span class="c">; Case 1 : elastic analysis</span>
+<span class="nb">block cycle</span><span class="n"> </span><span class="m m-Double">3000</span>
+<span class="nb">program call</span><span class="n"> </span><span class="s">&#39;prstruc.fis&#39;</span>
+<span class="n">fish set b_space </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">5</span><span class="n"> </span><span class="ni">@b_height</span><span class="n"> </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">0.5</span>
+<span class="nb">program log</span><span class="o">-</span><span class="n">file </span><span class="s">&#39;pr_struc.log&#39;</span>
+<span class="nb">program log</span><span class="n"> </span><span class="sx">on</span>
+<span class="ni">@pr_struc</span>
+<span class="nb">program log</span><span class="n"> </span><span class="sx">off</span>
+</pre></div>
+</div>
+<p>The printout from this example is:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n"> ID        F</span><span class="o">-</span><span class="n">axial           Str</span><span class="o">-</span><span class="n">min          Str</span><span class="o">-</span><span class="n">max</span>
+<span class="o">----</span><span class="n">    </span><span class="o">-------------</span><span class="n">    </span><span class="o">-------------</span><span class="n">    </span><span class="o">-------------</span>
+<span class="n"> </span><span class="m m-Double">21</span><span class="n">      </span><span class="o">-</span><span class="m m-Double">1.9083e-002</span><span class="n">     </span><span class="o">-</span><span class="m m-Double">2.2715e+000</span><span class="n">      </span><span class="m m-Double">2.6531e+000</span>
+<span class="n"> </span><span class="m m-Double">20</span><span class="n">      </span><span class="o">-</span><span class="m m-Double">2.7334e-002</span><span class="n">     </span><span class="o">-</span><span class="m m-Double">3.2540e+000</span><span class="n">      </span><span class="m m-Double">3.8006e+000</span>
+<span class="n"> </span><span class="m m-Double">19</span><span class="n">      </span><span class="o">-</span><span class="m m-Double">2.7192e-002</span><span class="n">     </span><span class="o">-</span><span class="m m-Double">1.0342e+000</span><span class="n">      </span><span class="m m-Double">1.5780e+000</span>
+<span class="n"> </span><span class="m m-Double">18</span><span class="n">      </span><span class="o">-</span><span class="m m-Double">2.7019e-002</span><span class="n">     </span><span class="o">-</span><span class="m m-Double">5.9036e+000</span><span class="n">      </span><span class="m m-Double">6.4440e+000</span>
+<span class="n"> </span><span class="m m-Double">17</span><span class="n">      </span><span class="o">-</span><span class="m m-Double">2.6870e-002</span><span class="n">     </span><span class="o">-</span><span class="m m-Double">1.0812e+001</span><span class="n">      </span><span class="m m-Double">1.1349e+001</span>
+<span class="n"> </span><span class="m m-Double">16</span><span class="n">      </span><span class="o">-</span><span class="m m-Double">4.0439e-001</span><span class="n">     </span><span class="o">-</span><span class="m m-Double">2.0516e+002</span><span class="n">      </span><span class="m m-Double">2.1325e+002</span>
+<span class="n"> </span><span class="m m-Double">15</span><span class="n">      </span><span class="o">-</span><span class="m m-Double">4.7366e-001</span><span class="n">     </span><span class="o">-</span><span class="m m-Double">1.8403e+002</span><span class="n">      </span><span class="m m-Double">1.9350e+002</span>
+<span class="n"> </span><span class="m m-Double">14</span><span class="n">      </span><span class="o">-</span><span class="m m-Double">4.7365e-001</span><span class="n">     </span><span class="o">-</span><span class="m m-Double">1.8213e+002</span><span class="n">      </span><span class="m m-Double">1.9160e+002</span>
+<span class="n"> </span><span class="m m-Double">13</span><span class="n">      </span><span class="o">-</span><span class="m m-Double">3.7834e-001</span><span class="n">     </span><span class="o">-</span><span class="m m-Double">3.1561e+002</span><span class="n">      </span><span class="m m-Double">3.2317e+002</span>
+<span class="n"> </span><span class="m m-Double">12</span><span class="n">      </span><span class="o">-</span><span class="m m-Double">4.7366e-001</span><span class="n">     </span><span class="o">-</span><span class="m m-Double">1.8210e+002</span><span class="n">      </span><span class="m m-Double">1.9158e+002</span>
+<span class="n"> </span><span class="m m-Double">11</span><span class="n">      </span><span class="o">-</span><span class="m m-Double">4.7368e-001</span><span class="n">     </span><span class="o">-</span><span class="m m-Double">1.8405e+002</span><span class="n">      </span><span class="m m-Double">1.9352e+002</span>
+<span class="n"> </span><span class="m m-Double">10</span><span class="n">      </span><span class="o">-</span><span class="m m-Double">4.0442e-001</span><span class="n">     </span><span class="o">-</span><span class="m m-Double">2.0516e+002</span><span class="n">      </span><span class="m m-Double">2.1325e+002</span>
+<span class="n"> </span><span class="m m-Double">9</span><span class="n">       </span><span class="o">-</span><span class="m m-Double">2.6904e-002</span><span class="n">     </span><span class="o">-</span><span class="m m-Double">1.0823e+001</span><span class="n">      </span><span class="m m-Double">1.1361e+001</span>
+<span class="n"> </span><span class="m m-Double">8</span><span class="n">       </span><span class="o">-</span><span class="m m-Double">2.7052e-002</span><span class="n">     </span><span class="o">-</span><span class="m m-Double">5.9143e+000</span><span class="n">      </span><span class="m m-Double">6.4553e+000</span>
+<span class="n"> </span><span class="m m-Double">7</span><span class="n">       </span><span class="o">-</span><span class="m m-Double">2.7183e-002</span><span class="n">     </span><span class="o">-</span><span class="m m-Double">1.0438e-000</span><span class="n">      </span><span class="m m-Double">1.5875e+000</span>
+<span class="n"> </span><span class="m m-Double">6</span><span class="n">       </span><span class="o">-</span><span class="m m-Double">2.7333e-002</span><span class="n">     </span><span class="o">-</span><span class="m m-Double">3.2622e+000</span><span class="n">      </span><span class="m m-Double">3.8089e+000</span>
+<span class="n"> </span><span class="m m-Double">5</span><span class="n">       </span><span class="o">-</span><span class="m m-Double">1.9026e-002</span><span class="n">     </span><span class="o">-</span><span class="m m-Double">2.2832e+000</span><span class="n">      </span><span class="m m-Double">2.6637e+000</span>
+<span class="n"> </span><span class="m m-Double">4</span><span class="n">       </span><span class="o">-</span><span class="m m-Double">5.1807e-003</span><span class="n">     </span><span class="o">-</span><span class="m m-Double">4.9114e-001</span><span class="n">      </span><span class="m m-Double">5.9475e-001</span>
+<span class="n"> </span><span class="m m-Double">3</span><span class="n">       </span><span class="o">-</span><span class="m m-Double">5.1838e-003</span><span class="n">     </span><span class="o">-</span><span class="m m-Double">2.2000e-002</span><span class="n">      </span><span class="m m-Double">1.2568e-001</span>
+<span class="n"> </span><span class="m m-Double">2</span><span class="n">       </span><span class="o">-</span><span class="m m-Double">5.1792e-003</span><span class="n">     </span><span class="o">-</span><span class="m m-Double">2.2580e-002</span><span class="n">      </span><span class="m m-Double">1.2616e-001</span>
+<span class="n"> </span><span class="m m-Double">1</span><span class="n">       </span><span class="o">-</span><span class="m m-Double">5.1750e-003</span><span class="n">     </span><span class="o">-</span><span class="m m-Double">4.8960e-001</span><span class="n">      </span><span class="m m-Double">5.9310e-001</span>
+</pre></div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Printing Selected Structural-Element Variables" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

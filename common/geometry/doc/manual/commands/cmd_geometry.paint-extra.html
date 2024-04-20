@@ -1,0 +1,815 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>geometry paint-extra command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="geometry polygon create command" href="cmd_geometry.polygon.create.html" />
+    <link rel="prev" title="geometry node group command" href="cmd_geometry.node.group.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="geometry-paint-extra-command">
+<h1><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">paint-extra</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="geometry command">
+<dt id="command:geometry.paint-extra">
+<span class="cmdname"><span class="pref">g</span><span class="pref">e</span><span class="null">o</span><span class="null">m</span><span class="null">e</span><span class="null">t</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span><span class="cmdname"><span class="pref">p</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">e</span><span class="null">x</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:geometry.paint-extra.acceleration" title="geometry paint-extra acceleration">acceleration</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.acceleration-x" title="geometry paint-extra acceleration-x">acceleration-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.acceleration-y" title="geometry paint-extra acceleration-y">acceleration-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.acceleration-z" title="geometry paint-extra acceleration-z">acceleration-z</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.condition" title="geometry paint-extra condition">condition</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.convergence" title="geometry paint-extra convergence">convergence</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.density" title="geometry paint-extra density">density</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.density-fluid" title="geometry paint-extra density-fluid">density-fluid</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.displacement" title="geometry paint-extra displacement">displacement</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.displacement-x" title="geometry paint-extra displacement-x">displacement-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.displacement-y" title="geometry paint-extra displacement-y">displacement-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.displacement-z" title="geometry paint-extra displacement-z">displacement-z</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.extra" title="geometry paint-extra extra">extra</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.fluid-bulk-modulus" title="geometry paint-extra fluid-bulk-modulus">fluid-bulk-modulus</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.fluid-biot-modulus" title="geometry paint-extra fluid-biot-modulus">fluid-biot-modulus</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.multiplier" title="geometry paint-extra multiplier">multiplier</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.pore-pressure" title="geometry paint-extra pore-pressure">pore-pressure</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.property" title="geometry paint-extra property">property</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.property-fluid" title="geometry paint-extra property-fluid">property-fluid</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.property-thermal" title="geometry paint-extra property-thermal">property-thermal</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.ratio-local" title="geometry paint-extra ratio-local">ratio-local</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.ratio-target" title="geometry paint-extra ratio-target">ratio-target</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.saturation" title="geometry paint-extra saturation">saturation</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.set" title="geometry paint-extra set">set</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.strain-increment" title="geometry paint-extra strain-increment">strain-increment</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.strain-increment-xx" title="geometry paint-extra strain-increment-xx">strain-increment-xx</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.strain-increment-xy" title="geometry paint-extra strain-increment-xy">strain-increment-xy</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.strain-increment-xz" title="geometry paint-extra strain-increment-xz">strain-increment-xz</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.strain-increment-yy" title="geometry paint-extra strain-increment-yy">strain-increment-yy</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.strain-increment-yz" title="geometry paint-extra strain-increment-yz">strain-increment-yz</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.strain-increment-zz" title="geometry paint-extra strain-increment-zz">strain-increment-zz</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.strain-rate" title="geometry paint-extra strain-rate">strain-rate</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.strain-rate-xx" title="geometry paint-extra strain-rate-xx">strain-rate-xx</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.strain-rate-xy" title="geometry paint-extra strain-rate-xy">strain-rate-xy</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.strain-rate-xz" title="geometry paint-extra strain-rate-xz">strain-rate-xz</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.strain-rate-yy" title="geometry paint-extra strain-rate-yy">strain-rate-yy</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.strain-rate-yz" title="geometry paint-extra strain-rate-yz">strain-rate-yz</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.strain-rate-zz" title="geometry paint-extra strain-rate-zz">strain-rate-zz</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.stress" title="geometry paint-extra stress">stress</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.stress-xx" title="geometry paint-extra stress-xx">stress-xx</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.stress-xy" title="geometry paint-extra stress-xy">stress-xy</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.stress-xz" title="geometry paint-extra stress-xz">stress-xz</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.stress-yy" title="geometry paint-extra stress-yy">stress-yy</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.stress-yz" title="geometry paint-extra stress-yz">stress-yz</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.stress-zz" title="geometry paint-extra stress-zz">stress-zz</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.stress-effective" title="geometry paint-extra stress-effective">stress-effective</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.stress-effective-xx" title="geometry paint-extra stress-effective-xx">stress-effective-xx</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.stress-effective-xy" title="geometry paint-extra stress-effective-xy">stress-effective-xy</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.stress-effective-xz" title="geometry paint-extra stress-effective-xz">stress-effective-xz</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.stress-effective-yy" title="geometry paint-extra stress-effective-yy">stress-effective-yy</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.stress-effective-yz" title="geometry paint-extra stress-effective-yz">stress-effective-yz</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.stress-effective-zz" title="geometry paint-extra stress-effective-zz">stress-effective-zz</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.strength-stress-ratio" title="geometry paint-extra strength-stress-ratio">strength-stress-ratio</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#There was a problem" title="geometry paint-extra stress-effective">stress-effective</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.temperature" title="geometry paint-extra temperature">temperature</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.timestep-dynamic" title="geometry paint-extra timestep-dynamic">timestep-dynamic</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.unbalanced-force" title="geometry paint-extra unbalanced-force">unbalanced-force</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.unbalanced-force-x" title="geometry paint-extra unbalanced-force-x">unbalanced-force-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.unbalanced-force-y" title="geometry paint-extra unbalanced-force-y">unbalanced-force-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.unbalanced-force-z" title="geometry paint-extra unbalanced-force-z">unbalanced-force-z</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.velocity" title="geometry paint-extra velocity">velocity</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.velocity-x" title="geometry paint-extra velocity-x">velocity-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.velocity-y" title="geometry paint-extra velocity-y">velocity-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.paint-extra.velocity-z" title="geometry paint-extra velocity-z">velocity-z</a></p>
+</div>
+<p>“Paint” a scalar value from a zone field.  The value is painted onto nodes in the current geometric set.   The values are placed in the extra variable index <a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> on each node.   The range selects which nodes of the geometric set are painted.</p>
+<p>If the value is gridpoint-based, then a value at the node location is calculated using a weighting function inside the zone.</p>
+<p>If the value is zone-based, the value will be determined by a curve-fitting algorithm extrapolated to the node location.  Which algorithm is used can be specified in the following [zonefieldoptions]. By default a value is considered constant within a zone.</p>
+<p>Note that if the need for “painting” is temporary (i.e., for visualization), this can be done on a geometry plot item when plotting — which bypasses the command and the overhead it requires to store the field values at gridpoints. If the <span class="cmdkey">set</span> keyword is not given, then the current set is used.
+<span class="flag3">CS: this should have a link to a topic that describes how to do that</span></p>
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.acceleration">
+<span class="cmdkey"><span class="pref">a</span><span class="null">c</span><span class="null">c</span><span class="null">e</span><span class="null">l</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint acceleration magnitude at the gridpoint (only available if <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">configure</span> <span class="pre">dynamic</span></code> has been specified).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.acceleration-x">
+<span class="cmdkey"><span class="pref">a</span><span class="null">c</span><span class="null">c</span><span class="null">e</span><span class="null">l</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint <span class="math">\(x\)</span>-acceleration at the gridpoint (only available if <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">configure</span> <span class="pre">dynamic</span></code> has been specified).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.acceleration-y">
+<span class="cmdkey"><span class="pref">a</span><span class="null">c</span><span class="null">c</span><span class="null">e</span><span class="null">l</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint <span class="math">\(y\)</span>-acceleration at the gridpoint (only available if <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">configure</span> <span class="pre">dynamic</span></code> has been specified).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.acceleration-z">
+<span class="cmdkey"><span class="pref">a</span><span class="null">c</span><span class="null">c</span><span class="null">e</span><span class="null">l</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint <span class="math">\(z\)</span>-acceleration at the gridpoint (only available if <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">configure</span> <span class="pre">dynamic</span></code> has been specified).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.condition">
+<span class="cmdkey"><span class="pref">c</span><span class="pref">o</span><span class="pref">n</span><span class="pref">d</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint a measure of how badly deformed a zone is.  <span class="flag3">[URGENT: CS: content required for link here appears to need adding to doc set: Link to wherever the contents of section 1.1.5 in the Command Reference end up</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.convergence">
+<span class="cmdkey"><span class="pref">c</span><span class="pref">o</span><span class="pref">n</span><span class="pref">v</span><span class="null">e</span><span class="null">r</span><span class="null">g</span><span class="null">e</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the zone convergence.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.density">
+<span class="cmdkey"><span class="pref">d</span><span class="pref">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the density of the zone.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.density-fluid">
+<span class="cmdkey"><span class="pref">d</span><span class="pref">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">f</span><span class="null">l</span><span class="null">u</span><span class="null">i</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the fluid density.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.displacement">
+<span class="cmdkey"><span class="pref">d</span><span class="pref">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint displacement magnitude at the gridpoint.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.displacement-x">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint <span class="math">\(x\)</span>-displacement at the gridpoint.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.displacement-y">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint <span class="math">\(y\)</span>-displacement at the gridpoint.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.displacement-z">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint <span class="math">\(z\)</span>-displacement at the gridpoint.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.extra">
+<span class="cmdkey"><span class="pref">e</span><span class="null">x</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><blockquote>
+<div>Paint an extra variable value.  The extra variable index used will default to 1 and can be changed with the <span class="cmdkey">index</span> modifier keyword.   The value will by default come from the zone extra variables, but this can be specified using the <span class="cmdkey">source</span> modifier keyword.  The value will by default be treated as a scalar floating point type, but this can be specified using the <span class="cmdkey">type</span> modifier keyword.</div></blockquote>
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.extra.factor-of-safety">
+<span class="cmdkey"><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">-</span><span class="pref">o</span><span class="null">f</span><span class="null">-</span><span class="pref">s</span><span class="null">a</span><span class="null">f</span><span class="null">e</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="#zonehistoryblock">[zonehistoryblock]</a></dt>
+<dd><p>The largest factor of safety that remains stable for this grid point.  Only available after a <a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a> calculation.  The <span class="cmdkey">velocity-limit</span> keyword is used to specify a velocity magnitude over which the grid point is considered unstable at a given factor of safety.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.fluid-bulk-modulus">
+<span class="cmdkey"><span class="pref">f</span><span class="null">l</span><span class="null">u</span><span class="null">i</span><span class="null">d</span><span class="null">-</span><span class="pref">b</span><span class="pref">u</span><span class="null">l</span><span class="null">k</span><span class="null">-</span><span class="pref">m</span><span class="null">o</span><span class="null">d</span><span class="null">u</span><span class="null">l</span><span class="null">u</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint zones by the fluid bulk modulus.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.fluid-biot-modulus">
+<span class="cmdkey"><span class="pref">f</span><span class="null">l</span><span class="null">u</span><span class="null">i</span><span class="null">d</span><span class="null">-</span><span class="pref">b</span><span class="pref">i</span><span class="null">o</span><span class="null">t</span><span class="null">-</span><span class="pref">m</span><span class="null">o</span><span class="null">d</span><span class="null">u</span><span class="null">l</span><span class="null">u</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint zones by the fluid Biot modulus.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.multiplier">
+<span class="cmdkey"><span class="pref">m</span><span class="null">u</span><span class="null">l</span><span class="null">t</span><span class="null">i</span><span class="null">p</span><span class="null">l</span><span class="null">i</span><span class="null">e</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Pain the zone multiplier.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.pore-pressure">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">r</span><span class="null">e</span><span class="null">-</span><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint pore pressure in a zone.  By default this will be the average zone pore pressure, but the gridpoint pressure can be specified by using the <span class="cmdkey">source</span> keyword modifier.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.property">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint a property of the mechanical constitutive model of the zone.  The property name must be specified using the <span class="cmdkey">name</span> keyword modifier.  By default it will be assumed the property is a floating point scalar, but this can be specified using the <span class="cmdkey">type</span> modifier keyword.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.property-fluid">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">f</span><span class="null">l</span><span class="null">u</span><span class="null">i</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint a property of the fluid constitutive model of the zone.  The property name must be specified using the <span class="cmdkey">name</span> keyword modifier.  By default it will be assumed the property is a floating point scalar, but this can be specified using the <span class="cmdkey">type</span> modifier keyword.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.property-thermal">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">t</span><span class="null">h</span><span class="null">e</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint a property of the thermal constitutive model of the zone.  The property name must be specified using the <span class="cmdkey">name</span> keyword modifier.  By default it will be assumed the property is a floating point scalar, but this can be specified using the <span class="cmdkey">type</span> modifier keyword.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.ratio-local">
+<span class="cmdkey"><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">-</span><span class="pref">l</span><span class="null">o</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the local unbalanced force ratio at each gridpoint.   Like all results, this can be changed to the logarithm of the value by using the :lkwd:’log’ keyword modifier.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.ratio-target">
+<span class="cmdkey"><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">-</span><span class="pref">t</span><span class="null">a</span><span class="null">r</span><span class="null">g</span><span class="null">e</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the target unbalanced force ratio at each gridpoint.   Like all results, this can be changed to the logarithm of the value by using the :lkwd:’log’ keyword modifier.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.saturation">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">a</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the saturation at the gridpoint (only available if <a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.configure.html#kwd:model.configure.fluid" title="Fluid-flow analysis"><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">configure</span> <span class="pre">fluid</span></code></a> has been specified).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.set">
+<span class="cmdkey"><span class="pref">s</span><span class="null">e</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify the geometry set.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.strain-increment">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">c</span><span class="null">r</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the strain increment tensor of the zone, determined by the current displacement field.  Use the <span class="cmdkey">quantity</span> keyword to specify which scalar value to retrieve from the tensor.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.strain-increment-xx">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">c</span><span class="null">r</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">x</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the xx strain increment.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.strain-increment-xy">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">c</span><span class="null">r</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">x</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the xy strain increment.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.strain-increment-xz">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">c</span><span class="null">r</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">x</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the xz strain increment.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.strain-increment-yy">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">c</span><span class="null">r</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">y</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the yy strain increment.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.strain-increment-yz">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">c</span><span class="null">r</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">y</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the yz strain increment.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.strain-increment-zz">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">c</span><span class="null">r</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">z</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the zz strain increment.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.strain-rate">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null">-</span><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the strain rate tensor of the zone, determined by the current velocity field. Use the <span class="cmdkey">quantity</span> keyword to specify which scalar value to retrieve from the tensor.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.strain-rate-xx">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null">-</span><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">x</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the xx strain rate.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.strain-rate-xy">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null">-</span><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">x</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the xy strain rate.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.strain-rate-xz">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null">-</span><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">x</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the xz strain rate.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.strain-rate-yy">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null">-</span><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">y</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the yy strain rate.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.strain-rate-yz">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null">-</span><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">y</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the yz strain rate.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.strain-rate-zz">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null">-</span><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">z</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the zz strain rate.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.stress">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the stress tensor of the zone, determined by the weighted average of the subzone stresses.  Use the <span class="cmdkey">quantity</span> keyword to specify which scalar value to retrieve from the tensor.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.stress-xx">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">x</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the stress-xx of the zone, determined by the weighted average of the subzone stresses.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.stress-xy">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">x</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the stress-xy of the zone, determined by the weighted average of the subzone stresses.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.stress-xz">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">x</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the stress-xz of the zone, determined by the weighted average of the subzone stresses.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.stress-yy">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">y</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the stress-yy of the zone, determined by the weighted average of the subzone stresses.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.stress-yz">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">y</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the stress-yz of the zone, determined by the weighted average of the subzone stresses.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.stress-zz">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">z</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the stress-zz of the zone, determined by the weighted average of the subzone stresses.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.stress-effective">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">e</span><span class="null">f</span><span class="null">f</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">v</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the effective stress tensor of the zone, determined by the weighted average of the subzone effective stresses.  Use the <span class="cmdkey">quantity</span> keyword to specify which scalar value to retrieve from the tensor.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.stress-effective-xx">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">e</span><span class="null">f</span><span class="null">f</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">v</span><span class="null">e</span><span class="null">-</span><span class="pref">x</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the effective stress-xx of the zone, determined by the weighted average of the subzone stresses.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.stress-effective-xy">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">e</span><span class="null">f</span><span class="null">f</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">v</span><span class="null">e</span><span class="null">-</span><span class="pref">x</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the effective stress-xy of the zone, determined by the weighted average of the subzone stresses.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.stress-effective-xz">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">e</span><span class="null">f</span><span class="null">f</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">v</span><span class="null">e</span><span class="null">-</span><span class="pref">x</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the effective stress-xz of the zone, determined by the weighted average of the subzone effective stresses.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.stress-effective-yy">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">e</span><span class="null">f</span><span class="null">f</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">v</span><span class="null">e</span><span class="null">-</span><span class="pref">y</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the effective stress-yy of the zone, determined by the weighted average of the subzone effective stresses.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.stress-effective-yz">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">e</span><span class="null">f</span><span class="null">f</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">v</span><span class="null">e</span><span class="null">-</span><span class="pref">y</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the effective stress-yz of the zone, determined by the weighted average of the subzone effective stresses.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.stress-effective-zz">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">e</span><span class="null">f</span><span class="null">f</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">v</span><span class="null">e</span><span class="null">-</span><span class="pref">z</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the effective stress-zz of the zone, determined by the weighted average of the subzone effective stresses.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.strength-stress-ratio">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">g</span><span class="null">t</span><span class="null">h</span><span class="null">-</span><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the ratio of the current stress to a failure surface of the zone, as determined by the current zone constitutive model.  Not all constitutive models support this calculation.  If unsupported, the value returned will be 10.  The value returned is generally held to a maximum of 10.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt>
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">e</span><span class="null">f</span><span class="null">f</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">v</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the effective stress tensor of the zone, determined by the weighted average of the subzone stresses minus the zone averaged pore pressure.  Use the <span class="cmdkey">quantity</span> keyword to specify which scalar value to retrieve from the tensor.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.temperature">
+<span class="cmdkey"><span class="pref">t</span><span class="null">e</span><span class="null">m</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the temperature at the gridpoints.  The <span class="cmdkey">source</span> modifier keyword can be used to specify that zone based temperature should be used instead.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.timestep-dynamic">
+<span class="cmdkey"><span class="pref">t</span><span class="null">i</span><span class="null">m</span><span class="null">e</span><span class="null">s</span><span class="null">t</span><span class="null">e</span><span class="null">p</span><span class="null">-</span><span class="pref">d</span><span class="null">y</span><span class="null">n</span><span class="null">a</span><span class="null">m</span><span class="null">i</span><span class="null">c</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the local critical dynamic time step of that particular gridpoint.  (only available if <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">configure</span> <span class="pre">dynamic</span></code> has been specified).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.unbalanced-force">
+<span class="cmdkey"><span class="pref">u</span><span class="null">n</span><span class="null">b</span><span class="null">a</span><span class="null">l</span><span class="null">a</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null">d</span><span class="null">-</span><span class="pref">f</span><span class="null">o</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the unbalanced force magnitude at the gridpoint.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.unbalanced-force-x">
+<span class="cmdkey"><span class="pref">u</span><span class="null">n</span><span class="null">b</span><span class="null">a</span><span class="null">l</span><span class="null">a</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null">d</span><span class="null">-</span><span class="pref">f</span><span class="null">o</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the <span class="math">\(x\)</span>-unbalanced force at the gridpoint.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.unbalanced-force-y">
+<span class="cmdkey"><span class="pref">u</span><span class="null">n</span><span class="null">b</span><span class="null">a</span><span class="null">l</span><span class="null">a</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null">d</span><span class="null">-</span><span class="pref">f</span><span class="null">o</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the <span class="math">\(y\)</span>-unbalanced force at the gridpoint.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.unbalanced-force-z">
+<span class="cmdkey"><span class="pref">u</span><span class="null">n</span><span class="null">b</span><span class="null">a</span><span class="null">l</span><span class="null">a</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null">d</span><span class="null">-</span><span class="pref">f</span><span class="null">o</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null">-</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the <span class="math">\(z\)</span>-unbalanced force at the gridpoint.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.velocity">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the velocity magnitude at the gridpoint.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.velocity-x">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the <span class="math">\(x\)</span>-velocity at the gridpoint.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.velocity-y">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the <span class="math">\(y\)</span>-velocity at the gridpoint.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.paint-extra.velocity-z">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="#zonefieldoptions">[zonefieldoptions]</a></dt>
+<dd><p>Paint the <span class="math">\(z\)</span>-velocity at the gridpoint.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><p class="h2 rubric" id="zonefieldoptions">Block of Common Zone Field Modifier Options</p>
+</div></blockquote>
+<p>The following modifiers are available to specify additional information for the <a class="reference internal" href="#command:geometry.paint-extra" title="&quot;Paint&quot; a scalar value from a zone field.  The value is painted onto nodes in&#013;&#010;the current geometric set.   The values are placed in the extra variable index&#013;&#010; i  on each node.   The range selects which nodes of the geometric set&#013;&#010;are painted."><code class="xref fish fish-cmd docutils literal"><span class="pre">geometry</span> <span class="pre">paint-extra</span></code></a> keywords.  The following keywords are available. <a class="reference internal" href="#kwd:geometry.paint-extra.acceleration"><code class="docutils literal"><span class="fishcmd"><span class="pre">acceleration</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.acceleration-x"><code class="docutils literal"><span class="fishcmd"><span class="pre">acceleration-x</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.acceleration-y"><code class="docutils literal"><span class="fishcmd"><span class="pre">acceleration-y</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.acceleration-z"><code class="docutils literal"><span class="fishcmd"><span class="pre">acceleration-z</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.condition"><code class="docutils literal"><span class="fishcmd"><span class="pre">condition</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.convergence"><code class="docutils literal"><span class="fishcmd"><span class="pre">convergence</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.density"><code class="docutils literal"><span class="fishcmd"><span class="pre">density</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.density-fluid"><code class="docutils literal"><span class="fishcmd"><span class="pre">density-fluid</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.displacement"><code class="docutils literal"><span class="fishcmd"><span class="pre">displacement</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.displacement-x"><code class="docutils literal"><span class="fishcmd"><span class="pre">displacement-x</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.displacement-y"><code class="docutils literal"><span class="fishcmd"><span class="pre">displacement-y</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.displacement-z"><code class="docutils literal"><span class="fishcmd"><span class="pre">displacement-z</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.extra"><code class="docutils literal"><span class="fishcmd"><span class="pre">extra</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.fluid-biot-modulus"><code class="docutils literal"><span class="fishcmd"><span class="pre">fluid-biot-modulus</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.fluid-bulk-modulus"><code class="docutils literal"><span class="fishcmd"><span class="pre">fluid-bulk-modulus</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.multiplier"><code class="docutils literal"><span class="fishcmd"><span class="pre">multiplier</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.pore-pressure"><code class="docutils literal"><span class="fishcmd"><span class="pre">pore-pressure</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.property"><code class="docutils literal"><span class="fishcmd"><span class="pre">property</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.property-fluid"><code class="docutils literal"><span class="fishcmd"><span class="pre">property-fluid</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.property-thermal"><code class="docutils literal"><span class="fishcmd"><span class="pre">property-thermal</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.ratio-local"><code class="docutils literal"><span class="fishcmd"><span class="pre">ratio-local</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.ratio-target"><code class="docutils literal"><span class="fishcmd"><span class="pre">ratio-target</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.saturation"><code class="docutils literal"><span class="fishcmd"><span class="pre">saturation</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.strain-increment"><code class="docutils literal"><span class="fishcmd"><span class="pre">strain-increment</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.strain-increment-xx"><code class="docutils literal"><span class="fishcmd"><span class="pre">strain-increment-xx</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.strain-increment-xy"><code class="docutils literal"><span class="fishcmd"><span class="pre">strain-increment-xy</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.strain-increment-xz"><code class="docutils literal"><span class="fishcmd"><span class="pre">strain-increment-xz</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.strain-increment-yy"><code class="docutils literal"><span class="fishcmd"><span class="pre">strain-increment-yy</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.strain-increment-yz"><code class="docutils literal"><span class="fishcmd"><span class="pre">strain-increment-yz</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.strain-increment-zz"><code class="docutils literal"><span class="fishcmd"><span class="pre">strain-increment-zz</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.strain-rate"><code class="docutils literal"><span class="fishcmd"><span class="pre">strain-rate</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.strain-rate-xx"><code class="docutils literal"><span class="fishcmd"><span class="pre">strain-rate-xx</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.strain-rate-xy"><code class="docutils literal"><span class="fishcmd"><span class="pre">strain-rate-xy</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.strain-rate-xz"><code class="docutils literal"><span class="fishcmd"><span class="pre">strain-rate-xz</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.strain-rate-yy"><code class="docutils literal"><span class="fishcmd"><span class="pre">strain-rate-yy</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.strain-rate-yz"><code class="docutils literal"><span class="fishcmd"><span class="pre">strain-rate-yz</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.strain-rate-zz"><code class="docutils literal"><span class="fishcmd"><span class="pre">strain-rate-zz</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.strength-stress-ratio"><code class="docutils literal"><span class="fishcmd"><span class="pre">strength-stress-ratio</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.stress"><code class="docutils literal"><span class="fishcmd"><span class="pre">stress</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.stress-effective"><code class="docutils literal"><span class="fishcmd"><span class="pre">stress-effective</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.stress-effective"><code class="docutils literal"><span class="fishcmd"><span class="pre">stress-effective</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.stress-effective-xx"><code class="docutils literal"><span class="fishcmd"><span class="pre">stress-effective-xx</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.stress-effective-xy"><code class="docutils literal"><span class="fishcmd"><span class="pre">stress-effective-xy</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.stress-effective-xz"><code class="docutils literal"><span class="fishcmd"><span class="pre">stress-effective-xz</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.stress-effective-yy"><code class="docutils literal"><span class="fishcmd"><span class="pre">stress-effective-yy</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.stress-effective-yz"><code class="docutils literal"><span class="fishcmd"><span class="pre">stress-effective-yz</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.stress-effective-zz"><code class="docutils literal"><span class="fishcmd"><span class="pre">stress-effective-zz</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.stress-xx"><code class="docutils literal"><span class="fishcmd"><span class="pre">stress-xx</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.stress-xy"><code class="docutils literal"><span class="fishcmd"><span class="pre">stress-xy</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.stress-xz"><code class="docutils literal"><span class="fishcmd"><span class="pre">stress-xz</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.stress-yy"><code class="docutils literal"><span class="fishcmd"><span class="pre">stress-yy</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.stress-yz"><code class="docutils literal"><span class="fishcmd"><span class="pre">stress-yz</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.stress-zz"><code class="docutils literal"><span class="fishcmd"><span class="pre">stress-zz</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.temperature"><code class="docutils literal"><span class="fishcmd"><span class="pre">temperature</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.timestep-dynamic"><code class="docutils literal"><span class="fishcmd"><span class="pre">timestep-dynamic</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.unbalanced-force"><code class="docutils literal"><span class="fishcmd"><span class="pre">unbalanced-force</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.unbalanced-force-x"><code class="docutils literal"><span class="fishcmd"><span class="pre">unbalanced-force-x</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.unbalanced-force-y"><code class="docutils literal"><span class="fishcmd"><span class="pre">unbalanced-force-y</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.unbalanced-force-z"><code class="docutils literal"><span class="fishcmd"><span class="pre">unbalanced-force-z</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.velocity"><code class="docutils literal"><span class="fishcmd"><span class="pre">velocity</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.velocity-x"><code class="docutils literal"><span class="fishcmd"><span class="pre">velocity-x</span></span></code></a>, <a class="reference internal" href="#kwd:geometry.paint-extra.velocity-y"><code class="docutils literal"><span class="fishcmd"><span class="pre">velocity-y</span></span></code></a> and <a class="reference internal" href="#kwd:geometry.paint-extra.velocity-z"><code class="docutils literal"><span class="fishcmd"><span class="pre">velocity-z</span></span></code></a>. <a class="reference internal" href="#kwd:geometry.paint-extra.extra.factor-of-safety"><code class="docutils literal"><span class="fishcmd"><span class="pre">factor-of-safety</span></span></code></a>.</p>
+<blockquote>
+<div><dl class="keyword">
+<dt id="kwd:component">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">m</span><span class="null">p</span><span class="null">o</span><span class="null">n</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>This keyword selects which scalar to retrieve from a vector type value, such as velocity or displacement.  If the value type is not vector, this setting is ignored.  The available options are:</p>
+<dl class="keyword">
+<dt id="kwd:component.x">
+<span class="cmdkey"><span class="pref">x</span><span class="null"> </span></span></dt>
+<dd><p>Get the <span class="math">\(x\)</span>-component of the vector.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:component.y">
+<span class="cmdkey"><span class="pref">y</span><span class="null"> </span></span></dt>
+<dd><p>Get the <span class="math">\(y\)</span>-component of the vector</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:component.z">
+<span class="cmdkey"><span class="pref">z</span><span class="null"> </span></span></dt>
+<dd><p>Get the <span class="math">\(z\)</span>-component of the vector</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:component.magnitude">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">g</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">u</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Get the vector magnitude.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:index">
+<span class="cmdkey"><span class="pref">i</span><span class="null">n</span><span class="null">d</span><span class="null">e</span><span class="null">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>For keywords that require it (most notably <span class="cmdkey">extra</span>), this specifies the index that should be used.  The default value will be 1.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:gravity">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">v</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><p>If <a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>, then gravitational forces are included in the returned applied force.  The default is <a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:label">
+<span class="cmdkey"><span class="pref">l</span><span class="pref">a</span><span class="null">b</span><span class="null">e</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Assign a label to the history (used in prints and plots).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:log">
+<span class="cmdkey"><span class="pref">l</span><span class="pref">o</span><span class="null">g</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><p>If <a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>, the returned number is the base 10 log of the absolute value of the original value.  The default is <a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:method">
+<span class="cmdkey"><span class="pref">m</span><span class="null">e</span><span class="null">t</span><span class="null">h</span><span class="null">o</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>This specifies the method of calculation used to bring zone-based quantities to arbitrary locations in space (including at gridpoint positions).</p>
+<dl class="keyword">
+<dt id="kwd:method.constant">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">n</span><span class="null">s</span><span class="null">t</span><span class="null">a</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>Assumes values are constant inside zones.  This is the default option.  Values at gridpoints or at zone boundaries will pick one adjacent zone to use.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:method.average">
+<span class="cmdkey"><span class="pref">a</span><span class="null">v</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>This uses an volume weighted average of all the zones connected to the gridpoint.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:method.inverse-distance-weight">
+<span class="cmdkey"><span class="pref">i</span><span class="null">n</span><span class="null">v</span><span class="null">e</span><span class="null">r</span><span class="null">s</span><span class="null">e</span><span class="null">-</span><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">a</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null">-</span><span class="pref">w</span><span class="null">e</span><span class="null">i</span><span class="null">g</span><span class="null">h</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>This uses a weighted average of up to 32 zones in the immediate vicinity of the point.  The weighting is determined by a power of the distance of the zone centroid from the specified point.</p>
+<dl class="keyword">
+<dt id="kwd:method.inverse-distance-weight.power">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">w</span><span class="null">e</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify the power of the distance used to weight values.  The default power is 3.0.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:method.inverse-distance-weight.radius-ratio">
+<span class="cmdkey"><span class="pref">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">u</span><span class="null">s</span><span class="null">-</span><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify the ratio of the maximum distance from the point of the zones selected, to the ratio used to calculate weighted values.  Zones farther from this value are discounted.  The default value is 0.75.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:method.polynomial">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">l</span><span class="null">y</span><span class="null">n</span><span class="null">o</span><span class="null">m</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="pref">t</span><span class="null">o</span><span class="null">l</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Use a fit to a polynomial function based on the zones in the vicinity of the point.  Degenerate degrees of freedom are detected and removed.   The optional <span class="cmdkey">tolerance</span> flag can be used to change the value used to detect a degenerancy.  The default value is <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">1e-7</span></span></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:name">
+<span class="cmdkey"><span class="pref">n</span><span class="null">a</span><span class="null">m</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Certain keywords (most notably <span class="cmdkey">property</span>) require a name value to be fully specified.  This will determine the specific property name retrieved.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:null">
+<span class="cmdkey"><span class="pref">n</span><span class="null">u</span><span class="null">l</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>Specify the criteria used to ignore zone values.  By default <span class="cmdkey">mechanical</span> null zones are ignored.</p>
+<dl class="keyword">
+<dt id="kwd:null.fluid">
+<span class="cmdkey"><span class="pref">f</span><span class="null">l</span><span class="null">u</span><span class="null">i</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><p>Zones with a null fluid constitutive model are also ignored if this is set to <a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:null.mechanical">
+<span class="cmdkey"><span class="pref">m</span><span class="null">e</span><span class="null">c</span><span class="null">h</span><span class="null">a</span><span class="null">n</span><span class="null">i</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><p>Zones with a null mechanical constitutive model are ignored if this is set to <a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a> (this is the default).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:null.thermal">
+<span class="cmdkey"><span class="pref">t</span><span class="null">h</span><span class="null">e</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><p>Zones with a null thermal constitutive model are ignored if this is set to <a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:quantity">
+<span class="cmdkey"><span class="pref">q</span><span class="null">u</span><span class="null">a</span><span class="null">n</span><span class="null">t</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>This keyword selects which scalar to retrieve from a symmetric tensor type value, such as stress or strain.  If the value type is not a tensor, this setting is ignored.  The available options are:</p>
+<dl class="keyword">
+<dt id="kwd:quantity.intermediate">
+<span class="cmdkey"><span class="pref">i</span><span class="null">n</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">m</span><span class="null">e</span><span class="null">d</span><span class="null">i</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Get the intermediate principal stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:quantity.maximum">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">x</span><span class="null">i</span><span class="null">m</span><span class="null">u</span><span class="null">m</span><span class="null"> </span></span></dt>
+<dd><p>Get the maximum (most positive) value of principal stress. <span class="flag3">[CS: doc needs to be added for this to work in PFC] Note that in -flac3d- ref-compressive stresses are negative &lt;stresssignconventions&gt;-.</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:quantity.mean">
+<span class="cmdkey"><span class="pref">m</span><span class="null">e</span><span class="null">a</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>Get the mean pressure value, defined as the trace of the tensor divided by 3.  For stresses this is most often referred to as the pressure.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:quantity.minimum">
+<span class="cmdkey"><span class="pref">m</span><span class="null">i</span><span class="null">n</span><span class="null">i</span><span class="null">m</span><span class="null">u</span><span class="null">m</span><span class="null"> </span></span></dt>
+<dd><p>Get the minimum (most negative) principal stress. <span class="flag3">[CS: doc needs to be added for this to work in PFC] Note that in -flac3d- ref-compressive stresses are negative &lt;stresssignconventions&gt;-.</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:quantity.norm">
+<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">r</span><span class="null">m</span><span class="null"> </span></span></dt>
+<dd><p>Get the norm of the strain rate. <span class="flag3">[CS: again, we need a doc from FLAC3D for this to work in PFC]; see the equation in ref-sec_zonefielddatanames-.</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:quantity.octahedral">
+<span class="cmdkey"><span class="pref">o</span><span class="null">c</span><span class="null">t</span><span class="null">a</span><span class="null">h</span><span class="null">e</span><span class="null">d</span><span class="null">r</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>Get octahedral stress. <span class="flag3">[CS: again, we need a doc from FLAC3D for this to work in PFC]; see the equation in ref-sec_zonefielddatanames-.</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:quantity.shear-maximum">
+<span class="cmdkey"><span class="pref">s</span><span class="null">h</span><span class="null">e</span><span class="null">a</span><span class="null">r</span><span class="null">-</span><span class="pref">m</span><span class="null">a</span><span class="null">x</span><span class="null">i</span><span class="null">m</span><span class="null">u</span><span class="null">m</span><span class="null"> </span></span></dt>
+<dd><p>Get the maximum shear stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:quantity.total-measure">
+<span class="cmdkey"><span class="pref">t</span><span class="null">o</span><span class="null">t</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">m</span><span class="null">e</span><span class="null">a</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Get the distance of tensor value to the origin in principal space.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:quantity.volumetric">
+<span class="cmdkey"><span class="pref">v</span><span class="null">o</span><span class="null">l</span><span class="null">u</span><span class="null">m</span><span class="null">e</span><span class="null">t</span><span class="null">r</span><span class="null">i</span><span class="null">c</span><span class="null"> </span></span></dt>
+<dd><p>Get the volumetric change, or trace.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:quantity.von-mises">
+<span class="cmdkey"><span class="pref">v</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">m</span><span class="null">i</span><span class="null">s</span><span class="null">e</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>Get the Von Mises measure. <span class="flag3">[CS: again, we need a doc from FLAC3D for this to work in PFC]; see the equation in ref-sec_zonefielddatanames-.</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:quantity.xx">
+<span class="cmdkey"><span class="pref">x</span><span class="pref">x</span><span class="null"> </span></span></dt>
+<dd><p>Get the <em>xx</em>-component of the tensor.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:quantity.xy">
+<span class="cmdkey"><span class="pref">x</span><span class="pref">y</span><span class="null"> </span></span></dt>
+<dd><p>Get the <em>xy</em>-component of the tensor.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:quantity.xz">
+<span class="cmdkey"><span class="pref">x</span><span class="pref">z</span><span class="null"> </span></span></dt>
+<dd><p>Get the <em>xz</em>-component of the tensor.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:quantity.yy">
+<span class="cmdkey"><span class="pref">y</span><span class="pref">y</span><span class="null"> </span></span></dt>
+<dd><p>Get the <em>yy</em>-component of the tensor.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:quantity.yz">
+<span class="cmdkey"><span class="pref">y</span><span class="pref">z</span><span class="null"> </span></span></dt>
+<dd><p>Get the <em>yz</em>-component of the tensor.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:quantity.zz">
+<span class="cmdkey"><span class="pref">z</span><span class="pref">z</span><span class="null"> </span></span></dt>
+<dd><p>Get the <em>zz</em>-component of the tensor.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:source">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">o</span><span class="null">u</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Certain keywords (like <span class="cmdkey">extra</span> and <span class="cmdkey">pore-pressure</span>) can be retrieved either from the zone structure or from the gridpoint structure.  The default value is <span class="cmdkey">gridpoint</span>.</p>
+<dl class="keyword">
+<dt id="kwd:source.gridpoint">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">i</span><span class="null">d</span><span class="null">p</span><span class="null">o</span><span class="null">i</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>Values are retrieved directly from the gridpoint.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:source.zone">
+<span class="cmdkey"><span class="pref">z</span><span class="null">o</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Values are retrieved from the zone.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:stress">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><p>A few of the tensor type <span class="cmdkey">quantity</span> options do different things depending if the value is considered a stress.  When coming from a value like <span class="cmdkey">extra</span>, this cannot be determined automatically.  This allows the user to specify that the incoming tensor value should be considered a stress quantity.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:type">
+<span class="cmdkey"><span class="pref">t</span><span class="null">y</span><span class="null">p</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>In certain cases the type (scalar, vector, or tensor) of the value cannot necessarily be determined ahead of time.  Extra variables, for example, can hold values of all three types.  This keyword allows one to specify which type it is assumed to be.  If the original value type does not match, 0.0 is returned.</p>
+<dl class="keyword">
+<dt id="kwd:type.scalar">
+<span class="cmdkey"><span class="pref">s</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null">a</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>Set type to scalar float.  This is the default.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:type.vector">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>Set type to vector.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:type.tensor">
+<span class="cmdkey"><span class="pref">t</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">o</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>Set type to tensor.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:velocity-limit">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">l</span><span class="null">i</span><span class="null">m</span><span class="null">i</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Specifies the velocity limit used to determine if an object is stable or not for the <span class="cmdkey">factor-of-safety</span> value.  The default value is <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">1e-4</span></span></a>.</p>
+</dd></dl>
+
+</div></blockquote>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../geometry.html" >Geometry</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_geometry.node.group.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">geometry</span> <span class="pre">node</span> <span class="pre">group</span></code> command</a> |    
+       <a href="cmd_geometry.polygon.create.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">polygon</span> <span class="pre">create</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?geometry paint-extra command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

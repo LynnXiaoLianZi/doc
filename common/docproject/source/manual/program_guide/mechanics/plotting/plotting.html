@@ -1,0 +1,221 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Plotting &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="How Plots Work" href="howplotswork.html" />
+    <link rel="prev" title="Keyboard" href="../listings/listing_pane/keyboard.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="plotting">
+<span id="id1"></span><h1>Plotting</h1>
+<p>Plotting is one of the more extensive operations in the program interface, with a rich set of features, options, and controls.  However, the basic idea of plotting is pretty simple.</p>
+<ul class="simple">
+<li>create a plot</li>
+<li>add <a class="reference internal" href="../../../glossaryofterms.html#term-plot-item"><span class="xref std std-term">plot item</span></a>s</li>
+<li>for each plot item, use its attribute controls to refine the item’s appearance</li>
+<li>apply cut planes or filters to obtain the exact part of the model to be visualized</li>
+<li>manipulate (rotate, magnify, etc.) the entire view as needed</li>
+</ul>
+<p class="h2 rubric">Plots Are In The Project</p>
+<p>Unlike <a class="reference internal" href="../../../glossaryofterms.html#term-50"><span class="xref std std-term">data file</span></a>s and <a class="reference internal" href="../../../glossaryofterms.html#term-saved-state"><span class="xref std std-term">saved state</span></a>s, plots do not exist as separate files outside <a class="reference internal" href="../projects/projects.html#projectsmainpage"><span class="std std-ref">the project</span></a>.  They are kept within the <a class="reference internal" href="../../../glossaryofterms.html#term-project-file"><span class="xref std std-term">project file</span></a>, and are saved with it — note when a plot is the active pane, the <span class="menuselection">File ▸ [plot name] ▸ Save</span> command is disabled because it is unavailable.  Closing a plot causes it to be removed from the project entirely.  Once this is done, it cannot be “brought back” — it must be rebuilt, if it is needed.</p>
+<p class="h2 rubric">Defaults are Set in the Options Dialog</p>
+<p>The <span class="flag4">i</span> <a class="reference internal" href="../configuration/options/options_plots.html#theplotspage"><span class="std std-ref">Plots</span></a> page of the <span class="flag4">i</span> <a class="reference internal" href="../configuration/options/options.html#theoptionsdialog"><span class="std std-ref">Options</span></a> dialog is used to specify the default settings for all plots.  The settings under the heading “Default Plot Settings” are applied to each newly created plot.  Once created, any of these settings may be changed on the plot as needed.  The headings under “Global Plot Settings” apply to all plots at all times — a change made to one of these settings will affect all existing plots and are in effect at all times.</p>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="howplotswork.html">How Plots Work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views/plotpane.html">The <em>Plot</em> Pane</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="views/quickref.html">View Manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views/viewtoolbar.html">View Pane Toolbar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../programwindow/dialogs/build_plot.html">Add Items</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="views/plotitems/plotitem_index.html">Plot Items Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="views/plotitems/plotitemsincommon.html">Plot Items in Common</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/axes.html">Axes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/fracture.html">Fracture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/fractureintersections.html">Fracture Intersections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/fracturerosette.html">Fracture Rosette</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/geometry.html">Geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/history.html">History Chart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/historylocations.html">History Locations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/labels.html">Labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/particletrace.html">Particle Trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/scalars.html">Scalars</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/tablechart.html">Table Chart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/tensors.html">Tensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/vectors.html">Vectors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="views/plotitems/plotitemsinudec.html">Plot Items in <span class="codename">UDEC</span></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/beam.html">Beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/block.html">Block</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/boundary.html">Boundary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/cable.html">Cable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/udec_domain.html">Domain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/factorofsafety.html">Factor of Safety</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/joint_flow.html">Flow Vector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/fluid_far_field.html">Fluid Far Field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/joint.html">Joint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/moment_thrust.html">Moment Thrust</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/pline.html">Pline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/reinf.html">Reinforce</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/rockbolt.html">Rockbolt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/Scanline.html">Scanline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/support.html">Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/tensorzone.html">Tensors (Zone)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/ubiquitous.html">Ubiquitous</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/vectorssels.html">Vectors (Structural Elements)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/vectorszones.html">Vectors (Block zone)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="views/plotitems/standardattributes.html">Standard Attribute Controls</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/attributes/std_color.html">Color</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/attributes/std_colorlist.html">Color-List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/attributes/std_coloropt.html">Color Opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/plotitems/items/attributes/std_contour.html">Contour</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../programwindow/controlpanel/plotitems.html"><em>Plot Items</em> Control Set</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../programwindow/controlpanel/ranges.html">Range</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../programwindow/controlpanel/rangedialog.html">The <em>Build Range</em> Dialog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views/rangeelementindex.html">Range Element Index</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../programwindow/controlpanel/filterelements/filter_circle.html">Circle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../programwindow/controlpanel/filterelements/filter_ellipse.html">Ellipse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../programwindow/controlpanel/filterelements/filter_polygon.html">Polygon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../programwindow/controlpanel/filterelements/filter_xposition.html">X Position</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../programwindow/controlpanel/filterelements/filter_yposition.html">Y Position</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../programwindow/controlpanel/filterelements/filter_rectangle.html">Rectangle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../programwindow/controlpanel/filterelements/filter_angle.html">Angle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../programwindow/controlpanel/filterelements/filter_area.html">Area</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../programwindow/controlpanel/filterelements/filter_block_material.html">Block Material</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../programwindow/controlpanel/filterelements/filter_deformable.html">Deformable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../programwindow/controlpanel/filterelements/filter_displacement.html">Displacement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../programwindow/controlpanel/filterelements/filter_group.html">Group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../programwindow/controlpanel/filterelements/filter_id.html">ID</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../programwindow/controlpanel/filterelements/filter_idlist.html">ID List</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../programwindow/controlpanel/filterelements/filter_index_list.html">Index List</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../programwindow/controlpanel/filterelements/filter_joint_material.html">Joint Material</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../programwindow/controlpanel/filterelements/filter_joint_set.html">Jointset ID</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../programwindow/controlpanel/filterelements/filter_rigid.html">Rigid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../programwindow/controlpanel/filterelements/filter_velocity.html">Velocity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="views/plottingtools.html">Plotting Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="views/mousemodes.html">Mouse Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views/information.html"><em>Information</em> Control Set</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../program_mechanics.html" accesskey="U">Program Mechanics</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../listings/listing_pane/keyboard.html"
+                           title="previous chapter"> Keyboard</a> |    
+       <a href="howplotswork.html"
+                           title="next chapter">How Plots Work</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Plotting" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

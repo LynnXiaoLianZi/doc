@@ -1,0 +1,181 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>model domain command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="model energy command" href="cmd_model.energy.html" />
+    <link rel="prev" title="model display command" href="cmd_model.display.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="model-domain-command">
+<h1><code class="docutils literal"><span class="pre">model</span> <span class="pre">domain</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="model command">
+<dt id="command:model.domain">
+<span class="cmdname"><span class="pref">m</span><span class="pref">o</span><span class="null">d</span><span class="null">e</span><span class="null">l</span><span class="null"> </span></span><span class="cmdname"><span class="pref">d</span><span class="pref">o</span><span class="null">m</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Specify the DFN domain boundaries and conditions.  DFN fractures only exist within the domain extent.</p>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In <span class="codename">UDEC</span>, this is a different domain than the gaps that exist between the blocks.  It is only used for dfn.</p>
+</div>
+<dl class="keyword">
+<dt id="kwd:model.domain.condition">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">n</span><span class="null">d</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span></span>></span><span class="null"> </span></dt>
+<dd><p>Set the domain boundary conditions. Each domain condition applies to the two box sides that are perpendicular to the direction.</p>
+<p>The first keyword specifies the condition for the <em>x</em> direction. The second for the <em>y</em>, and the third for the <em>z</em>.  If only one keyword is specified, then <em>y</em> and <em>z</em> are set to the same condition as <em>x</em>.  The default <span class="cmdkey">condition</span> is the <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">stop</span></span></a> condition.</p>
+<p>The following keywords can be used to specify domain conditions.</p>
+<dl class="keyword">
+<dt id="kwd:model.domain.condition.stop">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">o</span><span class="null">p</span><span class="null"> </span></span></dt>
+<dd><p>The <span class="cmdkey">stop</span> condition imposes the constraint that if the body centroid falls
+outside the model domain, the velocity and spin of the body are nulled. For <span class="codename">PFC</span> walls, once
+a facet centroid falls outside the model domain, the velocity and spin are nulled,
+including any vertex velocities.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:model.domain.condition.reflect">
+<span class="cmdkey"><span class="pref">r</span><span class="null">e</span><span class="null">f</span><span class="null">l</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>The <span class="cmdkey">reflect</span> condition imparts the opposite sign of the velocity, and the spin
+is unchanged if the body centroid falls outside the model domain. The use of this
+condition as a contact rule is not recommended since it may induce instabilities. The
+<a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">reflect</span></span></a> condition is not compatible with walls intersecting the domain.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:model.domain.condition.destroy">
+<span class="cmdkey"><span class="pref">d</span><span class="null">e</span><span class="null">s</span><span class="null">t</span><span class="null">r</span><span class="null">o</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>The <span class="cmdkey">destroy</span> condition deletes balls, clumps, and wall facets whose individual
+extents (i.e., an axis-aligned bounding box that tightly encompasses the object) fall
+outside the model domain.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:model.domain.condition.periodic">
+<span class="cmdkey"><span class="pref">p</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">o</span><span class="null">d</span><span class="null">i</span><span class="null">c</span><span class="null"> </span></span></dt>
+<dd><p>The <span class="cmdkey">periodic</span> condition applies periodic boundary conditions. When the ball or
+clump centroid falls outside of the model domain, they are translated back to the
+opposite side of the model. To ensure that contacts are created as if the model was
+continuous, “ghost” balls and clumps are introduced. The <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">periodic</span></span></a> condition is
+not compatible with walls intersecting the domain.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:model.domain.extent">
+<span class="cmdkey"><span class="pref">e</span><span class="null">x</span><span class="null">t</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxl</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxu</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyl</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyu</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fzl</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fzu</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Specify the locations of the sides of the domain. Each set of values applies to the
+lower and upper bound of that dimension of the domain. If <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxl</span></span></a> and <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxu</span></span></a> are
+specified alone, then the domain is a cube.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../model.html" >Model</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_model.display.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">model</span> <span class="pre">display</span></code> command</a> |    
+       <a href="cmd_model.energy.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">model</span> <span class="pre">energy</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?model domain command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

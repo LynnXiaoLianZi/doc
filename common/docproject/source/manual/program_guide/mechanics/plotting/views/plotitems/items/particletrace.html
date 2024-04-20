@@ -1,0 +1,189 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Particle Trace &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../../../search.html" />
+    <link rel="next" title="Scalars" href="scalars.html" />
+    <link rel="prev" title="Labels" href="labels.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="particle-trace">
+<span id="ui-pi-particletrace"></span><h1>Particle Trace</h1>
+<p class="h3 rubric" id="particletrace-description">Description</p>
+<p>Draw the path taken by traced particles; may also contour the path according to its velocity magnitude.</p>
+<p class="h3 rubric" id="particletrace-attributes">Visual Reference: Attribute List</p>
+<div class="docutils container" id="attributelist">
+<a class="reference internal" href="#particletrace-name-att"><span class="std std-ref">Name</span></a>
+<a class="reference internal" href="#particletrace-skip-att"><span class="std std-ref">Skip</span></a>
+<a class="reference internal" href="#particletrace-contour-att"><span class="std std-ref">Contour</span></a>
+<a class="reference internal" href="#particletrace-line-att"><span class="std std-ref">Line</span></a>
+<a class="reference internal" href="#particletrace-legend-att"><span class="std std-ref">Caption</span></a></div>
+<span class="target" id="particletrace-name-att"></span><p><strong>Name</strong></p>
+<img alt="name" class="pi-attribute" src="../../../../../../../../../../_images/name01.png" />
+<p>Identify by name which elements in the plot item should be included in the plot.</p>
+<blockquote>
+<div><em>Name</em>:</div></blockquote>
+<span class="target" id="particletrace-skip-att"></span><p><strong>Skip</strong></p>
+<img alt="skip attribute" class="pi-attribute" src="../../../../../../../../../../_images/skip_particletrace.png" />
+<p>What does ???</p>
+<blockquote>
+<div><em>Skip:</em> ??</div></blockquote>
+<span class="target" id="particletrace-contour-att"></span><p><strong>Contour</strong></p>
+<img alt="contours attribute" class="pi-attribute" src="../../../../../../../../../../_images/contour01.png" />
+<p>Specify settings for contouring.</p>
+<blockquote>
+<div><p><em>Contour</em>: A container for settings that control contouring options.</p>
+<blockquote>
+<div><p><em>Ramp</em>: Set the color ramp to use for rendering.  The five options, in order shown in the select box, are: rainbow (blue to red), grayscale, blue-white-red, blue-cyan-white-yellow-red, green-white-red.</p>
+<p><em>Maximum</em>: Set the highest value (right end) of the color ramp automatically (<em>auto</em> checked) or with a specified value (<em>auto</em> unchecked).  Values above <em>Maximum</em> are filled with the <em>Above</em> color.</p>
+<p><em>Minimum</em>: Set the lowest value (left end) of the color ramp automatically (<em>auto</em> checked) or with a specified value (<em>auto</em> unchecked).  Values below <em>Minimum</em> are filled with the <em>Below</em> color.</p>
+<p><em>Interval</em>: Specify the number of color intervals used in when rendering; this value defaults to a number between 8-16 if <em>auto</em> is checked.</p>
+<p><em>Log Scale</em>: Specify that the color intervals are logarithmically spaced when checked.</p>
+<p><em>Reversed</em>: Reverse the color sequence of the color ramp when checked.</p>
+<p><em>Below</em>: Specify which color to use for values below the <em>Minimum</em>.  The left end of the color ramp is used with <em>auto</em> checked.  When unchecked, the color swatch control specifies the color.</p>
+<p><em>Above</em>: Specify which color to use for values above the <em>Maximum</em>.  The right end of the color ramp is used with <em>auto</em> checked.  When unchecked, the color swatch control specifies the color.</p>
+</div></blockquote>
+</div></blockquote>
+<span class="target" id="particletrace-line-att"></span><p><strong>Line</strong></p>
+<img alt="line" class="pi-attribute" src="../../../../../../../../../../_images/line01.png" />
+<p>Set the outline properties of the plot item.</p>
+<blockquote>
+<div><em>Line</em>: set line style and thickness.</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Depending on context, this control may also feature:</p>
+<blockquote class="last">
+<div><p>–a checkbox for including (checked) the line in the plot item, and/or <br>
+–a <a class="reference internal" href="attributes/std_color.html#std-color"><span class="std std-ref">color control</span></a> for setting the color of the line. <br></p>
+<blockquote>
+<div><img alt="../../../../../../../../../../_images/line03.png" src="../../../../../../../../../../_images/line03.png" />
+</div></blockquote>
+</div></blockquote>
+</div>
+<span class="target" id="particletrace-legend-att"></span><p><strong>Legend</strong></p>
+<p>Set display of the item in the plot legend.  All plot items, at minimum, have a <em>Title</em> attribute.</p>
+<blockquote>
+<div><p><em>Legend</em>: Show (checked) all information about the plot item in the legend.</p>
+<blockquote>
+<div><p><em>Title</em>: Show (checked) the title of the plot item in the legend.  The “Alias:” field may be used to specify a custom title for the item.</p>
+<blockquote>
+<div><p><em>Size</em>:  Set the size of text in the legend.</p>
+<p><em>Font</em>: Set the font face used for the text.</p>
+<p><em>Style</em>: Set the text style (the options are normal, bold, italic, bold-italic).</p>
+<p><em>Color</em>: Set the text color.</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>Beneath <em>Title</em>, the <em>Particle Trace</em> plot item also provides controls in <em>Legend</em> for <em>Contour</em>. The sub-attributes of this is the same as those for <em>Title,</em> with the addition of a <em>Max-Labels</em> attribute, which controls the number of colors used to illustrate the color ramp in the Legend.</p>
+<style>
+   h1:after {
+      content: " Plot Item";
+   }
+</style></div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../../../plotting.html" >Plotting</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../plotitem_index.html" >Plot Items</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../plotitemsincommon.html" accesskey="U">Plot Items in Common</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="labels.html"
+                           title="previous chapter"> Labels</a> |    
+       <a href="scalars.html"
+                           title="next chapter">Scalars</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Particle Trace" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

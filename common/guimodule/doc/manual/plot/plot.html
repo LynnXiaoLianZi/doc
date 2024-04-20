@@ -1,0 +1,137 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Plot &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Switch/Keyword Options" href="plot_colors.html" />
+    <link rel="prev" title="model update-interval command" href="../../../../kernel/doc/manual/model/commands/cmd_model.update-interval.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="plot">
+<span id="plotmanual"></span><span id="plot-manual"></span><h1>Plot</h1>
+<p>The model can be visualized interactively using the controls in a <span class="flag4">i</span> <a class="reference internal" href="../../../../docproject/source/manual/program_guide/mechanics/plotting/views/plotpane.html#theplotpane"><span class="std std-ref">Plot</span></a> pane. As with most operations, one can also create, delete, modify, etc. plots via commands. It should be clear, though, by taking a quick look at the controls for any plot, that there may be a plethora of keywords associated with modifying any specific plot.</p>
+<p>Loosely, the <span class="flag3">c</span> <a class="reference internal" href="plot_commands.html#plot-commands"><span class="std std-ref">plot</span></a> commands fall into three groups.</p>
+<ul class="simple">
+<li>commands that operate on the plot as a whole (<a class="reference internal" href="cmd_plot.create.html#command:plot.create" title="A new plot named  s  is made the current (i.e., active) plot. If no name&#013;&#010;is specified, one is assigned by default."><code class="xref fish fish-cmd docutils literal"><span class="pre">plot</span> <span class="pre">create</span></code></a>, <a class="reference internal" href="cmd_plot.current.html#command:plot.current" title="The plot named  s  is made the current (i.e., active) plot.  This will&#013;&#010;show the plot if it is hidden."><code class="xref fish fish-cmd docutils literal"><span class="pre">plot</span> <span class="pre">current</span></code></a>, <a class="reference internal" href="cmd_plot.delete.html#command:plot.delete" title="The plot named  s  is deleted.  If no plot name is specified, the current&#013;&#010;view is assumed."><code class="xref fish fish-cmd docutils literal"><span class="pre">plot</span> <span class="pre">delete</span></code></a>, <a class="reference internal" href="cmd_plot.update.html#command:plot.update" title="if set to  off , the plot is not automatically updated when changes are&#013;&#010;made to the model. If a plot name  s  is not specified, the current view&#013;&#010;is assumed."><code class="xref fish fish-cmd docutils literal"><span class="pre">plot</span> <span class="pre">update</span></code></a>, and so on)</li>
+<li>the command that controls the current view of the plot (<a class="reference internal" href="cmd_plot.view.html#command:plot.view" title="controls the camera view of the plot.  If a plot name  s  is not specified,&#013;&#010;the current view is assumed."><code class="xref fish fish-cmd docutils literal"><span class="pre">plot</span> <span class="pre">view</span></code></a>)</li>
+</ul>
+<p>These first two are fully documented here.</p>
+<ul class="simple">
+<li>commands that manipulate the <em>contents</em>, or what appears <em>in</em> a plot (<a class="reference internal" href="cmd_plot.item.html#command:plot.item" title="Create, destroy, or modify plot items associated with the plot.  If a plot name&#013;&#010; s  is not specified, the current view is assumed."><code class="xref fish fish-cmd docutils literal"><span class="pre">plot</span> <span class="pre">item</span></code></a>, <a class="reference internal" href="cmd_plot.clear.html#command:plot.clear" title="removes all plot items from the plot. The plot settings are not changed. If&#013;&#010;a plot name  s  is not specified, the current view is assumed."><code class="xref fish fish-cmd docutils literal"><span class="pre">plot</span> <span class="pre">clear</span></code></a>, <a class="reference internal" href="cmd_plot.title.html#command:plot.title" title="the font and settings used to render the title at the top of the plot.  If a&#013;&#010;plot name  s  is not specified, the current view is assumed."><code class="xref fish fish-cmd docutils literal"><span class="pre">plot</span> <span class="pre">title</span></code></a>, etc.)</li>
+</ul>
+<p>These commands are documented here as well, with the exception of the <a class="reference internal" href="cmd_plot.item.html#command:plot.item" title="Create, destroy, or modify plot items associated with the plot.  If a plot name&#013;&#010; s  is not specified, the current view is assumed."><code class="xref fish fish-cmd docutils literal"><span class="pre">plot</span> <span class="pre">item</span></code></a> command, which is partially described.  The keywords that may be used to set or modify the appearance of the item are omitted, due to the excessive number of them.  Refer to the topic on command-driven plotting <span class="xref std std-ref">workflow</span> to obtain the keywords necessary to control plot item appearance via commands.</p>
+<p>See the documentation for the <span class="flag4">i</span> <a class="reference internal" href="../../../../docproject/source/manual/program_guide/mechanics/plotting/views/plotpane.html#theplotpane"><span class="std std-ref">Plot</span></a> pane for all information on interactive control of plots and plotting.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plot_colors.html">Switch/Keyword Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_commands.html">Commands</a></li>
+</ul>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" accesskey="U">Common Model Objects</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../../../../kernel/doc/manual/model/commands/cmd_model.update-interval.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">model</span> <span class="pre">update-interval</span></code> command</a> |    
+       <a href="plot_colors.html"
+                           title="next chapter">Switch/Keyword Options</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Plot" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

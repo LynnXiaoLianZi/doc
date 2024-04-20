@@ -1,0 +1,216 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block mechanical damping command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block mechanical deterministic command" href="cmd_block.mechanical.deterministic.html" />
+    <link rel="prev" title="block mechanical active command" href="cmd_block.mechanical.active.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-mechanical-damping-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">mechanical</span> <span class="pre">damping</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="blockmechanical command">
+<dt id="command:block.mechanical.damping">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">m</span><span class="null">e</span><span class="null">c</span><span class="null">h</span><span class="null">a</span><span class="null">n</span><span class="null">i</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><span class="cmdname"><span class="null">d</span><span class="null">a</span><span class="null">m</span><span class="null">p</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.mechanical.damping.contact" title="block mechanical damping contact">contact</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.mechanical.damping.combined" title="block mechanical damping combined">combined</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.mechanical.damping.global" title="block mechanical damping global">global</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.mechanical.damping.initial" title="block mechanical damping initial">initial</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.mechanical.damping.local" title="block mechanical damping local">local</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.mechanical.damping.rayleigh" title="block mechanical damping rayleigh">rayleigh</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.mechanical.damping.structure-local" title="block mechanical damping structure-local">structure-local</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.mechanical.damping.timestep-factor" title="block mechanical damping timestep-factor">timestep-factor</a></p>
+</div>
+<p>Set the damping type for static and dynamic analysis. The following keywords apply.</p>
+<dl class="keyword">
+<dt id="kwd:block.mechanical.damping.contact">
+<span class="cmdkey"><span class="pref">c</span><span class="pref">o</span><span class="pref">n</span><span class="null">t</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">im1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">im2</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fnormale</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fsheare</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fnormalc</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fshearc</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify setting of different stiffness damping factors, depending on the material numbers and contact types. <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">im1</span></span></a> and <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">im2</span></span></a> refer to the material numbers of the blocks in contact. <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fnormale</span></span></a> and <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fsheare</span></span></a> are the normal and shear stiffness damping factors to be used for an edge-to-edge contact. <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fnormalc</span></span></a> and <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fshearc</span></span></a> are the normal and shear stiffness damping factors to be used for corner-to-edge contacts. This method of setting the stiffness damping factors gives greater control for block bounce simulations.</p>
+<p>The general equation for the stiffness damping force is</p>
+<div class="math">
+\[f = −β × K × lΔγ\]</div>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="70%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>where</td>
+<td>&#160;</td>
+<td><span class="math">\(f\)</span></td>
+<td>= damping force;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td><span class="math">\(b\)</span></td>
+<td>= damping factor;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td><span class="math">\(K\)</span></td>
+<td>= stiffness;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td><span class="math">\(l\)</span></td>
+<td>= length of contact; and</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td><span class="math">\(Δγ\)</span></td>
+<td>= change in velocity.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.mechanical.damping.combined">
+<span class="cmdkey"><span class="pref">c</span><span class="pref">o</span><span class="pref">m</span><span class="null">b</span><span class="null">i</span><span class="null">n</span><span class="null">e</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Specify combined local damping (default for creep modeling). By default, the damping value is 0.8. This type of damping is useful for models where there is a constant motion in one direction. The other forms of damping rely on the velocity changing sign to be effective.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.mechanical.damping.global">
+<span class="cmdkey"><span class="pref">g</span><span class="null">l</span><span class="null">o</span><span class="null">b</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p><span class="flag3">this is a copy of the old “auto” keyword</span> Viscous damping is specified for the blocks. For static or steady-state problems, the objective is to absorb vibrational energy as rapidly as possible. In this case, the first form of the command should be used (auto keyword); this causes energy to be absorbed in proportion to the rate of change of kinetic energy. The optional parameter fac is the ratio of damping dissipation to kinetic energy change. If fac is not given, the default value of 0.5 is taken, and gives a fast convergence in most cases. The multipliers mult1 and mult2 adjust the damping coefficient by a fractional amount as the ratio changes. The default values of 0.99 for mult1 and 1.05 for mult2 are optimum in most cases.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.mechanical.damping.initial">
+<span class="cmdkey"><span class="pref">i</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>The keyword initial sets the global damping constant to its initial (high) value.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.mechanical.damping.local">
+<span class="cmdkey"><span class="pref">l</span><span class="null">o</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Specify local damping. The damping value <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> is 0.8 by default. Local damping is the default for static analysis.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.mechanical.damping.rayleigh">
+<span class="cmdkey"><span class="pref">r</span><span class="null">a</span><span class="null">y</span><span class="null">l</span><span class="null">e</span><span class="null">i</span><span class="null">g</span><span class="null">h</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fcrit</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span><span class="null"> </span></span></a><span class="cmdopt"><<span class="cmdkey"><span class="null">m</span><span class="null">a</span><span class="null">s</span><span class="null">s</span></span>></span><span class="null"> </span><span class="cmdopt"><<span class="cmdkey"><span class="null">s</span><span class="null">t</span><span class="null">i</span><span class="null">f</span><span class="null">f</span><span class="null">n</span><span class="null">e</span><span class="null">s</span><span class="null">s</span></span>></span><span class="null"> </span></dt>
+<dd><p>This form of the command is normally used for dynamic calculations when a certain fraction of critical damping is required over a given frequency range. This type of damping is known as Rayleigh damping, where <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fcrit</span></span></a> is the fraction of critical damping operating at the center frequency of <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreuq</span></span></a>. (NOTE: Input frequencies for the program are in cycles/sec, not radians/sec.) The optional modifiers <span class="cmdkey">stiffness</span> and <span class="cmdkey">mass</span> denote that the damping is to be restricted to stiffness or mass-proportional, respectively. If they are omitted, normal Rayleigh damping is used. (NOTE: By specifying stiffness damping, the critical timestep for numerical stability will automatically be reduced. It is still possible for instability to result if large deformation occurs. In such a case, lower the timestep with the FRACTION command.) Damping considerations for dynamic analysis are discussed in more detail in Section 4 in Special Features.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.mechanical.damping.structure-local">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">u</span><span class="null">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null">-</span><span class="pref">l</span><span class="null">o</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><p>Turn off/on turns local damping for structural element nodes. The default is <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.mechanical.damping.timestep-factor">
+<span class="cmdkey"><span class="pref">t</span><span class="null">i</span><span class="null">m</span><span class="null">e</span><span class="null">s</span><span class="null">t</span><span class="null">e</span><span class="null">p</span><span class="null">-</span><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fblock</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fzone</span><span class="null"> </span></span></a>></span><span class="null"> </span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffluid</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Specify block timestep as a fraction of critical timestep.  <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fblock</span></span></a> is taken as the fraction of critical timestep to be used for the block timestep (default is <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fblock</span></span></a> = 0.1). <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fzone</span></span></a> is the fraction of critical timestep to be used for the zone timestep (default is <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fzone</span></span></a> = 1.0). <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffluid</span></span></a> is the fraction of critical timestep to be used for fluid flow analysis (default is <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffluid</span></span></a> = 1.0).</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../block_commands/block_commands.html" >Block Commands</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../block_commands/cmd_block.mechanical.html" accesskey="U"><span class="fishcmd">block mechanical</span> commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_block.mechanical.active.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">mechanical</span> <span class="pre">active</span></code> command</a> |    
+       <a href="cmd_block.mechanical.deterministic.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">block</span> <span class="pre">mechanical</span> <span class="pre">deterministic</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block mechanical damping command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

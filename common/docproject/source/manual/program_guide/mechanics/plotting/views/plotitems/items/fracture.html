@@ -1,0 +1,260 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Fracture Plot Item &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../../../search.html" />
+    <link rel="next" title="Fracture Intersections Plot Item" href="fractureintersections.html" />
+    <link rel="prev" title="Axes Plot Item" href="axes.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fracture-plot-item">
+<span id="ui-pi-fracture"></span><h1>Fracture Plot Item</h1>
+<p class="h3 rubric" id="fracture-pi-description">Description</p>
+<p>Fractures colored by attributes or properties.</p>
+<p>This plot item observes the <span class="xref std std-ref">Shape/Color By/Color Opt</span> pattern to determine its rendering.</p>
+<p class="h3 rubric" id="fracture-pi-attributes">Attributes</p>
+<div class="docutils container" id="attributelist">
+<a class="reference internal" href="#fracture-shapedfn-att"><span class="std std-ref">Shape</span></a>
+<a class="reference internal" href="#fracture-colorbydfn-att"><span class="std std-ref">Color By</span></a>
+<a class="reference internal" href="#fracture-coloropt-att"><span class="std std-ref">Color Opt</span></a>
+<a class="reference internal" href="#fracture-displaydfn-att"><span class="std std-ref">Display</span></a>
+<a class="reference internal" href="#fracture-map-att"><span class="std std-ref">Map</span></a>
+<a class="reference internal" href="#fracture-legend-att"><span class="std std-ref">Legend</span></a></div>
+<span class="target" id="fracture-shapedfn-att"></span><p><strong>Shape</strong></p>
+<img alt="../../../../../../../../../../_images/shape_ball03_b.png" class="pi-attribute" src="../../../../../../../../../../_images/shape_ball03_b.png" />
+<p>Specify the shape the plot item will assume when rendered.  If one of “Minimum extent”, “Tolerance Extent”, or “Cell Extent” is selected, the item is rendered as cubes of a size corresponding to the selected extent. The main <em>Shape</em> attribute is also a container for additional controls as listed below.</p>
+<blockquote>
+<div><p><em>Shrink Factor</em>: Scale the object as a multiple of the value supplied; 1 = full size, .5 = 50%, 2 = 200%, etc.</p>
+<p><em>Polygons</em>: A container for settings that control how polygons are rendered. Open this control for additional settings as follows.</p>
+<blockquote>
+<div><p><em>Fill</em>: Render the plot item filled when checked.  If unchecked, only the wireframe is rendered.</p>
+<p><em>Outline</em>: Sets whether to display object outlines, with additional settings to control color and width of outlines.</p>
+<p><em>Out Trans.</em>: Set outline transparency (0 = fully opaque; 100 = invisible).</p>
+<p><em>Lighting</em>: sets whether or not to render the item with a light source located over the viewer’s right shoulder; this causes the parts of the item closest to the source to appear brighter than those parts further away.</p>
+<p><em>Offset</em>: sets the settings for the OpenGL polygon offset; in the event of poor rendering of polygons, setting these values close to zero may improve performance (the first value is a factor that specifies a scale factor to create a variable depth offset for each polygon, the second value is used to create a constant depth offset).</p>
+</div></blockquote>
+<p><em>Cutline</em>: Sets the thickness of the line(s) that represent the location of the cut plane.</p>
+</div></blockquote>
+<span class="target" id="fracture-colorbydfn-att"></span><p><strong>Color By</strong></p>
+<img alt="../../../../../../../../../../_images/colorbydfn01.png" class="pi-attribute" src="../../../../../../../../../../_images/colorbydfn01.png" />
+<p>Specify what aspect of the item is to be rendered, from one of three mutually exclusive groups (only one selection from any group is active at one time): textual values, numeric values, and vector quantities. If a <em>Vector Qty</em> is chosen, an additional field is added to specify whether a component (<span class="math">\(x\)</span>, <span class="math">\(y\)</span>, or <span class="math">\(z\)</span>) or the magnitude (<em>mag</em>) of the vector should be rendered.</p>
+<p>Selecting <code class="kbd docutils literal"><span class="pre">--&gt;Add</span> <span class="pre">Prop</span></code> at the bottom of a selector will provide a dialog that allows the user to specify a new property to add to the list (and make it the active <em>color by</em> selection).</p>
+<p>The labels ATTRIBUTE and PROPERTY on a selector do nothing; these are provided to visually differentiate the two groups.</p>
+<table border="1" class="colwidths-given icg1 docutils" id="id1">
+<caption><span class="caption-text">Table 1: <strong>Text Value options</strong></span></caption>
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>extra</td>
+<td>Colors by extra variable.  When selected, an additional field is supplied to identify the variable by its index.</td>
+</tr>
+<tr class="row-even"><td>fixity</td>
+<td>Colors by fixity.</td>
+</tr>
+<tr class="row-odd"><td>group</td>
+<td>Colors by group.  An additional field is supplied to specify the slot index. The default setting is <em>Any</em> (which occupies index position 0 on the spinbox).</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="colwidths-given icg1 docutils" id="id2">
+<caption><span class="caption-text">Table 2: <strong>Numeric Value Options</strong></span></caption>
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>extra</td>
+<td>Colors by extra variable.  When selected, an additional field is supplied to identify the variable by its index.</td>
+</tr>
+<tr class="row-even"><td>aperture</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>area</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cluster</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>diameter</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>dip</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>dipd</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>disk</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>dominance</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="colwidths-given icg1 docutils" id="id3">
+<caption><span class="caption-text">Table 3: <strong>Vector Quantity options</strong></span></caption>
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>extra</td>
+<td>Colors by extra variable.  When selected, an additional field is supplied to identify the variable by its index.</td>
+</tr>
+<tr class="row-even"><td>normal</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>position</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="fracture-coloropt-att"></span><p><strong>Color Opt</strong></p>
+<p>Specify options for coloring the plot item.  This must be set to either <em>scaled</em> (contoured) coloring, or coloring based on <em>named</em> items (group names, for instance).  The former is the default option for numeric or vector items as set with the <em>Color By</em> attribute; the latter is the default setting when a textual value is specified with <em>Color By</em>.  Setting <em>ColorOpt</em> to “scaled” on a textual value will result in nothing rendered.  Setting a numeric or vector quantity to “named” causes the values within the numeric range to be treated as separate “names” to be colored, where the number of names is governed by the “max-names” sub-attribute.</p>
+<p><em>Scaled</em></p>
+<img alt="../../../../../../../../../../_images/coloropt011.png" class="pi-attribute" src="../../../../../../../../../../_images/coloropt011.png" />
+<p>When <em>scaled</em> is selected, coloring is controlled by the following sub-attributes.</p>
+<blockquote>
+<div><p><em>Contour</em>: A container for settings that control contouring options.</p>
+<blockquote>
+<div><p><em>Ramp</em>: Set the color ramp to use for rendering.  The five options, in order shown in the select box, are: rainbow (blue to red), grayscale, blue-white-red, blue-cyan-white-yellow-red, green-white-red.</p>
+<p><em>Maximum</em>: Set the highest value (right end) of the color ramp automatically (<em>auto</em> checked) or with a specified value (<em>auto</em> unchecked).  Values above <em>Maximum</em> are filled with the <em>Above</em> color.</p>
+<p><em>Minimum</em>: Set the lowest value (left end) of the color ramp automatically (<em>auto</em> checked) or with a specified value (<em>auto</em> unchecked).  Values below <em>Minimum</em> are filled with the <em>Below</em> color.</p>
+<p><em>Interval</em>: Specify the number of color intervals used in when rendering; this value defaults to a number between 8-16 if <em>auto</em> is checked.</p>
+<p><em>Log Scale</em>: Specify that the color intervals are logarithmically spaced when checked.</p>
+<p><em>Reversed</em>: Reverse the color sequence of the color ramp when checked.</p>
+<p><em>Below</em>: Specify which color to use for values below the <em>Minimum</em>.  The left end of the color ramp is used with <em>auto</em> checked.  When unchecked, the color swatch control specifies the color.</p>
+<p><em>Above</em>: Specify which color to use for values above the <em>Maximum</em>.  The right end of the color ramp is used with <em>auto</em> checked.  When unchecked, the color swatch control specifies the color.</p>
+</div></blockquote>
+</div></blockquote>
+<p><em>Named</em></p>
+<img alt="../../../../../../../../../../_images/coloropt021.png" class="pi-attribute" src="../../../../../../../../../../_images/coloropt021.png" />
+<p>When <em>named</em> is selected, coloring is controlled by the following sub-attributes.</p>
+<blockquote>
+<div><p><em>Max Names</em>:  Specify the maximum number of names and, correspondingly, the maximum number of unique colors, to be used. If more unique names exist they are assigned the name <em>unknown</em> and colored by a single color. The default value is 30.</p>
+<p><em>Name Cont</em>: Specify the existence of name or color controls. When many unique names (or colors) exist, the presence of the controls for each color drastically reduces rendering performance. By unchecking this option, many unique colors can be rendered efficiently.</p>
+<p><em>Color List</em>: If the plot item has selectable color items, the edit/spinbox allows specification of the number of colors to use when rendering the item.  Additionally, the adjacent buttons (select all, select none, invert selection) will be active.  If the plot item does not contain selectable color items, these controls are disabled.   In any context, if there are colors present (colors &gt; 0), this sub-attribute can be opened to show the list of colors used to render the plot item.  The color swatches in the list may be used to change the color at the selected position.  The text label adjacent to the color swatch may be edited.  If there are selectable color items, each color item in the list will start with a checkbox that can be used to show (checked) or hide (unchecked) the item.</p>
+</div></blockquote>
+<span class="target" id="fracture-displaydfn-att"></span><p><strong>Display</strong></p>
+<img alt="../../../../../../../../../../_images/displaydfn01.png" class="pi-attribute" src="../../../../../../../../../../_images/displaydfn01.png" />
+<p>Set display off/on for distinct sets.</p>
+<blockquote>
+<div><em>Display</em> (checkbox on item name): Check an item in the list to include it in the display.  Uncheck the item to hide it.</div></blockquote>
+<span class="target" id="fracture-map-att"></span><p><strong>Map</strong></p>
+<img alt="../../../../../../../../../../_images/map01.png" class="pi-attribute" src="../../../../../../../../../../_images/map01.png" />
+<p>Map the item to new model coordinates. See the standard <a class="reference internal" href="attributes/std_map.html#std-map"><span class="std std-ref">map</span></a> control description for details.</p>
+<span class="target" id="fracture-legend-att"></span><p><strong>Legend</strong></p>
+<img alt="../../../../../../../../../../_images/legend.png" class="pi-attribute" src="../../../../../../../../../../_images/legend.png" />
+<p>Set item labeling in the plot legend. See the standard <a class="reference internal" href="attributes/std_legend.html#std-legend"><span class="std std-ref">legend</span></a> control description for details.</p>
+<p>Beneath <em>Title</em>, the <em>Fracture</em> plot item also provides controls in the legend for <em>Count</em>, <em>Named</em>, and <em>Scaled</em>.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../../../plotting.html" >Plotting</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../plotitem_index.html" >Plot Items</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../plotitemsincommon.html" accesskey="U">Plot Items in Common</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="axes.html"
+                           title="previous chapter"> Axes Plot Item</a> |    
+       <a href="fractureintersections.html"
+                           title="next chapter">Fracture Intersections Plot Item</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Fracture Plot Item" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,508 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block edge apply command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block edge apply-interior command" href="cmd_block.edge.apply-interior.html" />
+    <link rel="prev" title="block edge commands" href="../block_commands/cmd_block.edge.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-edge-apply-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">edge</span> <span class="pre">apply</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="blockedge command">
+<dt id="command:block.edge.apply">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">e</span><span class="null">d</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="null">a</span><span class="null">p</span><span class="null">p</span><span class="null">l</span><span class="null">y</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.edge.apply.convection" title="block edge apply convection">convection</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.dynamic-free-field" title="block edge apply dynamic-free-field">dynamic-free-field</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.flux" title="block edge apply flux">flux</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.free-x" title="block edge apply free-x">free-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.free-y" title="block edge apply free-y">free-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.history" title="block edge apply history">history</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.history-time-reference" title="block edge apply history-time-reference">history-time-reference</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.history-normal" title="block edge apply history-normal">history-normal</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.history-shear" title="block edge apply history-shear">history-shear</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.history-x" title="block edge apply history-x">history-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.history-y" title="block edge apply history-y">history-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.impermeable" title="block edge apply impermeable">impermeable</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.interior" title="block edge apply interior">interior</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.multiply-normal" title="block edge apply multiply-normal">multiply-normal</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.multiply-shear" title="block edge apply multiply-shear">multiply-shear</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.multiply-x" title="block edge apply multiply-x">multiply-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.multiply-y" title="block edge apply multiply-y">multiply-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.nonwetting-gradient-x" title="block edge apply nonwetting-gradient-x">nonwetting-gradient-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.nonwetting-gradient-y" title="block edge apply nonwetting-gradient-y">nonwetting-gradient-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.nonwetting-impermeable" title="block edge apply nonwetting-impermeable">nonwetting-impermeable</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.permeable" title="block edge apply permeable">permeable</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.nonwetting-permeable" title="block edge apply nonwetting-permeable">nonwetting-permeable</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.nonwetting-pressure" title="block edge apply nonwetting-pressure">nonwetting-pressure</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.pore-pressure" title="block edge apply pore-pressure">pore-pressure</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.pressure-gradient-x" title="block edge apply pressure-gradient-x">pressure-gradient-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.pressure-gradient-y" title="block edge apply pressure-gradient-y">pressure-gradient-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.radiation" title="block edge apply radiation">radiation</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.saturation" title="block edge apply saturation">saturation</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.saturation-gradient-x" title="block edge apply saturation-gradient-x">saturation-gradient-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.saturation-gradient-y" title="block edge apply saturation-gradient-y">saturation-gradient-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.seepage" title="block edge apply seepage">seepage</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.stress-principal" title="block edge apply stress-principal">stress-principal</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply.stress" title="block edge apply stress">stress</a></p>
+</div>
+<p>Boundary conditions are specified for edges of blocks.  This functionality is limited to the edges that lie on the outer domain (external boundary) of a block model. If <code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">config</span> <span class="pre">cell</span></code> has been used, the boundary conditions will be applied to any block edges within the specified range. If the range is omitted, the boundary condition applies to the entire boundary. Boundary stresses can be applied to both rigid and deformable blocks (use <a class="reference internal" href="../block.gridpoint_commands/cmd_block.gridpoint.apply.html#command:block.gridpoint.apply" title="Boundary conditions are specified for an external boundary over a specified&#013;&#010;range. If BLOCK CONFIG CELL has been specified, boundary commands will apply&#013;&#010;to the outer edges of all blocks with the range.  Otherwise the boundary conditions&#013;&#010;are applied only to the outside edges of the model. If the range is omitted,&#013;&#010;the boundary condition applies to the entire model boundary. Boundary forces&#013;&#010;can be applied to both rigid and deformable blocks. Boundary velocities"><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">gridpoint</span> <span class="pre">apply</span></code></a> to set velocity boundary conditions). Boundary conditions are defined by a given boundary condition keyword as follows.</p>
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.convection">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">n</span><span class="null">v</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f2</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply a thermal boundary condition.  <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f1</span></span></a> is the convective heat transfer coefficient (w/m<sup>2</sup> ◦C). <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f2</span></span></a> is the temperature of the medium at which convection occurs. To remove a convection boundary condition, apply the same heat transfer coefficient with a negative sign.  It is not physically realistic to use a negative heat transfer coefficient in any other circumstances. Unless otherwise specified, all boundaries are assumed to be insulated.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.dynamic-free-field">
+<span class="cmdkey"><span class="pref">d</span><span class="null">y</span><span class="null">n</span><span class="null">a</span><span class="null">m</span><span class="null">i</span><span class="null">c</span><span class="null">-</span><span class="pref">f</span><span class="null">r</span><span class="null">e</span><span class="null">e</span><span class="null">-</span><span class="pref">f</span><span class="null">i</span><span class="null">e</span><span class="null">l</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Apply a free-field boundary condition automatically to the lateral outer boundaries of the model. The dynamic free-field consists of a one-dimensional finite-difference calculation that executes in parallel with the main stress-strain calculations, and provides the lateral boundary conditions for a dynamic analysis in which a vertical propagating plane wave is applied to the base of the model. The boundaries must be vertical and straight. The <a class="reference internal" href="#kwd:block.edge.apply.dynamic-free-field" title="Apply a free-field boundary condition automatically to the lateral outer boundaries&#013;&#010;of the model. The dynamic free-field consists of a one-dimensional finite-difference&#013;&#010;calculation that executes in parallel with the main stress-strain calculations,&#013;&#010;and provides the lateral boundary conditions for a dynamic analysis in which&#013;&#010;a vertical propagating plane wave is applied to the base of the model. The boundaries&#013;&#010;must be vertical and straight. The  block.edge.apply.dynamic-free-field &#013;&#010;command must be given before changing other boundary conditions"><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">edge</span> <span class="pre">apply</span> <span class="pre">dynamic-free-field</span></code></a> command must be given before changing other boundary conditions for the dynamic stage of an analysis. The properties and constitutive models of the zones adjacent to the free-field boundary are copied and used by the dynamic free-field. The model should be in static equilibrium prior to using the command. The free-field itself is automatically cycled to equilibrium when the command is given. The viscous boundary conditions along the sides of the model are applied automatically. The free-field performs a small-strain calculation even though the adjacent zones may be in large-strain. The <a class="reference internal" href="../block.dynamic_commands/cmd_block.dynamic.free-field.html#command:block.dynamic.free-field" title="Manually manipulate the free-field boundaries. In most cases, it is easier to&#013;&#010;use the automatic free field (see  block.edge.apply.free-field ). The dynamic&#013;&#010;free field consists of a one-dimensional finite-difference calculation executed&#013;&#010;in parallel with the main calculation, and provides the lateral boundary conditions&#013;&#010;for dynamic analysis in which a vertically propagating plane wave is applied&#013;&#010;to the base of the model. The boundary nodes to be linked to the free field&#013;&#010;should be defined by using"><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">dynamic</span> <span class="pre">free-field</span></code></a> command may be used instead of, or in addition to, the <code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">edge</span> <span class="pre">apply</span> <span class="pre">free-field</span></code> command to manually control the free-field, but it is usually not needed. See Section 4.3.1.4 in Special Features for more details. The free-field cannot be used with <code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">config</span> <span class="pre">cell</span></code>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.flux">
+<span class="cmdkey"><span class="pref">f</span><span class="pref">l</span><span class="null">u</span><span class="null">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f2</span><span class="null"> </span></span></a></dt>
+<dd><dl class="docutils">
+<dt>Apply a thermal flux boundary condition.  <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f1</span></span></a> is the initial flux (watts/m:sup:<span class="math">\(2\)</span>). <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f2</span></span></a> is the decay constant (s<sup>−1</sup>). To remove a flux condition, a new condition should be applied with the strength replaced by S<sub>rep</sub> where:</dt>
+<dd>S<sub>rep</sub> = −S<sub>ini</sub> × exp[cd (t<sub>curr</sub> − t<sub>ini</sub> )]</dd>
+</dl>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.free-x">
+<span class="cmdkey"><span class="pref">f</span><span class="null">r</span><span class="null">e</span><span class="null">e</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span></dt>
+<dd><p>Remove a boundary condition and all loads in the <span class="math">\(x\)</span>-direction.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.free-y">
+<span class="cmdkey"><span class="pref">f</span><span class="null">r</span><span class="null">e</span><span class="null">e</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span></dt>
+<dd><p>Remove a boundary condition and all loads in the <span class="math">\(y\)</span>-direction.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.history">
+<span class="cmdkey"><span class="pref">h</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>The keyword history defines a time history that is a multiplier for all the stress, and hydraulic pressures (e.g., pore-pressure, pressure-gradient-x and pressure-gradient-y) given on the same input line.</p>
+<p>Boundary stresses can be applied as a constant, sinusoidal or user-defined <span class="codename">FISH</span> function, or they may consist of a series of points given by a TABLE command or read from a file. The keywords must be given on the same line specifying the load, stress or velocity.</p>
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.history.cosine">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span><span class="null"> </span></span></a></dt>
+<dd><p>Get a history of cosine wave load with frequency <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span></span></a> (cycles/sec) applied for a problem time period of <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.history.funcname">
+<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">f</span><span class="null">u</span><span class="null">n</span><span class="null">c</span><span class="null">n</span><span class="null">a</span><span class="null">m</span><span class="null">e</span><span class="null"> </span></span></a></dt>
+<dd><p>Use the user-defined <span class="codename">FISH</span> function named <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">funcname</span></span></a> as the history multiplier.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.history.sine">
+<span class="cmdkey"><span class="pref">s</span><span class="null">i</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span><span class="null"> </span></span></a></dt>
+<dd><p>Get a history of cosine wave load with frequency <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span></span></a> (cycles/sec) applied for a problem time period of <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.history.table">
+<span class="cmdkey"><span class="pref">t</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Input the history via the <span class="flag3">trick</span> <a class="reference internal" href="../../../../../../common/kernel/doc/manual/table_manual/table_commands/commands.html#table-commands"><span class="std std-ref">table</span></a> commands. Table <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> consists of a list of pairs: <span class="math">\(time\)</span>, <span class="math">\(f(time)\)</span>. Linear interpolation is performed between the given discrete points.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.history-time-reference">
+<span class="cmdkey"><span class="pref">h</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">y</span><span class="null">-</span><span class="pref">t</span><span class="null">i</span><span class="null">m</span><span class="null">e</span><span class="null">-</span><span class="pref">r</span><span class="null">e</span><span class="null">f</span><span class="null">e</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Set the reference time used in stress and pressure histories for the BLOCK EDGE APPLY command (default = <span class="cmdkey">mechanical</span>).</p>
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.history-time-reference.flow">
+<span class="cmdkey"><span class="pref">f</span><span class="null">l</span><span class="null">o</span><span class="null">w</span><span class="null"> </span></span></dt>
+<dd><p>Use fluid flow time for histories.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.history-time-reference.mechanical">
+<span class="cmdkey"><span class="pref">m</span><span class="null">e</span><span class="null">c</span><span class="null">h</span><span class="null">a</span><span class="null">n</span><span class="null">i</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>Use mechanical time for histories.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.history-normal">
+<span class="cmdkey"><span class="pref">h</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">y</span><span class="null">-</span><span class="pref">n</span><span class="null">o</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>Set a history in the normal direction.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.history-shear">
+<span class="cmdkey"><span class="pref">h</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">y</span><span class="null">-</span><span class="pref">s</span><span class="null">h</span><span class="null">e</span><span class="null">a</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>GSt a history in the shear direction.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.history-x">
+<span class="cmdkey"><span class="pref">h</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">y</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span></dt>
+<dd><p>Set a history in the <span class="math">\(x\)</span>-direction.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.history-y">
+<span class="cmdkey"><span class="pref">h</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">y</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span></dt>
+<dd><p>Set a history in the <span class="math">\(y\)</span>-direction.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.impermeable">
+<span class="cmdkey"><span class="pref">i</span><span class="null">m</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">m</span><span class="null">e</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Apply an impermeable boundary for wetting fluid.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.interior">
+<span class="cmdkey"><span class="pref">i</span><span class="null">n</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">o</span><span class="null">r</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Stresses are applied to block edges of an interior boundary (i.e., not lying on the outer boundary) within a specified <a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><code class="xref fish fish-tok docutils literal"><span class="pre">range</span></code></a>. For example, a range <span class="cmdkey">domain</span> <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> restricts the range to block edges on the boundary of interior domain <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a>.</p>
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.interior.stress">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxxo</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxyo</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyyo</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply boundary constant stress parameters: (<span class="math">\(sxxo\)</span>, <span class="math">\(sxyo\)</span>, and <span class="math">\(syyo\)</span>).</p>
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.interior.stress.gradient-x">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxxx</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxyx</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyyx</span><span class="null"> </span></span></a></dt>
+<dd><p>Linearly varying interior boundary stress in X direction. (<span class="math">\(sxxx\)</span>, <span class="math">\(sxyx\)</span>, <span class="math">\(syyx\)</span>), assuming <span class="math">\(sxxo\)</span>, <span class="math">\(sxyo\)</span> and <span class="math">\(syyo\)</span> are stresses at origin (0,0).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.interior.stress.gradient-y">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxxy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxyy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyyy</span><span class="null"> </span></span></a></dt>
+<dd><p>Linearly varying interior boundary stress in Y direction. (<span class="math">\(sxxy1\)</span>, <span class="math">\(sxyy\)</span>, <span class="math">\(syyy\)</span>), assuming <span class="math">\(sxxo\)</span>, <span class="math">\(sxyo\)</span> and <span class="math">\(syyo\)</span> are stresses at origin (0,0).</p>
+<p>Linearly varying boundary stress equation.</p>
+<div class="math">
+\[\begin{split}sxx = sxxo + (sxxx \cdot x) + (sxxy \cdot y) \\
+sxy = sxyo + (sxyx \cdot x) + (sxyy \cdot y) \\
+syy = syyo + (syyx \cdot x) + (syyy \cdot y) \\\end{split}\]</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.interior.history">
+<span class="cmdkey"><span class="pref">h</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>The keyword history defines a time history that is a multiplier for all the interior boundary stress.</p>
+<p>Boundary loads, stresses or velocities can be applied as a constant, sinusoidal or user-defined <span class="codename">FISH</span> function, or they may consist of a series of points given by a TABLE command or read from a file. The keywords must be given on the same line specifying the load, stress or velocity.</p>
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.interior.history.cosine">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span><span class="null"> </span></span></a></dt>
+<dd><p>Get a history of cosine wave load with frequency <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span></span></a> (cycles/sec) applied for a problem time period of <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.interior.history.funcname">
+<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">f</span><span class="null">u</span><span class="null">n</span><span class="null">c</span><span class="null">n</span><span class="null">a</span><span class="null">m</span><span class="null">e</span><span class="null"> </span></span></a></dt>
+<dd><p>Use the user-defined <span class="codename">FISH</span> function named <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">funcname</span></span></a> as the history multiplier.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.interior.history.sine">
+<span class="cmdkey"><span class="pref">s</span><span class="null">i</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span><span class="null"> </span></span></a></dt>
+<dd><p>Get a history of cosine wave load with frequency <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span></span></a> (cycles/sec) applied for a problem time period of <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.interior.history.table">
+<span class="cmdkey"><span class="pref">t</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Input the history via the <span class="flag3">trick</span> <a class="reference internal" href="../../../../../../common/kernel/doc/manual/table_manual/table_commands/commands.html#table-commands"><span class="std std-ref">table</span></a> commands. Table <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> consists of a list of pairs: <span class="math">\(time\)</span>, <span class="math">\(f(time)\)</span>. Linear interpolation is performed between the given discrete points.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.interior.delete">
+<span class="cmdkey"><span class="pref">d</span><span class="null">e</span><span class="null">l</span><span class="null">e</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Delete interior boundaries should be deleted prior to deleting blocks that are part of the boundary.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.multiply-normal">
+<span class="cmdkey"><span class="pref">m</span><span class="null">u</span><span class="null">l</span><span class="null">t</span><span class="null">i</span><span class="null">p</span><span class="null">l</span><span class="null">y</span><span class="null">-</span><span class="pref">n</span><span class="null">o</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Normal-direction load multiplier (default = 1.0)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.multiply-shear">
+<span class="cmdkey"><span class="pref">m</span><span class="null">u</span><span class="null">l</span><span class="null">t</span><span class="null">i</span><span class="null">p</span><span class="null">l</span><span class="null">y</span><span class="null">-</span><span class="pref">s</span><span class="null">h</span><span class="null">e</span><span class="null">a</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Shear-direction load multiplier (default = 1.0)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.multiply-x">
+<span class="cmdkey"><span class="pref">m</span><span class="null">u</span><span class="null">l</span><span class="null">t</span><span class="null">i</span><span class="null">p</span><span class="null">l</span><span class="null">y</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p><span class="math">\(x\)</span>-direction load multiplier (default = 1.0)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.multiply-y">
+<span class="cmdkey"><span class="pref">m</span><span class="null">u</span><span class="null">l</span><span class="null">t</span><span class="null">i</span><span class="null">p</span><span class="null">l</span><span class="null">y</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p><span class="math">\(y\)</span>-direction load multiplier (default = 1.0)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.nonwetting-gradient-x">
+<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">n</span><span class="null">w</span><span class="null">e</span><span class="null">t</span><span class="null">t</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">-</span><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply non-wetting fluid pressure gradient along the <span class="math">\(x\)</span>-axis.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.nonwetting-gradient-y">
+<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">n</span><span class="null">w</span><span class="null">e</span><span class="null">t</span><span class="null">t</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">-</span><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply non-wetting fluid pressure gradient along the <span class="math">\(y\)</span>-axis.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.nonwetting-impermeable">
+<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">n</span><span class="null">w</span><span class="null">e</span><span class="null">t</span><span class="null">t</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">-</span><span class="pref">i</span><span class="null">m</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">m</span><span class="null">e</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Apply an impermeable boundary for non-wetting fluid.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.permeable">
+<span class="cmdkey"><span class="pref">p</span><span class="null">e</span><span class="null">r</span><span class="null">m</span><span class="null">e</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Apply a permeable boundary to fluid for joints intersecting the boundary.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.nonwetting-permeable">
+<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">n</span><span class="null">w</span><span class="null">e</span><span class="null">t</span><span class="null">t</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">-</span><span class="pref">p</span><span class="null">e</span><span class="null">r</span><span class="null">m</span><span class="null">e</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Apply a permeable boundary to non-wetting fluid for joints intersecting the boundary.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.nonwetting-pressure">
+<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">n</span><span class="null">w</span><span class="null">e</span><span class="null">t</span><span class="null">t</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">-</span><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply a non-wetting fluid pressure at boundary (the default is <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> = 0.0)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.pore-pressure">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">r</span><span class="null">e</span><span class="null">-</span><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply wetting fluid pressure at boundary; must still use the stress keyword to set mechanical boundary conditions. (The default is <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> = 0.0.)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.pressure-gradient-x">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null">-</span><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply wetting fluid pressure gradient along the <span class="math">\(x\)</span>-axis; must still use the xload, yload or stress keyword to set mechanical boundary conditions.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.pressure-gradient-y">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null">-</span><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply wetting fluid pressure gradient along the <span class="math">\(y\)</span>-axis; must still use the xload, yload or stress keyword to set mechanical boundary conditions.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.radiation">
+<span class="cmdkey"><span class="pref">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f2</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply a thermal boundary condition.  <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f1</span></span></a> is the radiative heat transfer coefficient (for black bodies, this is the Stefan-Boltzmann constant, 5.668 × 10−8 w/m<sup>2</sup> K<sup>4</sup>). <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f2</span></span></a> is the temperature of the medium to which radiation occurs. To remove a radiation boundary condition, apply the same heat tansfer coefficient with a negative sign.  It is not physically realistic to use a negative heat transfer coefficient in any other circumstances. Unless otherwise specified, all boundaries are assumed to be insulated.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.saturation">
+<span class="cmdkey"><span class="pref">s</span><span class="null">a</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>Apply wetting fluid saturation on the boundary</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.saturation-gradient-x">
+<span class="cmdkey"><span class="pref">s</span><span class="null">a</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span></dt>
+<dd><p>Apply saturation gradient along the <span class="math">\(x\)</span>-axis</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.saturation-gradient-y">
+<span class="cmdkey"><span class="pref">s</span><span class="null">a</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span></dt>
+<dd><p>Apply saturation gradient along the <span class="math">\(y\)</span>-axis</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.seepage">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">e</span><span class="null">e</span><span class="null">p</span><span class="null">a</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Apply a seepage boundary condition. If a seepage boundary condition is assigned to a boundary, then (1) wetting and non-wetting fluid pressures are fixed (wetting fluid pressure is equal to non-wetting fluid pressure); and (2) the unsaturated boundary is impermeable for wetting fluid.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.stress-principal">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">p</span><span class="null">r</span><span class="null">i</span><span class="null">n</span><span class="null">c</span><span class="null">i</span><span class="null">p</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Alternate method to define stress at a boundary by specifying a stress measurement at a point and an optional gradient.  The use of this command requires that the global orientation of the UDEC plane be specified using the commands <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">orientation</span> <span class="pre">dip-direction</span></code> and <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">orientation</span> <span class="pre">origin</span></code>. The keywords are:</p>
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.stress-principal.s1">
+<span class="cmdkey"><span class="pref">s</span><span class="null">1</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>major principal stress</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.stress-principal.s2">
+<span class="cmdkey"><span class="pref">s</span><span class="null">2</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>intermediate principal stress</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.stress-principal.s3">
+<span class="cmdkey"><span class="pref">s</span><span class="null">3</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>minor principal stress</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.stress-principal.dip-s1">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">p</span><span class="null">-</span><span class="pref">s</span><span class="null">1</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>major principal stress dip</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.stress-principal.dip-direction-s1">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">p</span><span class="null">-</span><span class="pref">d</span><span class="null">i</span><span class="null">r</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">s</span><span class="null">1</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>major principal stress direction</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.stress-principal.dip-s2">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">p</span><span class="null">-</span><span class="pref">s</span><span class="null">2</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>dip intermediate principal stress dip</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.stress-principal.dip-direction-s2">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">p</span><span class="null">-</span><span class="pref">d</span><span class="null">i</span><span class="null">r</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">s</span><span class="null">2</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>intermediate principal stress direction</p>
+<p>The following are optional keywords:</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.stress-principal.gradient-vertical">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">v</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">i</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>gradient in the veritcal direction</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.stress-principal.location">
+<span class="cmdkey"><span class="pref">l</span><span class="null">o</span><span class="null">c</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fz</span><span class="null"> </span></span></a></dt>
+<dd><p>The location specifies the coordinates of the stress measurement. The gradient is the stress change in the vertical direction. All other stresses are incremented proportionately by the gradient to prevent stress rotation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.stress">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxxo</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxyo</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyyo</span><span class="null"> </span></span></a><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span></span>></span><span class="null"> </span></dt>
+<dd><p>Apply boundary constant stress parameters: (<span class="math">\(sxxo\)</span>, <span class="math">\(sxyo\)</span>, and <span class="math">\(syyo\)</span>).</p>
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.stress.gradient-x">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxxx</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxyx</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyyx</span><span class="null"> </span></span></a></dt>
+<dd><p>Linearly vary boundary stress in X direction. (<span class="math">\(sxxx\)</span>, <span class="math">\(sxyx\)</span>, <span class="math">\(syyx\)</span>), assuming <span class="math">\(sxxo\)</span>, <span class="math">\(sxyo\)</span> and <span class="math">\(syyo\)</span> are stresses at origin (0,0).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply.stress.gradient-y">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxxy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxyy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyyy</span><span class="null"> </span></span></a></dt>
+<dd><p>Linearly vary boundary stress in Y direction. (<span class="math">\(sxxy\)</span>, <span class="math">\(sxyy\)</span>, <span class="math">\(syyy\)</span>), assuming <span class="math">\(sxxo\)</span>, <span class="math">\(sxyo\)</span> and <span class="math">\(syyo\)</span> are stresses at origin (0,0).</p>
+<p>Linearly varying boundary stress equation.</p>
+<div class="math">
+\[\begin{split}sxx = sxxo + (sxxx \cdot x) + (sxxy \cdot y) \\
+sxy = sxyo + (sxyx \cdot x) + (sxyy \cdot y) \\
+syy = syyo + (syyx \cdot x) + (syyy \cdot y) \\\end{split}\]</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All stresses are assumed to be constant and permanent by default and are added to the existing permanent loads.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Stress conditions should always be applied prior to any velocity conditions acting on the same location. The stress boundary affects all degrees of freedom. For example, if <code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">edge</span> <span class="pre">apply</span> <span class="pre">stress</span> <span class="pre">follows</span> <span class="pre">a</span> <span class="pre">:cmd:`block</span> <span class="pre">gridpoint</span> <span class="pre">apply</span> <span class="pre">velocity-x</span></code> command affecting the same gridpoint(s), then the effect of the previously prescribed velocity condition will be lost.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../block_commands/block_commands.html" >Block Commands</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../block_commands/cmd_block.edge.html" accesskey="U"><span class="fishcmd">block edge</span> commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../block_commands/cmd_block.edge.html"
+                           title="previous chapter"> <span class="fishcmd">block edge</span> commands</a> |    
+       <a href="cmd_block.edge.apply-interior.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">block</span> <span class="pre">edge</span> <span class="pre">apply-interior</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block edge apply command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

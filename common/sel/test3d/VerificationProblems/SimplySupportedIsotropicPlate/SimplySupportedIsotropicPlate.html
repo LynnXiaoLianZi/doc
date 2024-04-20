@@ -1,0 +1,227 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Simply Supported Isotropic Rectangular Plate under Combined Lateral and Direct Loads &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="hide sectionname docutils container">
+Examples • Verification Problems</div>
+<div class="section" id="simply-supported-isotropic-rectangular-plate-under-combined-lateral-and-direct-loads">
+<span id="simplysupportedisoplate"></span><h1>Simply Supported Isotropic Rectangular Plate under Combined Lateral and Direct Loads</h1>
+<p class="h2 rubric">Problem Statement</p>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To view this project in <span class="codename">FLAC3D</span>, use the menu command <span class="menuselection">Help ‣ Examples…</span>.  Choose “VerificationProblems/ SimplySupportedIsotropicPlate” and select “SimplySupportedIsotropicPlate.prj” to load. The <a class="reference internal" href="#iplatedata"><span class="std std-ref">main data files</span></a> used are shown at the end of this example. The remaining data files can be found in the project.</p>
+</div>
+<p>The deflection surface is determined for the case of a simply supported rectangular isotropic plate of
+sides <span class="math">\(a\)</span> and <span class="math">\(b\)</span>, subjected to a uniform lateral load, <span class="math">\(p_0\)</span>, and uniform tension,
+<span class="math">\(N\)</span>. The plate is subjected to combined lateral and in-plane force systems. The lateral loading is
+resisted by bending action, and the in-plane loading is resisted by membrane action. The problem
+conditions are illustrated in <a href=".html#iplate-problem">Figure </a><code class="xref fnum docutils literal"><span class="pre">Figure</span>&#160; <span class="pre">#iplate-problem</span></code>.</p>
+<p class="h2 rubric">Closed-Form Solution</p>
+<p>The analytic solution is given by Ugural (1981, pp. 155-156. The solution extends the
+small deformation theory of plates (whereby the deflection of the midsurface is assumed to
+be small relative to the plate thickness) to include the simultaneous action of the
+combined loading such that the midplane is strained subsequent to combined loading.</p>
+<div class="figure" id="rectangular-plate-lateral-and-in-plane-loading-and-coordinate-system-used-to-express-the-closed-form-solution">
+<a class="reference internal image-reference" href="../../../../../_images/iplate-problem.png"><img alt="../../../../../_images/iplate-problem.png" src="../../../../../_images/iplate-problem.png" style="width: 80%;" /></a>
+</div>
+<p>The deflection is given by</p>
+<div class="math">
+\[w = {{16 p_0} \over {\pi^6 D}} \sum^{\infty}_m \sum^{\infty}_n {{{\rm sin} (m \pi x/a) {\rm sin} (n \pi y/b)} \over {mn{\biggl[{\bigl({m^2 \over a^2} + {n^2 \over b^2}\bigr)}^2 + {N \over D} {\bigl({m \over {\pi a}}\bigr)}^2}\biggr]}} (m,n=1,3,...)\]</div>
+<p>where <span class="math">\(D = {t^3 \over 12} \biggl({E \over {1 - \nu^2}}\biggr)\)</span> is the flexural rigidity, <span class="math">\(t\)</span> is the plate thickness, <span class="math">\(E\)</span> is Young’s modulus, and <span class="math">\(\nu\)</span> is Poisson’s ratio. The presence of a tensile (compressive) force decreases (increases) the plate deflection.</p>
+<p>A 4 by 8 rectangular sheet of 3/4-inch plywood is characterized by</p>
+<div class="math">
+\[a = 1.22 \ {\rm m,} \ \ b = 2.44 \ {\rm m,} \ \ t = 19 \ {\rm mm}\]</div>
+<div class="math">
+\[E = 10 \ {\rm GPa,} \ \ \nu = 0\]</div>
+<p>Denote the deflection at the plate center and the <span class="math">\(x\)</span>-displacement along the edge at <span class="math">\(x = a\)</span> by <span class="math">\((\Delta_z)_{\rm mid}\)</span> and <span class="math">\(\Delta_x\)</span>, respectively. For this problem, <span class="math">\(\Delta_x\)</span> is uniform along the edge. For a loading of <span class="math">\(p_0 = 1.0 \ {\rm kPa}\)</span>:</p>
+<div class="math" id="isoplate-tougheq1">
+\[\begin{split}\begin{align}
+(\Delta_z)_{\rm{mid}} &amp; = \left\{\begin{matrix}
+3.93\ \rm{mm,} &amp;  N = 0 \\
+0.298\ \rm{mm,} &amp;  N = 6.0 \times 10^5\ \rm{N/m}
+\end{matrix}\right. &amp; \rm(theory)
+\\
+\Delta_x = Na/tE &amp;= \left\{\begin{matrix}
+0, &amp; N = 0 \\
+3.85\ \rm{mm,} &amp; N = 6.0 \times 10^5\ \rm{N/m}
+\end{matrix}\right. &amp; \rm(theory)
+\end{align}\end{split}\]</div>
+<p>The given tensile force decreases the center deflection by an order of magnitude.</p>
+<p class="h2 rubric"><span class="codename">FLAC3D</span> Model</p>
+<p>The <span class="codename">FLAC3D</span> model with a 4 by 8 mesh contains 128 shell elements, as shown in <a href="#iplate-geom">Figure  2</a>.
+The entire plate is modeled for clarity, although quarter-symmetry could be applied to reduce the model
+size. All four edges have their <span class="math">\(z\)</span>-velocities fixed at zero to simulate simple supports, and the
+edge at <span class="math">\(x\)</span> = 0 has its <span class="math">\(x\)</span>-velocity fixed at zero to simulate a roller boundary condition.
+The lateral loading is applied with the <a class="reference internal" href="../../../doc/manual/sel_manual/shells/commands/cmd_structure.shell.apply.html#command:structure.shell.apply" title="Assign uniform applied pressure  f  to all shell elements in the range.&#013;&#010;Positive pressure acts in the positive `z`\ -direction of the element system&#013;&#010;and maintains this orientation during large-strain motion."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">shell</span> <span class="pre">apply</span></code></a> command, and membrane loading is
+applied along the edge at <span class="math">\(x = a\)</span> using the <a class="reference internal" href="../../../doc/manual/sel_manual/nodes/commands/cmd_structure.node.apply.html#kwd:structure.node.apply.force-edge" title="the vector  v  is added as a force-per-unit-length to all *edges* that&#013;&#010;join nodes in the range.  The forces assigned due to the edge will be lumped&#013;&#010;at the two nodes, with each node receiving half.  These forces are always in&#013;&#010;the global system and will set the nodes to the global system as with the  structure.node.apply.system.global &#013;&#010;command."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">apply</span> <span class="pre">force-edge</span></code></a> command. A
+cross-diagonal mesh pattern is utilized to ensure symmetric response, and the DKT-CSTH Hybrid shell
+finite element is utilized to resist the combined membrane and bending actions. In order to inhibit
+activation of spurious <span class="math">\(z\)</span>-rotations along the edges, their <span class="math">\(z\)</span>-rotational nodal velocities
+are fixed to zero. This constraint is not necessary if the DKT-CST element is used. In order to model
+the coupling, whereby the presence of a tensile membrane decreases the plate deflection, <span class="codename">FLAC3D</span> is run
+in large-strain mode.</p>
+<p>The theoretical and numerical solutions are compared along the three lines <span class="math">\(y = b/2\)</span>, <span class="math">\(x = a/2\)</span>, and <span class="math">\(x = a/4\)</span>. The theoretical values are obtained by taking the first 10 terms (<span class="math">\(m &lt;= 21\)</span> and <span class="math">\(n &lt;= 21\)</span>) of the infinite series. The numerical values for deflection are obtained from the nodes that lie along each line.</p>
+<div class="figure align-center" id="iplate-geom">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\SimplySupportedIsotropicPlate\iplate-geom.png"><img alt="common\sel\test3d\VerificationProblems\SimplySupportedIsotropicPlate\iplate-geom.png" src="common\sel\test3d\VerificationProblems\SimplySupportedIsotropicPlate\iplate-geom.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: <span class="codename">FLAC3D</span> model for combined loading plate problem.</span></p>
+</div>
+<p class="h2 rubric">Results</p>
+<p>The case <span class="math">\(N = 6.0 \times 10^5 \ {\rm N/m}\)</span> is run to produce</p>
+<div class="math">
+\[\begin{split}\begin{align}
+(\Delta_z)_{\rm{mid}} &amp; = \left\{\begin{matrix}
+3.81\ \rm{mm,} &amp;  N = 0 \\
+0.299\ \rm{mm,} &amp;  N = 6.0 \times 10^5\ \rm{N/m}
+\end{matrix}\right. &amp; \rm(numerical)
+\\
+\Delta_x = Na/tE &amp;= \left\{\begin{matrix}
+\approx 0, &amp; N = 0 \\
+3.86\ \rm{mm,} &amp; N = 6.0 \times 10^5\ \rm{N/m}
+\end{matrix}\right. &amp; \rm(numerical)
+\end{align}\end{split}\]</div>
+<p>which can be compared with the theoretical results <a class="reference internal" href="#isoplate-tougheq1"><span class="std std-ref">above</span></a>. The center deflection is within 0.8% of the theoretical value as shown in <a href="#iplate-zdisp">Figure  3</a> and compared with the theoretical solution along three lines in <a href="#iplate-deflectx">Figure  4</a> and <a href="#iplate-deflecty">Figure  5</a>. The <span class="codename">FLAC3D</span> results compare well with the theoretical solution. These results demonstrate that the geometrically nonlinear stress-stiffening effect is modeled correctly by running <span class="codename">FLAC3D</span> in large-strain mode.</p>
+<div class="figure align-center" id="iplate-zdisp">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\SimplySupportedIsotropicPlate\iplate-zdisp.png"><img alt="common\sel\test3d\VerificationProblems\SimplySupportedIsotropicPlate\iplate-zdisp.png" src="common\sel\test3d\VerificationProblems\SimplySupportedIsotropicPlate\iplate-zdisp.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 3: Deflection contours of plate (combined loading).</span></p>
+</div>
+<div class="figure align-center" id="iplate-deflectx">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\SimplySupportedIsotropicPlate\iplate-deflectx.png"><img alt="common\sel\test3d\VerificationProblems\SimplySupportedIsotropicPlate\iplate-deflectx.png" src="common\sel\test3d\VerificationProblems\SimplySupportedIsotropicPlate\iplate-deflectx.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 4: Deflection of plate along the lines <span class="math">\(x = a/2\)</span> and <span class="math">\(x = a/4\)</span> (combined loading).</span></p>
+</div>
+<div class="figure align-center" id="iplate-deflecty">
+<a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\SimplySupportedIsotropicPlate\iplate-deflecty.png"><img alt="common\sel\test3d\VerificationProblems\SimplySupportedIsotropicPlate\iplate-deflecty.png" src="common\sel\test3d\VerificationProblems\SimplySupportedIsotropicPlate\iplate-deflecty.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 5: Deflection of plate along the line <span class="math">\(y = b/2\)</span> (combined loading).</span></p>
+</div>
+<p class="h2 rubric">Reference</p>
+<p>Ugural, A. C. <span class="bi">Stresses in Plates and Shells</span>. New York: McGraw-Hill Publishing Company Inc. (1981).</p>
+<p class="h2 rubric" id="iplatedata">Data File</p>
+<p><strong>SimplySupportedIsotropicPlate.dat</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="c">; FLAC3D verification problem </span>
+<span class="c">; Isotropic rectangular plate under combined lateral and direct loads</span>
+<span class="nb">model new</span>
+<span class="ni">[t </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;Isotropic rectangular plate under combined lateral and direct loads&#39;</span><span class="ni">]</span>
+<span class="nb">model title</span><span class="n"> </span><span class="ni">[t]</span>
+<span class="c">; Create the elements and apply properties</span>
+<span class="nb">struct shell create</span><span class="n"> by</span><span class="o">-</span><span class="n">quadrilateral </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">1.22</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                     </span><span class="p">(</span><span class="m m-Double">1.22</span><span class="p">,</span><span class="m m-Double">2.44</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">2.44</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                     size </span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">8</span><span class="p">)</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                     element</span><span class="o">-</span><span class="n">type</span><span class="p">=</span><span class="n">dkt</span><span class="o">-</span><span class="n">csth cross</span><span class="o">-</span><span class="n">diagonal</span>
+<span class="nb">struct shell property</span><span class="n"> isotropic </span><span class="p">(</span><span class="m m-Double">10e9</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> thick </span><span class="m m-Double">19e-3</span>
+<span class="c">; simply supported condition on boundaries</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">z rotation</span><span class="o">-</span><span class="n">z </span><span class="sx">...</span>
+<span class="n">    range union position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0.0</span><span class="n"> position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">1.22</span><span class="n"> position</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0.0</span><span class="n"> position</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">2.44</span>
+<span class="c">; rollers along x=0, foce along x=1.2</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">x range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0.0</span>
+<span class="nb">struct node apply</span><span class="n"> force</span><span class="o">-</span><span class="n">edge </span><span class="p">(</span><span class="m m-Double">6e5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">1.22</span>
+<span class="c">; Apply pressure</span>
+<span class="nb">struct shell apply</span><span class="n"> </span><span class="m m-Double">1e3</span>
+<span class="c">; Set large strain on, creating coupling between bending and membrane</span>
+<span class="nb">model large-strain</span><span class="n"> </span><span class="sx">on</span>
+<span class="c">; Solve the model</span>
+<span class="nb">model </span><span class="ss">solve</span><span class="n"> ratio</span><span class="o">-</span><span class="n">local</span><span class="p">=</span><span class="m m-Double">1e-5</span>
+<span class="c">; Save the model</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;isotropic4x8&#39;</span>
+</pre></div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Simply Supported Isotropic Rectangular Plate under Combined Lateral and Direct Loads" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

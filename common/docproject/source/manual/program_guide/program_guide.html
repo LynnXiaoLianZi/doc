@@ -1,0 +1,1230 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Program Guide &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Modeling Methodology" href="methodology/methodology.html" />
+    <link rel="prev" title="Itasca’s UDEC Documentation" href="../../../../../contents.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="program-guide">
+<span id="programguide"></span><h1>Program Guide</h1>
+<p>All Itasca software is built on a common strata of elements at the foundation of each program, regardless of the numerical method or the elements the program uses.  Consequently, whether using DEM software such as <span class="codename">UDEC</span>, <span class="codename">3DEC</span>, or <span class="codename">PFC</span>, or using continuum software such as <span class="codename">FLAC3D</span>, there will be a significant number of logics, processes, utilities, and capabilities that are common to all of them.</p>
+<p>All the material in this section focuses on those common apparatuses, which permeate <em>every</em> aspect of the software, from modeling methodology to implementation of commands to calculation scheme to user interface design to the techniques for model design, processing, and output. And more.  The sub-sections listed below cover each of these areas as follows.</p>
+<dl class="docutils">
+<dt><a class="reference internal" href="methodology/methodology.html#frameworkmethodology"><span class="std std-ref">Modeling Methodology</span></a></dt>
+<dd>This section provides a high level guide to numerical modeling, providing a recommended approach to the process and a discussion of specific considerations that may impact model design and program performance.</dd>
+<dt><a class="reference internal" href="modelformulation/formulation.html#frameworkunderpinnings"><span class="std std-ref">Underpinnings</span></a></dt>
+<dd>This section surveys the scientific context of the program.  It enumerates conventions regarding notations, command syntax highlighting, sign conventions, system of units, precision limits.  It also introduces the calculation cycle, physical forces at work in the model (energy, stress and strain), and an introductory look at the components that are used to create models (zones, balls or clumps, structural elements, blocks, etc.).</dd>
+<dt><a class="reference internal" href="mechanics/program_mechanics.html#frameworkmechanics"><span class="std std-ref">Program Mechanics</span></a></dt>
+<dd>This section describes <em>most</em> of the numerical model development environment provided by the program.  Commands, which are the heart of the program, are covered first.  Then, following the sequence of the modeling process, the topics are: project creation, data file and command processing, plotting, solving, and results storage.  This section can be considered a general user’s guide to the program.</dd>
+<dt><a class="reference internal" href="models/models.html#constitutivemodels"><span class="std std-ref">Constitutive Models</span></a></dt>
+<dd>The mechanical constitutive models available range from linearly elastic models to highly nonlinear plastic models. The basic constitutive models are described in this section. Each model description includes a short discussion of the theoretical background and simple example tests.</dd>
+<dt><span class="xref std std-ref">Structural Elements</span></dt>
+<dd>Descriptions of the types of structural elements provided, the components constituting them, the theory and background of the structural element formulation, and example applications illustrating use of structural elements in models are all provided in this section.</dd>
+<dt><a class="reference internal" href="general_components.html#general-components"><span class="std std-ref">Common Commands and FISH</span></a></dt>
+<dd>This section is the reference for all commands and <span class="codename">FISH</span> functions that are commonly available in all Itasca numerical modeling codes.  The specific sets of commands for <span class="codename">UDEC</span> are found in the section <a class="reference internal" href="../../../../../udec/docproject/source/elements/udeccommandsandfish.html#udeccommandsandfish"><span class="std std-ref">UDEC Commands and FISH</span></a>.</dd>
+</dl>
+<p class="h2 rubric">Command and <span class="codename">FISH</span> References</p>
+<p><em>Common</em></p>
+<ul class="simple">
+<li><a class="reference internal" href="command_summary.html#core-command-summary"><span class="std std-ref">Index: Common Commands</span></a> for commands common to all Itasca software (<span class="flag3">c</span> <a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.call.html#call-command"><span class="std std-ref">call</span></a>, <span class="flag3">c</span> <span class="xref std std-ref">geometry</span>, <span class="flag3">c</span> <span class="xref std std-ref">fracture</span>, <span class="flag3">c</span> <span class="xref std std-ref">model</span>, <span class="flag3">c</span> <span class="xref std std-ref">program</span>, <span class="flag3">c</span> <span class="xref std std-ref">table</span>, etc.)</li>
+<li><a class="reference internal" href="fish_summary.html#core-fish-summary"><span class="std std-ref">Index: Common FISH</span></a> for all <span class="codename">FISH</span> functions associated with common commands.</li>
+</ul>
+<p><em>UDEC</em></p>
+<ul class="simple">
+<li><a class="reference internal" href="../../../../../udec/docproject/source/elements/udeccommandsandfish.html#udeccommandsandfish"><span class="std std-ref">UDEC Commands and FISH</span></a> for all <span class="codename">UDEC</span> commands and <span class="codename">FISH</span> (all referenced by block — <span class="flag3">c</span> <a class="reference internal" href="../../../../../udec/docproject/source/elements/block/block_commands/block_commands.html#block-commands"><span class="std std-ref">block</span></a> commands and <span class="flag3">c</span> <a class="reference internal" href="../../../../../udec/docproject/source/elements/block/block_fish/block_fish.html#block-fish"><span class="std std-ref">block</span></a> <span class="codename">FISH</span> functions).</li>
+</ul>
+<p><em>Scripting</em></p>
+<ul class="simple">
+<li><a class="reference internal" href="../scripting/fish_scripting/fish.html#fish-scripting"><span class="std std-ref">FISH Scripting Reference</span></a> for the general reference on <span class="codename">FISH</span>;</li>
+<li><a class="reference internal" href="../../../../fish/doc/fish_manual/fish_fish/fish_fish.html#fish-fish"><span class="std std-ref">FISH Functions</span></a> for an index of all functions built directly into the <span class="codename">FISH</span> language (that are not associated with the set found with the common commands (see above)).</li>
+</ul>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="methodology/methodology.html">Modeling Methodology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="methodology/generalapproach.html">General Approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="methodology/generalsolutionprocedure.html">General Solution Procedure, Illustrated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="methodology/2dvs3dmodels.html">2D vs. 3D Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="methodology/modelingdatalimitedsystems.html">Modeling Data-Limited Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="methodology/modelingchaoticsystems.html">Modeling Chaotic Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="methodology/localizationandpath.html">Localization, Physical Instability, and Path-Dependence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="methodology/factorofsafety/factorofsafety.html">Factor of Safety</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="methodology/factorofsafety/factorofsafetyindex.html">Factor of Safety Defined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="methodology/factorofsafety/computationalmethods.html">Computational Methods for Factor of Safety Calculation of Slopes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="methodology/factorofsafety/computationalmethods.html#strength-reduction-technique">Strength Reduction Technique</a></li>
+<li class="toctree-l4"><a class="reference internal" href="methodology/factorofsafety/computationalmethods.html#limit-analysis">Limit Analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="methodology/factorofsafety/computationalmethods.html#limit-equilibrium">Limit Equilibrium</a></li>
+<li class="toctree-l4"><a class="reference internal" href="methodology/factorofsafety/computationalmethods.html#relation-of-strength-reduction-method-to-limit-equilibrium-and-limit-analysis">Relation of Strength Reduction Method to Limit Equilibrium and Limit Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="methodology/factorofsafety/strengthreduction.html">Strength Reduction Procedure in <span class="codename">FLAC3D</span> <span class="codename">UDEC</span>, and <span class="codename">3DEC</span></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="methodology/factorofsafety/strengthreduction.html#strength-reduction-properties">Strength Reduction Properties</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="methodology/factorofsafety/strengthreduction.html#mohr-coulomb-material">Mohr-Coulomb Material</a></li>
+<li class="toctree-l5"><a class="reference internal" href="methodology/factorofsafety/strengthreduction.html#ubiquitous-joint-material">Ubiquitous-Joint Material</a></li>
+<li class="toctree-l5"><a class="reference internal" href="methodology/factorofsafety/strengthreduction.html#hoek-brown-material">Hoek-Brown Material</a></li>
+<li class="toctree-l5"><a class="reference internal" href="methodology/factorofsafety/strengthreduction.html#interfaces-flac3d">Interfaces (<span class="codename">FLAC3D</span>)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="methodology/factorofsafety/strengthreduction.html#coulomb-joints-3dec-udec">Coulomb Joints (<span class="codename">3DEC</span>, <span class="codename">UDEC</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="methodology/factorofsafety/references.html">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="methodology/referencesmodelingmethodology.html">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modelformulation/formulation.html">Underpinnings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modelformulation/cycling.html">Timestep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelformulation/determinism.html">Determinism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelformulation/largevssmallstrain.html">Large Strain/Small Strain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelformulation/notations.html">Notations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelformulation/signconventions.html">Sign Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelformulation/stresssignconvention.html">Stress Sign Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelformulation/stressstraininvariants.html">Stress/Strain Invariants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelformulation/systemofunits.html">System of Units</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modelformulation/systemofunits.html#mechanical-analysis">Mechanical Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelformulation/systemofunits.html#thermal-analysis">Thermal Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelformulation/systemofunits.html#fluid-analysis">Fluid Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelformulation/systemofunits.html#structural-elements">Structural Elements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modelformulation/precisionlimits.html">Precision Limits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mechanics/program_mechanics.html">Program Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mechanics/commands/commands.html">Commands (&amp; Scripting)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/commands/howcommandswork.html">How Commands Work</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/commands/commandsyntax.html">Command Syntax</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/commands/commandshaping.html">Command Shaping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/commands/commandentry.html">Command Entry in the <em>Console</em> Pane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/commands/commandhighlighting.html">Command and <span class="codename">FISH</span> Highlighting in the Program</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/commands/commandfishrefpresentation.html">Command and <span class="codename">FISH</span> Reference Notation in the Documents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/commands/commandtools.html">Command Tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/commands/commandsmoretopics.html">Commands: Additional Material</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/commands/console_pane/consolepane.html">The <em>Console</em> Pane</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/commands/console_pane/consoletoolbar.html">Console Pane Toolbar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/commands/console_pane/console_cp.html">Control Panel</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/commands/backgroundoncommands.html">Commands, a Rationale</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/commands/backgroundoncommands.html#why-a-command-driven-interface">Why A Command-Driven Interface?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/commands/backgroundoncommands.html#why-fish">Why <span class="codename">FISH</span>?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mechanics/projects/projects.html">Projects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/projects/howprojectswork.html">How Projects Work</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/projects/howprojectswork.html#handling-projects">Handling Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/projects/project_pane/projectsoverview.html">The Project Pane</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/projects/project_pane/projecttoolbar.html">Project Pane Toolbar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/projects/project_pane/keyboard.html">Project-Related Keyboard Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/projects/project_pane/projects_cp.html">Control Panel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/projects/project_pane/projectsdiscussed.html">Projects: Further Description</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/projects/openintoprojectdialog.html">&quot;Open into Project&quot; Dialog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/projects/projectsanditemtracking.html">Projects and Item Tracking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/projects/bundle.html">Project Bundle Files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/projects/bundle/createbundle.html">Create a Bundle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/projects/bundle/openbundle.html">Open a Bundle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/projects/bundle/bundlereport.html">Bundle Report</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="programwindow/controlpanel/fishglobals.html"><span class="codename">FISH</span> <em>Global Symbols</em> Control Set</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mechanics/datafiles/datafiles.html">Data Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/datafiles/datafilescommandprocessing.html">How Data Files Work</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/datafiles/datafilehandling.html">Data File Handling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/datafiles/datafilehandling.html#create">Create</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/datafiles/datafilehandling.html#open-or-call">Open <em>or</em> Call</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/datafiles/datafilehandling.html#rename">Rename</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/datafiles/datafilehandling.html#duplicate">Duplicate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/datafiles/datafilehandling.html#close">Close</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/datafiles/datafilehandling.html#print">Print</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/datafiles/datafilehandling.html#un-hide">Un-hide</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/datafiles/editor_pane/editoroverview.html">The <em>Editor</em> Pane</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/datafiles/editor_pane/editortoolbar.html">Editor Pane Toolbar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/datafiles/editor_pane/editor_cp.html">Control Panel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/datafiles/editor_pane/inline_help.html">Inline Help</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/datafiles/editor_pane/keyboard.html">Keyboard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/datafiles/editor_pane/editorselection.html">Selection in an <em>Editor</em> Pane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/datafiles/editor_pane/editorlocaloptions.html">Editor Pane Local Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/datafiles/editor_pane/storage.html">File Storage and the <em>Editor</em> Pane</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mechanics/otherinputs/otherinputs.html">Other Inputs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/otherinputs/geometryfiles.html">Geometry Files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/otherinputs/geometryformat.html">Itasca Geometry File Format</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/otherinputs/dfnfiles.html">DFN Files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/otherinputs/dfnfileformats.html">DFN-Related File Formats</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/otherinputs/datauserfiles.html">Data (Vectors, etc.) Files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/otherinputs/datascalarfileformats.html">Scalar File Formats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/otherinputs/datatensorfileformats.html">Tensor File Formats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/otherinputs/datavectorfileformats.html">Vector File Formats</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/otherinputs/tablefiles.html">Table Files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/otherinputs/tablefileformat.html">Table File Format</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/otherinputs/plotfiles.html">Plot Files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mechanics/listings/listings.html">Listings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/listings/listing_pane/listingoverview.html">The <em>Listing</em> Pane</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/listings/listing_pane/listingtoolbar.html">Listing Pane Toolbar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/listings/listing_pane/listing_cp.html">Control Panel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/listings/listing_pane/keyboard.html">Keyboard</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mechanics/plotting/plotting.html">Plotting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/plotting/howplotswork.html">How Plots Work</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/plotting/views/plotpane.html">The <em>Plot</em> Pane</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/plotting/views/quickref.html">View Manipulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/plotting/views/viewtoolbar.html">View Pane Toolbar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="programwindow/dialogs/build_plot.html">Add Items</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/plotting/views/plotitems/plotitem_index.html">Plot Items Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/plotting/views/plotitems/plotitemsincommon.html">Plot Items in Common</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/axes.html">Axes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/fracture.html">Fracture</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/fractureintersections.html">Fracture Intersections</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/fracturerosette.html">Fracture Rosette</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/geometry.html">Geometry</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/history.html">History Chart</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/historylocations.html">History Locations</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/labels.html">Labels</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/particletrace.html">Particle Trace</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/scalars.html">Scalars</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/tablechart.html">Table Chart</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/tensors.html">Tensors</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/vectors.html">Vectors</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/plotting/views/plotitems/plotitemsinudec.html">Plot Items in <span class="codename">UDEC</span></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/beam.html">Beam</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/block.html">Block</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/boundary.html">Boundary</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/cable.html">Cable</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/udec_domain.html">Domain</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/factorofsafety.html">Factor of Safety</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/joint_flow.html">Flow Vector</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/fluid_far_field.html">Fluid Far Field</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/joint.html">Joint</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/moment_thrust.html">Moment Thrust</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/pline.html">Pline</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/reinf.html">Reinforce</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/rockbolt.html">Rockbolt</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/Scanline.html">Scanline</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/support.html">Support</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/tensorzone.html">Tensors (Zone)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/ubiquitous.html">Ubiquitous</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/vectorssels.html">Vectors (Structural Elements)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/vectorszones.html">Vectors (Block zone)</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/plotting/views/plotitems/standardattributes.html">Standard Attribute Controls</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/attributes/std_color.html">Color</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/attributes/std_colorlist.html">Color-List</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/attributes/std_coloropt.html">Color Opt</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/plotitems/items/attributes/std_contour.html">Contour</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="programwindow/controlpanel/plotitems.html"><em>Plot Items</em> Control Set</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="programwindow/controlpanel/ranges.html">Range</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="programwindow/controlpanel/rangedialog.html">The <em>Build Range</em> Dialog</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mechanics/plotting/views/rangeelementindex.html">Range Element Index</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="programwindow/controlpanel/filterelements/filter_circle.html">Circle</a></li>
+<li class="toctree-l6"><a class="reference internal" href="programwindow/controlpanel/filterelements/filter_ellipse.html">Ellipse</a></li>
+<li class="toctree-l6"><a class="reference internal" href="programwindow/controlpanel/filterelements/filter_polygon.html">Polygon</a></li>
+<li class="toctree-l6"><a class="reference internal" href="programwindow/controlpanel/filterelements/filter_xposition.html">X Position</a></li>
+<li class="toctree-l6"><a class="reference internal" href="programwindow/controlpanel/filterelements/filter_yposition.html">Y Position</a></li>
+<li class="toctree-l6"><a class="reference internal" href="programwindow/controlpanel/filterelements/filter_rectangle.html">Rectangle</a></li>
+<li class="toctree-l6"><a class="reference internal" href="programwindow/controlpanel/filterelements/filter_angle.html">Angle</a></li>
+<li class="toctree-l6"><a class="reference internal" href="programwindow/controlpanel/filterelements/filter_area.html">Area</a></li>
+<li class="toctree-l6"><a class="reference internal" href="programwindow/controlpanel/filterelements/filter_block_material.html">Block Material</a></li>
+<li class="toctree-l6"><a class="reference internal" href="programwindow/controlpanel/filterelements/filter_deformable.html">Deformable</a></li>
+<li class="toctree-l6"><a class="reference internal" href="programwindow/controlpanel/filterelements/filter_displacement.html">Displacement</a></li>
+<li class="toctree-l6"><a class="reference internal" href="programwindow/controlpanel/filterelements/filter_group.html">Group</a></li>
+<li class="toctree-l6"><a class="reference internal" href="programwindow/controlpanel/filterelements/filter_id.html">ID</a></li>
+<li class="toctree-l6"><a class="reference internal" href="programwindow/controlpanel/filterelements/filter_idlist.html">ID List</a></li>
+<li class="toctree-l6"><a class="reference internal" href="programwindow/controlpanel/filterelements/filter_index_list.html">Index List</a></li>
+<li class="toctree-l6"><a class="reference internal" href="programwindow/controlpanel/filterelements/filter_joint_material.html">Joint Material</a></li>
+<li class="toctree-l6"><a class="reference internal" href="programwindow/controlpanel/filterelements/filter_joint_set.html">Jointset ID</a></li>
+<li class="toctree-l6"><a class="reference internal" href="programwindow/controlpanel/filterelements/filter_rigid.html">Rigid</a></li>
+<li class="toctree-l6"><a class="reference internal" href="programwindow/controlpanel/filterelements/filter_velocity.html">Velocity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/plotting/views/plottingtools.html">Plotting Utilities</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/plotting/views/mousemodes.html">Mouse Tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/plotting/views/information.html"><em>Information</em> Control Set</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mechanics/solving/solving.html">Solving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/solving/warnings.html">Warnings dialog</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mechanics/savedstates/savedstates.html">Saving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/savedstates/howsavefileswork.html">How Save Files Work</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/savedstates/savefilehandling.html">Save File Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/savedstates/staterecord_pane/staterecordoverview.html">The <em>State Record</em> Pane</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/savedstates/staterecord_pane/staterecordtoolbar.html">Tools in the <em>State Record</em> Pane</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mechanics/configuration/configuration.html">Program Layout, Configuration, Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programwindow/programwindow.html">The Program Window</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="programwindow/panes.html">Panes</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="programwindow/panes_resizing.html">Resizing</a></li>
+<li class="toctree-l5"><a class="reference internal" href="programwindow/panes_moving.html">Moving</a></li>
+<li class="toctree-l5"><a class="reference internal" href="programwindow/panes_stacking.html">Stacking</a></li>
+<li class="toctree-l5"><a class="reference internal" href="programwindow/panes_floatingdocking.html">Floating and Docking</a></li>
+<li class="toctree-l5"><a class="reference internal" href="programwindow/panes_hidingclosing.html">Hiding and Closing</a></li>
+<li class="toctree-l5"><a class="reference internal" href="programwindow/panes_showingopening.html">Showing and Opening</a></li>
+<li class="toctree-l5"><a class="reference internal" href="programwindow/panes_menuandtab.html">Pane Menu and Tab Menu</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="programwindow/toolbar.html">Toolbar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="programwindow/controlpanel.html"><em>Control Panel</em></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="programwindow/controlpanel/controlpanel_overview.html">Control Sets</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="programwindow/menus.html">Menus</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="programwindow/filemenu.html"><em>File</em> Menu</a></li>
+<li class="toctree-l5"><a class="reference internal" href="programwindow/editmenu.html"><em>Edit</em> Menu</a></li>
+<li class="toctree-l5"><a class="reference internal" href="programwindow/layoutmenu.html"><em>Layout</em> Menu</a></li>
+<li class="toctree-l5"><a class="reference internal" href="programwindow/documentsmenu.html"><em>Documents</em> Menu</a></li>
+<li class="toctree-l5"><a class="reference internal" href="programwindow/panesmenu.html"><em>Panes</em> Menu</a></li>
+<li class="toctree-l5"><a class="reference internal" href="programwindow/toolsmenu.html"><em>Tools</em> Menu</a></li>
+<li class="toctree-l5"><a class="reference internal" href="programwindow/helpmenu.html"><em>Help</em> Menu</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/configuration/options/options.html">Options Dialog</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/configuration/options/options_general.html">General Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/configuration/options/options_fish.html"><span class="codename">FISH</span> Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/configuration/options/options_email.html">Email Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/configuration/options/options_startup.html">Start-up Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/configuration/options/options_editor.html">Editor Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/configuration/options/options_plots.html">Plots Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/configuration/options/options_movie.html">Movie Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/configuration/options/options_console.html">Console Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/configuration/options/options_listings.html">Listings Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="programwindow/layouts.html">Layouts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mechanics/configuration/tools.html">Common Dialogs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mechanics/configuration/tools/generatemovie.html">Generate Movie Frames</a></li>
+<li class="toctree-l4"><a class="reference internal" href="programwindow/dialogs/licensemenuitem.html">License Submenu</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="programwindow/dialogs/licenselocation.html">Specify License Location ...</a></li>
+<li class="toctree-l5"><a class="reference internal" href="programwindow/dialogs/licensesinuse.html">Show Claimed Licenses ...</a></li>
+<li class="toctree-l5"><a class="reference internal" href="programwindow/dialogs/licensegetupdate.html">Request License Change ...</a></li>
+<li class="toctree-l5"><a class="reference internal" href="programwindow/dialogs/licenseapplyupdate.html">Apply License Update ...</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="programwindow/dialogs/startup.html"><em>Startup</em> Dialog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="programwindow/dialogs/key_error.html"><em>Hardware Lock Not Detected!</em> Dialog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="programwindow/dialogs/updateavailable.html">Update Alert</a></li>
+<li class="toctree-l4"><a class="reference internal" href="programwindow/dialogs/techsupport.html">Request Technical Support … Dialog</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="support/support.html">Support</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="support/documentation.html">Documentation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="support/helpwithcommands.html">Help With Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="support/techsupport.html">Technical Support</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="support/technicalsupportdialog.html">The Technical Support Dialog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="support/getlicense.html">Finding a License Number</a></li>
+<li class="toctree-l4"><a class="reference internal" href="support/bugreporting.html">Bug Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="setup/installation.html">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="setup/standard.html">Standard License</a></li>
+<li class="toctree-l4"><a class="reference internal" href="setup/network.html">Network License</a></li>
+<li class="toctree-l4"><a class="reference internal" href="setup/web.html">Web License</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="setup/aws.html">Running on AWS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="setup/securitykey.html">Security</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="setup/license.html">Program License</a></li>
+<li class="toctree-l4"><a class="reference internal" href="setup/licensenumber.html">License Number</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="support/updates.html">Program Updates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="support/getupdate.html">Get Program Updates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="support/getrevision.html">Get the Program Revision History</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="models/models.html">Constitutive Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="models/theory/modelsinflac3d.html">Constitutive Models in <span class="codename">FLAC3D</span>, <span class="codename">UDEC</span>,333 and <span class="codename">3DEC</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/theory/formulation.html">Incremental Formulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/theory/nullmodel.html">Null Model Group</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models/theory/elasticmodel.html">Elastic Model Group</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models/theory/plasticmodel.html">Plastic Model Group</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models/creep/creep.html">Creep Constitutive Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models/creep/description/description.html">Description of Creep Constitutive Models</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models/creep/solving/solving.html">Solving Creep Problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models/creep/solving/solving.html#creep-timestep">Creep Timestep</a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/creep/solving/solving.html#automatic-adjustment-of-the-creep-timestep">Automatic Adjustment of the Creep Timestep</a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/creep/solving/solving.html#temperature-dependency">Temperature Dependency</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models/creep/input/input.html">Input Instructions for Creep Modeling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models/creep/input/input.html#creep-commands">Creep Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/creep/input/input.html#creep-fish-variables">Creep <span class="codename">FISH</span> Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models/creep/verification/verification.html">Verification and Example Problems</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models/creep/references/references.html">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models/theory/modeltests.html">Model Tests and Examples</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models/theory/references.html">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="general_components.html">Common Commands and FISH</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../kernel/doc/manual/data/data.html">Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/commands.html">Commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.label.create.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">label</span> <span class="pre">create</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.label.delete.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">label</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.label.list.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">label</span> <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.label.modify.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">label</span> <span class="pre">modify</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.label.results.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">label</span> <span class="pre">results</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.scalar.create.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">scalar</span> <span class="pre">create</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.scalar.delete.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">scalar</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.scalar.export.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">scalar</span> <span class="pre">export</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.scalar.group.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">scalar</span> <span class="pre">group</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.scalar.import.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">scalar</span> <span class="pre">import</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.scalar.list.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">scalar</span> <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.scalar.results.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">scalar</span> <span class="pre">results</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.tensor.create.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">tensor</span> <span class="pre">create</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.tensor.delete.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">tensor</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.tensor.export.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">tensor</span> <span class="pre">export</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.tensor.group.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">tensor</span> <span class="pre">group</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.tensor.import.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">tensor</span> <span class="pre">import</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.tensor.list.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">tensor</span> <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.tensor.results.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">tensor</span> <span class="pre">results</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.vector.create.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">vector</span> <span class="pre">create</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.vector.delete.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">vector</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.vector.export.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">vector</span> <span class="pre">export</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.vector.group.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">vector</span> <span class="pre">group</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.vector.import.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">vector</span> <span class="pre">import</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.vector.list.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">vector</span> <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/commands/cmd_data.vector.results.html"><code class="docutils literal"><span class="pre">data</span> <span class="pre">vector</span> <span class="pre">results</span></code> command</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data_fish.html"><span class="codename">FISH</span> Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data_fish.html#label-functions">Label Functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.label_utilities/fish_data.label.arrow.html"><code class="docutils literal"><span class="pre">data.label.arrow</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.label_utilities/fish_data.label.create.html"><code class="docutils literal"><span class="pre">data.label.create</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.label_utilities/fish_data.label.delete.html"><code class="docutils literal"><span class="pre">data.label.delete</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.label_utilities/fish_data.label.end.html"><code class="docutils literal"><span class="pre">data.label.end</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.label_utilities/fish_data.label.find.html"><code class="docutils literal"><span class="pre">data.label.find</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.label_utilities/fish_data.label.group.html"><code class="docutils literal"><span class="pre">data.label.group</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.label_utilities/fish_data.label.group.remove.html"><code class="docutils literal"><span class="pre">data.label.group.remove</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.label_utilities/fish_data.label.head.html"><code class="docutils literal"><span class="pre">data.label.head</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.label_utilities/fish_data.label.isgroup.html"><code class="docutils literal"><span class="pre">data.label.isgroup</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.label_utilities/fish_data.label.list.html"><code class="docutils literal"><span class="pre">data.label.list</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.label_utilities/fish_data.label.maxid.html"><code class="docutils literal"><span class="pre">data.label.maxid</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.label_utilities/fish_data.label.name.html"><code class="docutils literal"><span class="pre">data.label.name</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.label_utilities/fish_data.label.next.html"><code class="docutils literal"><span class="pre">data.label.next</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.label_utilities/fish_data.label.num.html"><code class="docutils literal"><span class="pre">data.label.num</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.label_utilities/fish_data.label.pos.html"><code class="docutils literal"><span class="pre">data.label.pos</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.label_utilities/fish_data.label.text.html"><code class="docutils literal"><span class="pre">data.label.text</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.label_utilities/fish_data.label.typeid.html"><code class="docutils literal"><span class="pre">data.label.typeid</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data_fish.html#scalar-functions">Scalar Functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.scalar_utilities/fish_data.scalar.create.html"><code class="docutils literal"><span class="pre">data.scalar.create</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.scalar_utilities/fish_data.scalar.delete.html"><code class="docutils literal"><span class="pre">data.scalar.delete</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.scalar_utilities/fish_data.scalar.extra.html"><code class="docutils literal"><span class="pre">data.scalar.extra</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.scalar_utilities/fish_data.scalar.find.html"><code class="docutils literal"><span class="pre">data.scalar.find</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.scalar_utilities/fish_data.scalar.group.html"><code class="docutils literal"><span class="pre">data.scalar.group</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.scalar_utilities/fish_data.scalar.group.remove.html"><code class="docutils literal"><span class="pre">data.scalar.group.remove</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.scalar_utilities/fish_data.scalar.head.html"><code class="docutils literal"><span class="pre">data.scalar.head</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.scalar_utilities/fish_data.scalar.id.html"><code class="docutils literal"><span class="pre">data.scalar.id</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.scalar_utilities/fish_data.scalar.isgroup.html"><code class="docutils literal"><span class="pre">data.scalar.isgroup</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.scalar_utilities/fish_data.scalar.list.html"><code class="docutils literal"><span class="pre">data.scalar.list</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.scalar_utilities/fish_data.scalar.maxid.html"><code class="docutils literal"><span class="pre">data.scalar.maxid</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.scalar_utilities/fish_data.scalar.near.html"><code class="docutils literal"><span class="pre">data.scalar.near</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.scalar_utilities/fish_data.scalar.next.html"><code class="docutils literal"><span class="pre">data.scalar.next</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.scalar_utilities/fish_data.scalar.num.html"><code class="docutils literal"><span class="pre">data.scalar.num</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.scalar_utilities/fish_data.scalar.pos.html"><code class="docutils literal"><span class="pre">data.scalar.pos</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.scalar_utilities/fish_data.scalar.typeid.html"><code class="docutils literal"><span class="pre">data.scalar.typeid</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.scalar_utilities/fish_data.scalar.value.html"><code class="docutils literal"><span class="pre">data.scalar.value</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data_fish.html#tensor-functions">Tensor Functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.tensor_utilities/fish_data.tensor.create.html"><code class="docutils literal"><span class="pre">data.tensor.create</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.tensor_utilities/fish_data.tensor.delete.html"><code class="docutils literal"><span class="pre">data.tensor.delete</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.tensor_utilities/fish_data.tensor.extra.html"><code class="docutils literal"><span class="pre">data.tensor.extra</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.tensor_utilities/fish_data.tensor.find.html"><code class="docutils literal"><span class="pre">data.tensor.find</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.tensor_utilities/fish_data.tensor.group.html"><code class="docutils literal"><span class="pre">data.tensor.group</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.tensor_utilities/fish_data.tensor.group.remove.html"><code class="docutils literal"><span class="pre">data.tensor.group.remove</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.tensor_utilities/fish_data.tensor.head.html"><code class="docutils literal"><span class="pre">data.tensor.head</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.tensor_utilities/fish_data.tensor.id.html"><code class="docutils literal"><span class="pre">data.tensor.id</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.tensor_utilities/fish_data.tensor.isgroup.html"><code class="docutils literal"><span class="pre">data.tensor.isgroup</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.tensor_utilities/fish_data.tensor.list.html"><code class="docutils literal"><span class="pre">data.tensor.list</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.tensor_utilities/fish_data.tensor.maxid.html"><code class="docutils literal"><span class="pre">data.tensor.maxid</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.tensor_utilities/fish_data.tensor.near.html"><code class="docutils literal"><span class="pre">data.tensor.near</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.tensor_utilities/fish_data.tensor.next.html"><code class="docutils literal"><span class="pre">data.tensor.next</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.tensor_utilities/fish_data.tensor.num.html"><code class="docutils literal"><span class="pre">data.tensor.num</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.tensor_utilities/fish_data.tensor.pos.html"><code class="docutils literal"><span class="pre">data.tensor.pos</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.tensor_utilities/fish_data.tensor.typeid.html"><code class="docutils literal"><span class="pre">data.tensor.typeid</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.tensor_utilities/fish_data.tensor.value.html"><code class="docutils literal"><span class="pre">data.tensor.value</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data_fish.html#vector-functions">Vector Functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.vector_utilities/fish_data.vector.create.html"><code class="docutils literal"><span class="pre">data.vector.create</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.vector_utilities/fish_data.vector.ddir.html"><code class="docutils literal"><span class="pre">data.vector.ddir</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.vector_utilities/fish_data.vector.delete.html"><code class="docutils literal"><span class="pre">data.vector.delete</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.vector_utilities/fish_data.vector.dip.html"><code class="docutils literal"><span class="pre">data.vector.dip</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.vector_utilities/fish_data.vector.extra.html"><code class="docutils literal"><span class="pre">data.vector.extra</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.vector_utilities/fish_data.vector.find.html"><code class="docutils literal"><span class="pre">data.vector.find</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.vector_utilities/fish_data.vector.group.html"><code class="docutils literal"><span class="pre">data.vector.group</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.vector_utilities/fish_data.vector.group.remove.html"><code class="docutils literal"><span class="pre">data.vector.group.remove</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.vector_utilities/fish_data.vector.head.html"><code class="docutils literal"><span class="pre">data.vector.head</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.vector_utilities/fish_data.vector.id.html"><code class="docutils literal"><span class="pre">data.vector.id</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.vector_utilities/fish_data.vector.isgroup.html"><code class="docutils literal"><span class="pre">data.vector.isgroup</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.vector_utilities/fish_data.vector.list.html"><code class="docutils literal"><span class="pre">data.vector.list</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.vector_utilities/fish_data.vector.maxid.html"><code class="docutils literal"><span class="pre">data.vector.maxid</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.vector_utilities/fish_data.vector.near.html"><code class="docutils literal"><span class="pre">data.vector.near</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.vector_utilities/fish_data.vector.next.html"><code class="docutils literal"><span class="pre">data.vector.next</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.vector_utilities/fish_data.vector.num.html"><code class="docutils literal"><span class="pre">data.vector.num</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.vector_utilities/fish_data.vector.pos.html"><code class="docutils literal"><span class="pre">data.vector.pos</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.vector_utilities/fish_data.vector.typeid.html"><code class="docutils literal"><span class="pre">data.vector.typeid</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../kernel/doc/manual/data/fish/data.vector_utilities/fish_data.vector.value.html"><code class="docutils literal"><span class="pre">data.vector.value</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn.html">Discrete Fracture Network (DFN)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_overview.html#base-model-components">Base Model Components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_overview.html#generating-stochastic-fracture-sets-or-dfns">Generating Stochastic Fracture Sets or DFNs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/dfn_commands.html">Commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_aperture.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">aperture</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_attribute.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">attribute</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_cluster.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">cluster</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_combine.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">combine</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_compute.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">compute</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_connectivity.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">connectivity</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_contact-model.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">contact-model</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_copy.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">copy</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_create.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">create</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_delete.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_dfn-extra.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">dfn-extra</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_dfn-group.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">dfn-group</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_export.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">export</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_extra.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">extra</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_generate.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">generate</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_group.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">group</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_import.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">import</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_initialize.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">initialize</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_intersections.automatic-update.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">intersections</span> <span class="pre">automatic-update</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_intersections.compute.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">intersections</span> <span class="pre">compute</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_intersections.delete.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">intersections</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_intersections.scanline.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">intersections</span> <span class="pre">scanline</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_joint-set.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">joint-set</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_list.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_property.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">property</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_prune.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">prune</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_results.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">results</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_set-property.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">set-property</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_template.create.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">template</span> <span class="pre">create</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_template.delete.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">template</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_template.modify-default.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">template</span> <span class="pre">modify-default</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_commands/cmd_fracture_verify-file.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">verify-file</span></code> command</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_fish.html"><span class="codename">FISH</span> Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_fish.html#dfn-functions"><code class="docutils literal"><span class="pre">dfn</span></code> functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_utilities/fish_dfn.contact.list.html"><code class="docutils literal"><span class="pre">dfn.contact.list</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_utilities/fish_dfn.contact.list.all.html"><code class="docutils literal"><span class="pre">dfn.contact.list.all</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_utilities/fish_dfn.contactmap.html"><code class="docutils literal"><span class="pre">dfn.contactmap</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_utilities/fish_dfn.contactmap.all.html"><code class="docutils literal"><span class="pre">dfn.contactmap.all</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_utilities/fish_dfn.create.html"><code class="docutils literal"><span class="pre">dfn.create</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_utilities/fish_dfn.delete.html"><code class="docutils literal"><span class="pre">dfn.delete</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_utilities/fish_dfn.dominance.html"><code class="docutils literal"><span class="pre">dfn.dominance</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_utilities/fish_dfn.extra.html"><code class="docutils literal"><span class="pre">dfn.extra</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_utilities/fish_dfn.find.html"><code class="docutils literal"><span class="pre">dfn.find</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_utilities/fish_dfn.fracturelist.html"><code class="docutils literal"><span class="pre">dfn.fracturelist</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_utilities/fish_dfn.fracturenum.html"><code class="docutils literal"><span class="pre">dfn.fracturenum</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_utilities/fish_dfn.group.html"><code class="docutils literal"><span class="pre">dfn.group</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_utilities/fish_dfn.group.remove.html"><code class="docutils literal"><span class="pre">dfn.group.remove</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_utilities/fish_dfn.id.html"><code class="docutils literal"><span class="pre">dfn.id</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_utilities/fish_dfn.isgroup.html"><code class="docutils literal"><span class="pre">dfn.isgroup</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_utilities/fish_dfn.list.html"><code class="docutils literal"><span class="pre">dfn.list</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_utilities/fish_dfn.maxid.html"><code class="docutils literal"><span class="pre">dfn.maxid</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_utilities/fish_dfn.name.html"><code class="docutils literal"><span class="pre">dfn.name</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_utilities/fish_dfn.num.html"><code class="docutils literal"><span class="pre">dfn.num</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_utilities/fish_dfn.template.html"><code class="docutils literal"><span class="pre">dfn.template</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_utilities/fish_dfn.typeid.html"><code class="docutils literal"><span class="pre">dfn.typeid</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_fish.html#dfn-template-functions"><code class="docutils literal"><span class="pre">dfn.template</span></code> functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.ddirmax.html"><code class="docutils literal"><span class="pre">fracture.template.ddirmax</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.ddirmin.html"><code class="docutils literal"><span class="pre">fracture.template.ddirmin</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.dipmax.html"><code class="docutils literal"><span class="pre">fracture.template.dipmax</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.dipmin.html"><code class="docutils literal"><span class="pre">fracture.template.dipmin</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.find.html"><code class="docutils literal"><span class="pre">fracture.template.find</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.id.html"><code class="docutils literal"><span class="pre">fracture.template.id</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.list.html"><code class="docutils literal"><span class="pre">fracture.template.list</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.maxid.html"><code class="docutils literal"><span class="pre">fracture.template.maxid</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.name.html"><code class="docutils literal"><span class="pre">fracture.template.name</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.norientparam.html"><code class="docutils literal"><span class="pre">fracture.template.norientparam</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.nposparam.html"><code class="docutils literal"><span class="pre">fracture.template.nposparam</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.nsizeparam.html"><code class="docutils literal"><span class="pre">fracture.template.nsizeparam</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.num.html"><code class="docutils literal"><span class="pre">fracture.template.num</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.orientparam.html"><code class="docutils literal"><span class="pre">fracture.template.orientparam</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.orienttype.html"><code class="docutils literal"><span class="pre">fracture.template.orienttype</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.posparam.html"><code class="docutils literal"><span class="pre">fracture.template.posparam</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.postype.html"><code class="docutils literal"><span class="pre">fracture.template.postype</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.sizemax.html"><code class="docutils literal"><span class="pre">fracture.template.sizemax</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.sizemin.html"><code class="docutils literal"><span class="pre">fracture.template.sizemin</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.sizeparam.html"><code class="docutils literal"><span class="pre">fracture.template.sizeparam</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.sizetype.html"><code class="docutils literal"><span class="pre">fracture.template.sizetype</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.template_utilities/fish_dfn.template.typeid.html"><code class="docutils literal"><span class="pre">fracture.template.typeid</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_fish.html#fracture-functions"><code class="docutils literal"><span class="pre">fracture</span></code> functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.aperture.html"><code class="docutils literal"><span class="pre">fracture.aperture</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.area.html"><code class="docutils literal"><span class="pre">fracture.area</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.centerdensity.html"><code class="docutils literal"><span class="pre">fracture.centerdensity</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.contact.list.html"><code class="docutils literal"><span class="pre">fracture.contact.list</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.contact.list.all.html"><code class="docutils literal"><span class="pre">fracture.contact.list.all</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.contactmap.html"><code class="docutils literal"><span class="pre">fracture.contactmap</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.contactmap.all.html"><code class="docutils literal"><span class="pre">fracture.contactmap.all</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.copy.html"><code class="docutils literal"><span class="pre">fracture.copy</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.create.html"><code class="docutils literal"><span class="pre">fracture.create</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.ddir.html"><code class="docutils literal"><span class="pre">fracture.ddir</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.decimate.html"><code class="docutils literal"><span class="pre">fracture.decimate</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.delete.html"><code class="docutils literal"><span class="pre">fracture.delete</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.density.html"><code class="docutils literal"><span class="pre">fracture.density</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.dfn.html"><code class="docutils literal"><span class="pre">fracture.dfn</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.diameter.html"><code class="docutils literal"><span class="pre">fracture.diameter</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.dip.html"><code class="docutils literal"><span class="pre">fracture.dip</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.extra.html"><code class="docutils literal"><span class="pre">fracture.extra</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.find.html"><code class="docutils literal"><span class="pre">fracture.find</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.genpos.html"><code class="docutils literal"><span class="pre">fracture.genpos</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.gensize.html"><code class="docutils literal"><span class="pre">fracture.gensize</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.geomp10.html"><code class="docutils literal"><span class="pre">fracture.geomp10</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.geomp20.html"><code class="docutils literal"><span class="pre">fracture.geomp20</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.geomp21.html"><code class="docutils literal"><span class="pre">fracture.geomp21</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.geomtrace.html"><code class="docutils literal"><span class="pre">fracture.geomtrace</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.gintersect.html"><code class="docutils literal"><span class="pre">fracture.gintersect</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.group.html"><code class="docutils literal"><span class="pre">fracture.group</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.group.remove.html"><code class="docutils literal"><span class="pre">fracture.group.remove</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.id.html"><code class="docutils literal"><span class="pre">fracture.id</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.inbox.html"><code class="docutils literal"><span class="pre">fracture.inbox</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.interarray.html"><code class="docutils literal"><span class="pre">fracture.interarray</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.intersect.html"><code class="docutils literal"><span class="pre">fracture.intersect</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.isdisk.html"><code class="docutils literal"><span class="pre">fracture.isdisk</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.isgroup.html"><code class="docutils literal"><span class="pre">fracture.isgroup</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.isprop.html"><code class="docutils literal"><span class="pre">fracture.isprop</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.len.html"><code class="docutils literal"><span class="pre">fracture.len</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.list.html"><code class="docutils literal"><span class="pre">fracture.list</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.maxid.html"><code class="docutils literal"><span class="pre">fracture.maxid</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.near.html"><code class="docutils literal"><span class="pre">fracture.near</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.normal.html"><code class="docutils literal"><span class="pre">fracture.normal</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.num.html"><code class="docutils literal"><span class="pre">fracture.num</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.p10.html"><code class="docutils literal"><span class="pre">fracture.p10</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.percolation.html"><code class="docutils literal"><span class="pre">fracture.percolation</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.pointnear.html"><code class="docutils literal"><span class="pre">fracture.pointnear</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.pos.html"><code class="docutils literal"><span class="pre">fracture.pos</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.prop.html"><code class="docutils literal"><span class="pre">fracture.prop</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.typeid.html"><code class="docutils literal"><span class="pre">fracture.typeid</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.vertexarray.html"><code class="docutils literal"><span class="pre">fracture.vertexarray</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.vertexlist.html"><code class="docutils literal"><span class="pre">fracture.vertexlist</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_fish.html#fracture-intersection-functions"><code class="docutils literal"><span class="pre">fracture.intersection</span></code> functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.inter_utilities/fish_dfn.inter.end1.html"><code class="docutils literal"><span class="pre">fracture.intersect.end1</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.inter_utilities/fish_dfn.inter.end2.html"><code class="docutils literal"><span class="pre">fracture.intersect.end2</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.inter_utilities/fish_dfn.inter.find.html"><code class="docutils literal"><span class="pre">fracture.intersect.find</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.inter_utilities/fish_dfn.inter.len.html"><code class="docutils literal"><span class="pre">fracture.intersect.len</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.inter_utilities/fish_dfn.inter.list.html"><code class="docutils literal"><span class="pre">fracture.intersect.list</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.inter_utilities/fish_dfn.inter.maxid.html"><code class="docutils literal"><span class="pre">fracture.intersect.maxid</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.inter_utilities/fish_dfn.inter.npolylinept.html"><code class="docutils literal"><span class="pre">fracture.intersect.npolylinept</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.inter_utilities/fish_dfn.inter.num.html"><code class="docutils literal"><span class="pre">fracture.intersect.num</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.inter_utilities/fish_dfn.inter.polylinept.html"><code class="docutils literal"><span class="pre">fracture.intersect.polylinept</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.inter_utilities/fish_dfn.inter.pos1.html"><code class="docutils literal"><span class="pre">fracture.intersect.pos1</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.inter_utilities/fish_dfn.inter.pos2.html"><code class="docutils literal"><span class="pre">fracture.intersect.pos2</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.inter_utilities/fish_dfn.inter.set.html"><code class="docutils literal"><span class="pre">fracture.intersect.set</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.inter_utilities/fish_dfn.inter.typeid.html"><code class="docutils literal"><span class="pre">fracture.intersect.typeid</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_fish.html#fracture-intersection-set-functions"><code class="docutils literal"><span class="pre">fracture.intersection.set</span></code> functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.setinter_utilities/fish_dfn.setinter.delete.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.delete</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.setinter_utilities/fish_dfn.setinter.find.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.find</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.setinter_utilities/fish_dfn.setinter.id.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.id</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.setinter_utilities/fish_dfn.setinter.interlist.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.interlist</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.setinter_utilities/fish_dfn.setinter.internum.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.internum</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.setinter_utilities/fish_dfn.setinter.list.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.list</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.setinter_utilities/fish_dfn.setinter.maxid.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.maxid</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.setinter_utilities/fish_dfn.setinter.name.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.name</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.setinter_utilities/fish_dfn.setinter.num.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.num</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.setinter_utilities/fish_dfn.setinter.path.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.path</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.setinter_utilities/fish_dfn.setinter.typeid.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.typeid</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn_fish.html#fracture-vertex-functions"><code class="docutils literal"><span class="pre">fracture.vertex</span></code> functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.vertex_utilities/fish_dfn.vertex.find.html"><code class="docutils literal"><span class="pre">fracture.vertex.find</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.vertex_utilities/fish_dfn.vertex.list.html"><code class="docutils literal"><span class="pre">fracture.vertex.list</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.vertex_utilities/fish_dfn.vertex.maxid.html"><code class="docutils literal"><span class="pre">fracture.vertex.maxid</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.vertex_utilities/fish_dfn.vertex.num.html"><code class="docutils literal"><span class="pre">fracture.vertex.num</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.vertex_utilities/fish_dfn.vertex.pos.html"><code class="docutils literal"><span class="pre">fracture.vertex.pos</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../dfn/doc/dfn_manual/dfn_fish/dfn.vertex_utilities/fish_dfn.vertex.typeid.html"><code class="docutils literal"><span class="pre">fracture.vertex.typeid</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../kernel/doc/manual/domain_manual/domain.html">Domain</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../kernel/doc/manual/domain_manual/command_reference/command_reference.html">Commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/domain_manual/command_reference/cmd_domain/cmd_domain.condition.html"><code class="docutils literal"><span class="pre">domain.condition</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/domain_manual/command_reference/cmd_domain/cmd_domain.extent.html"><code class="docutils literal"><span class="pre">domain.extent</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/domain_manual/command_reference/cmd_domain/cmd_domain.strain-rate.html"><code class="docutils literal"><span class="pre">domain.strain-rate</span></code> command</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../kernel/doc/manual/domain_manual/fish_reference/fish_reference.html"><span class="codename">FISH</span> Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/domain_manual/fish_reference/domain_utilities/fish_domain.condition.html"><code class="docutils literal"><span class="pre">domain.condition</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/domain_manual/fish_reference/domain_utilities/fish_domain.max.html"><code class="docutils literal"><span class="pre">domain.max</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/domain_manual/fish_reference/domain_utilities/fish_domain.min.html"><code class="docutils literal"><span class="pre">domain.min</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/domain_manual/fish_reference/domain_utilities/fish_domain.strain.rate.html"><code class="docutils literal"><span class="pre">domain.strain.rate</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../kernel/doc/manual/fish/fish.html"><span class="codename">FISH</span></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../kernel/doc/manual/fish/commands/commands.html"><span class="codename">FISH</span> Commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/fish/commands/cmd_fish.automatic-create.html"><code class="docutils literal"><span class="pre">fish</span> <span class="pre">automatic-create</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/fish/commands/cmd_fish.boolean-convert.html"><code class="docutils literal"><span class="pre">fish</span> <span class="pre">boolean-convert</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/fish/commands/cmd_fish.callback.html"><code class="docutils literal"><span class="pre">fish</span> <span class="pre">callback</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/fish/commands/cmd_fish.debug.html"><code class="docutils literal"><span class="pre">fish</span> <span class="pre">debug</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/fish/commands/cmd_fish.define.html"><code class="docutils literal"><span class="pre">fish</span> <span class="pre">define</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/fish/commands/cmd_fish.history.html"><code class="docutils literal"><span class="pre">fish</span> <span class="pre">history</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/fish/commands/cmd_fish.list.html"><code class="docutils literal"><span class="pre">fish</span> <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/fish/commands/cmd_fish.operator.html"><code class="docutils literal"><span class="pre">fish</span> <span class="pre">operator</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/fish/commands/cmd_fish.result.html"><code class="docutils literal"><span class="pre">fish</span> <span class="pre">result</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/fish/commands/cmd_fish.structure.html"><code class="docutils literal"><span class="pre">fish</span> <span class="pre">structure</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/fish/commands/cmd_fish.trace.html"><code class="docutils literal"><span class="pre">fish</span> <span class="pre">trace</span></code> command</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../geometry/doc/manual/geometry.html">Geometry</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../geometry/doc/manual/commands/commands.html">Commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.assign-groups.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">assign-groups</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.copy.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">copy</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.delete.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.edge.create.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">edge</span> <span class="pre">create</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.edge.delete.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">edge</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.edge.export.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">edge</span> <span class="pre">export</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.edge.extra.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">edge</span> <span class="pre">extra</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.edge.group.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">edge</span> <span class="pre">group</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.export.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">export</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.fill.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">fill</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.generate.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">generate</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.import.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">import</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.list.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.move-to.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">move-to</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.node.create.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">node</span> <span class="pre">create</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.node.delete.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">node</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.node.export.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">node</span> <span class="pre">export</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.node.extra.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">node</span> <span class="pre">extra</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.node.group.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">node</span> <span class="pre">group</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.paint-extra.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">paint-extra</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.polygon.create.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">polygon</span> <span class="pre">create</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.polygon.delete.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">polygon</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.polygon.export.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">polygon</span> <span class="pre">export</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.polygon.extra.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">polygon</span> <span class="pre">extra</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.polygon.group.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">polygon</span> <span class="pre">group</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.refine.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">refine</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.results.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">results</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.rotate.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">rotate</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.select.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">select</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.separate.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">separate</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.set.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">set</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.tessellate.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">tessellate</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.translate.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">translate</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/commands/cmd_geometry.triangulate.html"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">triangulate</span></code> command</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../geometry/doc/manual/fish/fish.html"><span class="codename">FISH</span> Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/fish/fish.html#geometry-edge-functions"><code class="docutils literal"><span class="pre">geometry.edge</span></code> Functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.edge_intrinsics/fish_geom.edge.create.html"><code class="docutils literal"><span class="pre">geom.edge.create</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.edge_intrinsics/fish_geom.edge.delete.html"><code class="docutils literal"><span class="pre">geom.edge.delete</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.edge_intrinsics/fish_geom.edge.dir.html"><code class="docutils literal"><span class="pre">geom.edge.dir</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.edge_intrinsics/fish_geom.edge.extra.html"><code class="docutils literal"><span class="pre">geom.edge.extra</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.edge_utilities/fish_geom.edge.find.html"><code class="docutils literal"><span class="pre">geom.edge.find</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.edge_intrinsics/fish_geom.edge.group.html"><code class="docutils literal"><span class="pre">geom.edge.group</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.edge_intrinsics/fish_geom.edge.group.remove.html"><code class="docutils literal"><span class="pre">geom.edge.group.remove</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.edge_intrinsics/fish_geom.edge.id.html"><code class="docutils literal"><span class="pre">geom.edge.id</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.edge_intrinsics/fish_geom.edge.isgroup.html"><code class="docutils literal"><span class="pre">geom.edge.isgroup</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.edge_utilities/fish_geom.edge.list.html"><code class="docutils literal"><span class="pre">geom.edge.list</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.edge_utilities/fish_geom.edge.near.html"><code class="docutils literal"><span class="pre">geom.edge.near</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.edge_intrinsics/fish_geom.edge.next.edge.html"><code class="docutils literal"><span class="pre">geom.edge.next.edge</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.edge_intrinsics/fish_geom.edge.next.index.html"><code class="docutils literal"><span class="pre">geom.edge.next.index</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.edge_intrinsics/fish_geom.edge.node.html"><code class="docutils literal"><span class="pre">geom.edge.node</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.edge_intrinsics/fish_geom.edge.node.pos.html"><code class="docutils literal"><span class="pre">geom.edge.node.pos</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.edge_intrinsics/fish_geom.edge.pos.html"><code class="docutils literal"><span class="pre">geom.edge.pos</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.edge_intrinsics/fish_geom.edge.remove.html"><code class="docutils literal"><span class="pre">geom.edge.remove</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.edge_intrinsics/fish_geom.edge.start.index.html"><code class="docutils literal"><span class="pre">geom.edge.start.index</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.edge_intrinsics/fish_geom.edge.start.poly.html"><code class="docutils literal"><span class="pre">geom.edge.start.poly</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.edge_utilities/fish_geom.edge.typeid.html"><code class="docutils literal"><span class="pre">geom.edge.typeid</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/fish/fish.html#geometry-node-functions"><code class="docutils literal"><span class="pre">geometry.node</span></code> Functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.node_intrinsics/fish_geom.node.create.html"><code class="docutils literal"><span class="pre">geom.node.create</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.node_intrinsics/fish_geom.node.delete.html"><code class="docutils literal"><span class="pre">geom.node.delete</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.node_intrinsics/fish_geom.node.extra.html"><code class="docutils literal"><span class="pre">geom.node.extra</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.node_utilities/fish_geom.node.find.html"><code class="docutils literal"><span class="pre">geom.node.find</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.node_intrinsics/fish_geom.node.group.html"><code class="docutils literal"><span class="pre">geom.node.group</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.node_intrinsics/fish_geom.node.group.remove.html"><code class="docutils literal"><span class="pre">geom.node.group.remove</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.node_intrinsics/fish_geom.node.id.html"><code class="docutils literal"><span class="pre">geom.node.id</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.node_intrinsics/fish_geom.node.isgroup.html"><code class="docutils literal"><span class="pre">geom.node.isgroup</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.node_utilities/fish_geom.node.list.html"><code class="docutils literal"><span class="pre">geom.node.list</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.node_utilities/fish_geom.node.near.html"><code class="docutils literal"><span class="pre">geom.node.near</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.node_intrinsics/fish_geom.node.pos.html"><code class="docutils literal"><span class="pre">geom.node.pos</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.node_intrinsics/fish_geom.node.remove.html"><code class="docutils literal"><span class="pre">geom.node.remove</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.node_intrinsics/fish_geom.node.start.edge.html"><code class="docutils literal"><span class="pre">geom.node.start.edge</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.node_intrinsics/fish_geom.node.start.index.html"><code class="docutils literal"><span class="pre">geom.node.start.index</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.node_utilities/fish_geom.node.typeid.html"><code class="docutils literal"><span class="pre">geom.node.typeid</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/fish/fish.html#geometry-polygon-functions"><code class="docutils literal"><span class="pre">geometry.polygon</span></code> Functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_intrinsics/fish_geom.poly.add.edge.html"><code class="docutils literal"><span class="pre">geom.poly.add.edge</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_intrinsics/fish_geom.poly.add.node.html"><code class="docutils literal"><span class="pre">geom.poly.add.node</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_intrinsics/fish_geom.poly.area.html"><code class="docutils literal"><span class="pre">geom.poly.area</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_intrinsics/fish_geom.poly.check.html"><code class="docutils literal"><span class="pre">geom.poly.check</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_intrinsics/fish_geom.poly.close.html"><code class="docutils literal"><span class="pre">geom.poly.close</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_intrinsics/fish_geom.poly.create.html"><code class="docutils literal"><span class="pre">geom.poly.create</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_intrinsics/fish_geom.poly.delete.html"><code class="docutils literal"><span class="pre">geom.poly.delete</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_intrinsics/fish_geom.poly.edge.html"><code class="docutils literal"><span class="pre">geom.poly.edge</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_intrinsics/fish_geom.poly.extra.html"><code class="docutils literal"><span class="pre">geom.poly.extra</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_utilities/fish_geom.poly.find.html"><code class="docutils literal"><span class="pre">geom.poly.find</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_intrinsics/fish_geom.poly.group.html"><code class="docutils literal"><span class="pre">geom.poly.group</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_intrinsics/fish_geom.poly.group.remove.html"><code class="docutils literal"><span class="pre">geom.poly.group.remove</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_intrinsics/fish_geom.poly.id.html"><code class="docutils literal"><span class="pre">geom.poly.id</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_intrinsics/fish_geom.poly.isgroup.html"><code class="docutils literal"><span class="pre">geom.poly.isgroup</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_utilities/fish_geom.poly.list.html"><code class="docutils literal"><span class="pre">geom.poly.list</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_utilities/fish_geom.poly.near.html"><code class="docutils literal"><span class="pre">geom.poly.near</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_intrinsics/fish_geom.poly.next.index.html"><code class="docutils literal"><span class="pre">geom.poly.next.index</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_intrinsics/fish_geom.poly.next.poly.html"><code class="docutils literal"><span class="pre">geom.poly.next.poly</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_intrinsics/fish_geom.poly.node.html"><code class="docutils literal"><span class="pre">geom.poly.node</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_intrinsics/fish_geom.poly.normal.html"><code class="docutils literal"><span class="pre">geom.poly.normal</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_intrinsics/fish_geom.poly.pos.html"><code class="docutils literal"><span class="pre">geom.poly.pos</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_intrinsics/fish_geom.poly.remove.html"><code class="docutils literal"><span class="pre">geom.poly.remove</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_intrinsics/fish_geom.poly.size.html"><code class="docutils literal"><span class="pre">geom.poly.size</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.poly_utilities/fish_geom.poly.typeid.html"><code class="docutils literal"><span class="pre">geom.poly.typeid</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../geometry/doc/manual/fish/fish.html#geometry-set-functions"><code class="docutils literal"><span class="pre">geometry.set</span></code> Functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.set_intrinsics/fish_geom.set.closest.html"><code class="docutils literal"><span class="pre">geom.set.closest</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.set_intrinsics/fish_geom.set.create.html"><code class="docutils literal"><span class="pre">geom.set.create</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.set_utilities/fish_geom.set.list.html"><code class="docutils literal"><span class="pre">geom.set.list</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.set_intrinsics/fish_geom.set.delete.html"><code class="docutils literal"><span class="pre">geom.set.delete</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.set_intrinsics/fish_geom.set.edge.maxid.html"><code class="docutils literal"><span class="pre">geom.set.edge.maxid</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.set_intrinsics/fish_geom.set.edge.num.html"><code class="docutils literal"><span class="pre">geom.set.edge.num</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.set_utilities/fish_geom.set.find.html"><code class="docutils literal"><span class="pre">geom.set.find</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.set_intrinsics/fish_geom.set.id.html"><code class="docutils literal"><span class="pre">geom.set.id</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.set_utilities/fish_geom.set.list.html"><code class="docutils literal"><span class="pre">geom.set.list</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.set_utilities/fish_geom.set.maxid.html"><code class="docutils literal"><span class="pre">geom.set.maxid</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.set_intrinsics/fish_geom.set.name.html"><code class="docutils literal"><span class="pre">geom.set.name</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.set_intrinsics/fish_geom.set.node.maxid.html"><code class="docutils literal"><span class="pre">geom.set.node.maxid</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.set_intrinsics/fish_geom.set.node.num.html"><code class="docutils literal"><span class="pre">geom.set.node.num</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.set_utilities/fish_geom.set.num.html"><code class="docutils literal"><span class="pre">geom.set.num</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.set_intrinsics/fish_geom.set.poly.closest.html"><code class="docutils literal"><span class="pre">geom.set.poly.closest</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.set_intrinsics/fish_geom.set.poly.maxid.html"><code class="docutils literal"><span class="pre">geom.set.poly.maxid</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.set_intrinsics/fish_geom.set.poly.num.html"><code class="docutils literal"><span class="pre">geom.set.poly.num</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.set_intrinsics/fish_geom.set.raydist.html"><code class="docutils literal"><span class="pre">geom.set.raydist</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.set_intrinsics/fish_geom.set.remove.html"><code class="docutils literal"><span class="pre">geom.set.remove</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../geometry/doc/manual/fish/geom.set_utilities/fish_geom.set.typeid.html"><code class="docutils literal"><span class="pre">geom.set.typeid</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../module/doc/manual/group_manual/group.html">Group</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/doc/manual/group_manual/group_commands/group_commands.html">Commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/doc/manual/group_manual/group_commands/cmd_group.create.html"><code class="docutils literal"><span class="pre">group.create</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/doc/manual/group_manual/group_commands/cmd_group.list.html"><code class="docutils literal"><span class="pre">group.list</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/doc/manual/group_manual/group_commands/cmd_group.rename.html"><code class="docutils literal"><span class="pre">group.rename</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/doc/manual/group_manual/group_commands/cmd_group.slot.html"><code class="docutils literal"><span class="pre">group.slot</span></code> command</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/doc/manual/group_manual/group_fish/group_fish.html">Group <span class="codename">FISH</span> Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/doc/manual/group_manual/group_fish/group_utilities/fish_group.find.html"><code class="docutils literal"><span class="pre">group.find</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/doc/manual/group_manual/group_fish/group_utilities/fish_group.find.slot.html"><code class="docutils literal"><span class="pre">group.find.slot</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../kernel/doc/manual/history_manual/history.html">History</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../kernel/doc/manual/history_manual/history_commands/history_commands.html">Commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/history_manual/history_commands/cmd_history.delete.html"><code class="docutils literal"><span class="pre">history</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/history_manual/history_commands/cmd_history.export.html"><code class="docutils literal"><span class="pre">history</span> <span class="pre">export</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/history_manual/history_commands/cmd_history.interval.html"><code class="docutils literal"><span class="pre">history</span> <span class="pre">interval</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/history_manual/history_commands/cmd_history.label.html"><code class="docutils literal"><span class="pre">history</span> <span class="pre">label</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/history_manual/history_commands/cmd_history.list.html"><code class="docutils literal"><span class="pre">history</span> <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/history_manual/history_commands/cmd_history.purge.html"><code class="docutils literal"><span class="pre">history</span> <span class="pre">purge</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/history_manual/history_commands/cmd_history.rename.html"><code class="docutils literal"><span class="pre">history</span> <span class="pre">REName</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/history_manual/history_commands/cmd_history.results.html"><code class="docutils literal"><span class="pre">history</span> <span class="pre">results</span></code> command</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../kernel/doc/manual/model/model.html">Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/commands.html">Commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.calm.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">calm</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.configure.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">configure</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.creep.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">creep</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.cycle.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">cycle</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.deterministic.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">deterministic</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.display.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">display</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.domain.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">domain</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.energy.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">energy</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html"><span class="fishcmd">model factor-of-safety</span> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.gravity.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">gravity</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.history.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">history</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.largestrain.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">large-strain</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.list.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.new.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">new</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.orientation.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">orientation</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.random.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">random</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.restore.html"><span class="fishcmd">model restore</span> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.save.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">save</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.solve.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">solve</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.step.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">step</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.title.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">title</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.update-interval.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">update-interval</span></code> command</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/plot.html">Plot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/plot_colors.html">Switch/Keyword Options</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/plot_colors.html#color">Color</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/plot_colors.html#color-ramps">Color Ramps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/plot_colors.html#lines">Lines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/plot_colors.html#text">Text</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/plot_commands.html">Commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/cmd_plot.active.html"><code class="docutils literal"><span class="pre">plot</span> <span class="pre">active</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/cmd_plot.background.html"><code class="docutils literal"><span class="pre">plot</span> <span class="pre">background</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/cmd_plot.clear.html"><code class="docutils literal"><span class="pre">plot</span> <span class="pre">clear</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/cmd_plot.copy.html"><code class="docutils literal"><span class="pre">plot</span> <span class="pre">copy</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/cmd_plot.create.html"><code class="docutils literal"><span class="pre">plot</span> <span class="pre">create</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/cmd_plot.current.html"><code class="docutils literal"><span class="pre">plot</span> <span class="pre">current</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/cmd_plot.delete.html"><code class="docutils literal"><span class="pre">plot</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/cmd_plot.export.html"><code class="docutils literal"><span class="pre">plot</span> <span class="pre">export</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/cmd_plot.item.html"><code class="docutils literal"><span class="pre">plot</span> <span class="pre">item</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/cmd_plot.legend.html"><code class="docutils literal"><span class="pre">plot</span> <span class="pre">legend</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/cmd_plot.load.html"><code class="docutils literal"><span class="pre">plot</span> <span class="pre">load</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/cmd_plot.movie.html"><code class="docutils literal"><span class="pre">plot</span> <span class="pre">movie</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/cmd_plot.outline.html"><code class="docutils literal"><span class="pre">plot</span> <span class="pre">outline</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/cmd_plot.print-size.html"><code class="docutils literal"><span class="pre">plot</span> <span class="pre">print-size</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/cmd_plot.rename.html"><code class="docutils literal"><span class="pre">plot</span> <span class="pre">rename</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/cmd_plot.show.html"><code class="docutils literal"><span class="pre">plot</span> <span class="pre">show</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/cmd_plot.title.html"><code class="docutils literal"><span class="pre">plot</span> <span class="pre">title</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/cmd_plot.title-job.html"><code class="docutils literal"><span class="pre">plot</span> <span class="pre">title-job</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/cmd_plot.update.html"><code class="docutils literal"><span class="pre">plot</span> <span class="pre">update</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../guimodule/doc/manual/plot/cmd_plot.view.html"><code class="docutils literal"><span class="pre">plot</span> <span class="pre">view</span></code> command</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../kernel/doc/manual/program/program.html">Program</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/commands.html">Commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.call.html"><span class="fishcmd">program call</span> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.continue.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">continue</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.customer-title-1.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">customer-title-1</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.customer-title-2.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">customer-title-2</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.directory.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">directory</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.echo.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">echo</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.echo-line.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">echo-line</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.exit.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">exit</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.floating-point-check.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">floating-point-check</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.license.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">license</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.list.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.load.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">load</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.log.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">log</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.log-file.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">log-file</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.mail.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">mail</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.notice.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">notice</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.pagination.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">pagination</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.pause.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">pause</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.playback.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">playback</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.quit.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">quit</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.return.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">return</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.stop.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">stop</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.system.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">system</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.threads.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">threads</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.undo.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">undo</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/program/commands/cmd_program.warning.html"><code class="docutils literal"><span class="pre">program</span> <span class="pre">warning</span></code> command</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../kernel/doc/manual/project/project.html">Project</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../kernel/doc/manual/project/commands/commands.html">Commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/project/commands/cmd_project.execute.html"><code class="docutils literal"><span class="pre">project</span> <span class="pre">execute</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/project/commands/cmd_project.list.html"><code class="docutils literal"><span class="pre">project</span> <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/project/commands/cmd_project.new.html"><code class="docutils literal"><span class="pre">project</span> <span class="pre">new</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/project/commands/cmd_project.restore.html"><code class="docutils literal"><span class="pre">project</span> <span class="pre">restore</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/project/commands/cmd_project.save.html"><code class="docutils literal"><span class="pre">project</span> <span class="pre">save</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/project/commands/cmd_project.save-plugins.html"><code class="docutils literal"><span class="pre">project</span> <span class="pre">save-plugins</span></code> command</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table.html">Table</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_commands/commands.html">Commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_commands/cmd_table.add.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">add</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_commands/cmd_table.clear.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">clear</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_commands/cmd_table.delete.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_commands/cmd_table.export.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">export</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_commands/cmd_table.import.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">import</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_commands/cmd_table.insert.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">insert</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_commands/cmd_table.label.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">label</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_commands/cmd_table.list.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_commands/cmd_table.position.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">position</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_commands/cmd_table.results.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">results</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_commands/cmd_table.sort.html"><code class="docutils literal"><span class="pre">table</span> <span class="pre">sort</span></code> command</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_fish/table_fish.html"><span class="codename">FISH</span> Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_fish/table_utilities/fish_table.html"><code class="docutils literal"><span class="pre">table</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_fish/table_utilities/fish_table.as.list.html"><code class="docutils literal"><span class="pre">table.as.list</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_fish/table_utilities/fish_table.clear.html"><code class="docutils literal"><span class="pre">table.clear</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_fish/table_utilities/fish_table.create.html"><code class="docutils literal"><span class="pre">table.create</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_fish/table_utilities/fish_table.delete.html"><code class="docutils literal"><span class="pre">table.delete</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_fish/table_utilities/fish_table.derivative.html"><code class="docutils literal"><span class="pre">table.derivative</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_fish/table_utilities/fish_table.fft.html"><code class="docutils literal"><span class="pre">table.fft</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_fish/table_utilities/fish_table.find.html"><code class="docutils literal"><span class="pre">table.find</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_fish/table_utilities/fish_table.get.html"><code class="docutils literal"><span class="pre">table.get</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_fish/table_utilities/fish_table.id.html"><code class="docutils literal"><span class="pre">table.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_fish/table_utilities/fish_table.integrate.html"><code class="docutils literal"><span class="pre">table.integrate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_fish/table_utilities/fish_table.label.html"><code class="docutils literal"><span class="pre">table.label</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_fish/table_utilities/fish_table.name.html"><code class="docutils literal"><span class="pre">table.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_fish/table_utilities/fish_table.size.html"><code class="docutils literal"><span class="pre">table.size</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_fish/table_utilities/fish_table.spectrum.html"><code class="docutils literal"><span class="pre">table.spectrum</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_fish/table_utilities/fish_table.value.html"><code class="docutils literal"><span class="pre">table.value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_fish/table_utilities/fish_table.x.html"><code class="docutils literal"><span class="pre">table.x</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/table_manual/table_fish/table_utilities/fish_table.y.html"><code class="docutils literal"><span class="pre">table.y</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../kernel/doc/manual/trace_manual/trace.html">Trace</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../kernel/doc/manual/trace_manual/trace_commands/trace_commands.html">Commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/trace_manual/trace_commands/cmd_trace.delete.html"><code class="docutils literal"><span class="pre">trace</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/trace_manual/trace_commands/cmd_trace.export.html"><code class="docutils literal"><span class="pre">trace</span> <span class="pre">export</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/trace_manual/trace_commands/cmd_trace.interval.html"><code class="docutils literal"><span class="pre">trace</span> <span class="pre">interval</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/trace_manual/trace_commands/cmd_trace.list.html"><code class="docutils literal"><span class="pre">trace</span> <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/trace_manual/trace_commands/cmd_trace.name.html"><code class="docutils literal"><span class="pre">trace</span> <span class="pre">name</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/trace_manual/trace_commands/cmd_trace.purge.html"><code class="docutils literal"><span class="pre">trace</span> <span class="pre">purge</span></code> command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../kernel/doc/manual/trace_manual/trace_commands/cmd_trace.results.html"><code class="docutils literal"><span class="pre">trace</span> <span class="pre">results</span></code> command</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../module/doc/manual/extra_manual/extravariables.html">Extra (keyword)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../module/doc/manual/group_manual/groupkwd.html">Group (keyword/command word)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/doc/manual/group_manual/groupkwd.html#a-command-word-or-a-keyword">A Command Word or A Keyword</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/doc/manual/group_manual/groupkwd.html#group-logic">Group Logic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/doc/manual/group_manual/groupkwd.html#group-rules">Group Rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/doc/manual/group_manual/groupkwd.html#alternate-syntax">Alternate Syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/doc/manual/group_manual/groupkwd.html#data-hierarchies">Data Hierarchies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/doc/manual/group_manual/groupkwd.html#groups-vs-named-ranges">Groups vs. Named Ranges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/doc/manual/group_manual/groupkwd.html#another-way-of-looking-at-it">Another Way of Looking At It</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../module/doc/manual/list_manual/lists.html">List (keyword/command word)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../module/doc/manual/range_manual/range.html">Range (keyword)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/doc/manual/range_manual/range_commands/rangephrase.html">The Range Phrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/doc/manual/range_manual/range_commands/rangelogical.html">Logical Operations in a Range Phrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/doc/manual/range_manual/range_commands/rangenaming.html">Named Ranges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html">Range Phrase Keyword Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/doc/manual/range_manual/range_fish/range_fish.html"><span class="codename">FISH</span> Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/doc/manual/range_manual/range_fish/range_utilities/fish_range.find.html"><code class="docutils literal"><span class="pre">range.find</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/doc/manual/range_manual/range_fish/range_utilities/fish_range.isin.html"><code class="docutils literal"><span class="pre">range.isin</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../module/doc/manual/select_manual/selecthide.html">Select &amp; Hide (keywords)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../module/doc/manual/modifier_manual/modulations.html">Value Modifiers (add, multiply, gradient, &amp; vary keywords)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deprecatedfish.html">Deprecated Commands and FISH</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command_summary.html">Index: Common Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fish_summary.html">Index: Common <span class="codename">FISH</span></a></li>
+</ul>
+</div>
+<p><span class="flag3">Things you need to know:
+1. the program is command based
+2. the program is state based
+3. there is incomplete overlap between commands and UI
+4. the program is many-in-one
+5. there is always an active pane
+6. the tools are responsive to which pane is active</span></p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../../../../../contents.html"
+                           title="previous chapter"> Itasca’s <span class="codename">UDEC</span> Documentation</a> |    
+       <a href="methodology/methodology.html"
+                           title="next chapter">Modeling Methodology</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Program Guide" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

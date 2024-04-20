@@ -1,0 +1,145 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Save File Handling &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="The State Record Pane" href="staterecord_pane/staterecordoverview.html" />
+    <link rel="prev" title="How Save Files Work" href="howsavefileswork.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="save-file-handling">
+<span id="savefilehandling"></span><h1>Save File Handling</h1>
+<p class="h2 rubric">Creating/Saving</p>
+<ul class="simple">
+<li>use the <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.save.html#command:model.save" title="Save all model-state information. The file  s  is created and, if no extension&#013;&#010;is provided, the extension is set to &quot;.sav&quot;. This information includes any defined&#013;&#010;|FISH| functions/variables, histories, tables, and other model components."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">save</span></code></a> command at the <a class="reference internal" href="../../../glossaryofterms.html#term-45"><span class="xref std std-term">command prompt</span></a> or in a data file</li>
+<li>press <em>Save</em> ( <img alt="save" src="../../../../../../../_images/sav_save_on.png" /> ) on the toolbar when the <span class="flag4">i</span> <a class="reference internal" href="../commands/console_pane/consolepane.html#theconsolepane"><span class="std std-ref">Console</span></a> pane is active</li>
+<li>use <span class="cmdkey">File –&gt; [item] –&gt; Save</span> from the menu when the <span class="flag4">i</span> <a class="reference internal" href="../commands/console_pane/consolepane.html#theconsolepane"><span class="std std-ref">Console</span></a> pane is active (where <span class="cmdkey">[item]</span> will be the name of the save file if the current model state is associated with an existing save file; “–” will be displayed for <span class="cmdkey">[item]</span> if the current model state is not associated with an existing save file)</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the current model state is associated with an existing save file, the state is saved (with any new data added to the existing file) at one go using the steps above. If the current model state is not associated with a previous save file, the steps above will open a <span class="cmdkey">File –&gt; Save</span> dialog for specifying a folder name and file name for the new save file.  By default, the dialog will open initially in the folder containing the current <a class="reference internal" href="../../../glossaryofterms.html#term-project-file"><span class="xref std std-term">project file</span></a>.</p>
+</div>
+<p class="h2 rubric">Restoring</p>
+<ul class="simple">
+<li>use the <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.restore.html#command:model.restore" title="Restore program-state information. The state information, resulting from a previous"><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">restore</span></code></a> command at the <a class="reference internal" href="../../../glossaryofterms.html#term-45"><span class="xref std std-term">command prompt</span></a> or in a data file</li>
+<li>double click a save file (indicated by <img alt="issav" src="../../../../../../../_images/sav_closed1.png" />) in the “Saved States” list in the  <span class="flag4">i</span> <a class="reference internal" href="../projects/project_pane/projectsoverview.html#theprojectpane"><span class="std std-ref">Project</span></a> pane, or right-click an item on the list and choose <span class="cmdkey">Restore</span> from the menu</li>
+</ul>
+<p class="h2 rubric">Deleting</p>
+<ul class="simple">
+<li>in the <span class="flag4">i</span> <a class="reference internal" href="../projects/project_pane/projectsoverview.html#theprojectpane"><span class="std std-ref">Project</span></a> pane, select and press “Delete” on the toolbar or right-click and choose <span class="cmdkey">Delete</span> from the menu</li>
+</ul>
+<p class="h2 rubric">Adding to Project</p>
+<p>Save files created using any of the techniques listed above are added to the project automatically.  In the present context, “adding” refers to bringing an “outside” existing save file into the project.</p>
+<ul class="simple">
+<li>Use the <span class="cmdkey">File –&gt; Open...</span> dialog to select and “open” (in this case, add to project but <em>not</em> restore) a save file</li>
+</ul>
+<p class="h2 rubric">Removing from Project</p>
+<p>A rarely needed option, “removing” will sever the project’s connection to a save file without deleting it.</p>
+<p class="h2 rubric">Storage</p>
+<p>On project completion, the determination to store save files is a matter of time vs. storage space.  If all project files are in hand, a <a class="reference internal" href="../projects/bundle.html#bundle"><span class="std std-ref">bundle</span></a> can be used as an archive such that the entire project can be re-run if ever needed.  This is storage-space efficient, since it does not retain save files, and thus is likely to comparably small. However, if the model and/or the project are large, the time it might take to regenerate the save files should be considered.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="savedstates.html" accesskey="U">Saving</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="howsavefileswork.html"
+                           title="previous chapter"> How Save Files Work</a> |    
+       <a href="staterecord_pane/staterecordoverview.html"
+                           title="next chapter">The <em>State Record</em> Pane</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Save File Handling" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

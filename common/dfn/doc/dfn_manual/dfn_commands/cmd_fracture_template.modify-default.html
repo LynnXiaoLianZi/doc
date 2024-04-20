@@ -1,0 +1,219 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>fracture template modify-default command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="fracture verify-file command" href="cmd_fracture_verify-file.html" />
+    <link rel="prev" title="fracture template delete command" href="cmd_fracture_template.delete.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fracture-template-modify-default-command">
+<h1><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">template</span> <span class="pre">modify-default</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="dfn command">
+<dt id="command:fracture.template.modify-default">
+<span class="cmdname"><span class="pref">f</span><span class="pref">r</span><span class="pref">a</span><span class="pref">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">t</span><span class="pref">e</span><span class="null">m</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">m</span><span class="null">o</span><span class="null">d</span><span class="null">i</span><span class="null">f</span><span class="null">y</span><span class="null">-</span><span class="pref">d</span><span class="null">e</span><span class="null">f</span><span class="null">a</span><span class="null">u</span><span class="null">l</span><span class="null">t</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:fracture.template.modify-default.dip-direction-limits" title="fracture template modify-default dip-direction-limits">dip-direction-limits</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.template.modify-default.dip-limits" title="fracture template modify-default dip-limits">dip-limits</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.template.modify-default.orientation" title="fracture template modify-default orientation">orientation</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.template.modify-default.position" title="fracture template modify-default position">position</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.template.modify-default.size" title="fracture template modify-default size">size</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.template.modify-default.size-limits" title="fracture template modify-default size-limits">size-limits</a></p>
+</div>
+<p>Modify the default fracture generation template. A fracture generation template is a set of
+statistical parameters used to generate fractures with the <a class="reference internal" href="cmd_fracture_generate.html#command:fracture.generate" title="Generate fractures from a statistical description. A model domain must be specified&#013;&#010;prior to"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">generate</span></code></a> command. If no
+fracture generation template is specified, the default template is used. Upon a <a class="reference internal" href="../../../../kernel/doc/manual/model/commands/cmd_model.new.html#command:model.new" title="Clear model-state information. Model information is cleared, allowing one to&#013;&#010;begin a new"><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">new</span></code></a>,
+the default fracture generation template is given the following properties: 1) uniform fracture
+positions; 2) uniform fracture orientations (dip between 0 and 180 degrees in 2D; dip between 0 and 90
+degrees, dip direction between 0 and 360 degrees in 3D); 3) fracture sizes obeying a negative
+power-law distribution with exponent 4; and 4) minimum fracture size is size 1.0 and maximum fracture
+size is ∞. The default fracture generation template is saved with the model state and
+a DFN cannot be linked to the default template. The following keywords may be applied:</p>
+<dl class="keyword">
+<dt id="kwd:fracture.template.modify-default.dip-direction-limits">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">p</span><span class="null">-</span><span class="pref">d</span><span class="null">i</span><span class="null">r</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">l</span><span class="null">i</span><span class="null">m</span><span class="null">i</span><span class="null">t</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmin</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmax</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">3D<span class="null"> </span></span><span class="cmdextraparam">only</span>)</span><span class="null"> </span></dt>
+<dd><p>Specify that the fracture dip directions must fall in the range [<a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmin</span></span></a>, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmax</span></span></a>]
+degrees. By default, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmin</span></span></a> = 0 and <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmax</span></span></a> = 360.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.template.modify-default.dip-limits">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">p</span><span class="null">-</span><span class="pref">l</span><span class="null">i</span><span class="null">m</span><span class="null">i</span><span class="null">t</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmin</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmax</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify that the fracture dips must fall in the range [<a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmin</span></span></a>, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmax</span></span></a>] degrees. By
+default, {<a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmin</span></span></a> = 0 and <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmax</span></span></a> = 180, in 2D; <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmin</span></span></a> = 0 and <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmax</span></span></a> =90,
+in 3D}.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.template.modify-default.orientation">
+<span class="cmdkey"><span class="pref">o</span><span class="null">r</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../docproject/utilities/types.html#type:any" title="A catch-all for any ( a ) of the other types, excepting  sym , shown&#013;&#010;here. Multiple instances in a command are numbered ( a1   a2   a3 &#013;&#010;etc.).  This type is also indicated when a specific combination of types is&#013;&#010;acceptable (for instance, the common case where a string  s  or an integer&#013;&#010; i  may be supplied). When this is the case, the specific acceptable types&#013;&#010;are indicated in the explanatory text."><span class="varany"><span class="null">a</span><sub class="null">1</sub><span class="null">...a</span><sub class="null">n</sub><span class="null"></span></span></a></dt>
+<dd><p>Define the generation rule for fracture orientations with the parameters
+<span class="math">\(a_{1}...a_{n}\)</span>. The following options for <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a> are supported:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">bootstrapped</span></span></a>: The dip {and dip direction, in 3D} are bootstrapped from a file. One
+parameter must be given: the file name holding the discrete distribution of values. This
+file obeys the bootstrapped distribution file format given in <a class="reference internal" href="../../../../docproject/source/manual/program_guide/mechanics/otherinputs/dfnfileformats.html#dfnfileformats"><span class="std std-ref">DFN-Related File Formats</span></a>.</li>
+<li><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">dips</span></span></a> (3D only): The dip and dip direction are bootstrapped from a DIPS file. One
+parameter must be given: the file name holding the discrete distribution of values. This
+file obeys the DIPS file format given in <a class="reference internal" href="../../../../docproject/source/manual/program_guide/mechanics/otherinputs/dfnfileformats.html#dfnfileformats"><span class="std std-ref">DFN-Related File Formats</span></a>.</li>
+<li><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">fish</span></span></a>: The <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">fish</span></span></a> keyword is used to get values from a user-defined <span class="codename">FISH</span>
+function. The function name is given using <span class="math">\(a_{1}\)</span>, and the function arguments (any
+number) are given after the function name. The function must return a {float, in 2D; 2
+dimensional vector, in 3D}.</li>
+<li><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">fisher</span></span></a> (3D only): The dip and dip direction are drawn from a Fisher distribution.
+Three additional parameters are required: dip, dip direction and <span class="math">\(\kappa\)</span>.</li>
+<li><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">gauss</span></span></a>: The dip {and dip direction, in 3D} are drawn from Gaussian distributions. In
+2D, two additional parameters are required, specifying the mean and standard deviation of the
+dip distribution. In 3D, four additional parameters are required: mean and standard deviation
+for the dip distribution, followed by mean and standard deviation for the dip-direction
+distribution.</li>
+<li><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">uniform</span></span></a>: The dip {and dip direction, in 3D} are drawn from a uniform distribution.
+No additional parameters can be given.</li>
+</ul>
+<div class="full admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In 2D, dip is the clockwise angle measured from the positive <span class="math">\(x\)</span>-axis in degrees. In 3D, dip is the angle from the dip direction projected on the <span class="math">\(xy\)</span>-plane to the fracture surface measured in the negative <span class="math">\(z\)</span>-direction. Dip direction in 3D is measured in a clockwise fashion from the positive <span class="math">\(y\)</span>-axis.</p>
+</div>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.template.modify-default.position">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../docproject/utilities/types.html#type:any" title="A catch-all for any ( a ) of the other types, excepting  sym , shown&#013;&#010;here. Multiple instances in a command are numbered ( a1   a2   a3 &#013;&#010;etc.).  This type is also indicated when a specific combination of types is&#013;&#010;acceptable (for instance, the common case where a string  s  or an integer&#013;&#010; i  may be supplied). When this is the case, the specific acceptable types&#013;&#010;are indicated in the explanatory text."><span class="varany"><span class="null">a</span><sub class="null">1</sub><span class="null">...a</span><sub class="null">n</sub><span class="null"></span></span></a></dt>
+<dd><p>Define the generation rule for fracture position with parameters <a class="reference internal" href="../../../../docproject/utilities/types.html#type:any" title="A catch-all for any ( a ) of the other types, excepting  sym , shown&#013;&#010;here. Multiple instances in a command are numbered ( a1   a2   a3 &#013;&#010;etc.).  This type is also indicated when a specific combination of types is&#013;&#010;acceptable (for instance, the common case where a string  s  or an integer&#013;&#010; i  may be supplied). When this is the case, the specific acceptable types&#013;&#010;are indicated in the explanatory text."><span class="null"></span></a>. The
+supported options for <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a> are <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">uniform</span></span></a>, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">gauss</span></span></a>, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">bootstrapped</span></span></a> and
+<a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">fish</span></span></a>. The meaning of these keywords is the same as for the <span class="cmdkey">orientation</span>
+keyword except that the position is a {2D vector in 2D; 3D vector in 3D}. Consequently, if
+<a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">bootstrapped</span></span></a> is specified, the file must contain the required number of values, and
+if <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">fish</span></span></a> is specified, the <span class="codename">FISH</span> function must return a vector of correct dimension.
+Additionally, the mean and standard deviations must be vectors if the <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">gauss</span></span></a> keyword
+is specified.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.template.modify-default.size">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">i</span><span class="null">z</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../docproject/utilities/types.html#type:any" title="A catch-all for any ( a ) of the other types, excepting  sym , shown&#013;&#010;here. Multiple instances in a command are numbered ( a1   a2   a3 &#013;&#010;etc.).  This type is also indicated when a specific combination of types is&#013;&#010;acceptable (for instance, the common case where a string  s  or an integer&#013;&#010; i  may be supplied). When this is the case, the specific acceptable types&#013;&#010;are indicated in the explanatory text."><span class="varany"><span class="null">a</span><sub class="null">1</sub><span class="null">...a</span><sub class="null">n</sub><span class="null"></span></span></a></dt>
+<dd><p>Define the distribution of fracture sizes. The fracture size is defined as the {fracture
+length, in 2D; disk diameter, in 3D}. The supported options for <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a> are
+<a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">uniform</span></span></a>, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">gauss</span></span></a>, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">power-law</span></span></a>, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">bootstrapped</span></span></a> and <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">fish</span></span></a>. The
+<a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">power-law</span></span></a> specifier defines a negative power-law distribution which requires one
+parameter that is the exponent of the distribution with <a class="reference internal" href="../../../../docproject/utilities/types.html#type:any" title="A catch-all for any ( a ) of the other types, excepting  sym , shown&#013;&#010;here. Multiple instances in a command are numbered ( a1   a2   a3 &#013;&#010;etc.).  This type is also indicated when a specific combination of types is&#013;&#010;acceptable (for instance, the common case where a string  s  or an integer&#013;&#010; i  may be supplied). When this is the case, the specific acceptable types&#013;&#010;are indicated in the explanatory text."><span class="null"></span></a> &gt; 0. The remaining
+<a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a> options are as specified in the <span class="cmdkey">orientation</span> description, except that the
+return value is a floating point value. Thus, only two arguments follow the <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">gauss</span></span></a>
+specifier: the <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">bootstrapped</span></span></a> file must follow a one-dimensional format; and the
+<a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">fish</span></span></a> function must return a single value.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.template.modify-default.size-limits">
+<span class="cmdkey"><span class="pref">s</span><span class="null">i</span><span class="null">z</span><span class="null">e</span><span class="null">-</span><span class="pref">l</span><span class="null">i</span><span class="null">m</span><span class="null">i</span><span class="null">t</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmin</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmax</span><span class="null"> </span></span></a></dt>
+<dd><p>Fracture size limits must fall within the range [<a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmin</span></span></a>, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmax</span></span></a>]. By default,
+<a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmin</span></span></a> = 1.0 and <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmax</span></span></a> = +∞. Fracture size is defined as the {length,
+in 2D; diameter, in 3D}.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../dfn.html" >Discrete Fracture Network (DFN)</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="dfn_commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_fracture_template.delete.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">fracture</span> <span class="pre">template</span> <span class="pre">delete</span></code> command</a> |    
+       <a href="cmd_fracture_verify-file.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">verify-file</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?fracture template modify-default command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

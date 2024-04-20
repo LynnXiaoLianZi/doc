@@ -1,0 +1,144 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Commands &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="group.create command" href="cmd_group.create.html" />
+    <link rel="prev" title="Group" href="../group.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="commands">
+<span id="group-commands"></span><h1>Commands</h1>
+<p>Commands that operate on the list of group names and slots.</p>
+<p>A global list of all group names (in all slots) and all slots created is maintained.  It is possible view (<a class="reference internal" href="cmd_group.list.html#command:group.list" title="Display the global list of group names and slot names that have been created."><code class="xref fish fish-cmd docutils literal"><span class="pre">group</span> <span class="pre">list</span></code></a>) and rename (<a class="reference internal" href="cmd_group.rename.html#command:group.rename" title="Rename a group. The group named  sold  is renamed to  snew .  All&#013;&#010;references to group  sold , in all objects and slots, now instead refer&#013;&#010;to  snew ."><code class="xref fish fish-cmd docutils literal"><span class="pre">group</span> <span class="pre">rename</span></code></a>) those items.</p>
+<p>Group assignments are made with the <span class="cmdkey">group</span> keyword operating on a specific object type (like <code class="xref fish fish-cmd docutils literal"><span class="pre">zone</span> <span class="pre">group</span></code>, <a class="reference internal" href="../../../../../geometry/doc/manual/commands/cmd_geometry.polygon.group.html#command:geometry.polygon.group" title="Assign the group  s  to the polygons of the geometric set that fall within&#013;&#010;the range.  Use of the group logic is described in  group_manual . This&#013;&#010;command may take the form  geometry.polygon.group   &quot;slotname = groupname&quot; &#013;&#010;— quotation marks required, spaces at equals sign ignored — where  slotname &#013;&#010;is the slot assignment and  groupname  is the group name. If the  set &#013;&#010;keyword is not given, then the current set is used."><code class="xref fish fish-cmd docutils literal"><span class="pre">geometry</span> <span class="pre">polygon</span> <span class="pre">group</span></code></a>, <code class="xref fish fish-cmd docutils literal"><span class="pre">extrude</span> <span class="pre">edge</span> <span class="pre">group</span></code>, etc.).</p>
+<p class="rubric">Group Commands</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="cmd_group.create.html#group.create" title="Create a group.  The name  s  is given to the group. The group has no objects,&#013;&#010;however."><span class="fishcmd">group create</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_group.list.html#group.list" title="Display the global list of group names and slot names that have been created."><span class="fishcmd">group list</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_group.rename.html#group.rename" title="Rename a group. The group named  sold  is renamed to  snew .  All references&#013;&#010;to group  sold , in all objects and slots, now instead refer to  snew ."><span class="fishcmd">group rename</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_group.slot.html#group.slot" title="Create a slot. The slot is named  s .  No objects or groups use this slot on&#013;&#010;creation.  It will, however, show up on the list of available slots in the user&#013;&#010;interface."><span class="fishcmd">group slot</span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cmd_group.create.html"><code class="docutils literal"><span class="pre">group.create</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_group.list.html"><code class="docutils literal"><span class="pre">group.list</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_group.rename.html"><code class="docutils literal"><span class="pre">group.rename</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_group.slot.html"><code class="docutils literal"><span class="pre">group.slot</span></code> command</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../group.html" accesskey="U">Group</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../group.html"
+                           title="previous chapter"> Group</a> |    
+       <a href="cmd_group.create.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">group.create</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Commands" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

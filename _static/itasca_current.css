@@ -1,0 +1,369 @@
+body {
+    font-family: "Source Sans Pro", sans-serif;
+    margin: 0;
+    background: #edede4;
+}
+
+/* -- document layout structures--------------------------------------------- */
+
+.sidenav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding-bottom: 2em;
+    padding-top: 6em;
+    width: 350px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    min-height: 100%;
+    background: #edede4;
+    z-index: 200;
+    transition: 0.5s;
+}
+
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+#main {
+    margin-left: 350px;
+    background: #ffffff;
+    transition: 0.5s;
+}
+#maintop {
+  background-color: #fafaf8;
+  padding: 1em;
+}
+#mainbody {
+  padding: 1em 2em 4em 4em;
+  max-width: 35em;
+  min-width: 20em;
+  min-height: 40em;
+}
+div[id^="mainbottom"] {
+  padding: 1em;
+  text-align: center;
+  font-size: .85em;
+}
+#mainbottom1 {
+  background-color: #fafaf8;
+}
+#mainbottom2 {
+  background-color: #f6f6f1;
+}
+#mainbottom3 {
+  background-color: #edede4;
+}
+
+object#toctobj {
+     width: 370px;
+     height: 100%;
+     position: relative;
+     overflow-x: hidden;
+     overflow-y: scroll;
+}
+iframe#toctobj2 {
+     width: 370px;
+     height: 100%;
+     position: relative;
+     overflow-x: hidden;
+     overflow-y: scroll;
+}
+
+#searchbox {
+     float: right;
+     display: inline;
+}
+
+input#sb{
+   background-color: #edede4;
+   border: thin solid white;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+/* -- relbar ---------------------------------------------------------------- */
+
+span.prevnext {
+    width: 100%;
+    display: inline;
+}
+
+span.prevnext ul {
+    margin: 0;
+    padding: 0 0 0 10px;
+    list-style: none;
+    display: inline;
+}
+
+span.prevnext li {
+    display: inline;
+}
+
+span.prevnext li.right {
+    float: right;
+    margin-right: 5px;
+}
+
+
+/* -- toolbuttons------------------------------------------------------------ */
+div#navbutton, div#totopbutton {
+  cursor: pointer;
+  margin-left: 0px;
+  background: #edede4;
+  position: fixed;
+  top: 65%;
+  left: .15em;
+  padding: .25em;
+  transition: .5s;
+  text-align: center;
+  font-size: 1.4em;
+  width: 1.4em;
+}
+
+div#totopbutton {
+  top: 71%;
+}
+
+
+/* -- text styles------------------------------------------------------------ */
+h1, h2, h3 {
+   font-weight: normal;
+}
+h3, p.h3 {
+   font-size: 1.33em;
+}
+p.h1 {
+   font-size: 2em;
+}
+p.h2 {
+   font-size: 1.5em;
+}
+
+div[id^="mainbo"] a  {
+    color: #000000;
+    text-decoration: none;
+    border-bottom: #aaaaaa;
+    border-width: 0px 0px 1px 0px;
+    border-style: none none dotted none;
+    transition: all 0.2s linear;
+}
+
+div[id^="mainbo"] a:hover {
+   color: #428bca;
+   border-bottom: #ffffff;
+}
+
+span.codename {
+    font-family: 'Times New Roman';
+    font-style: italic;
+}
+
+span.fishcmd, code {
+    font-family: 'Consolas','Deja Vu Sans Mono','Bitstream Vera Sans Mono',monospace;
+    /*font-size: 1em;*/
+}                       /* character formatting for commands&fish */
+
+code.fish:last-child {
+   margin-right: .3em;
+}
+code.fish:first-child {
+   margin-left: .3em;
+}
+
+/* -- block styles and behaviors--------------------------------------------- */
+
+span.eqno {             /* make equation numbers to the right */
+    float: right;
+}  
+
+div.figure {            /* figure image handling */
+  text-align: center;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  margin-left: auto;
+  margin-right: auto;
+}
+p.caption {             /* figure caption text style */
+  font: italic .9em "Source Sans Pro", sans-serif;
+}
+
+
+table {                 /* default table */
+   border-top: 4px solid #edede4;
+   border-bottom: 4px solid #edede4;
+   border-left: 0;
+   border-right: 0;
+   margin-left: auto;
+   margin-right: auto;
+}
+table caption {
+	margin-bottom: .8em;
+	font-style: italic;
+}
+table td {
+	border: 0;
+}
+table th.head {
+	border: 0;
+	background-color: #f6f6f1;
+    border-top: 2px solid #edede4;
+    border-bottom: 2px solid #edede4;
+    padding-top: .5em;
+    padding-bottom: .5em;
+}                        /* end default table */
+
+
+table.stripes tr.row-odd{  /* table style 2 : add row shading */
+	background-color: #f6f6f1;
+}
+
+
+table.blank {           /* table style 3 : blank (for layout) */
+  border: 0;
+}
+table.blank th.head {
+  border: 0;
+  background-color: #ffffff;
+}                       /* end blank */
+ 
+
+
+div.admonition{         /* admonition default */
+    margin: 1.5em .25em 1.5em 13.3em;
+    background-color: white;
+    font-size: .83em;
+    border: thin solid #edede4;
+    display: block;
+    width: 100%;
+    margin-left: 0em;
+}
+
+div.admonition p.first{
+   border-bottom: 1px solid #edede4;
+   border-right: 1px solid #edede4;
+   border-bottom-right-radius: 15px;
+   width: 25%;
+   margin: 0.1em 0em 0.5em 0em;
+   padding: .2em 0em .2em 1em;
+}  
+
+div.admonition p {
+  margin: 0.5em 1em 0.5em 1em;
+}
+
+div.admonition p.last{
+   margin: 0.5em 1em 0.5em 1em;
+}                       /* end default admonition */
+
+div.aside {             /* apply :class: aside to an admonition for 'sidebar'*/
+  float: right;
+  margin-left: 1em;
+  width: 40%;
+}
+
+/* start warnings */
+div.warning {
+   border: 1px solid darkred;
+}
+div.warning p.first{
+   color: darkred;
+   border-bottom: 1px solid darkred;
+   border-right: 1px solid darkred;
+}
+/* end warnings */
+   
+/* start tips */
+div.tip{
+   border: none;
+}
+div.tip-sidebar{
+   width: 250px;
+   float: right;
+   margin: 20px 20px 20px 20px;
+   border: 1px solid #86989B;
+}
+div.tip p.first {
+   display: none;
+}
+div.tip p.last {
+   padding-left: 30px;
+   background-image:url('tipcheck.png'); 
+   background-repeat:no-repeat; 
+   background-position:left top;
+}
+/* end tips */ 
+
+/* start keyword lists */
+div.admonition-primary-keywords {
+   border: none;
+   border-left: 1px solid #86989B;
+   margin: 1.5em .25em 2em 0em;
+}
+div.admonition-primary-keywords p.first{
+   color: #11557C;
+   background-color: white;
+   border: none;
+   font-weight: normal;
+}
+div.admonition-primary-keywords p.last{
+   padding-left: 50px;
+}
+/* end keyword lists */
+
+/* start footnotes */
+div.admonition-footnotes {
+   background-color: white;
+   margin-left: 13.3em;
+   margin-bottom: 1.5em;
+   margin-top: 1.5em;
+}
+div.admonition-footnotes p.admonition-title{
+   color: #11557C;
+   background-color: white;
+   border-bottom: 1px solid #86989B;
+   border-right: 1px solid #86989B;
+   border-bottom-right-radius: 15px;
+   font-weight: normal;
+   width: 20%;
+}
+p.footnotesrubric {
+   display: none;
+}  /* plus hack so that the rubric doesn't repeat the "footnotes" title*/
+div.admonition-footnotes table.footnote {
+   margin: 0.15em 0.5em 0.15em 0.5em;
+}  /*specific override for table margins when putting foonotes in a note admonition*/
+/* end footnotes */
+
+
+dl.cmdindex, dl.fishindex {            /* box for command&fish "tables" */
+   border: thin solid #edede4;
+   padding: 1em;
+   border-radius: 10px;
+}
+
+dl.cmdindex dt, dl.fishindex dt {
+   float: left; 
+   clear: left; 
+   width: 15em; 
+  }
+  
+dl.cmdindex dd, dl.fishindex dd {
+   margin: 0 0 0 15em; 
+   padding: 0 0 0.5em 0;
+}

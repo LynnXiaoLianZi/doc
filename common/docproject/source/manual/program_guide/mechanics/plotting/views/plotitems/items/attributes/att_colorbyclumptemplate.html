@@ -1,0 +1,311 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Color By &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../../../../search.html" />
+    <link rel="next" title="Color By" href="att_colorbyclumpthermal.html" />
+    <link rel="prev" title="Color By" href="att_colorbyclumpcfd.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="color-by">
+<span id="colorbyclumptemplate-att"></span><h1>Color By</h1>
+<img alt="../../../../../../../../../../../_images/colorby.png" class="attribute" src="../../../../../../../../../../../_images/colorby.png" />
+<p>Determines how the plot item will be colored.</p>
+<p>There are three groups of options: <a class="reference internal" href="#tv-cb-clumpt"><span class="std std-ref">textual values</span></a>, <a class="reference internal" href="#nv-cb-clumpt"><span class="std std-ref">numeric values</span></a>, and <a class="reference internal" href="#vq-cb-clumpt"><span class="std std-ref">vector quantities</span></a>.
+The options here are mutually exclusive; only one selection can be active at any time.  Each of the three selectors presents an ATTRIBUTES group.</p>
+<p>The tables below enumerate the options available in the <em>Color By</em> attribute for both <span class="codename">PFC3D</span> and <span class="codename">PFC2D</span>, with annotation, where applicable, for options that only appear in one of the two programs.</p>
+<p>With some selections an additional field is supplied; when they appear these are described in the tables
+below.  Any vector quantity will supply an additional field to specify either the component
+{x or y in 2D; x, y, or z in 3D} or the magnitude (mag) of the vector.</p>
+<p>Selecting either the label ATTRIBUTE on a selector will switch coloring to the default
+<em>Color By</em> selection.</p>
+<p>Once the quantity/value/property to be colored is chosen in <em>Color By,</em> the user can handle
+the specifics of the coloring using the <span class="xref std std-ref">Color Opt</span> attribute.</p>
+<p>Should the <span class="xref std std-ref">Shape</span> attribute be set to “Arrow,” the <em>Text Val</em>  and <em>Numeric Val</em> selectors are disabled and either the default or the last-selected vector quantity is chosen.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table border="1" class="colwidths-given icg1 docutils" id="tv-cb-clumpt">
+<caption><span class="caption-text">Table 1: Text Value options</span></caption>
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>extra</td>
+<td>Color by extra variable provided it is a string.  An additional field is supplied to identify the variable by its index.</td>
+</tr>
+<tr class="row-odd"><td>fixity</td>
+<td>Color by fixity condition. This is represented by a string composed of component identifiers and fixity state. Clumps with no fixity applied are represented by the string {<em>xTyTrR</em> in 2D; <em>xTRyTRzTR</em> in 3D} where <em>T</em> stands for translation and <em>R</em> stands for rotation. If one of these components are fixed then the <em>T</em> or <em>R</em> is absent.</td>
+</tr>
+<tr class="row-even"><td>group</td>
+<td>Color by group.  An additional field is supplied to specify the slot index. The default setting is <em>Any</em> (which occupies index position 0 on the spinbox).</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table border="1" class="colwidths-given icg1 docutils" id="nv-cb-clumpt">
+<caption><span class="caption-text">Table 2: Numeric Value options</span></caption>
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>extra</td>
+<td>Color by extra variable provided it can be converted to a floating point value.  An additional field is supplied to identify the variable by its index.</td>
+</tr>
+<tr class="row-odd"><td>appliedmoment</td>
+<td>Color by the applied moment. (2D ONLY)</td>
+</tr>
+<tr class="row-even"><td>contactmoment</td>
+<td>Color by the moment resulting from contacts. (2D ONLY)</td>
+</tr>
+<tr class="row-odd"><td>damp</td>
+<td>Color by the local damping coefficient.</td>
+</tr>
+<tr class="row-even"><td>density</td>
+<td>Color by the density.</td>
+</tr>
+<tr class="row-odd"><td>ebody</td>
+<td>Color by the body energy.</td>
+</tr>
+<tr class="row-even"><td>edamp</td>
+<td>Color by the local damping energy.</td>
+</tr>
+<tr class="row-odd"><td>ekinetic</td>
+<td>Color by the kinetic energy.</td>
+</tr>
+<tr class="row-even"><td>fragment</td>
+<td>Color by the fragment index.</td>
+</tr>
+<tr class="row-odd"><td>inertial_mass</td>
+<td>Color by the inertial mass.</td>
+</tr>
+<tr class="row-even"><td>inertial_moi</td>
+<td>Color by the inertial moment of inertia.</td>
+</tr>
+<tr class="row-odd"><td>mass</td>
+<td>Color by the mass.</td>
+</tr>
+<tr class="row-even"><td>realmoi</td>
+<td>Color by the moment of inertia. (2D ONLY)</td>
+</tr>
+<tr class="row-odd"><td>realmoi11</td>
+<td>11 component of the clump real moment of inertia. (3D ONLY)</td>
+</tr>
+<tr class="row-even"><td>realmoi12</td>
+<td>12 component of the clump real moment of inertia. (3D ONLY)</td>
+</tr>
+<tr class="row-odd"><td>realmoi13</td>
+<td>13 component of the clump real moment of inertia. (3D ONLY)</td>
+</tr>
+<tr class="row-even"><td>realmoi22</td>
+<td>22 component of the clump real moment of inertia. (3D ONLY)</td>
+</tr>
+<tr class="row-odd"><td>realmoi23</td>
+<td>23 component of the clump real moment of inertia. (3D ONLY)</td>
+</tr>
+<tr class="row-even"><td>realmoi33</td>
+<td>33 component of the clump real moment of inertia. (3D ONLY)</td>
+</tr>
+<tr class="row-odd"><td>rotation</td>
+<td>Color by the accumulated rotation. (2D ONLY)</td>
+</tr>
+<tr class="row-even"><td>spin</td>
+<td>Color by the rotational velocity. (2D ONLY)</td>
+</tr>
+<tr class="row-odd"><td>unbalmoment</td>
+<td>Color by the unbalanced moment. (2D ONLY)</td>
+</tr>
+<tr class="row-even"><td>volume</td>
+<td>Color by the volume {assuming unit thickness in 2D}.</td>
+</tr>
+<tr class="row-odd"><td>pebble radius</td>
+<td>Color the pebbles by radius.</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table border="1" class="colwidths-given icg1 docutils" id="vq-cb-clumpt">
+<caption><span class="caption-text">Table 3: Vector Quantity options</span></caption>
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>extra</td>
+<td>Color by extra variable provided that it is a vector.  An additional field is supplied to identify the variable by its index.</td>
+</tr>
+<tr class="row-odd"><td>appliedforce</td>
+<td>Color by the applied force.</td>
+</tr>
+<tr class="row-even"><td>appliedmoment</td>
+<td>Color by the applied moment. (3D ONLY)</td>
+</tr>
+<tr class="row-odd"><td>contactforce</td>
+<td>Color by the force resulting from contacts.</td>
+</tr>
+<tr class="row-even"><td>contactmoment</td>
+<td>Color by the moment resulting from contacts. (3D ONLY)</td>
+</tr>
+<tr class="row-odd"><td>displacement</td>
+<td>Color by the accumulated displacement.</td>
+</tr>
+<tr class="row-even"><td>euler</td>
+<td>Color by the Euler angles. (3D ONLY)</td>
+</tr>
+<tr class="row-odd"><td>inertial_moi</td>
+<td>Color by inertial principal moments of inertia. (3D ONLY)</td>
+</tr>
+<tr class="row-even"><td>position</td>
+<td>Color by the position.</td>
+</tr>
+<tr class="row-odd"><td>prinrealmoi</td>
+<td>Color by real principal moments of inertia. (3D ONLY)</td>
+</tr>
+<tr class="row-even"><td>spin</td>
+<td>Color by the rotational velocity. (3D ONLY)</td>
+</tr>
+<tr class="row-odd"><td>unbalforce</td>
+<td>Color by the unbalanced force.</td>
+</tr>
+<tr class="row-even"><td>unbalmoment</td>
+<td>Color by the unbalanced moment. (3D ONLY)</td>
+</tr>
+<tr class="row-odd"><td>velocity</td>
+<td>Color by the translational velocity.</td>
+</tr>
+<tr class="row-even"><td>pebble position</td>
+<td>Color by the pebble position.</td>
+</tr>
+<tr class="row-odd"><td>pebble velocity</td>
+<td>Color by the pebble velocity.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../../../../plotting.html" >Plotting</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../../plotitem_index.html" accesskey="U">Plot Items</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="att_colorbyclumpcfd.html"
+                           title="previous chapter"> Color By</a> |    
+       <a href="att_colorbyclumpthermal.html"
+                           title="next chapter">Color By</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Color By" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

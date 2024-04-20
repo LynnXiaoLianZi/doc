@@ -1,0 +1,263 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>program mail command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="program notice command" href="cmd_program.notice.html" />
+    <link rel="prev" title="program log-file command" href="cmd_program.log-file.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="program-mail-command">
+<span id="mail-command"></span><h1><code class="docutils literal"><span class="pre">program</span> <span class="pre">mail</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="program command">
+<dt id="command:program.mail">
+<span class="cmdname"><span class="pref">p</span><span class="pref">r</span><span class="pref">o</span><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">m</span><span class="null"> </span></span><span class="cmdname"><span class="pref">m</span><span class="pref">a</span><span class="null">i</span><span class="null">l</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Compose and send email messages.</p>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As with all <span class="cmdkey">program</span> commands, use of the command word <span class="cmdkey">program</span> is optional; <span class="cmdkey">program mail</span> and <span class="cmdkey">mail</span> are both valid.</p>
+</div>
+<p>This facility allows data files and <span class="codename">FISH</span> functions to send notification emails upon completion of notable tasks. <span class="codename">FISH</span> access to the mail facility is detailed in <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/fish_fish.html#fish-mail"><span class="std std-ref">Mail Utilities</span></a>.</p>
+<p>Email account settings provided with this command may also be specified in the “Email” section of the “Tools/Options” dialog.</p>
+<dl class="keyword">
+<dt id="kwd:program.mail.account">
+<span class="cmdkey"><span class="pref">a</span><span class="pref">c</span><span class="null">c</span><span class="null">o</span><span class="null">u</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the user account name in the SMTP settings. For example, <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">me&#64;mycompany.com</span></span></a>. This is the account information fo logging into your email account.   This information is stored for this user on this computer.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:program.mail.add">
+<span class="cmdkey"><span class="pref">a</span><span class="pref">d</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Add an item to the email.</p>
+<dl class="keyword">
+<dt id="kwd:program.mail.add.attachment">
+<span class="cmdkey"><span class="pref">a</span><span class="null">t</span><span class="null">t</span><span class="null">a</span><span class="null">c</span><span class="null">h</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Add the file <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a> as an attachment.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:program.mail.add.bcc">
+<span class="cmdkey"><span class="pref">b</span><span class="null">c</span><span class="null">c</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Add a “bcc” recipient.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:program.mail.add.cc">
+<span class="cmdkey"><span class="pref">c</span><span class="null">c</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Add a “cc” recipient.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:program.mail.add.to">
+<span class="cmdkey"><span class="pref">t</span><span class="null">o</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Add a “to” recipient.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:program.mail.body">
+<span class="cmdkey"><span class="pref">b</span><span class="null">o</span><span class="null">d</span><span class="null">y</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Set the email body.</p>
+<dl class="keyword">
+<dt id="kwd:program.mail.body.file">
+<span class="cmdkey"><span class="pref">f</span><span class="null">i</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the message body by importing <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:program.mail.body.string">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the message body to <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:program.mail.clear">
+<span class="cmdkey"><span class="pref">c</span><span class="null">l</span><span class="null">e</span><span class="null">a</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>Clear the current mail variables, including body, recipient list and attachment list.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:program.mail.domain">
+<span class="cmdkey"><span class="pref">d</span><span class="null">o</span><span class="null">m</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the company domain name. For example, <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">smtp.mycompany.com</span></span></a> or <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">192.197.32.6</span></span></a>.  This information is stored for this user on this computer.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:program.mail.from">
+<span class="cmdkey"><span class="pref">f</span><span class="null">r</span><span class="null">o</span><span class="null">m</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the address corresponding to the email account. In many cases this is the same information as the account login information (given with the <span class="cmdkey">account</span> keyword); in those cases the <span class="cmdkey">from</span> address does not need to be specified.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:program.mail.host">
+<span class="cmdkey"><span class="pref">h</span><span class="null">o</span><span class="null">s</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the SMTP host name. For example, <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">mycompany.com</span></span></a>.  This information is stored for this user on this computer.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:program.mail.password">
+<span class="cmdkey"><span class="pref">p</span><span class="pref">a</span><span class="null">s</span><span class="null">s</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Set the user password for the email account.  A special prompt will be given, without normal keyboard echo.  This information is encrypted and stored for this user on this computer.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:program.mail.port">
+<span class="cmdkey"><span class="pref">p</span><span class="pref">o</span><span class="null">r</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the SMTP port. The default value is 25.  This information is stored for this user on this computer.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:program.mail.remove">
+<span class="cmdkey"><span class="pref">r</span><span class="null">e</span><span class="null">m</span><span class="null">o</span><span class="null">v</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Remove an item from the email.</p>
+<dl class="keyword">
+<dt id="kwd:program.mail.remove.attachment">
+<span class="cmdkey"><span class="pref">a</span><span class="null">t</span><span class="null">t</span><span class="null">a</span><span class="null">c</span><span class="null">h</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Remove the attached file <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:program.mail.remove.bcc">
+<span class="cmdkey"><span class="pref">b</span><span class="null">c</span><span class="null">c</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Remove a “bcc” recipient.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:program.mail.remove.cc">
+<span class="cmdkey"><span class="pref">c</span><span class="null">c</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Remove a “cc” recipient.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:program.mail.remove.to">
+<span class="cmdkey"><span class="pref">t</span><span class="null">o</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Remove a “to” recipient.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:program.mail.send">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">e</span><span class="null">n</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Validate the mail settings, compose the message, and send the message.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:program.mail.subject">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">u</span><span class="null">b</span><span class="null">j</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the message subject.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../program.html" >Program</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_program.log-file.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">program</span> <span class="pre">log-file</span></code> command</a> |    
+       <a href="cmd_program.notice.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">program</span> <span class="pre">notice</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?program mail command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

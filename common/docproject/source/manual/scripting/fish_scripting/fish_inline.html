@@ -1,0 +1,179 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Executing FISH: Inline FISH or FISH Fragments &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Splitting: Automatic Execution of Functions on Type Contents" href="fish_splitting.html" />
+    <link rel="prev" title="Operators, Assignment, Conversions, and Member Access" href="fish_arithmetic.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="executing-fish-inline-fish-or-fish-fragments">
+<span id="fish-inline"></span><h1>Executing <span class="codename">FISH</span>:  Inline <span class="codename">FISH</span> or <span class="codename">FISH</span> Fragments</h1>
+<p>In general, <span class="codename">FLAC3D</span> and <span class="codename">FISH</span> operate as separate entities; <span class="codename">FISH</span> statements cannot be given as <span class="codename">FLAC3D</span> commands, and <span class="codename">FLAC3D</span> commands do not work directly as statements in a <span class="codename">FISH</span> program.
+However, there are many ways in which the two systems may interact; some of the more common ways are listed below.</p>
+<ol class="arabic">
+<li><p class="first"><em>Direct use of function</em> – A <span class="codename">FISH</span> function can executed at the user’s request by giving its name on the input line delimited by brackets:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="ni">[myfunc]</span>
+</pre></div>
+</div>
+<p>Some typical uses are to generate geometry, set up a particular profile of material properties, or initialize stresses
+in some fashion.</p>
+</li>
+<li><p class="first"><em>Use as a history variable</em> – When used as the parameter to a <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.history.html#command:fish.history" title="Create a history of the |fish| variable  sym .  A  name  can be assigned&#013;&#010;for later reference.  If not assigned, a name will be generated automatically&#013;&#010;based on the internally assigned ID number.  The value of the history will be&#013;&#010;taken at the history interval, the return value is assumed to be a number."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">history</span></code></a> command, a <span class="codename">FISH</span> function is executed at
+regular intervals throughout a simulation, whenever histories are stored.</p>
+</li>
+<li><p class="first"><em>Automatic execution during stepping</em> – If a <span class="codename">FISH</span> function makes use of the generalized <a class="reference internal" href="fish_fishcallback.html#fish-fishcallback"><span class="std std-ref">callback</span></a>
+capability, then it is executed automatically at every step in <span class="codename">FLAC3D</span>’s calculation cycle, or whenever a particular event
+occurs. (See <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.callback.html#command:fish.callback" title="Add/remove functions to be executed in response to callback events."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">callback</span></code></a> for a discussion on callback events.)</p>
+</li>
+<li><p class="first"><em>Use of function to control a run</em> – Since a <span class="codename">FISH</span> function may issue <span class="codename">FLAC3D</span> commands (via the
+<a class="reference internal" href="statements/commandendcommand.html#fish-statement-commandendcommand"><span class="std std-ref">command</span></a> statement or the <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/system_utilities/fish_system.command.html#function:system.command" title="Execute the string contents of the arguments as commands."><code class="xref fish fish-func docutils literal"><span class="pre">system.command</span></code></a> function), the function can be used to “drive” <span class="codename">FLAC3D</span>, similar to the
+way a data file is controlled. However, the use of a <span class="codename">FISH</span> function
+to control operation is much more powerful, since parameters to commands may be changed by the function.</p>
+</li>
+</ol>
+<p>The general rule during command processing is:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>If a line of <span class="codename">FISH</span> or a <span class="codename">FISH</span> function is being executed directly, then the code must be enclosed in [].</li>
+<li>If <span class="codename">FISH</span> is being substituted for a value on the command line, then the the <span class="codename">FISH</span> must be enclosed in [].</li>
+<li>If the command syntax indicates that a <span class="codename">FISH</span> symbol must follow, then the symbol name may be given directly.  It need not be enclosed by string delimiters or enclosed in [].</li>
+</ol>
+</div></blockquote>
+<p>Basically, if there is any ambiguity about whether <span class="codename">FISH</span> is expected at a given location in the command line, then it must be enclosed in [] to make it clear.</p>
+<p><span class="codename">FISH</span> code encountered during normal command processing (outside of a <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.define.html#command:fish.define" title="Define a new |FISH| function.   The function will be named  s , and must&#013;&#010;be a valid symbol name.  Tokens following are assumed to be arguments that the&#013;&#010;function will take.  Please see  fish_scripting .  [CS: this needs&#013;&#010;'common-izing  for use with PFC] and the ref-basicclifishtutorial.`"><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">define</span></code></a> or <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.operator.html#command:fish.operator" title="Define a new |FISH| operator."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">operator</span></code></a> command) that is enclosed in [] is called inline-<span class="codename">FISH</span>, or <span class="codename">FISH</span>-fragments.</p>
+<p>The primary way of executing a <span class="codename">FISH</span> function from <span class="codename">FLAC3D</span> is to give a line of fish enclosed by [] that includes the function name.
+For example the following code will execute the <span class="codename">FISH</span> function fred when encountered on the command line:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="ni">[fred]</span>
+</pre></div>
+</div>
+<p><span class="codename">FISH</span> fragments can also be executed directly as a convenient, single-line shorthand that bypasses the need to create an explicit function:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="ni">[</span><span class="k">global</span><span class="ni"> fred </span><span class="p">=</span><span class="ni"> </span><span class="k">math.cos</span><span class="p">(</span><span class="m m-Double">4.5</span><span class="p">)</span><span class="ni">]</span>
+</pre></div>
+</div>
+<p>There is another important link between <span class="codename">FISH</span> and <span class="codename">FLAC3D</span>: In a <span class="codename">FLAC3D</span> command, a <span class="codename">FISH</span> symbol (variable or function name) may
+be substituted anywhere that an input value is expected. This is a very powerful feature, because data files can
+be set up with symbols rather than with actual numbers.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="ni">[</span><span class="k">global</span><span class="ni"> fred</span><span class="p">=</span><span class="m m-Double">1</span><span class="ni">]</span>
+<span class="nb">data scalar create</span><span class="n"> </span><span class="p">(</span><span class="ni">[fred  ]</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> val </span><span class="m m-Double">0.5</span>
+<span class="nb">data scalar create</span><span class="n"> </span><span class="p">(</span><span class="ni">[fred</span><span class="o">+</span><span class="m m-Double">1</span><span class="ni">]</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> val </span><span class="m m-Double">0.5</span>
+<span class="nb">data scalar create</span><span class="n"> </span><span class="p">(</span><span class="ni">[fred</span><span class="o">+</span><span class="m m-Double">2</span><span class="ni">]</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> val </span><span class="m m-Double">0.5</span>
+<span class="nb">data scalar create</span><span class="n"> </span><span class="p">(</span><span class="ni">[fred</span><span class="o">+</span><span class="m m-Double">3</span><span class="ni">]</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> val </span><span class="m m-Double">0.5</span>
+<span class="nb">data scalar create</span><span class="n"> </span><span class="p">(</span><span class="ni">[fred</span><span class="o">+</span><span class="m m-Double">4</span><span class="ni">]</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> val </span><span class="m m-Double">0.5</span>
+</pre></div>
+</div>
+<p>In this example, the x coordinates of the scalars generated are all controlled by the inital setting of the <span class="codename">FISH</span> symbol fred.
+This extremely simple example of parameterization is a powerful feature of the language acting in combination with the data file description of the model.
+It allows quick and easy creation of models that vary within a parameter space.
+Material properties, feature size, amount of structural reinforcement, etc. are commonly parameterized at the beginning of model creation so the effect of varying those important parameters can be explored.</p>
+<p>Another important method of using a <span class="codename">FISH</span> function is to control a <span class="codename">FLAC3D</span> run or a series of <span class="codename">FLAC3D</span> operations.
+<span class="codename">FLAC3D</span> commands are placed within a <a class="reference internal" href="statements/commandendcommand.html#fish-statement-commandendcommand"><span class="std std-ref">command - endcommand</span></a> section in the function.
+The whole section may be within a loop, and parameters (local or global) may be passed to <span class="codename">FLAC3D</span> commands.</p>
+<p>A relatively simple example of this can be found in the verification problem <span class="xref std std-ref">uniaxialcompstrength</span>.</p>
+<p>Note that inline <span class="codename">FISH</span> is parsed and executed every time an attempt to evaluate the token is made, which might happen several times while the command as a whole is processed if multiple token types are accepted and each must be checked. <span class="flag3">[CS: a for instance example to illustrate would be great here]</span>  Be aware of possible side effects and efficiency issues.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="fish.html" ><span class="codename">FISH</span> Scripting Reference</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="fish_languagerules.html" accesskey="U"><span class="codename">FISH</span> Rules and Usage</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="fish_arithmetic.html"
+                           title="previous chapter"> Operators, Assignment, Conversions, and Member Access</a> |    
+       <a href="fish_splitting.html"
+                           title="next chapter">Splitting: Automatic Execution of Functions on Type Contents</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Executing FISH: Inline FISH or FISH Fragments" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

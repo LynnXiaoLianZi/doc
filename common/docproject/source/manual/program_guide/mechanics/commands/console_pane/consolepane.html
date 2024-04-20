@@ -1,0 +1,164 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The Console Pane &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../search.html" />
+    <link rel="next" title="Console Pane Toolbar" href="consoletoolbar.html" />
+    <link rel="prev" title="Commands: Additional Material" href="../commandsmoretopics.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="the-console-pane">
+<span id="theconsolepane"></span><h1>The <em>Console</em> Pane</h1>
+<div class="enlarge figure align-right" id="id1">
+<a class="reference internal image-reference" href="../../../../../../../../_images/consolepane.png"><img alt="console pane image; click to enlarge in a separate window" src="../../../../../../../../_images/consolepane.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: The <em>Console</em> pane</span></p>
+</div>
+<p>The top part of the <a class="reference internal" href="../../../../glossaryofterms.html#term-console"><span class="xref std std-term">console</span></a> (the larger part) contains messaging output.  The output portion of the pane echoes commands, provides command process status information, and shows any warnings, errors, or confirmation output that result from command processing. The lower part of the pane contains the <a class="reference internal" href="../../../../glossaryofterms.html#term-45"><span class="xref std std-term">command prompt</span></a> (e.g., <code class="kbd docutils literal"><span class="pre">udec&gt;</span></code> ). Program <a class="reference internal" href="../commands.html#frameworkcommands"><span class="std std-ref">commands</span></a> are entered at the command prompt. See the <a class="reference internal" href="../../../../commandindex.html#globalcommandindex"><span class="std std-ref">Command Index</span></a> and <a class="reference internal" href="../../../../fishindex.html#globalfishindex"><span class="std std-ref">FISH Index</span></a> for access to <em>all</em> program commands and <span class="codename">FISH</span> functions.</p>
+<p>For all command processing — whether at the command prompt or via a data file — a command may affect one or more of the following: the program state, the project state, or the model state. A good example of a command that affects the program state is <span class="fishcmd">set</span> <span class="cmdkey">log on</span>, <span class="flag3">preceding command is obsolete; update when possible</span> which causes all information that is written to the text output to be saved to a log file (the equivalent of this command may be set in the <a class="reference internal" href="../../configuration/options/options.html#dlg-options"><span class="std std-ref">Options dialog</span></a> in the “General” section). The <a class="reference internal" href="../../../../../../../kernel/doc/manual/program/commands/cmd_program.call.html#command:program.call" title="Process the specified data file(s)."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">call</span></code></a>, <a class="reference internal" href="../../../../../../../kernel/doc/manual/model/commands/cmd_model.save.html#command:model.save" title="Save all model-state information. The file  s  is created and, if no extension&#013;&#010;is provided, the extension is set to &quot;.sav&quot;. This information includes any defined&#013;&#010;|FISH| functions/variables, histories, tables, and other model components."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">save</span></code></a>, <a class="reference internal" href="../../../../../../../kernel/doc/manual/model/commands/cmd_model.restore.html#command:model.restore" title="Restore program-state information. The state information, resulting from a previous"><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">restore</span></code></a>, and <a class="reference internal" href="../../../../../../../kernel/doc/manual/model/commands/cmd_model.new.html#command:model.new" title="Clear model-state information. Model information is cleared, allowing one to&#013;&#010;begin a new"><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">new</span></code></a> commands all have implications for the project state and the model state.  All <span class="flag3">c</span> <a class="reference internal" href="../../../../../../../guimodule/doc/manual/plot/plot_commands.html#plot-commands"><span class="std std-ref">plot</span></a> commands affect only the project state. In general, all other commands are specific to the model state and will not affect either the project or the program state.  <span class="flag3">preceding information seems less than helpful; there may be a need to rethink</span></p>
+<p class="h2 rubric">Operation</p>
+<p class="h3 rubric">At the Prompt</p>
+<p>Commands are issued at the command prompt (<code class="kbd docutils literal"><span class="pre">udec&gt;</span></code> in <span class="codename">UDEC</span>) by typing them at the prompt and pressing <code class="kbd docutils literal"><span class="pre">↵Enter</span></code>.  Text at the prompt may be selected and copied; text may be pasted at the prompt as well.</p>
+<p>In addition to typing commands, there are a few other actions that may be performed.</p>
+<p>Right-clicking in the prompt options to:</p>
+<ul class="simple">
+<li>undo the last command (if possible; the command is disabled if not)</li>
+<li>redo the last command</li>
+<li>select text and cut, copy, or delete selected text (these actions are also available via keystroke command: <code class="kbd docutils literal"><span class="pre">Ctrl+X</span></code>, <code class="kbd docutils literal"><span class="pre">Ctrl+C</span></code>, <code class="kbd docutils literal"><span class="pre">Backspace</span></code> or <code class="kbd docutils literal"><span class="pre">Delete</span></code>, respectively)</li>
+<li>paste text (also available via <code class="kbd docutils literal"><span class="pre">Ctrl+V</span></code> key command)</li>
+</ul>
+<p>Four special keystroke commands at the prompt are available to provide help.</p>
+<ul class="simple">
+<li>Press <code class="kbd docutils literal"><span class="pre">Ctrl+spacebar</span></code> on the active line to access the <a class="reference internal" href="../../datafiles/editor_pane/inline_help.html#inline-help"><span class="std std-ref">Inline Help</span></a> facility.  If a recognizable command or <span class="codename">FISH</span> function is identified on the line, the tool will provide an interactive list of keywords that may be inserted at the current cursor position.  Opens to the <em>program</em> commands if there is not a recognized command on the prompt.</li>
+<li>Press <code class="kbd docutils literal"><span class="pre">F1</span></code> to open the page of documentation for the command currently in the prompt (if recognized). If the cursor is located at or after a recognized keyword, the documentation will open on the page at the specific location where the keyword is defined.  Opens to the documentation front page if there is not a recognized command on the prompt.</li>
+<li>Press <code class="kbd docutils literal"><span class="pre">?</span></code> to print a list in the console output of keywords that may be used at the current cursor position. Produces an error in a dialog <em>and</em> in console output if there is not a recognized command on the prompt.</li>
+<li>Press up and down arrow keys (<code class="kbd docutils literal"><span class="pre">↑</span></code> and <code class="kbd docutils literal"><span class="pre">↓</span></code>) to track through the list of previously issued commands.</li>
+</ul>
+<p class="h3 rubric">In the Output</p>
+<p>Operations in the output area of the <em>Console</em> pane are straightforward:</p>
+<ul class="simple">
+<li>select text (click and drag at cursor)</li>
+<li>select all text (right-click and choose “Select All”)</li>
+<li>copy (right-click and choose “Copy” when there is a selection)</li>
+<li>clear all (right-click and choose “Clear All”)</li>
+</ul>
+<p class="h3 rubric">Additional Aspects of Working in the <em>Console</em> Pane</p>
+<ul class="simple">
+<li>Appearance, length, and kind of console output may be customized by the user via the “Console” panel in the <a class="reference internal" href="../../configuration/options/options.html#dlg-options"><span class="std std-ref">Options Dialog</span></a> (on the toolbar press the “Options” button ( <img alt="opts" src="../../../../../../../../_images/options_normal.png" /> ) to access).</li>
+<li>Operations available on the toolbar when the <em>Console</em> pane is active are described in the topic <a class="reference internal" href="consoletoolbar.html#consoletoolbar"><span class="std std-ref">Console Pane Toolbar</span></a>.</li>
+<li>Output in the console can be saved to a log.  See the “General” panel in the <a class="reference internal" href="../../configuration/options/options.html#dlg-options"><span class="std std-ref">Options Dialog</span></a> or use the command <a class="reference internal" href="../../../../../../../kernel/doc/manual/program/commands/cmd_program.log.html#command:program.log" title="Turn on/off logging.  By default this setting is  off ."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">log</span></code></a> at the command prompt.</li>
+<li>Review the topic <a class="reference internal" href="console_cp.html#console-cp-top"><span class="std std-ref">Control Panel in the Console Pane</span></a> for additional facilities available when the <em>Console</em> pane is active.</li>
+</ul>
+<p class="h2 rubric">Operations <em>on</em> the <em>Console</em> Pane</p>
+<p>See the <a class="reference internal" href="../../../programwindow/panes.html#panes"><span class="std std-ref">Panes</span></a> section for information on actions that can be performed on the <em>Console</em> pane: <a class="reference internal" href="../../../programwindow/panes_moving.html#panesmoving"><span class="std std-ref">moving</span></a>, <a class="reference internal" href="../../../programwindow/panes_resizing.html#panesresizing"><span class="std std-ref">resizing</span></a>, <a class="reference internal" href="../../../programwindow/panes_floatingdocking.html#panesfloatinganddocking"><span class="std std-ref">floating</span></a>, <a class="reference internal" href="../../../programwindow/panes_floatingdocking.html#panesfloatinganddocking"><span class="std std-ref">docking</span></a>, <a class="reference internal" href="../../../programwindow/panes_showingopening.html#panesshowingandopening"><span class="std std-ref">showing/opening</span></a>, <a class="reference internal" href="../../../programwindow/panes_hidingclosing.html#paneshidingclosing"><span class="std std-ref">hiding/closing</span></a>.</p>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="consoletoolbar.html">Console Pane Toolbar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="console_cp.html">Control Panel</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../commandsmoretopics.html"
+                           title="previous chapter"> Commands: Additional Material</a> |    
+       <a href="consoletoolbar.html"
+                           title="next chapter"><em>Console</em> Pane Toolbar</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?The Console Pane" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

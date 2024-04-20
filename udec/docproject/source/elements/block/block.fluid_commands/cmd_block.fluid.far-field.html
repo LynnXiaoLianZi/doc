@@ -1,0 +1,234 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block fluid far-field command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block fluid fast-flow command" href="cmd_block.fluid.fast-flow.html" />
+    <link rel="prev" title="block fluid crack-flow command" href="cmd_block.fluid.crack-flow.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-fluid-far-field-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">fluid</span> <span class="pre">far-field</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="blockfluid command">
+<dt id="command:block.fluid.far-field">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">f</span><span class="null">l</span><span class="null">u</span><span class="null">i</span><span class="null">d</span><span class="null"> </span></span><span class="cmdname"><span class="null">f</span><span class="null">a</span><span class="null">r</span><span class="null">-</span><span class="null">f</span><span class="null">i</span><span class="null">e</span><span class="null">l</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.fluid.far-field.list" title="block fluid far-field list">list</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.fluid.far-field.permeability-xx" title="block fluid far-field permeability-xx">permeability-xx</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.fluid.far-field.permeability-xy" title="block fluid far-field permeability-xy">permeability-xy</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.fluid.far-field.permability-yy" title="block fluid far-field permability-yy">permability-yy</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.fluid.far-field.pore-pressure" title="block fluid far-field pore-pressure">pore-pressure</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.fluid.far-field.gradient-x" title="block fluid far-field gradient-x">gradient-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.fluid.far-field.gradient-y" title="block fluid far-field gradient-y">gradient-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.fluid.far-field.mesh-radius" title="block fluid far-field mesh-radius">mesh-radius</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.fluid.far-field.mesh-ratio" title="block fluid far-field mesh-ratio">mesh-ratio</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.fluid.far-field.mesh-elements" title="block fluid far-field mesh-elements">mesh-elements</a></p>
+</div>
+<p>Create a porous-medium grid around the outer boundary of the model with this command. The following keywords and associated parameters are available.</p>
+<dl class="keyword">
+<dt id="kwd:block.fluid.far-field.list">
+<span class="cmdkey"><span class="pref">l</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>List data for the porous medium outer boundary, including a listing of fluid pressures and node coordinates. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>grid node number</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>pressure at node</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>x-coordinate of node</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>y-coordinate of node</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>node pressure code:</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>0 &nbsp;&nbsp;&nbsp;&nbsp;pressure not fixed</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>1 &nbsp;&nbsp;&nbsp;&nbsp;pressure fixed</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>index of boundary corner linked to node</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.fluid.far-field.permeability-xx">
+<span class="cmdkey"><span class="pref">p</span><span class="null">e</span><span class="null">r</span><span class="null">m</span><span class="null">e</span><span class="null">a</span><span class="null">b</span><span class="null">i</span><span class="null">l</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">x</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the <span class="math">\(xx\)</span>-component of the permeability tensor.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.fluid.far-field.permeability-xy">
+<span class="cmdkey"><span class="pref">p</span><span class="null">e</span><span class="null">r</span><span class="null">m</span><span class="null">e</span><span class="null">a</span><span class="null">b</span><span class="null">i</span><span class="null">l</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">x</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the <span class="math">\(xy\)</span>-component of the permeability tensor.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.fluid.far-field.permability-yy">
+<span class="cmdkey"><span class="pref">p</span><span class="null">e</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">b</span><span class="null">i</span><span class="null">l</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">y</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the <span class="math">\(yy\)</span>-component of the permeability tensor.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.fluid.far-field.pore-pressure">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">r</span><span class="null">e</span><span class="null">-</span><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set initial fluid pressure at boundary and throughout porous-medium grid. (If a gradient is specified, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> is the pore pressure at the origin of the grid.)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.fluid.far-field.gradient-x">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify initial pressure gradient along the <span class="math">\(x\)</span>-axis.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.fluid.far-field.gradient-y">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify initial pressure gradient along the <span class="math">\(y\)</span>-axis.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.fluid.far-field.mesh-radius">
+<span class="cmdkey"><span class="pref">m</span><span class="null">e</span><span class="null">s</span><span class="null">h</span><span class="null">-</span><span class="pref">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">u</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify total radius of mesh, with origin at the centroid of the block.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.fluid.far-field.mesh-ratio">
+<span class="cmdkey"><span class="pref">m</span><span class="null">e</span><span class="null">s</span><span class="null">h</span><span class="null">-</span><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify the ratio between radial size of an element on adjacent element. (The default <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> = 1.)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.fluid.far-field.mesh-elements">
+<span class="cmdkey"><span class="pref">m</span><span class="null">e</span><span class="null">s</span><span class="null">h</span><span class="null">-</span><span class="pref">e</span><span class="null">l</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the number of radial elements around the outer boundary. (The default is <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> = <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">2</span></span></a>.)</p>
+</dd></dl>
+
+<div class="admonition-notes admonition">
+<p class="first admonition-title">Notes</p>
+<ol class="last arabic simple">
+<li>Nodes at the outer boundary of the grid retain a fixed fluid pressure.</li>
+<li>The fluid boundary must be created for a single-block system (i.e., before any joints are created). The number of fluid-boundary zones in a circumferential direction is equal to the number of sides between corners on the single block that is created. Use the <a class="reference internal" href="../block_commands/cmd_block.create.html#kwd:block.create.corner-angle" title="Corners are added to the block on straight edges so that any angle with its&#013;&#010;sides on two consecutive corners and its apex at the block's center never exceeds&#013;&#010; f ."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">create</span> <span class="pre">corner-angle</span></code></a> command to control the number of corners.</li>
+<li>A <a class="reference internal" href="../block.edge_commands/cmd_block.edge.list.html#command:block.edge.apply" title="Display boundary condition information.  The foollowing keywords maye be used&#013;&#010;to display the information separately."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">edge</span> <span class="pre">apply</span></code></a> or a <a class="reference internal" href="../block.gridpoint_commands/cmd_block.gridpoint.apply.html#command:block.gridpoint.apply" title="Boundary conditions are specified for an external boundary over a specified&#013;&#010;range. If BLOCK CONFIG CELL has been specified, boundary commands will apply&#013;&#010;to the outer edges of all blocks with the range.  Otherwise the boundary conditions&#013;&#010;are applied only to the outside edges of the model. If the range is omitted,&#013;&#010;the boundary condition applies to the entire model boundary. Boundary forces&#013;&#010;can be applied to both rigid and deformable blocks. Boundary velocities"><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">gridpoint</span> <span class="pre">apply</span></code></a> command must be given before cycling, because this boundary serves to transfer information between the flow calculations in the rock joints and the flow calculation in the porous-medium region. For example, the command BLOCK EDGE  pore-pressue = 0 will establish the boundary linked list.</li>
+<li>At present, the porous-medium logic is only intended for steady-state flow analysis; a relaxation factor is used for convergence.</li>
+<li>The formulation is small-strain only; it does not allow for changes in boundary linkages.</li>
+<li>The formulation is for fully saturated flow. No free-flow surface may be modeled.</li>
+<li>See Section 2.2.7 in Special Features for an explanation of the formulation, and example applications.</li>
+</ol>
+</div>
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../block_commands/block_commands.html" >Block Commands</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../block_commands/cmd_block.fluid.html" accesskey="U"><span class="fishcmd">block fluid</span> commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_block.fluid.crack-flow.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">fluid</span> <span class="pre">crack-flow</span></code> command</a> |    
+       <a href="cmd_block.fluid.fast-flow.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">block</span> <span class="pre">fluid</span> <span class="pre">fast-flow</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block fluid far-field command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

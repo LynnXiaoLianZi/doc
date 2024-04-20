@@ -1,0 +1,192 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>structure link create command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="structure-link-create-command">
+<h1><code class="docutils literal"><span class="pre">structure</span> <span class="pre">link</span> <span class="pre">create</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="structurelink command">
+<dt id="command:structure.link.create">
+<span class="cmdname"><span class="pref">s</span><span class="pref">t</span><span class="pref">r</span><span class="null">u</span><span class="null">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">l</span><span class="pref">i</span><span class="pref">n</span><span class="pref">k</span><span class="null"> </span></span><span class="cmdname"><span class="pref">c</span><span class="null">r</span><span class="null">e</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:structure.link.create.default-attach" title="structure link create default-attach">default-attach</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.link.create.on-nodeid" title="structure link create on-nodeid">on-nodeid</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.link.create.offset" title="structure link create offset">offset</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.link.create.side" title="structure link create side">side</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.link.create.target" title="structure link create target">target</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.link.create.target-range" title="structure link create target-range">target-range</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.link.create.group" title="structure link create group">group</a></p>
+</div>
+<p>Creates new links on structure nodes in the range. If the node already has a link associated with it, this will be ignored. Existing links can be removed with the <a class="reference internal" href="cmd_structure.link.delete.html#command:structure.link.delete" title="Delete all links in the range."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">link</span> <span class="pre">delete</span></code></a> command. If source and target ID numbers are not supplied, then the command will automatically look for valid targets on all potential new links in the range.</p>
+<dl class="keyword">
+<dt id="kwd:structure.link.create.default-attach">
+<span class="cmdkey"><span class="pref">d</span><span class="null">e</span><span class="null">f</span><span class="null">a</span><span class="null">u</span><span class="null">l</span><span class="null">t</span><span class="null">-</span><span class="pref">a</span><span class="null">t</span><span class="null">t</span><span class="null">a</span><span class="null">c</span><span class="null">h</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><p>By default a new link created with this command is given rigid connections in all six degrees-of-freedom if created on side on, and free connection in all six if created on side two. By setting this keyword to <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">true</span></span></a>, links created will be given the default attachment conditions associated with the first element their host node is connected to. This is not compatible with <span class="cmdkey">target</span> <span class="cmdkey">node</span>.
+Please note that this is required for elements to pass property values to the link models in individual degrees-of-freedom. If not done, this will not happen even if the link models match those expected by the element.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.link.create.on-nodeid">
+<span class="cmdkey"><span class="pref">o</span><span class="null">n</span><span class="null">-</span><span class="pref">n</span><span class="null">o</span><span class="null">d</span><span class="null">e</span><span class="null">i</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify a specific node component-id number on which to create a link. If this keyword is used, the range phrase is not used. If the <span class="cmdkey">target</span> keyword is used with a specific id supplied, <span class="cmdkey">on-nodeid</span> must be used to specify the source node.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.link.create.offset">
+<span class="cmdkey"><span class="pref">o</span><span class="null">f</span><span class="null">f</span><span class="null">s</span><span class="null">e</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>When a specific target has not been specified, an offset vector can be used to search for a node or zone that does not lie in the location of the source node. The location checked will be the source node position plus the offset vector <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span></span></a>. Note that if a zone is the target and an offset is used, then the large strain sliding update should be turned off using the <span class="cmdkey">sliding</span> property of the element.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.link.create.side">
+<span class="cmdkey"><span class="pref">s</span><span class="null">i</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify on which side (side number can be 1 to N) of a node attached to an embedded liner element the link should attach to. The default is side <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">1</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.link.create.target">
+<span class="cmdkey"><span class="pref">t</span><span class="null">a</span><span class="null">r</span><span class="null">g</span><span class="null">e</span><span class="null">t</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Identify the target entity. The default target <span class="cmdkey">zone</span> will be used if <span class="cmdkey">target</span> is not supplied.</p>
+<dl class="keyword">
+<dt id="kwd:structure.link.create.target.zone">
+<span class="cmdkey"><span class="pref">z</span><span class="null">o</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Specify the link(s) should look for a zone target. If <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> is not specified, then a non-null zone that is within a distance <span class="math">\(\delta\)</span> of the source node is utilized. If <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> is specified, then that zone is used if it is non-null and the source node is within a distance <span class="math">\(\delta\)</span> of its boundary. (See the preceding discussion for a definition of <span class="math">\(\delta\)</span>.)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.link.create.target.node">
+<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Specify that the link(s) should look for a node target. If <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> is not specified, then a node that is within a distance <span class="math">\(\delta\)</span> of the source node is utilized. If <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> is specified, then the two nodes must be near to each other for a link to be created. Near is defined as being within a distance <span class="math">\(\delta\)</span> of one another, where <span class="math">\(\delta\)</span> is the global value of node tolerance (see the <a class="reference internal" href="cmd_structure.link.tolerance-contact.html#command:structure.link.tolerance-contact" title="Set the tolerance used when establishing node-to-zone links. A node is considered&#013;&#010;to be in a zone if it is within a distance `d` of the zone boundary, where δ&#013;&#010;equals  f  times zone size (taken as the maximum `x`\ -, `y`\ -, or `z`\&#013;&#010;-dimension of the zone bounding box). Nodes that are used by elements with their&#013;&#010;sliding flag on will utilize  structure.link.tolerance-slide  instead of&#013;&#010; f  when attempting to update the zone interpolation"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">link</span> <span class="pre">tolerance-contact</span></code></a> command). The attachment conditions of the new link are set to “rigid” for all six directions if the link is on side <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">1</span></span></a>, and “free” if the link is on side <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">2</span></span></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.link.create.target-range">
+<span class="cmdkey"><span class="pref">t</span><span class="null">a</span><span class="null">r</span><span class="null">g</span><span class="null">e</span><span class="null">t</span><span class="null">-</span><span class="pref">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span></dt>
+<dd><p>Specify a range that will be used to filter target objects (specified by the <span class="cmdkey">target</span> keyword). Only objects that fall within the range will be considered for link creation. By default all objects of that type will be considered.</p>
+<p>See the <a class="reference internal" href="../../../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html#rangekeyword"><span class="std std-ref">Range Phrase</span></a> documentation for the list of range elements and control keywords that may be included in a range phrase. Note the keyword <span class="cmdkey">range</span> is not used in this context.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.link.create.group">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s1</span><span class="null"> </span></span></a><span class="cmdopt"><<span class="cmdkey"><span class="pref">s</span><span class="null">l</span><span class="null">o</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s2</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Assign the created link to the group named <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s1</span></span></a>. If the optional <span class="cmdkey">slot</span> <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s2</span></span></a> is supplied, the group is assigned to the slot named <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s2</span></span></a>; if omitted, the group is assigned to the slot named <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">Default</span></span></a>. Use of the group logic is described in <a class="reference internal" href="../../../../../../module/doc/manual/group_manual/groupkwd.html#group-manual"><span class="std std-ref">Groups</span></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p class="h2 rubric">Usage Example</p>
+<p>The following example will create a link to zones on all links on side <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">2</span></span></a> of nodes connected to liner elements that have been assigned the group name <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">First</span></span></a>.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">structure link create</span><span class="n"> target zone side </span><span class="m m-Double">2</span><span class="n"> range group </span><span class="s">&#39;First&#39;</span>
+</pre></div>
+</div>
+<p>The following example will create a link to nodes, if there is another node at that location, for all nodes associated with the group name <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">Connection</span></span></a>.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">structure link create</span><span class="n"> target node range group </span><span class="s">&#39;Connection&#39;</span>
+</pre></div>
+</div>
+<p>The following example will create a link between the node with component-id <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">5</span></span></a> and the first node found within a tolerance of its location.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">structure link create</span><span class="n"> </span><span class="sx">on</span><span class="o">-</span><span class="n">nodeid </span><span class="m m-Double">5</span><span class="n"> target node</span>
+</pre></div>
+</div>
+<p>The following example will create a link between the node with component-id <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">5</span></span></a> and the node with component-id <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">16</span></span></a>.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">structure link create</span><span class="n"> </span><span class="sx">on</span><span class="o">-</span><span class="n">nodeid </span><span class="m m-Double">5</span><span class="n"> target node </span><span class="m m-Double">16</span>
+</pre></div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?structure link create command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

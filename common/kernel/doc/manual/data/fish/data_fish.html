@@ -1,0 +1,390 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FISH Functions &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="data.label.arrow" href="data.label_utilities/fish_data.label.arrow.html" />
+    <link rel="prev" title="data vector results command" href="../commands/cmd_data.vector.results.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fish-functions">
+<span id="data-fish"></span><h1><span class="codename">FISH</span> Functions</h1>
+<p>The type specifiers used in the <span class="codename">FISH</span> function signatures are given in the “<a class="reference internal" href="../../../../../docproject/source/manual/scripting/fish_scripting/fish_types.html#fish-variabletypes"><span class="std std-ref">FISH Type Index</span></a>” section.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#data-label-utilities"><span class="std std-ref">Data Label Utilities</span></a></li>
+<li><a class="reference internal" href="#data-scalar-utilities"><span class="std std-ref">Data Scalar Utilities</span></a></li>
+<li><a class="reference internal" href="#data-tensor-utilities"><span class="std std-ref">Data Tensor Utilities</span></a></li>
+<li><a class="reference internal" href="#data-vector-utilities"><span class="std std-ref">Data Vector Utilities</span></a></li>
+</ul>
+<div class="section" id="label-functions">
+<span id="data-label-utilities"></span><h2>Label Functions</h2>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="data.label_utilities/fish_data.label.arrow.html#data.label.arrow" title="Get/set arrow status. If  b  is true, then the line associated with the label&#013;&#010;(if it exists) is drawn as an arrow. Otherwise, it is drawn as a simple line."><span class="fishcmd">data.label.arrow</span><span class="fishparamlist"><big>(</big><span class="null">UDL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.label_utilities/fish_data.label.create.html#data.label.create" title="Create a label."><span class="fishcmd">data.label.create</span><span class="fishparamlist"><big>(</big><span class="null">VEC</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT/STR</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.label_utilities/fish_data.label.delete.html#data.label.delete" title="Delete a label."><span class="fishcmd">data.label.delete</span><span class="fishparamlist"><big>(</big><span class="null">UDL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.label_utilities/fish_data.label.end.html#data.label.end" title="Get/set the end position. If the optional end position is different from the&#013;&#010;value returned by  data.label.pos , then an arrow is drawn with the label."><span class="fishcmd">data.label.end</span><span class="fishparamlist"><big>(</big><span class="null">UDL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.label_utilities/fish_data.label.find.html#data.label.find" title="Find a label. If the label does not exist a new label is created."><span class="fishcmd">data.label.find</span><span class="fishparamlist"><big>(</big><span class="null">INT/STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.label_utilities/fish_data.label.group.html#data.label.group" title="Get/set the group name assigned to label  lp  in slot  slot , if provided. The&#013;&#010;slot named  'Default'  is used by default if  slot  is not provided."><span class="fishcmd">data.label.group</span><span class="fishparamlist"><big>(</big><span class="null">UDL_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR/IND</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.label_utilities/fish_data.label.group.remove.html#data.label.group.remove" title="Remove the group  s  from the label in  any  slot. The removal of  s  will only&#013;&#010;occur in  slot , if provided."><span class="fishcmd">data.label.group.remove</span><span class="fishparamlist"><big>(</big><span class="null">UDL_PNT</span><span class="null">,</span><span class="null">STR/IND</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR/IND</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.label_utilities/fish_data.label.head.html#data.label.head" title="Get the head of the global label list. Use the  data.label.next  construct to&#013;&#010;iterate through the list."><span class="fishcmd">data.label.head</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.label_utilities/fish_data.label.isgroup.html#data.label.isgroup" title="Check if the group  s  is associated with the label and return  true  if a match&#013;&#010;is found in  any  slot. The check for  s  will only occur in  slot , if provided."><span class="fishcmd">data.label.isgroup</span><span class="fishparamlist"><big>(</big><span class="null">UDL_PNT</span><span class="null">,</span><span class="null">STR/IND</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR/IND</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.label_utilities/fish_data.label.list.html#data.label.list" title="Get the global label list. Use the  loop foreach  construct to iterate through&#013;&#010;the list."><span class="fishcmd">data.label.list</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.label_utilities/fish_data.label.maxid.html#data.label.maxid" title="Get the maximum label ID."><span class="fishcmd">data.label.maxid</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.label_utilities/fish_data.label.name.html#data.label.name" title="Get the label name."><span class="fishcmd">data.label.name</span><span class="fishparamlist"><big>(</big><span class="null">UDL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.label_utilities/fish_data.label.next.html#data.label.next" title="Get the next label. Returns null if there are no more labels in the global list."><span class="fishcmd">data.label.next</span><span class="fishparamlist"><big>(</big><span class="null">UDL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.label_utilities/fish_data.label.num.html#data.label.num" title="Get the number of labels."><span class="fishcmd">data.label.num</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.label_utilities/fish_data.label.pos.html#data.label.pos" title="Get/set the position. The text and a line or arrow are drawn from this position&#013;&#010;to the end position (specified with  data.label.end )."><span class="fishcmd">data.label.pos</span><span class="fishparamlist"><big>(</big><span class="null">UDL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.label_utilities/fish_data.label.text.html#data.label.text" title="Get/set the label text. This is optional (e.g., if set to “”, no text will be&#013;&#010;drawn), and will be drawn at the label position."><span class="fishcmd">data.label.text</span><span class="fishparamlist"><big>(</big><span class="null">UDL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.label_utilities/fish_data.label.typeid.html#data.label.typeid" title="Get the label type ID number. The type ID can be used to uniquely identify label&#013;&#010; FISH  pointers and distinguish them from any other type of  FISH  pointer."><span class="fishcmd">data.label.typeid</span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data.label_utilities/fish_data.label.arrow.html"><code class="docutils literal"><span class="pre">data.label.arrow</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.label_utilities/fish_data.label.create.html"><code class="docutils literal"><span class="pre">data.label.create</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.label_utilities/fish_data.label.delete.html"><code class="docutils literal"><span class="pre">data.label.delete</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.label_utilities/fish_data.label.end.html"><code class="docutils literal"><span class="pre">data.label.end</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.label_utilities/fish_data.label.find.html"><code class="docutils literal"><span class="pre">data.label.find</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.label_utilities/fish_data.label.group.html"><code class="docutils literal"><span class="pre">data.label.group</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.label_utilities/fish_data.label.group.remove.html"><code class="docutils literal"><span class="pre">data.label.group.remove</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.label_utilities/fish_data.label.head.html"><code class="docutils literal"><span class="pre">data.label.head</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.label_utilities/fish_data.label.isgroup.html"><code class="docutils literal"><span class="pre">data.label.isgroup</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.label_utilities/fish_data.label.list.html"><code class="docutils literal"><span class="pre">data.label.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.label_utilities/fish_data.label.maxid.html"><code class="docutils literal"><span class="pre">data.label.maxid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.label_utilities/fish_data.label.name.html"><code class="docutils literal"><span class="pre">data.label.name</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.label_utilities/fish_data.label.next.html"><code class="docutils literal"><span class="pre">data.label.next</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.label_utilities/fish_data.label.num.html"><code class="docutils literal"><span class="pre">data.label.num</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.label_utilities/fish_data.label.pos.html"><code class="docutils literal"><span class="pre">data.label.pos</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.label_utilities/fish_data.label.text.html"><code class="docutils literal"><span class="pre">data.label.text</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.label_utilities/fish_data.label.typeid.html"><code class="docutils literal"><span class="pre">data.label.typeid</span></code></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="scalar-functions">
+<span id="data-scalar-utilities"></span><h2>Scalar Functions</h2>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.create.html#data.scalar.create" title="Create a scalar. The position of the scalar is  v , and the scalar value is&#013;&#010;set to 0.0."><span class="fishcmd">data.scalar.create</span><span class="fishparamlist"><big>(</big><span class="null">VEC</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.delete.html#data.scalar.delete" title="Delete the scalar."><span class="fishcmd">data.scalar.delete</span><span class="fishparamlist"><big>(</big><span class="null">UDS_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.extra.html#data.scalar.extra" title="Get/set a scalar extra variable."><span class="fishcmd">data.scalar.extra</span><span class="fishparamlist"><big>(</big><span class="null">UDS_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.find.html#data.scalar.find" title="Find a scalar."><span class="fishcmd">data.scalar.find</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.group.html#data.scalar.group" title="Get/set the group name assigned to scalar  sp  in slot  slot , if provided.&#013;&#010;The slot named  'Default'  is used by default if  slot  is not provided."><span class="fishcmd">data.scalar.group</span><span class="fishparamlist"><big>(</big><span class="null">UDS_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR/IND</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.group.remove.html#data.scalar.group.remove" title="Remove the group  s  from the scalar in  any  slot. The removal of  s  will&#013;&#010;only occur in  slot , if provided."><span class="fishcmd">data.scalar.group.remove</span><span class="fishparamlist"><big>(</big><span class="null">UDS_PNT</span><span class="null">,</span><span class="null">STR/IND</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR/IND</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.head.html#data.scalar.head" title="Get the head of the global list of scalars. Use  data.scalar.next  to iterate&#013;&#010;through the list."><span class="fishcmd">data.scalar.head</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.id.html#data.scalar.id" title="Get the scalar ID."><span class="fishcmd">data.scalar.id</span><span class="fishparamlist"><big>(</big><span class="null">UDS_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.isgroup.html#data.scalar.isgroup" title="Check if the group  s  is associated with the scalar and return  true  if a&#013;&#010;match is found in  any  slot. The check for  s  will only occur in  slot , if&#013;&#010;provided."><span class="fishcmd">data.scalar.isgroup</span><span class="fishparamlist"><big>(</big><span class="null">UDS_PNT</span><span class="null">,</span><span class="null">STR/IND</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR/IND</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.list.html#data.scalar.list" title="Get the global scalar list. Use the  loop foreach  construct to iterate through&#013;&#010;the list."><span class="fishcmd">data.scalar.list</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.maxid.html#data.scalar.maxid" title="Get the maximum scalar ID."><span class="fishcmd">data.scalar.maxid</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.near.html#data.scalar.near" title="Find the closest scalar to a point. If  f  is specified, then the search radius&#013;&#010;is limited."><span class="fishcmd">data.scalar.near</span><span class="fishparamlist"><big>(</big><span class="null">VEC</span><span class="cmdopt"><<span class="null">,</span><span class="null">FLT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.next.html#data.scalar.next" title="Get the next scalar. Returns null if there are no more scalars."><span class="fishcmd">data.scalar.next</span><span class="fishparamlist"><big>(</big><span class="null">UDS_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.num.html#data.scalar.num" title="Get the number of scalars."><span class="fishcmd">data.scalar.num</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.pos.html#data.scalar.pos" title="Get/set the scalar position."><span class="fishcmd">data.scalar.pos</span><span class="fishparamlist"><big>(</big><span class="null">UDS_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.typeid.html#data.scalar.typeid" title="Get the scalar type ID number. The type ID can be used to uniquely identify&#013;&#010;scalar  FISH  pointers and distinguish them from any other type of  FISH  pointer."><span class="fishcmd">data.scalar.typeid</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.value.html#data.scalar.value" title="Get/set the scalar value."><span class="fishcmd">data.scalar.value</span><span class="fishparamlist"><big>(</big><span class="null">UDS_PNT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.create.html"><code class="docutils literal"><span class="pre">data.scalar.create</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.delete.html"><code class="docutils literal"><span class="pre">data.scalar.delete</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.extra.html"><code class="docutils literal"><span class="pre">data.scalar.extra</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.find.html"><code class="docutils literal"><span class="pre">data.scalar.find</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.group.html"><code class="docutils literal"><span class="pre">data.scalar.group</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.group.remove.html"><code class="docutils literal"><span class="pre">data.scalar.group.remove</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.head.html"><code class="docutils literal"><span class="pre">data.scalar.head</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.id.html"><code class="docutils literal"><span class="pre">data.scalar.id</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.isgroup.html"><code class="docutils literal"><span class="pre">data.scalar.isgroup</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.list.html"><code class="docutils literal"><span class="pre">data.scalar.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.maxid.html"><code class="docutils literal"><span class="pre">data.scalar.maxid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.near.html"><code class="docutils literal"><span class="pre">data.scalar.near</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.next.html"><code class="docutils literal"><span class="pre">data.scalar.next</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.num.html"><code class="docutils literal"><span class="pre">data.scalar.num</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.pos.html"><code class="docutils literal"><span class="pre">data.scalar.pos</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.typeid.html"><code class="docutils literal"><span class="pre">data.scalar.typeid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.scalar_utilities/fish_data.scalar.value.html"><code class="docutils literal"><span class="pre">data.scalar.value</span></code></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="tensor-functions">
+<span id="data-tensor-utilities"></span><h2>Tensor Functions</h2>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.create.html#data.tensor.create" title="Create a tensor. The position of the tensor is  v , and all components of the&#013;&#010;tensor value are set to 0.0."><span class="fishcmd">data.tensor.create</span><span class="fishparamlist"><big>(</big><span class="null">VEC</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.delete.html#data.tensor.delete" title="Delete the tensor."><span class="fishcmd">data.tensor.delete</span><span class="fishparamlist"><big>(</big><span class="null">UDT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.extra.html#data.tensor.extra" title="Get/set a tensor extra variable."><span class="fishcmd">data.tensor.extra</span><span class="fishparamlist"><big>(</big><span class="null">UDT_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.find.html#data.tensor.find" title="Find a tensor."><span class="fishcmd">data.tensor.find</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.group.html#data.tensor.group" title="Get/set the group name assigned to tensor  tp  in slot  slot , if provided.&#013;&#010;The slot named  'Default'  is used by default if  slot  is not provided."><span class="fishcmd">data.tensor.group</span><span class="fishparamlist"><big>(</big><span class="null">UDT_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR/IND</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.group.remove.html#data.tensor.group.remove" title="Remove the group  s  from the tensor in  any  slot. The removal of  s  will&#013;&#010;only occur in  slot , if provided."><span class="fishcmd">data.tensor.group.remove</span><span class="fishparamlist"><big>(</big><span class="null">UDT_PNT</span><span class="null">,</span><span class="null">STR/IND</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR/IND</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.head.html#data.tensor.head" title="Get the head of the global list of tensors. Use  data.tensor.next  to iterate&#013;&#010;through the list."><span class="fishcmd">data.tensor.head</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.id.html#data.tensor.id" title="Get the tensor ID."><span class="fishcmd">data.tensor.id</span><span class="fishparamlist"><big>(</big><span class="null">UDT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.isgroup.html#data.tensor.isgroup" title="Check if the group  s  is associated with the tensor and return  true  if a&#013;&#010;match is found in  any  slot. The check for  s  will only occur in  slot , if&#013;&#010;provided."><span class="fishcmd">data.tensor.isgroup</span><span class="fishparamlist"><big>(</big><span class="null">UDT_PNT</span><span class="null">,</span><span class="null">STR/IND</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR/IND</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.list.html#data.tensor.list" title="Get the global tensor list. Use the  loop foreach  construct to iterate through&#013;&#010;the list."><span class="fishcmd">data.tensor.list</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.maxid.html#data.tensor.maxid" title="Get the maximum tensor ID."><span class="fishcmd">data.tensor.maxid</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.near.html#data.tensor.near" title="Find the closest tensor to a point. If  f  is specified, then the search radius&#013;&#010;is limited."><span class="fishcmd">data.tensor.near</span><span class="fishparamlist"><big>(</big><span class="null">VEC</span><span class="cmdopt"><<span class="null">,</span><span class="null">FLT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.next.html#data.tensor.next" title="Get the next tensor. Returns null if there are no more scalars."><span class="fishcmd">data.tensor.next</span><span class="fishparamlist"><big>(</big><span class="null">UDT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.num.html#data.tensor.num" title="Get the number of tensors."><span class="fishcmd">data.tensor.num</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.pos.html#data.tensor.pos" title="Get/set the tensor position."><span class="fishcmd">data.tensor.pos</span><span class="fishparamlist"><big>(</big><span class="null">UDT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.typeid.html#data.tensor.typeid" title="Get the tensor type ID number. The type ID can be used to uniquely identify&#013;&#010;tensor  FISH  pointers and distinguish them from any other type of  FISH  pointer."><span class="fishcmd">data.tensor.typeid</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.value.html#data.tensor.value" title="Get/set the tensor value."><span class="fishcmd">data.tensor.value</span><span class="fishparamlist"><big>(</big><span class="null">UDT_PNT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.create.html"><code class="docutils literal"><span class="pre">data.tensor.create</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.delete.html"><code class="docutils literal"><span class="pre">data.tensor.delete</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.extra.html"><code class="docutils literal"><span class="pre">data.tensor.extra</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.find.html"><code class="docutils literal"><span class="pre">data.tensor.find</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.group.html"><code class="docutils literal"><span class="pre">data.tensor.group</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.group.remove.html"><code class="docutils literal"><span class="pre">data.tensor.group.remove</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.head.html"><code class="docutils literal"><span class="pre">data.tensor.head</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.id.html"><code class="docutils literal"><span class="pre">data.tensor.id</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.isgroup.html"><code class="docutils literal"><span class="pre">data.tensor.isgroup</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.list.html"><code class="docutils literal"><span class="pre">data.tensor.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.maxid.html"><code class="docutils literal"><span class="pre">data.tensor.maxid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.near.html"><code class="docutils literal"><span class="pre">data.tensor.near</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.next.html"><code class="docutils literal"><span class="pre">data.tensor.next</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.num.html"><code class="docutils literal"><span class="pre">data.tensor.num</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.pos.html"><code class="docutils literal"><span class="pre">data.tensor.pos</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.typeid.html"><code class="docutils literal"><span class="pre">data.tensor.typeid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.tensor_utilities/fish_data.tensor.value.html"><code class="docutils literal"><span class="pre">data.tensor.value</span></code></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="vector-functions">
+<span id="data-vector-utilities"></span><h2>Vector Functions</h2>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="data.vector_utilities/fish_data.vector.create.html#data.vector.create" title="Create a vector. The position of the vector is  v , and the vector value is&#013;&#010;set to {(0.0,0.0) in 2D; (0.0,0.0,0.0) in 3D}."><span class="fishcmd">data.vector.create</span><span class="fishparamlist"><big>(</big><span class="null">VEC</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.vector_utilities/fish_data.vector.ddir.html#data.vector.ddir" title="Get/set the vector dip direction. This can be modified without modifying the&#013;&#010;dip or the magnitude of the vector."><span class="fishcmd">data.vector.ddir</span><span class="fishparamlist"><big>(</big><span class="null">UDV_PNT</span><big>)</big></span></a><span class="cmdextra">(<span class="cmdextraparam">3D only</span>)</span></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.vector_utilities/fish_data.vector.delete.html#data.vector.delete" title="Delete the vector."><span class="fishcmd">data.vector.delete</span><span class="fishparamlist"><big>(</big><span class="null">UDV_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.vector_utilities/fish_data.vector.dip.html#data.vector.dip" title="Get/set the vector dip. This can be modified without modifying the dip direction&#013;&#010;or the magnitude of the vector."><span class="fishcmd">data.vector.dip</span><span class="fishparamlist"><big>(</big><span class="null">UDV_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.vector_utilities/fish_data.vector.extra.html#data.vector.extra" title="Get/set a vector extra variable."><span class="fishcmd">data.vector.extra</span><span class="fishparamlist"><big>(</big><span class="null">UDV_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.vector_utilities/fish_data.vector.find.html#data.vector.find" title="Find a vector."><span class="fishcmd">data.vector.find</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.vector_utilities/fish_data.vector.group.html#data.vector.group" title="Get/set the group name assigned to vector  vp  in slot  slot , if provided.&#013;&#010;The slot named  'Default'  is used by default if  slot  is not provided."><span class="fishcmd">data.vector.group</span><span class="fishparamlist"><big>(</big><span class="null">UDV_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR/IND</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.vector_utilities/fish_data.vector.group.remove.html#data.vector.group.remove" title="Remove the group  s  from the vector in  any  slot. The removal of  s  will&#013;&#010;only occur in  slot , if provided."><span class="fishcmd">data.vector.group.remove</span><span class="fishparamlist"><big>(</big><span class="null">UDV_PNT</span><span class="null">,</span><span class="null">STR/IND</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR/IND</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.vector_utilities/fish_data.vector.head.html#data.vector.head" title="Get the head of the global list of vectors. Use  data.vector.next  to iterate&#013;&#010;through the list."><span class="fishcmd">data.vector.head</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.vector_utilities/fish_data.vector.id.html#data.vector.id" title="Get the vector ID."><span class="fishcmd">data.vector.id</span><span class="fishparamlist"><big>(</big><span class="null">UDV_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.vector_utilities/fish_data.vector.isgroup.html#data.vector.isgroup" title="Check if the group  s  is associated with the vector and return  true  if a&#013;&#010;match is found in  any  slot. The check for  s  will only occur in  slot , if&#013;&#010;provided."><span class="fishcmd">data.vector.isgroup</span><span class="fishparamlist"><big>(</big><span class="null">UDV_PNT</span><span class="null">,</span><span class="null">STR/IND</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR/IND</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.vector_utilities/fish_data.vector.list.html#data.vector.list" title="Get the global vector list. Use the  loop foreach  construct to iterate through&#013;&#010;the list."><span class="fishcmd">data.vector.list</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.vector_utilities/fish_data.vector.maxid.html#data.vector.maxid" title="Get the maximum vector ID."><span class="fishcmd">data.vector.maxid</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.vector_utilities/fish_data.vector.near.html#data.vector.near" title="Find the closest vector to a point. If  f  is specified, then the search radius&#013;&#010;is limited."><span class="fishcmd">data.vector.near</span><span class="fishparamlist"><big>(</big><span class="null">VEC</span><span class="cmdopt"><<span class="null">,</span><span class="null">FLT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.vector_utilities/fish_data.vector.next.html#data.vector.next" title="Get the next vector. Returns null if no more vectors exist in the global list."><span class="fishcmd">data.vector.next</span><span class="fishparamlist"><big>(</big><span class="null">UDV_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.vector_utilities/fish_data.vector.num.html#data.vector.num" title="Get the number of vectors."><span class="fishcmd">data.vector.num</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.vector_utilities/fish_data.vector.pos.html#data.vector.pos" title="Get/set the vector position."><span class="fishcmd">data.vector.pos</span><span class="fishparamlist"><big>(</big><span class="null">UDV_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="data.vector_utilities/fish_data.vector.typeid.html#data.vector.typeid" title="Get the vector type ID number. The type ID can be used to uniquely identify&#013;&#010;vector  FISH  pointers and distinguish them from any other type of  FISH  pointer."><span class="fishcmd">data.vector.typeid</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="data.vector_utilities/fish_data.vector.value.html#data.vector.value" title="Get/set the vector value."><span class="fishcmd">data.vector.value</span><span class="fishparamlist"><big>(</big><span class="null">UDV_PNT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data.vector_utilities/fish_data.vector.create.html"><code class="docutils literal"><span class="pre">data.vector.create</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.vector_utilities/fish_data.vector.ddir.html"><code class="docutils literal"><span class="pre">data.vector.ddir</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.vector_utilities/fish_data.vector.delete.html"><code class="docutils literal"><span class="pre">data.vector.delete</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.vector_utilities/fish_data.vector.dip.html"><code class="docutils literal"><span class="pre">data.vector.dip</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.vector_utilities/fish_data.vector.extra.html"><code class="docutils literal"><span class="pre">data.vector.extra</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.vector_utilities/fish_data.vector.find.html"><code class="docutils literal"><span class="pre">data.vector.find</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.vector_utilities/fish_data.vector.group.html"><code class="docutils literal"><span class="pre">data.vector.group</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.vector_utilities/fish_data.vector.group.remove.html"><code class="docutils literal"><span class="pre">data.vector.group.remove</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.vector_utilities/fish_data.vector.head.html"><code class="docutils literal"><span class="pre">data.vector.head</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.vector_utilities/fish_data.vector.id.html"><code class="docutils literal"><span class="pre">data.vector.id</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.vector_utilities/fish_data.vector.isgroup.html"><code class="docutils literal"><span class="pre">data.vector.isgroup</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.vector_utilities/fish_data.vector.list.html"><code class="docutils literal"><span class="pre">data.vector.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.vector_utilities/fish_data.vector.maxid.html"><code class="docutils literal"><span class="pre">data.vector.maxid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.vector_utilities/fish_data.vector.near.html"><code class="docutils literal"><span class="pre">data.vector.near</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.vector_utilities/fish_data.vector.next.html"><code class="docutils literal"><span class="pre">data.vector.next</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.vector_utilities/fish_data.vector.num.html"><code class="docutils literal"><span class="pre">data.vector.num</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.vector_utilities/fish_data.vector.pos.html"><code class="docutils literal"><span class="pre">data.vector.pos</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.vector_utilities/fish_data.vector.typeid.html"><code class="docutils literal"><span class="pre">data.vector.typeid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.vector_utilities/fish_data.vector.value.html"><code class="docutils literal"><span class="pre">data.vector.value</span></code></a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../data.html" accesskey="U">Data</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../commands/cmd_data.vector.results.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">data</span> <span class="pre">vector</span> <span class="pre">results</span></code> command</a> |    
+       <a href="data.label_utilities/fish_data.label.arrow.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">data.label.arrow</span></code></a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?FISH Functions" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

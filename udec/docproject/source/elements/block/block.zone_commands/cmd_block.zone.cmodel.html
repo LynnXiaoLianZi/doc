@@ -1,0 +1,339 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block zone cmodel command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block zone generate command" href="cmd_block.zone.generate.html" />
+    <link rel="prev" title="block zone commands" href="../block_commands/cmd_block.zone.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-zone-cmodel-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">cmodel</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="blockzone command">
+<dt id="command:block.zone.cmodel">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">z</span><span class="null">o</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="null">c</span><span class="null">m</span><span class="null">o</span><span class="null">d</span><span class="null">e</span><span class="null">l</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.zone.cmodel.assign" title="block zone cmodel assign">assign</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.zone.cmodel.list" title="block zone cmodel list">list</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.zone.cmodel.load" title="block zone cmodel load">load</a></p>
+</div>
+<p>Assign constitutive models to zones.</p>
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign">
+<span class="cmdkey"><span class="pref">a</span><span class="null">s</span><span class="null">s</span><span class="null">i</span><span class="null">g</span><span class="null">n</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>This command assigns a constitutive model and/or one or more properties with all zones (of deformable blocks) that have centroids in the given range. The advantage of assigning models and properties with the BLOCK ZONE CMODEL ASSIGN command is that each zone has its own local properties.  This is reffered to as the ZONE property method (see <a class="reference internal" href="../block_commands/cmd_block.change.html#kwd:block.change.model" title="Constitutive number  i  is assigned to designated deformable blocks according&#013;&#010;to the following table."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">change</span> <span class="pre">model</span></code></a> command for the BLOCK property method).</p>
+<p>This command is also used to assign user-defined models (UDM) to zones in UDEC. This command is also used to assign properties to these zones. The UDM option is required for user-defined models. Also, :<a class="reference internal" href="../block_commands/cmd_block.config.html#kwd:block.config.cpp" title="Turn on extended and user-defined constitutive models."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">config</span> <span class="pre">cpp</span></code></a> must be used in order for the user-defined models to be accepted. Models exist as dynamic linked libraries and must be loaded prior to assignment. User defined models that are placed in the “pluginsmodels” folder will be loaded automatically at runtime. If the model is not automatically loaded at runtime it may be loaded using the <a class="reference internal" href="#kwd:block.zone.cmodel.load" title="loads a user define model that was not automaticallloaded at startup."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">cmodel</span> <span class="pre">load</span></code></a> command. The models may then be assigned to zones via the <a class="reference internal" href="#kwd:block.zone.cmodel.assign" title="This command assigns a constitutive model and/or one or more properties with&#013;&#010;all zones (of deformable blocks) that have centroids in the given range. The&#013;&#010;advantage of assigning models and properties with the BLOCK ZONE CMODEL ASSIGN&#013;&#010;command is that each zone has its own local properties.  This is reffered to&#013;&#010;as the ZONE property method (see  block.change.model  command for the BLOCK&#013;&#010;property method)."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">cmodel</span> <span class="pre">assign</span></code></a> command.</p>
+<p>The built-in models are described in Section 1 in Constitutive Models. Any block constitutive models that already exist for some or all of the zones in the given range (as specified by <a class="reference internal" href="../block_commands/cmd_block.change.html#kwd:block.change.model" title="Constitutive number  i  is assigned to designated deformable blocks according&#013;&#010;to the following table."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">change</span> <span class="pre">model</span></code></a> command) are ignored. The model keyword assigns constitutive models via the following names.</p>
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.null">
+<span class="cmdkey"><span class="pref">n</span><span class="null">u</span><span class="null">l</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>Assign null model used for excavations.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.elastic">
+<span class="cmdkey"><span class="pref">e</span><span class="null">l</span><span class="null">a</span><span class="null">s</span><span class="null">t</span><span class="null">i</span><span class="null">c</span><span class="null"> </span></span></dt>
+<dd><p>Assign the isotropic elastic model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.anisotropic">
+<span class="cmdkey"><span class="pref">a</span><span class="null">n</span><span class="null">i</span><span class="null">s</span><span class="null">o</span><span class="null">t</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">i</span><span class="null">c</span><span class="null"> </span></span></dt>
+<dd><p>Assign the transversely anisotropic elastic model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.drucker-prager">
+<span class="cmdkey"><span class="pref">d</span><span class="null">r</span><span class="null">u</span><span class="null">c</span><span class="null">k</span><span class="null">e</span><span class="null">r</span><span class="null">-</span><span class="pref">p</span><span class="null">r</span><span class="null">a</span><span class="null">g</span><span class="null">e</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>Assign the Drucker-Prager plasticity model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.mohr-coulomb">
+<span class="cmdkey"><span class="pref">m</span><span class="null">o</span><span class="null">h</span><span class="null">r</span><span class="null">-</span><span class="pref">c</span><span class="null">o</span><span class="null">u</span><span class="null">l</span><span class="null">o</span><span class="null">m</span><span class="null">b</span><span class="null"> </span></span></dt>
+<dd><p>Assign the Mohr-Coulomb plasticity model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.ubiquitous-joint">
+<span class="cmdkey"><span class="pref">u</span><span class="null">b</span><span class="null">i</span><span class="null">q</span><span class="null">u</span><span class="null">i</span><span class="null">t</span><span class="null">o</span><span class="null">u</span><span class="null">s</span><span class="null">-</span><span class="pref">j</span><span class="null">o</span><span class="null">i</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>Assign the ubiquitous joint model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.strain-softening">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null">-</span><span class="pref">s</span><span class="null">o</span><span class="null">f</span><span class="null">t</span><span class="null">e</span><span class="null">n</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span></dt>
+<dd><p>Assign the strain softening plasticity model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.softening-ubiquitous">
+<span class="cmdkey"><span class="pref">s</span><span class="null">o</span><span class="null">f</span><span class="null">t</span><span class="null">e</span><span class="null">n</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">-</span><span class="pref">u</span><span class="null">b</span><span class="null">i</span><span class="null">q</span><span class="null">u</span><span class="null">i</span><span class="null">t</span><span class="null">o</span><span class="null">u</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>Assign the bilinear strain softening ubiquitous joint model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.double-yield">
+<span class="cmdkey"><span class="pref">d</span><span class="null">o</span><span class="null">u</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null">-</span><span class="pref">y</span><span class="null">i</span><span class="null">e</span><span class="null">l</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Assign the double yield plasticity model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.modified-cam-clay">
+<span class="cmdkey"><span class="null">m</span><span class="null">o</span><span class="null">d</span><span class="null">i</span><span class="null">f</span><span class="null">i</span><span class="null">e</span><span class="null">d</span><span class="null">-</span><span class="pref">c</span><span class="null">a</span><span class="null">m</span><span class="null">-</span><span class="pref">c</span><span class="null">l</span><span class="null">a</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>Assign the modified cam-clay plasticity model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.cap-yield">
+<span class="cmdkey"><span class="pref">c</span><span class="null">a</span><span class="null">p</span><span class="null">-</span><span class="pref">y</span><span class="null">i</span><span class="null">e</span><span class="null">l</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Assign the Cap-Yield (cysoil) plasticity model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.cap-yield-simplified">
+<span class="cmdkey"><span class="pref">c</span><span class="null">a</span><span class="null">p</span><span class="null">-</span><span class="pref">y</span><span class="null">i</span><span class="null">e</span><span class="null">l</span><span class="null">d</span><span class="null">-</span><span class="null">s</span><span class="null">i</span><span class="null">m</span><span class="null">p</span><span class="null">l</span><span class="null">i</span><span class="null">f</span><span class="null">i</span><span class="null">e</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Assign the cap-yield-simplified (chsoil) plasticity model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.hoek-brown-pac">
+<span class="cmdkey"><span class="pref">h</span><span class="null">o</span><span class="null">e</span><span class="null">k</span><span class="null">-</span><span class="pref">b</span><span class="null">r</span><span class="null">o</span><span class="null">w</span><span class="null">n</span><span class="null">-</span><span class="pref">p</span><span class="null">a</span><span class="null">c</span><span class="null"> </span></span></dt>
+<dd><p>Assign the generalized Hoek-Brown plasticity model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.hoek-brown">
+<span class="cmdkey"><span class="pref">h</span><span class="null">o</span><span class="null">e</span><span class="null">k</span><span class="null">-</span><span class="pref">b</span><span class="null">r</span><span class="null">o</span><span class="null">w</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>Assign the modified Hoek-Brown plasticity model.</p>
+</dd></dl>
+
+<p>The other keywords assign material properties and are model-specific. Other zone properties entered via the PROPERTY command are ignored if the range of zones falls within that specified by a ZONE command.</p>
+<p>The property keywords and associated model type are presented in the following pages. The model must be defined before assigning properties. If properties that are not consistent with the chosen model are given, a warning message will be issued to inform the user that the unneeded properties were not accepted. Zone properties can be printed with the BLOCK ZONE LIST  property name command. Zone properties may be plotted as block attributes. In addition to the input properties, other properties calculated by the models can be printed or plotted. These are listed with the other model properties.</p>
+<p>Creep models require the creep option. In addition, the CONFIG creep command must be used to access these models. The creep models follow.</p>
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.maxwell">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">x</span><span class="null">w</span><span class="null">e</span><span class="null">l</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>Assign the classical viscous Maxwell model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.burgers">
+<span class="cmdkey"><span class="pref">b</span><span class="null">u</span><span class="null">r</span><span class="null">g</span><span class="null">e</span><span class="null">r</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>Assign the Burgers viscoelastic model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.power">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">w</span><span class="null">e</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>Assign the two-component power creep model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.wipp">
+<span class="cmdkey"><span class="pref">w</span><span class="null">i</span><span class="null">p</span><span class="null">p</span><span class="null"> </span></span></dt>
+<dd><p>Assign the WIPP reference creep model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.burger-mohr">
+<span class="cmdkey"><span class="pref">b</span><span class="null">u</span><span class="null">r</span><span class="null">g</span><span class="null">e</span><span class="null">r</span><span class="null">-</span><span class="pref">m</span><span class="null">o</span><span class="null">h</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>Assign the Burgers/Mohr visco-plastic model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.power-mohr">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">w</span><span class="null">e</span><span class="null">r</span><span class="null">-</span><span class="pref">m</span><span class="null">o</span><span class="null">h</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>Assign the power/Mohr visco-plastic model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.wipp-drucker">
+<span class="cmdkey"><span class="pref">w</span><span class="null">i</span><span class="null">p</span><span class="null">p</span><span class="null">-</span><span class="pref">d</span><span class="null">r</span><span class="null">u</span><span class="null">c</span><span class="null">k</span><span class="null">e</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>Assign the WIPP/Mohr visco-plastic model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.wipp-salt">
+<span class="cmdkey"><span class="pref">w</span><span class="null">i</span><span class="null">p</span><span class="null">p</span><span class="null">-</span><span class="pref">s</span><span class="null">a</span><span class="null">l</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>Assign the WIPP crushed salt model.</p>
+</dd></dl>
+
+<p>WARNING: When a model is invoked over a specified range, all properties associated with that model are initialized to zero in that range. Properties previously assigned to that range must be specified again, even if their values have not changed. A model can be assigned to regions of zones within a block for all of the above constitutive models except the null model. The null model must be assigned to an entire block.</p>
+<p>The following thermal properties may be set using the <a class="reference internal" href="cmd_block.zone.property.html#command:block.zone.property" title="Assign values to one or more properties of zones of deformable blocks within&#013;&#010;the given range.  The advantage of assigning models and properties with this&#013;&#010;command is that each zone has its own local properties."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">property</span></code></a> command, but are not tied to any specific constitutive model.</p>
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.cond">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">n</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Set thermal conductivity.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.spec-heat">
+<span class="cmdkey"><span class="pref">s</span><span class="null">p</span><span class="null">e</span><span class="null">c</span><span class="null">-</span><span class="pref">h</span><span class="null">e</span><span class="null">a</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>Set thermal specific heat (isotropic conductivity).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.thermal-expansion">
+<span class="cmdkey"><span class="pref">t</span><span class="null">h</span><span class="null">e</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">e</span><span class="null">x</span><span class="null">p</span><span class="null">a</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>Set the thermal expansion coefficient.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.conductivity-x">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">n</span><span class="null">d</span><span class="null">u</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">v</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span></dt>
+<dd><p>Set thermal conductivity in the <span class="math">\(x\)</span>-direction.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.conductivity-y">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">n</span><span class="null">d</span><span class="null">u</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">v</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span></dt>
+<dd><p>Set thermal conductivity in the <span class="math">\(y\)</span>-direction.</p>
+</dd></dl>
+
+<p>The following fluid pore-pressure property may be set using the <a class="reference internal" href="cmd_block.zone.property.html#command:block.zone.property" title="Assign values to one or more properties of zones of deformable blocks within&#013;&#010;the given range.  The advantage of assigning models and properties with this&#013;&#010;command is that each zone has its own local properties."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">property</span></code></a> command, but is not tied to any specific constitutive model.</p>
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.assign.biot-c">
+<span class="cmdkey"><span class="pref">b</span><span class="null">i</span><span class="null">o</span><span class="null">t</span><span class="null">-</span><span class="pref">c</span><span class="null"> </span></span></dt>
+<dd><p>Set Biot’s constant for porous elastic rocks.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.list">
+<span class="cmdkey"><span class="pref">l</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>List information on availible models.</p>
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.list.names">
+<span class="cmdkey"><span class="pref">n</span><span class="null">a</span><span class="null">m</span><span class="null">e</span><span class="null">s</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd></dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.list.properties">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">i</span><span class="null">e</span><span class="null">s</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd></dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.list.states">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">s</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.zone.cmodel.load">
+<span class="cmdkey"><span class="pref">l</span><span class="null">o</span><span class="null">a</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>loads a user define model that was not automaticallloaded at startup.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../block_commands/block_commands.html" >Block Commands</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../block_commands/cmd_block.zone.html" accesskey="U"><span class="fishcmd">block zone</span> commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../block_commands/cmd_block.zone.html"
+                           title="previous chapter"> <span class="fishcmd">block zone</span> commands</a> |    
+       <a href="cmd_block.zone.generate.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">generate</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block zone cmodel command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

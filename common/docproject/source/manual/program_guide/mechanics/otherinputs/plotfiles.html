@@ -1,0 +1,151 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Plot Files &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="Listings" href="../listings/listings.html" />
+    <link rel="prev" title="Table File Format" href="tablefileformat.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="plot-files">
+<span id="plotfiles"></span><h1>Plot Files</h1>
+<p>Plot files are textual descriptions of a given plot in JSON format.  Remember, a plot within the program <em>is not</em> separately stored in a file; it is saved with the project, thus a plot <em>file</em> must be explicitly created, and will exist <em>outside</em> the project.  There are two principal reasons saving a plot this way: for re-use in a different project, or to access the commands/keywords used to build the plot (see TOPIC).</p>
+<p class="h2 rubric">Inclusion in a Model</p>
+<p>There is one method for opening a plot file in the current project:</p>
+<ul class="simple">
+<li>from the <span class="flag3">c</span> <a class="reference internal" href="../projects/openintoprojectdialog.html#theopenintoprojectdialog"><span class="std std-ref">File —&gt; Open</span></a> dialog.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There is no command to open a <span class="cmdkey">*.plt</span> file into a project; the operation is performed only through interface tools.</p>
+</div>
+<p class="h2 rubric">Save a Plot File</p>
+<p>There are two methods for saving a plot file:</p>
+<ul class="simple">
+<li>from the “Save” button ( <img alt="save" src="../../../../../../../_images/plot_save_on.png" /> ) on the toolbar of the plot to be saved</li>
+<li>from the <span class="cmdkey">File —&gt; [plot name] —&gt; Save As...</span> menu command (where <span class="cmdkey">[plot name]</span> will be the name of the active plot, as shown on its title bar)</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There is no command for saving a <span class="cmdkey">*.plt</span> file; the operation is performed only through interface tools.</p>
+</div>
+<p class="h2 rubric">Plot Files and Plot <em>Data</em> Files</p>
+<p>The program provides two methods of storing a plot.  A <em>plot</em> file, as described here, is a text-based JSON description of the current plot.  The description found in the file will be identical to the description found in the project file (<span class="cmdkey">*.prj</span>) for that plot.  A plot <em>data</em> file contains the complete set of commands used to create a given plot.  Neither file type is created automatically by the program; either must be explicitly created and saved by the user.</p>
+<p>From a functional perspective, there is significant overlap between saving a plot (<span class="cmdkey">*.plt</span>) file and saving a plot <em>data</em> (<span class="cmdkey">*.dat</span>) file.</p>
+<ul class="simple">
+<li>Either are a way of storing a given plot so that it exists independently of the project (see above).</li>
+<li>Either may be used to re-build in one project a plot that had previously been built in another.</li>
+<li>Either can be interpreted (<span class="cmdkey">*.plt</span>) or read (<span class="cmdkey">*.dat</span>) to see what commands went into construction of a given plot.</li>
+<li>Either, if brought to a new project, may or may not make sense relative to the current model state of the new project.</li>
+</ul>
+<p>One might preferentially use one instead of the other for the following reasons.</p>
+<ul class="simple">
+<li>Plot data files are, like any <span class="cmdkey">*.dat</span> file, <span class="cmdkey">call</span>-able with the <a class="reference internal" href="../../../../../../kernel/doc/manual/program/commands/cmd_program.call.html#command:program.call" title="Process the specified data file(s)."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">call</span></code></a> command.  Consequently these can be folded into the call stack for a model run; plot files cannot.  If plot construction during a run is needed, these will be preferable.</li>
+<li>If on-the-fly plot manipulation — that is, scripting the plotting process with <span class="codename">FISH</span> or Python — will be a part of a model run, users <em>may</em> find it easier to use plot files rather than data files to identify the switches they wish to manipulate in the scripting process.  The <span class="flag3">c</span> <a class="reference internal" href="../../../../../../guimodule/doc/manual/plot/plot_commands.html#plot-commands"><span class="std std-ref">plot</span></a> commands for creation and manipulation plots are provided in this documenation, but the commands for configuring the appearance of <em>plot items</em> are not. This is why a user might have an interest in using either plot file or a plot data file to see them (see topic <span class="xref std std-ref">plotworkflow</span> for further information).</li>
+</ul>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="otherinputs.html" accesskey="U">Other Inputs</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="tablefileformat.html"
+                           title="previous chapter"> Table File Format</a> |    
+       <a href="../listings/listings.html"
+                           title="next chapter">Listings</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Plot Files" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

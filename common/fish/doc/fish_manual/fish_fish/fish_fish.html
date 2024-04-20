@@ -1,0 +1,1127 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FISH Functions &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="file.all" href="file_utilities/fish_file.all.html" />
+    <link rel="prev" title="Struct - Structure" href="../../../../docproject/source/manual/scripting/fish_scripting/statements/struct.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fish-functions">
+<span id="fish-fish"></span><h1><span class="codename">FISH</span> Functions</h1>
+<p>Functions built into the <span class="codename">FISH</span> language by group below.</p>
+<p>The type specifiers used in the <span class="codename">FISH</span> function signatures are given in the “<a class="reference internal" href="../../../../docproject/source/manual/scripting/fish_scripting/fish_types.html#fish-variabletypes"><span class="std std-ref">FISH Type Index</span></a>” section.</p>
+<table border="1" class="colwidths-given comfishtable docutils">
+<colgroup>
+<col width="30%" />
+<col width="40%" />
+<col width="30%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><span class="flag3">c</span> <a class="reference internal" href="#fish-array"><span class="std std-ref">array</span></a></td>
+<td><span class="flag3">c</span> <a class="reference internal" href="#fish-map"><span class="std std-ref">map</span></a></td>
+<td><span class="flag3">c</span> <a class="reference internal" href="#fish-time"><span class="std std-ref">time</span></a></td>
+</tr>
+<tr class="row-even"><td><span class="flag3">c</span> <a class="reference internal" href="#fish-constructor"><span class="std std-ref">constructors</span></a></td>
+<td><span class="flag3">c</span> <a class="reference internal" href="#fish-math"><span class="std std-ref">math</span></a></td>
+<td><span class="flag3">c</span> <a class="reference internal" href="#fish-type"><span class="std std-ref">type</span></a></td>
+</tr>
+<tr class="row-odd"><td><span class="flag3">c</span> <a class="reference internal" href="#fish-data"><span class="std std-ref">Data Utilities</span></a></td>
+<td><span class="flag3">c</span> <a class="reference internal" href="#fish-matrix"><span class="std std-ref">matrix</span></a></td>
+<td><span class="flag3">c</span> <a class="reference internal" href="#fish-version"><span class="std std-ref">version</span></a></td>
+</tr>
+<tr class="row-even"><td><span class="flag3">c</span> <a class="reference internal" href="#fish-file"><span class="std std-ref">file</span></a></td>
+<td><span class="flag3">c</span> <a class="reference internal" href="#fish-memory"><span class="std std-ref">memory</span></a></td>
+<td><span class="flag3">c</span></td>
+</tr>
+<tr class="row-odd"><td><span class="flag3">c</span> <a class="reference internal" href="#fish-global"><span class="std std-ref">global</span></a></td>
+<td><span class="flag3">c</span> <a class="reference internal" href="#fish-socket"><span class="std std-ref">socket</span></a></td>
+<td><span class="flag3">c</span></td>
+</tr>
+<tr class="row-even"><td><span class="flag3">c</span> <a class="reference internal" href="#fish-io"><span class="std std-ref">io</span></a></td>
+<td><span class="flag3">c</span> <a class="reference internal" href="#fish-string"><span class="std std-ref">string</span></a></td>
+<td><span class="flag3">c</span></td>
+</tr>
+<tr class="row-odd"><td><span class="flag3">c</span> <a class="reference internal" href="#fish-list"><span class="std std-ref">list</span></a></td>
+<td><span class="flag3">c</span> <a class="reference internal" href="#fish-system"><span class="std std-ref">system</span></a></td>
+<td><span class="flag3">c</span></td>
+</tr>
+<tr class="row-even"><td><span class="flag3">c</span> <a class="reference internal" href="#fish-mail"><span class="std std-ref">mail</span></a></td>
+<td><span class="flag3">c</span> <a class="reference internal" href="#fish-tensor"><span class="std std-ref">tensor</span></a></td>
+<td><span class="flag3">c</span></td>
+</tr>
+</tbody>
+</table>
+<p>At the bottom of the page, for convenience, a list of links to indexes of code-specific functions and commonly used functions is <a class="reference internal" href="#list-of-fish-indexes"><span class="std std-ref">also provided</span></a>.</p>
+<div class="section" id="file-utilities">
+<span id="fish-file"></span><h2><code class="docutils literal"><span class="pre">file</span></code> utilities</h2>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_utilities/fish_file.all.html"><code class="docutils literal"><span class="pre">file.all</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_utilities/fish_file.close.html"><code class="docutils literal"><span class="pre">file.close</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_utilities/fish_file.delete.html"><code class="docutils literal"><span class="pre">file.delete</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_utilities/fish_file.end.html"><code class="docutils literal"><span class="pre">file.end</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_utilities/fish_file.exist.html"><code class="docutils literal"><span class="pre">file.exist</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_utilities/fish_file.name.html"><code class="docutils literal"><span class="pre">file.name</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_utilities/fish_file.open.html"><code class="docutils literal"><span class="pre">file.open</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_utilities/fish_file.open.check.html"><code class="docutils literal"><span class="pre">file.open.check</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_utilities/fish_file.pos.html"><code class="docutils literal"><span class="pre">file.pos</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_utilities/fish_file.read.html"><code class="docutils literal"><span class="pre">file.read</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_utilities/fish_file.rename.html"><code class="docutils literal"><span class="pre">file.rename</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_utilities/fish_file.size.html"><code class="docutils literal"><span class="pre">file.size</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_utilities/fish_file.write.html"><code class="docutils literal"><span class="pre">file.write</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="file_utilities/fish_file.all.html#file.all" title="Get/set the entire contents of a file to/from a list."><span class="fishcmd">file.all</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="file_utilities/fish_file.close.html#file.close" title="Close a file. The most recently opened file is closed if no arguments are provided."><span class="fishcmd">file.close</span><span class="fishparamlist"><big>(</big><span class="cmdopt"><<span class="null">FILE_PNT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="file_utilities/fish_file.delete.html#file.delete" title="Deletes the file named  s  from the file system."><span class="fishcmd">file.delete</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="file_utilities/fish_file.end.html#file.end" title="Get the end of file status."><span class="fishcmd">file.end</span><span class="fishparamlist"><big>(</big><span class="cmdopt"><<span class="null">FILE_PNT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="file_utilities/fish_file.exist.html#file.exist" title="Get if the file exists in the file system."><span class="fishcmd">file.exist</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="file_utilities/fish_file.name.html#file.name" title="Get the name of the file associated with the file pointer."><span class="fishcmd">file.name</span><span class="fishparamlist"><big>(</big><span class="cmdopt"><<span class="null">FILE_PNT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="file_utilities/fish_file.open.html#file.open" title="Open a file for reading/writing."><span class="fishcmd">file.open</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">STR</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="file_utilities/fish_file.open.check.html#file.open.check" title="Check if you can open a file."><span class="fishcmd">file.open.check</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">STR</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="file_utilities/fish_file.pos.html#file.pos" title="Get/set the current position in bytes. The most recently opened file is used&#013;&#010;if no arguments are provided."><span class="fishcmd">file.pos</span><span class="fishparamlist"><big>(</big><span class="cmdopt"><<span class="null">FILE_PNT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="file_utilities/fish_file.read.html#file.read" title="Reads entries from a file to a list."><span class="fishcmd">file.read</span><span class="fishparamlist"><big>(</big><span class="cmdopt"><<span class="null">INT/FILE_PNT</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="file_utilities/fish_file.rename.html#file.rename" title="Renames an existing file."><span class="fishcmd">file.rename</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="null">,</span><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="file_utilities/fish_file.size.html#file.size" title="Get the size of a file."><span class="fishcmd">file.size</span><span class="fishparamlist"><big>(</big><span class="cmdopt"><<span class="null">FILE_PNT/STR</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="file_utilities/fish_file.write.html#file.write" title="Write a list to a file."><span class="fishcmd">file.write</span><span class="fishparamlist"><big>(</big><span class="cmdopt"><<span class="null">FILE_PNT</span>></span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="global-utilities">
+<span id="fish-global"></span><h2><code class="docutils literal"><span class="pre">global</span></code> utilities</h2>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../kernel/doc/manual/global_manual/global_fish/global_utilities/fish_global.cycle.html"><code class="docutils literal"><span class="pre">global.cycle</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../kernel/doc/manual/global_manual/global_fish/global_utilities/fish_global.deterministic.html"><code class="docutils literal"><span class="pre">global.deterministic</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../kernel/doc/manual/global_manual/global_fish/global_utilities/fish_global.dim.html"><code class="docutils literal"><span class="pre">global.dim</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../kernel/doc/manual/global_manual/global_fish/global_utilities/fish_global.fos.html"><code class="docutils literal"><span class="pre">global.fos</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../kernel/doc/manual/global_manual/global_fish/global_utilities/fish_global.gravity.html"><code class="docutils literal"><span class="pre">global.gravity</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../kernel/doc/manual/global_manual/global_fish/global_utilities/fish_global.step.html"><code class="docutils literal"><span class="pre">global.step</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../kernel/doc/manual/global_manual/global_fish/global_utilities/fish_global.threads.html"><code class="docutils literal"><span class="pre">global.threads</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../kernel/doc/manual/global_manual/global_fish/global_utilities/fish_global.timestep.html"><code class="docutils literal"><span class="pre">global.timestep</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../kernel/doc/manual/global_manual/global_fish/global_utilities/fish_global.title.html"><code class="docutils literal"><span class="pre">global.title</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../../../../kernel/doc/manual/global_manual/global_fish/global_utilities/fish_global.cycle.html#global.cycle" title="Get the cycle/step number. This value corresponds to the total number of cycles/steps&#013;&#010;taken."><span class="fishcmd">global.cycle</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../../../../kernel/doc/manual/global_manual/global_fish/global_utilities/fish_global.deterministic.html#global.deterministic" title="Get/set deterministic mode. In deterministic mode, all model runs starting with&#013;&#010;identical initial conditions result in identical solutions at the cost of a&#013;&#010;&gt; 20% reduction in performance. In nondeterministic mode, on the other hand,&#013;&#010;identical initial conditions may lead to divergent solutions. The divergence&#013;&#010;is due only to the order of summation, and all solutions are equally valid to&#013;&#010;machine precision."><span class="fishcmd">global.deterministic</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../../../../kernel/doc/manual/global_manual/global_fish/global_utilities/fish_global.dim.html#global.dim" title="Get the program dimensionality."><span class="fishcmd">global.dim</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../../../../kernel/doc/manual/global_manual/global_fish/global_utilities/fish_global.fos.html#global.fos" title="Get the global factor of safety."><span class="fishcmd">global.fos</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../../../../kernel/doc/manual/global_manual/global_fish/global_utilities/fish_global.gravity.html#global.gravity" title="Get/set the gravity."><span class="fishcmd">global.gravity</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../../../../kernel/doc/manual/global_manual/global_fish/global_utilities/fish_global.step.html#global.step" title="Get the cycle/step number. This value corresponds to the total number of cycles/steps&#013;&#010;taken."><span class="fishcmd">global.step</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../../../../kernel/doc/manual/global_manual/global_fish/global_utilities/fish_global.threads.html#global.threads" title="Get/set the number of threads used during calculations. By default, the program&#013;&#010;determines the optimal number of threads for maximum performance."><span class="fishcmd">global.threads</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../../../../kernel/doc/manual/global_manual/global_fish/global_utilities/fish_global.timestep.html#global.timestep" title="Get the global timestep. This is the minimum timestep of all processes."><span class="fishcmd">global.timestep</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../../../../kernel/doc/manual/global_manual/global_fish/global_utilities/fish_global.title.html#global.title" title="Get/set the job title of the model."><span class="fishcmd">global.title</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="io-utilities">
+<span id="fish-io"></span><h2><code class="docutils literal"><span class="pre">io</span></code> utilities</h2>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="io_utilities/fish_io.dialog.in.html"><code class="docutils literal"><span class="pre">io.dialog.in</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="io_utilities/fish_io.dialog.message.html"><code class="docutils literal"><span class="pre">io.dialog.message</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="io_utilities/fish_io.dialog.notify.html"><code class="docutils literal"><span class="pre">io.dialog.notify</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="io_utilities/fish_io.in.html"><code class="docutils literal"><span class="pre">io.in</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="io_utilities/fish_io.input.html"><code class="docutils literal"><span class="pre">io.input</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="io_utilities/fish_io.out.html"><code class="docutils literal"><span class="pre">io.out</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="io_utilities/fish_io.dialog.in.html#io.dialog.in" title="Dialog to input a string. The exact behavior of this function is dependent on&#013;&#010;the current user interface. In the    default Itasca interface, it brings up&#013;&#010;an input dialog box that shows the message  s1  and allows the user    to input&#013;&#010;a response string. The initial response string provided is given by  s2  or&#013;&#010;is empty if  s2  is not provided. Kernel processing is    suspended until"><span class="fishcmd">io.dialog.in</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="io_utilities/fish_io.dialog.message.html#io.dialog.message" title="Make a message dialog. One can control the caption, message, and buttons in&#013;&#010;the dialog. The return value is the button selected, starting with 0 (e.g.,&#013;&#010;if  it  = 0 and the Retry button is selected, then  i  = 1)."><span class="fishcmd">io.dialog.message</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="null">,</span><span class="null">STR</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="io_utilities/fish_io.dialog.notify.html#io.dialog.notify" title="General notification event. The exact behavior of this function is dependent&#013;&#010;on the current user interface and is intended to serve as a general notification&#013;&#010;system to notify the user interface of kernel events. It is not currently used&#013;&#010;by the default Itasca interface."><span class="fishcmd">io.dialog.notify</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><span class="null">,</span><span class="null">INT</span><span class="null">,</span><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="io_utilities/fish_io.in.html#io.in" title="Get input from the console.  s  is printed in the console, and then the code&#013;&#010;waits for interactive input from the keyboard.    The return value depends on&#013;&#010;the characters that are typed.  FISH  tries to decode the input first as an&#013;&#010;integer,    and then as a floating-point number. The return value will be of&#013;&#010;these types if the input is a single number that can be decoded"><span class="fishcmd">io.in</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="io_utilities/fish_io.input.html#io.input" title="Get input from the current input source. The function behaves just as  io.in ,&#013;&#010;except the input may come from either the console or a data file, which ever&#013;&#010;one is the current input source. If the input source is a data file, the next&#013;&#010;line of text from the file is read. The return value depends on the characters&#013;&#010;input.  FISH  tries to decode the input first as an integer, and then as a floating-point"><span class="fishcmd">io.input</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="io_utilities/fish_io.out.html#io.out" title="Output a string. The variable is converted to a string if it is not a string,&#013;&#010;and it is output both to the console and to the log file, if one is open."><span class="fishcmd">io.out</span><span class="fishparamlist"><big>(</big><span class="null">ANY</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="mail-utilities">
+<span id="fish-mail"></span><span id="id1"></span><h2><code class="docutils literal"><span class="pre">mail</span></code> utilities</h2>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mail_utilities/fish_mail.account.html"><code class="docutils literal"><span class="pre">mail.account</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="mail_utilities/fish_mail.attachment.add.html"><code class="docutils literal"><span class="pre">mail.attachment.add</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="mail_utilities/fish_mail.attachment.delete.html"><code class="docutils literal"><span class="pre">mail.attachment.delete</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="mail_utilities/fish_mail.body.html"><code class="docutils literal"><span class="pre">mail.body</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="mail_utilities/fish_mail.clear.html"><code class="docutils literal"><span class="pre">mail.clear</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="mail_utilities/fish_mail.domain.html"><code class="docutils literal"><span class="pre">mail.domain</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="mail_utilities/fish_mail.from.html"><code class="docutils literal"><span class="pre">mail.from</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="mail_utilities/fish_mail.host.html"><code class="docutils literal"><span class="pre">mail.host</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="mail_utilities/fish_mail.password.html"><code class="docutils literal"><span class="pre">mail.password</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="mail_utilities/fish_mail.port.html"><code class="docutils literal"><span class="pre">mail.port</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="mail_utilities/fish_mail.recipient.add.html"><code class="docutils literal"><span class="pre">mail.recipient.add</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="mail_utilities/fish_mail.recipient.delete.html"><code class="docutils literal"><span class="pre">mail.recipient.delete</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="mail_utilities/fish_mail.send.html"><code class="docutils literal"><span class="pre">mail.send</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="mail_utilities/fish_mail.subject.html"><code class="docutils literal"><span class="pre">mail.subject</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="mail_utilities/fish_mail.account.html#mail.account" title="Set the outgoing email account. This is the account information used to login&#013;&#010;to your email account."><span class="fishcmd">mail.account</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="mail_utilities/fish_mail.attachment.add.html#mail.attachment.add" title="Add an attachment.  s  is the file name."><span class="fishcmd">mail.attachment.add</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="mail_utilities/fish_mail.attachment.delete.html#mail.attachment.delete" title="Delete an attachment.  s  is the file name."><span class="fishcmd">mail.attachment.delete</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="mail_utilities/fish_mail.body.html#mail.body" title="Set the email body."><span class="fishcmd">mail.body</span><span class="fishparamlist"><big>(</big><span class="null">BOOL</span><span class="null">,</span><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="mail_utilities/fish_mail.clear.html#mail.clear" title="Clear the email. The subject, body, attachments, and recipients of the email&#013;&#010;message are cleared."><span class="fishcmd">mail.clear</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="mail_utilities/fish_mail.domain.html#mail.domain" title="Set the domain name of the sender’s email account."><span class="fishcmd">mail.domain</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="mail_utilities/fish_mail.from.html#mail.from" title="Set the address from which the email is sent. This may be different from the&#013;&#010;email address used as account information, provided your email service supports&#013;&#010;this feature for your account."><span class="fishcmd">mail.from</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="mail_utilities/fish_mail.host.html#mail.host" title="Set the SMTP server name."><span class="fishcmd">mail.host</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="mail_utilities/fish_mail.password.html#mail.password" title="Specify the email password."><span class="fishcmd">mail.password</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="mail_utilities/fish_mail.port.html#mail.port" title="Set the SMTP port number."><span class="fishcmd">mail.port</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="mail_utilities/fish_mail.recipient.add.html#mail.recipient.add" title="Add a recipient. The string  s1  indicates the type of the recipient, and  s2 &#013;&#010;is the full email address."><span class="fishcmd">mail.recipient.add</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="null">,</span><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="mail_utilities/fish_mail.recipient.delete.html#mail.recipient.delete" title="Delete a recipient. The string  s1  indicates the type of the recipient, and&#013;&#010; s2  is the full email address. Both the recipient type and email address must&#013;&#010;match for the recipient to be removed."><span class="fishcmd">mail.recipient.delete</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="null">,</span><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="mail_utilities/fish_mail.send.html#mail.send" title="Send the current email."><span class="fishcmd">mail.send</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="mail_utilities/fish_mail.subject.html#mail.subject" title="Set the subject line text."><span class="fishcmd">mail.subject</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="math-utilities">
+<span id="fish-math"></span><h2><code class="docutils literal"><span class="pre">math</span></code> utilities</h2>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.aangle.to.euler.html"><code class="docutils literal"><span class="pre">math.aangle.to.euler</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.abs.html"><code class="docutils literal"><span class="pre">math.abs</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.acos.html"><code class="docutils literal"><span class="pre">math.acos</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.and.html"><code class="docutils literal"><span class="pre">math.and</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.area.intersect.poly.poly.html"><code class="docutils literal"><span class="pre">math.area.intersect.poly.poly</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.area.poly.html"><code class="docutils literal"><span class="pre">math.area.poly</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.asin.html"><code class="docutils literal"><span class="pre">math.asin</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.atan.html"><code class="docutils literal"><span class="pre">math.atan</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.atan2.html"><code class="docutils literal"><span class="pre">math.atan2</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.bound.html"><code class="docutils literal"><span class="pre">math.bound</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.ceiling.html"><code class="docutils literal"><span class="pre">math.ceiling</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.choose.html"><code class="docutils literal"><span class="pre">math.choose</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.closest.segment.point.html"><code class="docutils literal"><span class="pre">math.closest.segment.point</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.closest.triangle.point.html"><code class="docutils literal"><span class="pre">math.closest.triangle.point</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.cos.html"><code class="docutils literal"><span class="pre">math.cos</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.cosh.html"><code class="docutils literal"><span class="pre">math.cosh</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.cross.html"><code class="docutils literal"><span class="pre">math.cross</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.ddir.from.normal.html"><code class="docutils literal"><span class="pre">math.ddir.from.normal</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.degrad.html"><code class="docutils literal"><span class="pre">math.degrad</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.dip.from.normal.html"><code class="docutils literal"><span class="pre">math.dip.from.normal</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.dist.segment.point.html"><code class="docutils literal"><span class="pre">math.dist.segment.point</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.dist.segment.segment.html"><code class="docutils literal"><span class="pre">math.dist.segment.segment</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.dist.triangle.segment.html"><code class="docutils literal"><span class="pre">math.dist.triangle.segment</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.dot.html"><code class="docutils literal"><span class="pre">math.dot</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.erf.html"><code class="docutils literal"><span class="pre">math.erf</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.erfc.html"><code class="docutils literal"><span class="pre">math.erfc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.euler.to.aangle.html"><code class="docutils literal"><span class="pre">math.euler.to.aangle</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.exp.html"><code class="docutils literal"><span class="pre">math.exp</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.expint.html"><code class="docutils literal"><span class="pre">math.expint</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.floor.html"><code class="docutils literal"><span class="pre">math.floor</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.gamma.html"><code class="docutils literal"><span class="pre">math.gamma</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.in.range.html"><code class="docutils literal"><span class="pre">math.in.range</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.ln.html"><code class="docutils literal"><span class="pre">math.ln</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.log.html"><code class="docutils literal"><span class="pre">math.log</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.lshift.html"><code class="docutils literal"><span class="pre">math.lshift</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.mag.html"><code class="docutils literal"><span class="pre">math.mag</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.mag2.html"><code class="docutils literal"><span class="pre">math.mag2</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.max.html"><code class="docutils literal"><span class="pre">math.max</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.min.html"><code class="docutils literal"><span class="pre">math.min</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.normal.from.dip.html"><code class="docutils literal"><span class="pre">math.normal.from.dip</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.normal.from.dip.ddir.html"><code class="docutils literal"><span class="pre">math.normal.from.dip.ddir</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.not.html"><code class="docutils literal"><span class="pre">math.not</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.or.html"><code class="docutils literal"><span class="pre">math.or</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.outer.product.html"><code class="docutils literal"><span class="pre">math.outer.product</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.pi.html"><code class="docutils literal"><span class="pre">math.pi</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.random.gauss.html"><code class="docutils literal"><span class="pre">math.random.gauss</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.random.uniform.html"><code class="docutils literal"><span class="pre">math.random.uniform</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.round.html"><code class="docutils literal"><span class="pre">math.round</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.rshift.html"><code class="docutils literal"><span class="pre">math.rshift</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.sgn.html"><code class="docutils literal"><span class="pre">math.sgn</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.sin.html"><code class="docutils literal"><span class="pre">math.sin</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.sinh.html"><code class="docutils literal"><span class="pre">math.sinh</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.sqrt.html"><code class="docutils literal"><span class="pre">math.sqrt</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.tan.html"><code class="docutils literal"><span class="pre">math.tan</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.tanh.html"><code class="docutils literal"><span class="pre">math.tanh</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.triangle.inside.html"><code class="docutils literal"><span class="pre">math.triangle.inside</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.triangle.interp.html"><code class="docutils literal"><span class="pre">math.triangle.interp</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_utilities/fish_math.unit.html"><code class="docutils literal"><span class="pre">math.unit</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.aangle.to.euler.html#math.aangle.to.euler" title="Get Euler angles from the axis-angle representation. The order of the Euler&#013;&#010;rotations are taken to be the X, Y’, and Z’’ axes and are in radians."><span class="fishcmd">math.aangle.to.euler</span><span class="fishparamlist"><big>(</big><span class="null">VEC3</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.abs.html#math.abs" title="Get the absolute value of a number or a vector.       In the case of a vector&#013;&#010;the absolute value operation is performed on each component separately."><span class="fishcmd">math.abs</span><span class="fishparamlist"><big>(</big><span class="null">NUM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.acos.html#math.acos" title="Get the arc-cosine. The return is in radians."><span class="fishcmd">math.acos</span><span class="fishparamlist"><big>(</big><span class="null">NUM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.and.html#math.and" title="Get the result of the bitwise logical AND operation."><span class="fishcmd">math.and</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.area.intersect.poly.poly.html#math.area.intersect.poly.poly" title="Get the area of overlap of polygons. The maps, representing the polygons, can&#013;&#010;contain either 2D or 3D vectors corresponding to the polygon positions. If 3D&#013;&#010;vectors are given, the second polygon is projected onto the plane of the first&#013;&#010;polygon. These methods assume that the polygons are planar and convex."><span class="fishcmd">math.area.intersect.poly.poly</span><span class="fishparamlist"><big>(</big><span class="null">MAP</span><span class="null">,</span><span class="null">MAP</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.area.poly.html#math.area.poly" title="Get the area of a polygon. The list contains the 2D vertices of the polygon&#013;&#010;that is assumed to be planar and convex."><span class="fishcmd">math.area.poly</span><span class="fishparamlist"><big>(</big><span class="null">List</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.asin.html#math.asin" title="Get the arc-sine. The return is in radians."><span class="fishcmd">math.asin</span><span class="fishparamlist"><big>(</big><span class="null">NUM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.atan.html#math.atan" title="Get the arc-tangent. The return is in radians."><span class="fishcmd">math.atan</span><span class="fishparamlist"><big>(</big><span class="null">NUM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.atan2.html#math.atan2" title="Get the arc-tangent. The arc-tangent of  n1  /  n2  is returned in radians."><span class="fishcmd">math.atan2</span><span class="fishparamlist"><big>(</big><span class="null">NUM</span><span class="null">,</span><span class="null">NUM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.bound.html#math.bound" title="Get a bounded value."><span class="fishcmd">math.bound</span><span class="fishparamlist"><big>(</big><span class="null">NUM/VEC2/VEC3</span><span class="null">,</span><span class="null">NUM/VEC2/VEC3</span><span class="null">,</span><span class="null">NUM/VEC2/VEC3</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.ceiling.html#math.ceiling" title="Get the next integer by rounding up. For example, both 2.001 and 2.999 are rounded&#013;&#010;to 3.0."><span class="fishcmd">math.ceiling</span><span class="fishparamlist"><big>(</big><span class="null">NUM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.choose.html#math.choose" title="Get a value based on the boolean value  b ."><span class="fishcmd">math.choose</span><span class="fishparamlist"><big>(</big><span class="null">BOOL</span><span class="null">,</span><span class="null">ANY</span><span class="null">,</span><span class="null">ANY</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.closest.segment.point.html#math.closest.segment.point" title="Get the closest point on the line segment to the point. The first two arguments&#013;&#010;define the line segment and the last argument defines the point."><span class="fishcmd">math.closest.segment.point</span><span class="fishparamlist"><big>(</big><span class="null">VEC2/VEC3</span><span class="null">,</span><span class="null">VEC2/VEC3</span><span class="null">,</span><span class="null">VEC2/VEC3</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.closest.triangle.point.html#math.closest.triangle.point" title="Get the closest point on the triangle to the point."><span class="fishcmd">math.closest.triangle.point</span><span class="fishparamlist"><big>(</big><span class="null">VEC2/VEC3</span><span class="null">,</span><span class="null">VEC2/VEC3</span><span class="null">,</span><span class="null">VEC2/VEC3</span><span class="null">,</span><span class="null">VEC2/VEC3</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.cos.html#math.cos" title="Get the cosine. The argument is in radians."><span class="fishcmd">math.cos</span><span class="fishparamlist"><big>(</big><span class="null">NUM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.cosh.html#math.cosh" title="Get the hyperbolic cosine. The argument is in radians."><span class="fishcmd">math.cosh</span><span class="fishparamlist"><big>(</big><span class="null">NUM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.cross.html#math.cross" title="Get the cross product of vectors. The vectors must be of the same size."><span class="fishcmd">math.cross</span><span class="fishparamlist"><big>(</big><span class="null">VEC2/VEC3</span><span class="null">,</span><span class="null">VEC2/VEC3</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.ddir.from.normal.html#math.ddir.from.normal" title="Get the dip direction. This is the dip direction in radians of the plane with&#013;&#010;normal  v , where  v  must be a 3D vector."><span class="fishcmd">math.ddir.from.normal</span><span class="fishparamlist"><big>(</big><span class="null">VEC3+</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.degrad.html#math.degrad" title="Get the degree-to-radian conversion. This is equal to   / 180.0."><span class="fishcmd">math.degrad</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.dip.from.normal.html#math.dip.from.normal" title="Get the dip or a vector."><span class="fishcmd">math.dip.from.normal</span><span class="fishparamlist"><big>(</big><span class="null">VEC2/VEC3</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.dist.segment.point.html#math.dist.segment.point" title="Get the distance between the line segment and the point."><span class="fishcmd">math.dist.segment.point</span><span class="fishparamlist"><big>(</big><span class="null">VEC2/VEC3</span><span class="null">,</span><span class="null">VEC2/VEC3</span><span class="null">,</span><span class="null">VEC2/VEC3</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.dist.segment.segment.html#math.dist.segment.segment" title="Get the distance between two line segments."><span class="fishcmd">math.dist.segment.segment</span><span class="fishparamlist"><big>(</big><span class="null">VEC2/VEC3</span><span class="null">,</span><span class="null">VEC2/VEC3</span><span class="null">,</span><span class="null">VEC2/VEC3</span><span class="null">,</span><span class="null">VEC2/VEC3</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.dist.triangle.segment.html#math.dist.triangle.segment" title="Get the shortest distance between a triangle and a line segment."><span class="fishcmd">math.dist.triangle.segment</span><span class="fishparamlist"><big>(</big><span class="null">VEC2/VEC3</span><span class="null">,</span><span class="null">VEC2/VEC3</span><span class="null">,</span><span class="null">VEC2/VEC3</span><span class="null">,</span><span class="null">VEC2/VEC3</span><span class="null">,</span><span class="null">VEC2/VEC3</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.dot.html#math.dot" title="Get the dot product of vectors. The vectors must be of the same size."><span class="fishcmd">math.dot</span><span class="fishparamlist"><big>(</big><span class="null">VEC</span><span class="null">,</span><span class="null">VEC</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.erf.html#math.erf" title="Returns the error function of  f ."><span class="fishcmd">math.erf</span><span class="fishparamlist"><big>(</big><span class="null">FLT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.erfc.html#math.erfc" title="Returns the complementary error function of  f ."><span class="fishcmd">math.erfc</span><span class="fishparamlist"><big>(</big><span class="null">FLT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.euler.to.aangle.html#math.euler.to.aangle" title="Get the axis-angle representation from Euler angles. The order of the Euler&#013;&#010;rotations are taken to be the X, Y’, and Z’’ axes and are in radians."><span class="fishcmd">math.euler.to.aangle</span><span class="fishparamlist"><big>(</big><span class="null">VEC3</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.exp.html#math.exp" title="Get the exponential."><span class="fishcmd">math.exp</span><span class="fishparamlist"><big>(</big><span class="null">NUM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.expint.html#math.expint" title="Get the exponential integral of  f ."><span class="fishcmd">math.expint</span><span class="fishparamlist"><big>(</big><span class="null">FLT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.floor.html#math.floor" title="Get the previous integer by rounding down. For example, both 2.001 and 2.999&#013;&#010;are rounded to 2.0."><span class="fishcmd">math.floor</span><span class="fishparamlist"><big>(</big><span class="null">NUM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.gamma.html#math.gamma" title="Returns the gamma function of  f ."><span class="fishcmd">math.gamma</span><span class="fishparamlist"><big>(</big><span class="null">FLT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.in.range.html#math.in.range" title="Find if the value falls in the bounds provided (inclusive)."><span class="fishcmd">math.in.range</span><span class="fishparamlist"><big>(</big><span class="null">NUM/VEC2/VEC3</span><span class="null">,</span><span class="null">NUM/VEC2/VEC3</span><span class="null">,</span><span class="null">NUM/VEC2/VEC3</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.ln.html#math.ln" title="Get the natural logarithm."><span class="fishcmd">math.ln</span><span class="fishparamlist"><big>(</big><span class="null">NUM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.log.html#math.log" title="Get the base 10 logarithm."><span class="fishcmd">math.log</span><span class="fishparamlist"><big>(</big><span class="null">NUM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.lshift.html#math.lshift" title="Get the result of a left bit shift. Shift  i1  to the left by  i2  bits. This&#013;&#010;is nearly equivalent to multiplying  i1  by  {2}^i2 ."><span class="fishcmd">math.lshift</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.mag.html#math.mag" title="Get the vector magnitude."><span class="fishcmd">math.mag</span><span class="fishparamlist"><big>(</big><span class="null">VEC2/VEC3</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.mag2.html#math.mag2" title="Get the squared vector magnitude. This is useful as a measure of vector length&#013;&#010;without the cost of calling the  math.sqrt  function."><span class="fishcmd">math.mag2</span><span class="fishparamlist"><big>(</big><span class="null">VEC2/VEC3</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.max.html#math.max" title="Get the maximum. Any number of arguments can be given, of any type.  Arguments"><span class="fishcmd">math.max</span><span class="fishparamlist"><big>(</big><span class="null">ANY</span><span class="null">,</span><span class="null">ANY</span><span class="cmdopt"><<span class="null">,</span><span class="null">ANY</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.min.html#math.min" title="Get the minimum. Any number of arguments can be given."><span class="fishcmd">math.min</span><span class="fishparamlist"><big>(</big><span class="null">NUM</span><span class="null">,</span><span class="null">NUM</span><span class="cmdopt"><<span class="null">,</span><span class="null">NUM</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.normal.from.dip.html#math.normal.from.dip" title="Get the normal to a plane in 2D. The plane has dip  f  in radians."><span class="fishcmd">math.normal.from.dip</span><span class="fishparamlist"><big>(</big><span class="null">FLT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.normal.from.dip.ddir.html#math.normal.from.dip.ddir" title="Get the normal to a plane in 3D. The plane has dip  f1  and dip direction  f2 &#013;&#010;(both in radians)."><span class="fishcmd">math.normal.from.dip.ddir</span><span class="fishparamlist"><big>(</big><span class="null">FLT</span><span class="null">,</span><span class="null">FLT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.not.html#math.not" title="Get the result of the bitwise logical NOT operation on the integer value  i1 ."><span class="fishcmd">math.not</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.or.html#math.or" title="Get the result of the bitwise logical OR operation."><span class="fishcmd">math.or</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.outer.product.html#math.outer.product" title="Get the outer product of matrices or vectors."><span class="fishcmd">math.outer.product</span><span class="fishparamlist"><big>(</big><span class="null">MAT/VEC2/VEC3</span><span class="null">,</span><span class="null">MAT/VEC2/VEC3</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.pi.html#math.pi" title="Get the number pi."><span class="fishcmd">math.pi</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.random.gauss.html#math.random.gauss" title="Get one or more Gaussian random values."><span class="fishcmd">math.random.gauss</span><span class="fishparamlist"><big>(</big><span class="cmdopt"><<span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.random.uniform.html#math.random.uniform" title="Get a uniform random number, or a list of multiple random numbers."><span class="fishcmd">math.random.uniform</span><span class="fishparamlist"><big>(</big><span class="cmdopt"><<span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.round.html#math.round" title="Get the nearest integer. The arithmetic rounding convention is used (e.g., 2.6&#013;&#010;rounds to 3.0 and 2.4999 rounds to 2)."><span class="fishcmd">math.round</span><span class="fishparamlist"><big>(</big><span class="null">NUM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.rshift.html#math.rshift" title="Get the result of a right bit shift. Shift  i1  to the right by  i2  bits. This&#013;&#010;is nearly equivalent to dividing  i1  by  {2}^i2 ."><span class="fishcmd">math.rshift</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.sgn.html#math.sgn" title="Get the sign. If  n  &lt; 0, then  rn  = -1, otherwise  rn  = 1."><span class="fishcmd">math.sgn</span><span class="fishparamlist"><big>(</big><span class="null">NUM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.sin.html#math.sin" title="Get the sine. The argument is in radians."><span class="fishcmd">math.sin</span><span class="fishparamlist"><big>(</big><span class="null">NUM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.sinh.html#math.sinh" title="Get the hyperbolic sine. The argument is in radians."><span class="fishcmd">math.sinh</span><span class="fishparamlist"><big>(</big><span class="null">NUM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.sqrt.html#math.sqrt" title="Get the square root."><span class="fishcmd">math.sqrt</span><span class="fishparamlist"><big>(</big><span class="null">NUM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.tan.html#math.tan" title="Get the tangent. The argument is in radians."><span class="fishcmd">math.tan</span><span class="fishparamlist"><big>(</big><span class="null">NUM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.tanh.html#math.tanh" title="Get the hyperbolic tangent. The argument is in radians."><span class="fishcmd">math.tanh</span><span class="fishparamlist"><big>(</big><span class="null">NUM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.triangle.inside.html#math.triangle.inside" title="Determine if a point falls inside a 2D triangle."><span class="fishcmd">math.triangle.inside</span><span class="fishparamlist"><big>(</big><span class="null">VEC2</span><span class="null">,</span><span class="null">VEC2</span><span class="null">,</span><span class="null">VEC2</span><span class="null">,</span><span class="null">VEC2</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="math_utilities/fish_math.triangle.interp.html#math.triangle.interp" title="Return interpolated value at  vIn  based on triangle interpolation. The triangle&#013;&#010;vectors are 2D vectors with a number associated with each vertex. The interpolated&#013;&#010;value is based on fractional areas of opposite triangles. The point  vIn  must&#013;&#010;fall within the triangle."><span class="fishcmd">math.triangle.interp</span><span class="fishparamlist"><big>(</big><span class="null">VEC2</span><span class="null">,</span><span class="null">FLT</span><span class="null">,</span><span class="null">VEC2</span><span class="null">,</span><span class="null">FLT</span><span class="null">,</span><span class="null">VEC2</span><span class="null">,</span><span class="null">FLT</span><span class="null">,</span><span class="null">VEC2</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="math_utilities/fish_math.unit.html#math.unit" title="Get a unit vector.  vr  has been normalized by the magnitude of  v ."><span class="fishcmd">math.unit</span><span class="fishparamlist"><big>(</big><span class="null">VEC</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="socket-utilities">
+<span id="fish-socket"></span><h2><code class="docutils literal"><span class="pre">socket</span></code> utilities</h2>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="socket_utilities/fish_socket.close.html"><code class="docutils literal"><span class="pre">socket.close</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="socket_utilities/fish_socket.create.html"><code class="docutils literal"><span class="pre">socket.create</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="socket_utilities/fish_socket.delete.html"><code class="docutils literal"><span class="pre">socket.delete</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="socket_utilities/fish_socket.open.html"><code class="docutils literal"><span class="pre">socket.open</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="socket_utilities/fish_socket.read.html"><code class="docutils literal"><span class="pre">socket.read</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="socket_utilities/fish_socket.read.array.html"><code class="docutils literal"><span class="pre">socket.read.array</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="socket_utilities/fish_socket.write.html"><code class="docutils literal"><span class="pre">socket.write</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="socket_utilities/fish_socket.write.array.html"><code class="docutils literal"><span class="pre">socket.write.array</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="socket_utilities/fish_socket.close.html#socket.close" title="Close communication on a socket."><span class="fishcmd">socket.close</span><span class="fishparamlist"><big>(</big><span class="null">SOCK_PNT/INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="socket_utilities/fish_socket.create.html#socket.create" title="Create a new socket."><span class="fishcmd">socket.create</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="socket_utilities/fish_socket.delete.html#socket.delete" title="Delete a socket. The socket is automatically closed."><span class="fishcmd">socket.delete</span><span class="fishparamlist"><big>(</big><span class="null">SOCK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="socket_utilities/fish_socket.open.html#socket.open" title="Open communication on a socket."><span class="fishcmd">socket.open</span><span class="fishparamlist"><big>(</big><span class="null">INT/STR</span><span class="null">,</span><span class="null">SOCK_PNT/INT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="socket_utilities/fish_socket.read.html#socket.read" title="Read  FISH  variables through a socket. The  FISH  variables are placed in the&#013;&#010;specified  FISH  array.  Currently, only parameters of type Integer, Real, String,&#013;&#010;or Vector can be sent or received via sockets."><span class="fishcmd">socket.read</span><span class="fishparamlist"><big>(</big><span class="null">ARR_PNT</span><span class="null">,</span><span class="null">INT</span><span class="null">,</span><span class="null">SOCK_PNT/INT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="socket_utilities/fish_socket.read.array.html#socket.read.array" title="Read  FISH  variables into an array through a socket. This call should be paired&#013;&#010;with a  socket.write.array  call.  The number of  FISH  variables are automatically&#013;&#010;handled."><span class="fishcmd">socket.read.array</span><span class="fishparamlist"><big>(</big><span class="null">ARR_PNT</span><span class="null">,</span><span class="null">SOCK_PNT/INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="socket_utilities/fish_socket.write.html#socket.write" title="Write  FISH  variables through a socket. The  FISH  variables are stored in&#013;&#010;the specified  FISH  array.   Currently, only parameters of type Boolean, Integer,&#013;&#010;Real, String, or Vector can be sent or received via sockets."><span class="fishcmd">socket.write</span><span class="fishparamlist"><big>(</big><span class="null">ARR_PNT</span><span class="null">,</span><span class="null">INT</span><span class="null">,</span><span class="null">SOCK_PNT/INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="socket_utilities/fish_socket.write.array.html#socket.write.array" title="Write  FISH  variables from an array through a socket. This call should be paired&#013;&#010;with a  socket.read.array  call. The number of  FISH  variables is automatically&#013;&#010;handled."><span class="fishcmd">socket.write.array</span><span class="fishparamlist"><big>(</big><span class="null">ARR_PNT</span><span class="null">,</span><span class="null">SOCK_PNT/INT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="system-utilities">
+<span id="fish-system"></span><h2><code class="docutils literal"><span class="pre">system</span></code> utilities</h2>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="system_utilities/fish_system.beep.html"><code class="docutils literal"><span class="pre">system.beep</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_utilities/fish_system.clone.html"><code class="docutils literal"><span class="pre">system.clone</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_utilities/fish_system.command.html"><code class="docutils literal"><span class="pre">system.command</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_utilities/fish_system.directory.html"><code class="docutils literal"><span class="pre">system.directory</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_utilities/fish_system.directory.absolute.html"><code class="docutils literal"><span class="pre">system.directory.absolute</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_utilities/fish_system.directory.create.html"><code class="docutils literal"><span class="pre">system.directory.create</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_utilities/fish_system.directory.current.html"><code class="docutils literal"><span class="pre">system.directory.current</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_utilities/fish_system.directory.delete.html"><code class="docutils literal"><span class="pre">system.directory.delete</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_utilities/fish_system.directory.list.html"><code class="docutils literal"><span class="pre">system.directory.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_utilities/fish_system.directory.relative.html"><code class="docutils literal"><span class="pre">system.directory.relative</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_utilities/fish_system.environment.html"><code class="docutils literal"><span class="pre">system.environment</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_utilities/fish_system.error.html"><code class="docutils literal"><span class="pre">system.error</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_utilities/fish_system.os.html"><code class="docutils literal"><span class="pre">system.os</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_utilities/fish_system.sleep.html"><code class="docutils literal"><span class="pre">system.sleep</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="system_utilities/fish_system.beep.html#system.beep" title="Emit a beep. If no arguments are provided, then a 750 Hz tone is emitted for&#013;&#010;300 milliseconds."><span class="fishcmd">system.beep</span><span class="fishparamlist"><big>(</big><span class="cmdopt"><<span class="null">INT</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="system_utilities/fish_system.clone.html#system.clone" title="A new instance of the code is launched, and the contents of  s  is passed to&#013;&#010;it as command line arguments.  Output sent to stdout during execution is collected&#013;&#010;and returned in the string  sret ."><span class="fishcmd">system.clone</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">BOOL</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="system_utilities/fish_system.command.html#system.command" title="Execute the string contents of the arguments as commands."><span class="fishcmd">system.command</span><span class="fishparamlist"><big>(</big><span class="null">STR/LIST/MAP/ARR</span><span class="cmdopt"><<span class="null">,</span><span class="null">BOOL</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="system_utilities/fish_system.directory.html#system.directory" title="Set and retrieve the current system directory."><span class="fishcmd">system.directory</span><span class="fishparamlist"><big>(</big><span class="cmdopt"><<span class="null">STR</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">STR</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="system_utilities/fish_system.directory.absolute.html#system.directory.absolute" title="Get the absolute file path version of a relative file path."><span class="fishcmd">system.directory.absolute</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="system_utilities/fish_system.directory.create.html#system.directory.create" title="Create the directory  s .  Returns  true  if successful."><span class="fishcmd">system.directory.create</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="system_utilities/fish_system.directory.current.html#system.directory.current" title="Get/set the current directory."><span class="fishcmd">system.directory.current</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="system_utilities/fish_system.directory.delete.html#system.directory.delete" title="Deletes the directory given by  s .   Returns  true  if successful.  The directory&#013;&#010;will only be deleted if it is empty."><span class="fishcmd">system.directory.delete</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="cmdopt"><<span class="null">,</span><span class="null">BOOL</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="system_utilities/fish_system.directory.list.html#system.directory.list" title="Return a list of all file entries in a directory."><span class="fishcmd">system.directory.list</span><span class="fishparamlist"><big>(</big><span class="cmdopt"><<span class="null">STR</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">BOOL</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">BOOL</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="system_utilities/fish_system.directory.relative.html#system.directory.relative" title="Returns the path/directory  sdir , made relative to the directory  sdirbase . If&#013;&#010; sdirbase  is not provided, then the current directory is used."><span class="fishcmd">system.directory.relative</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="system_utilities/fish_system.environment.html#system.environment" title="Get/set an environment variable. This is a registry variable that is stored&#013;&#010;in “HKEY_CURRENT_USER/Software/Itasca/CODENAME/environment” where CODENAME is&#013;&#010;the current code name (i.e., “flac3d600”)."><span class="fishcmd">system.environment</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="system_utilities/fish_system.error.html#system.error" title="Throw a  FISH  exception."><span class="fishcmd">system.error</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="system_utilities/fish_system.os.html#system.os" title="The contents of string  s  is sent to an operating system instance for execution.&#013;&#010; On the Windows platform this will be interpreted as a general DOS command.&#013;&#010; Output sent to stdout during processing is collected and returned in the string&#013;&#010; lret ."><span class="fishcmd">system.os</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="system_utilities/fish_system.sleep.html#system.sleep" title="Pause execution.  Escape  can be used to interrupt."><span class="fishcmd">system.sleep</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="time-utilities">
+<span id="fish-time"></span><h2><code class="docutils literal"><span class="pre">time</span></code> utilities</h2>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="time_utilities/fish_time.clock.html"><code class="docutils literal"><span class="pre">time.clock</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_utilities/fish_time.cpu.html"><code class="docutils literal"><span class="pre">time.cpu</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_utilities/fish_time.kernel.html"><code class="docutils literal"><span class="pre">time.kernel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_utilities/fish_time.real.html"><code class="docutils literal"><span class="pre">time.real</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="time_utilities/fish_time.clock.html#time.clock" title="Get the number of hundredths of a second since code start-up. The optional integer&#013;&#010;specifies a normalized time to do some operations. The operations involve two&#013;&#010;multiplications, two additions, and a square root operation."><span class="fishcmd">time.clock</span><span class="fishparamlist"><big>(</big><span class="cmdopt"><<span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="time_utilities/fish_time.cpu.html#time.cpu" title="Get the CPU time. This is the sum of the cycle time of all threads. This function&#013;&#010;uses Windows API QueryProcessCycleTime."><span class="fishcmd">time.cpu</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="time_utilities/fish_time.kernel.html#time.kernel" title="Get the number of milliseconds the code engine has spent processing commands&#013;&#010;since the model was last reset."><span class="fishcmd">time.kernel</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="time_utilities/fish_time.real.html#time.real" title="Get the current date time. This is the number of seconds that have passed since&#013;&#010;1970-01-01T00:00:00, Coordinated Universal Time (Qt::UTC)."><span class="fishcmd">time.real</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="value-type-utilities">
+<span id="id2"></span><h2>Value Type utilities</h2>
+<p>In this group: <span class="flag3">c</span> <a class="reference internal" href="#array-utilities"><span class="std std-ref">array</span></a>, <a class="reference internal" href="#fish-constructor"><span class="std std-ref">Constructors</span></a>, <span class="flag3">c</span> <a class="reference internal" href="#list-utilities"><span class="std std-ref">list</span></a>, <span class="flag3">c</span> <a class="reference internal" href="#map-utilities"><span class="std std-ref">map</span></a>, <span class="flag3">c</span> <a class="reference internal" href="#matrix-utilities"><span class="std std-ref">matrix</span></a>, <span class="flag3">c</span> <a class="reference internal" href="#memory-utilities"><span class="std std-ref">memory</span></a>, <span class="flag3">c</span> <a class="reference internal" href="#string-utilities"><span class="std std-ref">string</span></a>, <span class="flag3">c</span> <span class="xref std std-ref">structure</span>, <span class="flag3">c</span> <a class="reference internal" href="#tensor-utilities"><span class="std std-ref">tensor</span></a>, <span class="flag3">c</span> <a class="reference internal" href="#type-utilities"><span class="std std-ref">type</span></a>.</p>
+<div class="section" id="array-utilities">
+<span id="fish-array"></span><span id="id3"></span><h3><code class="docutils literal"><span class="pre">array</span></code> utilities</h3>
+<p>Arrays are described under <a class="reference internal" href="../../../../docproject/source/manual/scripting/fish_scripting/fish_arrays.html#fish-arraydesc"><span class="std std-ref">Arrays</span></a> in the <span class="codename">FISH</span>
+“<a class="reference internal" href="../../../../docproject/source/manual/scripting/fish_scripting/fish_datatypes.html#fish-datatypes"><span class="std std-ref">Data Types</span></a>” section.</p>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="array_utilities/fish_array.copy.html"><code class="docutils literal"><span class="pre">array.copy</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="array_utilities/fish_array.delete.html"><code class="docutils literal"><span class="pre">array.delete</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="array_utilities/fish_array.dim.html"><code class="docutils literal"><span class="pre">array.dim</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="array_utilities/fish_array.size.html"><code class="docutils literal"><span class="pre">array.size</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="array_utilities/fish_array.copy.html#array.copy" title="Copy an array."><span class="fishcmd">array.copy</span><span class="fishparamlist"><big>(</big><span class="null">ARR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="array_utilities/fish_array.delete.html#array.delete" title="Delete an array. Any  FISH  symbols pointing to the array are set to null."><span class="fishcmd">array.delete</span><span class="fishparamlist"><big>(</big><span class="null">ARR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="array_utilities/fish_array.dim.html#array.dim" title="Get the array dimension. For example, if the array is 4x3 then  array.dim  returns&#013;&#010;2."><span class="fishcmd">array.dim</span><span class="fishparamlist"><big>(</big><span class="null">ARR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="array_utilities/fish_array.size.html#array.size" title="Get the size of all array dimensions, or the size of one particular array dimension. For&#013;&#010;example; if the array is 4x3 then array.size() will return a 2 element list&#013;&#010;containing the integers (4,3), array.size(1) will return 4, and array.size(2)&#013;&#010;will return 3."><span class="fishcmd">array.size</span><span class="fishparamlist"><big>(</big><span class="null">ARR_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="constructors">
+<span id="fish-constructor"></span><h3>Constructors</h3>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="constructors/fish_array.html"><code class="docutils literal"><span class="pre">array</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="constructors/fish_boolean.html"><code class="docutils literal"><span class="pre">boolean</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="constructors/fish_false.html"><code class="docutils literal"><span class="pre">false</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="constructors/fish_float.html"><code class="docutils literal"><span class="pre">float</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="constructors/fish_index.html"><code class="docutils literal"><span class="pre">index</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="constructors/fish_int.html"><code class="docutils literal"><span class="pre">int</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="constructors/fish_list.html"><code class="docutils literal"><span class="pre">list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="constructors/fish_map.html"><code class="docutils literal"><span class="pre">map</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="constructors/fish_matrix.html"><code class="docutils literal"><span class="pre">matrix</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="constructors/fish_null.html"><code class="docutils literal"><span class="pre">null</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="constructors/fish_string.html"><code class="docutils literal"><span class="pre">string</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="constructors/fish_tensor.html"><code class="docutils literal"><span class="pre">tensor</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="constructors/fish_true.html"><code class="docutils literal"><span class="pre">true</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="constructors/fish_vector.html"><code class="docutils literal"><span class="pre">vector</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="constructors/fish_array.html#array" title="Creates and returns a new array type."><span class="fishcmd">array</span><span class="fishparamlist"><big>(</big><span class="null">INT/LIST/VEC2/VEC3/MAT/TEN</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="constructors/fish_boolean.html#boolean" title="Create a Boolean. Nonzero numbers or non-null pointers return true."><span class="fishcmd">boolean</span><span class="fishparamlist"><big>(</big><span class="null">BOOL/NUM/PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="constructors/fish_false.html#false" title="Create a false Boolean."><span class="fishcmd">false</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="constructors/fish_float.html#float" title="Create a float."><span class="fishcmd">float</span><span class="fishparamlist"><big>(</big><span class="null">BOOL/NUM/STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="constructors/fish_index.html#index" title="Create a positive integer."><span class="fishcmd">index</span><span class="fishparamlist"><big>(</big><span class="null">NUM/STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="constructors/fish_int.html#int" title="Create an integer."><span class="fishcmd">int</span><span class="fishparamlist"><big>(</big><span class="null">BOOL/NUM/STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="constructors/fish_list.html#list" title="Creates a new list object."><span class="fishcmd">list</span><span class="fishparamlist"><big>(</big><span class="cmdopt"><<span class="null">INT/STR/VEC2/VEC3/MAT/MAP/LIST_PNT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="constructors/fish_map.html#map" title="Create a new map type."><span class="fishcmd">map</span><span class="fishparamlist"><big>(</big><span class="cmdopt"><<span class="null">ANY/STRUCT/LIST</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">ANY/LIST</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">ANY</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">ANY</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="constructors/fish_matrix.html#matrix" title="Creates a new matrix type."><span class="fishcmd">matrix</span><span class="fishparamlist"><big>(</big><span class="null">INT/LIST/TEN/VEC2/VEC3/ARR</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">FLT/INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="constructors/fish_null.html#null" title="Create a null pointer."><span class="fishcmd">null</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="constructors/fish_string.html#string" title="Creates a string type."><span class="fishcmd">string</span><span class="fishparamlist"><big>(</big><span class="null">ANY</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">STR</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">STR</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="constructors/fish_tensor.html#tensor" title="Gets a new tensor type."><span class="fishcmd">tensor</span><span class="fishparamlist"><big>(</big><span class="cmdopt"><<span class="null">NUM/LIST/MAT/VEC3/ARR</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">NUM</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">NUM</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">NUM</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">NUM</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">NUM</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="constructors/fish_true.html#true" title="Create a true Boolean."><span class="fishcmd">true</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="constructors/fish_vector.html#vector" title="Create a vector type."><span class="fishcmd">vector</span><span class="fishparamlist"><big>(</big><span class="null">NUM/LIST/STR/MAT/ARR</span><span class="cmdopt"><<span class="null">,</span><span class="null">NUM</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">NUM</span>></span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric" id="fish-data">Data Utilities</p>
+</div>
+<div class="section" id="list-utilities">
+<span id="fish-list"></span><span id="id4"></span><h3><code class="docutils literal"><span class="pre">list</span></code> utilities</h3>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="list_utilities/fish_list.append.html"><code class="docutils literal"><span class="pre">list.append</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_utilities/fish_list.at.html"><code class="docutils literal"><span class="pre">list.at</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_utilities/fish_list.concatenate.html"><code class="docutils literal"><span class="pre">list.concatenate</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_utilities/fish_list.count.html"><code class="docutils literal"><span class="pre">list.count</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_utilities/fish_list.create.html"><code class="docutils literal"><span class="pre">list.create</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_utilities/fish_list.extend.html"><code class="docutils literal"><span class="pre">list.extend</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_utilities/fish_list.find.index.html"><code class="docutils literal"><span class="pre">list.find.index</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_utilities/fish_list.insert.html"><code class="docutils literal"><span class="pre">list.insert</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_utilities/fish_list.insert.list.html"><code class="docutils literal"><span class="pre">list.insert.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_utilities/fish_list.max.html"><code class="docutils literal"><span class="pre">list.max</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_utilities/fish_list.min.html"><code class="docutils literal"><span class="pre">list.min</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_utilities/fish_list.prepend.html"><code class="docutils literal"><span class="pre">list.prepend</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_utilities/fish_list.range.html"><code class="docutils literal"><span class="pre">list.range</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_utilities/fish_list.resize.html"><code class="docutils literal"><span class="pre">list.resize</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_utilities/fish_list.reverse.html"><code class="docutils literal"><span class="pre">list.reverse</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_utilities/fish_list.separate.html"><code class="docutils literal"><span class="pre">list.separate</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_utilities/fish_list.sequence.html"><code class="docutils literal"><span class="pre">list.sequence</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_utilities/fish_list.size.html"><code class="docutils literal"><span class="pre">list.size</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_utilities/fish_list.sort.html"><code class="docutils literal"><span class="pre">list.sort</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_utilities/fish_list.sum.html"><code class="docutils literal"><span class="pre">list.sum</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="list_utilities/fish_list.append.html#list.append" title="Returns a new list with one or more parameters  a  appended to the end of list&#013;&#010; l . Does not expand any contents of  a .  If  a  is a list (for example) then&#013;&#010;the last entry in the returned list  l  will be a list."><span class="fishcmd">list.append</span><span class="fishparamlist"><big>(</big><span class="null">LIST</span><span class="null">,</span><span class="null">ANY</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="list_utilities/fish_list.at.html#list.at" title="Get/sets the value of a line at index i."><span class="fishcmd">list.at</span><span class="fishparamlist"><big>(</big><span class="null">LIST</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="list_utilities/fish_list.concatenate.html#list.concatenate" title="Concatenates a nested iterable type into a single longer list."><span class="fishcmd">list.concatenate</span><span class="fishparamlist"><big>(</big><span class="null">ANY</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="list_utilities/fish_list.count.html#list.count" title="Get the number of times a value appears in a list."><span class="fishcmd">list.count</span><span class="fishparamlist"><big>(</big><span class="null">LIST</span><span class="null">,</span><span class="null">ANY</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="list_utilities/fish_list.create.html#list.create" title="Create a list of  i  elements."><span class="fishcmd">list.create</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><span class="cmdopt"><<span class="null">,</span><span class="null">ANY</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="list_utilities/fish_list.extend.html#list.extend" title="Extends a list by appending all entries in  a  to the end. a  can be of any&#013;&#010;iterable type, but is most commonly another list."><span class="fishcmd">list.extend</span><span class="fishparamlist"><big>(</big><span class="null">LIST</span><span class="null">,</span><span class="null">ANY</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="list_utilities/fish_list.find.index.html#list.find.index" title="Returns the index of the first entry in the list that matchs value  a , starting&#013;&#010;at index  istart . If  istart  is not provided, the search starts at the first&#013;&#010;index  1 . If no match is found, the return value is  0 ."><span class="fishcmd">list.find.index</span><span class="fishparamlist"><big>(</big><span class="null">LIST</span><span class="null">,</span><span class="null">ANY</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="list_utilities/fish_list.insert.html#list.insert" title="Inserts the single parameter  a  before index  i  in list  l  and returns the&#013;&#010;new list. If  i  is less than 1 the value will be prepended. If  i  is greater&#013;&#010;than the size of list  l  then the value will be appended."><span class="fishcmd">list.insert</span><span class="fishparamlist"><big>(</big><span class="null">LIST</span><span class="null">,</span><span class="null">INT</span><span class="null">,</span><span class="null">ANY</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="list_utilities/fish_list.insert.list.html#list.insert.list" title="Inserts all values in the iterable type  a  immediately before the index  i &#013;&#010;in list  l . The returned list will be as long as the size of  l  plus all values&#013;&#010;in  a ."><span class="fishcmd">list.insert.list</span><span class="fishparamlist"><big>(</big><span class="null">LIST</span><span class="null">,</span><span class="null">INT</span><span class="null">,</span><span class="null">ANY</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="list_utilities/fish_list.max.html#list.max" title="Get the maximum value in the list."><span class="fishcmd">list.max</span><span class="fishparamlist"><big>(</big><span class="null">LIST</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="list_utilities/fish_list.min.html#list.min" title="Get the minimum value in the list."><span class="fishcmd">list.min</span><span class="fishparamlist"><big>(</big><span class="null">LIST</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="list_utilities/fish_list.prepend.html#list.prepend" title="Prepends the value  a  to the front of list  l  and returns the new list."><span class="fishcmd">list.prepend</span><span class="fishparamlist"><big>(</big><span class="null">ANY</span><span class="null">,</span><span class="null">LIST</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="list_utilities/fish_list.range.html#list.range" title="Get a range of numbers."><span class="fishcmd">list.range</span><span class="fishparamlist"><big>(</big><span class="null">NUM</span><span class="null">,</span><span class="null">NUM</span><span class="cmdopt"><<span class="null">,</span><span class="null">NUM</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="list_utilities/fish_list.resize.html#list.resize" title="Returns a copy of list  lin  re-sized to length  i ."><span class="fishcmd">list.resize</span><span class="fishparamlist"><big>(</big><span class="null">LIST</span><span class="null">,</span><span class="null">INT</span><span class="cmdopt"><<span class="null">,</span><span class="null">ANY</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="list_utilities/fish_list.reverse.html#list.reverse" title="Returns a copy of list  lin  with the entries in reverse order."><span class="fishcmd">list.reverse</span><span class="fishparamlist"><big>(</big><span class="null">LIST</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="list_utilities/fish_list.separate.html#list.separate" title="Separates an iterable type (list, matrix, array, string, etc) into a list of&#013;&#010;lists. For example, an object with 12 elements can be separated into a list&#013;&#010;of 4 entries, each entry a list of size 3. This can be repeated to an arbitrary&#013;&#010;nesting depth by giving repeated sizes as arguments, with the lowest (most nested) size&#013;&#010;coming last."><span class="fishcmd">list.separate</span><span class="fishparamlist"><big>(</big><span class="null">ANY</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="list_utilities/fish_list.sequence.html#list.sequence" title="Generates a list of a sequence of entries, given as arguments in order."><span class="fishcmd">list.sequence</span><span class="fishparamlist"><big>(</big><span class="null">ANY</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="list_utilities/fish_list.size.html#list.size" title="Get the list size."><span class="fishcmd">list.size</span><span class="fishparamlist"><big>(</big><span class="null">LIST</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="list_utilities/fish_list.sort.html#list.sort" title="Get a sorted copy of a list."><span class="fishcmd">list.sort</span><span class="fishparamlist"><big>(</big><span class="null">LIST</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="list_utilities/fish_list.sum.html#list.sum" title="Get the sum of all entries in list  l ."><span class="fishcmd">list.sum</span><span class="fishparamlist"><big>(</big><span class="null">LIST</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="map-utilities">
+<span id="fish-map"></span><span id="id5"></span><h3><code class="docutils literal"><span class="pre">map</span></code> utilities</h3>
+<p>Maps are described under <a class="reference internal" href="../../../../docproject/source/manual/scripting/fish_scripting/fish_maps.html#fish-mapdesc"><span class="std std-ref">Maps</span></a> in the <span class="codename">FISH</span>
+“<a class="reference internal" href="../../../../docproject/source/manual/scripting/fish_scripting/fish_datatypes.html#fish-datatypes"><span class="std std-ref">Data Types</span></a>” section.</p>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="map_utilities/fish_map.add.html"><code class="docutils literal"><span class="pre">map.add</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_utilities/fish_map.add.list.html"><code class="docutils literal"><span class="pre">map.add.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_utilities/fish_map.has.html"><code class="docutils literal"><span class="pre">map.has</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_utilities/fish_map.keys.html"><code class="docutils literal"><span class="pre">map.keys</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_utilities/fish_map.merge.html"><code class="docutils literal"><span class="pre">map.merge</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_utilities/fish_map.remove.html"><code class="docutils literal"><span class="pre">map.remove</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_utilities/fish_map.size.html"><code class="docutils literal"><span class="pre">map.size</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_utilities/fish_map.value.html"><code class="docutils literal"><span class="pre">map.value</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_utilities/fish_map.value.all.html"><code class="docutils literal"><span class="pre">map.value.all</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="map_utilities/fish_map.add.html#map.add" title="Adds a key/value pair to a map."><span class="fishcmd">map.add</span><span class="fishparamlist"><big>(</big><span class="null">MAP</span><span class="null">,</span><span class="null">ANY</span><span class="null">,</span><span class="null">ANY</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="map_utilities/fish_map.add.list.html#map.add.list" title="Adds many key/value pairs to a map, each contained in a list.   The two lists&#013;&#010;must be of equal length."><span class="fishcmd">map.add.list</span><span class="fishparamlist"><big>(</big><span class="null">MAP</span><span class="null">,</span><span class="null">LIST</span><span class="null">,</span><span class="null">LIST</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="map_utilities/fish_map.has.html#map.has" title="Query whether a map contains a key."><span class="fishcmd">map.has</span><span class="fishparamlist"><big>(</big><span class="null">MAP</span><span class="null">,</span><span class="null">ANY</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="map_utilities/fish_map.keys.html#map.keys" title="Get the keys of a map."><span class="fishcmd">map.keys</span><span class="fishparamlist"><big>(</big><span class="null">MAP</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="map_utilities/fish_map.merge.html#map.merge" title="Merges the key/value pairs from the map  m2  into map  m1  and returns the result&#013;&#010;as a new map."><span class="fishcmd">map.merge</span><span class="fishparamlist"><big>(</big><span class="null">MAP</span><span class="null">,</span><span class="null">MAP</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="map_utilities/fish_map.remove.html#map.remove" title="Remove a value from a map. The value is referred to by its key  k , and the&#013;&#010;value is returned."><span class="fishcmd">map.remove</span><span class="fishparamlist"><big>(</big><span class="null">MAP</span><span class="null">,</span><span class="null">ANY</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="map_utilities/fish_map.size.html#map.size" title="Get the map size. The map size is the total number of key/value pairs stored&#013;&#010;in the map."><span class="fishcmd">map.size</span><span class="fishparamlist"><big>(</big><span class="null">MAP</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="map_utilities/fish_map.value.html#map.value" title="Get a value. The value associated with the key  k  is returned.  If the key&#013;&#010; k  is not found, then  0  is returned and the key is  not  added to the map."><span class="fishcmd">map.value</span><span class="fishparamlist"><big>(</big><span class="null">MAP</span><span class="null">,</span><span class="null">ANY</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="map_utilities/fish_map.value.all.html#map.value.all" title="Get a list of all values in the map."><span class="fishcmd">map.value.all</span><span class="fishparamlist"><big>(</big><span class="null">MAP</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="matrix-utilities">
+<span id="fish-matrix"></span><span id="id6"></span><h3><code class="docutils literal"><span class="pre">matrix</span></code> utilities</h3>
+<p>Matrices are described under <a class="reference internal" href="../../../../docproject/source/manual/scripting/fish_scripting/fish_matrices.html#fish-matrixdesc"><span class="std std-ref">Matrices</span></a> in the <span class="codename">FISH</span>
+“<a class="reference internal" href="../../../../docproject/source/manual/scripting/fish_scripting/fish_datatypes.html#fish-datatypes"><span class="std std-ref">Data Types</span></a>” section.</p>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="matrix_utilities/fish_matrix.cols.html"><code class="docutils literal"><span class="pre">matrix.cols</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_utilities/fish_matrix.det.html"><code class="docutils literal"><span class="pre">matrix.det</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_utilities/fish_matrix.from.axis.angle.html"><code class="docutils literal"><span class="pre">matrix.from.axis.angle</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_utilities/fish_matrix.from.euler.html"><code class="docutils literal"><span class="pre">matrix.from.euler</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_utilities/fish_matrix.identity.html"><code class="docutils literal"><span class="pre">matrix.identity</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_utilities/fish_matrix.inverse.html"><code class="docutils literal"><span class="pre">matrix.inverse</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_utilities/fish_matrix.lubksb.html"><code class="docutils literal"><span class="pre">matrix.lubksb</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_utilities/fish_matrix.ludcmp.html"><code class="docutils literal"><span class="pre">matrix.ludcmp</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_utilities/fish_matrix.rows.html"><code class="docutils literal"><span class="pre">matrix.rows</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_utilities/fish_matrix.to.axis.angle.html"><code class="docutils literal"><span class="pre">matrix.to.axis.angle</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_utilities/fish_matrix.to.euler.html"><code class="docutils literal"><span class="pre">matrix.to.euler</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_utilities/fish_matrix.transpose.html"><code class="docutils literal"><span class="pre">matrix.transpose</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="matrix_utilities/fish_matrix.cols.html#matrix.cols" title="Get the number of columns."><span class="fishcmd">matrix.cols</span><span class="fishparamlist"><big>(</big><span class="null">MAT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="matrix_utilities/fish_matrix.det.html#matrix.det" title="Get the matrix determinant. The matrix must be square, or the tensor must be&#013;&#010;convertible to a square matrix."><span class="fishcmd">matrix.det</span><span class="fishparamlist"><big>(</big><span class="null">MAT/TEN</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="matrix_utilities/fish_matrix.from.axis.angle.html#matrix.from.axis.angle" title="Get a rotation matrix from axis angles. The axis-angle representation (in radians)&#013;&#010;is such that the magnitude of  v  is the rotation angle, following the right-hand&#013;&#010;rule, about the axis with orientation in the direction of the unit vector of&#013;&#010; v ."><span class="fishcmd">matrix.from.axis.angle</span><span class="fishparamlist"><big>(</big><span class="null">VEC3</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="matrix_utilities/fish_matrix.from.euler.html#matrix.from.euler" title="Get a rotation matrix from Euler angles. The Euler angles are in radians following&#013;&#010;the X, Y’, and Z’’ convention of rotations. Only 3 × 3 matrices are supported."><span class="fishcmd">matrix.from.euler</span><span class="fishparamlist"><big>(</big><span class="null">VEC3</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="matrix_utilities/fish_matrix.identity.html#matrix.identity" title="Get an identity matrix."><span class="fishcmd">matrix.identity</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="matrix_utilities/fish_matrix.inverse.html#matrix.inverse" title="Get the matrix inverse."><span class="fishcmd">matrix.inverse</span><span class="fishparamlist"><big>(</big><span class="null">MAT/TEN/ARR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="matrix_utilities/fish_matrix.lubksb.html#matrix.lubksb" title="Solves the system A*x = b via back-substitution of a system previously decomposed&#013;&#010;via  matrix.ludcmp . The matrix  v  is assumed to be a matrix previously returned&#013;&#010;from  matrix.ludcmp . The list  i  is assumed to be an index list previously&#013;&#010;calculated in the same call to  matrix.ludcmp . The column matrix  b  is the&#013;&#010;right-hand side of the system to the solved."><span class="fishcmd">matrix.lubksb</span><span class="fishparamlist"><big>(</big><span class="null">MAT/TEN/ARR</span><span class="null">,</span><span class="null">LIST/ARR</span><span class="null">,</span><span class="null">ARR/MAT/VEC3/VEC2</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="matrix_utilities/fish_matrix.ludcmp.html#matrix.ludcmp" title="Get the LU decomposition."><span class="fishcmd">matrix.ludcmp</span><span class="fishparamlist"><big>(</big><span class="null">MAT/TEN/ARR</span><span class="null">,</span><span class="null">LIST/ARR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="matrix_utilities/fish_matrix.rows.html#matrix.rows" title="Get the number of rows."><span class="fishcmd">matrix.rows</span><span class="fishparamlist"><big>(</big><span class="null">MAT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="matrix_utilities/fish_matrix.to.axis.angle.html#matrix.to.axis.angle" title="Convert a rotation matrix to axis angle. The rotation matrix is a 3 × 3 matrix.&#013;&#010;The magnitude of the returned axis-angle representation is the angle of rotation&#013;&#010;in radians, following the right-hand rule, about the axis pointing in the direction&#013;&#010;of the unit vector."><span class="fishcmd">matrix.to.axis.angle</span><span class="fishparamlist"><big>(</big><span class="null">MAT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="matrix_utilities/fish_matrix.to.euler.html#matrix.to.euler" title="Convert a rotation matrix to Euler angles. The rotation matrix is a 3 × 3 matrix,&#013;&#010;and the returned Euler angles are in radians, with the convention of rotation&#013;&#010;about the X, Y’, and Z’’ axes."><span class="fishcmd">matrix.to.euler</span><span class="fishparamlist"><big>(</big><span class="null">MAT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="matrix_utilities/fish_matrix.transpose.html#matrix.transpose" title="Transpose a matrix. A new matrix is returned."><span class="fishcmd">matrix.transpose</span><span class="fishparamlist"><big>(</big><span class="null">MAT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="memory-utilities">
+<span id="fish-memory"></span><span id="id7"></span><h3><code class="docutils literal"><span class="pre">memory</span></code> utilities</h3>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="memory_utilities/fish_memory.html"><code class="docutils literal"><span class="pre">memory</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="memory_utilities/fish_memory.create.html"><code class="docutils literal"><span class="pre">memory.create</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="memory_utilities/fish_memory.delete.html"><code class="docutils literal"><span class="pre">memory.delete</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="memory_utilities/fish_memory.fortran.float.html"><code class="docutils literal"><span class="pre">memory.fortran.float</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="memory_utilities/fish_memory.fortran.index.html"><code class="docutils literal"><span class="pre">memory.fortran.index</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="memory_utilities/fish_memory.fortran.integer.html"><code class="docutils literal"><span class="pre">memory.fortran.integer</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="memory_utilities/fish_memory.offset.html"><code class="docutils literal"><span class="pre">memory.offset</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="memory_utilities/fish_memory.size.html"><code class="docutils literal"><span class="pre">memory.size</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="memory_utilities/fish_memory.html#memory" title="Get/set a value in a memory type. The first value is set by just providing  m .&#013;&#010;Subsequent values are retrieved/set by offsetting  m  (i.e. providing  m  +&#013;&#010;2 as an argument gets or sets the third  FISH  variable)."><span class="fishcmd">memory</span><span class="fishparamlist"><big>(</big><span class="null">MEM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="memory_utilities/fish_memory.create.html#memory.create" title="Create a chunk of memory."><span class="fishcmd">memory.create</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="memory_utilities/fish_memory.delete.html#memory.delete" title="Delete a memory chunk."><span class="fishcmd">memory.delete</span><span class="fishparamlist"><big>(</big><span class="null">MEM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="memory_utilities/fish_memory.fortran.float.html#memory.fortran.float" title="Direct access to a floating point value in Fortran memory ( 3DEC  only).  Addresses&#013;&#010;for use with this function can be found in the Fin directory of the  3DEC  FISH&#013;&#010;examples."><span class="fishcmd">memory.fortran.float</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="memory_utilities/fish_memory.fortran.index.html#memory.fortran.index" title="Direct access to an index in Fortran memory ( 3DEC  only).  Addresses for use&#013;&#010;with this function can be found in the Fin directory of the  3DEC  FISH examples."><span class="fishcmd">memory.fortran.index</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="memory_utilities/fish_memory.fortran.integer.html#memory.fortran.integer" title="Direct access to an integer value in Fortran memory ( 3DEC  only).  Addresses&#013;&#010;for use with this function can be found in the Fin directory of the  3DEC  FISH&#013;&#010;examples."><span class="fishcmd">memory.fortran.integer</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="memory_utilities/fish_memory.offset.html#memory.offset" title="Returns the current offset of a value of a memory type."><span class="fishcmd">memory.offset</span><span class="fishparamlist"><big>(</big><span class="null">MEM</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="memory_utilities/fish_memory.size.html#memory.size" title="Returns the size of a memory type."><span class="fishcmd">memory.size</span><span class="fishparamlist"><big>(</big><span class="null">MEM</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="string-utilities">
+<span id="fish-string"></span><span id="id8"></span><h3><code class="docutils literal"><span class="pre">string</span></code> utilities</h3>
+<p>Strings are described under <a class="reference internal" href="../../../../docproject/source/manual/scripting/fish_scripting/fish_strings.html#fish-stringdesc"><span class="std std-ref">Strings</span></a> in the <span class="codename">FISH</span>
+“<a class="reference internal" href="../../../../docproject/source/manual/scripting/fish_scripting/fish_datatypes.html#fish-datatypes"><span class="std std-ref">Data Types</span></a>” section.</p>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.build.html"><code class="docutils literal"><span class="pre">string.build</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.compare.html"><code class="docutils literal"><span class="pre">string.compare</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.csv.from.html"><code class="docutils literal"><span class="pre">string.csv.from</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.csv.to.html"><code class="docutils literal"><span class="pre">string.csv.to</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.file.ext.html"><code class="docutils literal"><span class="pre">string.file.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.file.name.html"><code class="docutils literal"><span class="pre">string.file.name</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.file.path.html"><code class="docutils literal"><span class="pre">string.file.path</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.find.html"><code class="docutils literal"><span class="pre">string.find</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.find.regex.html"><code class="docutils literal"><span class="pre">string.find.regex</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.join.html"><code class="docutils literal"><span class="pre">string.join</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.len.html"><code class="docutils literal"><span class="pre">string.len</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.lower.html"><code class="docutils literal"><span class="pre">string.lower</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.match.regex.html"><code class="docutils literal"><span class="pre">string.match.regex</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.replace.html"><code class="docutils literal"><span class="pre">string.replace</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.replace.regex.html"><code class="docutils literal"><span class="pre">string.replace.regex</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.simplify.html"><code class="docutils literal"><span class="pre">string.simplify</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.split.html"><code class="docutils literal"><span class="pre">string.split</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.split.regex.html"><code class="docutils literal"><span class="pre">string.split.regex</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.sub.html"><code class="docutils literal"><span class="pre">string.sub</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.token.html"><code class="docutils literal"><span class="pre">string.token</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.token.type.html"><code class="docutils literal"><span class="pre">string.token.type</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.type.html"><code class="docutils literal"><span class="pre">string.type</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_utilities/fish_string.upper.html"><code class="docutils literal"><span class="pre">string.upper</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="string_utilities/fish_string.build.html#string.build" title="Build a string using token replacement.  The string  s  is used as the base.&#013;&#010;  The tokens  %1 ,  %2 ,  %3  etc. are used to indicate the locations that subsequent&#013;&#010;parameters  a1 ,  a2 , etc. will be place. The following parameters will be&#013;&#010;automatically converted to strings, if necessary.  If this is not possible,&#013;&#010;an error will occur."><span class="fishcmd">string.build</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="cmdopt"><<span class="null">,</span><span class="null">ANY</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">ANY</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="string_utilities/fish_string.csv.from.html#string.csv.from" title="Separate the string into a token list using the comma-separated-values convention."><span class="fishcmd">string.csv.from</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="string_utilities/fish_string.csv.to.html#string.csv.to" title="Combine the list into a single string using the comma-separated-values convention."><span class="fishcmd">string.csv.to</span><span class="fishparamlist"><big>(</big><span class="null">LIST</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="string_utilities/fish_string.file.ext.html#string.file.ext" title="Extract the file extension  sext  from the file and path string  sfilepath ."><span class="fishcmd">string.file.ext</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="string_utilities/fish_string.file.name.html#string.file.name" title="Given a full file and path name, returns just the file name (including the extension,&#013;&#010;if any)."><span class="fishcmd">string.file.name</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="string_utilities/fish_string.file.path.html#string.file.path" title="Given a full file and path name, returns just the path."><span class="fishcmd">string.file.path</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="string_utilities/fish_string.find.html#string.find" title="Returns the index of the first instance of string  sval  in string  source .&#013;&#010;  Returns  0  if no match was found."><span class="fishcmd">string.find</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="null">,</span><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="string_utilities/fish_string.find.regex.html#string.find.regex" title="Returns the index of the first match in string  source  of the regular expression&#013;&#010; sreg ."><span class="fishcmd">string.find.regex</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="null">,</span><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="string_utilities/fish_string.join.html#string.join" title="Join the list  l  into a single string, by converting each list entry into a&#013;&#010;string (if it wasn’t already) combining them into a single string separated&#013;&#010;by the  sep  string."><span class="fishcmd">string.join</span><span class="fishparamlist"><big>(</big><span class="null">LIST</span><span class="null">,</span><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="string_utilities/fish_string.len.html#string.len" title="Get the string length."><span class="fishcmd">string.len</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="string_utilities/fish_string.lower.html#string.lower" title="Get a string in lowercase. A new string is returned."><span class="fishcmd">string.lower</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="string_utilities/fish_string.match.regex.html#string.match.regex" title="Returns the results of matching the regular expression  sreg  against the string&#013;&#010; source ."><span class="fishcmd">string.match.regex</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="null">,</span><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="string_utilities/fish_string.replace.html#string.replace" title="Searches for the occurrence of substring  sval  in string  source , and replaces&#013;&#010;it with  srep .  Then returns the new string."><span class="fishcmd">string.replace</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="null">,</span><span class="null">STR</span><span class="null">,</span><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="string_utilities/fish_string.replace.regex.html#string.replace.regex" title="Replaces anything that matches the regular expression  sreg  in string  source &#013;&#010;with the contents of  srep , and returns the new string."><span class="fishcmd">string.replace.regex</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="null">,</span><span class="null">STR</span><span class="null">,</span><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="string_utilities/fish_string.simplify.html#string.simplify" title="Simplifies a string be removing any leading or trailing whitespace characters,&#013;&#010;and replacing all repeated internal whitespace characters with a single space."><span class="fishcmd">string.simplify</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="string_utilities/fish_string.split.html#string.split" title="Splits the string into sub-strings delimited by the contents of  sep , and returns&#013;&#010;those strings as a list."><span class="fishcmd">string.split</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="cmdopt"><<span class="null">,</span><span class="null">STR</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="string_utilities/fish_string.split.regex.html#string.split.regex" title="Splits the string  source  into a list of token strings that were separated&#013;&#010;by matches against the regular expression  sreg ."><span class="fishcmd">string.split.regex</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="null">,</span><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="string_utilities/fish_string.sub.html#string.sub" title="Get/sets a sub-string of the string  source , starting at position  istart &#013;&#010;and including  inum  characters."><span class="fishcmd">string.sub</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="null">,</span><span class="null">INT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="string_utilities/fish_string.token.html#string.token" title="Get the item at a given position. Delimiters are the same as for general commands&#013;&#010;(i.e., spaces, commas, parentheses, tabs, and equal signs). If item  i  is missing,&#013;&#010;then zero is returned."><span class="fishcmd">string.token</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="string_utilities/fish_string.token.type.html#string.token.type" title="Get the character type at a given position."><span class="fishcmd">string.token.type</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="string_utilities/fish_string.type.html#string.type" title="Get the type name of  s  if converted to a general  FISH  value."><span class="fishcmd">string.type</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="string_utilities/fish_string.upper.html#string.upper" title="Get a string in uppercase. A new string is returned."><span class="fishcmd">string.upper</span><span class="fishparamlist"><big>(</big><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="tensor-utilities">
+<span id="fish-tensor"></span><span id="id9"></span><h3><code class="docutils literal"><span class="pre">tensor</span></code> utilities</h3>
+<p>Tensors are described under <a class="reference internal" href="../../../../docproject/source/manual/scripting/fish_scripting/fish_tensors.html#fish-tensordesc"><span class="std std-ref">Tensors</span></a> in the <span class="codename">FISH</span>
+“<a class="reference internal" href="../../../../docproject/source/manual/scripting/fish_scripting/fish_datatypes.html#fish-datatypes"><span class="std std-ref">Data Types</span></a>” section.</p>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tensor_utilities/fish_tensor.i2.html"><code class="docutils literal"><span class="pre">tensor.i2</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="tensor_utilities/fish_tensor.j2.html"><code class="docutils literal"><span class="pre">tensor.j2</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="tensor_utilities/fish_tensor.prin.html"><code class="docutils literal"><span class="pre">tensor.prin</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="tensor_utilities/fish_tensor.prin.dir.html"><code class="docutils literal"><span class="pre">tensor.prin.dir</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="tensor_utilities/fish_tensor.prin.from.html"><code class="docutils literal"><span class="pre">tensor.prin.from</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="tensor_utilities/fish_tensor.total.html"><code class="docutils literal"><span class="pre">tensor.total</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="tensor_utilities/fish_tensor.trace.html"><code class="docutils literal"><span class="pre">tensor.trace</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="tensor_utilities/fish_tensor.i2.html#tensor.i2" title="Get the second stress invariant. The tensor must be of size three. This is defined&#013;&#010;as  ."><span class="fishcmd">tensor.i2</span><span class="fishparamlist"><big>(</big><span class="null">TEN</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="tensor_utilities/fish_tensor.j2.html#tensor.j2" title="Get the second deviatoric stress invariant. The tensor must be of size three.&#013;&#010;This is defined as  ."><span class="fishcmd">tensor.j2</span><span class="fishparamlist"><big>(</big><span class="null">TEN</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="tensor_utilities/fish_tensor.prin.html#tensor.prin" title="Get the principal values of the tensor."><span class="fishcmd">tensor.prin</span><span class="fishparamlist"><big>(</big><span class="null">TEN</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="tensor_utilities/fish_tensor.prin.dir.html#tensor.prin.dir" title="Get the principal values and directions of a tensor."><span class="fishcmd">tensor.prin.dir</span><span class="fishparamlist"><big>(</big><span class="null">TEN</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="tensor_utilities/fish_tensor.prin.from.html#tensor.prin.from" title="Get a tensor from a list containing principal values and directions."><span class="fishcmd">tensor.prin.from</span><span class="fishparamlist"><big>(</big><span class="null">LIST</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="tensor_utilities/fish_tensor.total.html#tensor.total" title="Get the tensor measure. This is the distance of the stress/strain tensor point&#013;&#010;at the principal stress/strain space to the origin of the same space."><span class="fishcmd">tensor.total</span><span class="fishparamlist"><big>(</big><span class="null">TEN</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="tensor_utilities/fish_tensor.trace.html#tensor.trace" title="Get the trace of a tensor. The tensor trace is the sum of the diagonal elements."><span class="fishcmd">tensor.trace</span><span class="fishparamlist"><big>(</big><span class="null">TEN</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="type-utilities">
+<span id="fish-type"></span><span id="id10"></span><h3><code class="docutils literal"><span class="pre">type</span></code> utilities</h3>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="type_utilities/fish_type.html"><code class="docutils literal"><span class="pre">type</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="type_utilities/fish_type.index.html"><code class="docutils literal"><span class="pre">type.index</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="type_utilities/fish_type.name.html"><code class="docutils literal"><span class="pre">type.name</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="type_utilities/fish_type.pointer.html"><code class="docutils literal"><span class="pre">type.pointer</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="type_utilities/fish_type.pointer.id.html"><code class="docutils literal"><span class="pre">type.pointer.id</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="type_utilities/fish_type.pointer.name.html"><code class="docutils literal"><span class="pre">type.pointer.name</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="type_utilities/fish_type.html#type" title="Get the type. The  type.name  is an alternative that returns a string indicating&#013;&#010;the type (i.e., integer, double, string, Boolean, etc.). This is an integer&#013;&#010;that is one of following values."><span class="fishcmd">type</span><span class="fishparamlist"><big>(</big><span class="null">ANY</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="type_utilities/fish_type.index.html#type.index" title="Get the type index. This is a unique integer representing each pointer type&#013;&#010;and can be used to distinguish different pointers from one another."><span class="fishcmd">type.index</span><span class="fishparamlist"><big>(</big><span class="null">PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="type_utilities/fish_type.name.html#type.name" title="Get the type name. This is the string name of the type (i.e., integer, double,&#013;&#010;string, Boolean, etc.). The  type  is an alternative that returns an integer&#013;&#010;indicating the type."><span class="fishcmd">type.name</span><span class="fishparamlist"><big>(</big><span class="null">ANY</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="type_utilities/fish_type.pointer.html#type.pointer" title="Get the type name of a pointer. This can be useful in distinguishing pointers&#013;&#010;from one another (e.g., array from vector pointers)."><span class="fishcmd">type.pointer</span><span class="fishparamlist"><big>(</big><span class="null">PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="type_utilities/fish_type.pointer.id.html#type.pointer.id" title="Get the ID of a pointer."><span class="fishcmd">type.pointer.id</span><span class="fishparamlist"><big>(</big><span class="null">PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="type_utilities/fish_type.pointer.name.html#type.pointer.name" title="Get the name of a pointer. This may be either the type name returned by  type.pointer &#013;&#010;or a specific name, depending on the thing in question."><span class="fishcmd">type.pointer.name</span><span class="fishparamlist"><big>(</big><span class="null">PNT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="version-utilities">
+<span id="fish-version"></span><span id="id11"></span><h2><code class="docutils literal"><span class="pre">version</span></code> utilities</h2>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="version_utilities/fish_code.name.html"><code class="docutils literal"><span class="pre">code.name</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="version_utilities/fish_version.code.major.html"><code class="docutils literal"><span class="pre">version.code.major</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="version_utilities/fish_version.code.minor.html"><code class="docutils literal"><span class="pre">version.code.minor</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="version_utilities/fish_version.fish.major.html"><code class="docutils literal"><span class="pre">version.fish.major</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="version_utilities/fish_version.fish.minor.html"><code class="docutils literal"><span class="pre">version.fish.minor</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="version_utilities/fish_code.name.html#code.name" title="Get the code name."><span class="fishcmd">code.name</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="version_utilities/fish_version.code.major.html#version.code.major" title="Get the code major version."><span class="fishcmd">version.code.major</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="version_utilities/fish_version.code.minor.html#version.code.minor" title="Get the code minor version."><span class="fishcmd">version.code.minor</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="version_utilities/fish_version.fish.major.html#version.fish.major" title="Get the  FISH  major version."><span class="fishcmd">version.fish.major</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="version_utilities/fish_version.fish.minor.html#version.fish.minor" title="Get the  FISH  minor version."><span class="fishcmd">version.fish.minor</span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="h2 rubric" id="list-of-fish-indexes">Other <span class="codename">FISH</span> Indexes</p>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/scripting/fish_scripting/fish.html" accesskey="U"><span class="codename">FISH</span> Scripting Reference</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../../../../docproject/source/manual/scripting/fish_scripting/statements/struct.html"
+                           title="previous chapter"> Struct - Structure</a> |    
+       <a href="file_utilities/fish_file.all.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">file.all</span></code></a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?FISH Functions" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

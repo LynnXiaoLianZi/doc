@@ -1,0 +1,220 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>fracture attribute command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="fracture cluster command" href="cmd_fracture_cluster.html" />
+    <link rel="prev" title="fracture aperture command" href="cmd_fracture_aperture.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fracture-attribute-command">
+<h1><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">attribute</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="dfn command">
+<dt id="command:fracture.attribute">
+<span class="cmdname"><span class="pref">f</span><span class="pref">r</span><span class="pref">a</span><span class="pref">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">a</span><span class="pref">t</span><span class="null">t</span><span class="null">r</span><span class="null">i</span><span class="null">b</span><span class="null">u</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="pref">r</span><span class="pref">a</span><span class="pref">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:fracture.attribute.aperture" title="fracture attribute aperture">aperture</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.attribute.area" title="fracture attribute area">area</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.attribute.dip-direction" title="fracture attribute dip-direction">dip-direction</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.attribute.diameter" title="fracture attribute diameter">diameter</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.attribute.dip" title="fracture attribute dip">dip</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.attribute.length" title="fracture attribute length">length</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.attribute.position" title="fracture attribute position">position</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.attribute.position-x" title="fracture attribute position-x">position-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.attribute.position-y" title="fracture attribute position-y">position-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.attribute.position-z" title="fracture attribute position-z">position-z</a></p>
+</div>
+<p>Modify fracture attributes. This command is a synonym for the <a class="reference internal" href="cmd_fracture_initialize.html#command:fracture.initialize" title="Modify fracture attributes."><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">initialize</span></code></a> command.</p>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>Modification of the fracture geometry will fail if the resulting fracture would not fall
+entirely within the model domain.</li>
+<li>Fracture attributes are characteristics of the fractures, such as position or size. These
+are distinct from fracture properties (assigned with the <a class="reference internal" href="cmd_fracture_property.html#command:fracture.property" title="Assign fracture surface properties. The value  a  is assigned to the surface&#013;&#010;property"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">property</span></code></a> command),
+which are surface properties of the fractures that are used to fill contact model properties
+with the <a class="reference internal" href="cmd_fracture_contact-model.html#command:fracture.contact-model" title="Assign contact models via fractures. The command only applies to |PFC|. In order&#013;&#010;for the contact"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">contact-model</span></code></a> command.</li>
+</ul>
+</div>
+<dl class="keyword">
+<dt id="kwd:fracture.attribute.aperture">
+<span class="cmdkey"><span class="pref">a</span><span class="pref">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Fracture aperture where <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> ≥ 0.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.attribute.area">
+<span class="cmdkey"><span class="pref">a</span><span class="pref">r</span><span class="null">e</span><span class="null">a</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">3D<span class="null"> </span></span><span class="cmdextraparam">only</span>)</span><span class="null"> </span></dt>
+<dd><p>Fracture area where <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> &gt; 0.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.attribute.dip-direction">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">p</span><span class="null">-</span><span class="pref">d</span><span class="null">i</span><span class="null">r</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">3D<span class="null"> </span></span><span class="cmdextraparam">only</span>)</span><span class="null"> </span></dt>
+<dd><p>Dip direction in degrees, as measured in a clockwise fashion from the positive <span class="math">\(y\)</span>-axis, where
+<a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> is in the range [0,360].</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.attribute.diameter">
+<span class="cmdkey"><span class="pref">d</span><span class="pref">i</span><span class="pref">a</span><span class="null">m</span><span class="null">e</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">3D<span class="null"> </span></span><span class="cmdextraparam">only</span>)</span><span class="null"> </span></dt>
+<dd><p>Diameter of disk fractures where <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> &gt; 0.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.attribute.dip">
+<span class="cmdkey"><span class="pref">d</span><span class="pref">i</span><span class="pref">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Dip angle in degrees, where <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> is in the range {[0,180] in 2D; [0,90] in 3D}. In 2D, dip
+is the clockwise angle measured from the positive <span class="math">\(x\)</span>-axis. In 3D, dip is the angle from the dip
+direction projected on the <span class="math">\(xy\)</span>-plane to the fracture surface measured in the negative
+<span class="math">\(z\)</span>-direction.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.attribute.length">
+<span class="cmdkey"><span class="pref">l</span><span class="null">e</span><span class="null">n</span><span class="null">g</span><span class="null">t</span><span class="null">h</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">2D<span class="null"> </span></span><span class="cmdextraparam">only</span>)</span><span class="null"> </span></dt>
+<dd><p>Total fracture length where <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> &gt; 0.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.attribute.position">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>Fracture position vector.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.attribute.position-x">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Fracture position (<span class="math">\(x\)</span>-component).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.attribute.position-y">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Fracture position (<span class="math">\(y\)</span>-component).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.attribute.position-z">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">3D<span class="null"> </span></span><span class="cmdextraparam">only</span>)</span><span class="null"> </span></dt>
+<dd><p>Fracture position (<span class="math">\(z\)</span>-component).</p>
+</dd></dl>
+
+</dd></dl>
+
+<p class="h2 rubric">Usage Example</p>
+<p>The following example illustrates how the <a class="reference internal" href="#command:fracture.attribute" title="Modify fracture attributes. This command is a synonym for the  fracture.initialize &#013;&#010;command."><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">attribute</span></code></a> command can be
+used to rotate all fractures (3D). At the end, all fractures with center in the layer <span class="math">\(z\in [-2;2]\)</span> have the same orientation.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model random</span><span class="n"> </span><span class="m m-Double">10000</span>
+<span class="nb">model domain</span><span class="n"> extent </span><span class="o">-</span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">5</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">5</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">5</span><span class="n"> </span>
+<span class="c">;Modify the default template</span>
+<span class="nb">fracture template</span><span class="n"> modify</span><span class="o">-</span><span class="n">default size</span><span class="o">-</span><span class="n">limits </span><span class="m m-Double">0.5</span><span class="n"> </span><span class="m m-Double">5</span>
+<span class="c">;Generate fractures using the default template</span>
+<span class="nb">fracture generate</span><span class="n"> tolerance</span><span class="o">-</span><span class="n">box </span><span class="o">-</span><span class="m m-Double">4</span><span class="n"> </span><span class="m m-Double">4</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">4</span><span class="n"> </span><span class="m m-Double">4</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">4</span><span class="n"> </span><span class="m m-Double">4</span><span class="n"> fracture</span><span class="o">-</span><span class="n">count </span><span class="m m-Double">1000</span>
+<span class="c">; Change some fracture attibutes</span>
+<span class="nb">fracture attribute</span><span class="n"> aperture </span><span class="m m-Double">1</span><span class="n"> dip </span><span class="m m-Double">25</span><span class="n"> dip</span><span class="o">-</span><span class="n">direction </span><span class="m m-Double">270</span><span class="n"> range position</span><span class="o">-</span><span class="n">z </span><span class="o">-</span><span class="m m-Double">2</span><span class="n"> </span><span class="m m-Double">2</span>
+<span class="nb">program </span><span class="se">return</span><span class="n"> </span>
+</pre></div>
+</div>
+<p class="h3 rubric">See Also: <a class="reference internal" href="cmd_fracture_initialize.html#command:fracture.initialize" title="Modify fracture attributes."><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">initialize</span></code></a> | <a class="reference internal" href="cmd_fracture_property.html#command:fracture.property" title="Assign fracture surface properties. The value  a  is assigned to the surface&#013;&#010;property"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">property</span></code></a></p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../dfn.html" >Discrete Fracture Network (DFN)</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="dfn_commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_fracture_aperture.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">fracture</span> <span class="pre">aperture</span></code> command</a> |    
+       <a href="cmd_fracture_cluster.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">cluster</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?fracture attribute command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

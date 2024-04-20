@@ -1,0 +1,681 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FISH Functions &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fish-functions">
+<span id="struct-fish"></span><h1><span class="codename">FISH</span> Functions</h1>
+<p>The type specifiers used in the <span class="codename">FISH</span> function signatures are given in the <a class="reference internal" href="../../../../../docproject/source/manual/scripting/fish_scripting/fish_types.html#fish-variabletypes"><span class="std std-ref">FISH Type Index</span></a> section.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#sel-functions"><span class="std std-ref">General Structural Element Functions</span></a></li>
+<li><span class="flag3">c</span> <a class="reference internal" href="#allselbeam-functions"><span class="std std-ref">beam</span></a> Functions</li>
+<li><span class="flag3">c</span> <a class="reference internal" href="#allselcable-functions"><span class="std std-ref">cable</span></a> Functions</li>
+<li><span class="flag3">c</span> <a class="reference internal" href="#allselpile-functions"><span class="std std-ref">pile</span></a> Functions</li>
+<li><span class="flag3">c</span> <a class="reference internal" href="#allselshell-functions"><span class="std std-ref">shell</span></a> Functions</li>
+<li><span class="flag3">c</span> <a class="reference internal" href="#allselgeogrid-functions"><span class="std std-ref">geogrid</span></a> Functions</li>
+<li><span class="flag3">c</span> <a class="reference internal" href="#allselliner-functions"><span class="std std-ref">liner</span></a> Functions</li>
+<li><span class="flag3">c</span> <a class="reference internal" href="#allselnode-functions"><span class="std std-ref">node</span></a> Functions</li>
+<li><span class="flag3">c</span> <a class="reference internal" href="#allsellink-functions"><span class="std std-ref">link</span></a> Functions</li>
+</ul>
+<p class="h2 rubric" id="sel-functions">General Structural Element Functions</p>
+<p>These functions apply to <em>all</em> structure element types.  Pointers to any of the six types of structural elements may be used or may be returned.</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sel_intrinsics/fish_sel.connectivity.html#struct.connectivity" title="Get the index of the node with component-ID  id  in the element. Will return&#013;&#010; 0  if no node in that element matches."><span class="fishcmd">struct.connectivity</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel_intrinsics/fish_sel.delete.html#struct.delete" title="Delete the structural element."><span class="fishcmd">struct.delete</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel_intrinsics/fish_sel.density.html#struct.density" title="Get/set the structural element density. This is used to determine gravitational&#013;&#010;forces and to determine nodal masses in dynamic mode."><span class="fishcmd">struct.density</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel_intrinsics/fish_sel.extra.html#struct.extra" title="Get/set the  FISH  parameter value stored at index  i  of the extra array associated&#013;&#010;with the structural element."><span class="fishcmd">struct.extra</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel_intrinsics/fish_sel.find.html#struct.find" title="Get the structural element with internally assigned component-ID number  i ."><span class="fishcmd">struct.find</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel_intrinsics/fish_sel.force.nodal.html#struct.force.nodal" title="Get/set the generalized nodal forces acting in the global system, as a list&#013;&#010;of 6x1 matrices."><span class="fishcmd">struct.force.nodal</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_BEAM_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel_intrinsics/fish_sel.force.nodal.local.html#struct.force.nodal.local" title="Get/set the generalized nodal forces acting in the local system, as a list of&#013;&#010;6x1 matrices."><span class="fishcmd">struct.force.nodal.local</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_BEAM_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel_intrinsics/fish_sel.force.update.html#struct.force.update" title="Flags the cycling logic so that a geometry update is performed at the start&#013;&#010;of the next cycle. Normally this update is performed at the start of cycling,&#013;&#010;and in large-strain mode at the geometry update interval.  Changes to gridpoint&#013;&#010;mass and gravity caused by density and stiffness changes may not actually affect&#013;&#010;the calculation unless an update is performed.  The return value is ignored."><span class="fishcmd">struct.force.update</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel_intrinsics/fish_sel.head.html#struct.head" title="Get the first element in the list of all structural elements in the model. This&#013;&#010;function should be considered deprecated, it is provided mostly for backwards&#013;&#010;compatibility with old data files. Instead, see the  fish_statement_loopforeach &#013;&#010;statement and the  struct.list  function. See also the  struct.next  function."><span class="fishcmd">struct.head</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel_intrinsics/fish_sel.id.html#struct.id" title="Get the structural element ID number. This is not to be confused with the component-ID&#013;&#010;number."><span class="fishcmd">struct.id</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel_intrinsics/fish_sel.id.component.html#struct.id.component" title="Get the structural element component-ID number. This is a unique value assigned&#013;&#010;internally at creation, not to be confused with the ID number."><span class="fishcmd">struct.id.component</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel_intrinsics/fish_sel.list.html#struct.list" title="Get a pointer to the list of all structural elements in the model, of any type."><span class="fishcmd">struct.list</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel_intrinsics/fish_sel.local.system.html#struct.local.system" title="Get the local coordinate system for the structural element."><span class="fishcmd">struct.local.system</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel_intrinsics/fish_sel.mark.html#struct.mark" title="Get/set the mark flag on the structural element. The structural element logic&#013;&#010;may modify this flag during command processing and cycling."><span class="fishcmd">struct.mark</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel_intrinsics/fish_sel.maxid.html#struct.maxid" title="Get the maximum component-ID number assigned to any structural element in this&#013;&#010;model.  The next element created will be assigned this value plus one."><span class="fishcmd">struct.maxid</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel_intrinsics/fish_sel.mech.convergence.html#struct.mech.convergence" title="Get the maximum convergence value (local ratio divided by target ratio) of all&#013;&#010;structural nodes in the model."><span class="fishcmd">struct.mech.convergence</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel_intrinsics/fish_sel.mech.ratio.avg.html#struct.mech.ratio.avg" title="Get the average convergence ratio of all structural nodes in the model."><span class="fishcmd">struct.mech.ratio.avg</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel_intrinsics/fish_sel.mech.ratio.local.html#struct.mech.ratio.local" title="Get the maximum local convergence ratio of all structural nodes in the model."><span class="fishcmd">struct.mech.ratio.local</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel_intrinsics/fish_sel.mech.ratio.max.html#struct.mech.ratio.max" title="Get the ratio of maximum unbalanced force to average applied force of all structural&#013;&#010;nodes in the model."><span class="fishcmd">struct.mech.ratio.max</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel_intrinsics/fish_sel.near.html#struct.near" title="Get the structural element (of any type) whose centroid is closest to the point&#013;&#010; v . Will return  null  if there are no structural elements in the model."><span class="fishcmd">struct.near</span><span class="fishparamlist"><big>(</big><span class="null">VEC+</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel_intrinsics/fish_sel.next.html#struct.next" title="Get the next element after  p  in the list of all structural elements in the&#013;&#010;model. Will return  null  if no more links follow. This function should be considered&#013;&#010;deprecated; it is provided mostly for backwards compatibility with old data&#013;&#010;files. Instead, see the  fish_statement_loopforeach  statement and the  struct.list &#013;&#010;function. See also the  struct.head  function."><span class="fishcmd">struct.next</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel_intrinsics/fish_sel.node.html#struct.node" title="Get a pointer to the node at index  i  in the structural element."><span class="fishcmd">struct.node</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel_intrinsics/fish_sel.num.html#struct.num" title="Get the total number of structural elements in the model."><span class="fishcmd">struct.num</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel_intrinsics/fish_sel.pos.html#struct.pos" title="Get the position vector of the element, defined as the element centroid."><span class="fishcmd">struct.pos</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel_intrinsics/fish_sel.therm.expansion.html#struct.therm.expansion" title="Get/set the thermal expansion coefficient for the structural element."><span class="fishcmd">struct.therm.expansion</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel_intrinsics/fish_sel.type.html#struct.type" title="Get the name of the structural element type.  This will be either  beam ,  cable ,&#013;&#010; pile ,  shell ,  geogrid ,  liner liner ,  hybrid  or ,  dowel ."><span class="fishcmd">struct.type</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel_intrinsics/fish_sel.typeid.html#struct.typeid" title="Get an identifier that uniquely determines the type of object. This function&#013;&#010;will return ‭1283545601‬, indicating a general structural element."><span class="fishcmd">struct.typeid</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel_intrinsics/fish_sel.was.updated.html#struct.was.updated" title="Returns TRUE if the last validation check actually performed a geometry update.&#013;&#010; Normally this update is performed at the start of cycling, and in large-strain&#013;&#010;mode at the geometry update interval.  This value will be true after the validation&#013;&#010;update is performed until the next validation step when a full geometry update&#013;&#010;is not performed."><span class="fishcmd">struct.was.updated</span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="h2 rubric" id="allselbeam-functions"><code class="docutils literal"><span class="pre">beam</span></code> Functions</p>
+<p>Note that all beam functions can also be used with pile elements.</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../beams/fish/sel.beam_intrinsics/fish_sel.beam.area.html#struct.beam.area" title="Get/set the cross-section area of the element."><span class="fishcmd">struct.beam.area</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_BEAM_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../beams/fish/sel.beam_intrinsics/fish_sel.beam.force.html#struct.beam.force" title="Get the force at one end of the beam in element local system."><span class="fishcmd">struct.beam.force</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_BEAM_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../beams/fish/sel.beam_intrinsics/fish_sel.beam.length.html#struct.beam.length" title="Get the length of the beam element."><span class="fishcmd">struct.beam.length</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_BEAM_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../beams/fish/sel.beam_intrinsics/fish_sel.beam.load.html#struct.beam.load" title="Get/set the uniform applied distributed load acting on the beam element in the&#013;&#010;local  - and  -directions."><span class="fishcmd">struct.beam.load</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_BEAM_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../beams/fish/sel.beam_intrinsics/fish_sel.beam.moi.html#struct.beam.moi" title="Get/set the moment of inertia of the beam."><span class="fishcmd">struct.beam.moi</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_BEAM_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../beams/fish/sel.beam_intrinsics/fish_sel.beam.moment.html#struct.beam.moment" title="Get the moment at one end of the beam in element local system."><span class="fishcmd">struct.beam.moment</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_BEAM_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../beams/fish/sel.beam_intrinsics/fish_sel.beam.moment.plastic.html#struct.beam.moment.plastic" title="Get/set the plastic moment capacity in the beam.  On assignment it sets the&#013;&#010;plastic moment limit in both the y and z directions.  The return value is the&#013;&#010;maximum of the Y and Z limits."><span class="fishcmd">struct.beam.moment.plastic</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_BEAM_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../beams/fish/sel.beam_intrinsics/fish_sel.beam.poisson.html#struct.beam.poisson" title="Get/set the Poisson’s ratio of the beam element."><span class="fishcmd">struct.beam.poisson</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_BEAM_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../beams/fish/sel.beam_intrinsics/fish_sel.beam.volume.html#struct.beam.volume" title="Get the beam element volume, or the cross-sectional area times the length."><span class="fishcmd">struct.beam.volume</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_BEAM_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../beams/fish/sel.beam_intrinsics/fish_sel.beam.ydir.html#struct.beam.ydir" title="Get/set the  -axis of the beam element local system."><span class="fishcmd">struct.beam.ydir</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_BEAM_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../beams/fish/sel.beam_intrinsics/fish_sel.beam.young.html#struct.beam.young" title="Get/set the Young’s modulus of the beam element."><span class="fishcmd">struct.beam.young</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_BEAM_PNT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="h2 rubric" id="allselcable-functions"><code class="docutils literal"><span class="pre">cable</span></code> Functions</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.area.html#struct.cable.area" title="Get/set the cross-section area of the cable element."><span class="fishcmd">struct.cable.area</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.force.axial.html#struct.cable.force.axial" title="Get the average axial force of the element (positive: tension; negative: compression)."><span class="fishcmd">struct.cable.force.axial</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.grout.cohesion.html#struct.cable.grout.cohesion" title="Get/set the grout cohesion."><span class="fishcmd">struct.cable.grout.cohesion</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.grout.confining.html#struct.cable.grout.confining" title="Get the confining stress acting on the grout at end  iend  ∈ {1, 2}. Negative&#013;&#010;value indicates compression. The stress acts in a plane perpendicular to the&#013;&#010;cable axis; effective confining stress is the average of the principal values&#013;&#010;in this plane."><span class="fishcmd">struct.cable.grout.confining</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.grout.dir.html#struct.cable.grout.dir" title="Get the direction vector in which cableSEL is being loaded by the coupling spring&#013;&#010;at end  iend  ∈ {1, 2}."><span class="fishcmd">struct.cable.grout.dir</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.grout.disp.html#struct.cable.grout.disp" title="Get displacement in grout (shear coupling spring) at end  iend  ∈ {1, 2}; positive/negative&#013;&#010;with respect to the average axial direction of cable."><span class="fishcmd">struct.cable.grout.disp</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.grout.friction.html#struct.cable.grout.friction" title="Get/set the grout internal friction angle."><span class="fishcmd">struct.cable.grout.friction</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.grout.perimeter.html#struct.cable.grout.perimeter" title="Get/set the grout exposed perimeter."><span class="fishcmd">struct.cable.grout.perimeter</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.grout.slip.html#struct.cable.grout.slip" title="Get the slip state of grout (shear coupling spring) at end  iend  ∈ {1, 2}. Return&#013;&#010;value {0, 1, 2} denotes never slipped, now slipping, or slipped in the past,&#013;&#010;respectively."><span class="fishcmd">struct.cable.grout.slip</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.grout.stiffness.html#struct.cable.grout.stiffness" title="Get/set the grout stiffness."><span class="fishcmd">struct.cable.grout.stiffness</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.grout.stress.html#struct.cable.grout.stress" title="Get stress in grout (shear coupling spring) at end  iend  ∈ {1, 2}; positive/negative&#013;&#010;with respect to average axial direction of cable."><span class="fishcmd">struct.cable.grout.stress</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.length.html#struct.cable.length" title="Get the length of the cable element."><span class="fishcmd">struct.cable.length</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.slide.html#struct.cable.slide" title="Get the boolean flag of the large-strain sliding. If  true , slide is on; if&#013;&#010; false , slide is off."><span class="fishcmd">struct.cable.slide</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.slide.tol.html#struct.cable.slide.tol" title="Get/set the large-strain sliding tolerance of the cable element."><span class="fishcmd">struct.cable.slide.tol</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.state.compression.html#struct.cable.state.compression" title="Get the compression yield state of the  cable element. The return value {0,&#013;&#010;1, 2} denotes never yielded, now yielding, or yielded in the past, respectively."><span class="fishcmd">struct.cable.state.compression</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.state.tension.html#struct.cable.state.tension" title="Get the tension yield state of cable element. The return value {0, 1, 2} denotes&#013;&#010;never yielded, now yielding, or yielded in the past, respectively."><span class="fishcmd">struct.cable.state.tension</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.strain.plastic.html#struct.cable.strain.plastic" title="Get the plastic tensile strain of the cable element."><span class="fishcmd">struct.cable.strain.plastic</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.stress.axial.html#struct.cable.stress.axial" title="Get the average axial stress of the cable element (positive: tension; negative:&#013;&#010;compression)."><span class="fishcmd">struct.cable.stress.axial</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.table.grout.cohesion.html#struct.cable.table.grout.cohesion" title="Get/set the grout cohesion strength table number for the cable element."><span class="fishcmd">struct.cable.table.grout.cohesion</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.table.grout.friction.html#struct.cable.table.grout.friction" title="Get/set the grout friction strength table number for the cable element."><span class="fishcmd">struct.cable.table.grout.friction</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.volume.html#struct.cable.volume" title="Get the cable element volume, or the cross-sectional area times the length."><span class="fishcmd">struct.cable.volume</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.yield.compression.html#struct.cable.yield.compression" title="Get/set the compression yield strength of the cable element."><span class="fishcmd">struct.cable.yield.compression</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.yield.tension.html#struct.cable.yield.tension" title="Get/set the tension yield strength of the cable element."><span class="fishcmd">struct.cable.yield.tension</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../cables/fish/sel.cable_intrinsics/fish_sel.cable.young.html#struct.cable.young" title="Get/set the Young’s modulus of the cable element."><span class="fishcmd">struct.cable.young</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="h2 rubric" id="allselpile-functions"><code class="docutils literal"><span class="pre">pile</span></code> Functions</p>
+<p>Note that <a class="reference internal" href="#allselbeam-functions"><span class="std std-ref">beam functions</span></a> may also be used on pile elements</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.area.html#struct.pile.area" title="Get/set the cross-section area of the pile element."><span class="fishcmd">struct.pile.area</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.force.html#struct.pile.force" title="Get the nodal force acting on the pile element at end  iend  ∈ {1, 2} in the&#013;&#010;element local system."><span class="fishcmd">struct.pile.force</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.gap.html#struct.pile.gap" title="Get the gap component in normal spring at end  iend  ∈ {1, 2} of the pile element. The&#013;&#010;gap forms a rectangular shape in the pile cross-sectional plane, which is defined&#013;&#010;by the local  -axes of the pile element node. The gap consists of four values&#013;&#010;denoting gap size in the positive and negative  - and  -directions. The value&#013;&#010;of  ig  ∈ {1, 2, 3, 4} denotes the positive  -direction, negative  -direction,&#013;&#010;positive  -direction, and negative  -direction, respectively. The gap"><span class="fishcmd">struct.pile.gap</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><span class="null">,</span><span class="null">INT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.length.html#struct.pile.length" title="Get/set the length of the pile element."><span class="fishcmd">struct.pile.length</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.load.html#struct.pile.load" title="Get/set the uniform applied distributed load acting on the pile element in the&#013;&#010;local  - and  -directions."><span class="fishcmd">struct.pile.load</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.moi.html#struct.pile.moi" title="Get/set the moment of inertia of the pile."><span class="fishcmd">struct.pile.moi</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.moment.html#struct.pile.moment" title="Get the nodal moment acting on the pile element at end  iend  ∈ {1, 2} in the&#013;&#010;element local  system."><span class="fishcmd">struct.pile.moment</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.moment.plastic.html#struct.pile.moment.plastic" title="Get/set the plastic moment capacity of the pile element.  On assignment it sets&#013;&#010;the plastic moment limit in both the y and z directions.  The return value is&#013;&#010;the maximum of the Y and Z limits."><span class="fishcmd">struct.pile.moment.plastic</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.normal.cohesion.html#struct.pile.normal.cohesion" title="Get/set the normal coupling spring cohesive strength of the pile element."><span class="fishcmd">struct.pile.normal.cohesion</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.normal.dir.html#struct.pile.normal.dir" title="Get the global direction in which the pile element is being loaded by the coupling&#013;&#010;normal spring at end  iend  ∈ {1, 2}."><span class="fishcmd">struct.pile.normal.dir</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.normal.disp.html#struct.pile.normal.disp" title="Get the displacement in the coupling normal spring at end  iend  ∈ {1, 2} of&#013;&#010;the pile element. Sign convention for normal spring is positive/negative, indicating&#013;&#010;separation/overlap."><span class="fishcmd">struct.pile.normal.disp</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.normal.friction.html#struct.pile.normal.friction" title="Get/set the normal coupling spring friction angle of the pile element."><span class="fishcmd">struct.pile.normal.friction</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.normal.gap.html#struct.pile.normal.gap" title="Get the normal coupling spring gap-use flag. A  true  value denotes gap is on,&#013;&#010;and a  false  value denotes gap is off."><span class="fishcmd">struct.pile.normal.gap</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.normal.state.html#struct.pile.normal.state" title="Get the yield state of the coupling normal spring at end  iend  ∈ {1, 2} of&#013;&#010;the pile element. Return value ∈ {0, 1, 2} denotes never yielded, now yielding,&#013;&#010;or yielded in the past, respectively."><span class="fishcmd">struct.pile.normal.state</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.normal.stiffness.html#struct.pile.normal.stiffness" title="Get/set the normal coupling spring stiffness of the pile element."><span class="fishcmd">struct.pile.normal.stiffness</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.normal.stress.html#struct.pile.normal.stress" title="Get the stress in the coupling normal spring at end  iend  ∈ {1, 2} of the pile&#013;&#010;element. Sign convention for the normal spring is positive/negative, indicating&#013;&#010;separation/overlap."><span class="fishcmd">struct.pile.normal.stress</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.perimeter.html#struct.pile.perimeter" title="Get/set the exposed perimeter of the pile element."><span class="fishcmd">struct.pile.perimeter</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.poisson.html#struct.pile.poisson" title="Get/set the Poisson’s ratio of the pile element."><span class="fishcmd">struct.pile.poisson</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.rockbolt.html#struct.pile.rockbolt" title="Get a boolean flag of the rockbolt. A  true  value denotes the rockbolt flag&#013;&#010;is on, and a  false  value denotes the rockbolt flag is off."><span class="fishcmd">struct.pile.rockbolt</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.rupture.tension.html#struct.pile.rupture.tension" title="Get the state of tensile strain failue."><span class="fishcmd">struct.pile.rupture.tension</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.shear.cohesion.html#struct.pile.shear.cohesion" title="Get/set the shear coupling spring cohesive strength of the pile element."><span class="fishcmd">struct.pile.shear.cohesion</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.shear.dir.html#struct.pile.shear.dir" title="Get the global direction in which the pile element is being loaded by the coupling&#013;&#010;shear spring at end  iend  ∈ {1, 2}."><span class="fishcmd">struct.pile.shear.dir</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.shear.disp.html#struct.pile.shear.disp" title="Get the displacement in coupling shear spring at end  iend  ∈ {1, 2} of the&#013;&#010;pile element. Sign convention for shear spring is positive/negative with respect&#013;&#010;to the average axial direction of pile."><span class="fishcmd">struct.pile.shear.disp</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.shear.flag.html#struct.pile.shear.flag" title="Get the shear direction incremental confining stress flag. A  true  value denotes&#013;&#010;the flag is on, and a  false  value denotes the flag is off."><span class="fishcmd">struct.pile.shear.flag</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.shear.friction.html#struct.pile.shear.friction" title="Get/set the shear coupling spring friction angle of the pile element."><span class="fishcmd">struct.pile.shear.friction</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.shear.state.html#struct.pile.shear.state" title="Get the yield state of the coupling shear spring at end  iend  ? {1, 2} of the&#013;&#010;pile element. Return a value ? {0, 1, 2} denote never yielded, now yielding,&#013;&#010;or yielded in the past, respectively."><span class="fishcmd">struct.pile.shear.state</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.shear.stiffness.html#struct.pile.shear.stiffness" title="Get/set the shear coupling spring stiffness of the pile element."><span class="fishcmd">struct.pile.shear.stiffness</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.shear.stress.html#struct.pile.shear.stress" title="Get the stress in coupling shear spring at end  iend  ∈ {1, 2} of the pile element. Sign&#013;&#010;convention for shear spring is positive/negative with respect to the average&#013;&#010;axial direction of pile."><span class="fishcmd">struct.pile.shear.stress</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.slide.html#struct.pile.slide" title="Get a boolean flag of slide. A  true  value denotes the slide flag is on, and&#013;&#010;a  false  value denotes the slide flag is off."><span class="fishcmd">struct.pile.slide</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.slide.tol.html#struct.pile.slide.tol" title="Get/set the large-strain sliding tolerance of the pile element."><span class="fishcmd">struct.pile.slide.tol</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.state.compression.html#struct.pile.state.compression" title="Get the compression yield state of the  pile element. The return value {0, 1,&#013;&#010;2} denotes never yielded, now yielding, or yielded in the past, respectively."><span class="fishcmd">struct.pile.state.compression</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.state.tension.html#struct.pile.state.tension" title="Get the tension yield state of pile element. The return value {0, 1, 2} denotes&#013;&#010;never yielded, now yielding, or yielded in the past, respectively."><span class="fishcmd">struct.pile.state.tension</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.strain.failure.html#struct.pile.strain.failure" title="Get/set the tensile failure strain (non-dimensional) of the pile element."><span class="fishcmd">struct.pile.strain.failure</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.stress.confining.html#struct.pile.stress.confining" title="Get the confining stress at end  iend  ∈ {1, 2} of the pile element. (Negative&#013;&#010;value is compression.) Stress acts in a plane perpendicular to the pile axis; confining&#013;&#010;stress is the average of the principal values in this plane."><span class="fishcmd">struct.pile.stress.confining</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.table.cohesion.html#struct.pile.table.cohesion" title="Get/set the shear direction cohesion strength table number for the pile element."><span class="fishcmd">struct.pile.table.cohesion</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.table.factor.html#struct.pile.table.factor" title="Get/set the shear direction friction table number for the pile element."><span class="fishcmd">struct.pile.table.factor</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.table.friction.html#struct.pile.table.friction" title="Get/set the shear direction incremental confining stress factor table number&#013;&#010;for the pile element."><span class="fishcmd">struct.pile.table.friction</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.volume.html#struct.pile.volume" title="Get/set the volume of the pile element."><span class="fishcmd">struct.pile.volume</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.ydir.html#struct.pile.ydir" title="Get/set the  -axis of the pile element local system."><span class="fishcmd">struct.pile.ydir</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.yield.compression.html#struct.pile.yield.compression" title="Get/set the axial compressive yield strength (force units) of the pile element."><span class="fishcmd">struct.pile.yield.compression</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.yield.tension.html#struct.pile.yield.tension" title="Get/set the axial tensile yield strength (force units) of the pile element."><span class="fishcmd">struct.pile.yield.tension</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/fish/sel.pile_intrinsics/fish_sel.pile.young.html#struct.pile.young" title="Get/set the Young’s modulus of the pile element."><span class="fishcmd">struct.pile.young</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_PILE_PNT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="h2 rubric" id="allselshell-functions"><code class="docutils literal"><span class="pre">shell</span></code> Functions</p>
+<p>Note that all shell functions will also work with both geogrid elements and liner elements.</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../shells/fish/sel.shell_intrinsics/fish_sel.shell.area.html#struct.shell.area" title="Get surface area of the shell-type element."><span class="fishcmd">struct.shell.area</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../shells/fish/sel.shell_intrinsics/fish_sel.shell.beta.html#struct.shell.beta" title="Get/set shell-type material system beta angle. This is defined as the angle&#013;&#010;between the element local system  -axis and the material system  -axis. In radians&#013;&#010;measured counter-clockwise from the element local  -axis."><span class="fishcmd">struct.shell.beta</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../shells/fish/sel.shell_intrinsics/fish_sel.shell.depth.factor.html#struct.shell.depth.factor" title="Get the depth factor at which stresses have been recovered.  The depth equals&#013;&#010;  where   is the shell element thickness.    values equal to  +1.0  or  -1.0 &#013;&#010;correspond to the outer/inner shell surface.  The outer surface is defined by&#013;&#010;the positive  -direction of the local shell element system.    values of  0.0 &#013;&#010;corresponds to the shell mid-surface.  The depth factor can be modified with&#013;&#010;the  structure shell recover stress ,"><span class="fishcmd">struct.shell.depth.factor</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../shells/fish/sel.shell_intrinsics/fish_sel.shell.element.type.html#struct.shell.element.type" title="Get the name of the finite-element type used by this shell-type element."><span class="fishcmd">struct.shell.element.type</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../shells/fish/sel.shell_intrinsics/fish_sel.shell.poisson.html#struct.shell.poisson" title="Get/set the Poisson’s ratio of the element."><span class="fishcmd">struct.shell.poisson</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../shells/fish/sel.shell_intrinsics/fish_sel.shell.pressure.html#struct.shell.pressure" title="Get/set the uniform pressure acting on the shell.  A positive value acts in&#013;&#010;the  -direction of the element local system."><span class="fishcmd">struct.shell.pressure</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../shells/fish/sel.shell_intrinsics/fish_sel.shell.prop.anis.html#struct.shell.prop.anis" title="Get/set the anisotropic material properties as a list of 6 values."><span class="fishcmd">struct.shell.prop.anis</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../shells/fish/sel.shell_intrinsics/fish_sel.shell.prop.matx.html#struct.shell.prop.matx" title="Get/set the orthotropic/anisotropic material property x-direction."><span class="fishcmd">struct.shell.prop.matx</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../shells/fish/sel.shell_intrinsics/fish_sel.shell.prop.ortho.html#struct.shell.prop.ortho" title="Get/set the orthotropic material properties as a list of 4 values."><span class="fishcmd">struct.shell.prop.ortho</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../shells/fish/sel.shell_intrinsics/fish_sel.shell.prop.type.html#struct.shell.prop.type" title="Get the material property type."><span class="fishcmd">struct.shell.prop.type</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../shells/fish/sel.shell_intrinsics/fish_sel.shell.resultant.html#struct.shell.resultant" title="Get stress resultants last calculated for the element at the location corresponding&#013;&#010;to node index  inode ."><span class="fishcmd">struct.shell.resultant</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><span class="null">,</span><span class="null">INT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../shells/fish/sel.shell_intrinsics/fish_sel.shell.resultant.valid.html#struct.shell.resultant.valid" title="Get stress resultant validity flag."><span class="fishcmd">struct.shell.resultant.valid</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../shells/fish/sel.shell_intrinsics/fish_sel.shell.stress.html#struct.shell.stress" title="Get the shell stresses at the current depth factor at the location corresponding&#013;&#010;to index  inode ."><span class="fishcmd">struct.shell.stress</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../shells/fish/sel.shell_intrinsics/fish_sel.shell.stress.max.html#struct.shell.stress.max" title="Get the maximum stress of the element. This is the maximum principal stress&#013;&#010;of the fiber stress at depth +1 or -1, which is the combination of membrane&#013;&#010;and bending resultants."><span class="fishcmd">struct.shell.stress.max</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../shells/fish/sel.shell_intrinsics/fish_sel.shell.stress.min.html#struct.shell.stress.min" title="Get the minimum stress of the element. This is the minimum principal stress&#013;&#010;of the fiber stress at depth +1 or -1, which is the combination of membrane&#013;&#010;and bending resultants."><span class="fishcmd">struct.shell.stress.min</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../shells/fish/sel.shell_intrinsics/fish_sel.shell.stress.prin.html#struct.shell.stress.prin" title="Get the resolved principal stress at the current depth factor and position given&#013;&#010;by  inode ."><span class="fishcmd">struct.shell.stress.prin</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../shells/fish/sel.shell_intrinsics/fish_sel.shell.stress.valid.html#struct.shell.stress.valid" title="Get the stress validity flag for the element.  true  indicates that the stresses&#013;&#010;last calculated at the current depth factor are valid.  false  indicates that&#013;&#010;stresses have not been calculated, or that there has been a change that invalidates&#013;&#010;the last stresses calculated. See the  struct.shell.stress  function."><span class="fishcmd">struct.shell.stress.valid</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../shells/fish/sel.shell_intrinsics/fish_sel.shell.thickness.html#struct.shell.thickness" title="Get/set the element thickness."><span class="fishcmd">struct.shell.thickness</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../shells/fish/sel.shell_intrinsics/fish_sel.shell.volume.html#struct.shell.volume" title="Get the element volume, or surface area times thickness."><span class="fishcmd">struct.shell.volume</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../shells/fish/sel.shell_intrinsics/fish_sel.shell.young.html#struct.shell.young" title="Get/set the Young’s modulus of the element."><span class="fishcmd">struct.shell.young</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_SHELL_PNT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="h2 rubric" id="allselgeogrid-functions"><code class="docutils literal"><span class="pre">geogrid</span></code> Functions</p>
+<p>Note that all <a class="reference internal" href="#allselshell-functions"><span class="std std-ref">shell functions</span></a> may also be used on geogrid elements.</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../geogrids/fish/sel.geogrid_intrinsics/fish_sel.geogrid.shear.cohesion.html#struct.geogrid.shear.cohesion" title="Get/set the (shear) coupling spring cohesion strength of the geogrid element."><span class="fishcmd">struct.geogrid.shear.cohesion</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_GEOGRID_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../geogrids/fish/sel.geogrid_intrinsics/fish_sel.geogrid.shear.dir.html#struct.geogrid.shear.dir" title="Get the direction (unit vector in global system) in which the geogrid element&#013;&#010;is being loaded by the coupling spring at node  inode  ( inode  ∈ {1, 2, 3})."><span class="fishcmd">struct.geogrid.shear.dir</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_GEOGRID_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../geogrids/fish/sel.geogrid_intrinsics/fish_sel.geogrid.shear.disp.html#struct.geogrid.shear.disp" title="Get the displacement magnitude in the coupling spring at node  inode  ( inode &#013;&#010;∈ {1, 2, 3}). The coupling spring lies in the tangent plane of the geogrid surface. The&#013;&#010;direction in which force is acting is given by  struct.geogrid.shear.dir ."><span class="fishcmd">struct.geogrid.shear.disp</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_GEOGRID_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../geogrids/fish/sel.geogrid_intrinsics/fish_sel.geogrid.shear.friction.html#struct.geogrid.shear.friction" title="Get/set the (shear) coupling spring friction angle of the geogrid element."><span class="fishcmd">struct.geogrid.shear.friction</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_GEOGRID_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../geogrids/fish/sel.geogrid_intrinsics/fish_sel.geogrid.shear.state.html#struct.geogrid.shear.state" title="Get the yield state of the coupling spring at node  inode  ( inode  ∈ {1, 2,&#013;&#010;3}). Return value  i  ∈ {1, 2, 3} denotes never yielded, yielding now, or yielded&#013;&#010;in the past, respectively."><span class="fishcmd">struct.geogrid.shear.state</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_GEOGRID_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../geogrids/fish/sel.geogrid_intrinsics/fish_sel.geogrid.shear.stiffness.html#struct.geogrid.shear.stiffness" title="Get/set the (shear) coupling spring stiffness of the geogrid element."><span class="fishcmd">struct.geogrid.shear.stiffness</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_GEOGRID_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../geogrids/fish/sel.geogrid_intrinsics/fish_sel.geogrid.shear.stress.html#struct.geogrid.shear.stress" title="Get the stress magnitude in coupling spring at node  inode  ( inode  ∈ {1, 2,&#013;&#010;3}). The coupling spring lies in the tangent plane of the geogrid surface. The&#013;&#010;direction in which force is acting is given by  struct.geogrid.shear.dir ."><span class="fishcmd">struct.geogrid.shear.stress</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_GEOGRID_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../geogrids/fish/sel.geogrid_intrinsics/fish_sel.geogrid.slide.html#struct.geogrid.slide" title="Get/set the large-strain sliding flag. A  true  value denotes that the large-strain&#013;&#010;sliding is on."><span class="fishcmd">struct.geogrid.slide</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_GEOGRID_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../geogrids/fish/sel.geogrid_intrinsics/fish_sel.geogrid.slide.tol.html#struct.geogrid.slide.tol" title="Get/set the (shear) coupling spring slide tolerance of the geogrid element."><span class="fishcmd">struct.geogrid.slide.tol</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_GEOGRID_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../geogrids/fish/sel.geogrid_intrinsics/fish_sel.geogrid.stress.confining.html#struct.geogrid.stress.confining" title="Get the confining stress at node  inode  ( inode  ∈ {1, 2, 3}). A negative value&#013;&#010;is compression. The confining stress is the stress component acting perpendicular&#013;&#010;to the geogrid surface."><span class="fishcmd">struct.geogrid.stress.confining</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_GEOGRID_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="h2 rubric" id="allselliner-functions"><code class="docutils literal"><span class="pre">liner</span></code> Functions</p>
+<p>Note that all <a class="reference internal" href="#allselshell-functions"><span class="std std-ref">shell functions</span></a> may also be used on liner elements.</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../liners/fish/sel.liner_intrinsics/fish_sel.liner.embedded.html#struct.liner.embedded" title="Get the embedded flag. A value  true  denotes that the liner element is embedded."><span class="fishcmd">struct.liner.embedded</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINER_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../liners/fish/sel.liner_intrinsics/fish_sel.liner.normal.dir.html#struct.liner.normal.dir" title="Get the direction (unit vector in global system) in which the liner element&#013;&#010;is being loaded by the normal coupling spring at node  inode  ( inode  ∈ {1,&#013;&#010;2, 3})."><span class="fishcmd">struct.liner.normal.dir</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINER_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../liners/fish/sel.liner_intrinsics/fish_sel.liner.normal.disp.html#struct.liner.normal.disp" title="Get the displacement magnitude in the normal coupling spring at node  inode &#013;&#010;( inode  ∈ {1, 2, 3}). The coupling spring lies in the tangent plane of the&#013;&#010;liner surface. The direction in which force is acting is given by  struct.liner.normal.dir ."><span class="fishcmd">struct.liner.normal.disp</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINER_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../liners/fish/sel.liner_intrinsics/fish_sel.liner.normal.stiffness.html#struct.liner.normal.stiffness" title="Get/set the normal coupling spring stiffness of the liner element."><span class="fishcmd">struct.liner.normal.stiffness</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINER_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../liners/fish/sel.liner_intrinsics/fish_sel.liner.normal.strength.html#struct.liner.normal.strength" title="Get/set the normal coupling spring tensile strength of the liner element."><span class="fishcmd">struct.liner.normal.strength</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINER_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../liners/fish/sel.liner_intrinsics/fish_sel.liner.normal.stress.html#struct.liner.normal.stress" title="Get the stress magnitude in the normal coupling spring at node  inode  ( inode &#013;&#010;∈ {1, 2, 3}). The coupling spring lies in the tangent plane of the liner surface&#013;&#010;at side  i . The direction in which force is acting is given by  struct.liner.normal.dir ."><span class="fishcmd">struct.liner.normal.stress</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINER_PNT</span><span class="null">,</span><span class="null">INT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../liners/fish/sel.liner_intrinsics/fish_sel.liner.shear.cohesion.html#struct.liner.shear.cohesion" title="Get/set the shear coupling spring cohesion of the liner element."><span class="fishcmd">struct.liner.shear.cohesion</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINER_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../liners/fish/sel.liner_intrinsics/fish_sel.liner.shear.dir.html#struct.liner.shear.dir" title="Get the direction (unit vector in global system) in which the liner element&#013;&#010;is being loaded by the shear coupling spring at node  inode  ( inode  ∈ {1,&#013;&#010;2, 3})."><span class="fishcmd">struct.liner.shear.dir</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINER_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../liners/fish/sel.liner_intrinsics/fish_sel.liner.shear.disp.html#struct.liner.shear.disp" title="Get the displacement magnitude in the shear coupling spring at node  inode &#013;&#010;( inode  ∈ {1, 2, 3}). The coupling spring lies in the tangent plane of the&#013;&#010;liner surface. The direction in which force is acting is given by  struct.liner.shear.dir ."><span class="fishcmd">struct.liner.shear.disp</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINER_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../liners/fish/sel.liner_intrinsics/fish_sel.liner.shear.friction.html#struct.liner.shear.friction" title="Get/set the shear coupling spring friction angle of the liner element."><span class="fishcmd">struct.liner.shear.friction</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINER_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../liners/fish/sel.liner_intrinsics/fish_sel.liner.shear.residual.html#struct.liner.shear.residual" title="Get/set the shear coupling spring residual cohesion of the liner element."><span class="fishcmd">struct.liner.shear.residual</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINER_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../liners/fish/sel.liner_intrinsics/fish_sel.liner.shear.state.html#struct.liner.shear.state" title="Get the yield state of the coupling spring at node  inode  ( inode  ∈ {1, 2,&#013;&#010;3}). Return a value  i  ∈ {1, 2, 3} denotes never yielded, yielding now, or&#013;&#010;yielded in the past, respectively."><span class="fishcmd">struct.liner.shear.state</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINER_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../liners/fish/sel.liner_intrinsics/fish_sel.liner.shear.stiffness.html#struct.liner.shear.stiffness" title="Get/set the shear coupling spring stiffness of the liner element."><span class="fishcmd">struct.liner.shear.stiffness</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINER_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../liners/fish/sel.liner_intrinsics/fish_sel.liner.shear.stress.html#struct.liner.shear.stress" title="Get the stress magnitude in the shear coupling spring at node  inode  ( inode &#013;&#010;∈ {1, 2, 3}). The coupling spring lies in the tangent plane of the liner surface&#013;&#010;at side  i . The direction in which force is acting is given by  struct.liner.shear.dir ."><span class="fishcmd">struct.liner.shear.stress</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINER_PNT</span><span class="null">,</span><span class="null">INT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../liners/fish/sel.liner_intrinsics/fish_sel.liner.slide.html#struct.liner.slide" title="Get/set the large-strain sliding flag. A  true  value denotes that the large-strain&#013;&#010;sliding is on."><span class="fishcmd">struct.liner.slide</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINER_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../liners/fish/sel.liner_intrinsics/fish_sel.liner.slide.tol.html#struct.liner.slide.tol" title="Get/set the shear coupling spring slide tolerance of the liner element."><span class="fishcmd">struct.liner.slide.tol</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINER_PNT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="h2 rubric" id="allselnode-functions"><code class="docutils literal"><span class="pre">node</span></code> Functions</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.acc.global.html#struct.node.acc.global" title="Get the acceleration of structure node expressed in a global system."><span class="fishcmd">struct.node.acc.global</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.acc.local.html#struct.node.acc.local" title="Get the acceleration of structure node expressed in a local system."><span class="fishcmd">struct.node.acc.local</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.apply.html#struct.node.apply" title="Get/set the generalized applied force expressed in a system defined by  struct.node.apply.local &#013;&#010;(degree-of-freedom  i  ∈ {1, 2, … , 6}). If the argument  i  is not specified, a&#013;&#010;matrix is assigned/returned for all degrees-of-freedom."><span class="fishcmd">struct.node.apply</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.apply.local.html#struct.node.apply.local" title="Get whether the coordinate system in which generalized applied forces are expressed&#013;&#010;is a local system."><span class="fishcmd">struct.node.apply.local</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.convergence.html#struct.node.convergence" title="Returns the gridpoint convergence value, defined as the ratio of the current&#013;&#010;local force ratio ( struct.node.ratio ), to the target force ratio ( struct.node.ratio.target ).&#013;&#010; A value of 1 or less is therefore considered “converged”."><span class="fishcmd">struct.node.convergence</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.damp.local.html#struct.node.damp.local" title="Get/set the local damping factor of the structure node."><span class="fishcmd">struct.node.damp.local</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.disp.global.html#struct.node.disp.global" title="Get the displacement of structure node expressed in a global system."><span class="fishcmd">struct.node.disp.global</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.disp.local.html#struct.node.disp.local" title="Get/set the displacement of structure node expressed in a local system."><span class="fishcmd">struct.node.disp.local</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.dynamic.timestep.html#struct.node.dynamic.timestep" title="Returns the critical dynamic timestep for this structural node as of the last&#013;&#010;time the gridpoint was updated when dynamic calculations were active. Will return&#013;&#010;zero if this isn’t calculated for any reason (slaved, nulled, fixed in all DOF,&#013;&#010;etc)."><span class="fishcmd">struct.node.dynamic.timestep</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.elements.html#struct.node.elements" title="Get a list of all structural elements directly connected to this node."><span class="fishcmd">struct.node.elements</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.extra.html#struct.node.extra" title="Get/set the value stored in the  i th extra variable array of structure node&#013;&#010; sn ."><span class="fishcmd">struct.node.extra</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.find.html#struct.node.find" title="Get the structural node with internally assigned component-ID number  i ."><span class="fishcmd">struct.node.find</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.fix.html#struct.node.fix" title="Get/Set velocity-fixity flag expressed in the node-local system (degree-of-freedom&#013;&#010;component  i1  ∈ {1, 2, … , 6})."><span class="fishcmd">struct.node.fix</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.fix.local.html#struct.node.fix.local" title="Get/set the boolean flag for the local coordinate system fixity."><span class="fishcmd">struct.node.fix.local</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.force.unbal.global.html#struct.node.force.unbal.global" title="Get the unbalanced force of structure node expressed in a global system."><span class="fishcmd">struct.node.force.unbal.global</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.force.unbal.local.html#struct.node.force.unbal.local" title="Get the unbalanced force of structure node expressed in a local system."><span class="fishcmd">struct.node.force.unbal.local</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.head.html#struct.node.head" title="Get the first structure node in the list of all structure nodes. This function&#013;&#010;should be considered deprecated; it is provided mostly for backwards compatibility&#013;&#010;with old data files. Instead, see the  fish_statement_loopforeach  statement&#013;&#010;and the  struct.node.list  function. See also the  struct.node.next  function."><span class="fishcmd">struct.node.head</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.id.html#struct.node.id" title="Get the structural node ID number. This is defined as the ID number of the first&#013;&#010;element connected to the node and is not to be confused with the component-ID&#013;&#010;number."><span class="fishcmd">struct.node.id</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.id.component.html#struct.node.id.component" title="Get the structural node component-ID number. This is a unique value assigned&#013;&#010;internally at creation, not to be confused with the ID number."><span class="fishcmd">struct.node.id.component</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.link.html#struct.node.link" title="Get the link associated with structure node  sn . Returns  null  if no link&#013;&#010;is associated with the structure node."><span class="fishcmd">struct.node.link</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.list.html#struct.node.list" title="Get the pointer to the container of all structure nodes in the model."><span class="fishcmd">struct.node.list</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.mark.html#struct.node.mark" title="Get/set the mark flag. Note that the SEL logic may modify this flag during command&#013;&#010;processing, cycling, and plotting."><span class="fishcmd">struct.node.mark</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.mass.added.html#struct.node.mass.added" title="Get/set the  extra  mass in each degree of freedom addition to the inertial&#013;&#010;mass as a 1x6 matrix."><span class="fishcmd">struct.node.mass.added</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.mass.local.html#struct.node.mass.local" title="Get the mass at the degree-of-freedom  i  ∈ {1, 2, … , 6} of in the node-local&#013;&#010;system."><span class="fishcmd">struct.node.mass.local</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.maxid.html#struct.node.maxid" title="Get the maximum component-ID number assigned to any structural node in this&#013;&#010;model. The next structural node created will be assigned this value plus one."><span class="fishcmd">struct.node.maxid</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.near.html#struct.node.near" title="Get the structure node nearest  v . Will return  null  if there are no structure&#013;&#010;nodes in the model."><span class="fishcmd">struct.node.near</span><span class="fishparamlist"><big>(</big><span class="null">VEC+</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.next.html#struct.node.next" title="Get the next structure node after  sn  in the list of all structure nodes in&#013;&#010;the model. Will return  null  if no more structure nodes follow. This function&#013;&#010;should be considered deprecated; it is provided mostly for backwards compatibility&#013;&#010;with old data files. Instead, see the  fish_statement_loopforeach  statement&#013;&#010;and the  struct.node.list  function. See also the  struct.node.head  function."><span class="fishcmd">struct.node.next</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.num.html#struct.node.num" title="Get the total number of structure nodes in the model."><span class="fishcmd">struct.node.num</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.pos.html#struct.node.pos" title="Get the current position vector for the structure node."><span class="fishcmd">struct.node.pos</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.pos.reference.html#struct.node.pos.reference" title="Get the reference position vector for the structure node."><span class="fishcmd">struct.node.pos.reference</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.ratio.html#struct.node.ratio" title="Get the local gridpoint mechanical convergence ratio.  This is the ratio of&#013;&#010;unbalanced force to force applied to the node."><span class="fishcmd">struct.node.ratio</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.ratio.target.html#struct.node.ratio.target" title="Get/set the target mechanical force ratio in the node.  The default value is&#013;&#010;1e-4. A local force ratio ( struct.node.ratio ) below this value is considered&#013;&#010;converged.  See  struct.node.convergence ."><span class="fishcmd">struct.node.ratio.target</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.resultant.html#struct.node.resultant" title="Get stress resultants last calculated for the elements connected to this node."><span class="fishcmd">struct.node.resultant</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.stiff.local.html#struct.node.stiff.local" title="Get the stiffness of structure node expressed in a local system."><span class="fishcmd">struct.node.stiff.local</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.surface.valid.html#struct.node.surface.valid" title="Get a boolean flag for surface system validity; true  if the surface system&#013;&#010;is valid,  false  if not. The surface system can be made valid by issuing a&#013;&#010;structure recovery command."><span class="fishcmd">struct.node.surface.valid</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.surface.xdir.html#struct.node.surface.xdir" title="Get/set the orientation of the surface system of node  sn  such that the  -direction&#013;&#010;is aligned with the projection of the surface vector  v  onto the normal plane,&#013;&#010;which is defined by the  -direction."><span class="fishcmd">struct.node.surface.xdir</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.system.local.html#struct.node.system.local" title="Get the local coordinate system of the structure node. The return value can&#013;&#010;be a matrix if both  i1  and  i2  are omitted, a vector if both  i1  is assigned&#013;&#010;but  i2  is omitted, or a value if both  i1  and  i2  are assigned."><span class="fishcmd">struct.node.system.local</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.system.surface.html#struct.node.system.surface" title="Get/set the surface coordinate system of the structure node. The return value&#013;&#010;can be a matrix if both  i1  and  i2  are omitted, a vector if both  i1  is&#013;&#010;assigned but  i2  is omitted, or a value if both  i1  and  i2  are assigned."><span class="fishcmd">struct.node.system.surface</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.temp.increment.html#struct.node.temp.increment" title="Get/set the the temperature increment that will be applied to the structural&#013;&#010;node in the next timestep, causing elements connected to it to see changes in&#013;&#010;stress due to thermal expansion. This value is cleared to zero after every step&#013;&#010;when thermal expansion stresses are applied."><span class="fishcmd">struct.node.temp.increment</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.typeid.html#struct.node.typeid" title="Get an identifier that uniquely determines the type of object. For structure&#013;&#010;node, this will always return ‭1283546106‬."><span class="fishcmd">struct.node.typeid</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.vel.global.html#struct.node.vel.global" title="Get the velocity of a structure node expressed in a global system."><span class="fishcmd">struct.node.vel.global</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/fish/sel.node_intrinsics/fish_sel.node.vel.local.html#struct.node.vel.local" title="Get the velocity of a structure node expressed in a local system."><span class="fishcmd">struct.node.vel.local</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_NODE_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="h2 rubric" id="allsellink-functions"><code class="docutils literal"><span class="pre">link</span></code> Functions</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.attach.html#struct.link.attach" title="Get the attached condition used by the link in degree-of-freedom  idof  (from&#013;&#010; 1  to  6 )."><span class="fishcmd">struct.link.attach</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.delete.html#struct.link.delete" title="Delete the structural link.   The return value is ignored."><span class="fishcmd">struct.link.delete</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.extra.html#struct.link.extra" title="Get/set the  FISH  parameter value stored at index  i  of the extra array associated&#013;&#010;with the structural link."><span class="fishcmd">struct.link.extra</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.find.html#struct.link.find" title="Get the link with internally assigned component-ID number  i ."><span class="fishcmd">struct.link.find</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.head.html#struct.link.head" title="Get the first zone in the list of all structural links in the model. This function&#013;&#010;should be considered deprecated; it is provided mostly for backwards compatibility&#013;&#010;with old data files. Instead, see the  fish_statement_loopforeach  statement&#013;&#010;and the  zone.list  function. See also the  zone.next  function."><span class="fishcmd">struct.link.head</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.id.html#struct.link.id" title="Get the structural link ID number. This is defined as the ID number of the first&#013;&#010;element connected to the link host node and is not to be confused with the component-ID&#013;&#010;number."><span class="fishcmd">struct.link.id</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.id.component.html#struct.link.id.component" title="Get the structural link component-ID number.   This is a unique value assigned&#013;&#010;internally at creation, not to be confused with the ID number."><span class="fishcmd">struct.link.id.component</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.list.html#struct.link.list" title="Get a pointer to the container of all structural links in the model."><span class="fishcmd">struct.link.list</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.maxid.html#struct.link.maxid" title="Get the maximum component-ID number assigned to any structural link in this&#013;&#010;model.  The next link created will be assigned this value plus one."><span class="fishcmd">struct.link.maxid</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.model.html#struct.link.model" title="Get the name of the 1-D force-displacement model used in degree-of-freedom  idof .&#013;&#010; If the link attached condition is free or rigid, then this function will return&#013;&#010;an empty string (see the  struct.link.attach  function).  The currently available&#013;&#010;models are  linear ,  normal-yield ,  shear-yield , and  pile-yield ."><span class="fishcmd">struct.link.model</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.model.area.html#struct.link.model.area" title="Get/set the area associated with the force-displacement model. This is either&#013;&#010;returned as a 6x1 matrix or as a single value representing the area in degrees-of-freedom&#013;&#010; idof  if provided."><span class="fishcmd">struct.link.model.area</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.model.compression.html#struct.link.model.compression" title="Get/set the compressive yield force associated with the force-displacement model.&#013;&#010; Returns or assigns a 6x1 matrix representing the values in all degrees-of-freedom,&#013;&#010;or if the optional  idof  argument is specified, a single value in that degree-of-freedom."><span class="fishcmd">struct.link.model.compression</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.model.disp.html#struct.link.model.disp" title="Get the relative displacement between the node and the target used by each 1-D&#013;&#010;force-displacement model. Will return a 6x1 matrix with the values in all six&#013;&#010;degrees-of-freedom, or if the optional  idof  argument is provided, the value&#013;&#010;in one specific degree-of-freedom."><span class="fishcmd">struct.link.model.disp</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.model.force.html#struct.link.model.force" title="Get the current force in each 1-D force-displacement model.  Will return a 6x1&#013;&#010;matrix with the values in all six degrees-of-freedom, or if the optional  idof &#013;&#010;argument is provided, the value in one specific degree-of-freedom."><span class="fishcmd">struct.link.model.force</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.model.gap.html#struct.link.model.gap" title="Get/set the flag indicating whether gap calculations are active in the 1-D force-displacement&#013;&#010;model used in degree-of-freedom  idof .    See the  struct.link.model.gap.neg &#013;&#010;and  struct.link.model.gap.pos  functions."><span class="fishcmd">struct.link.model.gap</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.model.gap.neg.html#struct.link.model.gap.neg" title="Get/set the negative (compressive) gap component of each 1-D force-displacement&#013;&#010;model.  Will return a 6x1 matrix with the values in all six degrees-of-freedom,&#013;&#010;or if the optional  idof  argument is provided, the value in one specific degree-of-freedom."><span class="fishcmd">struct.link.model.gap.neg</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.model.gap.pos.html#struct.link.model.gap.pos" title="Get the positive (tensile) gap component of each 1-D force-displacement model.&#013;&#010; Will return a 6x1 matrix with the values in all six degrees-of-freedom, or&#013;&#010;if the optional  idof  argument is provided, the value in one specific degree-of-freedom."><span class="fishcmd">struct.link.model.gap.pos</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.model.prop.html#struct.link.model.prop" title="Get/set a property of the deformable model in degree-of-freedom  idof  in the&#013;&#010;structural elemenet link  p ."><span class="fishcmd">struct.link.model.prop</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="null">,</span><span class="null">INT</span><span class="null">,</span><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.model.stiffness.html#struct.link.model.stiffness" title="Get/set the stiffness used by each 1-D force-displacement model.  Will return&#013;&#010;a 6x1 matrix with the values in all six degrees-of-freedom, or if the optional&#013;&#010; idof  argument is provided, the value in one specific degree-of-freedom."><span class="fishcmd">struct.link.model.stiffness</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.model.tension.html#struct.link.model.tension" title="Get/set the tensile yield force associated with the force-displacement model.&#013;&#010;Returns or assigns a 1x6 matrix representing the values in all degrees-of-freedom,&#013;&#010;or if the optional  idof  argument is specified, a single value in that degree-of-freedom."><span class="fishcmd">struct.link.model.tension</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.model.yield.html#struct.link.model.yield" title="Get the yield state indicator in the 1-D force displacement model in degree-of-freedom&#013;&#010; idof . This is returned as an integer where  0  = never yielded,  1  = yielding&#013;&#010;now, and  2  = yielded in past."><span class="fishcmd">struct.link.model.yield</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.next.html#struct.link.next" title="Get the next link after  p  in the list of all structural links in the model.&#013;&#010; Will return  null  if no more links follow.  This function should be considered&#013;&#010;deprecated; it is provided mostly for backwards compatibility with old data&#013;&#010;files.  Instead, see the  fish_statement_loopforeach  statement and the  struct.link.list &#013;&#010;function.  See also the  struct.link.head  function."><span class="fishcmd">struct.link.next</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.node.html#struct.link.node" title="Get a pointer to the node hosting the structural link."><span class="fishcmd">struct.link.node</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.num.html#struct.link.num" title="Get the total number of structural links in the model."><span class="fishcmd">struct.link.num</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.side.html#struct.link.side" title="Get the side number of the link.  This may be a value from  1  to  16 ."><span class="fishcmd">struct.link.side</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.slide.html#struct.link.slide" title="Get/set the  large-strain sliding   DR: previous wants to be a link to… where? &#013;&#010;flag for the link.  This function only applies to node-to-zone links; it has&#013;&#010;no meaning for node-to-node links."><span class="fishcmd">struct.link.slide</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.slide.tol.html#struct.link.slide.tol" title="Get/set the  large-strain sliding   DR: previous wants to be a link to… where? &#013;&#010;tolerance for the link.  This function only applies to node-to-zone links; it&#013;&#010;has no meaning for node-to-node links."><span class="fishcmd">struct.link.slide.tol</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.target.html#struct.link.target" title="Get the ID (or component-ID) of the target.  For a node-to-node link, this will&#013;&#010;the node component-ID number.  For a node-to-zone link, this will be the zone&#013;&#010;ID number."><span class="fishcmd">struct.link.target</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.type.html#struct.link.type" title="Get the name of the link target type.  A node-to-node link will return  Structure&#013;&#010;Node .   A node-to-zone link will return  Zone ."><span class="fishcmd">struct.link.type</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.typeid.html#struct.link.typeid" title="Get an identifier that uniquely determines the type of object.   This function&#013;&#010;will return‭ 1283546109, indicating a general structural link."><span class="fishcmd">struct.link.typeid</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../links/fish/sel.link_intrinsics/fish_sel.link.used.by.html#struct.link.used.by" title="Get the name of the type of structural element with which this link is associated.&#013;&#010;This only applies to node-to-zone links, otherwise the return is a null string.&#013;&#010;The type string will be one of  beam ,  cable ,  pile ,  shell ,  geogrid ,&#013;&#010;or  liner . If the attach conditions and models assigned to the link are not&#013;&#010;compatible with those elements (generally because they have been changed), then&#013;&#010;a null string is returned."><span class="fishcmd">struct.link.used.by</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.connectivity.html"><code class="docutils literal"><span class="pre">struct.connectivity</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.delete.html"><code class="docutils literal"><span class="pre">struct.delete</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.density.html"><code class="docutils literal"><span class="pre">struct.density</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.extra.html"><code class="docutils literal"><span class="pre">struct.extra</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.find.html"><code class="docutils literal"><span class="pre">struct.find</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.force.nodal.html"><code class="docutils literal"><span class="pre">struct.force.nodal</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.force.nodal.local.html"><code class="docutils literal"><span class="pre">struct.force.nodal.local</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.force.update.html"><code class="docutils literal"><span class="pre">struct.force.update</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.group.html"><code class="docutils literal"><span class="pre">struct.group</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.group.remove.html"><code class="docutils literal"><span class="pre">struct.group.remove</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.head.html"><code class="docutils literal"><span class="pre">struct.head</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.id.html"><code class="docutils literal"><span class="pre">struct.id</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.id.component.html"><code class="docutils literal"><span class="pre">struct.id.component</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.isgroup.html"><code class="docutils literal"><span class="pre">struct.isgroup</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.list.html"><code class="docutils literal"><span class="pre">struct.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.local.system.html"><code class="docutils literal"><span class="pre">struct.local.system</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.mark.html"><code class="docutils literal"><span class="pre">struct.mark</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.maxid.html"><code class="docutils literal"><span class="pre">struct.maxid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.mech.convergence.html"><code class="docutils literal"><span class="pre">struct.mech.convergence</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.mech.ratio.avg.html"><code class="docutils literal"><span class="pre">struct.mech.ratio.avg</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.mech.ratio.local.html"><code class="docutils literal"><span class="pre">struct.mech.ratio.local</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.mech.ratio.max.html"><code class="docutils literal"><span class="pre">struct.mech.ratio.max</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.near.html"><code class="docutils literal"><span class="pre">struct.near</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.next.html"><code class="docutils literal"><span class="pre">struct.next</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.node.html"><code class="docutils literal"><span class="pre">struct.node</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.num.html"><code class="docutils literal"><span class="pre">struct.num</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.pos.html"><code class="docutils literal"><span class="pre">struct.pos</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.therm.expansion.html"><code class="docutils literal"><span class="pre">struct.therm.expansion</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.type.html"><code class="docutils literal"><span class="pre">struct.type</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.typeid.html"><code class="docutils literal"><span class="pre">struct.typeid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel_intrinsics/fish_sel.was.updated.html"><code class="docutils literal"><span class="pre">struct.was.updated</span></code></a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?FISH Functions" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,175 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Value Modifiers (add, multiply, gradient, &amp; vary keywords) &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Deprecated Commands and FISH" href="../../../../docproject/source/manual/program_guide/deprecatedfish.html" />
+    <link rel="prev" title="Select &amp; Hide" href="../select_manual/selecthide.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="value-modifiers-add-multiply-gradient-vary-keywords">
+<span id="valuemodulation"></span><h1>Value Modifiers (add, multiply, gradient, &amp; vary keywords)</h1>
+<p>When setting values (for instance assigning a property, an initial condition, or applying a force to zones or faces) it is possible to do a simple assignment, to perform arithmetic adjustment (<a class="reference internal" href="#modulatewithadd"><span class="std std-ref">add</span></a>, <a class="reference internal" href="#modulatewithmultiply"><span class="std std-ref">multiply</span></a>) to the existing value, and to supply a linear distribution in space (<a class="reference internal" href="#modulatewithgradient"><span class="std std-ref">gradient</span></a>, <a class="reference internal" href="#modulatewithvary"><span class="std std-ref">vary</span></a>). Commands that set values will not necessarily supply each type of modification.  However, when these modifiers are available, they will operate in the manner described here.</p>
+<p class="h2 rubric" id="modulatewithadd">Add</p>
+<p>The <span class="cmdkey">add</span> keyword is simplest.  It adds the supplied value to an existing value.  If the <span class="cmdkey">gradient</span> or <span class="cmdkey">vary</span> keywords are used, they apply to the value added.</p>
+<p>Example:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">zone gridpoint fix</span><span class="n"> force</span><span class="o">-</span><span class="n">applied </span><span class="p">(</span><span class="m m-Double">5.0</span><span class="p">,</span><span class="m m-Double">1.0</span><span class="p">,</span><span class="m m-Double">2.0</span><span class="p">)</span><span class="n"> range group </span><span class="s">&#39;South&#39;</span>
+<span class="nb">zone gridpoint fix</span><span class="n"> force</span><span class="o">-</span><span class="n">applied </span><span class="p">(</span><span class="m m-Double">1.0</span><span class="p">,</span><span class="m m-Double">2.0</span><span class="p">,</span><span class="m m-Double">3.0</span><span class="p">)</span><span class="n"> add range group </span><span class="s">&#39;South&#39;</span>
+</pre></div>
+</div>
+<p>The first line sets the applied force for each gridpoint in the group <span class="cmdkey">South</span> to a value of <span class="math">\(\small{(5.0,1.0,2.0)}\)</span>. The second line adds a vector value of <span class="math">\(\small{(1.0,2.0,3.0)}\)</span> for a total value of <span class="math">\(\small{(6.0,3.0,5.0)}\)</span>.</p>
+<p class="h2 rubric" id="modulatewithmultiply">Multiply</p>
+<p>The <span class="cmdkey">multiply</span> keyword multiplies the existing value by the factor supplied with the keyword.  If the <span class="cmdkey">gradient</span> or <span class="cmdkey">vary</span> keywords are used, they apply to the factor.</p>
+<p>Example:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">zone gridpoint fix</span><span class="n"> force</span><span class="o">-</span><span class="n">applied </span><span class="p">(</span><span class="m m-Double">5.0</span><span class="p">,</span><span class="m m-Double">1.0</span><span class="p">,</span><span class="m m-Double">2.0</span><span class="p">)</span><span class="n"> range group </span><span class="s">&#39;South&#39;</span>
+<span class="nb">zone gridpoint fix</span><span class="n"> force</span><span class="o">-</span><span class="n">applied </span><span class="p">(</span><span class="m m-Double">1.0</span><span class="p">,</span><span class="m m-Double">2.0</span><span class="p">,</span><span class="m m-Double">3.0</span><span class="p">)</span><span class="n"> multiply range group </span><span class="s">&#39;South&#39;</span>
+</pre></div>
+</div>
+<p>The first line sets the applied force for each gridpoint in the group <span class="cmdkey">South</span> to a value of <span class="math">\(\small{(5.0,1.0,2.0)}\)</span>. The second line multiplies the applied force by a vector value of <span class="math">\(\small{(1.0,2.0,3.0)}\)</span> for a resulting value of <span class="math">\(\small{(5.0,2.0,6.0)}\)</span>.</p>
+<p class="h2 rubric" id="modulatewithgradient">Gradient</p>
+<p>The <span class="cmdkey">gradient</span> keyword provides a method for specifying a linear variation of the value.  It takes the form:</p>
+<blockquote>
+<div><span class="cmdkey">gradient</span> <a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span></span></a> &lt;<span class="cmdkey">origin</span> <a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span></span></a>&gt;</div></blockquote>
+<p>Consider the following command.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">zone apply</span><span class="n"> force</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">1.0</span><span class="n"> gradient </span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> origin </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> range pos</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">1</span><span class="n"> </span><span class="m m-Double">10</span>
+</pre></div>
+</div>
+<p>For each zone in the range range y=1 to y=10, apply a gradient to the
+y-force in the zones as follows.  Take the base value (1.0) and add to it a value that is:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">2 times the zone’s <span class="math">\(x\)</span>-component minus 1 plus</div>
+<div class="line">4 times the zone’s <span class="math">\(y\)</span>-component minus 2 plus</div>
+<div class="line">3 times the zone’s <span class="math">\(z\)</span>-component minus 3.</div>
+</div>
+</div></blockquote>
+<p>The value varies according to the relation:</p>
+<div class="math">
+\[\textrm{modified value} = \textrm{value} + v_x(p_x - o_x) + v_y(p_y - o_y) + v_z(p_z - o_z)\]</div>
+<p>When using <span class="cmdkey">gradient</span>, <span class="math">\(value\)</span> is supplied <em>before</em> the <span class="cmdkey">gradient</span> keyword (that is, it is the “pre-modified” value supplied for the command); <span class="math">\(p(p_x,p_y,p_z)\)</span> is the position of the object; <span class="math">\(o(o_x,o_y,o_z)\)</span> is the origin of the calculation, and <span class="math">\(v(v_x,v_y,v_z)\)</span> is the gradient factor.</p>
+<p>The <span class="cmdkey">origin</span> keyword is optional and defaults to (0,0,0).</p>
+<p class="h3 rubric" id="gradienterror">Gradient Errors</p>
+<p>If the vector <span class="cmdkey">gradient</span> keyword is applied to a vector value (e.g., <span class="cmdkey">displacement</span> <a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">1 3 5</span></span></a> <span class="cmdkey">gradient</span> <a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">2 4 3</span></span></a>), an error will occur.</p>
+<p class="h2 rubric" id="modulatewithvary">Vary</p>
+<p>The <span class="cmdkey">vary</span> keyword provides a method for specifying a linear variation.
+This will vary a component value across the <span class="math">\(x\)</span>-, <span class="math">\(y\)</span>-, and <span class="math">\(z\)</span>-extent of a selected range.
+Consider the following command.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">zone apply</span><span class="n"> force</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">1.0</span><span class="n"> vary </span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> range pos</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">1</span><span class="n"> </span><span class="m m-Double">10</span>
+</pre></div>
+</div>
+<p>Given the zones whose centroids lie in the range between y=1 and y=10, vary the <span class="math">\(y\)</span>-force applied to
+the zones as follows.  Take the base value (1.0) and add to it a value that varies from 0~2 over
+the <span class="math">\(x\)</span>-extent of the range, 0~4 over the <span class="math">\(y\)</span>-extent, and 0~3 over the <span class="math">\(z\)</span>-extent.</p>
+<p>The value varies according to the relation</p>
+<div class="math">
+\[\textrm{modified value} = \textrm{value} + \frac{p_x-l_x}{u_x-l_x} v_x + \frac{p_y-l_y}{u_y-l_y} v_y + \frac{p_z-l_z}{u_z-l_z} v_z\]</div>
+<p>where <span class="math">\(l(l_x,l_y,l_z)\)</span> is the vector lower bound of the extent, <span class="math">\(u(u_x,u_y,u_z)\)</span> is the vector upper bound of the extent,
+<span class="math">\(v(v_x,v_y,u_z)\)</span> is the vary vector, and <span class="math">\(p(p_x,p_y,p_z)\)</span> is the vector position of the object.</p>
+<p class="h3 rubric" id="varyerror">Vary Errors</p>
+<p>If the vector <span class="cmdkey">vary</span> keyword is applied to a vector value (e.g., <span class="cmdkey">displacement</span> <a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">1 3 5</span></span></a>
+<span class="cmdkey">vary</span> <a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">2 4 3</span></span></a>), an error will occur.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" accesskey="U">Common Model Objects</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../select_manual/selecthide.html"
+                           title="previous chapter"> Select &amp; Hide</a> |    
+       <a href="../../../../docproject/source/manual/program_guide/deprecatedfish.html"
+                           title="next chapter">Deprecated Commands and <span class="codename">FISH</span></a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Value Modifiers (add, multiply, gradient, & vary keywords)" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,164 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Shape &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../../../../search.html" />
+    <link rel="next" title="Transparency" href="std_transparency.html" />
+    <link rel="prev" title="Scale" href="std_scale.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="shape">
+<span id="std-shape"></span><h1>Shape</h1>
+<p>The <em>Shape</em> attribute is a container that will take one of three forms, depending on the setting of the main attribute field’s selector.  The three shape control styles are as follows.</p>
+<span class="target" id="simpleshapecontrols"></span><p><strong>Basic</strong> Shape Controls</p>
+<img alt="../../../../../../../../../../../_images/shapeball.png" class="pi-attribute" src="../../../../../../../../../../../_images/shapeball.png" />
+<p>Often, this style is used when the shape is set to a representational option (e.g., select a “ball” shape for the <em>Ball</em> plot item).</p>
+<blockquote>
+<div><p><em>Shape-&gt;[selection]</em>: use [selection] as the shape for the item.</p>
+<blockquote>
+<div><p><em>Shrink Fac</em>: shrink the plot item, as a percentage (.1 = 10%, 1 = 100%, etc.).</p>
+<p><em>Quality</em>: Set the number of sides used to generate a polygon approximation of a sphere.</p>
+</div></blockquote>
+</div></blockquote>
+<span class="target" id="arrowshapecontrols"></span><p><strong>Arrow</strong> Shape Controls</p>
+<img alt="../../../../../../../../../../../_images/shapearrow.png" class="pi-attribute" src="../../../../../../../../../../../_images/shapearrow.png" />
+<p>This shape style is used when the item is to be represented as a contoured vector field.</p>
+<blockquote>
+<div><p><em>Shape -&gt; Arrow</em>: render the item with arrows.  This setting requires that the item will be colored as a vector quantity.</p>
+<blockquote>
+<div><p><em>Scale</em>: Automatically (checked) scale the plot item.  If unchecked, the adjacent field is enabled to allow specification of item size.</p>
+<blockquote>
+<div><em>Target</em>: Set the target scale, as a percentage of screen size, when “Auto” is checked.</div></blockquote>
+<p><em>Sketch</em>: Specify to sketch, with options for “Above”, “On Move”, or “On.” Sketching is performed in the “Above” setting if the number of items in the plot item is above the number in the adjacent field (which may be edited when “Above” is selected.  Sketch mode is used in “On move” if the plot item is moved in some way (rotated, magnified, etc.).  Sketch mode is always on when “On” is selected.</p>
+<blockquote>
+<div><em>Line</em>: Set the line style and the line width (in a range from 1 to 10, in pixels) to use when rendering in sketch mode.</div></blockquote>
+<p><em>Point to Base</em>: Invert (checked) so that the arrow points at (rather than emanates from) the item’s point source.</p>
+<p><em>Arrow Head</em>: Include arrow heads (checked), with sizing controls for arrow head length, arrow head radius, and shaft thickness, respectively.</p>
+<p><em>Arrow Quality</em>: Specify the number of edges to use when rendering the circular portion of the arrow head (larger number = more circular).</p>
+</div></blockquote>
+</div></blockquote>
+<span class="target" id="facetshapecontrols"></span><p><strong>Facet</strong> Shape Controls</p>
+<img alt="../../../../../../../../../../../_images/shapefacet.png" class="pi-attribute" src="../../../../../../../../../../../_images/shapefacet.png" />
+<p>This shape style is used when the item is to be represented by its extents.</p>
+<blockquote>
+<div><p><em>Shape-&gt;[selection]</em>: use [selection] as the shape for the item.</p>
+<blockquote>
+<div><p><em>Shrink Fac</em>: shrink the plot item, as a percentage (.1 = 10%, 1 = 100%, etc.).</p>
+<p><em>Polygons</em>: a container for the following controls that govern how item facets appear.</p>
+<blockquote>
+<div><p><em>Fill</em>: included (checked) item fill.</p>
+<p><em>Outline</em>: include (checked) item outline, with additional controls for color and width of the outline.</p>
+<p><em>Out. Trans</em>: Set outline transparency (0 = fully opaque; 100 = invisible).</p>
+<p><em>Lighting</em>: shade the item as though lit from a light source over the viewer’s right shoulder.</p>
+<p><em>Offset</em>: sets the the OpenGL polygon offset (Setting these values close to zero may improve performance. The first value is a scale factor to create a variable depth offset for each polygon, the second value is used to create a constant depth offset.)</p>
+</div></blockquote>
+<p><em>Cut-Line</em>: Sets the thickness of the line(s) that represent the location of the cut plane.</p>
+</div></blockquote>
+</div></blockquote>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../../../../plotting.html" >Plotting</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../../plotitem_index.html" accesskey="U">Plot Items</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="std_scale.html"
+                           title="previous chapter"> Scale</a> |    
+       <a href="std_transparency.html"
+                           title="next chapter">Transparency</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Shape" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

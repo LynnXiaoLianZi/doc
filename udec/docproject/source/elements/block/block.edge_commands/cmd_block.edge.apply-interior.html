@@ -1,0 +1,202 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block edge apply-interior command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block edge apply list command" href="cmd_block.edge.list.html" />
+    <link rel="prev" title="block edge apply command" href="cmd_block.edge.apply.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-edge-apply-interior-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">edge</span> <span class="pre">apply-interior</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="blockedge command">
+<dt id="command:block.edge.apply-interior">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">e</span><span class="null">d</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="null">a</span><span class="null">p</span><span class="null">p</span><span class="null">l</span><span class="null">y</span><span class="null">-</span><span class="null">i</span><span class="null">n</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">o</span><span class="null">r</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.edge.apply-interior.stress" title="block edge apply-interior stress">stress</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply-interior.gradient-x" title="block edge apply-interior gradient-x">gradient-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply-interior.gradient-y" title="block edge apply-interior gradient-y">gradient-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply-interior.domain" title="block edge apply-interior domain">domain</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply-interior.in-excavation" title="block edge apply-interior in-excavation">in-excavation</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply-interior.history" title="block edge apply-interior history">history</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.edge.apply-interior.delete" title="block edge apply-interior delete">delete</a></p>
+</div>
+<p>Stresses are applied to block edges of an interior boundary (i.e., not lying on the outer boundary) within a specified <a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><code class="xref fish fish-tok docutils literal"><span class="pre">range</span></code></a>. An alternative is to use the <code class="xref fish fish-tok docutils literal"><span class="pre">domain</span></code> or :tok`in-excavation` keywords to specify the void over which the stresses will be applied.</p>
+<dl class="keyword">
+<dt id="kwd:block.edge.apply-interior.stress">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxxo</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxyo</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyyo</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply boundary stress parameters: <span class="math">\(xx\)</span>-stress, <span class="math">\(xy\)</span>-stress and <span class="math">\(yy\)</span>-stress.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply-interior.gradient-x">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxxx</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxyx</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyyx</span><span class="null"> </span></span></a></dt>
+<dd><p>Linearly vary boundary stress in X direction. :math: <span class="math">\(sxxx\)</span>, <span class="math">\(sxyx\)</span>, <span class="math">\(syyx\)</span>, assuming <span class="math">\(sxxo\)</span>, <span class="math">\(sxyo\)</span> and <span class="math">\(syyo\)</span> are stresses at origin (0,0).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply-interior.gradient-y">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxxy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxyy</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyyy</span><span class="null"> </span></span></a></dt>
+<dd><p>Linearly vary boundary stress in Y direction. <span class="math">\(sxxy1, `sxyy\)</span>, <span class="math">\(syyy\)</span>, assuming <span class="math">\(sxxo\)</span>, <span class="math">\(sxyo\)</span> and <span class="math">\(syyo\)</span> are stresses at origin (0,0).</p>
+<p>Linearly varying boundary stress equation.</p>
+<div class="math">
+\[\begin{split}sxx = sxxo + (sxxx \cdot x) + (sxxy \cdot y) \\
+sxy = sxyo + (sxyx \cdot x) + (sxyy \cdot y) \\
+syy = syyo + (syyx \cdot x) + (syyy \cdot y) \\\end{split}\]</div>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply-interior.domain">
+<span class="cmdkey"><span class="pref">d</span><span class="null">o</span><span class="null">m</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>The keyword domain <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> specifies the interior domain over which the stress are applied.  The domain may be determined by turning on the index in a domain plot or by using the <a class="reference internal" href="../block_commands/cmd_block.domain.html#kwd:block.domain.list" title="List information about wetting or nonwetting fluid in the domains."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">domain</span> <span class="pre">list</span></code></a>. Note that the id of a domain will change if the model is changed.  It is better to use the in-excavation keyword. This keyword does not work in conjunction with CONFIG CELL.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply-interior.in-excavation">
+<span class="cmdkey"><span class="pref">i</span><span class="null">n</span><span class="null">-</span><span class="null">e</span><span class="null">x</span><span class="null">c</span><span class="null">a</span><span class="null">v</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxx</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fyy</span><span class="null"> </span></span></a></dt>
+<dd><p>The keyword in-excavation is used to specify a point inside of the void that the stresses will be applied to. This keyword does not work in conjunction with CONFIG CELL.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply-interior.history">
+<span class="cmdkey"><span class="pref">h</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>The keyword history defines a time history that is a multiplier for all the stresses applied.</p>
+<p>Boundary loads, stresses or velocities can be applied as a constant, sinusoidal or user-defined <span class="codename">FISH</span> function, or they may consist of a series of points given by a TABLE command or read from a file. The keywords must be given on the same line specifying the load, stress or velocity.</p>
+<dl class="keyword">
+<dt id="kwd:block.edge.apply-interior.history.cosine">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span><span class="null"> </span></span></a></dt>
+<dd><p>Get a history of cosine wave load with frequency <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span></span></a> (cycles/sec) applied for a problem time period of <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply-interior.history.funcname">
+<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">f</span><span class="null">u</span><span class="null">n</span><span class="null">c</span><span class="null">n</span><span class="null">a</span><span class="null">m</span><span class="null">e</span><span class="null"> </span></span></a></dt>
+<dd><p>Use the user-defined <span class="codename">FISH</span> function named <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">funcname</span></span></a> as the history multiplier.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply-interior.history.sine">
+<span class="cmdkey"><span class="pref">s</span><span class="null">i</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span><span class="null"> </span></span></a></dt>
+<dd><p>Get a history of cosine wave load with frequency <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ffreq</span></span></a> (cycles/sec) applied for a problem time period of <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">ftime</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply-interior.history.table">
+<span class="cmdkey"><span class="pref">t</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Input the history via the <span class="flag3">trick</span> <a class="reference internal" href="../../../../../../common/kernel/doc/manual/table_manual/table_commands/commands.html#table-commands"><span class="std std-ref">table</span></a> commands. Table <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> consists of a list of pairs: <span class="math">\(time\)</span>, <span class="math">\(f(time)\)</span>. Linear interpolation is performed between the given discrete points.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.edge.apply-interior.delete">
+<span class="cmdkey"><span class="pref">d</span><span class="null">e</span><span class="null">l</span><span class="null">e</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Delete interior boundaries should be deleted prior to deleting blocks that are part of the boundary.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../block_commands/block_commands.html" >Block Commands</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../block_commands/cmd_block.edge.html" accesskey="U"><span class="fishcmd">block edge</span> commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_block.edge.apply.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">edge</span> <span class="pre">apply</span></code> command</a> |    
+       <a href="cmd_block.edge.list.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">block</span> <span class="pre">edge</span> <span class="pre">apply</span> <span class="pre">list</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block edge apply-interior command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

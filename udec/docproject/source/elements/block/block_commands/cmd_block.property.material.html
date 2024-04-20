@@ -1,0 +1,451 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block property material command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block show command" href="cmd_block.show.html" />
+    <link rel="prev" title="block mechanical timestep-factor command" href="../block.mechanical_commands/cmd_block.mechanical.timestep-factor.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-property-material-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">property</span> <span class="pre">material</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="block command">
+<dt id="command:block.property.material">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><span class="cmdname"><span class="null">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><span class="admonition-primary-keywords null"></span><p>Assign property values to material model numbers for blocks (BLOCK property method). The parameter (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> ) is the material number (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> must be in the range 1-50).  Block properties are not assigned to specific blocks with this command; that is done using the <a class="reference internal" href="cmd_block.change.html#kwd:block.change.material" title="Material property number  i  is assigned to designated rigid or deformable&#013;&#010;blocks. (All blocks initially default to mat =  1 . The maximum value&#013;&#010;for  i  is  50 .)"><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">change</span> <span class="pre">material</span></code></a> command.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Block constitutive models and properties can also be assigned locally to block zones (ZONE property method) with the <a class="reference internal" href="../block.zone_commands/cmd_block.zone.cmodel.html#kwd:block.zone.cmodel.assign" title="This command assigns a constitutive model and/or one or more properties with&#013;&#010;all zones (of deformable blocks) that have centroids in the given range. The&#013;&#010;advantage of assigning models and properties with the BLOCK ZONE CMODEL ASSIGN&#013;&#010;command is that each zone has its own local properties.  This is reffered to&#013;&#010;as the ZONE property method (see  block.change.model  command for the BLOCK&#013;&#010;property method)."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">cmodel</span> <span class="pre">assign</span></code></a> command. If the ZONE property method is used, each block or contact will have its own set of properties. This method requires more computer memory. This method is required if <span class="codename">FISH</span> is used to modify properties of individual blocks.</p>
+</div>
+</dd></dl>
+
+<blockquote id="block-rigid-properties">
+<div><p>Rigid blocks</p>
+<table border="1" class="colwidths-given docutils" id="id1">
+<caption><span class="caption-text">Table 1: Property keywords for rigid blocks.</span></caption>
+<colgroup>
+<col width="1%" />
+<col width="30%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">keyword</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>(1)</td>
+<td>density</td>
+<td>density [mass/volume]</td>
+</tr>
+</tbody>
+</table>
+<p>The following properties are used by model numbers 0 (null), 1 (elastic), 3 (Mohr-Coulomb), and 6 (Drucker-Prager).</p>
+</div></blockquote>
+<blockquote id="block-model-0-properties">
+<div><p>Block model 0 - null constitutive model.  In spite of the fact that this is a null model, in order for it to work properly in <span class="codename">UDEC</span>, elastic properties must be assigned.  The block properties are needed in the null model to allow internal gridpoints to move as the null block deforms. The choice of null property values will not affect model results, but values that won’t reduce the critical timestep should be selected.</p>
+<table border="1" class="colwidths-given docutils" id="id2">
+<caption><span class="caption-text">Table 2: Property keywords for constitutive model 0 (null)</span></caption>
+<colgroup>
+<col width="1%" />
+<col width="30%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">keyword</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>(1)</td>
+<td>bulk</td>
+<td>Bulk Modulus [stress]</td>
+</tr>
+<tr class="row-odd"><td>(2)</td>
+<td>density</td>
+<td>density [mass/volume]</td>
+</tr>
+<tr class="row-even"><td>(3)</td>
+<td>poisson</td>
+<td>Poisson’s ratio [length/length]</td>
+</tr>
+<tr class="row-odd"><td>(4)</td>
+<td>shear</td>
+<td>Shear modulus [stress]</td>
+</tr>
+<tr class="row-even"><td>(5)</td>
+<td>young</td>
+<td>tensile strength  [stress]</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The default value for these properties is zero.  Elastic properties may be specified using either bulk and shear modulus, or young’s modulus and Poisson’s ratio.</p>
+</div>
+</div></blockquote>
+<blockquote id="block-model-1-properties">
+<div><p>Block model 1 - elastic constitutive model.  This is the default constitutive model.</p>
+<table border="1" class="colwidths-given docutils" id="id3">
+<caption><span class="caption-text">Table 3: Property keywords for constitutive model 1 (elastic)</span></caption>
+<colgroup>
+<col width="1%" />
+<col width="30%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">keyword</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>(1)</td>
+<td>biot-c</td>
+<td>Biot’s constant for porous elastic rocks (optional) - default is 1.0</td>
+</tr>
+<tr class="row-odd"><td>(2)</td>
+<td>bulk</td>
+<td>Bulk Modulus [stress]</td>
+</tr>
+<tr class="row-even"><td>(3)</td>
+<td>conductivity</td>
+<td>Thermal conductivity to be used for both axes</td>
+</tr>
+<tr class="row-odd"><td>(4)</td>
+<td>conductivity-x</td>
+<td>Thermal conductivity to be used for x axes</td>
+</tr>
+<tr class="row-even"><td>(5)</td>
+<td>conductivity-y</td>
+<td>Thermal conductivity to be used for y axes</td>
+</tr>
+<tr class="row-odd"><td>(6)</td>
+<td>density</td>
+<td>density [mass/volume]</td>
+</tr>
+<tr class="row-even"><td>(7)</td>
+<td>poisson</td>
+<td>Poisson’s ratio [length/length]</td>
+</tr>
+<tr class="row-odd"><td>(8)</td>
+<td>shear</td>
+<td>Shear modulus [stress]</td>
+</tr>
+<tr class="row-even"><td>(9)</td>
+<td>specific-heat</td>
+<td>Specific heat [heat]</td>
+</tr>
+<tr class="row-odd"><td>(10)</td>
+<td>thermal-expansion</td>
+<td>Thermal expansion coefficient [length/length]</td>
+</tr>
+<tr class="row-even"><td>(11)</td>
+<td>young</td>
+<td>tensile strength  [stress]</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The default value for these properties (with the exceptions, as noted) is zero.  Elastic properties may be specified using either bulk and shear modulus, or young’s modulus and Poisson’s ratio. Biot’s constant is optional and only used to calculate stress change in response to a pore-pressure change. Thermal-conductivity, Thermal-expansion, and Specific heat are only used in thermal calculations.</p>
+</div>
+</div></blockquote>
+<blockquote id="block-model-3-properties">
+<div><p>Block model 3 - Mohr-Coulomb constitutive model.</p>
+<table border="1" class="colwidths-given docutils" id="id4">
+<caption><span class="caption-text">Table 4: Property keywords for constitutive model 3 (Mohr-Coulomb)</span></caption>
+<colgroup>
+<col width="1%" />
+<col width="30%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">keyword</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>(1)</td>
+<td>biot-c</td>
+<td>Biot’s constant for porous elastic rocks (optional) - default is 1.0</td>
+</tr>
+<tr class="row-odd"><td>(2)</td>
+<td>bulk</td>
+<td>Bulk Modulus [stress]</td>
+</tr>
+<tr class="row-even"><td>(3)</td>
+<td>cohesion</td>
+<td>Cohesion [stress]</td>
+</tr>
+<tr class="row-odd"><td>(4)</td>
+<td>conductivity</td>
+<td>Thermal conductivity to be used for both axes</td>
+</tr>
+<tr class="row-even"><td>(5)</td>
+<td>conductivity-x</td>
+<td>Thermal conductivity to be used for x axes</td>
+</tr>
+<tr class="row-odd"><td>(6)</td>
+<td>conductivity-y</td>
+<td>Thermal conductivity to be used for y axes</td>
+</tr>
+<tr class="row-even"><td>(7)</td>
+<td>density</td>
+<td>density [mass/volume]</td>
+</tr>
+<tr class="row-odd"><td>(8)</td>
+<td>dilation</td>
+<td>Dilation angle [degrees]</td>
+</tr>
+<tr class="row-even"><td>(9)</td>
+<td>flag-brittle</td>
+<td>Specifies whether the tensile strength drops to zero upon tensile failure. Default is false.</td>
+</tr>
+<tr class="row-odd"><td>(10)</td>
+<td>friction</td>
+<td>Internal angle of friction [degrees]</td>
+</tr>
+<tr class="row-even"><td>(11)</td>
+<td>poisson</td>
+<td>Poisson’s ratio [length/length]</td>
+</tr>
+<tr class="row-odd"><td>(12)</td>
+<td>shear</td>
+<td>Shear modulus [stress]</td>
+</tr>
+<tr class="row-even"><td>(13)</td>
+<td>specific-heat</td>
+<td>Specific heat [heat]</td>
+</tr>
+<tr class="row-odd"><td>(14)</td>
+<td>thermal-expansion</td>
+<td>Thermal expansion coefficient [length/length]</td>
+</tr>
+<tr class="row-even"><td>(15)</td>
+<td>Tension</td>
+<td>tensile strength  [stress]</td>
+</tr>
+<tr class="row-odd"><td>(16)</td>
+<td>young</td>
+<td>tensile strength  [stress]</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The default value for these properties (with the exceptions, as noted) is zero.  Elastic properties may be specified using either bulk and shear modulus, or young’s modulus and Poisson’s ratio. Biot’s constant is optional and only used to calculate stress change in response to a pore-pressure change. Thermal-expansion, and Specific heat are only used in thermal calculations. The default value for flag-brittle is false.  This is a change in the default tensile behavior for this model in <span class="codename">UDEC</span> from previous versions.</p>
+</div>
+</div></blockquote>
+<blockquote id="block-model-6-properties">
+<div><p>Block model 6 - Drucker-Prager constitutive model.</p>
+<table border="1" class="colwidths-given docutils" id="id5">
+<caption><span class="caption-text">Table 5: Property keywords for constitutive model 6 (Drucker-Prager)</span></caption>
+<colgroup>
+<col width="1%" />
+<col width="30%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">keyword</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>(1)</td>
+<td>biot-c</td>
+<td>Biot’s constant for porous elastic rocks (optional) - default is 1.0</td>
+</tr>
+<tr class="row-odd"><td>(2)</td>
+<td>bulk</td>
+<td>Bulk Modulus [stress]</td>
+</tr>
+<tr class="row-even"><td>(3)</td>
+<td>cohesion</td>
+<td>Cohesion [stress]</td>
+</tr>
+<tr class="row-odd"><td>(4)</td>
+<td>conductivity</td>
+<td>Thermal conductivity to be used for both axes</td>
+</tr>
+<tr class="row-even"><td>(5)</td>
+<td>conductivity-x</td>
+<td>Thermal conductivity to be used for x axes</td>
+</tr>
+<tr class="row-odd"><td>(6)</td>
+<td>conductivity-y</td>
+<td>Thermal conductivity to be used for y axes</td>
+</tr>
+<tr class="row-even"><td>(7)</td>
+<td>density</td>
+<td>density [mass/volume]</td>
+</tr>
+<tr class="row-odd"><td>(8)</td>
+<td>dilation</td>
+<td>Dilation angle [degrees]</td>
+</tr>
+<tr class="row-even"><td>(9)</td>
+<td>flag-brittle</td>
+<td>Specifies whether the tensile strength drops to zero upon tensile failure. Default is false.</td>
+</tr>
+<tr class="row-odd"><td>(10)</td>
+<td>friction</td>
+<td>Internal angle of friction [degrees]</td>
+</tr>
+<tr class="row-even"><td>(11)</td>
+<td>poisson</td>
+<td>Poisson’s ratio [length/length]</td>
+</tr>
+<tr class="row-odd"><td>(12)</td>
+<td>shear</td>
+<td>Shear modulus [stress]</td>
+</tr>
+<tr class="row-even"><td>(13)</td>
+<td>specific-heat</td>
+<td>Specific heat [heat]</td>
+</tr>
+<tr class="row-odd"><td>(14)</td>
+<td>thermal-expansion</td>
+<td>Thermal expansion coefficient [length/length]</td>
+</tr>
+<tr class="row-even"><td>(15)</td>
+<td>Tension</td>
+<td>tensile strength  [stress]</td>
+</tr>
+<tr class="row-odd"><td>(16)</td>
+<td>young</td>
+<td>tensile strength  [stress]</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The default value for these properties (with the exceptions, as noted) is zero.  Elastic properties may be specified using either bulk and shear modulus, or young’s modulus and Poisson’s ratio. Biot’s constant is optional and only used to calculate stress change in response to a pore-pressure change. Thermal-expansion, and Specific heat are only used in thermal calculations.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The default value for the block material properties is zero. For a rigid block model, density must be specified to execute a model run. For deformable blocks, density, bulk and shear must all be specified.</p>
+<p>The equations for bulk (<span class="math">\(K\)</span>) and shear (<span class="math">\(G\)</span>) modulus are</p>
+<blockquote class="last">
+<div><blockquote>
+<div><div class="math">
+\[\begin{split}K =       E \over {3(1-2ν)} \\ \\
+\rm{and} \\ \\
+G =       E \over  {2(1+ν)}\end{split}\]</div>
+</div></blockquote>
+<p>where <span class="math">\(E\)</span> is Young’s modulus, and <span class="math">\(ν\)</span> is Poisson’s ratio. The user may enter either bulk and shear modulus, or Young’s modulus and Poisson’s ratio.</p>
+</div></blockquote>
+</div>
+</div></blockquote>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="block_commands.html" accesskey="U">Block Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../block.mechanical_commands/cmd_block.mechanical.timestep-factor.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">mechanical</span> <span class="pre">timestep-factor</span></code> command</a> |    
+       <a href="cmd_block.show.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">block</span> <span class="pre">show</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block property material command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,609 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>P2PSand Model* &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../contents.html"><img id="cornerlogo" src="../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="hide sectionname docutils container">
+<span class="codename">FLAC3D</span> Theory and Background • Constitutive Models</div>
+<div class="section" id="p2psand-model">
+<span id="modelp2psand"></span><h1>P2PSand Model*</h1>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">*This model is available in <span class="codename">FLAC3D</span> only.</p>
+</div>
+<p>P2PSand model (<a class="reference external" href="https://doi.org/10.1016/j.compgeo.2020.103984">Cheng and Detournay, 2021</a>) refers to a Practical TWO-surface Plastic SAND constitutive model
+for general 3D geotechnical earthquake engineering application aimed at capturing essential soil dynamic characteristics.
+The model is a modified extension of the fabric-dilatancy related sand plasticity DM04 model developed by Dafalias and Manzari (2004).
+By revising some formula without adding too much complexity, improved performances are achieved with matches between the simulated results and various laboratory or field
+observations and empirical relationships with various initial and loading conditions.
+The modified model switches all void-ratio related constitutive ingredients to be relative density related, and embraces an easier calibration procedure in terms of in-situ
+data, such as normalized blow counts instead of experimental data in the laboratory, while it preserves the very important property of the latter to use only.
+The model follows the general multiaxial formulation of the DM04 model, and thus can be used for general 3D boundary value problems.
+The model preserves the feature that one set of model constants to simulate different responses with different initial relative densities and initial stress states.</p>
+<p class="h3 rubric">Formulations</p>
+<p class="h4 rubric">Elastic Law</p>
+<p>For simplicity, this model adopts the hypoelastic formula in the elasticity part as proposed in the original DM04 model. The incremental form of the elastic part is</p>
+<div class="math" id="equation-eq:elasticity:incr">
+<span class="eqno">(1)</span>\[ \Delta p =  -K \Delta \varepsilon^e_v, \;\;\; \Delta s_{ij} =  2G \Delta \epsilon_{ij}\]</div>
+<p>where <span class="math">\(p\)</span> is the mean pressured defined by <span class="math">\(p=-tr(\boldsymbol{\sigma})/3\)</span>,
+<span class="math">\(\boldsymbol{s}\)</span> is the deviatoric stress tensor defined by <span class="math">\(\boldsymbol{s} = \boldsymbol{\sigma} + p\boldsymbol{I}\)</span> with <span class="math">\(\boldsymbol{I}\)</span> is the unit tensor,
+<span class="math">\(\varepsilon_v\)</span> is the volumetric strain with the definition of <span class="math">\(\varepsilon_v = tr(\boldsymbol{\varepsilon})\)</span>,
+<span class="math">\(\boldsymbol{\epsilon}\)</span> is the deviatoric strain tensor defined by <span class="math">\(\boldsymbol{\epsilon}=\boldsymbol{\varepsilon}-(\varepsilon_v/3)\boldsymbol{I}\)</span>,
+and <span class="math">\(K\)</span> and <span class="math">\(G\)</span> are elastic bulk and shear modulus, respectively.</p>
+<p>The p2PSand model considers the elastic modulus as a function of the current mean pressure <span class="math">\(p\)</span> and current relative density <span class="math">\(D_r\)</span>:</p>
+<div class="math" id="equation-eq:elasticity:p2p">
+<span class="eqno">(2)</span>\[ G = G_r p_{atm} \left(\frac{p}{p_{atm}}\right)^{n},\;\;\; K = \frac{2(1+v)}{3(1-2v)} G\]</div>
+<p>where <span class="math">\(v\)</span> is the Poisson’s ratio, <span class="math">\(p_{atm}\)</span> is a reference pressure (usually the atmospheric pressure), <span class="math">\(G_r\)</span> is a material parameter which is supposed to be a function of <span class="math">\(D_r\)</span>, and the exponent <span class="math">\(n\)</span> is usually in the range of [0.4, 1.0] with a default value of 0.5 for most sands.
+Cheng (2018) has shown that a linear function</p>
+<div class="math" id="equation-eq:elasticity:p2p2">
+<span class="eqno">(3)</span>\[ G_r = f(D_r)= g_0 (D_r + C_{Dr})\]</div>
+<p>provides high correlation for both laboratory and in-situ sands in a range of <span class="math">\(0.15 \le D_r \le 0.85\)</span> corresponding to <span class="math">\(1 \le (N_1)_{60} \le 33\)</span>,
+hence practically more complex nonlinear relationships of shear modulus in terms of <span class="math">\(D_r\)</span> may not be necessary,
+since soil with <span class="math">\((N_1)_{60} \lt 1\)</span> is not suitable for almost any construction and soil with <span class="math">\((N_1)_{60} \gt 33\)</span> is usually considered non-liquefiable and a simpler constitutive model can be alternatively used.
+Regression based on the field data (Andrus and Stokoe II 2000) supports <span class="math">\(G_r = 1240 (D_r + 0.01)\)</span>, which is also the default relation in the model.
+Nevertheless, users can still input a non-linear <span class="math">\(G_r\)</span> using a FISH function.</p>
+<p class="h4 rubric">Critical State</p>
+<p>Following the same motivation that the relative density is more favorable to be calibrated from the in-situ data,
+we propose a similar power law for the critical state but defined in terms of relative density <span class="math">\(D_r\)</span> rather than the void ratio <span class="math">\(e\)</span>:</p>
+<div class="math" id="equation-eq:cs:dr1">
+<span class="eqno">(4)</span>\[D_{rc} = D_{rc0} + \lambda_c \left( \frac{p_c}{p_{atm}} \right)^{\xi}\]</div>
+<p>where <span class="math">\(D_{rc0}\)</span>, <span class="math">\(\lambda_c\)</span>, and <span class="math">\(\xi\)</span> are material parameters and <span class="math">\(\xi = 0.7\)</span> can be used for most sands.</p>
+<p>Alternatively, a two-parameter logarithmic form of critical state may be derived as a function of relative density, <span class="math">\(D_r\)</span>, as</p>
+<div class="math" id="equation-eq:cs:dr2">
+<span class="eqno">(5)</span>\[D_{rc} = \cfrac{R}{Q - \ln{\left( \cfrac{100 \;p_c}{p_{atm}} \right)}}\]</div>
+<p>assuming that the critical state is reached when the relative dilatancy index (Bolton 1986), <span class="math">\(I_R = -D_r \ln{( {p}/{p_c} )}\)</span>, is zero.
+For quartzic sands, the material parameters were suggested to be <span class="math">\(Q = 10\)</span> and <span class="math">\(R = 1\)</span>.</p>
+<p>In the implemented version of the model in FLAC3D, the user can have options to select one of the 3-parameter or 2-parameter critical states.
+The 3-parameter critical state relation is expected to have more flexibility to fit wider experimental data.</p>
+<p class="h4 rubric">Lode Angle Dependency</p>
+<p>The P2PSand model adopts the function:</p>
+<div class="math" id="equation-eq:ld:eekelen">
+<span class="eqno">(6)</span>\[g(\theta,c) = \left[ \frac {2c^4} {c^4 + 1 +(c^4 - 1) \cos{3\theta}} \right]^{0.25}\]</div>
+<p>to interpolate <span class="math">\(M_{\theta}=g(\theta,c) M_C\)</span> for a given Lode angle <span class="math">\(\theta\)</span> and the strength ratio <span class="math">\(c\)</span>,
+which is defined by <span class="math">\(c=M_E/M_C=(3-\sin{\phi_{cs}})/(3+\sin{\phi_{cs}})\)</span>,
+with <span class="math">\(M_E\)</span> the triaxial compression strength, <span class="math">\(M_C\)</span> the triaxial extension strength, and <span class="math">\(\phi_{cs}\)</span> the friction angle at the critical state.</p>
+<p class="h4 rubric">Bounding and dilatancy Surfaces</p>
+<p>The P2PSand model adopts a power form of dependence of the bounding and dilatancy surfaces on <span class="math">\(I_p\)</span> by:</p>
+<div class="math" id="equation-eq:bd:newbs">
+<span class="eqno">(7)</span>\[M^b = M^c I_p^{(-n^b D_r)}, \;\;\; M^b \geq M^c\]</div>
+<div class="math" id="equation-eq:bd:newds">
+<span class="eqno">(8)</span>\[M^d = M^c I_p^{(n^d D_r)}, \;\;\; M^d \geq M^c K^d_{LB}\]</div>
+<p>where <span class="math">\(n^b\)</span> and <span class="math">\(n^d\)</span> are material constants.
+A typical value of <span class="math">\(n^b\)</span> is <span class="math">\(n^b = 0.16 - \phi_{cs}/400\)</span> with <span class="math">\(\phi_{cs}\)</span> (in degrees) is the friction angle in the critical state;
+Typical values of <span class="math">\(n^d\)</span> is <span class="math">\(n^d = (4 \sim 7) n^b\)</span>.
+For <span class="math">\(M^d\)</span>, the cut-off of <span class="math">\(M^b \geq M^c\)</span> is in fact forbidden so that <span class="math">\(M^d\)</span> can become smaller and greater than <span class="math">\(M^c\)</span>.
+A cut-off for <span class="math">\(M^d\)</span> is used when the mean pressure <span class="math">\(p\)</span> is small,
+implying that the dilatancy ratio <span class="math">\(M^d/M^c\)</span> cannot be smaller than a fixed value <span class="math">\(K^d_{LB}\)</span> which is an input value usually between 0.5 to 0.8.</p>
+<p class="h4 rubric">Yield Function</p>
+<p>The elastic domain in the stress space is a small cone and the yield surface is defined by the same function as in DM04 model:</p>
+<div class="math" id="equation-eq:yf:yf">
+<span class="eqno">(9)</span>\[f = \left[ (\boldsymbol{s} - p\boldsymbol{\alpha}):(\boldsymbol{s} - p\boldsymbol{\alpha}) \right]^{\frac{1}{2}} - \sqrt{\frac{2}{3}}pm = 0\]</div>
+<p>where <span class="math">\(\boldsymbol{r} = \boldsymbol{s}/p\)</span> is the deviatoric stress-ratio tensor, <span class="math">\(\boldsymbol{\alpha}\)</span> is the deviatoric back stress-ratio,
+and <span class="math">\(m\)</span> is usually a relatively small value compared with <span class="math">\(M^c\)</span>.
+In this model, we do not take <span class="math">\(m\)</span> as a dependent material constant but with a fixed value of <span class="math">\(m = 0.01 M^c\)</span>.
+The gradient to the yield surface at <span class="math">\(\boldsymbol{m}\)</span> is then</p>
+<div class="math" id="equation-eq:yf:dfds">
+<span class="eqno">(10)</span>\[\frac{\partial f}{\partial \boldsymbol{\sigma}} = \boldsymbol{n} - \frac{1}{3} (\boldsymbol{n} : \boldsymbol{r}) \boldsymbol{I}\]</div>
+<p>where</p>
+<div class="math" id="equation-eq:yf:n">
+<span class="eqno">(11)</span>\[\boldsymbol{n}
+= \frac{\boldsymbol{s}-p\boldsymbol{\alpha}}{\parallel \boldsymbol{s}-p\boldsymbol{\alpha} \parallel}
+= \frac{\boldsymbol{r}-\boldsymbol{\alpha}}{\left[(\boldsymbol{r} - \boldsymbol{\alpha}):(\boldsymbol{r} - \boldsymbol{\alpha}) \right]^{\frac{1}{2}}}\]</div>
+<p>and <span class="math">\(\boldsymbol{n}\)</span> satisfies <span class="math">\(tr(\boldsymbol{n})=0\)</span>, <span class="math">\(\boldsymbol{n}:\boldsymbol{n}=1\)</span>, and <span class="math">\(\cos{3\theta}=-\sqrt{6} \times tr(\boldsymbol{n}^3)\)</span>.</p>
+<p>As described in the DM04 model, if one draws from origin a line parallel to <span class="math">\(\boldsymbol{n}\)</span>,
+the line will intersect the bounding and dilatancy surfaces
+at at image back-stress ratio tensors <span class="math">\(\boldsymbol{\alpha}^b_{\theta}\)</span> and <span class="math">\(\boldsymbol{\alpha}^d_{\theta}\)</span>, respectively:</p>
+<div class="math" id="equation-eq:yf:alphabdn">
+<span class="eqno">(12)</span>\[\boldsymbol{\alpha}^{b,d}_{\theta} = \sqrt{\frac{3}{2}} {\alpha}^{b,d}_{\theta} \boldsymbol{n}\]</div>
+<div class="math" id="equation-eq:yf:alphabd">
+<span class="eqno">(13)</span>\[{\alpha}^{b,d}_{\theta} = g(\theta,c)M^{b,d} - m\]</div>
+<p class="h4 rubric">Plastic Shear Modulus</p>
+<p>In the P2PSand model, the plastic shear modulus could be proposed so that</p>
+<div class="math" id="equation-eq:psm:kp">
+<span class="eqno">(14)</span>\[K_p = \frac{2}{3} h_0 D_r G \frac{(\boldsymbol{\alpha}^b_{\theta} - \boldsymbol{\alpha}):\boldsymbol{n}}{(\boldsymbol{\alpha}-\boldsymbol{\alpha}_{in}):\boldsymbol{n}}\]</div>
+<p>While the above equation was shown to be effective for monotonic loading,
+it has not overcome two shortcomings of the DM04 model during cyclic loading:
+one is the  repeating stress-path without further increases in shear strain amplitude after some cycles;
+the other is the overly high damping ratio at relative large shear strain.
+Recalling the great advantage of bounding surface plasticity to define at will the coefficient of <span class="math">\(K_p\)</span> (as long as <span class="math">\(K_p=0\)</span> on the bounding surface),
+and in order to improve cyclic performance, two supplementary factors <span class="math">\(f_1\)</span> and <span class="math">\(f_2\)</span> are added into the <span class="math">\(K_p\)</span> formula for the P2PSand model:</p>
+<div class="math" id="equation-eq:psm:kp1">
+<span class="eqno">(15)</span>\[K_p = \frac{2}{3} h_0 f_1 f_2 D_r G \frac{(\boldsymbol{\alpha}^b_{\theta} - \boldsymbol{\alpha}):\boldsymbol{n}}{(\boldsymbol{\alpha}-\boldsymbol{\alpha}_{in}):\boldsymbol{n}}\]</div>
+<p>where <span class="math">\(f_1\)</span> and <span class="math">\(f_2\)</span> are functions introduced to improve performance.
+<span class="math">\(f_1\)</span> is basically a degradation factor of plastic stiffness and is introduced in order to eliminate the phenomenon of repeating stress-path without further increases in shear strain amplitude.
+<span class="math">\(f_2\)</span> is introduced in order to reduce the hysteretic loop areas (damping ratios) at a higher shear strain.</p>
+<p>In the P2PSand model, the so-called maximum stress-ratio surface (<a href="#modelp2psand-surfaces">Figure  1</a>) will be recorded,
+which has the same shape as the bounding or dilatancy surface but its size is determined by the historic position of <span class="math">\(\boldsymbol{\alpha}\)</span>,
+with the maximum radius along the <span class="math">\(\boldsymbol{r}_1\)</span> direction in the <span class="math">\(\pi\)</span> plain to be</p>
+<div class="math" id="equation-eq:psm:amax">
+<span class="eqno">(16)</span>\[M^m_C = \max{\left( \frac{\parallel \boldsymbol{\alpha} \parallel}{g(\theta_{\alpha}, c)} \right)}\]</div>
+<p>where <span class="math">\(\theta_{\alpha}\)</span> is the Lode angle of the current back-stress ratio tensor.</p>
+<div class="figure align-center" id="id1">
+<span id="modelp2psand-surfaces"></span><a class="reference internal image-reference" href="../../../../_images/modelp2psand-surfaces.png"><img alt="../../../../_images/modelp2psand-surfaces.png" src="../../../../_images/modelp2psand-surfaces.png" style="width: 350px;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Schematic of surfaces in the <span class="math">\(\pi\)</span> plain: bounding surface (red); dilatancy surface (blue);
+critical-state surface (green dash), maximum stress-ratio surface (black dash), and the yield surface (black circle).</span></p>
+</div>
+<p class="h4 rubric">Volumetric Plastic Strain</p>
+<p>The increment form of the plastic volumetric strain is given by</p>
+<div class="math" id="equation-eq:vps:devp">
+<span class="eqno">(17)</span>\[d{\epsilon}_v^p = \langle L \rangle D\]</div>
+<p>In the P2PSand model, the dilatancy <span class="math">\(D\)</span> is given by</p>
+<div class="math" id="equation-eq:vps:d">
+<span class="eqno">(18)</span>\[D = A_d (\boldsymbol{\alpha}^d_{\theta} - \boldsymbol{\alpha}):\boldsymbol{n}\]</div>
+<p>for virginal loading (<span class="math">\({\parallel \boldsymbol{\alpha} \parallel}/{g(\theta_{\alpha}, c)} \geq M^m_C\)</span>),
+where <span class="math">\(A_d\)</span> is related to the fabric dilatancy tensor <span class="math">\(z\)</span> which will be described later.
+When the fabric dilatancy is  not significant or not developed, <span class="math">\(A_d=A_{d0}\)</span>,
+where <span class="math">\(A_{d0}\)</span> is a material parameter, which can be calibrated from the monotonic triaxial compression tests.</p>
+<p>If the state is within the maximum stress-ratio surface, the dilatancy is reduced by a factor <span class="math">\([K_{c} (\boldsymbol{\alpha}-\boldsymbol{\alpha}_{in}):\boldsymbol{n}]\)</span>.
+<span class="math">\(K_{c}\)</span> is an adjusting parameter for cyclic loading or non-backbone loading path.
+For the virgin or backbone loading, <span class="math">\(K_{c}=1\)</span>.
+The parameter <span class="math">\(K_{c}\)</span> aims at capturing the sand characteristic
+that the dilation/contraction evolution rate is slightly different between a virgin loading and a cyclic loading, thus pre-histories effect can be partially captureed.
+To match the model with the empirical CRR versus <span class="math">\((N_1)_{60}\)</span> (or other measurement such as <span class="math">\(q_{c1N}\)</span>) for cyclic simulations, <span class="math">\(K_{c}\)</span> is suggested be calibrated last.</p>
+<p class="h4 rubric">Fabric Evolution</p>
+<p>Following the DM04 model, the parameter <span class="math">\(A_d\)</span> is given by</p>
+<div class="math" id="equation-eq:fe:ad">
+<span class="eqno">(19)</span>\[A_{d} = A_{d0} \left( 1 + \sqrt{\frac{3}{2}} \langle \boldsymbol{z}:\boldsymbol{n} \rangle \right)\]</div>
+<p>where <span class="math">\(A_{d0}\)</span> is a material parameter.</p>
+<p>The increment of the fabric dilatancy tensor in the P2PSand model is</p>
+<div class="math" id="equation-eq:fe:dz">
+<span class="eqno">(20)</span>\[d \boldsymbol{z} = - \langle L \rangle c_z \left( \sqrt{\frac{2}{3}} z_{max}\boldsymbol{n} + \boldsymbol{z} \right) \mbox{,if } D &gt; 0\]</div>
+<p>where <span class="math">\(c_z\)</span> and <span class="math">\(z_{max}\)</span> are material parameters.
+The default initialized values are <span class="math">\(c_z = G_r\)</span> and <span class="math">\(z_{max} = \min{(21 D_r^{3.85},  15)}\)</span>.</p>
+<p class="h4 rubric">Elastic Modulus Degradation</p>
+<p>In the P2PSand model, the elastic modulus is degraded during the cyclic loading to better simulate the deformation which may be underestimated otherwise.
+A degradation factor <span class="math">\(F_d\)</span> is multiplied to the elastic moduli.</p>
+<div class="math" id="equation-eq:emd:kd">
+<span class="eqno">(21)</span>\[F_d = 1 - k_d \ln{(N_z)}  \geq 0.02; \;\;\;   N_z = \frac{\int^{\boldsymbol{z}}_{\boldsymbol{0}} \|d\boldsymbol{z}\|}{\max{\|\boldsymbol{z}\|}}\]</div>
+<p>where <span class="math">\(k_d\)</span> is material parameter, <span class="math">\(\max{\|\boldsymbol{z}}\|\)</span> is the maximum magnitude of the fabric dilatancy tensor,
+and <span class="math">\(\int^{\boldsymbol{z}}_{\boldsymbol{0}} \|d\boldsymbol{z}\|\)</span> is the accumulated magnitude of the the fabric dilatancy tensor, respectively.
+<span class="math">\(F_d\)</span> remains the initial value of 1 when no fabric dilatancy develops. A low-bound value of 0.02 is set to <span class="math">\(F_d\)</span>.
+By default,  <span class="math">\(k_d = 0.46 - 0.35D_r\)</span> in the model but it can be overwritten by the user.</p>
+<p class="h3 rubric">Model Parameters</p>
+<p>The model parameters (or called properties) can be grouped into two categories: <em>parameters for initial condition</em> and <em>parameters for material property</em>.</p>
+<p class="h4 rubric">Parameters for initial condition</p>
+<p>The parameters for initial condition include the initial relative density and initial effective stress. These parameters for are used to initialize other parameters.</p>
+<p><em>Initial Stress</em></p>
+<p>Since the model is a stress-dependent constitutive model, reasonable initial stress status should be input at the first time the model is assigned.
+The input initial stress <span class="math">\(\boldsymbol{\sigma^{ini}}\)</span> (input in terms of its six components) should be reasonable:
+the corresponding initial confining pressure should be positive and they should not be out-side of the bounding surface.</p>
+<p>Before assigning this model, the zones are suggested to be initialized reasonable stresses,
+and/or be in mechanical equilibrium using the Mohr-Coulomb (MC) model.
+The MC model parameters are suggested to have zero cohesion, zero tension strength and zero dilation angle, and a friction angle with the same value as <span class="math">\(\phi_{cs}\)</span>.
+The initial stress component parameters can be input by commands, or can be input by a FISH function.
+Below is an example FISH function after the zone stresses have been initialized:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">fish operator</span><span class="n"> ini_stress</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n"> modelname</span><span class="p">)</span>
+<span class="n">    if zone</span><span class="p">.</span><span class="n">model</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="n"> </span><span class="p">==</span><span class="n"> modelname then</span>
+<span class="n">        local pp </span><span class="p">=</span><span class="n"> zone</span><span class="p">.</span><span class="n">pp</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="n">        zone</span><span class="p">.</span><span class="n">prop</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="s">&#39;stress-xx-initial&#39;</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> zone</span><span class="p">.</span><span class="n">stress</span><span class="p">.</span><span class="n">xx</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="n"> </span><span class="o">+</span><span class="n"> pp</span>
+<span class="n">        zone</span><span class="p">.</span><span class="n">prop</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="s">&#39;stress-yy-initial&#39;</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> zone</span><span class="p">.</span><span class="n">stress</span><span class="p">.</span><span class="n">yy</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="n"> </span><span class="o">+</span><span class="n"> pp</span>
+<span class="n">        zone</span><span class="p">.</span><span class="n">prop</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="s">&#39;stress-zz-initial&#39;</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> zone</span><span class="p">.</span><span class="n">stress</span><span class="p">.</span><span class="n">zz</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="n"> </span><span class="o">+</span><span class="n"> pp</span>
+<span class="n">        zone</span><span class="p">.</span><span class="n">prop</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="s">&#39;stress-xy-initial&#39;</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> zone</span><span class="p">.</span><span class="n">stress</span><span class="p">.</span><span class="n">xy</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="n">        zone</span><span class="p">.</span><span class="n">prop</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="s">&#39;stress-yz-initial&#39;</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> zone</span><span class="p">.</span><span class="n">stress</span><span class="p">.</span><span class="n">yz</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="n">        zone</span><span class="p">.</span><span class="n">prop</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="s">&#39;stress-xz-initial&#39;</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> zone</span><span class="p">.</span><span class="n">stress</span><span class="p">.</span><span class="n">xz</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="n">    endif</span>
+<span class="nb">end</span>
+<span class="ni">[ini_stress</span><span class="p">(::</span><span class="k">zone.list</span><span class="p">,</span><span class="ni"> </span><span class="s">&#39;p2psand&#39;</span><span class="p">)</span><span class="ni">]</span>
+</pre></div>
+</div>
+<p><em>Initial Relative Density or Normalized Blow-counts in Field Condition</em></p>
+<p>The initial relative density <span class="math">\(D_r^{ini}\)</span> or <span class="math">\((N_1)_{60}\)</span> in field condition is an important parameter which has significant effects on the sand behaviors.
+The initial relative density should be input as a fraction, not in percentage. For any input value less than 0.05 the implemented version of the model in FLAC3D will reset it to 0.05;
+For any input value greater than 0.95 the implemented version of the model in FLAC3D will reset it to 0.95.
+A value less than 0.15 (corresponding to <span class="math">\((N_1)_{60} \leq 1\)</span>) is not recommended.
+This parameter is better referred to a nominal initial relative density which approximately corresponds to the naturally deposited and normally consolidated clean sand in the field environment.</p>
+<p>If the value of normalized blow-counts, <span class="math">\((N_1)_{60}\)</span> in field condition, is available, it can be directly input as material property in place of <span class="math">\(D_r^{ini}\)</span>.
+In this model, the default correlation between <span class="math">\((N_1)_{60}\)</span> and <span class="math">\(D_r^{ini}\)</span> is</p>
+<div class="math" id="equation-eq:mp:dr2">
+<span class="eqno">(22)</span>\[D_r = \sqrt{\frac{(N_1)_{60}}{46}}\]</div>
+<p>If the field test is the CPT data, <span class="math">\(D_r\)</span> can be estimated (Mayne 2009) as</p>
+<div class="math" id="equation-eq:mp:dr3">
+<span class="eqno">(23)</span>\[D_r = 0.268 \ln{(q_{c1N})} - b_x\]</div>
+<p>where <span class="math">\(q_{c1N}=(q_c/p_{atm})/(\sigma^{\prime}_{v0}/p_{atm})^{0.5}\)</span> is the stress-normalized cone tip resistance,
+and <span class="math">\(b_x= 0.675\)</span> for normally-consolidated (in median compressibility) clean sands such as siliceous sands (approximately equal parts of quarts and felspar);
+<span class="math">\(b_x= 0.525\)</span> for sands with high compressibility, including mica sands, calcareous sands, and carbonate sands;
+<span class="math">\(b_x= 0.825\)</span> for sands of low compressibility including those of quartz.
+Alternative estimation (Kulhawy and Mayne 1990) in terms of <span class="math">\(q_{c1N}\)</span> is</p>
+<div class="math" id="equation-eq:mp:dr4">
+<span class="eqno">(24)</span>\[D_r = \sqrt{\frac{q_{c1N}}{305Q_c}}\]</div>
+<p>where <span class="math">\(Q_x\)</span> is a factor equal to 0.91, 1.0 and 1.09 for high, median and low compressibility sands, respectively.
+Another empirical expression (Idriss and Boulanger 2008) of <span class="math">\(D_r\)</span> in term of <span class="math">\(q_{c1N}\)</span> is</p>
+<div class="math" id="equation-eq:mp:dr5">
+<span class="eqno">(25)</span>\[D_r = 0.478(q_{c1N})^{0.264} - 1.063\]</div>
+<p class="h4 rubric">Parameters for material property</p>
+<p>The parameters for material property can be further grouped into three sub-categories: <em>primary</em>, <em>auxiliary</em> and <em>constant</em> parameters.
+The primary parameters have some larger influence on the simulated response by the model.
+The auxiliary parameters have less influence on model responses, which usually need no further refinements.
+Nevertheless, reliable experimental data are needed to support the selection of appropriate values for these parameters.
+The only constant parameter is the reference pressure, which should be always referred to the standard atmospheric pressure for the purpose of normalization of stress or pressure.</p>
+<p><strong>Except for the parameters necessary for initial conditions, which require correct initialization to represent the in-situ conditions, all other model parameters have default values which have been internally calibrated for in-situ sands</strong>.</p>
+<p>The default values of the parameters are selected to predict CRR values from the single-zone (or called single-element) direct simple shear (DSS) simulations with the following criteria:</p>
+<ul class="simple">
+<li>At an event equivalent to an earthquake with a magnitude about 7.5;</li>
+<li>Effective overburden pressure (<span class="math">\(\sigma^{\prime}_{v0}\)</span>) is about 100 kPa (~ 1 atm);</li>
+<li>Lateral earthquake pressure coefficient at rest is <span class="math">\(K_0=0.5\)</span>;</li>
+<li>Target CRR values are close to the state-of-practice criteria (<a href="#modelp2psand-crr">Figure  2</a>), e.g., SPT clean-sand base curve from liquefaction case histories (e.g., by Youd et al, 2001);</li>
+<li>Arrive a S.A. (single-amplitude) peak shear strain of about 3%, or D.A. (double-amplitude) shear strain of about  6%, whichever comes first, with approximately 15 cycles.</li>
+</ul>
+<div class="figure align-center" id="id2">
+<span id="modelp2psand-crr"></span><a class="reference internal image-reference" href="../../../../_images/modelp2psand-crr.png"><img alt="../../../../_images/modelp2psand-crr.png" src="../../../../_images/modelp2psand-crr.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Values of CRR predicted by the model and compared to semi-empirical curves.</span></p>
+</div>
+<p class="h3 rubric">References</p>
+<p>Andrus, R.D. and Stokoe II, K.H. “Liquefaction resistance of soils from shear-wave velocity.” <span class="bi">Journal of Geotechnical and Geoenvironmental Engineering</span>, 126(11), 1015–1025 (2000).</p>
+<p>Bolton, M. “The strength and dilatancy of sands.” <span class="bi">Geotechnique</span>, 36(1), 65–78 (1986).</p>
+<p>Cheng, Z. <span class="bi">A practical 3D bounding surface plastic sand model for geotechnical earthquake engineering application.</span> in <span class="bi">Geotechnical Earthquake Engineering and Soil Dynamics V: Numerical Modeling and Soil Structure Interaction</span>, ASCE, 34–37 (2008).</p>
+<p>Cheng, Z. and Detournay D. “Formulation, validation and application of a practice-oriented two-surface plasticity sand model.” <span class="bi">Computers and Geotechnics</span>, 132(4), 103984 (2021). <a class="reference external" href="https://doi.org/10.1016/j.compgeo.2020.103984">https://doi.org/10.1016/j.compgeo.2020.103984</a>.</p>
+<p>Dafalias, Y. F. and Manzari, M. T. “Simple plasticity sand model accounting for fabric change effects,” <span class="bi">Journal of Engineering mechanics</span>, 130(6), 622–634 (2004).</p>
+<p>Idriss, I. M. and Boulanger, R. W. <span class="bi">Soil liquefaction during earthquakes</span>. Earthquake Engineering Research Institute (2008).</p>
+<p>Mayne, P. <span class="bi">Engineering design using the cone penetration test: geotechnical applications guide.</span> ConeTec Investigation Inc (2009).</p>
+<p>Youd, T., et al. “Liquefaction resistance of soils: Summary report from the 1996 NCEER and 1998 NCEER/NSF workshops on evaluation of liquefaction resistance of soils.” <span class="bi">Journal of Geotechnical and Geoenvironmental Engineering</span>, 127(10), 817–833 (2001).</p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<p class="h3 rubric" id="p2psandmodelprops"><span class="cmdkey">p2psand</span> Model Properties</p>
+<p>Use the following keywords with the <code class="xref fish fish-cmd docutils literal"><span class="pre">zone</span> <span class="pre">property</span></code> command to set these properties of the P2PSand model.</p>
+<span class="target" id="p2psandprops"></span><dl class="command">
+<dt id="command:p2psand">
+<span class="cmdname"><span class="hide">p</span><span class="hide">2</span><span class="hide">p</span><span class="hide">s</span><span class="hide">a</span><span class="hide">n</span><span class="hide">d</span><span class="hide"> </span></span></dt>
+<dd><dl class="keyword">
+<dt id="kwd:p2psand.factor-cyclic">
+<span class="cmdkey"><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">-</span><span class="pref">c</span><span class="pref">y</span><span class="null">c</span><span class="null">l</span><span class="null">i</span><span class="null">c</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>factor of cycling to adjust the rate of cyclic mobility and liquefaction, <span class="math">\(K_{c}\)</span>. The default value is internally initialized as <span class="math">\(K_{c} = 3.8 - 7.2D^0_r + 3.0(D^0_r)^2\)</span>. If not using the default values, calibration of this parameter should be the last to match the target CRRs. This parameters can be assigned with any of the four methods, the priori level is increasing (4&gt;3&gt;2&gt;1): (1) using the default value without an explicit input; (2) Input a scalar value <span class="math">\(K_{c}\)</span>; (3) Input a non-zero vector value through <span class="math">\((a_0, a_1, a_2)\)</span>, then <span class="math">\(K_{c}\)</span> will be initialized by a quadratic function <span class="math">\(K_{c} = a_0 + a_1 D^0_r + a_2 (D^0_r)^2\)</span>; (4) Input as a table-type parameter (see table-factor-cyclic) so that <span class="math">\(K_{c}\)</span> will be initialized based on the curve of <span class="math">\(K_{c}\)</span> vs <span class="math">\(D^0_r\)</span>. <span class="math">\(K_{c}\)</span> is with a lower-bound value 0.007 for all cases.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.factor-cyclic-a0">
+<span class="cmdkey"><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">-</span><span class="pref">c</span><span class="pref">y</span><span class="null">c</span><span class="null">l</span><span class="null">i</span><span class="null">c</span><span class="null">-</span><span class="pref">a</span><span class="pref">0</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd></dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.factor-cyclic-a1">
+<span class="cmdkey"><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">-</span><span class="pref">c</span><span class="pref">y</span><span class="null">c</span><span class="null">l</span><span class="null">i</span><span class="null">c</span><span class="null">-</span><span class="pref">a</span><span class="pref">1</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd></dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.factor-cyclic-a2">
+<span class="cmdkey"><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">-</span><span class="pref">c</span><span class="pref">y</span><span class="null">c</span><span class="null">l</span><span class="null">i</span><span class="null">c</span><span class="null">-</span><span class="pref">a</span><span class="pref">2</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>alternative values to determine <span class="math">\(K_{c}\)</span> so that <span class="math">\(K_{c} = a_0 + a_1 D^0_r + a_2 (D^0_r)^2\)</span>. The default is zero for all of <span class="math">\(a_0\)</span>, <span class="math">\(a_1\)</span> and <span class="math">\(a_2\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.pressure-reference">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null">-</span><span class="pref">r</span><span class="null">e</span><span class="null">f</span><span class="null">e</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>reference pressure (usually the standard atmospheric pressure), <span class="math">\(p_{atm}\)</span>. The default value is 100.0 if in kPa. This parameter should always be referred to the standard atmospheric pressure and it does not need extra calibration. Its value should be input in a unit of stress/pressure consistent with the other parameters used in the simulation.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.coefficient-bounding">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">e</span><span class="null">f</span><span class="null">f</span><span class="null">i</span><span class="null">c</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">b</span><span class="null">o</span><span class="null">u</span><span class="null">n</span><span class="null">d</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>coefficient-bounding, <span class="math">\(n^b\)</span>. The default value is <span class="math">\(n^b = 0.16 - \phi_{cs}/400\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.coefficient-dilatancy">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">e</span><span class="null">f</span><span class="null">f</span><span class="null">i</span><span class="null">c</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">d</span><span class="null">i</span><span class="null">l</span><span class="null">a</span><span class="null">t</span><span class="null">a</span><span class="null">n</span><span class="null">c</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>coefficient-dilatancy, <span class="math">\(n^d\)</span>. The default value is <span class="math">\(n^d = 6 n^b\)</span> with a typical range of <span class="math">\((4 \sim 7) n^b\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.critical-state-1">
+<span class="cmdkey"><span class="pref">c</span><span class="null">r</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">s</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">1</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd></dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.critical-state-2">
+<span class="cmdkey"><span class="pref">c</span><span class="null">r</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">s</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">2</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd></dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.critical-state-3">
+<span class="cmdkey"><span class="pref">c</span><span class="null">r</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">s</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">3</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>critical state parameters.  The default values are 10, 1 and 0, respectively, which corresponds to <span class="math">\(Q=10\)</span> and <span class="math">\(R=1\)</span> using the 2-parameter critical state equation. If the third parameter is input a non-zero value, the critical-state is alternatively defined by the 3-parameter equation that the critical-state parameters are for <span class="math">\(D_{rc0}\)</span>, <span class="math">\(\lambda_r\)</span>, and <span class="math">\(\xi\)</span> (typically  <span class="math">\(\xi=0.7\)</span>), respectively.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.dilatancy-ratio-minimum">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">l</span><span class="null">a</span><span class="null">t</span><span class="null">a</span><span class="null">n</span><span class="null">c</span><span class="null">y</span><span class="null">-</span><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">-</span><span class="pref">m</span><span class="pref">i</span><span class="pref">n</span><span class="null">i</span><span class="null">m</span><span class="null">u</span><span class="null">m</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>minimum dilatancy ratio, <span class="math">\(K^d_{LB}\)</span>, at low pressures. The default value is 0.7.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.elasticity-1">
+<span class="cmdkey"><span class="pref">e</span><span class="null">l</span><span class="null">a</span><span class="null">s</span><span class="null">t</span><span class="null">i</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">1</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd></dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.elasticity-2">
+<span class="cmdkey"><span class="pref">e</span><span class="null">l</span><span class="null">a</span><span class="null">s</span><span class="null">t</span><span class="null">i</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">2</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>parameters to define the elasticity, <span class="math">\(g_0\)</span> and <span class="math">\(C_{Dr}\)</span> when elasticity-r is zero by the relation of <span class="math">\(G_r = g_0(D_r + D_{r0})\)</span>.
+If elasticity-r is input a positive value, <span class="math">\(g_0\)</span> and <span class="math">\(C_{Dr}\)</span> will not be used.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.elasticity-r">
+<span class="cmdkey"><span class="pref">e</span><span class="null">l</span><span class="null">a</span><span class="null">s</span><span class="null">t</span><span class="null">i</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">r</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>parameters to define the elasticity, <span class="math">\(G_r\)</span>. If elasticity-r is input a positive value, <span class="math">\(g_0\)</span> and <span class="math">\(C_{Dr}\)</span> will not be used.
+The default value is 0.0, and for this case, <span class="math">\(g_0\)</span> and <span class="math">\(C_{Dr}\)</span> will be used to define the elasticity.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.exponent">
+<span class="cmdkey"><span class="pref">e</span><span class="pref">x</span><span class="pref">p</span><span class="null">o</span><span class="null">n</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>parameters to define the elasticity, <span class="math">\(n\)</span>. The default value is 0.5.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.fabric-maximum">
+<span class="cmdkey"><span class="pref">f</span><span class="null">a</span><span class="null">b</span><span class="null">r</span><span class="null">i</span><span class="null">c</span><span class="null">-</span><span class="pref">m</span><span class="pref">a</span><span class="pref">x</span><span class="null">i</span><span class="null">m</span><span class="null">u</span><span class="null">m</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>maximum fabric magnitude, <span class="math">\(z_{max}\)</span>. The default value is <span class="math">\(z_{max} = \max{(21 D_r^{3.85},  15)}\)</span>. This parameter can be alternatively input as a table-type parameter so that <span class="math">\(z_{max}\)</span> will be initialized based on the curve of <span class="math">\(z_{max}\)</span> vs <span class="math">\(D_r\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.factor-cut">
+<span class="cmdkey"><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">-</span><span class="pref">c</span><span class="null">u</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>cut-off factor, <span class="math">\(f_{cut}\)</span>. The default is <a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">0.05</span></span></a>. The current effective pressure used for calculation of elastic modulus will not be less than <span class="math">\(f_{cut} p_{ref}\)</span>. To avoid overly small elastic modulus and numerical instability, an increasing <span class="math">\(f_{cut}\)</span> can be set. <span class="math">\(f_{cut}\)</span> = 0.01 to 0.1 is typical for practical models.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.friction-critical">
+<span class="cmdkey"><span class="pref">f</span><span class="null">r</span><span class="null">i</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">c</span><span class="pref">r</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>friction angle at critical state,  <span class="math">\(\phi_{cs}\)</span>.  The default value is 33 (in degrees).  This parameter is usually in a range of 30 to 37 with a typical value around 33 for sands. This is one of key parameters because other parameters may be estimated as a function of <span class="math">\(\phi_{cs}\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.factor-degradation">
+<span class="cmdkey"><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">-</span><span class="pref">d</span><span class="null">e</span><span class="null">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>factor of elasticity degradation, <span class="math">\(k_d\)</span>. The default value is <span class="math">\(k_d = 0.46 - 0.35D_r\)</span>. This parameter can be alternatively input as a table-type parameter so that <span class="math">\(k_d\)</span> will be initialized based on the curve of <span class="math">\(k_d\)</span> vs <span class="math">\(D_r\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.poisson">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">i</span><span class="null">s</span><span class="null">s</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>poisson’s ratio, <span class="math">\(\nu\)</span>. The default is <span class="math">\(v = 0.1+0.3v_{\phi}\)</span>, in which <span class="math">\(0 \leq v_{\phi} = 0.05(\phi_{cs}-25) \leq 1\)</span>. This parameter is used to calculate the elastic bulk modulus once the elastic shear modulus is estimated.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.rate-fabric">
+<span class="cmdkey"><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">f</span><span class="null">a</span><span class="null">b</span><span class="null">r</span><span class="null">i</span><span class="null">c</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>rate of fabric, <span class="math">\(c_z\)</span>. The default value is <span class="math">\(c_z=G_r\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.rate-plastic-shear">
+<span class="cmdkey"><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">p</span><span class="null">l</span><span class="null">a</span><span class="null">s</span><span class="null">t</span><span class="null">i</span><span class="null">c</span><span class="null">-</span><span class="pref">s</span><span class="null">h</span><span class="null">e</span><span class="null">a</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>plastic shear rate, <span class="math">\(h_0\)</span>. The default value is 1.7.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.rate-plastic-volume">
+<span class="cmdkey"><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">p</span><span class="null">l</span><span class="null">a</span><span class="null">s</span><span class="null">t</span><span class="null">i</span><span class="null">c</span><span class="null">-</span><span class="pref">v</span><span class="null">o</span><span class="null">l</span><span class="null">u</span><span class="null">m</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>plastic volumetric rate, <span class="math">\(A_{d0}\)</span>. The default value is estimated internally.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.ratio-reverse">
+<span class="cmdkey"><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">-</span><span class="pref">r</span><span class="null">e</span><span class="null">v</span><span class="null">e</span><span class="null">r</span><span class="null">s</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>minimum change of the back-stress ratio to be considered a reverse path. The default value is 0.02.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.ratio-strength">
+<span class="cmdkey"><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">-</span><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">g</span><span class="null">t</span><span class="null">h</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>strength ratio of the extension to compression triaxial strengths, <span class="math">\(c\)</span>. The default value is <span class="math">\((3-\sin{\phi_{cs}})/(3+\sin{\phi_{cs}})\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.table-factor-cyclic">
+<span class="cmdkey"><span class="pref">t</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null">-</span><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">-</span><span class="pref">c</span><span class="null">y</span><span class="null">c</span><span class="null">l</span><span class="null">i</span><span class="null">c</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>name of the table relating <span class="math">\(K_{c}\)</span> to initial relative density <span class="math">\(D^0_r\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.table-factor-degradation">
+<span class="cmdkey"><span class="pref">t</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null">-</span><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">-</span><span class="pref">d</span><span class="null">e</span><span class="null">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>name of the table relating <span class="math">\(k_{d}\)</span> to initial relative density <span class="math">\(D^0_r\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.table-fabric-maximum">
+<span class="cmdkey"><span class="pref">t</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null">-</span><span class="pref">f</span><span class="null">a</span><span class="null">b</span><span class="null">r</span><span class="null">i</span><span class="null">c</span><span class="null">-</span><span class="pref">m</span><span class="pref">a</span><span class="pref">x</span><span class="null">i</span><span class="null">m</span><span class="null">u</span><span class="null">m</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>name of the table relating <span class="math">\(z_{max}\)</span> to initial relative density <span class="math">\(D^0_r\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.void-maximum">
+<span class="cmdkey"><span class="pref">v</span><span class="null">o</span><span class="null">i</span><span class="null">d</span><span class="null">-</span><span class="pref">m</span><span class="pref">a</span><span class="pref">x</span><span class="null">i</span><span class="null">m</span><span class="null">u</span><span class="null">m</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd></dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.void-minimum">
+<span class="cmdkey"><span class="pref">v</span><span class="null">o</span><span class="null">i</span><span class="null">d</span><span class="null">-</span><span class="pref">m</span><span class="pref">i</span><span class="pref">n</span><span class="null">i</span><span class="null">m</span><span class="null">u</span><span class="null">m</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">a</span>)</span><span class="null"> </span></dt>
+<dd><p>maximum void ratio, <span class="math">\(e_{max}\)</span>, and, minimum void ratio, <span class="math">\(e_{min}\)</span>. The default values are <span class="math">\(e_{max} = 1.0\)</span> and <span class="math">\(e_{min}  = 0.6\)</span> if neither is assigned; if only one of them is assigned, the other one will be calculated by the relation <span class="math">\(e_{max}/e_{min}=1.62\)</span> by default. These two are auxiliary parameters for calculation of the current void ratio upon the change of the volumetric strain. Refinements for these two parameters are less significant in practice as their effect is small compared with other parameters.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.n-1-60">
+<span class="cmdkey"><span class="pref">n</span><span class="null">-</span><span class="pref">1</span><span class="null">-</span><span class="pref">6</span><span class="pref">0</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">i</span>)</span><span class="null"> </span></dt>
+<dd><p>blow-counts normalized to 1 atm (approximately 100 kPa) and energy ratio 60%, <span class="math">\((N_1)_{60}\)</span>. Input only one between <span class="math">\((N_1)_{60}\)</span> and <span class="math">\(D^0_r\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.relative-density-initial">
+<span class="cmdkey"><span class="pref">r</span><span class="null">e</span><span class="null">l</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">v</span><span class="null">e</span><span class="null">-</span><span class="pref">d</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">i</span>)</span><span class="null"> </span></dt>
+<dd><p>initial relative density, <span class="math">\(D^0_r\)</span>. Input only one between <span class="math">\((N_1)_{60}\)</span> and <span class="math">\(D^0_r\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.stress-xx-initial">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">x</span><span class="pref">x</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">i</span>)</span><span class="null"> </span></dt>
+<dd><p>initial xx component of the effective stress, <span class="math">\(\sigma^0_{xx}\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.stress-yy-initial">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">y</span><span class="pref">y</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">i</span>)</span><span class="null"> </span></dt>
+<dd><p>initial yy component of the effective stress, <span class="math">\(\sigma^0_{yy}\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.stress-zz-initial">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">z</span><span class="pref">z</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">i</span>)</span><span class="null"> </span></dt>
+<dd><p>initial zz component of the effective stress, <span class="math">\(\sigma^0_{zz}\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.stress-xy-initial">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">x</span><span class="pref">y</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">i</span>)</span><span class="null"> </span></dt>
+<dd><p>initial xy component of the effective stress, <span class="math">\(\sigma^0_{xy}\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.stress-yz-initial">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">y</span><span class="pref">z</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">i</span>)</span><span class="null"> </span></dt>
+<dd><p>initial yz component of the effective stress, <span class="math">\(\sigma^0_{yz}\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.stress-xz-initial">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">x</span><span class="pref">z</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">i</span>)</span><span class="null"> </span></dt>
+<dd><p>initial xz component of the effective stress, <span class="math">\(\sigma^0_{xz}\)</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.bulk">
+<span class="cmdkey"><span class="pref">b</span><span class="null">u</span><span class="null">l</span><span class="null">k</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>current elastic bulk modulus, <span class="math">\(K\)</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.shear">
+<span class="cmdkey"><span class="pref">s</span><span class="null">h</span><span class="null">e</span><span class="null">a</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>current elastic shear modulus, <span class="math">\(G\)</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.relative-density">
+<span class="cmdkey"><span class="pref">r</span><span class="null">e</span><span class="null">l</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">v</span><span class="null">e</span><span class="null">-</span><span class="pref">d</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>current relative density, <span class="math">\(D_r\)</span></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:p2psand.void">
+<span class="cmdkey"><span class="pref">v</span><span class="null">o</span><span class="null">i</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdextra">(<span class="cmdextraparam">r</span>)</span><span class="null"> </span></dt>
+<dd><p>current void ratio, <span class="math">\(e\)</span></p>
+</dd></dl>
+
+<p><strong>Key</strong></p>
+<dl class="docutils">
+<dt>(a) Advanced property.</dt>
+<dd>This property has a default value; simpler applications of the model do not need to provide a value for it.</dd>
+<dt>(i) Initial property.</dt>
+<dd>This property will not be updated once initialized (first input).</dd>
+<dt>(r) Read-only property.</dt>
+<dd>This property cannot be set by the user. Instead, it can be listed, plotted, or accessed through <span class="codename">FISH</span>.</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?P2PSand Model*" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

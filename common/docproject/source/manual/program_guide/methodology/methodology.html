@@ -1,0 +1,150 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Modeling Methodology &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="General Approach" href="generalapproach.html" />
+    <link rel="prev" title="Program Guide" href="../program_guide.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="modeling-methodology">
+<span id="frameworkmethodology"></span><h1>Modeling Methodology</h1>
+<p>This is a high level guide to numerical modeling. It is provided to acclimate the new user to conceptualizing the modeling process, with discussion of specific considerations that may impact model design and program performance.</p>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="generalapproach.html">General Approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generalsolutionprocedure.html">General Solution Procedure, Illustrated</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2dvs3dmodels.html">2D vs. 3D Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelingdatalimitedsystems.html">Modeling Data-Limited Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelingchaoticsystems.html">Modeling Chaotic Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="localizationandpath.html">Localization, Physical Instability, and Path-Dependence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorofsafety/factorofsafety.html">Factor of Safety</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="factorofsafety/factorofsafetyindex.html">Factor of Safety Defined</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factorofsafety/computationalmethods.html">Computational Methods for Factor of Safety Calculation of Slopes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="factorofsafety/computationalmethods.html#strength-reduction-technique">Strength Reduction Technique</a></li>
+<li class="toctree-l3"><a class="reference internal" href="factorofsafety/computationalmethods.html#limit-analysis">Limit Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="factorofsafety/computationalmethods.html#limit-equilibrium">Limit Equilibrium</a></li>
+<li class="toctree-l3"><a class="reference internal" href="factorofsafety/computationalmethods.html#relation-of-strength-reduction-method-to-limit-equilibrium-and-limit-analysis">Relation of Strength Reduction Method to Limit Equilibrium and Limit Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="factorofsafety/strengthreduction.html">Strength Reduction Procedure in <span class="codename">FLAC3D</span> <span class="codename">UDEC</span>, and <span class="codename">3DEC</span></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="factorofsafety/strengthreduction.html#strength-reduction-properties">Strength Reduction Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="factorofsafety/strengthreduction.html#mohr-coulomb-material">Mohr-Coulomb Material</a></li>
+<li class="toctree-l4"><a class="reference internal" href="factorofsafety/strengthreduction.html#ubiquitous-joint-material">Ubiquitous-Joint Material</a></li>
+<li class="toctree-l4"><a class="reference internal" href="factorofsafety/strengthreduction.html#hoek-brown-material">Hoek-Brown Material</a></li>
+<li class="toctree-l4"><a class="reference internal" href="factorofsafety/strengthreduction.html#interfaces-flac3d">Interfaces (<span class="codename">FLAC3D</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="factorofsafety/strengthreduction.html#coulomb-joints-3dec-udec">Coulomb Joints (<span class="codename">3DEC</span>, <span class="codename">UDEC</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="factorofsafety/references.html">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="referencesmodelingmethodology.html">References</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../program_guide.html" accesskey="U">Program Guide</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../program_guide.html"
+                           title="previous chapter"> Program Guide</a> |    
+       <a href="generalapproach.html"
+                           title="next chapter">General Approach</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Modeling Methodology" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

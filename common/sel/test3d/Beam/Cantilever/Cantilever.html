@@ -1,0 +1,197 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Cantilever Beam with Applied Moment at Tip — Beam Elements &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <span class="target" id="beam-cantilever"></span><div class="section" id="cantilever-beam-with-applied-moment-at-tip-beam-elements">
+<h1>Cantilever Beam with Applied Moment at Tip — Beam Elements</h1>
+<p class="h2 rubric">Problem Statement</p>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To view this project in <span class="codename">FLAC3D</span>, use the menu command <span class="menuselection">Help ► Examples…</span>.  Choose “Structure/Beam/Cantilever” and select “Cantilever.prj” to load.
+The <a class="reference internal" href="#cantileverdata"><span class="std std-ref">main data files</span></a> used are shown at the end of this example.  The remaining data files can be found in the project.</p>
+</div>
+<p>A cantilever beam is subjected to an applied moment at its tip, as shown in <a href="#cantilever-diagram">Figure  1</a>. This problem is an example of geometric nonlinearity, whereby deformations significantly alter the location of loads, so that equilibrium equations must be written with respect to the deformed geometry. Such problems can be solved by running <span class="codename">FLAC3D</span> in large-strain mode. The large-strain <span class="math">\(y\)</span>-direction deflection at the beam tip (assuming that the material remains linearly elastic) is given by Cook et al. (1989, pp. 529-531) as</p>
+<div class="math" id="equation-cantilever-eq1">
+<span class="eqno">(1)</span>\[{v_{\rm tip}\ =\ {E I \over {M}} \left(1 - \cos \biggl({M L \over E I}\biggr)\right)}\]</div>
+<table border="1" class="colwidths-auto blank docutils">
+<tbody valign="top">
+<tr class="row-odd"><td>where:</td>
+<td><span class="math">\(E\)</span></td>
+<td>=</td>
+<td>Young’s modulus; and</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><span class="math">\(I\)</span></td>
+<td>=</td>
+<td>second moment of inertia (<span class="math">\(I\)</span> = <span class="math">\(I_y\)</span> = <span class="math">\(I_z\)</span>).</td>
+</tr>
+</tbody>
+</table>
+<div class="figure align-center" id="id1">
+<span id="cantilever-diagram"></span><img alt="../../../../../_images/cantilever-diagram.png" src="../../../../../_images/cantilever-diagram.png" />
+<p class="caption"><span class="caption-text">Figure 1: Cantilever beam with applied moment at tip.</span></p>
+</div>
+<p>Several properties and loading conditions are used in this example:</p>
+<table border="1" class="colwidths-given blank docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>cross-sectional area (<span class="math">\(A\)</span>)</td>
+<td>0.006 m<sup>3</sup></td>
+</tr>
+<tr class="row-even"><td>Young’s modulus (<span class="math">\(E\)</span>)</td>
+<td>200 GPa</td>
+</tr>
+<tr class="row-odd"><td>Poisson’s ratio (<span class="math">\(\nu\)</span>)</td>
+<td>0.30</td>
+</tr>
+<tr class="row-even"><td>second moment with respect to local <span class="math">\(y\)</span>-axis (I<span class="math">\(_y\)</span>)</td>
+<td>200 × 10<sup>-6</sup> m<sup>4</sup></td>
+</tr>
+<tr class="row-odd"><td>second moment with respect to local <span class="math">\(z\)</span>-axis (I<span class="math">\(_z\)</span>)</td>
+<td>200 × 10<sup>-6</sup> m<sup>4</sup></td>
+</tr>
+<tr class="row-even"><td>polar moment of inertia (<span class="math">\(J\)</span>)</td>
+<td>0.0</td>
+</tr>
+<tr class="row-odd"><td>beam length (<span class="math">\(L\)</span>)</td>
+<td>10 m</td>
+</tr>
+<tr class="row-even"><td>applied moment at tip (<span class="math">\(M\)</span>)</td>
+<td>5 × 10<sup>6</sup> N-m</td>
+</tr>
+</tbody>
+</table>
+<p>For these conditions, the theoretical tip deflection, <span class="math">\(v_{\rm tip}\)</span>, is given by equation <a class="reference internal" href="#equation-cantilever-eq1">(1)</a> to be 5.477 m.</p>
+<p>The <span class="codename">FLAC3D</span> model consists of 10 beam elements and 11 nodes. Boundary conditions corresponding to beam-theory behavior are imposed on all the nodes: namely, no translation in the <span class="math">\(z\)</span>-direction, and no rotation about the <span class="math">\(x\)</span>- and <span class="math">\(y\)</span>-axes. The left end is fully fixed in all six degrees of freedom. And a moment vector aligned with the <span class="math">\(z\)</span>-direction is applied to the node at the beam tip.</p>
+<p>The final structural configuration is shown in <a href="#cantilever-geom">Figure  2</a>. The <span class="math">\(y\)</span>-direction deflection at the beam tip equals 5.497 m, which is within 0.36% of the analytical solution.</p>
+<div class="figure" id="id2">
+<span id="cantilever-geom"></span><a class="reference internal image-reference" href="common\sel\test3d\Beam\Cantilever\cantilever-geom.png"><img alt="common\sel\test3d\Beam\Cantilever\cantilever-geom.png" src="common\sel\test3d\Beam\Cantilever\cantilever-geom.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Final structural configuration.</span></p>
+</div>
+<p class="h2 rubric">Reference</p>
+<p>Cook, R. D., D. S. Malkus and M. E. Plesha. <span class="bi">Concepts and Applications of Finite Element Analysis</span>, Third Edition. New York: John Wiley &amp; Sons Inc. (1989).</p>
+<p class="h2 rubric" id="cantileverdata">Data File</p>
+<p><strong>Cantilever.dat</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model title</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">      </span><span class="s">&#39;Cantilever beam, applied moment of 5e6 at tip (large-strain solution)&#39;</span>
+<span class="c">; Create beam and assign properties</span>
+<span class="nb">struct beam create</span><span class="n"> by</span><span class="o">-</span><span class="n">line </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">10</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> segments</span><span class="p">=</span><span class="m m-Double">10</span>
+<span class="nb">struct beam property</span><span class="n"> young</span><span class="p">=</span><span class="m m-Double">2e11</span><span class="n"> poisson</span><span class="p">=</span><span class="m m-Double">0.3</span>
+<span class="nb">struct beam property</span><span class="n"> cross</span><span class="o">-</span><span class="n">sectional</span><span class="o">-</span><span class="n">area</span><span class="p">=</span><span class="m m-Double">6e-3</span><span class="n"> moi</span><span class="o">-</span><span class="n">z</span><span class="p">=</span><span class="m m-Double">200e-6</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                     moi</span><span class="o">-</span><span class="n">y</span><span class="p">=</span><span class="m m-Double">200e-6</span><span class="n"> moi</span><span class="o">-</span><span class="n">polar</span><span class="p">=</span><span class="m m-Double">0</span>
+<span class="c">; Boundary conditions</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">z rotation</span><span class="o">-</span><span class="n">x rotation</span><span class="o">-</span><span class="n">y </span><span class="c">; restrict all non-beam modes</span>
+<span class="nb">struct node fix</span><span class="n"> velocity rotation range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0</span><span class="n">     </span><span class="c">;  fully fix left end</span>
+<span class="nb">struct node apply</span><span class="n"> moment</span><span class="p">=(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">5e6</span><span class="p">)</span><span class="n"> range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">10</span><span class="n">   </span><span class="c">; apply moment at tip</span>
+<span class="c">; Run the model</span>
+<span class="nb">model large-strain</span><span class="n"> </span><span class="sx">on</span>
+<span class="nb">model </span><span class="ss">solve</span><span class="n"> ratio</span><span class="o">-</span><span class="n">local</span><span class="p">=</span><span class="m m-Double">1e-7</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;Cantilever&#39;</span>
+</pre></div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Cantilever Beam with Applied Moment at Tip — Beam Elements" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,256 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Stress/Strain Invariants &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="System of Units" href="systemofunits.html" />
+    <link rel="prev" title="Stress Sign Conventions" href="stresssignconvention.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="stress-strain-invariants">
+<span id="id1"></span><h1>Stress/Strain Invariants</h1>
+<p>In <span class="codename">UDEC</span>, assuming <span class="math">\(s_{ij}\)</span> is the deviatoric part of the stress tensor <span class="math">\(\sigma_{ij}\)</span>, and <span class="math">\(e_{ij}\)</span> is the deviatoric part of the strain tensor <span class="math">\(\varepsilon_{ij}\)</span>, the stress/strain invariants in <span class="codename">UDEC</span> are defined and summarized in <a href="#table-stress-strain-invariants">Table  1</a>.</p>
+<p>For example, in a triaxial compression test, the cell pressure in the <span class="math">\(xy\)</span>-plane is 100, the vertical compression pressure in the <span class="math">\(z\)</span>-direction is 400, the stress tensor in the sample is thus</p>
+<div class="math">
+\[\sigma_{ij} = \{\sigma_{xx}, \sigma_{yy}, \sigma_{zz}, \sigma_{xy}, \sigma_{yz}, \sigma_{xz} \} = \{-100,-100,-400,0,0,0\}\]</div>
+<p>According to equations in <a href="#table-stress-strain-invariants">Table  1</a>, we have</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><span class="math">\(I_1 = -600\)</span>,</div>
+<div class="line"><span class="math">\(I_2 = 9e4\)</span>,</div>
+<div class="line"><span class="math">\(I_3 = -4e6\)</span></div>
+<div class="line"><span class="math">\(\sigma_v = -600\)</span>,</div>
+<div class="line"><span class="math">\(\sigma_m = -200\)</span>,</div>
+<div class="line-block">
+<div class="line"><span class="math">\(e_{ij} = \{s_{xx}, s_{yy}, s_{zz}, s_{xy}, s_{yz}, s_{xz} \} = \{100,100,-200,0,0,0\}\)</span>,</div>
+</div>
+<div class="line"><span class="math">\(J_1 = 0\)</span>,</div>
+<div class="line"><span class="math">\(J_2 = 3e4\)</span>,</div>
+<div class="line"><span class="math">\(J_3 = -2e6\)</span>,</div>
+<div class="line"><span class="math">\(\theta_{\sigma} = \pi/6\)</span>,</div>
+<div class="line"><span class="math">\(\sigma_1 = -400\)</span>,</div>
+<div class="line"><span class="math">\(\sigma_2 = \sigma_3 = -100\)</span>,</div>
+<div class="line"><span class="math">\(\sigma_{eq} = q = 300\)</span>,</div>
+<div class="line"><span class="math">\(\sigma_{oct} = 100\sqrt{2}\)</span>,</div>
+<div class="line"><span class="math">\(\tau_{max} = 100\)</span>,</div>
+<div class="line"><span class="math">\(\sigma_{norm} = 300\sqrt{2}\)</span>, and</div>
+<div class="line"><span class="math">\(\sigma_{tm} = 300\sqrt{2}\)</span>.</div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<span id="table-stress-strain-invariants"></span><table border="1" class="icg1 docutils" id="id2">
+<caption><span class="caption-text">Table 1: Stress/Strain Invariants</span></caption>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Stress Invariant</th>
+<th class="head">Definition</th>
+<th class="head">Strain Invariant</th>
+<th class="head">Definition</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1st stress invariant</td>
+<td><span class="math">\(I_1 = \sigma_{kk}\)</span></td>
+<td>1st strain invariant</td>
+<td><span class="math">\(I'_1 = \varepsilon_{kk}\)</span></td>
+</tr>
+<tr class="row-odd"><td>2nd stress invariant</td>
+<td><span class="math">\(I_2 = (\sigma_{xx}\sigma_{yy}+\sigma_{yy}\sigma_{zz}+\sigma_{zz}\sigma_{xx}) \\- (\sigma_{xy}\sigma_{yz}+\sigma_{yz}\sigma_{zx}+\sigma_{zx}\sigma_{xy})\)</span></td>
+<td>2nd strain invariant</td>
+<td><span class="math">\(I'_2 = (\varepsilon_{xx}\varepsilon_{yy}+\varepsilon_{yy}\varepsilon_{zz}+\varepsilon_{zz}\varepsilon_{xx}) \\- (\varepsilon_{xy}\varepsilon_{yz}+\varepsilon_{yz}\varepsilon_{zx}+\varepsilon_{zx}\varepsilon_{xy})\)</span></td>
+</tr>
+<tr class="row-even"><td>3rd stress invariant</td>
+<td><span class="math">\(I_3 = |\sigma_{ij}|\)</span></td>
+<td>3rd strain invariant</td>
+<td><span class="math">\(I'_3 = |\varepsilon_{ij}|\)</span></td>
+</tr>
+<tr class="row-odd"><td>volumetric stress</td>
+<td><span class="math">\(\sigma_v = \sigma_{kk}\)</span></td>
+<td>volumetric strain</td>
+<td><span class="math">\(\varepsilon_{v} = \varepsilon_{kk}\)</span></td>
+</tr>
+<tr class="row-even"><td>mean stress</td>
+<td><span class="math">\(\sigma_m = \sigma_{kk}/3\)</span></td>
+<td>mean strain</td>
+<td><span class="math">\(\varepsilon_{m} = \varepsilon_{kk}/3\)</span></td>
+</tr>
+<tr class="row-odd"><td>1st deviatoric stress invariant</td>
+<td><span class="math">\(J_1 \equiv 0\)</span></td>
+<td>1st deviatoric strain invariant</td>
+<td><span class="math">\(J'_1 \equiv 0\)</span></td>
+</tr>
+<tr class="row-even"><td>2nd deviatoric stress invariant</td>
+<td><span class="math">\(J_2 = (s_{ij}s_{ij})/2\)</span></td>
+<td>2nd deviatoric strain invariant</td>
+<td><span class="math">\(J'_2 = (e_{ij}e_{ij})/2\)</span></td>
+</tr>
+<tr class="row-odd"><td>3rd deviatoric stress invariant</td>
+<td><span class="math">\(J_3 = (s_{ij}s_{ik}{s_{ki}})/3\)</span></td>
+<td>3rd deviatoric strain invariant</td>
+<td><span class="math">\(J'_3 = (e_{ij}e_{ik}{e_{ki}})/3\)</span></td>
+</tr>
+<tr class="row-even"><td>stress Loge’s angle</td>
+<td><span class="math">\(\theta_{\sigma} = {{1} \over {3}} \arcsin{\left( -{{3\sqrt{3}} \over {2}} {{J_3} \over {J^{1.5}_2}} \right)}\)</span></td>
+<td>strain Loge’s angle</td>
+<td><span class="math">\(\theta_{\varepsilon} = {{1} \over {3}} \arcsin{\left(- {{3\sqrt{3}} \over {2}} {{J'_3} \over {J'^{1.5}_2}} \right)}\)</span></td>
+</tr>
+<tr class="row-odd"><td>minimum principal stress</td>
+<td><span class="math">\(\sigma_1 = {2\over{\sqrt{3}}}\sqrt{J_2}\sin{(\theta_{\sigma} - {2\over{3}}\pi)} + \sigma_m\)</span></td>
+<td>minimum principal strain</td>
+<td><span class="math">\(\varepsilon_1 = {2\over{\sqrt{3}}}\sqrt{J'_2}\sin{(\theta_{\varepsilon} - {2\over{3}}\pi)} + \varepsilon_m\)</span></td>
+</tr>
+<tr class="row-even"><td>intermediate principal stress</td>
+<td><span class="math">\(\sigma_2 = {2\over{\sqrt{3}}}\sqrt{J_2}\sin{(\theta_{\sigma})} + \sigma_m\)</span></td>
+<td>intermediate principal strain</td>
+<td><span class="math">\(\varepsilon_2 = {2\over{\sqrt{3}}}\sqrt{J'_2}\sin{(\theta_{\varepsilon})} + \varepsilon_m\)</span></td>
+</tr>
+<tr class="row-odd"><td>maximum principal stress</td>
+<td><span class="math">\(\sigma_3 = {2\over{\sqrt{3}}}\sqrt{J_2}\sin{(\theta_{\sigma} + {2\over{3}}\pi)} + \sigma_m\)</span></td>
+<td>maximum principal strain</td>
+<td><span class="math">\(\varepsilon_3 = {2\over{\sqrt{3}}}\sqrt{J'_2}\sin{(\theta_{\varepsilon} + {2\over{3}}\pi)} + \varepsilon_m\)</span></td>
+</tr>
+<tr class="row-even"><td>von Mises equivalent stress</td>
+<td><span class="math">\(\sigma_{eq} = \sqrt{3 J_2}\)</span></td>
+<td>von Mises equivalent strain</td>
+<td><span class="math">\(\varepsilon_{eq} = \sqrt{{{4}\over{3}}J'_2}\)</span></td>
+</tr>
+<tr class="row-odd"><td>equivalent deviatoric stress</td>
+<td><span class="math">\(q = \sqrt{3 J_2}\)</span></td>
+<td>equivalent (engineering) shear strain</td>
+<td><span class="math">\(\gamma = \sqrt{4 J'_2}\)</span></td>
+</tr>
+<tr class="row-even"><td>octahedral stress</td>
+<td><span class="math">\(\sigma_{oct} = \sqrt{{{2}\over{3}}J_2}\)</span></td>
+<td>octahedral strain</td>
+<td><span class="math">\(\varepsilon_{oct} = \sqrt{{{8}\over{3}}J'_2}\)</span></td>
+</tr>
+<tr class="row-odd"><td>maximum shear stress</td>
+<td><span class="math">\(\tau_{max} = (\sigma_3 - \sigma_1)/2\)</span></td>
+<td>maximum shear strain</td>
+<td><span class="math">\(\gamma_{max} = \varepsilon_3 - \epsilon_1\)</span></td>
+</tr>
+<tr class="row-even"><td>stress norm</td>
+<td><span class="math">\(\sigma_{norm} = \sqrt{\sigma_{ij}\sigma_{ij}}\)</span></td>
+<td>strain norm</td>
+<td><span class="math">\(\varepsilon_{norm} = \sqrt{\varepsilon_{ij}\varepsilon_{ij}}\)</span></td>
+</tr>
+<tr class="row-odd"><td>stress total measure</td>
+<td><span class="math">\(\sigma_{tm} = \sqrt{\sigma_1^2+\sigma_2^2+\sigma_3^2} = \sqrt{I_1^2/3+2J_2}\)</span></td>
+<td>strain total measure</td>
+<td><span class="math">\(\varepsilon_{tm} = \sqrt{\varepsilon_1^2+\varepsilon_2^2+\varepsilon_3^2} = \sqrt{I_1^{'2}/3+2J'_2}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="formulation.html" accesskey="U">Underpinnings</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="stresssignconvention.html"
+                           title="previous chapter"> Stress Sign Conventions</a> |    
+       <a href="systemofunits.html"
+                           title="next chapter">System of Units</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Stress/Strain Invariants" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

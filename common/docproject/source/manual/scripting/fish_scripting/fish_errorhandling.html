@@ -1,0 +1,161 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FISH Error Handling &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="FISH Callback Events" href="fish_fishcallback.html" />
+    <link rel="prev" title="Redefining FISH Functions" href="fish_redefining.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fish-error-handling">
+<span id="fish-errorhandling"></span><h1><span class="codename">FISH</span> Error Handling</h1>
+<p><span class="codename">UDEC</span> has a built-in error-handling facility that is invoked when some part of the program detects an error.
+There is a scheme for  returning control to the user in an orderly fashion, no matter where the error may have been detected.
+The logic may be accessed by a user-written <span class="codename">FISH</span> function that accesses the <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/system_utilities/fish_system.error.html#function:system.error" title="Throw a |FISH| exception."><code class="xref fish fish-func docutils literal"><span class="pre">system.error</span></code></a> <span class="codename">FISH</span> function.
+If a <span class="codename">FISH</span> function assigns a string to <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/system_utilities/fish_system.error.html#function:system.error" title="Throw a |FISH| exception."><code class="xref fish fish-func docutils literal"><span class="pre">system.error</span></code></a>, then the error-handling facility of <span class="codename">UDEC</span> is invoked immediately, and a message containing the string assigned to <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/system_utilities/fish_system.error.html#function:system.error" title="Throw a |FISH| exception."><code class="xref fish fish-func docutils literal"><span class="pre">system.error</span></code></a> is printed.
+Stepping and <span class="codename">FISH</span> processing stop as soon as <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/system_utilities/fish_system.error.html#function:system.error" title="Throw a |FISH| exception."><code class="xref fish fish-func docutils literal"><span class="pre">system.error</span></code></a> is set.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="c">;fname: fishr13.dat</span>
+<span class="nb">model new</span>
+<span class="nb">model large-strain</span><span class="n"> </span><span class="sx">on</span>
+<span class="nb">model domain</span><span class="n"> extent </span><span class="o">-</span><span class="m m-Double">10</span><span class="n"> </span><span class="m m-Double">10</span>
+<span class="nb">contact cmat default</span><span class="n"> model linearpbond</span>
+<span class="c">;</span>
+<span class="nb">fish define</span><span class="ni"> unbal_met</span>
+<span class="ni">  </span><span class="k">while_stepping</span>
+<span class="ni">  </span><span class="k">io.out</span><span class="p">(</span><span class="s">&#39;unbal = &#39;</span><span class="o">+</span><span class="ni">string</span><span class="p">(</span><span class="k">mech.solve</span><span class="p">(</span><span class="s">&#39;unbalanced&#39;</span><span class="p">)))</span>
+<span class="ni">  </span><span class="k">if</span><span class="ni"> </span><span class="k">mech.solve</span><span class="p">(</span><span class="s">&#39;unbalanced&#39;</span><span class="p">)</span><span class="ni"> </span><span class="o">&lt;</span><span class="ni"> </span><span class="m m-Double">5000.0</span><span class="ni"> </span><span class="k">then</span>
+<span class="ni">    </span><span class="k">if</span><span class="ni"> </span><span class="k">global.step</span><span class="ni"> </span><span class="o">&gt;</span><span class="ni"> </span><span class="m m-Double">5</span><span class="ni"> </span><span class="k">then</span>
+<span class="ni">      system</span><span class="p">.</span><span class="ni">error </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39; Unbalanced force is now: &#39;</span><span class="ni"> </span><span class="o">+</span><span class="ni"> </span><span class="sx">...</span>
+<span class="ni">                       string</span><span class="p">(</span><span class="k">mech.solve</span><span class="p">(</span><span class="s">&#39;unbalanced&#39;</span><span class="p">))</span>
+<span class="ni">    </span><span class="k">end_if</span>
+<span class="ni">  </span><span class="k">end_if</span>
+<span class="nb">end</span>
+<span class="c">;                                      next: create 5 balls in a line</span>
+<span class="nb">ball create</span><span class="n"> id</span><span class="p">=</span><span class="m m-Double">1</span><span class="n"> position</span><span class="o">-</span><span class="n">x</span><span class="p">=</span><span class="m m-Double">0.0</span><span class="n"> position</span><span class="o">-</span><span class="n">y</span><span class="p">=</span><span class="m m-Double">0.0</span><span class="n"> position</span><span class="o">-</span><span class="n">z</span><span class="p">=</span><span class="m m-Double">0.0</span><span class="n"> rad</span><span class="p">=</span><span class="m m-Double">0.5</span>
+<span class="nb">ball create</span><span class="n"> id</span><span class="p">=</span><span class="m m-Double">2</span><span class="n"> position</span><span class="o">-</span><span class="n">x</span><span class="p">=</span><span class="m m-Double">1.0</span><span class="n"> position</span><span class="o">-</span><span class="n">y</span><span class="p">=</span><span class="m m-Double">0.0</span><span class="n"> position</span><span class="o">-</span><span class="n">z</span><span class="p">=</span><span class="m m-Double">0.0</span><span class="n"> rad</span><span class="p">=</span><span class="m m-Double">0.5</span>
+<span class="nb">ball create</span><span class="n"> id</span><span class="p">=</span><span class="m m-Double">3</span><span class="n"> position</span><span class="o">-</span><span class="n">x</span><span class="p">=</span><span class="m m-Double">2.0</span><span class="n"> position</span><span class="o">-</span><span class="n">y</span><span class="p">=</span><span class="m m-Double">0.0</span><span class="n"> position</span><span class="o">-</span><span class="n">z</span><span class="p">=</span><span class="m m-Double">0.0</span><span class="n"> rad</span><span class="p">=</span><span class="m m-Double">0.5</span>
+<span class="nb">ball create</span><span class="n"> id</span><span class="p">=</span><span class="m m-Double">4</span><span class="n"> position</span><span class="o">-</span><span class="n">x</span><span class="p">=</span><span class="m m-Double">3.0</span><span class="n"> position</span><span class="o">-</span><span class="n">y</span><span class="p">=</span><span class="m m-Double">0.0</span><span class="n"> position</span><span class="o">-</span><span class="n">z</span><span class="p">=</span><span class="m m-Double">0.0</span><span class="n"> rad</span><span class="p">=</span><span class="m m-Double">0.5</span>
+<span class="nb">ball create</span><span class="n"> id</span><span class="p">=</span><span class="m m-Double">5</span><span class="n"> position</span><span class="o">-</span><span class="n">x</span><span class="p">=</span><span class="m m-Double">4.0</span><span class="n"> position</span><span class="o">-</span><span class="n">y</span><span class="p">=</span><span class="m m-Double">0.0</span><span class="n"> position</span><span class="o">-</span><span class="n">z</span><span class="p">=</span><span class="m m-Double">0.0</span><span class="n"> rad</span><span class="p">=</span><span class="m m-Double">0.5</span>
+<span class="nb">ball attribute</span><span class="n"> density</span><span class="p">=</span><span class="m m-Double">2000</span><span class="n"> damp </span><span class="m m-Double">0.7</span>
+<span class="nb">ball property</span><span class="n"> </span><span class="s">&#39;kn&#39;</span><span class="n"> </span><span class="m m-Double">1e8</span><span class="n"> </span><span class="s">&#39;ks&#39;</span><span class="n"> </span><span class="m m-Double">1e8</span><span class="n"> </span>
+<span class="nb">model clean</span>
+<span class="c">; bond them into a beam using pbonds</span>
+<span class="nb">contact method</span><span class="n"> bond gap </span><span class="m m-Double">0.1</span>
+<span class="nb">contact property</span><span class="n"> pb_rmul</span><span class="p">=</span><span class="m m-Double">1.0</span><span class="n"> pb_kn</span><span class="p">=</span><span class="m m-Double">1e10</span><span class="n"> pb_ks</span><span class="p">=</span><span class="m m-Double">1e10</span><span class="n"> pb_ten</span><span class="p">=</span><span class="m m-Double">1e20</span><span class="n"> pb_coh</span><span class="p">=</span><span class="m m-Double">1e20</span>
+<span class="nb">ball fix</span><span class="n"> velocity spin range id</span><span class="p">=</span><span class="m m-Double">1</span><span class="n"> </span><span class="c">; fix ball at left end</span>
+<span class="n">model grav </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">9.8</span><span class="n">               </span><span class="c">; specify gravity loading</span>
+<span class="nb">model </span><span class="ss">solve</span><span class="n"> </span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The example above is for illustration only, in reality you would really prefer to use the <span class="cmdkey">fish-halt</span> keyword to the <a class="reference internal" href="../../../../../kernel/doc/manual/model/commands/cmd_model.solve.html#command:model.solve" title="Enable the automatic detection of the steady-state solution for mechanical&#013;&#010;problems. A calculation is performed until the limiting conditions, as defined&#013;&#010;by the following keywords, are reached. SOLVE force must be used for rigid block&#013;&#010;models. The SOLVE command does not monitor fluid flow. It is possible that mechanical&#013;&#010;equilibrium may be reached prior to fluid-flow equilibrium for steady-state&#013;&#010;flow. CYCLE ftime should be used for transient fluid flow."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">solve</span></code></a> command.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="fish.html" ><span class="codename">FISH</span> Scripting Reference</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="fish_languagerules.html" accesskey="U"><span class="codename">FISH</span> Rules and Usage</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="fish_redefining.html"
+                           title="previous chapter"> Redefining <span class="codename">FISH</span> Functions</a> |    
+       <a href="fish_fishcallback.html"
+                           title="next chapter"><span class="codename">FISH</span> Callback Events</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?FISH Error Handling" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

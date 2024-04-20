@@ -1,0 +1,246 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Simple Beam — Two Equal Concentrated Loads — Beam Elements &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <span class="target" id="beam-concentrated-loads"></span><div class="section" id="simple-beam-two-equal-concentrated-loads-beam-elements">
+<h1>Simple Beam — Two Equal Concentrated Loads — Beam Elements</h1>
+<p class="h2 rubric">Problem Statement</p>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To view this project in <span class="codename">FLAC3D</span>, use the menu command <span class="menuselection">Help ► Examples…</span>.  Choose “Structure/Beam/ConcentratedLoads” and select “ConcentratedLoads.prj” to load.
+The <a class="reference internal" href="#beamloadsdata"><span class="std std-ref">main data files</span></a> used are shown at the end of this example .  The remaining data files can be found in the project.</p>
+</div>
+<p>A simply supported beam is loaded by two equal concentrated loads, symmetrically placed as shown in <a href="#beamloads-diagram">Figure  1</a>. The shear and moment diagrams for this configuration are also shown in the figure. The shear force magnitude, <span class="math">\(V\)</span>, is equal to the applied concentrated load, <span class="math">\(P\)</span>. The maximum moment, <span class="math">\(M_{max}\)</span>, occurs between the two loads and is equal to <span class="math">\(P a\)</span>. The maximum deflection of the beam, <span class="math">\(\Delta_{\rm max}\)</span>, occurs at the center and is given by AISC (1980, p. 2-116) as</p>
+<div class="math" id="equation-beamloads-eq1">
+<span id="beamloads-eq1-hard"></span><span class="eqno">(1)</span>\[\Delta_{\rm max}\ =\ {P a \over {24 E I}} (3L^2 - 4 a^2)\]</div>
+<table border="1" class="colwidths-auto blank docutils">
+<tbody valign="top">
+<tr class="row-odd"><td>where:</td>
+<td><span class="math">\(E\)</span></td>
+<td>=</td>
+<td>Young’s modulus; and</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><span class="math">\(I\)</span></td>
+<td>=</td>
+<td>second moment of inertia (<span class="math">\(I\)</span> = <span class="math">\(I_y\)</span> = <span class="math">\(I_z\)</span>).</td>
+</tr>
+</tbody>
+</table>
+<div class="figure align-center" id="id1">
+<span id="beamloads-diagram"></span><img alt="../../../../../_images/beamloads-diagram.png" src="../../../../../_images/beamloads-diagram.png" />
+<p class="caption"><span class="caption-text">Figure 1: Simply supported beam with two equal concentrated loads (distance in units of meters).</span></p>
+</div>
+<p>Several properties are used in this example:</p>
+<table border="1" class="colwidths-given blank docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Cross-sectional area (<span class="math">\(A\)</span>)</td>
+<td>0.006 m<sup>3</sup></td>
+</tr>
+<tr class="row-even"><td>Young’s modulus (<span class="math">\(E\)</span>)</td>
+<td>200 GPa</td>
+</tr>
+<tr class="row-odd"><td>Poisson’s ratio (<span class="math">\(\nu\)</span>)</td>
+<td>0.30</td>
+</tr>
+<tr class="row-even"><td>Second moment with respect to local <span class="math">\(y\)</span>-axis (I<span class="math">\(_y\)</span>)</td>
+<td>200 × 10<sup>-6</sup> m<sup>4</sup></td>
+</tr>
+<tr class="row-odd"><td>Second moment with respect to local <span class="math">\(z\)</span>-axis (I<span class="math">\(_z\)</span>)</td>
+<td>200 × 10<sup>-6</sup> m<sup>4</sup></td>
+</tr>
+<tr class="row-even"><td>Polar moment of inertia (<span class="math">\(J\)</span>)</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+<p>Point loads of <span class="math">\(P\)</span> = 10,000 N are applied at the two locations shown in <a href="#beamloads-diagram">Figure  1</a>.</p>
+<p>The <span class="codename">FLAC3D</span> model consists of 10 beam elements and 11 nodes, as shown in <a href="#beamloads-geom">Figure  2</a>. The beam is created by issuing three separate <a class="reference internal" href="../../../doc/manual/sel_manual/beams/commands/cmd_structure.beam.create.html#kwd:structure.beam.create.by-line" title="creates one element that lies along a straight line between the locations  v1 &#013;&#010;and  v2 . New nodes associated with the element will also be created (see&#013;&#010;the  id  keyword). The nodal connectivity of each new element will be&#013;&#010;ordered such that the direction from  v1  to  v2  corresponds with&#013;&#010;the direction from the begin point to the end point. If there are zones in these&#013;&#010;locations, the element will be attached to the zones at"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">beam</span> <span class="pre">create</span> <span class="pre">by-line</span></code></a>
+(all with an ID of 1) to ensure that nodes will lie exactly at the beam third points. Also, four
+elements are created in the middle third to ensure that a node will lie at the exact beam center,
+so that the displacement of this node can be compared with <span class="math">\(\Delta_{\rm max}\)</span>. Boundary
+conditions corresponding to beam-theory behavior are imposed on all the nodes; namely, no
+translation in the <span class="math">\(z\)</span>-direction, and no rotation about the <span class="math">\(x\)</span>- and <span class="math">\(y\)</span>-axes.
+Simple supports are specified at the beam ends by restricting translation in the
+<span class="math">\(y\)</span>-direction. Two point loads acting in the negative <span class="math">\(y\)</span>-direction are applied at the
+beam third points.</p>
+<div class="figure align-center" id="id2">
+<span id="beamloads-geom"></span><a class="reference internal image-reference" href="common\sel\test3d\Beam\ConcentratedLoads\beamloads-geom.png"><img alt="common\sel\test3d\Beam\ConcentratedLoads\beamloads-geom.png" src="common\sel\test3d\Beam\ConcentratedLoads\beamloads-geom.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: <span class="codename">FLAC3D</span> model for simple beam problem.</span></p>
+</div>
+<p>The displacement field is shown in <a href="#beamloads-disp">Figure  3</a>. The maximum displacement occurs at the beam center and equals 6.469×10<sup>-3</sup> m, which corresponds exactly with the theoretical value of equation <a class="reference internal" href="#equation-beamloads-eq1">(1)</a>.</p>
+<p>An alternative means of visualizing the displacement field for a small-strain simulation is to use the <em>Beam</em> plot item and specify a nonzero value for the deformation magnification factor. <a href="#beamloads-deform">Figure  4</a> shows both the undeformed and deformed shapes.</p>
+<div class="figure align-center" id="id3">
+<span id="beamloads-disp"></span><a class="reference internal image-reference" href="common\sel\test3d\Beam\ConcentratedLoads\beamloads-disp.png"><img alt="common\sel\test3d\Beam\ConcentratedLoads\beamloads-disp.png" src="common\sel\test3d\Beam\ConcentratedLoads\beamloads-disp.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 3: Displacement field of simple beam.</span></p>
+</div>
+<div class="figure align-center" id="id4">
+<span id="beamloads-deform"></span><a class="reference internal image-reference" href="common\sel\test3d\Beam\ConcentratedLoads\beamloads-deform.png"><img alt="common\sel\test3d\Beam\ConcentratedLoads\beamloads-deform.png" src="common\sel\test3d\Beam\ConcentratedLoads\beamloads-deform.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 4: Deformed (magnification of 100) and undeformed shapes of simple beam.</span></p>
+</div>
+<p><a href="#beamloads-shear">Figure  5</a> and <a href="#beamloads-moment">Figure  6</a> show the shear force and
+moment distributions, which correspond exactly with the theoretical solutions. These two plot items
+display these quantities in the element coordinate system using the <a class="reference internal" href="../../../doc/manual/sel_manual/beams/beams.html#beam-sign-convention"><span class="std std-ref">Beam sign conventions</span></a>. In this model, all element systems are aligned with the global system.
+Thus, the shear force and moment act in the element <span class="math">\(y\)</span>- and <span class="math">\(z\)</span>-directions, respectively.</p>
+<p>The evolution of moment at <span class="math">\(x=1\)</span> is shown in <a href="#beamloads-momhis">Figure  7</a> to reach a
+steady-state value of 10,000 N-m. In this plot, we overlay two histories: one has sampled the
+moment acting at the right end of element 1 and the other has sampled the moment acting at the left
+end of element 2. If expressed in a consistent system, these two values should be identical, and
+the plot demonstrates that they are. This is the case because the elements making up the beam have
+a consistent orientation (having been created using the <a class="reference internal" href="../../../doc/manual/sel_manual/beams/commands/cmd_structure.beam.create.html#command:structure.beam.create" title="Create a beam represented by one or more elements."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">beam</span> <span class="pre">create</span></code></a> command). Note
+that if we print the moment acting on each element in terms of the global system with the command</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">structure beam list</span><span class="n"> force</span><span class="o">-</span><span class="n">node global range component</span><span class="o">-</span><span class="n">id </span><span class="m m-Double">1</span><span class="n"> </span><span class="m m-Double">2</span>
+</pre></div>
+</div>
+<p>we find that the moment acting on the right end of element 1 is positive, while the moment acting
+on the left end of element 2 is negative. This is the correct behavior that satisfies equilibrium.</p>
+<div class="figure align-center" id="id5">
+<span id="beamloads-shear"></span><a class="reference internal image-reference" href="common\sel\test3d\Beam\ConcentratedLoads\beamloads-shear.png"><img alt="common\sel\test3d\Beam\ConcentratedLoads\beamloads-shear.png" src="common\sel\test3d\Beam\ConcentratedLoads\beamloads-shear.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 5: Shear force distribution in simple beam.</span></p>
+</div>
+<div class="figure align-center" id="id6">
+<span id="beamloads-moment"></span><a class="reference internal image-reference" href="common\sel\test3d\Beam\ConcentratedLoads\beamloads-moment.png"><img alt="common\sel\test3d\Beam\ConcentratedLoads\beamloads-moment.png" src="common\sel\test3d\Beam\ConcentratedLoads\beamloads-moment.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 6: Moment distribution in simple beam.</span></p>
+</div>
+<div class="figure align-center" id="id7">
+<span id="beamloads-momhis"></span><a class="reference internal image-reference" href="common\sel\test3d\Beam\ConcentratedLoads\beamloads-momhis.png"><img alt="common\sel\test3d\Beam\ConcentratedLoads\beamloads-momhis.png" src="common\sel\test3d\Beam\ConcentratedLoads\beamloads-momhis.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 7: Evolution of moment at x = 1 in simple beam.</span></p>
+</div>
+<p class="h2 rubric">Reference</p>
+<p>AISC. <span class="bi">Manual of Steel Construction</span>, Eighth Edition. Chicago: American Institute of Steel Construction Inc. (1980).</p>
+<p class="h2 rubric" id="beamloadsdata">Data File</p>
+<p><strong>ConcentratedLoads.dat</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model large-strain</span><span class="n"> </span><span class="sx">off</span>
+<span class="nb">model title</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">      </span><span class="s">&quot;Simple Beam --- Two Equal Concentrated Loads Symmetrically Placed&quot;</span>
+<span class="c">; Create the beams; Ensure nodes will exist at the three points</span>
+<span class="nb">struct beam create</span><span class="n"> by</span><span class="o">-</span><span class="n">line </span><span class="p">(</span><span class="n"> </span><span class="m m-Double">0</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">0</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="n"> </span><span class="m m-Double">3</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">0</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> id</span><span class="p">=</span><span class="m m-Double">1</span><span class="n"> segments</span><span class="p">=</span><span class="m m-Double">3</span>
+<span class="nb">struct beam create</span><span class="n"> by</span><span class="o">-</span><span class="n">line </span><span class="p">(</span><span class="n"> </span><span class="m m-Double">3</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">0</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="n"> </span><span class="m m-Double">6</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">0</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> id</span><span class="p">=</span><span class="m m-Double">1</span><span class="n"> segments</span><span class="p">=</span><span class="m m-Double">4</span>
+<span class="nb">struct beam create</span><span class="n"> by</span><span class="o">-</span><span class="n">line </span><span class="p">(</span><span class="n"> </span><span class="m m-Double">6</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">0</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="n"> </span><span class="m m-Double">9</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">0</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> id</span><span class="p">=</span><span class="m m-Double">1</span><span class="n"> segments</span><span class="p">=</span><span class="m m-Double">3</span>
+<span class="c">; Assign beam properties</span>
+<span class="nb">struct beam property</span><span class="n"> young</span><span class="p">=</span><span class="m m-Double">2e11</span><span class="n"> poisson</span><span class="p">=</span><span class="m m-Double">0.30</span><span class="n"> cross</span><span class="o">-</span><span class="n">sectional</span><span class="o">-</span><span class="n">area</span><span class="p">=</span><span class="m m-Double">6e-3</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                     moi</span><span class="o">-</span><span class="n">polar</span><span class="p">=</span><span class="m m-Double">0.0</span><span class="n"> moi</span><span class="o">-</span><span class="n">y</span><span class="p">=</span><span class="m m-Double">200e-6</span><span class="n"> moi</span><span class="o">-</span><span class="n">z</span><span class="p">=</span><span class="m m-Double">200e-6</span>
+<span class="c">; Specify model boundary conditions (including applied loads)</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">z rotation</span><span class="o">-</span><span class="n">x rotation</span><span class="o">-</span><span class="n">y</span>
+<span class="n">                   </span><span class="c">; restrict all non-beam modes</span>
+<span class="nb">struct node fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">y range union position</span><span class="o">-</span><span class="n">x</span><span class="p">=</span><span class="m m-Double">0</span><span class="n"> position</span><span class="o">-</span><span class="n">x</span><span class="p">=</span><span class="m m-Double">9</span>
+<span class="n">                   </span><span class="c">;  rollers at beam ends</span>
+<span class="nb">struct node apply</span><span class="n"> force</span><span class="p">=(</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">1e4</span><span class="p">,</span><span class="m m-Double">0.0</span><span class="p">)</span><span class="n"> range union position</span><span class="o">-</span><span class="n">x</span><span class="p">=</span><span class="m m-Double">3</span><span class="n"> position</span><span class="o">-</span><span class="n">x</span><span class="p">=</span><span class="m m-Double">6</span><span class="n"> </span>
+<span class="n">                   </span><span class="c">; apply point loads</span>
+<span class="c">; Setup histories for monitoring behavior.</span>
+<span class="nb">struct beam history</span><span class="n"> name</span><span class="p">=</span><span class="s">&#39;mom1&#39;</span><span class="n"> moment</span><span class="o">-</span><span class="n">z end </span><span class="m m-Double">2</span><span class="n"> position </span><span class="p">(</span><span class="m m-Double">0.5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span>
+<span class="n">                   </span><span class="c">; moment, right of element 1</span>
+<span class="nb">struct beam history</span><span class="n"> name</span><span class="p">=</span><span class="s">&#39;mom2&#39;</span><span class="n"> moment</span><span class="o">-</span><span class="n">z end </span><span class="m m-Double">1</span><span class="n"> position </span><span class="p">(</span><span class="m m-Double">1.5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span>
+<span class="n">                   </span><span class="c">;  moment, left of element 2</span>
+<span class="c">; Bring the problem to equilibrium</span>
+<span class="nb">model </span><span class="ss">solve</span><span class="n"> ratio</span><span class="o">-</span><span class="n">local</span><span class="p">=</span><span class="m m-Double">1e-7</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;ConcentratedLoads&#39;</span>
+</pre></div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Simple Beam — Two Equal Concentrated Loads — Beam Elements" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

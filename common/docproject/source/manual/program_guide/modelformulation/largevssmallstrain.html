@@ -1,0 +1,126 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Large Strain/Small Strain &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Notations" href="notations.html" />
+    <link rel="prev" title="Determinism" href="determinism.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="large-strain-small-strain">
+<span id="largestrainvsmallstrain"></span><h1>Large Strain/Small Strain</h1>
+<p>The default calculation mode for <span class="codename">FLAC3D</span> is small strain, whereas for <span class="codename">PFC</span>, <span class="codename">UDEC</span>, and <span class="codename">3DEC</span> it is large strain.  In small-strain mode: gridpoint or particle positions are not changed – calculations for stress and strain are performed using the original shape of the zones.  This is an acceptable approximation if the deformed shape is within a few percent of the original shape.  In large strain mode, positions are frequently updated yielding a potentially more accurate solution.  Large strain models also perform contact detection calculations such that contacts may be created or destroyed as elements move relative to each other.  In small strain, contact configurations do not change.</p>
+<p>Large strain simulations are a more accurate representation of reality, but this comes at the cost of increased computational effort.  The user can try to balance the accuracy and computational cost by specifying the frequency at which position and contact updates occur.  Default intervals and commands are specific to each program.</p>
+<p>In addition to position and contact updates, the following calculations are performed in large strain mode:</p>
+<ul class="simple">
+<li>a rotation correction is applied to stress increments in zones;</li>
+<li>for constitutive models with a specified weak plane (e.g. ubiquitous joint model), the orientation of the weakness plane is rotated with a rotating zone; and</li>
+<li>the applied forces resulting from tractions or stress boundary conditions are recomputed to account for face rotations</li>
+</ul>
+<p>Note also that in large strain continuum models, zones may experience extreme deformation that causes them to become geometrically inadmissible (e.g. 0 volume).  In this case, the program calculation cannot continue.</p>
+<p>The choice of large strain versus small strain depends on the expected model behavior.  If contacts are present (always in <span class="codename">PFC</span>, on interfaces in <span class="codename">FLAC3D</span>, on joints in <span class="codename">UDEC</span> and <span class="codename">3DEC</span>) and pieces are expected to move significant distances relative to one another (i.e. more than one zone dimension), then large strain is probably necessary to allow for contact updates.  Similarly, in a continuum model, large strain may be the correct choice if the relative motion between zones is on the order of the zone size (on either side of a shear band for example).  Note that large displacements don’t necessarily equal large strains – if the displacement is distributed evenly throughout the model then the small strain assumption may still be valid.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="formulation.html" accesskey="U">Underpinnings</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="determinism.html"
+                           title="previous chapter"> Determinism</a> |    
+       <a href="notations.html"
+                           title="next chapter">Notations</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Large Strain/Small Strain" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

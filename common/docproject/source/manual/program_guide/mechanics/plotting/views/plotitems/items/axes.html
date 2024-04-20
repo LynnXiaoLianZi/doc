@@ -1,0 +1,168 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Axes Plot Item &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../../../search.html" />
+    <link rel="next" title="Fracture Plot Item" href="fracture.html" />
+    <link rel="prev" title="Plot Items in Common" href="../plotitemsincommon.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="axes-plot-item">
+<span id="ui-pi-axes"></span><h1>Axes Plot Item</h1>
+<p class="h3 rubric" id="axes-description">Description</p>
+<p>An axes that indicates the current orientation of the plot.</p>
+<p>This plot item is <em>interactive</em>, which means it may be resized and positioned by clicking on it with the mouse.
+The axis may be fixed to a location on the screen, or to a real location in space.</p>
+<p class="h3 rubric" id="pi-attributes">Attributes</p>
+<div class="docutils container" id="attributelist">
+<a class="reference internal" href="#axes-autoconf-att"><span class="std std-ref">Autoconf</span></a>
+<a class="reference internal" href="#axes-xaxis-att"><span class="std std-ref">X Axis (and Y Axis)</span></a>
+<a class="reference internal" href="#axes-fixed-att"><span class="std std-ref">Fixed</span></a>
+<a class="reference internal" href="#axes-scale-att"><span class="std std-ref">Scale</span></a>
+<a class="reference internal" href="#axes-screen-att"><span class="std std-ref">Screen</span></a>
+<span class="xref std std-ref">Position</span>
+<a class="reference internal" href="#axes-font-att"><span class="std std-ref">Font</span></a>
+<a class="reference internal" href="#axes-legend-att"><span class="std std-ref">Legend</span></a></div>
+<span class="target" id="axes-autoconf-att"></span><p><strong>Autoconf</strong></p>
+<img alt="../../../../../../../../../../_images/autoconf01.png" class="pi-attribute" src="../../../../../../../../../../_images/autoconf01.png" />
+<p>Select what type of axes should be rendered.</p>
+<blockquote>
+<div><em>Autoconf</em>: Display axes as either x, y axes or compass points using the icons shown (the images in the attribute field are buttons; click the desired icon to display the preferred axes type).</div></blockquote>
+<span class="target" id="axes-xaxis-att"></span><p><strong>X Axis</strong> (and Y Axis and Z Axis)</p>
+<img alt="../../../../../../../../../../_images/xaxis01.png" class="pi-attribute" src="../../../../../../../../../../_images/xaxis01.png" />
+<p>Provides control over the color, extent, and labeling of the <span class="math">\(x\)</span>-axis portion of the plot item (controls are the same for the <span class="math">\(y\)</span>-axis and the <span class="math">\(z\)</span>-axis).</p>
+<blockquote>
+<div><p><em>Color</em>: Specifies the color of the axis.</p>
+<p><em>Draw</em>: Specifies whether the positive, negative, both, or neither arm of the axis is rendered.</p>
+<p><em>+ Label</em>: Specifies the text for the label to apply to the positive axis arm.</p>
+<p><em>- Label</em>: Specifies the text for the label to apply to the negative axis arm.</p>
+</div></blockquote>
+<span class="target" id="axes-fixed-att"></span><p><strong>Fixed</strong></p>
+<img alt="../../../../../../../../../../_images/fixed01.png" class="pi-attribute" src="../../../../../../../../../../_images/fixed01.png" />
+<p>Determine whether axes position is fixed or set in model space.</p>
+<blockquote>
+<div><em>Fixed</em>: When checked, axes are fixed to a location on the screen (using the <em>scale</em> and <em>screen</em> attributes); when unchecked, the axes are positioned in model space (using the <em>size</em> and <em>position</em> attributes).</div></blockquote>
+<span class="target" id="axes-scale-att"></span><p><strong>Scale</strong></p>
+<img alt="../../../../../../../../../../_images/scale01.png" class="pi-attribute" src="../../../../../../../../../../_images/scale01.png" />
+<p>Size the plot item.</p>
+<blockquote>
+<div><em>Scale</em>: Sets the plot item size to the specified percentage of the program window’s size (see also the <em>screen</em> attribute).</div></blockquote>
+<span class="target" id="axes-screen-att"></span><p><strong>Screen</strong></p>
+<img alt="../../../../../../../../../../_images/screen01.png" class="pi-attribute" src="../../../../../../../../../../_images/screen01.png" />
+<p>Position the plot item.</p>
+<blockquote>
+<div><em>Screen</em>: Specifies the <span class="math">\(x\)</span> and <span class="math">\(y\)</span> position of the center of the plot item in screen coordinates (0, 0 = lower left corner of rendering area; 100, 100 = upper right corner). Also see the <em>scale</em> attribute.</div></blockquote>
+<span class="target" id="axes-font-att"></span><img alt="../../../../../../../../../../_images/fontabbr.png" class="pi-attribute" src="../../../../../../../../../../_images/fontabbr.png" />
+<p><strong>Font</strong></p>
+<p>Set properties of the text used with the item. See the standard <a class="reference internal" href="attributes/std_font.html#std-font"><span class="std std-ref">font</span></a> control description for details.</p>
+<span class="target" id="axes-legend-att"></span><p><strong>Legend</strong></p>
+<img alt="../../../../../../../../../../_images/legend.png" class="pi-attribute" src="../../../../../../../../../../_images/legend.png" />
+<p>Set item labeling in the plot legend. See the standard <a class="reference internal" href="attributes/std_legend.html#std-legend"><span class="std std-ref">legend</span></a> control description for details.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../../../plotting.html" >Plotting</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../plotitem_index.html" >Plot Items</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../plotitemsincommon.html" accesskey="U">Plot Items in Common</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../plotitemsincommon.html"
+                           title="previous chapter"> Plot Items in Common</a> |    
+       <a href="fracture.html"
+                           title="next chapter">Fracture Plot Item</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Axes Plot Item" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,267 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>fracture export command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="fracture extra command" href="cmd_fracture_extra.html" />
+    <link rel="prev" title="fracture dfn-group command" href="cmd_fracture_dfn-group.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fracture-export-command">
+<h1><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">export</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="dfn command">
+<dt id="command:fracture.export">
+<span class="cmdname"><span class="pref">f</span><span class="pref">r</span><span class="pref">a</span><span class="pref">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">e</span><span class="pref">x</span><span class="pref">p</span><span class="null">o</span><span class="null">r</span><span class="null">t</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="pref">r</span><span class="pref">a</span><span class="pref">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:fracture.export.file" title="fracture export file">file</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.export.intersect-with-plane" title="fracture export intersect-with-plane">intersect-with-plane</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.export.property-file" title="fracture export property-file">property-file</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.export.template-file" title="fracture export template-file">template-file</a></p>
+</div>
+<p>Export fractures to file. By default, fractures are exported in the Itasca DFN data file format
+(see <a class="reference internal" href="../../../../docproject/source/manual/program_guide/mechanics/otherinputs/dfnfileformats.html#dfnfileformats"><span class="std std-ref">DFN-Related File Formats</span></a>) and the ‘.dat’ extension is added to the
+file name if an extension is absent. FISHLab and FracMan formats are also supported. The
+associated fracture generation template (if unique) can be exported in a fracture generation template file, and fracture properties can be exported in a property file (see <a class="reference internal" href="../../../../docproject/source/manual/program_guide/mechanics/otherinputs/dfnfileformats.html#dfnfileformats"><span class="std std-ref">DFN-Related File Formats</span></a>). These files can be imported with the <a class="reference internal" href="cmd_fracture_import.html#command:fracture.import" title="Import fractures."><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">import</span></code></a> command.</p>
+<dl class="keyword">
+<dt id="kwd:fracture.export.file">
+<span class="cmdkey"><span class="pref">f</span><span class="pref">i</span><span class="pref">l</span><span class="pref">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Fractures are exported to the file with name <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>. If no extension is provided, then the appropriate extension is added.</p>
+<dl class="keyword">
+<dt id="kwd:fracture.export.file.format">
+<span class="cmdkey"><span class="pref">f</span><span class="null">o</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">t</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Specify the format to be output. By default the Itasca format is used.</p>
+<dl class="keyword">
+<dt id="kwd:fracture.export.file.format.itasca">
+<span class="cmdkey"><span class="pref">i</span><span class="null">t</span><span class="null">a</span><span class="null">s</span><span class="null">c</span><span class="null">a</span><span class="null"> </span></span></dt>
+<dd><p>The <span class="cmdkey">itasca</span> format is as specified in <a class="reference internal" href="../../../../docproject/source/manual/program_guide/mechanics/otherinputs/dfnfileformats.html#dfnfileformats"><span class="std std-ref">DFN-Related File Formats</span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.export.file.format.fishlab">
+<span class="cmdkey"><span class="pref">f</span><span class="pref">i</span><span class="null">s</span><span class="null">h</span><span class="null">l</span><span class="null">a</span><span class="null">b</span><span class="null"> </span></span><span class="cmdextra">(<span class="cmdextraparam">3D<span class="null"> </span></span><span class="cmdextraparam">ONLY</span>)</span><span class="null"> </span></dt>
+<dd><p>The <span class="cmdkey">fishlab</span> format is the flowplane format used in FISHLab with the ‘.flab’ file extension.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.export.file.format.fracman">
+<span class="cmdkey"><span class="pref">f</span><span class="pref">r</span><span class="null">a</span><span class="null">c</span><span class="null">m</span><span class="null">a</span><span class="null">n</span><span class="null"> </span></span><span class="cmdextra">(<span class="cmdextraparam">3D<span class="null"> </span></span><span class="cmdextraparam">ONLY</span>)</span><span class="null"> </span></dt>
+<dd><p>The <span class="cmdkey">fracman</span> format follows the FracMan ASCII output format with the ‘.fab’ file extension.</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.export.intersect-with-plane">
+<span class="cmdkey"><span class="pref">i</span><span class="pref">n</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">s</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">-</span><span class="pref">w</span><span class="null">i</span><span class="null">t</span><span class="null">h</span><span class="null">-</span><span class="pref">p</span><span class="null">l</span><span class="null">a</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span></span>></span><span class="null"> </span><span class="cmdextra">(<span class="cmdextraparam">3D<span class="null"> </span></span><span class="cmdextraparam">only</span>)</span><span class="null"> </span></dt>
+<dd><p>Specify that a 2D set of fracture traces be output corresponding with the intersection of a plane. Area intersections are not delineated. The resulting 2D DFN must be opened in a 2D Itasca program (i.e., <span class="codename">PFC2D</span>). The Itasca DFN data file format is used (see <a class="reference internal" href="../../../../docproject/source/manual/program_guide/mechanics/otherinputs/dfnfileformats.html#dfnfileformats"><span class="std std-ref">DFN-Related File Formats</span></a>).</p>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The output intersections are centered at the location specified with the <span class="cmdkey">origin</span>
+keyword. The <span class="math">\(x\)</span>-components of the intersections are in the direction of strike of the plane,
+and the <span class="math">\(y\)</span>-components of the intersections are in the down-dip direction of the plane.</p>
+</div>
+<dl class="keyword">
+<dt id="kwd:fracture.export.intersect-with-plane.dip">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify the dip of the intersection plane.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.export.intersect-with-plane.dip-direction">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">p</span><span class="null">-</span><span class="pref">d</span><span class="null">i</span><span class="null">r</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify the dip direction of the intersection plane.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.export.intersect-with-plane.origin">
+<span class="cmdkey"><span class="pref">o</span><span class="pref">r</span><span class="pref">i</span><span class="pref">g</span><span class="null">i</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify the Origin of the intersection plane.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.export.property-file">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">f</span><span class="null">i</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Fracture property sets are exported to the file with name <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>. If no property file is
+exported, the corresponding property set numbers of all fractures in the exported files
+containing fractures are set to 1. The property file format is specified in <a class="reference internal" href="../../../../docproject/source/manual/program_guide/mechanics/otherinputs/dfnfileformats.html#dfnfileformats"><span class="std std-ref">DFN-Related
+File Formats</span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.export.template-file">
+<span class="cmdkey"><span class="pref">t</span><span class="null">e</span><span class="null">m</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">-</span><span class="pref">f</span><span class="null">i</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>The corresponding fracture generation template (if unique) is exported to the file with name <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>, and the ‘.idt’ file extension is appended to the file name if no extension is given. The template file format is specified in <a class="reference internal" href="../../../../docproject/source/manual/program_guide/mechanics/otherinputs/dfnfileformats.html#dfnfileformats"><span class="std std-ref">DFN-Related File Formats</span></a>. Note that a template
+file will not be exported when the <span class="cmdkey">intersect</span> keyword is used.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p class="h2 rubric">Usage Example</p>
+<p>The following example illustrates how the <a class="reference internal" href="#command:fracture.export" title="Export fractures to file. By default, fractures are exported in the Itasca DFN&#013;&#010;data file format"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">export</span></code></a> command can be used: first, to generate a DFN from a single template but with two different property sets; second, to export the DFN geometry, properties and template. 3 Files are generated:</p>
+<ul class="simple">
+<li>example.dat with the fracture geometries;</li>
+<li>example_prop.dat with the fracture properties; and</li>
+<li>example_temp.idt with the template description used to generate the fracture.</li>
+</ul>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model random</span><span class="n"> </span><span class="m m-Double">10000</span>
+<span class="nb">model domain</span><span class="n"> extent </span><span class="o">-</span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">5</span>
+<span class="c">;Range definition</span>
+<span class="nb">fish define</span><span class="ni"> mylarge</span><span class="p">(</span><span class="ni">dummy</span><span class="p">,</span><span class="ni">frac</span><span class="p">)</span>
+<span class="ni">   mylarge</span><span class="p">=</span><span class="m m-Double">0</span>
+<span class="ni">   </span><span class="k">if</span><span class="ni"> </span><span class="k">fracture.area</span><span class="p">(</span><span class="ni">frac</span><span class="p">)</span><span class="o">&gt;</span><span class="m m-Double">4</span>
+<span class="ni">      mylarge </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1</span>
+<span class="ni">   </span><span class="k">endif</span>
+<span class="nb">end</span>
+<span class="c">;Create a fracture template</span>
+<span class="nb">fracture template</span><span class="n"> create </span><span class="s">&#39;ex_temp&#39;</span><span class="n"> size power</span><span class="o">-</span><span class="n">law </span><span class="m m-Double">3</span><span class="n"> size</span><span class="o">-</span><span class="n">limit </span><span class="m m-Double">0.5</span><span class="n"> </span><span class="m m-Double">100</span>
+<span class="c">;Generate fractures using the template</span>
+<span class="nb">fracture generate</span><span class="n"> dfn </span><span class="s">&#39;example&#39;</span><span class="n"> template </span><span class="s">&#39;ex_temp&#39;</span><span class="n"> fracture</span><span class="o">-</span><span class="n">count </span><span class="m m-Double">500</span>
+<span class="c">;Assign properties</span>
+<span class="nb">fracture property</span><span class="n"> </span><span class="s">&#39;jcohesion&#39;</span><span class="n"> </span><span class="m m-Double">50</span><span class="n"> </span><span class="s">&#39;jkn&#39;</span><span class="n"> </span><span class="m m-Double">50e9</span><span class="n"> </span><span class="s">&#39;jks&#39;</span><span class="n"> </span><span class="m m-Double">5e9</span><span class="n"> range fish mylarge</span>
+<span class="nb">fracture property</span><span class="n"> </span><span class="s">&#39;jcohesion&#39;</span><span class="n"> </span><span class="m m-Double">20</span><span class="n"> </span><span class="s">&#39;jkn&#39;</span><span class="n"> </span><span class="m m-Double">10e9</span><span class="n"> </span><span class="s">&#39;jks&#39;</span><span class="n"> </span><span class="m m-Double">1e9</span><span class="n"> range fish mylarge not</span>
+<span class="c">;Export the fractures, properties and templates to files</span>
+<span class="nb">fracture export</span><span class="n"> file </span><span class="s">&#39;example.dat&#39;</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">         property</span><span class="o">-</span><span class="n">file </span><span class="s">&#39;example_prop.dat&#39;</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">         template</span><span class="o">-</span><span class="n">file </span><span class="s">&#39;example_temp&#39;</span>
+<span class="nb">program </span><span class="se">return</span><span class="n">   </span>
+</pre></div>
+</div>
+<p>The following example applies only in 3D, and illustrates how the <a class="reference internal" href="#command:fracture.export" title="Export fractures to file. By default, fractures are exported in the Itasca DFN&#013;&#010;data file format"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">export</span></code></a> command can be
+used to export a 2D cut of a 3D DFN for further analyses in a 2D code. Here, example.dat will contain
+the traces of the 3D DFN on the plane centered on (1,0,0) with a dip of 90° and a dip direction of 50°.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+
+<span class="nb">model domain</span><span class="n"> extent </span><span class="o">-</span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">5</span>
+<span class="c">;Range definition</span>
+<span class="nb">fish define</span><span class="ni"> mylarge</span><span class="p">(</span><span class="ni">dummy</span><span class="p">,</span><span class="ni">frac</span><span class="p">)</span>
+<span class="ni">   mylarge</span><span class="p">=</span><span class="m m-Double">0</span>
+<span class="ni">   </span><span class="k">if</span><span class="ni"> </span><span class="k">fracture.area</span><span class="p">(</span><span class="ni">frac</span><span class="p">)</span><span class="o">&gt;</span><span class="m m-Double">1</span>
+<span class="ni">      mylarge </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1</span>
+<span class="ni">   </span><span class="k">endif</span>
+<span class="nb">end</span>
+<span class="c">;Create a fracture generation template</span>
+<span class="nb">fracture template</span><span class="n"> create </span><span class="s">&#39;ex_temp&#39;</span><span class="n"> size power</span><span class="o">-</span><span class="n">law </span><span class="m m-Double">3</span><span class="n"> size</span><span class="o">-</span><span class="n">limits </span><span class="m m-Double">0.5</span><span class="n"> </span><span class="m m-Double">100</span>
+<span class="c">;Generate fractures with the template</span>
+<span class="nb">fracture generate</span><span class="n"> dfn </span><span class="s">&#39;example&#39;</span><span class="n"> template </span><span class="s">&#39;ex_temp&#39;</span><span class="n"> fracture</span><span class="o">-</span><span class="n">count </span><span class="m m-Double">500</span>
+<span class="c">;Assign properties</span>
+<span class="nb">fracture property</span><span class="n"> </span><span class="s">&#39;jcohesion&#39;</span><span class="n"> </span><span class="m m-Double">50</span><span class="n"> </span><span class="s">&#39;jkn&#39;</span><span class="n"> </span><span class="m m-Double">50e9</span><span class="n"> </span><span class="s">&#39;jks&#39;</span><span class="n"> </span><span class="m m-Double">5e9</span><span class="n"> range fish mylarge</span>
+<span class="nb">fracture property</span><span class="n"> </span><span class="s">&#39;jcohesion&#39;</span><span class="n"> </span><span class="m m-Double">20</span><span class="n"> </span><span class="s">&#39;jkn&#39;</span><span class="n"> </span><span class="m m-Double">10e9</span><span class="n"> </span><span class="s">&#39;jks&#39;</span><span class="n"> </span><span class="m m-Double">1e9</span><span class="n"> range fish mylarge not</span>
+<span class="c">;Export intersections with the plane </span>
+<span class="nb">fracture export</span><span class="n"> file </span><span class="s">&#39;example&#39;</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                property</span><span class="o">-</span><span class="n">file </span><span class="s">&#39;example_prop&#39;</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                intersect</span><span class="o">-</span><span class="n">with</span><span class="o">-</span><span class="n">plane dip </span><span class="m m-Double">90</span><span class="n"> dip</span><span class="o">-</span><span class="n">direction </span><span class="m m-Double">50</span><span class="n"> origin </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span>
+<span class="nb">program </span><span class="se">return</span><span class="n">   </span>
+</pre></div>
+</div>
+<p class="h3 rubric">See Also: <a class="reference internal" href="cmd_fracture_import.html#command:fracture.import" title="Import fractures."><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">import</span></code></a> | <a class="reference internal" href="cmd_fracture_property.html#command:fracture.property" title="Assign fracture surface properties. The value  a  is assigned to the surface&#013;&#010;property"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">property</span></code></a> | <a class="reference internal" href="cmd_fracture_template.create.html#command:fracture.template.create" title="Create a fracture generation template. The name of the template is  s .&#013;&#010;A fracture generation"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">template</span> <span class="pre">create</span></code></a></p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../dfn.html" >Discrete Fracture Network (DFN)</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="dfn_commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_fracture_dfn-group.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">fracture</span> <span class="pre">dfn-group</span></code> command</a> |    
+       <a href="cmd_fracture_extra.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">extra</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?fracture export command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

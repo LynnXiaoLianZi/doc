@@ -1,0 +1,213 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>View Manipulation &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../search.html" />
+    <link rel="next" title="Plot Pane Toolbar" href="viewtoolbar.html" />
+    <link rel="prev" title="The Plot Pane" href="plotpane.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="view-manipulation">
+<span id="ui-viewpane-quickref"></span><h1>View Manipulation</h1>
+<p>The program offers four different sets of methods to change the view of a plot: <a class="reference internal" href="#mouse-keyboard"><span class="std std-ref">mouse + keyboard</span></a> commands on the plot, <a class="reference internal" href="#keyboard-commands"><span class="std std-ref">keyboard only</span></a> commands, and the <span class="flag4">i</span> <a class="reference internal" href="#viewstatscontrolset"><span class="std std-ref">View Stats</span></a> and <span class="flag4">i</span> <a class="reference internal" href="#viewshiftcontrolset"><span class="std std-ref">View Shift</span></a> control sets in the <em>Control Panel</em>. Each is described below.</p>
+<p class="h2 rubric" id="mouse-keyboard">Mouse + Keyboard</p>
+<p>(Mouse + keyboard) actions available to manipulate the view pane are listed below.</p>
+<table border="1" class="colwidths-given icg1 docutils" id="ui-viewpane-mouseandkey-table">
+<caption><span class="caption-text">Table 1: Plot Pane Manipulation (Mouse + Keyboard) Actions</span></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Action</th>
+<th class="head">Mouse and Keystrokes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Pan</td>
+<td>[Right] + [<code class="kbd docutils literal"><span class="pre">Shift</span></code>]</td>
+</tr>
+<tr class="row-odd"><td>Zoom +/-</td>
+<td>Wheel up (+) or down (-)</td>
+</tr>
+</tbody>
+</table>
+<p class="h2 rubric" id="keyboard-commands">Keyboard Commands</p>
+<p>Keystrokes available to manipulate the view pane are listed below.</p>
+<table border="1" class="colwidths-given icg1 docutils" id="ui-viewpane-key-table">
+<caption><span class="caption-text">Table 2: Plot Pane Manipulation Keystrokes</span></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Action</th>
+<th class="head">Keystrokes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Regenerate view</td>
+<td>[<code class="kbd docutils literal"><span class="pre">F5</span></code>]</td>
+</tr>
+<tr class="row-odd"><td>Zoom to model extent <a class="footnote-reference" href="#id2" id="id1">[1]</a></td>
+<td>[<code class="kbd docutils literal"><span class="pre">R</span></code>]</td>
+</tr>
+<tr class="row-even"><td>Reset to default view</td>
+<td>[<code class="kbd docutils literal"><span class="pre">Shift</span></code>] + [<code class="kbd docutils literal"><span class="pre">R</span></code>]</td>
+</tr>
+<tr class="row-odd"><td>Pan (up, down, left, right)</td>
+<td>arrow (<code class="kbd docutils literal"><span class="pre">↑</span></code>, <code class="kbd docutils literal"><span class="pre">↓</span></code>, <code class="kbd docutils literal"><span class="pre">←</span></code>, <code class="kbd docutils literal"><span class="pre">→</span></code>)</td>
+</tr>
+<tr class="row-even"><td>Zoom in</td>
+<td>[<code class="kbd docutils literal"><span class="pre">M</span></code>]</td>
+</tr>
+<tr class="row-odd"><td>Zoom out</td>
+<td>[<code class="kbd docutils literal"><span class="pre">Shift</span></code>] + [<code class="kbd docutils literal"><span class="pre">M</span></code>]</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-notes admonition">
+<p class="first admonition-title">Notes</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>The current orientation and view center are held constant.</td></tr>
+</tbody>
+</table>
+<table class="last docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td>Toggles between the two perspective modes: orthogonal and perspective.</td></tr>
+</tbody>
+</table>
+</div>
+<p class="h2 rubric" id="viewstatscontrolset"><em>View Stats</em> Control Set</p>
+<div class="figure align-right">
+<img alt="../../../../../../../../_images/cs_viewstats.png" src="../../../../../../../../_images/cs_viewstats.png" />
+</div>
+<p>The <em>View Stats</em> control set provides read/write controls for the view state of the current plot (magnification,
+etc.), with additional tools for quickly shifting the view to predefined or custom settings.</p>
+<p class="h3 rubric">Toolbar</p>
+<p><img alt="sa" src="../../../../../../../../_images/plus.png" /> <strong>Save Current Settings:</strong> Press this button to save the current view settings as a custom view. A dialog is called to
+name the settings. When complete, the named settings will appear in the adjacent pull-down. Custom sets created this way are
+a part of the project, so they are available to all subsequently created plots.</p>
+<p><img alt="de" src="../../../../../../../../_images/delete_normal.png" /> <strong>Delete Current Custom Settings:</strong> Delete the currently selected custom view settings.</p>
+<p><img alt="lo" src="../../../../../../../../_images/lock.png" /> <strong>Lock/Unlock View:</strong> Lock the current view, so that its view settings may not be changed; this also disables all
+the settings fields in the control set.</p>
+<p class="h3 rubric" id="viewshiftcontrolset"><em>View Shift</em> Control Set</p>
+<div class="figure align-right">
+<img alt="../../../../../../../../_images/cs_viewshift_udec.png" src="../../../../../../../../_images/cs_viewshift_udec.png" />
+</div>
+<p>The <em>View Shift</em> control set provides interactive tools to manipulate the view of a plot within a <em>View</em> pane.</p>
+<p class="h3 rubric">The Tools</p>
+<p><img alt="re" src="../../../../../../../../_images/resetplot_normal_16x16.png" /> <strong>Reset:</strong> Reset the view to its default rendering, erasing any previous modifications (change to the image center point, for instance).</p>
+<p><strong>Rollerball:</strong> X and Y translate.</p>
+<p><img alt="tr" src="../../../../../../../../_images/pan.png" /> <strong>Translate:</strong> Use the slider to smoothly translate (pan) the view vertically or horizontally. Use the <span class="button">+</span>/<span class="button">-</span> buttons adjacent to the slider to pan incrementally.</p>
+<p><img alt="ma" src="../../../../../../../../_images/magnify.png" /> <strong>Magnify:</strong> Use the slider to smoothly change the magnification; use the <span class="button">+</span>/<span class="button">-</span> buttons to incrementally change the magnification.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../plotting.html" >Plotting</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="plotpane.html" accesskey="U">The <em>Plot</em> Pane</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="plotpane.html"
+                           title="previous chapter"> The <em>Plot</em> Pane</a> |    
+       <a href="viewtoolbar.html"
+                           title="next chapter"><em>Plot</em> Pane Toolbar</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?View Manipulation" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

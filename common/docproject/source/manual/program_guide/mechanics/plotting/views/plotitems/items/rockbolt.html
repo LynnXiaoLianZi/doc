@@ -1,0 +1,208 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Rockbolt Plot Item &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../../../search.html" />
+    <link rel="next" title="Scanline" href="Scanline.html" />
+    <link rel="prev" title="Reinforcement Plot Item" href="reinf.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="rockbolt-plot-item">
+<span id="ui-pi-rockbolt"></span><h1>Rockbolt Plot Item</h1>
+<p class="h3 rubric" id="rockbolt-description">Description</p>
+<p>Show the locations of rockbolt elements as lines. The first few attributes of this plot item are <a class="reference internal" href="../plotitemsinudec.html#descendfromcolorbypattern"><span class="std std-ref">contingent on the first attribute</span></a> (<em>Color By</em>).</p>
+<p class="h3 rubric" id="rockbolt-attributes">Attributes</p>
+<div class="docutils container" id="attributelist">
+<a class="reference internal" href="#rockbolt-colorby-att"><span class="std std-ref">Color By</span></a>
+<a class="reference internal" href="#rockbolt-labelvalue-att"><span class="std std-ref">Label/Value</span></a>
+<a class="reference internal" href="#rockbolt-contourcolorlist-att"><span class="std std-ref">Contour/Color-List</span></a>
+<a class="reference internal" href="#rockbolt-line-att"><span class="std std-ref">Line</span></a>
+<a class="reference internal" href="#rockbolt-value-bars-att"><span class="std std-ref">Value Bars</span></a>
+<a class="reference internal" href="#rockbolt-node-att"><span class="std std-ref">Nodes</span></a>
+<a class="reference internal" href="#rockbolt-legend-att"><span class="std std-ref">Legend</span></a></div>
+<p id="rockbolt-colorby-att"><strong>Color By</strong></p>
+<img alt="../../../../../../../../../../_images/colorby_labelorcontour.png" class="pi-attribute" src="../../../../../../../../../../_images/colorby_labelorcontour.png" />
+<p>Set either a “label” or a “contour” to be colored on the plot item.</p>
+<p id="rockbolt-labelvalue-att"><strong>Label/Value</strong></p>
+<img alt="../../../../../../../../../../_images/labelorvalueselect.png" class="pi-attribute" src="../../../../../../../../../../_images/labelorvalueselect.png" />
+<p>Specify which label or value (as determined by the previous setting) to display in the plot item. The options for both are shown on the following table.  Some options will require additional, dynamically-provided attributes in order to complete the selection; these are indicated with notations on the table.</p>
+<table border="1" class="colwidths-given icg1 docutils" id="rockboltlabelvalueoptions">
+<caption><span class="caption-text">Table 1: Selection Options for Label/Value</span></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Label</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Collection ID</td>
+<td>Applied Moment</td>
+</tr>
+<tr class="row-odd"><td>Element Prop</td>
+<td>Axial Force</td>
+</tr>
+<tr class="row-even"><td>Element State</td>
+<td>Axial Strain</td>
+</tr>
+<tr class="row-odd"><td>Node Fixed</td>
+<td>Displacement</td>
+</tr>
+<tr class="row-even"><td>Node State</td>
+<td>Moment</td>
+</tr>
+<tr class="row-odd"><td>Propertyᵖ</td>
+<td>Node Mass</td>
+</tr>
+<tr class="row-even"><td>Rockbolt Extraᵉ</td>
+<td>Shear Force</td>
+</tr>
+<tr class="row-odd"><td>Rockbolt Groupsˢ</td>
+<td>Velocity</td>
+</tr>
+<tr class="row-even"><td>Uniform</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="colwidths-given blank docutils" id="rockboltlabelvalueoptionskey">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key:</td>
+</tr>
+<tr class="row-even"><td>ᶜA “Component” attribute follows</td>
+</tr>
+<tr class="row-odd"><td>ᵉAn “Index” attribute follows</td>
+</tr>
+<tr class="row-even"><td>ᵖA “Property” attribute follows</td>
+</tr>
+<tr class="row-odd"><td>ˢA “Slot” attribute follows</td>
+</tr>
+</tbody>
+</table>
+<p id="rockbolt-contourcolorlist-att"><strong>Color-List/Contour</strong></p>
+<p>The attribute appearing in this position is either a <em>Color-List</em> or a <em>Contour</em>, depending on the “Color By” selection.  Refer to the standard <a class="reference internal" href="attributes/std_colorlist.html#std-colorlist"><span class="std std-ref">color-list</span></a> control description and the standard <a class="reference internal" href="attributes/std_contour.html#std-contour"><span class="std std-ref">contour</span></a> control description for details.</p>
+<p id="rockbolt-line-att"><strong>Line</strong></p>
+<img alt="../../../../../../../../../../_images/line01.png" class="pi-attribute" src="../../../../../../../../../../_images/line01.png" />
+<p>Set line properties for the plot item. See the standard <a class="reference internal" href="attributes/std_line.html#std-line"><span class="std std-ref">line</span></a> control description for details.</p>
+<p id="rockbolt-node-att"><strong>Nodes</strong></p>
+<img alt="common/docproject/source/manual/program_guide/mechanics/plotting/views/plotitems/items/attributes/figures/nodes.png" class="pi-attribute" src="common/docproject/source/manual/program_guide/mechanics/plotting/views/plotitems/items/attributes/figures/nodes.png" />
+<p>Show locations of rockbolt nodes.</p>
+<p id="rockbolt-value-bars-att"><strong>Value Bars</strong></p>
+<img alt="common/docproject/source/manual/program_guide/mechanics/plotting/views/plotitems/items/attributes/figures/value_bars.png" class="pi-attribute" src="common/docproject/source/manual/program_guide/mechanics/plotting/views/plotitems/items/attributes/figures/value_bars.png" />
+<p>Display rockbolt values as a bar chart plotted along the line of the element.</p>
+<img alt="../../../../../../../../../../_images/legend.png" class="pi-attribute" id="rockbolt-legend-att" src="../../../../../../../../../../_images/legend.png" />
+<p><strong>Legend</strong></p>
+<p>Set item labeling in the plot legend. See the standard <a class="reference internal" href="attributes/std_legend.html#std-legend"><span class="std std-ref">legend</span></a> control description for details.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../../../plotting.html" >Plotting</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../plotitem_index.html" >Plot Items</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../plotitemsinudec.html" accesskey="U">Plot Items in <span class="codename">UDEC</span></a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="reinf.html"
+                           title="previous chapter"> Reinforcement Plot Item</a> |    
+       <a href="Scanline.html"
+                           title="next chapter">Scanline</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Rockbolt Plot Item" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

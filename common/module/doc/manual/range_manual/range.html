@@ -1,0 +1,138 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Range &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="The Range Phrase" href="range_commands/rangephrase.html" />
+    <link rel="prev" title="List" href="../list_manual/lists.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="range">
+<span id="range-manual"></span><h1>Range</h1>
+<p>A command will operate on all possible target objects of the command (e.g., zones, balls, blocks, grid points, structural elements, etc.).</p>
+<p>A <a class="reference internal" href="range_commands/rangephrasereference.html" title="range"><code class="xref fish fish-tok docutils literal"><span class="pre">range</span></code></a>, when applied to a command, provides the means to restrict the operation of the command to a subset of target objects. The subset is defined by <em>range elements</em>, which are the keywords (+ values) that follow the <a class="reference internal" href="range_commands/rangephrasereference.html" title="range"><code class="xref fish fish-tok docutils literal"><span class="pre">range</span></code></a> keyword in the command. The term <a class="reference internal" href="range_commands/rangephrase.html#rangephraseexplained"><span class="std std-ref">range phrase</span></a> refers to the combination of the <a class="reference internal" href="range_commands/rangephrasereference.html" title="range"><code class="xref fish fish-tok docutils literal"><span class="pre">range</span></code></a> keyword and one or more following <em>range elements</em>. The <a class="reference internal" href="range_commands/rangephrasereference.html#rangekeyword"><span class="std std-ref">reference list of range elements</span></a> can be accessed by clicking any <a class="reference internal" href="range_commands/rangephrasereference.html" title="range"><code class="xref fish fish-tok docutils literal"><span class="pre">range</span></code></a> link throughout the documentation.</p>
+<p>The <a class="reference internal" href="range_commands/rangephrase.html#rangephraseexplained"><span class="std std-ref">range phrase</span></a>, when used, must <em>always appear at the end of the command.</em> In most cases, ranges are optional, though in some cases they are required.  Throughout this documentation, the appearance of &lt;<a class="reference internal" href="range_commands/rangephrasereference.html" title="range"><code class="xref fish fish-tok docutils literal"><span class="pre">range</span></code></a>&gt; or <a class="reference internal" href="range_commands/rangephrasereference.html" title="range"><code class="xref fish fish-tok docutils literal"><span class="pre">range</span></code></a> at the end of a command indicates that a range phrase is optionally accepted or required (respectively).  The signature of the <code class="xref fish fish-cmd docutils literal"><span class="pre">zone</span> <span class="pre">apply</span></code> command, for example:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">zone apply</span><span class="n"> keyword </span><span class="sx">...</span><span class="n"> </span><span class="o">&lt;</span><span class="n">range</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Most often, the use of ranges will occur as above — as a keyword appearing at the end of a command. That said, there <em>is</em> a <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">range</span></code> command. The purpose of this command is to create (or delete) a named range. However, the resulting named range is not applied <em>to</em> anything until it is utilized as a <a class="reference internal" href="range_commands/rangephrasereference.html#kwd:range.named-range" title="Use the named range  s  as an element within the current range phrase.&#013;&#010; See the command  model.range.create ."><code class="xref fish fish-kwd docutils literal"><span class="pre">named-range</span></code></a> element within a range phrase.  Further detail may be found in the topic <a class="reference internal" href="range_commands/rangenaming.html#rangenaming"><span class="std std-ref">Named Ranges</span></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Unless a range phrase is used on a command, the action of any command in will be applied to all possible target objects of the command.</p>
+</div>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="range_commands/rangephrase.html">The Range Phrase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="range_commands/rangelogical.html">Logical Operations in a Range Phrase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="range_commands/rangenaming.html">Named Ranges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="range_commands/rangephrasereference.html">Range Phrase Keyword Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="range_fish/range_fish.html"><span class="codename">FISH</span> Functions</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" accesskey="U">Common Model Objects</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../list_manual/lists.html"
+                           title="previous chapter"> List</a> |    
+       <a href="range_commands/rangephrase.html"
+                           title="next chapter">The Range Phrase</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Range" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

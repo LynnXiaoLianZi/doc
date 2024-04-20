@@ -1,0 +1,172 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Finding the Response Spectrum of an Acceleration History in a UDEC Table &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="finding-the-response-spectrum-of-an-acceleration-history-in-a-udec-table">
+<span id="findingresponsespectrum"></span><h1>Finding the Response Spectrum of an Acceleration History in a <span class="codename">UDEC</span> Table</h1>
+<p>The <span class="codename">FISH</span> file “<code class="docutils literal"><span class="pre">spec.fis</span></code>” finds the displacement response spectrum, the pseudo-velocity response spectrum and the pseudo-acceleration response spectrum of an input acceleration stored in a <span class="codename">UDEC</span> table. The ID number of the input table is defined by the acc in argument, and the three output tables are identified by the <code class="docutils literal"><span class="pre">sd_out</span></code>, <code class="docutils literal"><span class="pre">sv_out</span></code> and <code class="docutils literal"><span class="pre">sa_out</span></code> arguments. Any currently existing output tables will be deleted and overwritten by the new results.</p>
+<p>The damping constant for the response analysis is specified by the <code class="docutils literal"><span class="pre">dmp</span></code> argument. The calculation is only approximate for damped responses; the higher <code class="docutils literal"><span class="pre">dmp</span></code> is, the less accurate the response.</p>
+<p>The range of periods over which the spectrum is calculated by the <code class="docutils literal"><span class="pre">pmin</span></code> and <code class="docutils literal"><span class="pre">pmax</span></code> arguments, and the number of points in the output tables, are defined by the <code class="docutils literal"><span class="pre">n_point</span></code> argument.</p>
+<p>This routine can take considerable time to execute. If <span class="math">\(N_i\)</span> is the number of input points and <span class="math">\(N_p\)</span> is the number of points in the output, then the number of calculations increases as <span class="math">\(N_p × N_i × log(N_i)\)</span>. This formulation tends to give somewhat distorted results for periods approaching zero. However, improving the accuracy for small periods increases the calculation time.</p>
+<p>The algorithm was adapted from Craig (1981). As an example of its use, a simple sine wave was input into a <span class="codename">UDEC</span> table as an input acceleration. The function was then executed from a period of 0.5 to 2, with 50 points, in the output tables (see “<code class="docutils literal"><span class="pre">spec.dat</span></code>”). Figure 1 shows the input acceleration generated: a sine wave with a period of 1.0. Figures 2 through 4 show the various response spectrums generated, displaying the expected peaks at a period of 1.0.</p>
+<p><em>Reference</em></p>
+<p>Craig, R. R., Jr. <span class="bi">Structural Dynamics – An Introduction to Computer Methods</span>. New York: John Wiley and Sons (1981).</p>
+<p><strong>Data File:</strong> <code class="docutils literal"><span class="pre">spec.dat</span></code></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model title</span><span class="n"> </span><span class="s">&#39; Fast Forrier Transform Power Spectrum&#39;</span>
+<span class="nb">fish define</span><span class="ni"> cr_tab</span>
+<span class="ni">  i </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0</span>
+<span class="ni">  p2 </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">2.</span><span class="o">*</span><span class="k">math.pi</span>
+<span class="ni">  </span><span class="k">loop</span><span class="ni"> </span><span class="k">while</span><span class="ni"> i </span><span class="o">&lt;</span><span class="p">=</span><span class="ni"> num_point</span>
+<span class="ni">    xx</span><span class="p">=</span><span class="ni">end_time</span><span class="o">*</span><span class="ni">float</span><span class="p">(</span><span class="ni">i</span><span class="p">)</span><span class="o">/</span><span class="ni">float</span><span class="p">(</span><span class="ni">num_point</span><span class="p">)</span>
+<span class="ni">    i </span><span class="p">=</span><span class="ni"> i</span><span class="o">+</span><span class="m m-Double">1</span>
+<span class="ni">    yy </span><span class="p">=</span><span class="ni"> </span><span class="k">math.sin</span><span class="p">(</span><span class="ni">xx</span><span class="o">*</span><span class="ni">p2</span><span class="o">/</span><span class="ni">per1</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">table</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="ni">xx</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> yy</span>
+<span class="ni">  </span><span class="k">end_loop</span>
+<span class="nb">end</span>
+<span class="c">;</span>
+<span class="n">fish set num_point </span><span class="m m-Double">250</span><span class="n"> </span><span class="ni">@end_time</span><span class="n"> </span><span class="m m-Double">3.0</span>
+<span class="n">fish set per1 </span><span class="m m-Double">1.0</span>
+<span class="c">;</span>
+<span class="ni">@cr_tab</span>
+<span class="c">;</span>
+<span class="nb">program call</span><span class="n"> </span><span class="s">&#39;spec.fis&#39;</span>
+<span class="n">fish set pmin    </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">0.5</span>
+<span class="n">fish set pmax    </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">2.</span>
+<span class="n">fish set dmp     </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">0.</span>
+<span class="n">fish set acc_in  </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">1</span>
+<span class="n">fish set sd_out  </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">2</span>
+<span class="n">fish set sv_out  </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">3</span>
+<span class="n">fish set sa_out  </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">4</span>
+<span class="n">fish set n_point </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">50</span>
+<span class="ni">@spectra</span>
+<span class="c">;</span>
+<span class="n">table </span><span class="m m-Double">1</span><span class="n"> label </span><span class="s">&#39;input acceleration&#39;</span>
+<span class="n">table </span><span class="m m-Double">2</span><span class="n"> label </span><span class="s">&#39;displacement response&#39;</span>
+<span class="n">table </span><span class="m m-Double">3</span><span class="n"> label </span><span class="s">&#39;pseudo-velocity response&#39;</span>
+<span class="n">table </span><span class="m m-Double">4</span><span class="n"> label </span><span class="s">&#39;pseudo-acceleration response&#39;</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;spec.sav&#39;</span>
+<span class="c">;plot hold table 1</span>
+<span class="c">;plot hold table 2</span>
+<span class="c">;plot hold table 3</span>
+<span class="c">;plot hold table 4</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../../../../../_images/738F0001.png"><img alt="../../../../../_images/738F0001.png" src="../../../../../_images/738F0001.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Input acceleration</span></p>
+</div>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../../../../../_images/738F0002.png"><img alt="../../../../../_images/738F0002.png" src="../../../../../_images/738F0002.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Displacement response spectrum</span></p>
+</div>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="../../../../../_images/738F0003.png"><img alt="../../../../../_images/738F0003.png" src="../../../../../_images/738F0003.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 3: Pseudo-velocity response spectrum</span></p>
+</div>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="../../../../../_images/738F0004.png"><img alt="../../../../../_images/738F0004.png" src="../../../../../_images/738F0004.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 4: Pseudo-acceleration response spectrum</span></p>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Finding the Response Spectrum of an Acceleration History in a UDEC Table" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

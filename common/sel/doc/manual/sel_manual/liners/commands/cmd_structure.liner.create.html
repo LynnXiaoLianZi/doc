@@ -1,0 +1,276 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>structure liner create command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="structure-liner-create-command">
+<h1><code class="docutils literal"><span class="pre">structure</span> <span class="pre">liner</span> <span class="pre">create</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="structureliner command">
+<dt id="command:structure.liner.create">
+<span class="cmdname"><span class="pref">s</span><span class="pref">t</span><span class="pref">r</span><span class="null">u</span><span class="null">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">l</span><span class="pref">i</span><span class="pref">n</span><span class="pref">e</span><span class="null">r</span><span class="null"> </span></span><span class="cmdname"><span class="pref">c</span><span class="null">r</span><span class="null">e</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:structure.liner.create.by-zone-face" title="structure liner create by-zone-face">by-zone-face</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.liner.create.by-block-face" title="structure liner create by-block-face">by-block-face</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.liner.create.by-nodeids" title="structure liner create by-nodeids">by-nodeids</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.liner.create.by-quadrilateral" title="structure liner create by-quadrilateral">by-quadrilateral</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.liner.create.by-triangle" title="structure liner create by-triangle">by-triangle</a></p>
+</div>
+<p>Create a liner. There are four different techniques of creation: by creating a collection of elements from a group of zone faces (<span class="cmdkey">by-zone-face</span> or <span class="cmdkey">by-block-face</span>); by creating a single element from four existing nodes (<span class="cmdkey">by-nodeids</span>), from a specified quadrilateral (<span class="cmdkey">by-quadrilateral</span>), or from a triangle (<span class="cmdkey">by-triangle</span>).</p>
+<dl class="keyword">
+<dt id="kwd:structure.liner.create.by-zone-face">
+<span class="cmdkey"><span class="pref">b</span><span class="null">y</span><span class="null">-</span><span class="pref">z</span><span class="null">o</span><span class="null">n</span><span class="null">e</span><span class="null">-</span><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><span class="null"> </span><span class="cmdextra">(<span class="cmdextraparam">FLAC3D</span>)</span><span class="null"> </span><a class="reference internal" href="#linercreateblock">[linercreateblock]</a><span class="null"> </span><span class="cmdopt"><<a class="reference internal" href="../../../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span></dt>
+<dd><p>Create new elements that are attached to the set of three- or four-sided zone-faces in the range.  By default, only surface faces will be considered; the <span class="cmdkey">internal</span> keyword can be used to select internal faces.  New nodes associated with the element will also be created (see the id keyword). The nodes of each new element will be ordered counter-clockwise with respect to the outside of the specified zone faces, thereby making the element <span class="math">\(z\)</span>-axis point outward. The element will be attached to the grid at its nodes with link attachment conditions appropriate to the element type (see <a class="reference internal" href="../../formulation/formulation.html#sel-attachment-conditions"><span class="std std-ref">this table</span></a> in the topic <em>Structural Element Links</em>). Note that after creating the elements with this command, the zones may be deleted and the elements may be positioned by moving its nodes with the <a class="reference internal" href="../../nodes/commands/cmd_structure.node.initialize.html#kwd:structure.node.initialize.position" title="position of node (global system).  This is used for positioning of a structural&#013;&#010;element grid; must be used after creating the node, but before executing any&#013;&#010;cycles. Any node that is moved into a zone (see the  structure.link.list &#013;&#010;command) will have its link deleted (if one is present) and will have a new&#013;&#010;link created with attachment conditions corresponding to the type of structural&#013;&#010;element using the node (see  this table &lt;sel-attachment-conditions&gt; ).&#013;&#010;If more"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">initialize</span> <span class="pre">position</span></code></a> command.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.liner.create.by-block-face">
+<span class="cmdkey"><span class="pref">b</span><span class="null">y</span><span class="null">-</span><span class="pref">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null">-</span><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="null">t</span><span class="null">o</span><span class="null">l</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">f</span></span>></span><span class="null"> </span><span class="null"> </span><span class="cmdextra">(<span class="cmdextraparam">3DEC</span>)</span><span class="null"> </span><a class="reference internal" href="#linercreateblock">[linercreateblock]</a><span class="null"> </span><span class="cmdopt"><<a class="reference internal" href="../../../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span></dt>
+<dd><p>Create new elements that are attached to the set of three-sided zone-faces in the range.  Elements can only be created on block surfaces.  New nodes associated with the element will also be created (see the id keyword). The nodes of each new element will be ordered counter-clockwise with respect to the outside of the specified zone faces, thereby making the element <span class="math">\(z\)</span>-axis point outward. The element will be attached to the grid at its nodes with link attachment conditions appropriate to the element type (see <a class="reference internal" href="../../formulation/formulation.html#sel-attachment-conditions"><span class="std std-ref">this table</span></a> in the topic <em>Structural Element Links</em>). Note that after creating the elements with this command, the zones may be deleted and the elements may be positioned by moving its nodes with the <a class="reference internal" href="../../nodes/commands/cmd_structure.node.initialize.html#kwd:structure.node.initialize.position" title="position of node (global system).  This is used for positioning of a structural&#013;&#010;element grid; must be used after creating the node, but before executing any&#013;&#010;cycles. Any node that is moved into a zone (see the  structure.link.list &#013;&#010;command) will have its link deleted (if one is present) and will have a new&#013;&#010;link created with attachment conditions corresponding to the type of structural&#013;&#010;element using the node (see  this table &lt;sel-attachment-conditions&gt; ).&#013;&#010;If more"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">initialize</span> <span class="pre">position</span></code></a> command.</p>
+<p>The <code class="xref fish fish-kwd docutils literal"><span class="pre">tolerance</span></code> keyword can be used to enable linking of liner elements on faces where the faces may have separated due to large strain deformations.  By default, nodes on adjacent liner elements will be linked if the distance between them is less than f = 1e-5.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.liner.create.by-nodeids">
+<span class="cmdkey"><span class="pref">b</span><span class="null">y</span><span class="null">-</span><span class="pref">n</span><span class="null">o</span><span class="null">d</span><span class="null">e</span><span class="null">i</span><span class="null">d</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i2</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i3</span><span class="null"> </span></span></a><a class="reference internal" href="#linercreateblock">[linercreateblock]</a></dt>
+<dd><p>Create elements given an existing set of nodes. The new elements will not be attached to the grid; if you wish to attach it to the grid, then after creating it, position its nodes with the <a class="reference internal" href="../../nodes/commands/cmd_structure.node.initialize.html#kwd:structure.node.initialize.position" title="position of node (global system).  This is used for positioning of a structural&#013;&#010;element grid; must be used after creating the node, but before executing any&#013;&#010;cycles. Any node that is moved into a zone (see the  structure.link.list &#013;&#010;command) will have its link deleted (if one is present) and will have a new&#013;&#010;link created with attachment conditions corresponding to the type of structural&#013;&#010;element using the node (see  this table &lt;sel-attachment-conditions&gt; ).&#013;&#010;If more"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">initialize</span> <span class="pre">position</span></code></a> command (which will create links and set appropriate attachment conditions for all nodes that are moved into a zone).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.liner.create.by-quadrilateral">
+<span class="cmdkey"><span class="pref">b</span><span class="null">y</span><span class="null">-</span><span class="pref">q</span><span class="null">u</span><span class="null">a</span><span class="null">d</span><span class="null">r</span><span class="null">i</span><span class="null">l</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v2</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v3</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v4</span><span class="null"> </span></span></a><a class="reference internal" href="#linercreateblock">[linercreateblock]</a></dt>
+<dd><p>create elements based on four points forming a quadrilateral, in order.  The element local system will point in the direction determined by using the right-hand rule.</p>
+<p>Nodes created with this command will automatically attach to the first valid object type found at their location - with link attachments in each degree-of-freedom appropriate to the element type.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.liner.create.by-triangle">
+<span class="cmdkey"><span class="pref">b</span><span class="null">y</span><span class="null">-</span><span class="pref">t</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v2</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v3</span><span class="null"> </span></span></a><a class="reference internal" href="#linercreateblock">[linercreateblock]</a></dt>
+<dd><p>Create elements based on three points forming a triangle.  The element local system will point in the direction determined by using the right-hand rule.</p>
+<p>Nodes created with this command will automatically attach to the first valid object type found at their location - with link attachments in each degree-of-freedom appropriate to the element type.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><p class="h2 rubric" id="linercreateblock">Keyword Block</p>
+</div></blockquote>
+<p>The following keywords may be optionally provided on liner creation, using any of the major keywords: <a class="reference internal" href="#kwd:structure.liner.create.by-block-face"><code class="docutils literal"><span class="fishcmd"><span class="pre">by-block-face</span></span></code></a>, <a class="reference internal" href="#kwd:structure.liner.create.by-nodeids"><code class="docutils literal"><span class="fishcmd"><span class="pre">by-nodeids</span></span></code></a>, <a class="reference internal" href="#kwd:structure.liner.create.by-quadrilateral"><code class="docutils literal"><span class="fishcmd"><span class="pre">by-quadrilateral</span></span></code></a>, <a class="reference internal" href="#kwd:structure.liner.create.by-triangle"><code class="docutils literal"><span class="fishcmd"><span class="pre">by-triangle</span></span></code></a> and <a class="reference internal" href="#kwd:structure.liner.create.by-zone-face"><code class="docutils literal"><span class="fishcmd"><span class="pre">by-zone-face</span></span></code></a>.</p>
+<blockquote>
+<div><dl class="keyword">
+<dt id="kwd:id">
+<span class="cmdkey"><span class="pref">i</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify the ID that will be assigned to all new elements created by this command. If this value is not given, then the next available ID will be used. The ID controls potential joining of the element nodes to an existing element, as follows. At each potential new node location, a new node is created unless all of the following conditions are fulfilled: 1) the ID is given; 2) an existing node is found “near” the potential new node location; and 3) the found node is part of an element of the same type with ID equal to <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:group">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s1</span><span class="null"> </span></span></a><span class="cmdopt"><<span class="cmdkey"><span class="pref">s</span><span class="null">l</span><span class="null">o</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s2</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Assign the created elements to group <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s1</span></span></a>.  The group is assigned to the slot named <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s2</span></span></a> if supplied; it is assigned to the slot named <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">Default</span></span></a> if not supplied. Use of the group logic is described in <a class="reference internal" href="../../../../../../module/doc/manual/group_manual/groupkwd.html#group-manual"><span class="std std-ref">Groups</span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:cross-diagonal">
+<span class="cmdkey"><span class="pref">c</span><span class="null">r</span><span class="null">o</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">d</span><span class="null">i</span><span class="null">a</span><span class="null">g</span><span class="null">o</span><span class="null">n</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>If specified, a cross-diagonal mesh of four triangles will be created with a node lying at the centroid of all quadrilaterals; otherwise, a cross-hatch mesh of two triangles will be created dividing the quadrilateral.</p>
+<p>When connecting elements to the grid, it is best to locate nodes at gridpoints. If the finite-element type can resist bending (DKT, DKT-CST, or DKT-(CST Hybrid) elements), then incompatibilities can develop along element faces and zone faces, because the transverse (out-of-plane) displacement field varies cubically across element faces, but varies only linearly across zone faces. Thus, when connecting bending-resistant elements rigidly to zone faces, it is best to utilize a cross-hatch mesh, because the middle node of the cross-diagonal mesh will be constrained to translate according to the linear displacement field of the zone face. This over-constrains the elements and can produce near-zero moments at these mid-nodes when present in a nonzero moment field.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:distinct">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">i</span><span class="null">n</span><span class="null">c</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>Eliminate sharing of nodes among created elements.  Every element will create a new set of nodes, even if they are at the same location in space and elements share the same ID number.  This option is most commonly used with a later <a class="reference internal" href="../../nodes/commands/cmd_structure.node.join.html#command:structure.node.join" title="This command creates node-to-node links on all nodes in the range by attempting&#013;&#010;to find another node in the range that is at the same position. If found, and&#013;&#010;if the node does not already possess a node-to-node link, then any existing&#013;&#010;link is deleted and a new node-to-node link is created.  The new link is rigidly&#013;&#010;attached in all six degrees-of-freedom to the target node."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">join</span></code></a> command to create links connecting nodes at the same location in order to apply custom inter-element behavior.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:element-type">
+<span class="cmdkey"><span class="pref">e</span><span class="pref">l</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">t</span><span class="null">y</span><span class="null">p</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Specify the finite element formation used by each structural element. If no element type is specified, then the element type will be DKT-CST. Note that the type of finite element is associated with each structural element as it is created, and cannot subsequently be altered. The finite element type of existing structural elements is printed by the <a class="reference internal" href="cmd_structure.liner.list.html#kwd:structure.liner.list.element-type" title="finite element type used"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">liner</span> <span class="pre">list</span> <span class="pre">element-type</span></code></a> command. The value of the keyword supplied must be one of the following three-noded finite elements:</p>
+<dl class="keyword">
+<dt id="kwd:element-type.adummy">
+<span class="cmdkey"><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Attempt to match the string <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a> to one of the available keywords below, and treats as that option</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:element-type.cst">
+<span class="cmdkey"><span class="pref">c</span><span class="pref">s</span><span class="pref">t</span><span class="null"> </span></span></dt>
+<dd><p>CST (6 degrees-of-freedom) finite element. This is a membrane element; it resists membrane, but not bending, loading.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:element-type.csth">
+<span class="cmdkey"><span class="pref">c</span><span class="pref">s</span><span class="pref">t</span><span class="pref">h</span><span class="null"> </span></span></dt>
+<dd><p>CST Hybrid (9 degrees-of-freedom) finite element. This is a membrane element; it resists membrane, but not bending, loading.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:element-type.dkt">
+<span class="cmdkey"><span class="pref">d</span><span class="null">k</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>DKT (9 degrees-of-freedom) finite element. This is a plate-bending element; it resists bending, but not membrane, loading.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:element-type.dkt-cst">
+<span class="cmdkey"><span class="pref">d</span><span class="null">k</span><span class="null">t</span><span class="null">-</span><span class="pref">c</span><span class="pref">s</span><span class="pref">t</span><span class="null"> </span></span></dt>
+<dd><p>DKT-CST (15 degrees-of-freedom) finite element. This is a shell element that combines the DKT and CST elements to resist both bending and membrane loading.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:element-type.dkt-csth">
+<span class="cmdkey"><span class="pref">d</span><span class="null">k</span><span class="null">t</span><span class="null">-</span><span class="pref">c</span><span class="pref">s</span><span class="pref">t</span><span class="pref">h</span><span class="null"> </span></span></dt>
+<dd><p>DKT-(CST Hybrid) (18 degrees-of-freedom) finite element. This is a shell element that combines the DKT and CST Hybrid elements to resist both bending and membrane loading.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:embedded">
+<span class="cmdkey"><span class="pref">e</span><span class="pref">m</span><span class="null">b</span><span class="null">e</span><span class="null">d</span><span class="null">d</span><span class="null">e</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Specify that this liner is two-sided. If the <span class="cmdkey">embedded</span> keyword is used, then the <span class="cmdkey">internal</span> keyword is implied, even if not explicitly given.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:internal">
+<span class="cmdkey"><span class="pref">i</span><span class="null">n</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">n</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>This keyword only applies if the <span class="cmdkey">from-faces</span> option was used.  Specifies that all internal and surface faces in the range will have elements created on them.  Normally only surface faces are considered.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:maximum-length">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">x</span><span class="null">i</span><span class="null">m</span><span class="null">u</span><span class="null">m</span><span class="null">-</span><span class="pref">l</span><span class="null">e</span><span class="null">n</span><span class="null">g</span><span class="null">t</span><span class="null">h</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Break the element into segments no greater than length <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a>.  The <span class="cmdkey">segments</span> setting, if provided, is overridden as needed by this setting.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:segments">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">e</span><span class="pref">g</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Break the element into <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> equal segments, creating new nodes as needed.  The default value is <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">1</span></span></a>, indicating that only one element will be created.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:separate">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">e</span><span class="pref">p</span><span class="null">a</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Select a group of internal faces, and separate them into surfaces as with the <code class="xref fish fish-cmd docutils literal"><span class="pre">zone</span> <span class="pre">separate</span></code> command.  A liner will be created between the two surfaces.  This keyword implies both <span class="cmdkey">embedded</span> and <span class="cmdkey">internal</span>.  The following keywords are available:</p>
+<dl class="keyword">
+<dt id="kwd:separate.origin">
+<span class="cmdkey"><span class="pref">o</span><span class="null">r</span><span class="null">i</span><span class="null">g</span><span class="null">i</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>The point <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span></span></a> is used to determine which side of the faces selected will be considered side 1, and which will be side 2. The vector from <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span></span></a> to the face centroid is compared with the normal to the face. The side pointing toward <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span></span></a> will be side 1, and the side pointing away from <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span></span></a> will be side 2.  If the <span class="cmdkey">origin</span> keyword is not specified, it is assumed to be <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">(0,0,0)</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:separate.clear-attach">
+<span class="cmdkey"><span class="pref">c</span><span class="null">l</span><span class="null">e</span><span class="null">a</span><span class="null">r</span><span class="null">-</span><span class="pref">a</span><span class="null">t</span><span class="null">t</span><span class="null">a</span><span class="null">c</span><span class="null">h</span><span class="null"> </span></span></dt>
+<dd><p>If specified, causes any attach conditions on the boundary to be cleared.   By default, an existing attach condition causes an error.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:size">
+<span class="cmdkey"><span class="pref">s</span><span class="pref">i</span><span class="null">z</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i2</span><span class="null"> </span></span></a></dt>
+<dd><p>This keyword only applies if the <span class="cmdkey">from-quadrilateral</span> option was used.  Increases the number of elements created by subdividing the quadrilateral into <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i1</span></span></a> segments along the first edge and <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i2</span></span></a> segments along the second.  By default, only one quad is created.</p>
+</dd></dl>
+
+</div></blockquote>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?structure liner create command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

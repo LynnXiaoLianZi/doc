@@ -1,0 +1,152 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Solving &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="List of Warnings Dialog" href="warnings.html" />
+    <link rel="prev" title="Information Control Set" href="../plotting/views/information.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="solving">
+<h1>Solving</h1>
+<p id="solving-mark">A sequence of calculation <a class="reference internal" href="../../modelformulation/cycling.html#frameworkcycling"><span class="std std-ref">cycles</span></a> is most often performed via the <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.solve.html#command:model.solve" title="Enable the automatic detection of the steady-state solution for mechanical&#013;&#010;problems. A calculation is performed until the limiting conditions, as defined&#013;&#010;by the following keywords, are reached. SOLVE force must be used for rigid block&#013;&#010;models. The SOLVE command does not monitor fluid flow. It is possible that mechanical&#013;&#010;equilibrium may be reached prior to fluid-flow equilibrium for steady-state&#013;&#010;flow. CYCLE ftime should be used for transient fluid flow."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">solve</span></code></a> command.<a class="footnote-reference" href="#id2" id="id1">[1]</a> This command allows for cycling to continue until one or more solve limits are met. The <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">cycle</span></code> can also be specified to simply perform a specified number of cycles.</p>
+<p>Either of these commands must be issued from one of two places in the program: in the <span class="flag4">i</span> <a class="reference internal" href="../commands/console_pane/consolepane.html#theconsolepane"><span class="std std-ref">Console</span></a> pane, or from within a data file.</p>
+<p><span class="flag3">cs: ok, this spot right here would be a great place to say, hey, check out TOPIC to get all the lowdown on cycling/solving (which I think should be something called “solution” right under the “cycling” topic in “underpinnings”)</span></p>
+<p class="h2 rubric">Start Cycling</p>
+<p>To start cycling:</p>
+<ul class="simple">
+<li>press the execute button ( <img alt="exec" src="../../../../../../../_images/execute_active.png" /> ) on the toolbar of an active editor pane that contains the data file with the <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.solve.html#command:model.solve" title="Enable the automatic detection of the steady-state solution for mechanical&#013;&#010;problems. A calculation is performed until the limiting conditions, as defined&#013;&#010;by the following keywords, are reached. SOLVE force must be used for rigid block&#013;&#010;models. The SOLVE command does not monitor fluid flow. It is possible that mechanical&#013;&#010;equilibrium may be reached prior to fluid-flow equilibrium for steady-state&#013;&#010;flow. CYCLE ftime should be used for transient fluid flow."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">solve</span></code></a> or <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">cycle</span></code> command that you wish to run, or</li>
+<li>enter the <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.solve.html#command:model.solve" title="Enable the automatic detection of the steady-state solution for mechanical&#013;&#010;problems. A calculation is performed until the limiting conditions, as defined&#013;&#010;by the following keywords, are reached. SOLVE force must be used for rigid block&#013;&#010;models. The SOLVE command does not monitor fluid flow. It is possible that mechanical&#013;&#010;equilibrium may be reached prior to fluid-flow equilibrium for steady-state&#013;&#010;flow. CYCLE ftime should be used for transient fluid flow."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">solve</span></code></a> or <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">cycle</span></code> command in the <a class="reference internal" href="../../../glossaryofterms.html#term-45"><span class="xref std std-term">command prompt</span></a> in the <span class="flag4">i</span> <a class="reference internal" href="../commands/console_pane/consolepane.html#theconsolepane"><span class="std std-ref">Console</span></a> pane.</li>
+</ul>
+<p class="h2 rubric">During Cycling</p>
+<p>During model cycling, non-command processing operations are available (plotting, data file editing, work with certain tools, etc.).  Issuing commands in the <em>Console</em> cannot be performed.</p>
+<p>While cycling, the program will emit information about program status and results of cycling in three specific locations:</p>
+<ul class="simple">
+<li>the <em>Console</em> pane, which echoes input commands and shows output from commands as they are processed, and</li>
+<li>(if needed) the <a class="reference internal" href="warnings.html#dlg-warnings"><span class="std std-ref">warnings</span></a> dialog.</li>
+</ul>
+<p>The <span class="flag4">i</span> <span class="xref std std-ref">Cycling</span> dialog is <em>always</em> present when cycling; the <a class="reference internal" href="warnings.html#dlg-warnings"><span class="std std-ref">warnings</span></a> dialog is shown as the occasion for doing so arises (that is, when an error or warning has been issued during command processing).  Both are described in separate topics.</p>
+<p class="h2 rubric">Stop Cycling</p>
+<p>To stop cycling:</p>
+<ul class="simple">
+<li>press the stop button ( <img alt="esc" src="../../../../../../../_images/stop_normal_16x16.png" /> ) on the toolbar. During cycling, this button is available on the toolbar of <em>every</em> pane in the program.</li>
+<li>press <span class="cmdkey">Shift + Esc</span> key once to request a halt to cycling at the end of the current cycle (this allows model state data to be saved as needed once cycling halts), or</li>
+<li>press the <span class="cmdkey">Shift + Esc</span> key twice to halt cycling immediately — which will cause loss of data from the current cycle.</li>
+</ul>
+<p class="endnotesection rubric">Endnotes</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>The terms “solving” and “cycling” are only semi-interchangeable, due to the differences in the commands that use these words — <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.solve.html#command:model.solve" title="Enable the automatic detection of the steady-state solution for mechanical&#013;&#010;problems. A calculation is performed until the limiting conditions, as defined&#013;&#010;by the following keywords, are reached. SOLVE force must be used for rigid block&#013;&#010;models. The SOLVE command does not monitor fluid flow. It is possible that mechanical&#013;&#010;equilibrium may be reached prior to fluid-flow equilibrium for steady-state&#013;&#010;flow. CYCLE ftime should be used for transient fluid flow."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">solve</span></code></a> and <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">cycle</span></code>. “Solving” always implies cycling to a predetermined termination point (a solve <em>limit</em>).  “Cycling” is more abstract.  It either proceeds some given number of steps or endlessly, if no number is supplied with the command.  Thus, cycling is more closely synonymous with “stepping” (see <a class="reference internal" href="../../modelformulation/cycling.html#thetimestep"><span class="std std-ref">Timestep</span></a>). As a result, though <em>solving</em> is usually more focal in the modeling process, the term <em>cycling</em> will be encountered more often in this documentation when referring generally to iteration through the timestep.</td></tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="warnings.html">Warnings dialog</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../program_mechanics.html" accesskey="U">Program Mechanics</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../plotting/views/information.html"
+                           title="previous chapter"> <em>Information</em> Control Set</a> |    
+       <a href="warnings.html"
+                           title="next chapter"><em>List of Warnings</em> Dialog</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Solving" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

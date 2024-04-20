@@ -1,0 +1,131 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FISH Debugging &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="FISH Statements" href="fish_statements.html" />
+    <link rel="prev" title="FISH Callback Events" href="fish_fishcallback.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fish-debugging">
+<span id="id1"></span><h1><span class="codename">FISH</span> Debugging</h1>
+<p>This section describes <span class="codename">FISH</span> debugging capabilities that use the command-line interface.
+Any interface to <span class="codename">UDEC</span> that supports direct command-line interaction should support this capability. A user-interface may, however, provide an alternate means by which to debug <span class="codename">FISH</span> code.</p>
+<p>In order to make the most of this functionality, some understanding of how <span class="codename">FISH</span> is implemented is helpful.
+While interpreting a <span class="codename">FISH</span> function, each line of source is converted (pseudo-compiled) into a list of pseudo-code objects, and these objects are executed when the function is called.
+Each pseudo-code object is also aware of the source file from which it originated, and the line number of that file.
+The pseudo-code objects and their breakpoint status are available through the <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.list.html#kwd:fish.list.code" title="List the |FISH| pseudo-code generated after parsing |FISH| syntax.  If a specific&#013;&#010;symbol  s  is provided, only the code for that specific function is listed.&#013;&#010; Otherwise the pseudo-code for all functions will be listed."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">list</span> <span class="pre">code</span></code></a> command.</p>
+<p>To enter debugging mode, use the command <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.debug.html#command:fish.debug" title="Launch the |fish| function  s  in debug mode. Debugging is discussed  fish_debugging .&#013;&#010; [CS: given its prevalence in the below, a introduction/definition of&#013;&#010;the term pseudo-code (or possibly a glossary entry for it) might be nice]"><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">debug</span></code></a> command, supplying the name of a <span class="codename">FISH</span> function.
+If the function requires arguments, these must be specified on the command line following the function name.
+The arguments will be evaluated, and the function will begin to execute in debug mode.</p>
+<p>In debug mode, the code stops upon entry to the function.
+Each time the current execution point changes, information is output to the screen.
+This information includes the name of the function, the file name and line number of the source, and the source file line (if available) from which the current code originated.
+The command prompt changes to Debug&gt;, and <span class="codename">UDEC</span> waits for a response from the user about how to proceed.
+Note that input will be accepted from the current input source, so it is possible to include debug commands in a data file.</p>
+<p>See the <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.debug.html#command:fish.debug" title="Launch the |fish| function  s  in debug mode. Debugging is discussed  fish_debugging .&#013;&#010; [CS: given its prevalence in the below, a introduction/definition of&#013;&#010;the term pseudo-code (or possibly a glossary entry for it) might be nice]"><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">debug</span></code></a> command for further details of the debugging commands.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="fish.html" ><span class="codename">FISH</span> Scripting Reference</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="fish_languagerules.html" accesskey="U"><span class="codename">FISH</span> Rules and Usage</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="fish_fishcallback.html"
+                           title="previous chapter"> <span class="codename">FISH</span> Callback Events</a> |    
+       <a href="fish_statements.html"
+                           title="next chapter"><span class="codename">FISH</span> Statements</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?FISH Debugging" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

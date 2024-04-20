@@ -1,0 +1,164 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Commands &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="commands">
+<span id="sel-liner-commands"></span><h1>Commands</h1>
+<p>Operations on structural element liners.</p>
+<p>Liner elements use the same internal formulation as shell elements.   By default, they are  deformable, connected to their surroundings in all directions.  They are assumed to be placed on a surface of the model, and, therefore, link interactions normal to the element surface are directional.  They are unique in the structural element logic for the ability to support two links on each node, allowing liners to be embedded between two surfaces (using the <span class="cmdkey">embedded</span> keyword during creation).</p>
+<p class="rubric">Structural Element Liner Commands</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.liner.apply.html#structure.liner.apply" title="Assign uniform applied pressure  f  to all liner elements in the range. Positive&#013;&#010;pressure acts in the positive  -direction of the element system and maintains&#013;&#010;this orientation during large-strain motion."><span class="fishcmd">structure liner apply</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.liner.create.html#structure.liner.create" title="Create a liner. There are four different techniques of creation: by creating&#013;&#010;a collection of elements from a group of zone faces ( by-zone-face  or  by-block-face );&#013;&#010;by creating a single element from four existing nodes ( by-nodeids ), from a&#013;&#010;specified quadrilateral ( by-quadrilateral ), or from a triangle ( by-triangle )."><span class="fishcmd">structure liner create</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.liner.delete.html#structure.liner.delete" title="Delete all liner elements in the range. Structure nodes and links that become&#013;&#010;disconnected from any element will automatically be deleted as well."><span class="fishcmd">structure liner delete</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.liner.gap-factor.html#structure.liner.gap-factor" title="Sets the gap factor used during large-strain sliding of liner elements. During&#013;&#010;large-strain sliding, if the gap that forms between a node used by a liner element&#013;&#010;and the zone to which it is attached becomes greater than  f  times the zone&#013;&#010;size (where zone size is the maximum  -,  -, or  -dimension of the zone bounding&#013;&#010;box), and the normal spring is in tension, then the simulation stops and an&#013;&#010;error message is displayed."><span class="fishcmd">structure liner gap-factor</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.liner.group.html#structure.liner.group" title="Assign all liner elements in the range to the group with the name  s . Use of&#013;&#010;the group logic is described in  group_manual . Any element may only belong&#013;&#010;to one group in a given slot. Assigning an element to a new group in that slot&#013;&#010;will cause it to be removed from its current group assignment. The command  structure&#013;&#010;liner list group  command lists the existing element group names. The groups&#013;&#010;can be visualized with"><span class="fishcmd">structure liner group</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.liner.hide.html#structure.liner.hide" title="This commands hides or un-hides all liner elements in the range.  By default,&#013;&#010;commands that use a range filter will skip hidden objects.  This can be overruled&#013;&#010;with the  use-hidden  keyword in the range specification."><span class="fishcmd">structure liner hide</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.liner.history.html#structure.liner.history" title="Sample liner responses.  The nodes of an element will be ordered counterclockwise&#013;&#010;with respect to the outside of the zone faces upon which the liner was created."><span class="fishcmd">structure liner history</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.liner.import.html#structure.liner.import" title="Create liner elements from an outside source."><span class="fishcmd">structure liner import</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.liner.initialize.html#structure.liner.initialize" title="Initializes quantities on the element."><span class="fishcmd">structure liner initialize</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.liner.list.html#structure.liner.list" title="List properties and responses of each liner element in the range."><span class="fishcmd">structure liner list</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.liner.property.html#structure.liner.property" title="Assigns a property to elements in the range.  The element can have isotropic,&#013;&#010;orthotropic, or anisotropic elastic material properties.  Note that if the liner&#013;&#010;is embedded, then coupling spring properties must be entered separately on side&#013;&#010;2.  The following properties are available:"><span class="fishcmd">structure liner property</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.liner.recover.html#structure.liner.recover" title="Stress recovery for liner elements.  The stress-recovery procedure can be applied&#013;&#010;to all elements to compute both the stress resultants and the stresses acting&#013;&#010;at a specified depth. The range keyword identifies the patch of elements to&#013;&#010;which the command will apply. Note that the recovered quantities will depend&#013;&#010;upon the range of elements over which these quantities are being recovered,&#013;&#010;because nodal averaging only occurs for elements within this range."><span class="fishcmd">structure liner recover</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.liner.refine.html#structure.liner.refine" title="this command refines elements in the range by subdividing them by a factor of&#013;&#010; i .  A triangular element refined by  i  = 2 will yield four triangular elements;&#013;&#010; i  = 3 would yield 16 triangular elements, etc. The original element is deleted."><span class="fishcmd">structure liner refine</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.liner.select.html#structure.liner.select" title="This commands selects or de-selects all elements in the range.  Selected objects&#013;&#010;can be specified in a range filter by using the  selected  keyword.  Objects&#013;&#010;that are  not  selected can be specified in a range filter by using the  deselected &#013;&#010;keyword."><span class="fishcmd">structure liner select</span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.liner.apply.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">liner</span> <span class="pre">apply</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.liner.create.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">liner</span> <span class="pre">create</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.liner.delete.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">liner</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.liner.gap-factor.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">liner</span> <span class="pre">gap-factor</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.liner.group.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">liner</span> <span class="pre">group</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.liner.hide.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">liner</span> <span class="pre">hide</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.liner.history.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">liner</span> <span class="pre">history</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.liner.import.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">liner</span> <span class="pre">import</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.liner.initialize.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">liner</span> <span class="pre">initialize</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.liner.list.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">liner</span> <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.liner.property.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">liner</span> <span class="pre">property</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.liner.recover.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">liner</span> <span class="pre">recover</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.liner.refine.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">liner</span> <span class="pre">refine</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.liner.select.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">liner</span> <span class="pre">select</span></code> command</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Commands" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

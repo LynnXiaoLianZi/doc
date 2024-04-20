@@ -1,0 +1,151 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>List of Warnings Dialog &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="Saving" href="../savedstates/savedstates.html" />
+    <link rel="prev" title="Solving" href="solving.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="list-of-warnings-dialog">
+<span id="dlg-warnings"></span><h1><em>List of Warnings</em> Dialog</h1>
+<p>This dialog is shown when a warning occurs <em>if</em> the “Raise Dialog on Warning” setting is checked in the <em>Console</em> section of the <a class="reference internal" href="../configuration/options/options.html#dlg-options"><span class="std std-ref">Options dialog</span></a>.</p>
+<div class="enlarge figure align-center" id="id1">
+<img alt="../../../../../../../_images/warnings.png" src="../../../../../../../_images/warnings.png" />
+<p class="caption"><span class="caption-text">Figure 1: The <em>List of Warnings</em> dialog.</span></p>
+</div>
+<p><em>Table Elements</em></p>
+<dl class="docutils">
+<dt>#</dt>
+<dd>Each message is numbered in order of occurrence.</dd>
+<dt>Message</dt>
+<dd>Description of the error or warning encountered.</dd>
+<dt>Level</dt>
+<dd>The severity of the warning, from 0 (most urgent) to 8 (least urgent).</dd>
+<dt>Source</dt>
+<dd>The source of the message, if available.</dd>
+<dt>Line</dt>
+<dd>The line number where the error occurred, if available.</dd>
+</dl>
+<p>This dialog is an alternative to console output in the <span class="flag4">i</span> <a class="reference internal" href="../commands/console_pane/consolepane.html#theconsolepane"><span class="std std-ref">Console</span></a> pane as a means for viewing warning messages as they occur during program operation. Its use is optional according to user preference, as described below.  As an alternative, it has two advantages.</p>
+<ul class="simple">
+<li>The dialog provides error and warning output when the <em>Console</em> pane may is hidden, minimize, or simply out of view (see “Note” below).</li>
+<li>With warning and errors pulled from the output stream and sent to the dialog, it is less likely that these messages will be lost or missed when they occur in the middle of large amounts of standard output in the <em>Console</em> pane.</li>
+</ul>
+<p><strong>Preferences</strong></p>
+<dl class="docutils">
+<dt>To prevent appearance:</dt>
+<dd>uncheck the “Raise Dialog on Warning” box in the <a class="reference internal" href="../configuration/options/options_console.html#dlg-options-console"><span class="std std-ref">Console Options</span></a> page of the <em>Options</em> dialog.  (This operation is performed from within the <em>List of Warnings</em> dialog when “Don’t show again…” is checked.)</dd>
+<dt>To set “Warning Level”:</dt>
+<dd>enter a value (from 0-8) in the edit box adjacent to the “Raise Dialog” checkbox.  The dialog is shown only for errors lower than than the value given (i.e., “0” will show all errors since it is the lowest possible, “4” will show error levels 0-3, etc.).</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This dialog may be left open alongside the program as it is in use. If it is closed, it will reopen at the next new warning condition that occurs in command processing.</p>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="solving.html" accesskey="U">Solving</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="solving.html"
+                           title="previous chapter"> Solving</a> |    
+       <a href="../savedstates/savedstates.html"
+                           title="next chapter">Saving</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?List of Warnings Dialog" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

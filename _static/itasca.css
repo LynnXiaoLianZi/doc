@@ -1,0 +1,848 @@
+body {
+    font-family: "Lato", sans-serif;
+    margin: 0;
+    background: #bda566;
+}
+
+/* -- document layout structures-------------------------------------------- */
+
+.sidenav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding-bottom: 2em;
+    padding-top: 6em;
+    width: 350px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    /* min-height: 100%; */
+    background: #0f2143;
+    z-index: 200;
+    transition: 0.5s;
+}
+
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+#main {
+    margin-left: 350px;
+    background: #ffffff;
+    transition: 0.5s;
+}
+#maintop {
+  background-color: #e6ebe9;
+  padding: 1em;
+}
+#mainbody {
+  padding: 1em 2em 4em 4em;
+  max-width: 35em;
+  min-width: 20em;
+  min-height: 40em;
+  margin: 0 auto;
+}
+div[id^="mainbottom"] {
+  padding: 1em;
+  text-align: center;
+  font-size: .85em;
+}
+#mainbottom1 {
+  background-color: #e6ebe9;
+}
+#mainbottom2 {
+  background-color: #bda566;
+}
+
+object#toctobj {
+     width: 370px;
+     height: 100%;
+     position: relative;
+     overflow-x: hidden;
+     overflow-y: scroll;
+}
+iframe#toctobj2 {
+     width: 390px;
+     height: 100%;
+     position: relative;
+     overflow-x: hidden;
+     overflow-y: scroll;
+}
+#cornerlogo {
+  vertical-align: middle;
+}
+#cornerlink {
+  color: black;
+  text-decoration: none;
+}
+
+#searchbox {
+     float: right;
+     display: inline;
+}
+
+input#sb{
+   background-color: #f2f2f2;
+   border: thin solid white;
+   height: 1.3em;
+   width: 17em;
+   padding: 0.3em;
+   font-family: "Lato", sans-serif;
+   font-size: .85em;
+   background-image: url(sb_bg.png);
+   background-repeat: no-repeat;
+}
+input#sb:focus{
+   background-image: none;
+}
+
+#docdoor {
+  color: black;
+  text-decoration: none;
+  border: none;
+  transition: none;
+  cursor: default;
+
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+/* -- relbar --------------------------------------------------------------- */
+
+span.prevnext {
+    width: 100%;
+    display: inline;
+}
+
+span.prevnext ul {
+    margin: 0;
+    padding: 0 0 0 10px;
+    list-style: none;
+    display: inline;
+}
+
+span.prevnext li {
+    display: inline;
+}
+
+span.prevnext li.right {
+    float: right;
+    margin-right: 5px;
+}
+
+
+/* -- toolbuttons----------------------------------------------------------- */
+div#navbutton, div#totopbutton {
+  cursor: pointer;
+  margin-left: 0px;
+  background: #e6ebe9;
+  position: fixed;
+  top: 65%;
+  left: .15em;
+  padding: .25em;
+  transition: .5s;
+  text-align: center;
+  font-size: 1.4em;
+  width: 1.4em;
+  border-radius: .3em;
+  /* opacity: 0; */
+}
+
+div#totopbutton {
+  top: 71%;
+}
+
+
+/* -- text styles----------------------------------------------------------- */
+h1, h2, h3 {
+   font-weight: normal;
+}
+h1, h2, h3, p.h1, p.h2, p.h3 {
+   font-family: 'Roboto Slab', sans-serif;
+}
+h1, p.h1 {
+   color: #89a098;
+   font-size: 2.25em;
+}
+h2, p.h2 {
+   color: #89a098;
+   font-size: 1.5em;
+}
+
+h3, p.h3 {
+   font-size: 1.15em;
+}
+
+h4, p.h4 {
+   font-weight: bold;
+   color: #555555;
+}
+
+pre {
+   font-family: 'Consolas','Deja Vu Sans Mono','Bitstream Vera Sans Mono',monospace;
+   font-size: .8em;
+}
+p.caption span.caption-text a code span.pre, p.caption span.caption-text code span.pre {font-style: initial} /* undo italics on commands in captions */
+
+div[id^="mainbo"] a  {
+    color: #000000;
+    text-decoration: none;
+    border-bottom: #aaaaaa;
+    border-width: 0px 0px 1px 0px;
+    border-style: none none dotted none;
+    transition: all 0.2s linear;
+}
+
+div[id^="mainbo"] a:hover {
+   color: #428bca;
+   border-bottom: #ffffff;
+}
+
+a.reference.internal code.fish.fish-cmd, a.reference.internal span.varstring { white-space: nowrap;}
+/* (prevent breaks in links on commands, fish, vars) */
+
+div[id^="mainbo"] span.std-term {
+    border-style: none none solid none;
+    border-width: 1px;
+    border-color: #cccccc;
+}   /*glossary term link decoration */
+
+a:hover span.std-term {
+   border-bottom: #ffffff;
+}
+
+span.codename {
+    font-family: 'Times New Roman';
+    font-style: italic;
+}
+
+h1 span.fishcmd {
+    font-size: 0.8em;
+    font-weight: bold;
+    padding-right: 0.5em;
+}
+
+span.button, img.button {
+      padding-left: .25em;
+      padding-right: .25em;
+      border: thin solid #adadad;
+      background-color: #f0f0f0;
+      font-family: 'Segoe UI', Consolas, sans-serif;
+   }
+
+img.button {
+     padding-top: .1em;
+     padding-bottom: .1em;
+     vertical-align: top;
+     margin-left: .15em;
+     margin-right: .15em;
+   }
+
+                      /* section of styles handling command&fish formatting */
+
+span.fishcmd, code, span.cmdname, span.cmdopt, span.cmdkey, div.admonition-primary-keywords, span.varintfloat, span.varint, span.varany, span.varfloat, span.varvec, span.varvec2, span.varstring, span.varbool, span.varfishsym, span.fishname {
+    font-family: 'Consolas','Deja Vu Sans Mono','Bitstream Vera Sans Mono',monospace;
+}
+
+code.fish, code.literal {margin-left: 0.2em; margin-right: 0.2em;}
+
+span.cmdkey { /* inline keywords */ margin-left: 0.2em; margin-right: 0.2em; }
+
+span.cmdextra { /* keyword tag (eg (2D ONLY)) */ float: right; font-style: italic; font-size: .85em;}
+
+span.pref { /* underline command abbreviations*/ text-decoration: underline; }
+
+span.varintfloat, span.varint, span.varany, span.varfloat, span.varvec, span.varvec2, span.varstring, span.varbool, span.varfishsym {
+   color: #006699;
+   font-family: 'Consolas','Deja Vu Sans Mono','Bitstream Vera Sans Mono',monospace;
+}                       /* color variable types in commands */
+
+h1 span.pre { /* handle com or fish in title */ font-weight: bold; font-size: .8em; margin-left: -.2em}
+
+                      /* end section of styles handling command&fish formatting */
+
+dt {
+   /* font-weight: bold; */ /* if you need bold in a definition list use **bold** */
+}
+dd {
+   margin-bottom: 1em;
+}
+
+span.bi {
+   font-style: italic;
+   font-weight: bold;
+}
+
+div.figure a.image-reference {
+   border-style: none;
+}                       /* remove hyperlink underlining on images that are also links */
+
+code.kbd {
+   padding-left: .07em;
+   padding-right: .15em; /* offset keyboard commands with a little space */
+}
+
+span.menuselection {
+   font-family: 'Consolas','Deja Vu Sans Mono','Bitstream Vera Sans Mono',monospace;
+   padding-left: .1em;
+   padding-right: .1em;
+}
+span.menuselection span.accelerator {
+   text-decoration: underline;
+}
+
+a.footnote-reference {/* small up footnote markers */ font-size: 75%; vertical-align: top; }
+
+/* -- block styles and behaviors-------------------------------------------- */
+
+span.eqno {             /* make equation numbers to the right */
+    float: right;
+}
+
+div.figure {            /* figure image handling */
+  text-align: center;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p.caption {             /* figure caption text style */
+  font: italic .9em "Lato", sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  width: 32em;
+}
+p.caption code.kbd span.pre { font-style: normal } /*UNitalicize element in caption */
+
+img.align-right {    /* float an image to the right; use :align: right in source */
+  float: right;
+  margin-left: 2em;
+  margin-bottom: 2em;
+  }
+
+img.align-center {  /* center an image (note: NOT figure); use :align: center in source */
+  display: block;
+  margin: auto;
+  }
+  
+p.litcap { /* formatting for a 'literal include caption' that notes source of a snippet */
+  font-size: smaller;
+  text-align: right;
+  margin-top: .25em
+}
+
+table {                 /* default table */
+   border-top: 4px solid #e6ebe9;
+   border-bottom: 4px solid #e6ebe9;
+   border-left: 0;
+   border-right: 0;
+   margin-left: auto;
+   margin-right: auto;
+   margin-bottom: 1em;
+   margin-top: 1.5em;
+}
+table caption {
+   margin-bottom: .8em;
+   font-style: italic;
+   width: 80%;
+   margin-left: auto;
+   margin-right: auto;
+}
+table td {
+   border: 0;
+   padding: .1em .3em;
+}
+table th.head {
+    border: 0;
+    background-color: #f2f2f2;
+    padding: .5em .3em;
+}                        /* end default table */
+
+table th.head:first-child {
+   text-align: left;
+}
+
+table.lefthead th.head {
+   text-align: left;
+}                        /* use class "lefthead" to left-align table header */
+
+
+table.blank, table.citation, table.footnote { /* table style 3 : blank (for layout purposes) */
+  border: 0;
+}
+
+table.footnote {  /*CS 5/11/18: this is needs verification of global applicability; added for view manipulation page footnotes */
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-bottom: .5em;
+  margin-top: 0em;
+  width: 95%;
+  font-size: 1.2em;
+}
+
+table.footnote tr td p.first {margin-top: 0em;} /* take out top margin of a first <p> that appears in a footnote;
+                                                   otherwise text does not vertically align with the fn mark */
+
+table.blank th.head{
+  border: 0;
+  background-color: #ffffff;
+}                       /* end blank */
+
+table.citation td + td {
+    width: 75%;
+}
+
+table.footnote td + td {
+    width: 95%;
+}
+table.footnote td {
+    font-size: .85em;
+}
+
+/* footnote rubric formatting */
+p.footnotessection, p.endnotesection {
+   border-bottom: 2px solid #e6ebe9;
+   color: white;
+   content: 'this';
+}
+
+/* table customizations: */
+
+/* fish function return/accept/argument handling */
+table.field-list tr.field td.field-body {padding-bottom: .75em}
+table tbody tr.field td.field-body p {margin-block-end: 0em}
+table.field-list tr.field td.field-body br {margin-top: .33em; display: block; content:"  "}
+
+/* data file listings with numbers are in tables that need borders and margins off */
+div.highlight-fish table.highlighttable {border: none; margin: 0}
+
+/* c++ file listings (allowed to overflow because they don't happen often, and a pain to shorten) */
+div.includedc {padding:1em; border-top:3px double #89a098; border-top:3px double #89a098;}
+div.includedc div.highlight pre{background-color: white; z-index: -1000; width: fit-content;}
+
+/* center columns 1-8 */
+table.col1center tr td:nth-child(1), table.col2center tr td:nth-child(2), table.col3center tr td:nth-child(3), table.col4center tr td:nth-child(4), table.col5center tr td:nth-child(5), table.col6center tr td:nth-child(6), table.col7center tr td:nth-child(7) {text-align: center;}, table.col8center tr td:nth-child(8) {text-align: center;}
+
+/* decimal align columns 1-6; hacky: must use uniform number of digits after decimal, centering is just a 20% nudge away from right end of cell*/
+table.col1decimal tr td:nth-child(1), table.col2decimal tr td:nth-child(2), table.col3decimal tr td:nth-child(3), table.col4decimal tr td:nth-child(4), table.col5decimal tr td:nth-child(5), table.col6decimal tr td:nth-child(6) { text-align: right; padding-right: 20%;}
+
+/* right align columns 1-6 */
+table.col1right tr td:nth-child(1), table.col2right tr td:nth-child(2), table.col3right tr td:nth-child(3), table.col4right tr td:nth-child(4), table.col5right tr td:nth-child(5), table.col6right tr td:nth-child(6), table.col6right tr td:nth-child(7), table.col6right tr td:nth-child(8) {text-align: right;}
+
+/* underline each row in table (only works if rows are one line each); */
+table.underrow {border-collapse: collapse}
+table.underrow tr td {border-bottom: solid 2px #f2f2f2; padding: .2em; vertical-align: baseline}
+table.underrow tr:last-child td {border: none;}
+
+table.stripes tr.row-odd{background-color: #f6f6f1;}  /* table style 2 : add row shading */
+
+
+/* comfishindextables (which are really divs) */
+div.comfishindextable { margin-left: 0px; border: thin solid #e6ebe9;padding: .3em .8em .3em .8em; border-radius: .7em; line-height: 1.6em;}
+div.cols2 {columns: 2}
+div.cols3 {columns: 3}
+div.cols4 {columns: 4}
+div.cols5 {columns: 5}
+
+/* title for a table on a command/fish index page */
+p.tabletitle {font-weight: 500; margin-bottom: -1em;}
+
+/* end table customizations */
+
+
+/* basic list settings */
+li:not(:last-child) { margin-bottom: .33em; }
+ol.loweralpha {list-style-type: lower-alpha;}
+
+
+/* start default admonition settings */
+div.admonition{
+    margin: 1.5em .25em 1.5em 13.3em;
+    background-color: white;
+    font-size: .83em;
+    border: thin solid #e6ebe9;
+    border-radius: .7em;
+    display: block;
+    width: 100%;
+    margin-left: 0em;
+    padding-right: 1em;
+}
+
+div.admonition p.first{
+   border-bottom: 1px solid #e6ebe9;
+   border-right: 1px solid #e6ebe9;
+   border-bottom-right-radius: .7em;
+   width: 25%;
+   margin: 0.1em 0em 0.5em 0em;
+   padding: .2em 0em .2em 1em;
+}
+
+div.admonition p {
+  margin: 0.5em 1em 0.5em 1em;
+}
+
+div.admonition p.last{
+   margin: 0.5em 1em 0.5em 1em;
+}                       /* end default admonition */
+
+div.aside {             /* apply :class: aside to an admonition for 'sidebar'*/
+  float: right;
+  margin-left: 1em;
+  width: 40%;
+} /* end default admonition settings */
+
+
+/* start special case admonition: keyword block */
+div.admonition-primary-keywords p.first{
+   font-family: "Lato", sans-serif;
+}
+div.admonition-primary-keywords p.last{
+   padding-left: 2.3em;
+}  /* end special case admonition: keyword block */
+
+
+/* warning admonition special handling */
+div.warning p.admonition-title {
+   color: #88ddff;;
+   font-weight: bold;
+}
+
+/* box for command&fish "tables" */
+table.field-list {
+   margin-left: 0px;
+   border: none;
+}
+td.field-body p.first {
+   margin-top: 0px;
+}
+
+tr.field th.field-name {
+   width: 8em;
+   text-align: left;
+   font-weight: normal;
+   font-style: italic;
+}
+/* end box for command&fish "tables" */
+/* this may be unnecessary; check for use in docs */
+
+/* new command&fish tables */
+    table.comfishtable {
+      table-layout: fixed;
+      margin-left: 0px;
+      width: 550px;
+      border: thin solid #e6ebe9;
+      padding: .3em .8em .3em .8em;
+      border-radius: .7em;
+      }
+    table.comfishtable td {
+      vertical-align: bottom;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 50%;
+    }
+    table.comfishtable td + td {
+      padding-left: 2em;
+    }
+/* end new command&fish tables */
+
+/* fish reference block handling */
+
+   table.field-list col.field-name {
+      width: 25%;
+   }
+
+/* listing/datafile block */
+   div.highlight-fish, div.highlight-python, div.highlight-text {
+    border: 1px solid #89a098;
+    padding: 0em .75em 0em .75em;
+    border-radius: 8px;
+    background-color: #f2f2f2;
+    min-width: fit-content; /* needed if there will be a background */
+   }
+   div.highlight-fish div.highlight, div.highlight-python div.highlight, div.highlight-text div.highlight {
+      background-color: #f2f2f2;
+   }
+   
+/* add top margin if one fish block immediately follows another */
+   div.highlight-fish + div.highlight-fish {
+    margin-top: 1.25em;
+   }
+   
+/* for python docs: format adjacent code blocks */
+   div.highlight-python + div.highlight-python { margin-top: 1em; }
+
+/* do not show "Hide Search Matches" link on search results page */
+
+   p.highlight-link {
+      display: none;
+   }
+
+
+/* -- augments to pygments highlighting ------------------------------------ */
+span.k {text-shadow: 0.03em 0em #660099;}    /* makes bold bolder  */
+span.nb {text-shadow: 0.03em 0em #000000;}
+
+/* -- character classes ---------------------------------------------------- */
+span.lc {font-size: larger; font-family: Lato; margin-left: -.3em}
+span.rc {font-size: larger; font-family: Lato; margin-right: -.15em}
+span.red{color:red}
+
+
+/* -- utility classes------------------------------------------------------- */
+
+.hide, .dec, .flac3d, .flac, .udec, .pfc {
+   display: none;
+}  /* molto powerful: hide this block using :class: hide; also used for code ifdeffing */
+.pullup {
+   margin-top: 0em;
+   /* add this class to zero the top margin settings of an element */
+}
+.w100 {
+   width: 100%;
+   /* make object occupy 100% of container (useful on tables) */
+}
+span.flag3 + a.internal {
+   font-family: 'Consolas','Deja Vu Sans Mono','Bitstream Vera Sans Mono',monospace;
+   margin-right: .07em;
+   margin-left: .15em;
+   /* trick to style a "plain text" link (built with :ref:) like a code link */
+   /* use: :flag3:`trick` :ref:`link`                                        */
+}
+span.flag4 + a.internal {
+   font-style: italic;
+}  /* same trick, this time used to italicize the label text in a link */
+span.flag {
+   color: red;
+}  /* color text to flag for later correction
+      DON'T use for emphasizing in final text--use "red" style in "Character Formatting" section instead*/
+span.flag2 {
+}  /* mark the unit with this, then follow with flag3 material to comment */
+span.flag3, span.flag4 {
+   display:none;
+}  /* hide this (equivalent to inline comment) */
+pre.rstexample {
+   font-family: 'Consolas','Deja Vu Sans Mono','Bitstream Vera Sans Mono',monospace;
+   font-size: .95em;
+   white-space: pre-wrap;
+   margin-top: 10px;
+   margin-bottom: 10px;
+   padding: 0em 1em 0em 1em;
+   border: 1px solid #ccc;
+   background-color: #f8f8f8;
+   max-width: 90%;
+   margin-left: auto;
+   margin-right: auto;
+}  /* rendering example RST in the sphinx documentation pages */
+img.watermark {
+  position: absolute;
+  left: 820px;
+  top: 105px;
+} /* self-eplanatory; used with 'icgscripts.js' to tag pages as needed */
+
+/* style links in a plot item attribute list */
+#attributelist {
+   line-height: 1.6em;
+}
+
+#attributelist a {
+    background-color: rgb(246,246,241);
+    border-radius: 6px;
+    padding-left: .75em;
+    padding-right: .75em;
+    border-bottom: none;
+    margin-right: 0.5em;
+}
+
+img.pi-attribute {
+   float: right;
+   margin-left: .75em;
+   margin-bottom: .3em;
+}
+
+
+/*-- legacy math stuff -------------------------------------------------*/
+/*   source docs should be cleaned out, then this can be deleted        */
+span.eqno { float: right; }
+sup, sub  { vertical-align: baseline; position: relative; }
+sup { bottom: 0.5em; }
+sub { top: 0.5em; }
+span.subpb { font-size: 0.83em; position: relative; top: 0.5em; left: -0.5em; }
+span[class^="tri"] { font-family: 'Times New Roman', Times, serif;   font-style: italic; font-size: 0.83em; }
+span.tri { font-size: 1.2em; }
+span.trisup, span.trisub, span.trisubpb { position: relative; }
+span.trisup { bottom: 0.5em; left: 0.15em;}
+span.trisub { top: 0.5em; }
+span.trisubpb { top: 0.5em; left: -0.5em;}
+span.tr, span.trsubpb { font-family: 'Times New Roman', Times, serif; }
+span.tr { font-size: 1.2em; }
+span.trsubpb { font-size: 0.83em; position: relative; top: 0.5em; left: -0.5em; }
+
+/* hide the pagebreak when not printing */
+div.pagebreak {display: none;}
+
+/* print rules */
+
+@page :left {
+  margin-left: .75in;
+  margin-right: 1.5in;
+  margin-top: .8in;
+  margin-bottom: 1.1in;
+  @top-right {
+    margin: 30pt -72pt 30pt 0;
+    content: string(section);
+    font-size: 11pt;
+    font-family: "Merriweather";
+    color: #333;
+  }
+  @bottom-left {
+     margin: 30pt 0 30pt -18pt;
+     content: "PFC 6.0";
+     font-style: italic;
+     font-family: "Times New Roman";
+     font-size: 12pt;
+  }
+}
+
+@page :right {
+  margin-left: 1.5in;
+  margin-right: .75in;
+  margin-top: .8in;
+  margin-bottom: 1.1in;
+  @top-left {
+    margin: 30pt 0 30pt -72pt;
+    content: string(doctitle);
+    font-size: 11pt;
+    font-family: "Merriweather";
+    color: #333;
+  }
+  @bottom-right {
+     margin: 30pt -18pt 30pt 0;
+     content: "PFC 6.0";
+     font-style: italic;
+     font-family: "Times New Roman";
+     font-size: 12pt;
+     text-align: right;
+  }
+}
+
+@media print {
+   h1, h2, h3, h4, h5, h6, h7, p.h1, p.h2, p.h3, p.h4, p.h5, p.h6, p.h7 {
+      font-family: "Merriweather";
+      font-weight: 100;
+      page-break-after: avoid;
+   }
+   h1 {
+      string-set: doctitle content();
+      line-height: normal;
+   }
+
+   .sectionname {
+      string-set: section content();
+   }
+
+   body {
+        font-size: 11pt;
+        font-family: "Merriweather";
+        margin-top: .5in;
+        border: none;
+        letter-spacing: 0em;
+        page-break-before: right;
+   }
+
+   div.document {
+      background-image: none;
+   }
+
+   div.body {
+       padding: 0;
+   }
+
+   div.footer {
+      display: none;
+   }
+   p.caption {
+      page-break-before: avoid;
+      page-break-inside: avoid;
+      margin-top: 0;
+      max-width: 4.75in;
+      margin-left: auto;
+      margin-right: auto;
+   }
+
+   div.figure + div.figure {
+      margin-top: -1.5em;
+   }
+
+   div.aside {
+      display: none;
+   }
+
+   pre {
+      font-size: 10pt;
+   }
+
+   span.pre, .varfishsym, .varstring, .varbool, .varint, .varfloat, .varvec, .varvec2, .varany {
+      color: #405065;
+      font-weight: normal;
+   }
+
+   div.pagebreak {
+      page-break-after: always;
+      color: white;
+      font-size: 1pt;
+      margin-top: -24pt;
+      margin-left: -12pt;
+   }
+
+   div.pagebreak + p, div.pagebreak + div, div.pagebreak + li, div.pagebreak + table {
+      margin-top: -.5in;
+   }
+
+   a, a.reference {
+      color: #446644;
+   }
+
+   table.footnote tbody, tr, td {
+      vertical-align: top;
+   }
+
+   p, dd, li {
+      orphans: 3;
+      widows: 3;
+   }
+
+   p + div.highlight-fish {
+      page-break-before: avoid;
+   }
+
+
+/*remove navigation elements from html pages when printed */
+
+   div#main { margin-left: 0em;}
+
+   div#mainbody { padding: 0;}
+
+   div#maintop, div#mysidenav, div#mainbottom1, div#mainbottom2, div#navbutton { display: none; }
+
+   div.sidenave {display: none;}
+
+   body { background-color: #ffffff; }
+
+   .sidenav { display: none; }
+
+}

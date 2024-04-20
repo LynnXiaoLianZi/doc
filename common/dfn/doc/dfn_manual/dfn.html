@@ -1,0 +1,197 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Discrete Fracture Network (DFN) &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Overview" href="dfn_overview.html" />
+    <link rel="prev" title="data.vector.value" href="../../../kernel/doc/manual/data/fish/data.vector_utilities/fish_data.vector.value.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../contents.html"><img id="cornerlogo" src="../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="discrete-fracture-network-dfn">
+<span id="dfn-manual"></span><h1>Discrete Fracture Network (DFN)</h1>
+<p>With the DFN module, the fracture population embedded inside a rock mass is viewed as a set of
+discrete finite sized fractures. By default, the discrete fractures are {line segments in 2D; planar
+disks in 3D}.</p>
+<dl class="docutils">
+<dt>The DFN module provides an efficient tool to generate and manipulate fractures. The main features are:</dt>
+<dd><ul class="first last simple">
+<li>import/export of fractures from Itasca and Fracman files</li>
+<li>addition of deterministic fractures and generation of stochastic fractures</li>
+<li>intersections between fractures, intersections between fractures and outcrop/tunnel surfaces and
+borehole lines, scanline map calculation</li>
+<li>computation of clusters and connectivity properties</li>
+<li>fracture simplification methods</li>
+<li>definition of mechanical properties for fractures and assignment of these properties to model
+components</li>
+<li>visualization of fractures, outcrop/tunnel trace maps, stereonets</li>
+<li><span class="codename">FISH</span> access providing the ability for custom creation, analyses and manipulations</li>
+</ul>
+</dd>
+<dt>Based on these features, the following applications are possible:</dt>
+<dd><ul class="first last simple">
+<li>creation of site-descriptive sets of fractures</li>
+<li>calibration of fracture models based on 2D/1D data</li>
+<li>derivation of DFN statistical properties</li>
+<li>structural analysis of fractures in relation to the resulting mechanical properties</li>
+<li>easy creation of numerical models of fractured rocks for mechanical analyses</li>
+</ul>
+</dd>
+</dl>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dfn_overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dfn_overview.html#base-model-components">Base Model Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_overview.html#generating-stochastic-fracture-sets-or-dfns">Generating Stochastic Fracture Sets or DFNs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_commands/dfn_commands.html">Commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_aperture.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">aperture</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_attribute.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">attribute</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_cluster.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">cluster</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_combine.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">combine</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_compute.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">compute</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_connectivity.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">connectivity</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_contact-model.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">contact-model</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_copy.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">copy</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_create.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">create</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_delete.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_dfn-extra.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">dfn-extra</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_dfn-group.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">dfn-group</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_export.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">export</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_extra.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">extra</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_generate.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">generate</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_group.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">group</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_import.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">import</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_initialize.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">initialize</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_intersections.automatic-update.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">intersections</span> <span class="pre">automatic-update</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_intersections.compute.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">intersections</span> <span class="pre">compute</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_intersections.delete.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">intersections</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_intersections.scanline.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">intersections</span> <span class="pre">scanline</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_joint-set.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">joint-set</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_list.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_property.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">property</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_prune.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">prune</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_results.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">results</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_set-property.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">set-property</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_template.create.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">template</span> <span class="pre">create</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_template.delete.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">template</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_template.modify-default.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">template</span> <span class="pre">modify-default</span></code> command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_commands/cmd_fracture_verify-file.html"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">verify-file</span></code> command</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_fish/dfn_fish.html"><span class="codename">FISH</span> Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dfn_fish/dfn_fish.html#dfn-functions"><code class="docutils literal"><span class="pre">dfn</span></code> functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_fish/dfn_fish.html#dfn-template-functions"><code class="docutils literal"><span class="pre">dfn.template</span></code> functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_fish/dfn_fish.html#fracture-functions"><code class="docutils literal"><span class="pre">fracture</span></code> functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_fish/dfn_fish.html#fracture-intersection-functions"><code class="docutils literal"><span class="pre">fracture.intersection</span></code> functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_fish/dfn_fish.html#fracture-intersection-set-functions"><code class="docutils literal"><span class="pre">fracture.intersection.set</span></code> functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfn_fish/dfn_fish.html#fracture-vertex-functions"><code class="docutils literal"><span class="pre">fracture.vertex</span></code> functions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../docproject/source/manual/program_guide/general_components.html" accesskey="U">Common Model Objects</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../../../kernel/doc/manual/data/fish/data.vector_utilities/fish_data.vector.value.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">data.vector.value</span></code></a> |    
+       <a href="dfn_overview.html"
+                           title="next chapter">Overview</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Discrete Fracture Network (DFN)" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

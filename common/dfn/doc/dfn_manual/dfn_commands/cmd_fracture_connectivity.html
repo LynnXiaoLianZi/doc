@@ -1,0 +1,198 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>fracture connectivity command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="fracture contact-model command" href="cmd_fracture_contact-model.html" />
+    <link rel="prev" title="fracture compute command" href="cmd_fracture_compute.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fracture-connectivity-command">
+<h1><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">connectivity</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="dfn command">
+<dt id="command:fracture.connectivity">
+<span class="cmdname"><span class="pref">f</span><span class="pref">r</span><span class="pref">a</span><span class="pref">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">c</span><span class="pref">o</span><span class="pref">n</span><span class="null">n</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">v</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="pref">r</span><span class="pref">a</span><span class="pref">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:fracture.connectivity.aperture" title="fracture connectivity aperture">aperture</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.connectivity.cubic" title="fracture connectivity cubic">cubic</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.connectivity.distance" title="fracture connectivity distance">distance</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.connectivity.extra-index" title="fracture connectivity extra-index">extra-index</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.connectivity.starting-fracture" title="fracture connectivity starting-fracture">starting-fracture</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.connectivity.starting-geometry" title="fracture connectivity starting-geometry">starting-geometry</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.connectivity.intersection-set" title="fracture connectivity intersection-set">intersection-set</a></p>
+</div>
+<p>Calculate fracture connectivity with a specified structure. The initial structure can either be a fracture or a geometry set. By default, integer connectivity levels are computed for each fracture (i.e., a connectivity level of <a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">n</span></span></a> means that the fracture is connected to the structure through <a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">n</span></span></a> fracture intersections), and extras are assigned based on the distance. This behavior can be modified with the <span class="cmdkey">aperture</span>, <span class="cmdkey">cubic</span> and <span class="cmdkey">distance</span> keywords. If either no intersection set is specified or the specified intersection set does not exist, a new intersection set is created and all intersections between fractures are delineated; the resulting intersection set is used as the basis for the connectivity calculation.</p>
+<dl class="keyword">
+<dt id="kwd:fracture.connectivity.aperture">
+<span class="cmdkey"><span class="pref">a</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Connectivity is assigned to the extra variable in a index specified with the <span class="cmdkey">extra-index</span> keyword. Connectivity is the distance (as defined in the description of the <span class="cmdkey">distance</span> keyword) divided by the fracture aperture.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.connectivity.cubic">
+<span class="cmdkey"><span class="pref">c</span><span class="null">u</span><span class="null">b</span><span class="null">i</span><span class="null">c</span><span class="null"> </span></span></dt>
+<dd><p>Connectivity is assigned to the extra variable in a index specified with the <span class="cmdkey">extra-index</span> keyword. Connectivity is the distance (as defined in the description of the <span class="cmdkey">distance</span> keyword) divided by the cube of the fracture aperture (i.e., similar to the transmissivity).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.connectivity.distance">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">a</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Connectivity is assigned to the extra variable in an index specified with the <span class="cmdkey">extra-index</span> keyword. Connectivity is given as the physical distance from the structure to the fracture, calculated as the path through the centers of intersections.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.connectivity.extra-index">
+<span class="cmdkey"><span class="pref">e</span><span class="null">x</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">d</span><span class="null">e</span><span class="null">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>The connectivity is calculated, and this keyword specifies the extra index for assignment. The extra index <a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">1</span></span></a> is used if this keyword is not specified.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.connectivity.starting-fracture">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">a</span><span class="null">r</span><span class="null">t</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">-</span><span class="pref">f</span><span class="null">r</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>The starting structure is set to the fracture with ID <a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a>. This keyword cannot be
+specified with the <span class="cmdkey">starting-geometry</span> keyword.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.connectivity.starting-geometry">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">a</span><span class="null">r</span><span class="null">t</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null">-</span><span class="pref">g</span><span class="null">e</span><span class="null">o</span><span class="null">m</span><span class="null">e</span><span class="null">t</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>The starting structure is set to the geometry set with name <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>. This keyword cannot be
+specified with the <span class="cmdkey">starting-fracture</span> keyword.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.connectivity.intersection-set">
+<span class="cmdkey"><span class="pref">i</span><span class="null">n</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">s</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">s</span><span class="null">e</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify the intersection set name used for connectivity calculation. If no intersection
+set is specified a new intersection set is created with name <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">intersectionsXX</span></span></a>, where <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">XX</span></span></a> is the next available intersection set ID.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p class="h2 rubric">Usage Example</p>
+<p>The following example illustrates how the <a class="reference internal" href="#command:fracture.connectivity" title="Calculate fracture connectivity with a specified structure. The initial structure&#013;&#010;can either be a fracture or a geometry set. By default, integer connectivity&#013;&#010;levels are computed for each fracture (i.e., a connectivity level of  n &#013;&#010;means that the fracture is connected to the structure through  n  fracture&#013;&#010;intersections), and extras are assigned based on the distance. This behavior&#013;&#010;can be modified with the  aperture ,  cubic  and  distance &#013;&#010;keywords. If either no intersection set is specified"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">connectivity</span></code></a> command can compute the connectivity level from a
+borehole, and the connectivity distance from a fracture. It first calculates the connectivity level from the borehole
+previously defined, and saves the level in extra 1. Fractures with a connectivity level of 0 are directly connected to
+the borehole, fractures with a level of 1 are connected to the level 0 fractures, etc. Fractures with a negative
+connectivity level (-1) are disconnected. Then, it computes the distance of all fractures to the fracture with ID 1 and
+saves it in extra 2. This distance can be used later for analysis purposes  or to simplify the DFN
+(e.g., by removing fractures that are too far from a given structure).</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model random</span><span class="n"> </span><span class="m m-Double">10000</span>
+<span class="nb">model domain</span><span class="n"> extent </span><span class="o">-</span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">5</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">5</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">5</span><span class="n"> </span>
+<span class="c">;Create a borehole geometry</span>
+<span class="nb">geometry set</span><span class="n"> </span><span class="s">&#39;borehole&#39;</span>
+<span class="nb">geometry edge</span><span class="n"> create by</span><span class="o">-</span><span class="n">position </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span>
+<span class="c">;Generate fractures using the default template</span>
+<span class="nb">fracture generate</span><span class="n"> percolation </span><span class="m m-Double">5</span>
+<span class="c">;Calculate connectivity starting with the borehole</span>
+<span class="nb">fracture connectivity</span><span class="n"> starting</span><span class="o">-</span><span class="n">geometry </span><span class="s">&#39;borehole&#39;</span><span class="n"> extra</span><span class="o">-</span><span class="n">index </span><span class="m m-Double">1</span>
+<span class="c">;Calculate connectivity starting with fracture 1</span>
+<span class="nb">fracture connectivity</span><span class="n"> starting</span><span class="o">-</span><span class="n">fracture </span><span class="m m-Double">1</span><span class="n"> extra</span><span class="o">-</span><span class="n">index </span><span class="m m-Double">2</span><span class="n"> distance</span>
+<span class="nb">program </span><span class="se">return</span><span class="n"> </span>
+</pre></div>
+</div>
+<p class="h3 rubric">See Also: <a class="reference internal" href="cmd_fracture_cluster.html#command:fracture.cluster" title="Compute fracture clusters. Clusters are defined as sets of"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">cluster</span></code></a> | <a class="reference internal" href="cmd_fracture_intersections.compute.html#command:fracture.intersections.compute" title="Compute intersections. Intersections can exist between fractures, and between&#013;&#010;fractures"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">intersections</span> <span class="pre">compute</span></code></a></p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../dfn.html" >Discrete Fracture Network (DFN)</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="dfn_commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_fracture_compute.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">fracture</span> <span class="pre">compute</span></code> command</a> |    
+       <a href="cmd_fracture_contact-model.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">contact-model</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?fracture connectivity command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

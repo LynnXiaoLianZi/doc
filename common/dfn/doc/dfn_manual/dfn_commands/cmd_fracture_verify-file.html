@@ -1,0 +1,198 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>fracture verify-file command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="FISH Functions" href="../dfn_fish/dfn_fish.html" />
+    <link rel="prev" title="fracture template modify-default command" href="cmd_fracture_template.modify-default.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fracture-verify-file-command">
+<h1><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">verify-file</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="dfn command">
+<dt id="command:fracture.verify-file">
+<span class="cmdname"><span class="pref">f</span><span class="pref">r</span><span class="pref">a</span><span class="pref">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">v</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">f</span><span class="null">y</span><span class="null">-</span><span class="pref">f</span><span class="null">i</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:fracture.verify-file.file" title="fracture verify-file file">file</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.verify-file.format" title="fracture verify-file format">format</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.verify-file.property-file" title="fracture verify-file property-file">property-file</a></p>
+</div>
+<p>Verify a DFN file. Before importing fractures from a DFN file, one should use the
+<a class="reference internal" href="#command:fracture.verify-file" title="Verify a DFN file. Before importing fractures from a DFN file, one should use&#013;&#010;the"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">verify-file</span></code></a> command to check the validity/characteristics of the fractures
+represented in the file. The following quantities are displayed:</p>
+<ul class="simple">
+<li>error information while reading the DFN file;</li>
+<li>the number of fractures in the file;</li>
+<li>the minimum/maximum spatial range of the fractures;</li>
+<li>the minimum/average/maximum fracture {length in 2D; area in 3D}; and</li>
+<li>the DFN center.</li>
+</ul>
+<p>This tool can be very useful when identifying invalid fractures, as well as the appropriate
+offset/scaling to be used with the imported fractures.</p>
+<dl class="keyword">
+<dt id="kwd:fracture.verify-file.file">
+<span class="cmdkey"><span class="pref">f</span><span class="pref">i</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify the DFN file to verify.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.verify-file.format">
+<span class="cmdkey"><span class="pref">f</span><span class="pref">o</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">t</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Specify the file format. If no format is specified, then the file extension of the name specified with the file keyword is used to determine the file format. A ‘.dat’ file extension is assumed to be in the <span class="cmdkey">itasca</span> format, a ‘.flab’ file extension is assumed to be in the <span class="cmdkey">fishlab</span> format, and a ‘.fab’ file extension is assumed to be in the <span class="cmdkey">fracman</span> format.</p>
+<dl class="keyword">
+<dt id="kwd:fracture.verify-file.format.itasca">
+<span class="cmdkey"><span class="pref">i</span><span class="null">t</span><span class="null">a</span><span class="null">s</span><span class="null">c</span><span class="null">a</span><span class="null"> </span></span></dt>
+<dd><p>The <span class="cmdkey">itasca</span> format is as specified in <a class="reference internal" href="../../../../docproject/source/manual/program_guide/mechanics/otherinputs/dfnfileformats.html#dfnfileformats"><span class="std std-ref">DFN-Related File Formats</span></a>, and
+is the default format.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.verify-file.format.fishlab">
+<span class="cmdkey"><span class="pref">f</span><span class="pref">i</span><span class="null">s</span><span class="null">h</span><span class="null">l</span><span class="null">a</span><span class="null">b</span><span class="null"> </span></span><span class="cmdextra">(<span class="cmdextraparam">3D<span class="null"> </span></span><span class="cmdextraparam">ONLY</span>)</span><span class="null"> </span></dt>
+<dd><p>The <span class="cmdkey">fishlab</span> format is the flowplane format used in FISHLab.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.verify-file.format.fracman">
+<span class="cmdkey"><span class="pref">f</span><span class="pref">r</span><span class="null">a</span><span class="null">c</span><span class="null">m</span><span class="null">a</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>The <span class="cmdkey">fracman</span> format follows the FracMan ASCII output format.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.verify-file.property-file">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">f</span><span class="null">i</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Indicate the property file to be queried. See <a class="reference internal" href="../../../../docproject/source/manual/program_guide/mechanics/otherinputs/dfnfileformats.html#dfnfileformats"><span class="std std-ref">DFN-Related File Formats</span></a>
+for a definition of the property file format.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p class="h2 rubric">Usage Example</p>
+<p>The following example illustrates how the <a class="reference internal" href="#command:fracture.verify-file" title="Verify a DFN file. Before importing fractures from a DFN file, one should use&#013;&#010;the"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">verify-file</span></code></a> command is
+used to pre-parse a DFN file. It will print useful fracture statistics from the DFN file, including:</p>
+<ul class="simple">
+<li>the number of properties,</li>
+<li>the number of fractures,</li>
+<li>the size of the containing domain in <span class="math">\(x\)</span>, <span class="math">\(y\)</span> and <span class="math">\(z\)</span> directions,</li>
+<li>the range of fracture areas, that can be converted into equivalent diameters, and</li>
+<li>the fracture center.</li>
+</ul>
+<p>Files are generated with the example of the <a class="reference internal" href="cmd_fracture_export.html#command:fracture.export" title="Export fractures to file. By default, fractures are exported in the Itasca DFN&#013;&#010;data file format"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">export</span></code></a> command.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model domain</span><span class="n"> extent </span><span class="o">-</span><span class="m m-Double">4</span><span class="n"> </span><span class="m m-Double">4</span>
+<span class="c">;Verify fractures in a file - see the associated information in the console</span>
+<span class="nb">fracture verify-file</span><span class="n"> </span><span class="s">&#39;example.dat&#39;</span><span class="n"> format itasca </span><span class="sx">...</span>
+<span class="n">         property</span><span class="o">-</span><span class="n">file </span><span class="s">&#39;example_prop.dat&#39;</span>
+<span class="nb">program </span><span class="se">return</span><span class="n">   </span>
+</pre></div>
+</div>
+<p class="h3 rubric">See Also: <a class="reference internal" href="cmd_fracture_export.html#command:fracture.export" title="Export fractures to file. By default, fractures are exported in the Itasca DFN&#013;&#010;data file format"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">export</span></code></a> | <a class="reference internal" href="cmd_fracture_import.html#command:fracture.import" title="Import fractures."><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">import</span></code></a></p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../dfn.html" >Discrete Fracture Network (DFN)</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="dfn_commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_fracture_template.modify-default.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">fracture</span> <span class="pre">template</span> <span class="pre">modify-default</span></code> command</a> |    
+       <a href="../dfn_fish/dfn_fish.html"
+                           title="next chapter"><span class="codename">FISH</span> Functions</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?fracture verify-file command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

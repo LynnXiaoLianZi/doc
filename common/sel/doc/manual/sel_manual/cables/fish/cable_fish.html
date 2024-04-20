@@ -1,0 +1,193 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FISH Functions &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fish-functions">
+<span id="sel-cable-fish"></span><h1><span class="codename">FISH</span> Functions</h1>
+<p><span class="codename">FISH</span> functions operating on extrusion cables. The type specifiers used in the <span class="codename">FISH</span> function signatures are given in the <a class="reference internal" href="../../../../../../docproject/source/manual/scripting/fish_scripting/fish_types.html#fish-variabletypes"><span class="std std-ref">FISH Type Index</span></a> section.</p>
+<p class="rubric" id="selcable-functions">Structural Cable Functions</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.area.html#struct.cable.area" title="Get/set the cross-section area of the cable element."><span class="fishcmd">struct.cable.area</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.force.axial.html#struct.cable.force.axial" title="Get the average axial force of the element (positive: tension; negative: compression)."><span class="fishcmd">struct.cable.force.axial</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.grout.cohesion.html#struct.cable.grout.cohesion" title="Get/set the grout cohesion."><span class="fishcmd">struct.cable.grout.cohesion</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.grout.confining.html#struct.cable.grout.confining" title="Get the confining stress acting on the grout at end  iend  ∈ {1, 2}. Negative&#013;&#010;value indicates compression. The stress acts in a plane perpendicular to the&#013;&#010;cable axis; effective confining stress is the average of the principal values&#013;&#010;in this plane."><span class="fishcmd">struct.cable.grout.confining</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.grout.dir.html#struct.cable.grout.dir" title="Get the direction vector in which cableSEL is being loaded by the coupling spring&#013;&#010;at end  iend  ∈ {1, 2}."><span class="fishcmd">struct.cable.grout.dir</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.grout.disp.html#struct.cable.grout.disp" title="Get displacement in grout (shear coupling spring) at end  iend  ∈ {1, 2}; positive/negative&#013;&#010;with respect to the average axial direction of cable."><span class="fishcmd">struct.cable.grout.disp</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.grout.friction.html#struct.cable.grout.friction" title="Get/set the grout internal friction angle."><span class="fishcmd">struct.cable.grout.friction</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.grout.perimeter.html#struct.cable.grout.perimeter" title="Get/set the grout exposed perimeter."><span class="fishcmd">struct.cable.grout.perimeter</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.grout.slip.html#struct.cable.grout.slip" title="Get the slip state of grout (shear coupling spring) at end  iend  ∈ {1, 2}. Return&#013;&#010;value {0, 1, 2} denotes never slipped, now slipping, or slipped in the past,&#013;&#010;respectively."><span class="fishcmd">struct.cable.grout.slip</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.grout.stiffness.html#struct.cable.grout.stiffness" title="Get/set the grout stiffness."><span class="fishcmd">struct.cable.grout.stiffness</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.grout.stress.html#struct.cable.grout.stress" title="Get stress in grout (shear coupling spring) at end  iend  ∈ {1, 2}; positive/negative&#013;&#010;with respect to average axial direction of cable."><span class="fishcmd">struct.cable.grout.stress</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.length.html#struct.cable.length" title="Get the length of the cable element."><span class="fishcmd">struct.cable.length</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.slide.html#struct.cable.slide" title="Get the boolean flag of the large-strain sliding. If  true , slide is on; if&#013;&#010; false , slide is off."><span class="fishcmd">struct.cable.slide</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.slide.tol.html#struct.cable.slide.tol" title="Get/set the large-strain sliding tolerance of the cable element."><span class="fishcmd">struct.cable.slide.tol</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.state.compression.html#struct.cable.state.compression" title="Get the compression yield state of the  cable element. The return value {0,&#013;&#010;1, 2} denotes never yielded, now yielding, or yielded in the past, respectively."><span class="fishcmd">struct.cable.state.compression</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.state.tension.html#struct.cable.state.tension" title="Get the tension yield state of cable element. The return value {0, 1, 2} denotes&#013;&#010;never yielded, now yielding, or yielded in the past, respectively."><span class="fishcmd">struct.cable.state.tension</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.strain.plastic.html#struct.cable.strain.plastic" title="Get the plastic tensile strain of the cable element."><span class="fishcmd">struct.cable.strain.plastic</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.stress.axial.html#struct.cable.stress.axial" title="Get the average axial stress of the cable element (positive: tension; negative:&#013;&#010;compression)."><span class="fishcmd">struct.cable.stress.axial</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.table.grout.cohesion.html#struct.cable.table.grout.cohesion" title="Get/set the grout cohesion strength table number for the cable element."><span class="fishcmd">struct.cable.table.grout.cohesion</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.table.grout.friction.html#struct.cable.table.grout.friction" title="Get/set the grout friction strength table number for the cable element."><span class="fishcmd">struct.cable.table.grout.friction</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.volume.html#struct.cable.volume" title="Get the cable element volume, or the cross-sectional area times the length."><span class="fishcmd">struct.cable.volume</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.yield.compression.html#struct.cable.yield.compression" title="Get/set the compression yield strength of the cable element."><span class="fishcmd">struct.cable.yield.compression</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.yield.tension.html#struct.cable.yield.tension" title="Get/set the tension yield strength of the cable element."><span class="fishcmd">struct.cable.yield.tension</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.young.html#struct.cable.young" title="Get/set the Young’s modulus of the cable element."><span class="fishcmd">struct.cable.young</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_CABLE_PNT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.area.html"><code class="docutils literal"><span class="pre">struct.cable.area</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.force.axial.html"><code class="docutils literal"><span class="pre">struct.cable.force.axial</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.grout.cohesion.html"><code class="docutils literal"><span class="pre">struct.cable.grout.cohesion</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.grout.confining.html"><code class="docutils literal"><span class="pre">struct.cable.grout.confining</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.grout.dir.html"><code class="docutils literal"><span class="pre">struct.cable.grout.dir</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.grout.disp.html"><code class="docutils literal"><span class="pre">struct.cable.grout.disp</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.grout.friction.html"><code class="docutils literal"><span class="pre">struct.cable.grout.friction</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.grout.perimeter.html"><code class="docutils literal"><span class="pre">struct.cable.grout.perimeter</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.grout.slip.html"><code class="docutils literal"><span class="pre">struct.cable.grout.slip</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.grout.stiffness.html"><code class="docutils literal"><span class="pre">struct.cable.grout.stiffness</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.grout.stress.html"><code class="docutils literal"><span class="pre">struct.cable.grout.stress</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.length.html"><code class="docutils literal"><span class="pre">struct.cable.length</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.slide.html"><code class="docutils literal"><span class="pre">struct.cable.slide</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.slide.tol.html"><code class="docutils literal"><span class="pre">struct.cable.slide.tol</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.state.compression.html"><code class="docutils literal"><span class="pre">struct.cable.state.compression</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.state.tension.html"><code class="docutils literal"><span class="pre">struct.cable.state.tension</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.strain.plastic.html"><code class="docutils literal"><span class="pre">struct.cable.strain.plastic</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.stress.axial.html"><code class="docutils literal"><span class="pre">struct.cable.stress.axial</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.table.grout.cohesion.html"><code class="docutils literal"><span class="pre">struct.cable.table.grout.cohesion</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.table.grout.friction.html"><code class="docutils literal"><span class="pre">struct.cable.table.grout.friction</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.volume.html"><code class="docutils literal"><span class="pre">struct.cable.volume</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.yield.compression.html"><code class="docutils literal"><span class="pre">struct.cable.yield.compression</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.yield.tension.html"><code class="docutils literal"><span class="pre">struct.cable.yield.tension</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.cable_intrinsics/fish_sel.cable.young.html"><code class="docutils literal"><span class="pre">struct.cable.young</span></code></a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?FISH Functions" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

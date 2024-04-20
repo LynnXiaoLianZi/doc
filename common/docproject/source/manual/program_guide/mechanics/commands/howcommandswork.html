@@ -1,0 +1,150 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>How Commands Work &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="Command Syntax" href="commandsyntax.html" />
+    <link rel="prev" title="Commands" href="commands.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="hide sectionname docutils container">
+<span class="codename">FLAC3D</span> Modeling • Introduction</div>
+<div class="section" id="how-commands-work">
+<span id="howcommandswork"></span><h1>How Commands Work</h1>
+<p>This section is a <em>general</em> description of commands, how they are constructed, their parts, how they operate with one another, and the like.  It focuses on commands singly — as they are issued in the <em>Console</em> pane.  Processing multiple commands in an uninterrupted flow via data file is described in detail in the section on <a class="reference internal" href="../datafiles/datafiles.html#datafiles"><span class="std std-ref">Data Files</span></a>.  Command reference information is found throughout this documentation.  Refer to the <a class="reference internal" href="../../../commandindex.html#globalcommandindex"><span class="std std-ref">Command Index</span></a> for specific commands; the topic <a class="reference internal" href="commandtools.html#commandtools"><span class="std std-ref">Command Tools</span></a> lists the multiple program facilities available for accessing reference information on commands and <span class="codename">FISH</span> functions.</p>
+<p>Four general principles govern commands in the program.</p>
+<ol class="arabic simple">
+<li>A command without a <span class="cmdkey">range</span> will affect on <em>all</em> objects of the type it is designed to operate on.</li>
+<li>A command will not operate on an object that has been hidden even if it is in the range specified.</li>
+<li>Commands are processed in the order given.  Later commands overwrite previous ones.</li>
+<li>To restrict or “subset” a command’s operation, a <span class="cmdkey">range</span> is required.  The <a class="reference internal" href="../../../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><code class="xref fish fish-tok docutils literal"><span class="pre">range</span></code></a> is a filter composed of one or more criteria (optionally including logical operators) that identifies the set of objects to be targeted in a command.</li>
+<li>Commands can be undone with the command <a class="reference internal" href="../../../../../../kernel/doc/manual/program/commands/cmd_program.undo.html#command:program.undo" title="Undo commands."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">undo</span></code></a>.  This will cause all commands except the last (the undone command) to be rerun since the last restore. <span class="flag3">not sure UNDO rises to the level of being needed here, but this is a logical place for it.</span></li>
+</ol>
+<p class="h3 rubric">Illustration</p>
+<p>The four points above are illustrated with the following commands.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">block zone cmodel</span><span class="n"> assign mohr</span><span class="o">-</span><span class="n">coulomb</span>
+<span class="nb">block zone cmodel</span><span class="n"> assign elastic</span>
+<span class="nb">block zone cmodel</span><span class="n"> assign hoek</span><span class="o">-</span><span class="n">brown range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">1</span><span class="n"> </span><span class="m m-Double">500</span>
+<span class="nb">program undo</span>
+</pre></div>
+</div>
+<p>The first command assigns the <span class="xref std std-ref">mohr-coulomb</span> constitutive model to <em>all zones</em> (point 1).  The second command assigns the <span class="xref std std-ref">elastic</span> model to <em>all zones</em>, overwriting the first command (point 2). The third command, on the other hand, assigns the <span class="xref std std-ref">Hoek-Brown</span> model to zones with centroid <span class="math">\(x\)</span>-components lying within the range <span class="math">\(x\)</span> = 1 and <span class="math">\(x\)</span> = 500 (point 3). This last command will <em>partially</em> overwrite the second command in that, after complete, only zones <em>outside</em> the range given will retain the <span class="xref std std-ref">elastic</span> assignment. The fourth command will undo the third command.  At this point, the model state is such that the first two commands have been executived, and all zones are assigned the <span class="xref std std-ref">elastic</span> model.</p>
+<p>The use of ranges and groups to refine the application of commands to targeted objects is further introduced in the <a class="reference internal" href="commandsyntax.html#commandsyntax"><span class="std std-ref">next</span></a> topic.</p>
+<p>A full index of commands is available in the <a class="reference internal" href="../../../commandindex.html#globalcommandindex"><span class="std std-ref">Command Index</span></a>.</p>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commandsyntax.html">Command Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commandshaping.html">Command Shaping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commandentry.html">Command Entry in the <em>Console</em> Pane</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commandhighlighting.html">Command and <span class="codename">FISH</span> Highlighting in the Program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commandfishrefpresentation.html">Command and <span class="codename">FISH</span> Reference Notation in the Documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commandtools.html">Command Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commandsmoretopics.html">Commands: Additional Material</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="commands.html"
+                           title="previous chapter"> Commands</a> |    
+       <a href="commandsyntax.html"
+                           title="next chapter">Command Syntax</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?How Commands Work" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

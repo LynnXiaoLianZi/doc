@@ -1,0 +1,160 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Computational Methods for Factor of Safety Calculation of Slopes &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="Strength Reduction Procedure in FLAC3D UDEC, and 3DEC" href="strengthreduction.html" />
+    <link rel="prev" title="Factor of Safety Defined" href="factorofsafetyindex.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="hide sectionname docutils container">
+<span class="codename">FLAC3D</span> Theory and Background • Factor of Safety</div>
+<div class="section" id="computational-methods-for-factor-of-safety-calculation-of-slopes">
+<span id="fos-computationalmethods"></span><h1>Computational Methods for Factor of Safety Calculation of Slopes</h1>
+<p>Three different computational methods are commonly employed in numerical analyses programs to calculate a factor of safety for slopes: strength reduction method, limit analysis (upper- and lower-bound solutions), and limit equilibrium method (upper-bound solution). The <a class="reference internal" href="#fos-strengthreductiontechnique"><span class="std std-ref">strength reduction method</span></a> is used in <span class="codename">FLAC3D</span>, <span class="codename">UDEC</span>, and <span class="codename">3DEC</span>, and can be executed automatically via the <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a> command. This implementation is described below, followed by <a class="reference internal" href="#fos-limitanalysis"><span class="std std-ref">Numerical Limit Analysis</span></a> and <a class="reference internal" href="#fos-limitequilibrium"><span class="std std-ref">Limit Equilibrium Analysis</span></a>.</p>
+<div class="section" id="strength-reduction-technique">
+<span id="fos-strengthreductiontechnique"></span><h2>Strength Reduction Technique</h2>
+<p>The “strength reduction technique” is typically applied in factor of safety calculations by progressively reducing the shear strength of the material to bring the slope to a state of limiting equilibrium. The method is commonly applied with the Mohr-Coulomb failure criterion (e.g., see applications by Zienkiewicz et al. 1975, Naylor 1982, Donald and Giam 1988, Matsui and San 1992, Ugai 1989, and Ugai and Leshchinsky 1995). In this case, the safety factor <span class="math">\(F\)</span> is defined according to the equations:</p>
+<div class="math" id="equation-eqfos-srm-cohesion">
+<span class="eqno">(1)</span>\[ c^{\rm trial}\ =\ {c \over {F^{\rm trial}}}\]</div>
+<div class="math" id="equation-eqfos-srm-friction">
+<span class="eqno">(2)</span>\[ \phi^{\rm trial}\ =\ \arctan\biggl({\tan\phi \over {F^{\rm trial}}}\biggr)\]</div>
+<p>A series of simulations are made using trial values of the factor <span class="math">\(F^{\rm trial}\)</span> to reduce the cohesion, <span class="math">\(c\)</span>, and friction angle, <span class="math">\(\phi\)</span>, until slope failure occurs. (Note that if the slope is initially unstable, <span class="math">\(c\)</span> and <span class="math">\(\phi\)</span> will be <em>increased</em> until the limiting condition is found.) One technique to find the strength values that correspond to the onset of failure is to monotonically reduce (or increase) the strengths in small increments until a failure state is found. Alternatively, in <span class="codename">FLAC3D</span>, <span class="codename">UDEC</span>, and <span class="codename">3DEC</span>, a bracketing approach—similar to that proposed by Dawson, Roth and Drescher (1999)—is used when the <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a> command is executed. With this technique, stable and unstable bracketing states are found first, and then the bracket between the stable and unstable solution is progressively reduced until the difference between stable and unstable solutions falls below a specified tolerance.</p>
+<p>The strength reduction method implemented in the program will always produce a valid solution: in the case of an unstable physical system, the program simply shows continuing motion in the model. An iteration solution, which is often used in the finite element method, is not used here. The <span class="codename">FLAC3D</span>, <span class="codename">UDEC</span>, and <span class="codename">3DEC</span> solution is a dynamic, time-marching simulation in which continuing motion is as valid as equilibrium. Neither is there iteration in the use of elastic-plastic constitutive laws: the stress tensor is placed exactly on the yield surface (satisfying equations, such as the flow rule and elastic/plastic strain decomposition) if plastic yield is detected. The stress state in the program at a safety factor = 1 is the actual stress state that corresponds to the yielding mechanism, not an arbitrary pre-yield stress state or an elastic stress state.</p>
+<p>The detection of the boundary between physical stability and instability is based on an objective criterion in <span class="codename">3DEC</span>, <span class="codename">UDEC</span>, and <span class="codename">FLAC3D</span> that decides whether the system is in equilibrium or a state of continuing motion. Finer incremental changes that may affect the solution in an iterative solution scheme are not needed in a time-marching scheme and do not affect the solution. In order to determine the boundary between physical stability and instability, a set of completely separate runs is made with different strength-reduction factors. Each run is then checked to determine whether equilibrium or continuing plastic flow is reached. The point of failure can be found to any required accuracy (typically 1%) by successive bracketing of the strength-reduction factors. This process should not be confused with taking finer solution steps; the solution scheme is <em>identical</em> for each run of the set (whether it results in equilibrium or continuing motion).</p>
+</div>
+<div class="section" id="limit-analysis">
+<span id="fos-limitanalysis"></span><h2>Limit Analysis</h2>
+<p>Limit analysis relies on the construction of solutions that obey upper- and lower-bounds theorems developed in the theory of plasticity. These theorems (presented in most textbooks on plasticity) provide rigorous limits on the collapse conditions of a system consisting of a perfectly plastic material obeying normality (associated flow rule). Of particular interest is the lower-bound theorem, which states (Davis and Selvadurai 2002) that</p>
+<blockquote>
+<div><em>Collapse will not occur if any state of stress can be found that satisfies the equations of equilibrium and the traction boundary conditions and is everywhere ‘below yield’.</em></div></blockquote>
+<p>In this theorem, the words “equations of equilibrium” pertain to local equilibrium. Any stress field that satisfies the criteria of the lower-bound theorem is referred to as a statically admissible stress field. Also, in a factor-of-safety calculation, a statically admissible stress field provides a lower-bound (conservative) estimate for the FOS.</p>
+<p>It is also useful to recall the upper-bound theorem, which states that (Davis and
+Selvadurai 2002)</p>
+<blockquote>
+<div><em>Collapse must occur if, for any compatible plastic deformation, the rate of working of the external forces on the body equals or exceeds the rate of internal energy dissipation.</em></div></blockquote>
+<p>In this statement, “compatible plastic deformation” means any deformation that satisfies all displacement boundary conditions and is possible kinematically according to the associated flow rule, which governs admissible dilation. Any deformation field that satisfies the criteria of the upper-bound theorem is referred to as kinematically admissible deformation.</p>
+<p>Stability charts for homogeneous simple slopes (in “cohesive” material) are still used in practice as a first estimate of slope safety. Typically, values in the chart obtained using limit analysis (upper- and lower-bound solutions) are presented in the form of stability numbers (see, e.g., Taylor 1937, Dawson et al. 2000, Michalowski 2002, and Li et al. 2008). These numbers are dimensionless quantities that relate slope height, material unit weight, and the material strength property of cohesion for a Mohr-Coulomb material, or intact unconfined compressive strength for a Hoek-Brown material. Stability numbers have been associated with nontraditional FOS measures (e.g., for Mohr-Coulomb (Michalowski 2002), and for Hoek-Brown (Li et al. 2008)).</p>
+</div>
+<div class="section" id="limit-equilibrium">
+<span id="fos-limitequilibrium"></span><h2>Limit Equilibrium</h2>
+<p>Limit equilibrium (LE) methods are approximate methods that assume the existence of a slip surface of various simple shapes: plane, circular, or logspiral. The methods are based on the additional assumption that the soil or rock mass can be divided into slices. The problem is reduced to one of finding the most critical position for the slip surface of the chosen shape. Various methods exist, including Fellenius’ (1936), Bishop’s (1955), Lowe and Karafiath’s (1960), Janbu’s (1968), Morgenstern and Price’s (1965), and Spencer’s (1967). One of the main differences between methods concerns assumptions made about side force directions between slices, with potential implications for equilibrium. A comparative description summary of methods with assumptions and limitations may be found in TRB Special Report (1996) and Abramson et al. (2002).</p>
+<p>Note that none of the equations of solid mechanics is explicitly satisfied inside or outside of the failure surface (assumed slip surface). Also, according to Chen (2007):</p>
+<blockquote>
+<div><em>Although the limit equilibrium technique utilizes the basic philosophy of the upper-bound rules of limit analysis, that is, a failure surface is assumed and a least answer is sought, it does not meet the precise requirements of the upper-bound rules so that it is not an upper bound. The method basically gives no consideration to soil kinematics, and equilibrium conditions are satisfied only in a limited sense. It is clear then that a solution obtained using the limit equilibrium method is not necessarily an upper or a lower bound.</em></div></blockquote>
+</div>
+<div class="section" id="relation-of-strength-reduction-method-to-limit-equilibrium-and-limit-analysis">
+<span id="fos-relation-srm-la"></span><h2>Relation of Strength Reduction Method to Limit Equilibrium and Limit Analysis</h2>
+<p>As mentioned in the <a class="reference internal" href="#fos-limitequilibrium"><span class="std std-ref">Limit Equilibrium</span></a> section, a limit equilibrium (LE) solution is never a lower bound for the load because, although global equilibrium is satisfied by the LE solution, local equilibrium is not guaranteed (none of the LE solutions are statically admissible).</p>
+<p>Also, a strong statement made in the literature (e.g., Davis and Selvadurai 2002) is that the results from LE will always be the same as those from the upper-bound theorem for any translational collapse mechanism (meaning system of rigid soil blocks separated by thin shear surfaces). Thus, there are cases for which an LE solution gives an upper bound for the load (Drescher and Detournay 1993).</p>
+<p>One may ask then why an LE solution “works” since not only is it not guaranteed to provide a lower bound for the FOS, but in some cases it is even proven to give an upper bound for the FOS. An answer, provided by Wa-I-Fah Chen in his book <span class="bi">Limit Analysis and Soil Plasticity</span>, rests on the observation that most FOS analyses are concerned with slopes, and apparently, for most slopes, the LE solution provides an FOS value which is close to the exact solution.</p>
+<p>On the other hand, consider the last stable state calculated by <span class="codename">FLAC3D</span>, <span class="codename">UDEC</span>, or <span class="codename">3DEC</span> (the last lower bracket, which is typically 0.005 less than the final FOS) for an associated problem. Either program will provide an approximate exact solution to the problem at that state, in the sense that local equilibrium may not be satisfied everywhere at the boundary between zones, but if the zone size is reduced to zero, local equilibrium will be satisfied to the limit. In particular, the limit stress field satisfies the lower-bound theorem. Also, the deformation field at the “failure state” calculated by the program (the last upper bracket) is a kinematically admissible deformation (it fulfills all the criteria of the upper-bound theorem). Thus, one may say that if the calculated FOS tends to a limit as the grid size is reduced, this limit may be considered to be very close to (within 0.005) the exact FOS for the problem.</p>
+<p>In summary then, in most cases <span class="codename">3DEC</span>, <span class="codename">UDEC</span>, or <span class="codename">FLAC3D</span> (on a fine grid) and an LE solution will give factors of safety that are very similar. In some cases, <span class="codename">3DEC</span> and <span class="codename">FLAC3D</span> will give a safety factor on a fine grid that is lower than that provided by a limit equilibrium (LE) solution. This implies that the LE solution provides an upper bound for the FOS. In other cases, the programs will give a safety factor on a fine grid that is higher than that provided by a limit equilibrium (LE) solution. This does not mean that <span class="codename">FLAC3D</span>, <span class="codename">UDEC</span>, and <span class="codename">3DEC</span> are nonconservative, but instead that we have encountered a case where the LE solution cannot be relied upon (since it can never correspond to a lower bound for the load).</p>
+<p>Note that the limit-analysis bound theorems apply to an associated flow rule (see Davis and Selvadurai 2002). This rule may not be very realistic in some cases, as it provides far too much dilation. However, nonassociated flow rules do not guarantee unique solutions. Without this assurance, a collapse load is no longer unique. Apparently, the only useful result that can be obtained is that a nonassociative material can be no stronger than an associative one. This follows from the observation that, at collapse, the actual stress field in a nonassociative soil is statically admissible. Therefore, by the lower-bound theorem, the collapse load for a nonassociative material cannot exceed that for the corresponding material with the associated flow rule.</p>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../methodology.html" >Modeling Methodology</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="factorofsafety.html" accesskey="U">Factor of Safety</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="factorofsafetyindex.html"
+                           title="previous chapter"> Factor of Safety Defined</a> |    
+       <a href="strengthreduction.html"
+                           title="next chapter">Strength Reduction Procedure in <span class="codename">FLAC3D</span> <span class="codename">UDEC</span>, and <span class="codename">3DEC</span></a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Computational Methods for Factor of Safety Calculation of Slopes" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,173 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>fracture cluster command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="fracture combine command" href="cmd_fracture_combine.html" />
+    <link rel="prev" title="fracture attribute command" href="cmd_fracture_attribute.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fracture-cluster-command">
+<h1><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">cluster</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="dfn command">
+<dt id="command:fracture.cluster">
+<span class="cmdname"><span class="pref">f</span><span class="pref">r</span><span class="pref">a</span><span class="pref">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">c</span><span class="pref">l</span><span class="null">u</span><span class="null">s</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:fracture.cluster.group-slot" title="fracture cluster group-slot">group-slot</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.cluster.intersection-set" title="fracture cluster intersection-set">intersection-set</a></p>
+</div>
+<p>Compute fracture clusters. Clusters are defined as sets of
+fractures connected via intersections. These sets of fracture are indexed, and group names are
+assigned based on the indices. Intersections are created via the
+<a class="reference internal" href="cmd_fracture_intersections.compute.html#command:fracture.intersections.compute" title="Compute intersections. Intersections can exist between fractures, and between&#013;&#010;fractures"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">intersections</span> <span class="pre">compute</span></code></a> command. If either no intersection set is specified or the
+specified intersection set does not exist, a new intersection set is created and all intersections
+between fractures are delineated; the resulting intersection set is used as the basis for the
+cluster calculation.</p>
+<dl class="keyword">
+<dt id="kwd:fracture.cluster.group-slot">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null">-</span><span class="pref">s</span><span class="null">l</span><span class="null">o</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Assign group names in slot <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>. Use of the group logic is described in the <a class="reference internal" href="../../../../module/doc/manual/group_manual/groupkwd.html#group-manual"><span class="std std-ref">Groups</span></a> topic. The group name is based on the intersection set name.
+The group name is set to <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">cnameXX</span></span></a>, where <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">cname</span></span></a> is the intersection set name and
+<a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">XX</span></span></a> is the cluster index. By default, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a> = <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">Default</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.cluster.intersection-set">
+<span class="cmdkey"><span class="pref">i</span><span class="null">n</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">s</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">s</span><span class="null">e</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify the intersection set name used for cluster calculation. If no intersection set is specified
+a new intersection set is created with name
+name <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">intersectionsXX</span></span></a>, where <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">XX</span></span></a> is the next available intersection set ID. All intersections
+are subsequently computed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p class="h2 rubric">Usage Example</p>
+<p>The following example in 3D illustrates how the <a class="reference internal" href="#command:fracture.cluster" title="Compute fracture clusters. Clusters are defined as sets of"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">cluster</span></code></a> command can be used to
+calculate the clusters of fractures and assign groups for visualization purposes. In this
+example, fractures are generated at the percolation threshold (i.e., when one of the clusters
+connects all the system boundaries). Then, clusters are calculated and assigned to groups with name
+<a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">allXX</span></span></a>, with <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">XX</span></span></a> the cluster index. Note that fractures assigned the group <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">all0</span></span></a>
+are isolated in that they do not intersect with any other fractures.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model random</span><span class="n"> </span><span class="m m-Double">10000</span>
+<span class="nb">model domain</span><span class="n"> extent </span><span class="o">-</span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">5</span>
+<span class="c">;Generate fractures using the default template</span>
+<span class="nb">fracture generate</span><span class="n"> generation</span><span class="o">-</span><span class="n">box </span><span class="o">-</span><span class="m m-Double">8</span><span class="n"> </span><span class="m m-Double">8</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">8</span><span class="n"> </span><span class="m m-Double">8</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">8</span><span class="n"> </span><span class="m m-Double">8</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                  connectivity</span><span class="o">-</span><span class="n">threshold box </span><span class="o">-</span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">5</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">5</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">5</span>
+<span class="c">;Compute intersections</span>
+<span class="nb">fracture intersection</span><span class="n"> compute intersection</span><span class="o">-</span><span class="n">set </span><span class="s">&#39;all&#39;</span>
+<span class="c">;Calculate clusters based on the intersections</span>
+<span class="nb">fracture cluster</span><span class="n"> intersection</span><span class="o">-</span><span class="n">set </span><span class="s">&#39;all&#39;</span><span class="n"> group</span><span class="o">-</span><span class="n">slot </span><span class="s">&#39;cluster&#39;</span>
+<span class="nb">program </span><span class="se">return</span><span class="n"> </span>
+</pre></div>
+</div>
+<p class="h3 rubric">See Also:  <a class="reference internal" href="cmd_fracture_connectivity.html#command:fracture.connectivity" title="Calculate fracture connectivity with a specified structure. The initial structure&#013;&#010;can either be a fracture or a geometry set. By default, integer connectivity&#013;&#010;levels are computed for each fracture (i.e., a connectivity level of  n &#013;&#010;means that the fracture is connected to the structure through  n  fracture&#013;&#010;intersections), and extras are assigned based on the distance. This behavior&#013;&#010;can be modified with the  aperture ,  cubic  and  distance &#013;&#010;keywords. If either no intersection set is specified"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">connectivity</span></code></a> | <a class="reference internal" href="cmd_fracture_intersections.compute.html#command:fracture.intersections.compute" title="Compute intersections. Intersections can exist between fractures, and between&#013;&#010;fractures"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">intersections</span> <span class="pre">compute</span></code></a> | <a class="reference internal" href="cmd_fracture_prune.html#command:fracture.prune" title="Prune isolated fractures. The intersection set that forms the basis for this&#013;&#010;operation is"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">prune</span></code></a></p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../dfn.html" >Discrete Fracture Network (DFN)</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="dfn_commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_fracture_attribute.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">fracture</span> <span class="pre">attribute</span></code> command</a> |    
+       <a href="cmd_fracture_combine.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">combine</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?fracture cluster command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,393 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>geometry generate command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="geometry import command" href="cmd_geometry.import.html" />
+    <link rel="prev" title="geometry fill command" href="cmd_geometry.fill.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="geometry-generate-command">
+<h1><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">generate</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="geometry command">
+<dt id="command:geometry.generate">
+<span class="cmdname"><span class="pref">g</span><span class="pref">e</span><span class="null">o</span><span class="null">m</span><span class="null">e</span><span class="null">t</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span><span class="cmdname"><span class="pref">g</span><span class="null">e</span><span class="null">n</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:geometry.generate.box" title="geometry generate box">box</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.generate.circle" title="geometry generate circle">circle</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.generate.cone" title="geometry generate cone">cone</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.generate.cylinder" title="geometry generate cylinder">cylinder</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.generate.disk" title="geometry generate disk">disk</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.generate.from-edges" title="geometry generate from-edges">from-edges</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.generate.from-faces" title="geometry generate from-faces">from-faces</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.generate.group" title="geometry generate group">group</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.generate.set" title="geometry generate set">set</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:geometry.generate.sphere" title="geometry generate sphere">sphere</a></p>
+</div>
+<p>Generate objects with specified shapes. The polygons are created in the current geometry set and, if the optional <span class="cmdkey">group</span> keyword is specified, then the group name is applied to the generated polygons. The shapes include: box, cone, cylinder, disk and sphere. If the <span class="cmdkey">set</span> keyword is not given, then the current set is used.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <span class="cmdkey">group</span> keyword must be given prior to any additional keywords.</p>
+</div>
+<dl class="keyword">
+<dt id="kwd:geometry.generate.box">
+<span class="cmdkey"><span class="pref">b</span><span class="null">o</span><span class="null">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxmin</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxmax</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fymin</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fymax</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fzmin</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fzmax</span><span class="null"> </span></span></a></dt>
+<dd><p>Generate a closed box. If <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxmin</span></span></a> and <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fxmax</span></span></a> are specified alone, then the box is a cube with equal sides.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.circle">
+<span class="cmdkey"><span class="pref">c</span><span class="pref">i</span><span class="null">r</span><span class="null">c</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span><span class="cmdextra">(<span class="cmdextraparam">2D<span class="null"> </span></span><span class="cmdextraparam">only</span>)</span><span class="null"> </span></dt>
+<dd><p>Generate a circle in 2D.</p>
+<dl class="keyword">
+<dt id="kwd:geometry.generate.circle.position">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>Center of the circle.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.circle.radius">
+<span class="cmdkey"><span class="pref">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">u</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Radius of the circle.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.circle.resolution">
+<span class="cmdkey"><span class="pref">r</span><span class="pref">e</span><span class="null">s</span><span class="null">o</span><span class="null">l</span><span class="null">u</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Resolution of the edges of the circle. By default, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> = 0.1.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.cone">
+<span class="cmdkey"><span class="pref">c</span><span class="pref">o</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span><span class="cmdextra">(<span class="cmdextraparam">3D<span class="null"> </span></span><span class="cmdextraparam">only</span>)</span><span class="null"> </span></dt>
+<dd><p>Generate a cone in 3D. Either a cone or a conic frustum (i.e., cone with the tip cut off, such as a funnel if the caps are absent) can be generated.</p>
+<dl class="keyword">
+<dt id="kwd:geometry.generate.cone.axis">
+<span class="cmdkey"><span class="pref">a</span><span class="null">x</span><span class="null">i</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v3</span><span class="null"> </span></span></a></dt>
+<dd><p>Direction of the symmetry axis of the cone pointing from the base position that points in the positive z-direction, by default.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.cone.base">
+<span class="cmdkey"><span class="pref">b</span><span class="null">a</span><span class="null">s</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v3</span><span class="null"> </span></span></a></dt>
+<dd><p>Position of the base of the cone (i.e., the center of the bottom end) that is the origin, by default.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.cone.cap">
+<span class="cmdkey"><span class="pref">c</span><span class="null">a</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">bbottom</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">btop</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Indicate the inclusion status of the end caps. If one Boolean is specified, then this state is given to both end caps. If two Booleans are specified, then the first one applies to the bottom cap and the second to the top cap. By default, the bottom cap is created. No top cap is created unless <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fradtop</span></span></a> is specified and is nonzero.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.cone.height">
+<span class="cmdkey"><span class="pref">h</span><span class="null">e</span><span class="null">i</span><span class="null">g</span><span class="null">h</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fheight</span><span class="null"> </span></span></a></dt>
+<dd><p>Height of the cone. This is the distance from the base position to the point or, if a frustum, to the center of the top end. By default, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fheight</span></span></a> = 1.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.cone.radius">
+<span class="cmdkey"><span class="pref">r</span><span class="pref">a</span><span class="null">d</span><span class="null">i</span><span class="null">u</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fradbot</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fradtop</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Radius of the cone. By default, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fradbot</span></span></a> = 1.0 and <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fradtop</span></span></a> = 0.0, meaning that a cone is created. If <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fradtop</span></span></a> &gt; 0.0, then a conic frustum (i.e., cone with the tip cut off) is created. In this case, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fradbot</span></span></a> is the bottom radius at the base location, and <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fradtop</span></span></a> is the radius of the top of the frustum at a distance <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fheight</span></span></a> from the base location along the symmetry axis.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.cone.resolution">
+<span class="cmdkey"><span class="pref">r</span><span class="pref">e</span><span class="null">s</span><span class="null">o</span><span class="null">l</span><span class="null">u</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fres</span><span class="null"> </span></span></a></dt>
+<dd><p>Resolution of the edges of the cone ends. The number of end edges is set so that the edge is smaller than <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fres</span></span></a> * <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fradbot</span></span></a>. If a frustum is to be generated with <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fradtop</span></span></a> &gt; 0, then the end edge lengths are less than <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fres</span></span></a> * min(<a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fradbot</span></span></a>, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fradtop</span></span></a>). By default, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fres</span></span></a> = 0.1.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.cylinder">
+<span class="cmdkey"><span class="pref">c</span><span class="pref">y</span><span class="null">l</span><span class="null">i</span><span class="null">n</span><span class="null">d</span><span class="null">e</span><span class="null">r</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span></dt>
+<dd><p>Generate a cylinder in 3D.</p>
+<dl class="keyword">
+<dt id="kwd:geometry.generate.cylinder.axis">
+<span class="cmdkey"><span class="pref">a</span><span class="null">x</span><span class="null">i</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v3</span><span class="null"> </span></span></a></dt>
+<dd><p>Direction of the symmetry axis of the cylinder pointing from the base position.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.cylinder.base">
+<span class="cmdkey"><span class="pref">b</span><span class="null">a</span><span class="null">s</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v3</span><span class="null"> </span></span></a></dt>
+<dd><p>Position of the base of the cylinder (i.e., the center of the bottom end) that is the origin, by default.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.cylinder.cap">
+<span class="cmdkey"><span class="pref">c</span><span class="null">a</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">bbottom</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">btop</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Indicate the inclusion status of the end caps. If one Boolean is specified, then this state is given to both end caps. If two Booleans are specified, then the first one applies to the bottom cap and the second to the top cap. By default, both caps are created.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.cylinder.height">
+<span class="cmdkey"><span class="pref">h</span><span class="null">e</span><span class="null">i</span><span class="null">g</span><span class="null">h</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fheight</span><span class="null"> </span></span></a></dt>
+<dd><p>Height of the cylinder. This is the distance from the base position to the center of the top end. By default, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fheight</span></span></a> = 1.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.cylinder.radius">
+<span class="cmdkey"><span class="pref">r</span><span class="pref">a</span><span class="null">d</span><span class="null">i</span><span class="null">u</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">frad</span><span class="null"> </span></span></a></dt>
+<dd><p>Radius of the cylinder, or the distance from the axis of symmetry to the side.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.cylinder.resolution">
+<span class="cmdkey"><span class="pref">r</span><span class="pref">e</span><span class="null">s</span><span class="null">o</span><span class="null">l</span><span class="null">u</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fres</span><span class="null"> </span></span></a></dt>
+<dd><p>Resolution of the edges of the cylinder ends. The number of end edges is set so that the edge is smaller than <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fres</span></span></a> * <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">frad</span></span></a>. By default, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fres</span></span></a> = 0.1.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.disk">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">k</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span></dt>
+<dd><p>Generate a disk in 3D.</p>
+<dl class="keyword">
+<dt id="kwd:geometry.generate.disk.dip">
+<span class="cmdkey"><span class="pref">d</span><span class="pref">i</span><span class="pref">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fdip</span><span class="null"> </span></span></a></dt>
+<dd><p>Dip angle of the disk in degrees in the range [0,90]. Dip is the angle from the dip direction projected on the xy-plane to the disk surface measured in the negative z-direction. By default, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fdip</span></span></a> = 0.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.disk.ddir">
+<span class="cmdkey"><span class="pref">d</span><span class="pref">d</span><span class="null">i</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fddir</span><span class="null"> </span></span></a></dt>
+<dd><p>Dip direction of the disk in degrees, as measured in a clockwise fashion from the positive y-axis in the range [0,360]. By default, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fddir</span></span></a> = 0.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.disk.position">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v3</span><span class="null"> </span></span></a></dt>
+<dd><p>Position of the center of the disk that is the origin, by default.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.disk.radius">
+<span class="cmdkey"><span class="pref">r</span><span class="pref">a</span><span class="null">d</span><span class="null">i</span><span class="null">u</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">frad</span><span class="null"> </span></span></a></dt>
+<dd><p>Radius of the disk that is 1.0, by default.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.disk.resolution">
+<span class="cmdkey"><span class="pref">r</span><span class="null">e</span><span class="null">s</span><span class="null">o</span><span class="null">l</span><span class="null">u</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fres</span><span class="null"> </span></span></a></dt>
+<dd><p>Resolution of the disk edges. The number of disk edges is set so that the edge is smaller than <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fres</span></span></a> * <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">frad</span></span></a>. By default, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fres</span></span></a> = 0.1.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.from-edges">
+<span class="cmdkey"><span class="pref">f</span><span class="null">r</span><span class="null">o</span><span class="null">m</span><span class="null">-</span><span class="pref">e</span><span class="null">d</span><span class="null">g</span><span class="null">e</span><span class="null">s</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Generate polygons by extruding from all edges in the range.   The edges must be in the same set.  All edges matching the range given are selected.</p>
+<p>The following keywords are available:</p>
+<dl class="keyword">
+<dt id="kwd:geometry.generate.from-edges.extrude">
+<span class="cmdkey"><span class="pref">e</span><span class="null">x</span><span class="null">t</span><span class="null">r</span><span class="null">u</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>The direction and length to extrude from the given edges.  The default value is (0,0,1).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.from-edges.segments">
+<span class="cmdkey"><span class="pref">s</span><span class="null">e</span><span class="null">g</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>The number of segments to divide the extruded direction into. The default value is 1.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.from-faces">
+<span class="cmdkey"><span class="pref">f</span><span class="null">r</span><span class="null">o</span><span class="null">m</span><span class="null">-</span><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">s</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span><span class="cmdextra">(<span class="cmdextraparam">FLAC3D-specific</span>)</span><span class="null"> </span></dt>
+<dd><p>Generate polygons from the list of all zone faces in the range.   By default only mechanical surface faces are considered.</p>
+<p>The following keywords are available:</p>
+<dl class="keyword">
+<dt id="kwd:geometry.generate.from-faces.internal">
+<span class="cmdkey"><span class="pref">i</span><span class="null">n</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">n</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>Internal as well as external faces will be considered.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.from-faces.fluid">
+<span class="cmdkey"><span class="pref">f</span><span class="null">l</span><span class="null">u</span><span class="null">i</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Specifies that the null state of the fluid constitutive model will be considered in determining a surface.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.from-faces.group">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a><span class="cmdopt"><<span class="cmdkey"><span class="pref">s</span><span class="null">l</span><span class="null">o</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">slot</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Assigns the group name to all polygons created.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.from-faces.mechanical">
+<span class="cmdkey"><span class="pref">m</span><span class="null">e</span><span class="null">c</span><span class="null">h</span><span class="null">a</span><span class="null">n</span><span class="null">i</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>Specifies that the null state of the mechanical constitutive model will be considered in determining a surface.  This is the default state.  If <span class="cmdkey">thermal</span> or <span class="cmdkey">fluid</span> is specified then mechanical will be removed unless it is specified as well.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.from-faces.or">
+<span class="cmdkey"><span class="pref">o</span><span class="null">r</span><span class="null"> </span></span></dt>
+<dd><p>If more than one instance of <span class="cmdkey">mechanical</span>, <span class="cmdkey">thermal</span>, or <span class="cmdkey">fluid</span> are given then the default behavior is to require that <em>all</em> of them be null for it to be considered a null zone.   If this keyword is given then if <em>any</em> of then are null it will be considered a null zone.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.from-faces.split-nonplanar">
+<span class="cmdkey"><span class="pref">s</span><span class="null">p</span><span class="null">l</span><span class="null">i</span><span class="null">t</span><span class="null">-</span><span class="pref">n</span><span class="null">o</span><span class="null">n</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">n</span><span class="null">a</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><p>By default, quadrilateral faces that are non-planar are split into two triangular polygons.   By setting <span class="cmdkey">split-nonplanar</span> to <a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">false</span></span></a>, the polygons will remain non-planar quadrilaterals.  Be aware that non-planar polygons can cause errors when performing geometry operations.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.from-faces.thermal">
+<span class="cmdkey"><span class="pref">t</span><span class="null">h</span><span class="null">e</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>Specifies that the null state of the thermal constitutive model will be considered in determining a surface.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.group">
+<span class="cmdkey"><span class="pref">g</span><span class="pref">r</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span></dt>
+<dd><p>Specify that the created polygons are given the group name <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>. Use of the group logic is described in <a class="reference internal" href="../../../../module/doc/manual/group_manual/groupkwd.html#group-manual"><span class="std std-ref">Groups</span></a>. If the <span class="cmdkey">slot</span> keyword is not specified, then the group name is assigned to the slot <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">Default</span></span></a>.</p>
+<dl class="keyword">
+<dt id="kwd:geometry.generate.group.slot">
+<span class="cmdkey"><span class="pref">s</span><span class="null">l</span><span class="null">o</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">slot</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the group slot <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">slot</span></span></a> to <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>. By default, the slot <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">Default</span></span></a> is assigned.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.set">
+<span class="cmdkey"><span class="pref">s</span><span class="null">e</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify the geometry set.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.sphere">
+<span class="cmdkey"><span class="pref">s</span><span class="null">p</span><span class="null">h</span><span class="null">e</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span></dt>
+<dd><p>Generate a closed sphere in 3D. The sphere is generated by refining an icosahedron (i.e., a sphere composed of 20 identical equilateral triangles) so that the edge lengths are smaller than a length defined by the <span class="cmdkey">resolution</span> keyword.</p>
+<dl class="keyword">
+<dt id="kwd:geometry.generate.sphere.position">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v3</span><span class="null"> </span></span></a></dt>
+<dd><p>Position of the sphere centroid that is the origin, by default.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.sphere.radius">
+<span class="cmdkey"><span class="pref">r</span><span class="pref">a</span><span class="null">d</span><span class="null">i</span><span class="null">u</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">frad</span><span class="null"> </span></span></a></dt>
+<dd><p>Radius of the sphere that is 1.0, by default.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:geometry.generate.sphere.resolution">
+<span class="cmdkey"><span class="pref">r</span><span class="null">e</span><span class="null">s</span><span class="null">o</span><span class="null">l</span><span class="null">u</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fres</span><span class="null"> </span></span></a></dt>
+<dd><p>Resolution of the edges. The number of edges is set so that the edge length is smaller than <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fres</span></span></a> * <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">frad</span></span></a>. By default, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fres</span></span></a> = 0.1.</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../geometry.html" >Geometry</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_geometry.fill.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">geometry</span> <span class="pre">fill</span></code> command</a> |    
+       <a href="cmd_geometry.import.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">geometry</span> <span class="pre">import</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?geometry generate command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

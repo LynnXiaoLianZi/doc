@@ -1,0 +1,193 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Matrices &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Lists" href="fish_list.html" />
+    <link rel="prev" title="Tensors" href="fish_tensors.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="matrices">
+<span id="fish-matrixdesc"></span><h1>Matrices</h1>
+<p><span class="codename">FISH</span> supports two-dimensional matrices composed of floating-point values.</p>
+<p>Addition and multiplication of appropriately sized matrices are supported.</p>
+<p>Matrix components can be accessed using parentheses (), using row-column order.
+If the matrix has a single row or column, then only one index is necessary.</p>
+<p>Four indices can be used to specify a sub-matrix of a larger matrix.  In this case the first two are the starting row and column and the last two are the ending row and column.
+This notation can be used to retrieve a sub-matrix from a larger matrix, or on assignment to update a part of a larger matrix.</p>
+<p>The following example illustrates accessing matrix components using parentheses:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">    global m3 </span><span class="p">=</span><span class="n"> matrix</span><span class="p">(</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">,</span><span class="n">   </span><span class="sx">...</span>
+<span class="n">                       </span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">,</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                       </span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">5</span><span class="p">,</span><span class="m m-Double">6</span><span class="p">,</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                       </span><span class="m m-Double">7</span><span class="p">,</span><span class="m m-Double">8</span><span class="p">,</span><span class="m m-Double">9</span><span class="p">)</span>
+<span class="n">    global m1 </span><span class="p">=</span><span class="n"> matrix</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span>
+<span class="n">	</span>
+<span class="n">    global a </span><span class="p">=</span><span class="n"> m3</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span><span class="n">  </span><span class="c">; a = 6.0</span>
+<span class="n">    m3</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">6.5</span><span class="n">       </span><span class="c">; m3 = ((1,2,3) (4,5,6.5) (7,8,9))</span>
+<span class="n">    global b </span><span class="p">=</span><span class="n"> m1</span><span class="p">(</span><span class="m m-Double">3</span><span class="p">)</span><span class="n">    </span><span class="c">; b = 3.0</span>
+<span class="n">    m1</span><span class="p">(</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">3.5</span>
+<span class="n">    global c </span><span class="p">=</span><span class="n"> m3</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span><span class="n">  </span><span class="c">; A 1x3 row vector removed from m3 (4,5,6.5)</span>
+<span class="n">    m3</span><span class="p">(</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> </span><span class="p">=</span><span class="n"> matrix</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">10</span><span class="p">,</span><span class="m m-Double">11</span><span class="p">,</span><span class="m m-Double">12</span><span class="p">)</span><span class="n"> </span><span class="c">; m3 = ((1,2,3) (4,5,6.5) (10,11,12))</span>
+</pre></div>
+</div>
+<p>Matrix types are created using the <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/constructors/fish_matrix.html#function:matrix" title="Creates a new matrix type."><code class="xref fish fish-func docutils literal"><span class="pre">matrix</span></code></a> library function.   This function can also be used to convert lists, tensors, or arrays to matrices.</p>
+<p>Matrices can be converted to a list, tensor, or array using the <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/constructors/fish_list.html#function:list" title="Creates a new list object."><code class="xref fish fish-func docutils literal"><span class="pre">list</span></code></a>, <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/constructors/fish_tensor.html#function:tensor" title="Gets a new tensor type."><code class="xref fish fish-func docutils literal"><span class="pre">tensor</span></code></a>, or <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/constructors/fish_array.html#function:array" title="Creates and returns a new array type."><code class="xref fish fish-func docutils literal"><span class="pre">array</span></code></a> library functions.</p>
+<p>A number of additional methods, detailed in the <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/fish_fish.html#fish-matrix"><span class="std std-ref">Matrix Utilities</span></a> section, are available for matrix manipulation.
+These include matrix transpose, inversion, matrix determinant calculation and LU decomposition, among other operations.
+The <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/math_utilities/fish_math.outer.product.html#function:math.outer.product" title="Get the outer product of matrices or vectors."><code class="xref fish fish-func docutils literal"><span class="pre">math.outer.product</span></code></a> performs the outer product of two vectors, returning a matrix.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Matrices are an iterable type.  This means you can use it as the target of a <span class="cmdkey">loop foreach</span> statement (see <a class="reference internal" href="statements/loopendloop.html#fish-statement-loopforeach"><span class="std std-ref">Loop ForEach</span></a> and can be split (see <a class="reference internal" href="fish_splitting.html#fish-splitting"><span class="std std-ref">Splitting</span></a>).  Each entry of the matrix is iterated rows first: so row 1 column 1 (1,1) followed by row 1 column 2 (1,2) followed by row 1 column 3 (1,3) etc.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>As with most aggregate types, when the value is listed it will simply indicate that it is of type Matrix and give matrix size.  To see the contents of the matrix use the <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.list.html#kwd:fish.list.contents" title="For |FISH| values of an aggregate type (arrays, matrices, structures, maps,&#013;&#010;etc.) this will list the contents of the type in a structured way."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">list</span> <span class="pre">contents</span></code></a> command.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The example below illustrates some simple matrix manipulations.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="c">; Matrix functionality tests</span>
+<span class="nb">fish define</span><span class="ni"> setup</span>
+<span class="ni">    alan </span><span class="p">=</span><span class="ni"> matrix</span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">)</span>
+<span class="ni">    alan</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">6</span>
+<span class="ni">    alan</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">2.2</span>
+<span class="ni">    alan</span><span class="p">(</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">6.6</span>
+<span class="ni">    alan</span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="k">math.pi</span>
+<span class="nb">end</span>
+<span class="ni">[setup]</span>
+<span class="ni">[alan</span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">)</span><span class="ni">]</span>
+<span class="ni">[alan </span><span class="p">=</span><span class="ni"> </span><span class="k">matrix.transpose</span><span class="p">(</span><span class="ni">alan</span><span class="p">)</span><span class="ni">]</span>
+<span class="ni">[alan</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">)</span><span class="ni">]</span>
+
+
+<span class="nb">fish define</span><span class="ni"> sum_tests</span>
+<span class="ni">    herp </span><span class="p">=</span><span class="ni"> matrix</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">,</span><span class="ni"> </span><span class="m m-Double">6</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">1</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">)</span>
+<span class="ni">    derp </span><span class="p">=</span><span class="ni"> matrix</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">,</span><span class="ni"> </span><span class="m m-Double">4</span><span class="p">,</span><span class="ni"> </span><span class="m m-Double">3</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">7</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span>
+<span class="ni">   </span>
+<span class="ni">    klerp </span><span class="p">=</span><span class="ni"> herp </span><span class="o">+</span><span class="ni"> derp</span>
+<span class="ni">    werp </span><span class="p">=</span><span class="ni"> herp </span><span class="o">-</span><span class="ni"> derp</span>
+<span class="ni">    serp </span><span class="p">=</span><span class="ni"> herp </span><span class="o">*</span><span class="ni"> derp</span>
+<span class="nb">end</span>
+<span class="ni">[sum_tests]</span>
+<span class="ni">[klerp</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni">]</span><span class="n"> </span>
+<span class="ni">[werp</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni">]</span><span class="n"> </span>
+<span class="ni">[serp</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni">]</span><span class="n"> </span>
+<span class="n"> </span>
+<span class="nb">fish define</span><span class="ni"> test</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> first </span><span class="p">=</span><span class="ni"> vector</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> second </span><span class="p">=</span><span class="ni"> vector</span><span class="p">(</span><span class="m m-Double">8</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">5</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> prod </span><span class="p">=</span><span class="ni"> </span><span class="k">math.outer.product</span><span class="p">(</span><span class="ni">first</span><span class="p">,</span><span class="ni"> second</span><span class="p">)</span>
+<span class="ni">    output </span><span class="p">=</span><span class="ni"> list</span><span class="p">(</span><span class="ni">prod</span><span class="p">)</span>
+<span class="nb">end</span>
+<span class="ni">[test]</span>
+<span class="nb">fish list</span><span class="n"> contents </span><span class="ni">[output]</span>
+</pre></div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="fish.html" ><span class="codename">FISH</span> Scripting Reference</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="fish_languagerules.html" ><span class="codename">FISH</span> Rules and Usage</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="fish_datatypes.html" accesskey="U">Data Types</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="fish_tensors.html"
+                           title="previous chapter"> Tensors</a> |    
+       <a href="fish_list.html"
+                           title="next chapter">Lists</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Matrices" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

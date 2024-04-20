@@ -1,0 +1,153 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Hardware Lock Not Detected! Dialog &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="Update Alert" href="updateavailable.html" />
+    <link rel="prev" title="Startup Dialog" href="startup.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="hardware-lock-not-detected-dialog">
+<span id="dlg-keyerror"></span><h1><em>Hardware Lock Not Detected!</em> Dialog</h1>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="figure align-center">
+<img alt="../../../../../../../_images/key_error.png" src="../../../../../../../_images/key_error.png" />
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The program is secured using a hardware lock (also referred to as a “security key” or “dongle”).  This is a physical device (usually a USB stick) that is attached either to the local machine
+or to a network server. If there is a problem locating the local or network key on program start, this dialog will appear.</p>
+<p>As the choices in the dialog indicate, there is a range of possible explanations for failure to locate a key. Before
+examining the options, note that the first line in the dialog reports the driver version for the key. This can be important
+information since absent or out-of-date drivers can cause start-up errors to occur, and none of the options provided in
+the dialog will resolve such a problem. It is worth noting this information in the event that technical support is requested.</p>
+<p><strong>Try Again:</strong> This option is worth trying when a hardware lock is present and there is no reason to expect it would not work.</p>
+<p><strong>Continue:</strong> This option bypasses the need to operate in a licensed mode, in which case the program will start either in
+demonstration mode or in non-cycling mode. In demonstration mode, the program is fully functional but cycling can only be
+done on small models. In non-cycling mode, the program will not cycle at all. When installed from a <em>Software Installation</em> flash drive or web download, the <span class="codename">UDEC</span> installation (.msi) file will automatically set up the ability to run in demonstration mode when a key is not
+present. If this mode is not available when there is no key (i.e., on keyless operation the user enters non-cycling
+mode), it tends to indicate the program was not normally installed and may be operating in an unorthodox or user-created
+configuration.</p>
+<p><strong>Specify Server:</strong> If this option is chosen, a dialog will follow that will allow the user to specify either the IP
+address or the machine name of the computer to use as a network license server (assuming, of course, that at least one
+network key is available and accessible on the user’s network). This step must be performed (and this dialog will be shown)
+the first time a client machine attempts to start <span class="codename">UDEC</span> under a network license. If it succeeds, subsequent starts from
+the client will automatically search for the server that was last used successfully; only in the event of failure to find
+that server would this dialog be shown. If an attempt to specify a server fails, the program focus will return to the
+<em>Hardware Lock Not Detected!</em> dialog.</p>
+<p><strong>Scan Network:</strong> This option will look on the user’s network for an available license. <span class="codename">UDEC</span> will report if/when one is
+found and ask the user if they would like to connect to that server. If so, the program will start normally, and on
+subsequent starts, that client will attempt to acquire a license from that server automatically. In the event of failure,
+the <em>Hardware Lock Not Detected!</em> dialog will be shown. Control will return to the dialog if a network scan fails to find
+a server with a key that has an available license.</p>
+<p>Closing the dialog using the “Close” button in the top-right corner has the same effect as choosing <span class="button">Continue</span>.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../mechanics/program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../../mechanics/configuration/configuration.html" >Program Layout, Configuration, Tools</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../../mechanics/configuration/tools.html" accesskey="U">Common Dialogs</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="startup.html"
+                           title="previous chapter"> <em>Startup</em> Dialog</a> |    
+       <a href="updateavailable.html"
+                           title="next chapter">Update Alert</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Hardware Lock Not Detected! Dialog" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,421 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block solve command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block structure commands" href="cmd_block.structure.html" />
+    <link rel="prev" title="block show command" href="cmd_block.show.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-solve-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">solve</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="block command">
+<dt id="command:block.solve">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">s</span><span class="null">o</span><span class="null">l</span><span class="null">v</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.solve.age" title="block solve age">age</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.solve.clock" title="block solve clock">clock</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.solve.cycle" title="block solve cycle">cycle</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.solve.elastic" title="block solve elastic">elastic</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.solve.force" title="block solve force">force</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.solve.fscontour" title="block solve fscontour">fscontour</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.solve.fscontour.factor-increment" title="block solve fscontour factor-increment">factor-increment</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.solve.fscontour.contact" title="block solve fscontour contact">contact</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.solve.fscontour.maximum-cycles" title="block solve fscontour maximum-cycles">maximum-cycles</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.solve.fscontour.minimum-factor" title="block solve fscontour minimum-factor">minimum-factor</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.solve.fscontour.structure" title="block solve fscontour structure">structure</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.solve.message" title="block solve message">message</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.solve.no-age" title="block solve no-age">no-age</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.solve.ratio" title="block solve ratio">ratio</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.solve.ratio-average" title="block solve ratio-average">ratio-average</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.solve.ratio-local" title="block solve ratio-local">ratio-local</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.solve.ratio-maximum" title="block solve ratio-maximum">ratio-maximum</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.solve.relax" title="block solve relax">relax</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.solve.step" title="block solve step">step</a></p>
+</div>
+<p>Enable the automatic detection of the steady-state solution for mechanical problems. A calculation is performed until the limiting conditions, as defined by the following keywords, are reached. SOLVE force must be used for rigid block models. The SOLVE command does not monitor fluid flow. It is possible that mechanical equilibrium may be reached prior to fluid-flow equilibrium for steady-state flow. CYCLE ftime should be used for transient fluid flow.</p>
+<dl class="keyword">
+<dt id="kwd:block.solve.age">
+<span class="cmdkey"><span class="pref">a</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the total problem time to <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a>. The model will cycle until the total problem time equals <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a>. If creep is active, creep time is used for the limit. Otherwise, mechanical time is used.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.clock">
+<span class="cmdkey"><span class="pref">c</span><span class="pref">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set computer runtime limit, in minutes. A time limit of greater than 1440 minutes (24 hours) will not be accepted; for longer runtimes (e.g., over a weekend), several <code class="xref fish fish-cmd docutils literal"><span class="pre">solve</span> <span class="pre">clock</span></code> commands can be given in sequence. (default is <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> = 1440 minutes)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.cycle">
+<span class="cmdkey"><span class="pref">c</span><span class="pref">y</span><span class="null">c</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the cycle limit. (The default is 100,000 cycles.)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.elastic">
+<span class="cmdkey"><span class="pref">e</span><span class="null">l</span><span class="null">a</span><span class="null">s</span><span class="null">t</span><span class="null">i</span><span class="null">c</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="null">o</span><span class="null">n</span><span class="null">l</span><span class="null">y</span></span>></span><span class="null"> </span></dt>
+<dd><p>Set joints and zone constitutive models to infinite strength for initial equilibrium cycling. This command does not reset previously established plasticity flags. However, plastic deformation will not occur while in effect. This command does an initial solve with infinite strength, and then solves again with strengths returned to previous values. To do only the infinite strength step, include the <span class="cmdkey">only</span> keyword.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.force">
+<span class="cmdkey"><span class="pref">f</span><span class="null">o</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the out-of-balance force limit (the default is <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> = 100).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour">
+<span class="cmdkey"><span class="pref">f</span><span class="null">s</span><span class="null">c</span><span class="null">o</span><span class="null">n</span><span class="null">t</span><span class="null">o</span><span class="null">u</span><span class="null">r</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span></span>></span><span class="null"> </span></dt>
+<dd><blockquote>
+<div><p>Generate the data for plotting factor of safety contours.  The contours may be plotted by plotting blocks and selecting contour and factor of safety in the block attributes.</p>
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.factor-increment">
+<span class="cmdkey"><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">-</span><span class="pref">i</span><span class="null">n</span><span class="null">c</span><span class="null">r</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>The reduction factor increment; the default value is 0.05.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.contact">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">n</span><span class="null">t</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Include or exclude contact properties in the factor-of-safety calculations. By default friction and cohesion are included. Tension is excluded.</p>
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.contact.include">
+<span class="cmdkey"><span class="pref">i</span><span class="null">n</span><span class="null">c</span><span class="null">l</span><span class="null">u</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd></dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.contact.exclude">
+<span class="cmdkey"><span class="pref">e</span><span class="null">x</span><span class="null">c</span><span class="null">l</span><span class="null">u</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p><span class="cmdkey">include</span> and <span class="cmdkey">exclude</span> keywords each take any of the following keywords.</p>
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.contact.exclude.cohesion">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">h</span><span class="null">e</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>Contact cohesion (default: include).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.contact.exclude.friction">
+<span class="cmdkey"><span class="pref">f</span><span class="null">r</span><span class="null">i</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>Contact friction (default: include).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.contact.exclude.material">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Contacts of material <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> (default: include all).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.contact.exclude.tension">
+<span class="cmdkey"><span class="pref">t</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>Contact tension (default: exclude).</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.maximum-cycles">
+<span class="cmdkey"><span class="pref">m</span><span class="pref">a</span><span class="null">x</span><span class="null">i</span><span class="null">m</span><span class="null">u</span><span class="null">m</span><span class="null">-</span><span class="pref">c</span><span class="null">y</span><span class="null">c</span><span class="null">l</span><span class="null">e</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>The cycle limit for each stage; the limit is 30,000 by default.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.minimum-factor">
+<span class="cmdkey"><span class="pref">m</span><span class="pref">i</span><span class="null">n</span><span class="null">i</span><span class="null">m</span><span class="null">u</span><span class="null">m</span><span class="null">-</span><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Starting value for strength reduction; the default value is 1.0.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.structure">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">u</span><span class="null">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Include or exclude Structural element properties in the factor-of-safety calculations.</p>
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.structure.include">
+<span class="cmdkey"><span class="pref">i</span><span class="null">n</span><span class="null">c</span><span class="null">l</span><span class="null">u</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd></dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.structure.exclude">
+<span class="cmdkey"><span class="pref">e</span><span class="null">x</span><span class="null">c</span><span class="null">l</span><span class="null">u</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div></blockquote>
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.total-stages">
+<span class="cmdkey"><span class="pref">t</span><span class="null">o</span><span class="null">t</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">s</span><span class="null">t</span><span class="null">a</span><span class="null">g</span><span class="null">e</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><blockquote>
+<div>Number of stages; the default stage is 10.</div></blockquote>
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.total-stages.velocity-limit">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">l</span><span class="null">i</span><span class="null">m</span><span class="null">i</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>The limiting velocity threshold; a nonzero value is required.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.total-stages.zone">
+<span class="cmdkey"><span class="pref">z</span><span class="null">o</span><span class="null">n</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Include or exclude zone properties in the factor-of-safety calculations. By default friction, ufriction, cohesion and ucohesion are included. Tension and utension are excluded.</p>
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.total-stages.zone.include">
+<span class="cmdkey"><span class="pref">i</span><span class="null">n</span><span class="null">c</span><span class="null">l</span><span class="null">u</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd></dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.total-stages.zone.exclude">
+<span class="cmdkey"><span class="pref">e</span><span class="null">x</span><span class="null">c</span><span class="null">l</span><span class="null">u</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p><span class="cmdkey">include</span> and <span class="cmdkey">exclude</span> keywords each take any of the following keywords.</p>
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.total-stages.zone.exclude.cohesion">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">h</span><span class="null">e</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>Zone cohesion (default: include).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.total-stages.zone.exclude.friction">
+<span class="cmdkey"><span class="pref">f</span><span class="null">r</span><span class="null">i</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>Zone friction (default: include).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.total-stages.zone.exclude.material">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>blocks of material <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> (default: include all).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.total-stages.zone.exclude.tension">
+<span class="cmdkey"><span class="pref">t</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>Zone tension (default: exclude).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.total-stages.zone.exclude.ucohesion">
+<span class="cmdkey"><span class="pref">u</span><span class="pref">c</span><span class="null">o</span><span class="null">h</span><span class="null">e</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>Ubiquitous joint cohesion (default: include)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.fscontour.total-stages.zone.exclude.ufriction">
+<span class="cmdkey"><span class="pref">u</span><span class="pref">f</span><span class="null">r</span><span class="null">i</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>Ubiquitous joint friction (default: include)</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.message">
+<span class="cmdkey"><span class="pref">m</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">a</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><p>Used to inhibit the cycle progress from being displyed on the screen (default = <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.no-age">
+<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">-</span><span class="pref">a</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Turn off the age limit for the SOLVE command.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.ratio">
+<span class="cmdkey"><span class="pref">r</span><span class="pref">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the ratio limit for the mechanical calculation process. ratio is the default limit, and the default value is 10<sup>−5</sup>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.ratio-average">
+<span class="cmdkey"><span class="pref">r</span><span class="pref">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">-</span><span class="pref">a</span><span class="null">v</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Specify the calculation mode for the ratio limit for mechanical calculations as: the average unbalanced mechanical force magnitude divided by the average applied mechanical force magnitude for all block centroids or gridpoints in the model (default).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.ratio-local">
+<span class="cmdkey"><span class="pref">r</span><span class="pref">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">-</span><span class="pref">l</span><span class="null">o</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>Specify the calculation mode for the ratio limit for mechanical calculations as: the maximum value of the unbalanced mechanical force magnitude divided by the applied mechanical force magnitude for all block centroids or gridpoints in the model.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.ratio-maximum">
+<span class="cmdkey"><span class="pref">r</span><span class="pref">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">-</span><span class="pref">m</span><span class="null">a</span><span class="null">x</span><span class="null">i</span><span class="null">m</span><span class="null">u</span><span class="null">m</span><span class="null"> </span></span></dt>
+<dd><p>Specify the calculation mode for the ratio limit for mechanical calculations as: the maximum unbalanced mechanical force magnitude for all block centroids or gridpoints in the model divided by the average applied mechanical force magnitude for all the block centroids or gridpoints.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.relax">
+<span class="cmdkey"><span class="pref">r</span><span class="pref">e</span><span class="null">l</span><span class="null">a</span><span class="null">x</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span></span>></span><span class="null"> </span></dt>
+<dd><p>SOLVE relax is used to slowly reduce the forces on the inside of an excavation, to avoid a large tensile stress wave. This tensile stress wave may cause dynamic failure in zones that would not normally fail under the static stresses caused by the excavation. SOLVE relax can also be used to reduce the boundary forces on the internal boundary of an excavation down to a prescribed level, to simulate the 3D effect of a tunnel advance. x and y are the coordinates of a point inside the excavation. The internal boundary of the excavation must not intersect the edge of the model. The sequence used by relax is</p>
+<ol class="arabic simple">
+<li>Calculate the reaction forces on perimeter of an excavation.</li>
+<li>Ramp down reaction forces in a prescribed manner.</li>
+<li>Solve to equilibrium using the SOLVE ratio value that was in effect prior to the SOLVE relax command.</li>
+</ol>
+<p>SOLVE relax will generate a “ground reaction” table if a table number and a history are supplied. The y value in the table will be the reduction factor, and the x value will be a specified history value. For example, a history of the crown y-displacement may be used. The following keywords are available.</p>
+<dl class="keyword">
+<dt id="kwd:block.solve.relax.cycles">
+<span class="cmdkey"><span class="pref">c</span><span class="null">y</span><span class="null">c</span><span class="null">l</span><span class="null">e</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Set a specified number of cycles in each reduction step. (default = SOLVE ratio)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.relax.end-factor">
+<span class="cmdkey"><span class="pref">e</span><span class="null">n</span><span class="null">d</span><span class="null">-</span><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the last reduction factor (default = 0.0).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.relax.history-groundreaction">
+<span class="cmdkey"><span class="pref">h</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">y</span><span class="null">-</span><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">n</span><span class="null">d</span><span class="null">r</span><span class="null">e</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the history to be used as the <span class="math">\(x\)</span> value for the “ground reaction” table generated.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.relax.in-excavation">
+<span class="cmdkey"><span class="pref">i</span><span class="null">n</span><span class="null">-</span><span class="pref">e</span><span class="null">x</span><span class="null">c</span><span class="null">a</span><span class="null">v</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fx,</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fy</span><span class="null"> </span></span></a></dt>
+<dd><p>specify a point inside of the excatavation that will be relaxed.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.relax.ratio">
+<span class="cmdkey"><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the solve ratio to be used in each of the reduction steps.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.relax.reduction-steps">
+<span class="cmdkey"><span class="pref">r</span><span class="null">e</span><span class="null">d</span><span class="null">u</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">s</span><span class="null">t</span><span class="null">e</span><span class="null">p</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the number of force reduction steps to use (default = 10).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.relax.table-groundreaction">
+<span class="cmdkey"><span class="pref">t</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null">-</span><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">n</span><span class="null">d</span><span class="null">r</span><span class="null">e</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the table number to be used for the “ground reaction” table, where the displacements are obtained from the selected <span class="cmdkey">reaction-history</span> history number.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.relax.table-reduction-factor">
+<span class="cmdkey"><span class="pref">t</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null">-</span><span class="pref">r</span><span class="null">e</span><span class="null">d</span><span class="null">u</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">f</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Set reduction factors from table <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> . The number of factors should match the number of force reduction steps.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.relax.table-solve-ratio">
+<span class="cmdkey"><span class="pref">t</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null">-</span><span class="pref">s</span><span class="null">o</span><span class="null">l</span><span class="null">v</span><span class="null">e</span><span class="null">-</span><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Use the values in the specified table as the solve ratio for each reduction step. The number of ratios in the table should match <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a>  steps.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.solve.step">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">e</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the cycle limit. (The default is s = 100,000 cycles.)</p>
+</dd></dl>
+
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Once the limits have been defined (including default values), they remain in effect until specifically reset in a subsequent SOLVE command, or until a NEW command is used. The NEW command resets limits to their default values. If the &lt;Esc&gt; key is pressed during execution, UDEC returns control to the user after the current step is completed.</p>
+<p class="last">The objective of the SOLVE elastic scheme is to get an initial state that is both in equilibrium and not actively failing. Usually we have no knowledge of how an existing system got to its present state unless we know, and can reproduce, the complete history (e.g., excavation of a slope or tectonic loading of a geologic system). Thus, any scheme that satisfies the two conditions listed above is valid, given a lack of knowledge of history. However, since the process is arbitrary, the plastic strains accumulated during the process of arriving at the initial state have no significance. The approach of switching on plasticity after an initial elastic solution will tend to minimize the region that goes plastic, which should lead to a more uniform initial stress state. The plastic strains accumulated in getting to this solution have no significance. This also applies to the displacements, which should be set to zero (in general) before proceeding.</p>
+</div>
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="block_commands.html" accesskey="U">Block Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_block.show.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">show</span></code> command</a> |    
+       <a href="cmd_block.structure.html"
+                           title="next chapter"><span class="fishcmd">block structure</span> commands</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block solve command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

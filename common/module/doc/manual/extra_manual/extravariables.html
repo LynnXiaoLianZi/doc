@@ -1,0 +1,133 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Extra Variables &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Groups" href="../group_manual/groupkwd.html" />
+    <link rel="prev" title="trace results command" href="../../../../kernel/doc/manual/trace_manual/trace_commands/cmd_trace.results.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="extra-variables">
+<span id="id1"></span><h1>Extra Variables</h1>
+<p>Most model objects (blocks, zones, gridpoints, structural elements, etc.) have <em>extra</em> storage for user-defined variables to be assigned and visualized. For instance, supposed that one wants to store the maximum and minimum stresses of each zone at one instant of time during a simulation. This information can be stored in extra variables associated with each zone.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">fish define</span><span class="ni"> setExtra</span>
+<span class="ni">        bi </span><span class="p">=</span><span class="ni"> </span><span class="k">block.head</span>
+<span class="ni">        </span><span class="k">loop</span><span class="ni"> </span><span class="k">while</span><span class="ni"> bi # </span><span class="m m-Double">0</span>
+<span class="ni">                zi </span><span class="p">=</span><span class="ni"> </span><span class="k">block.zone</span><span class="p">(</span><span class="ni">bi</span><span class="p">)</span>
+<span class="ni">                </span><span class="k">loop</span><span class="ni"> </span><span class="k">while</span><span class="ni"> zi # </span><span class="m m-Double">0</span>
+<span class="ni">                        </span><span class="k">block.zone.extra</span><span class="p">(</span><span class="ni">zi</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="k">block.zone.mass</span><span class="p">(</span><span class="ni">zi</span><span class="p">)</span>
+<span class="ni">                        </span><span class="k">block.zone.extra</span><span class="p">(</span><span class="ni">zi</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="k">block.zone.area</span><span class="p">(</span><span class="ni">zi</span><span class="p">)</span>
+<span class="ni">    zi </span><span class="p">=</span><span class="ni"> </span><span class="k">block.zone.next</span><span class="p">(</span><span class="ni">zi</span><span class="p">)</span>
+<span class="ni">                </span><span class="k">endloop</span>
+<span class="ni">                bi </span><span class="p">=</span><span class="ni"> </span><span class="k">block.next</span><span class="p">(</span><span class="ni">bi</span><span class="p">)</span>
+<span class="ni">        </span><span class="k">endloop</span>
+<span class="nb">end</span>
+</pre></div>
+</div>
+<p>In this case the second argument to the <a class="reference internal" href="../../../../../udec/docproject/source/elements/block/block.zone_fish/fish_block.zone.extra.html#function:block.zone.extra" title="Get/set the value of block zone extra variable at (optional) position  i ."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.extra</span></code></a> <span class="codename">FISH</span> intrinsic is the index of the corresponding extra variable. Thus multiple extra variables (up to 128) can be assigned to each model object that has the extra variable capability. Also note that extra variables can be of any type which has a corresponding <span class="codename">FISH</span> type (i.e., <a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">boolean</span></span></a>, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">integer</span></span></a>, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">float</span></span></a>, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">string</span></span></a>, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">vector</span></span></a>, matrix, etc.).</p>
+<p><span class="flag3">[CS: it might be useful to just have a list here of the model objects that provide an extra variable]</span></p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" accesskey="U">Common Model Objects</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../../../../kernel/doc/manual/trace_manual/trace_commands/cmd_trace.results.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">trace</span> <span class="pre">results</span></code> command</a> |    
+       <a href="../group_manual/groupkwd.html"
+                           title="next chapter">Groups</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Extra Variables" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

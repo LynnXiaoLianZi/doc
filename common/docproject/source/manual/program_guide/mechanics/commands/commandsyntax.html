@@ -1,0 +1,144 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Command Syntax &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="Command Shaping" href="commandshaping.html" />
+    <link rel="prev" title="How Commands Work" href="howcommandswork.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="command-syntax">
+<span id="commandsyntax"></span><h1>Command Syntax</h1>
+<p>The command syntax has been designed in a way that commands in all Itasca codes will behave in a similar manner. To differentiate commands that are intended only for <span class="codename">UDEC</span>, most <span class="codename">UDEC</span> commands will begin with the word BLOCK.
+All commands in the program are words that consist of a primary word (a noun/object) and a
+first keyword (a verb/action). Because of the preceeding BLOCK word, the primary word may actually consist of two words (i.e. BLOCK ZONE, BLOCK CONTACT) preceeding the verb. To this foundation may be added options and modifiers (adverb(s)), and a range (a prepositional phrase). In other words, commands syntactically mimic natural language.</p>
+<p>The latter components (options, modifiers, and ranges) are uniformly required all commands and are frequently optional.  These parts also usually require user-supplied values to be completed.</p>
+<p>The syntactical pattern is expressed as</p>
+<blockquote>
+<div>NOUN (NOUN) - VERB - OPTION(S) - MODIFIER(S) - RANGE</div></blockquote>
+<p>Note the order is consistent and <em>required</em> in all commands.  That said, parts may be omitted in the middle when optional (that is, the pattern NOUN - VERB - RANGE is valid in commands where OPTION and MODIFIER components are optional — which is most of them).</p>
+<p class="h2 rubric">Syntax Pattern Examples</p>
+<p><strong>NOUN-VERB</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">program quit</span>
+<span class="nb">model new</span>
+</pre></div>
+</div>
+<p>This is the simplest of command patterns. In these lines, <span class="cmdkey">program</span> and <span class="cmdkey">model</span> are the NOUN component; <span class="cmdkey">quit</span> and <span class="cmdkey">new</span> are the VERB component.  The first command exits the program. The second command clears the current model state.  See <a class="reference internal" href="../../../../../../kernel/doc/manual/program/commands/cmd_program.quit.html#command:program.quit" title="Close the program."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">quit</span></code></a> and <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.new.html#command:model.new" title="Clear model-state information. Model information is cleared, allowing one to&#013;&#010;begin a new"><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">new</span></code></a>.</p>
+<p><strong>NOUN-VERB-OPTION</strong>, with and without <strong>RANGE</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p><strong>NOUN-VERB-MODIFIER</strong>, with and without <strong>RANGE</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p><strong>NOUN-VERB-OPTION-MODIFIER</strong>, with and without <strong>RANGE</strong></p>
+<p>To recap, a command will always have, at minimum, a NOUN and a VERB.  Depending on the command, these two may be followed by: zero, one, or more OPTIONs; zero, one, or more MODIFIERs (which will vary the effect of the command); and zero or one
+RANGE (which will restrict the effect of the command).</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="commands.html" >Commands</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="howcommandswork.html" accesskey="U">How Commands Work</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="howcommandswork.html"
+                           title="previous chapter"> How Commands Work</a> |    
+       <a href="commandshaping.html"
+                           title="next chapter">Command Shaping</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Command Syntax" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

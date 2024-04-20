@@ -1,0 +1,501 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Operators, Assignment, Conversions, and Member Access &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Executing FISH: Inline FISH or FISH Fragments" href="fish_inline.html" />
+    <link rel="prev" title="Functions: Structure, Evaluation and Calling Scheme" href="fish_functions.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="operators-assignment-conversions-and-member-access">
+<span id="fish-arithmetic"></span><h1>Operators, Assignment, Conversions, and Member Access</h1>
+<p>Arithmetic follows the conventions used in most languages.
+Available operators fall into four categories:  binary operators, unary operators, equality operators, and the access operator.</p>
+<p>The following <em>binary</em> operators are available, in order of precedence:</p>
+<table border="1" class="colwidths-given icg1 docutils" id="operatornametable">
+<caption><span class="caption-text">Table 1: <span class="codename">FISH</span> Binary Operators</span></caption>
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>^</td>
+<td>Exponent</td>
+</tr>
+<tr class="row-odd"><td>/</td>
+<td>Division  (always promotes to float)</td>
+</tr>
+<tr class="row-even"><td>//</td>
+<td>Floor Division floor(i/j)</td>
+</tr>
+<tr class="row-odd"><td>*</td>
+<td>Multiply</td>
+</tr>
+<tr class="row-even"><td>%</td>
+<td>Modulus</td>
+</tr>
+<tr class="row-odd"><td>-</td>
+<td>Subtract</td>
+</tr>
+<tr class="row-even"><td>+</td>
+<td>Add</td>
+</tr>
+<tr class="row-odd"><td>==</td>
+<td>Equals-Test</td>
+</tr>
+<tr class="row-even"><td>&gt;</td>
+<td>Greater</td>
+</tr>
+<tr class="row-odd"><td>&lt;</td>
+<td>Lesser</td>
+</tr>
+<tr class="row-even"><td>#</td>
+<td>Not Equals</td>
+</tr>
+<tr class="row-odd"><td>&gt;=</td>
+<td>GreaterEq</td>
+</tr>
+<tr class="row-even"><td>&lt;=</td>
+<td>LessEq</td>
+</tr>
+<tr class="row-odd"><td>&amp;</td>
+<td>And</td>
+</tr>
+<tr class="row-even"><td>|</td>
+<td>Or</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="colwidths-given icg1 docutils" id="operatortypesupport">
+<caption><span class="caption-text">Table 2: <span class="codename">FISH</span> Binary Operator Type Supported</span></caption>
+<colgroup>
+<col width="10%" />
+<col width="7%" />
+<col width="12%" />
+<col width="12%" />
+<col width="7%" />
+<col width="8%" />
+<col width="7%" />
+<col width="7%" />
+<col width="8%" />
+<col width="5%" />
+<col width="8%" />
+<col width="4%" />
+<col width="4%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Left Type</th>
+<th class="head">Boolean</th>
+<th class="head">Integer</th>
+<th class="head">Real</th>
+<th class="head">String</th>
+<th class="head">Vector</th>
+<th class="head">Pointer</th>
+<th class="head">Index</th>
+<th class="head">Tensor</th>
+<th class="head">List</th>
+<th class="head">Matrix</th>
+<th class="head">Map</th>
+<th class="head">Structure</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Boolean</td>
+<td>==&lt;&amp;</td>
+<td>==&lt;&amp;</td>
+<td>==&amp;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>==&amp;</td>
+<td>==&amp;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Integer</td>
+<td>==&lt;&amp;</td>
+<td>+-*/^//==&lt;&amp;%</td>
+<td>+-*/^//==&lt;&amp;%</td>
+<td>&#160;</td>
+<td>*</td>
+<td>&amp;</td>
+<td>+-*==&lt;&amp;</td>
+<td>&#160;</td>
+<td>*</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Real</td>
+<td>==&amp;</td>
+<td>+-*/^//==&lt;&amp;%</td>
+<td>+-*/^//==&lt;&amp;%</td>
+<td>&#160;</td>
+<td>*</td>
+<td>&amp;</td>
+<td>==&lt;&amp;</td>
+<td>&#160;</td>
+<td>*</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>String</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>+==&lt;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Vector</td>
+<td>&#160;</td>
+<td>/*//</td>
+<td>/*//</td>
+<td>&#160;</td>
+<td>+-/*//==</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>*</td>
+<td>+-/*//==</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Pointer</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>==&lt;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Index</td>
+<td>&amp;</td>
+<td>+-*==&lt;&amp;</td>
+<td>&amp;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&amp;</td>
+<td>+==&lt;&amp;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Tensor</td>
+<td>&#160;</td>
+<td>*/</td>
+<td>*/</td>
+<td>&#160;</td>
+<td>*</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>+-*==</td>
+<td>*</td>
+<td>+-*</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>List</td>
+<td>ALL</td>
+<td>ALL</td>
+<td>ALL</td>
+<td>ALL</td>
+<td>ALL</td>
+<td>ALL</td>
+<td>ALL</td>
+<td>ALL</td>
+<td>ALL</td>
+<td>ALL</td>
+<td>ALL</td>
+<td>ALL</td>
+</tr>
+<tr class="row-odd"><td>Matrix</td>
+<td>&#160;</td>
+<td>*/</td>
+<td>*/</td>
+<td>&#160;</td>
+<td>+-*==</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>+-*==</td>
+<td>*</td>
+<td>+-*==</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Map</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>==</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Structure</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>==</td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple">
+<li>&lt; indicates support for comparison operators in general (&lt;, &gt;, &lt;=, and &gt;=).</li>
+<li>== implies support for #.</li>
+<li>&amp; implies support for |.</li>
+<li>Lists are special, in that ALL operators apply to lists, but their effects are applied to the elements of the list.</li>
+</ol>
+<table border="1" class="colwidths-given icg1 docutils" id="unaryoperatortable">
+<caption><span class="caption-text">Table 3: List of <span class="codename">FISH</span> Unary Operators</span></caption>
+<colgroup>
+<col width="7%" />
+<col width="23%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Description</th>
+<th class="head">Types Supported</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>-</td>
+<td>Negation</td>
+<td>Integer, Real, Vector, List, Matrix, Tensor</td>
+</tr>
+<tr class="row-odd"><td>~</td>
+<td>Logical Not</td>
+<td>Boolean, Integer, Real, Pointer, Index</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="colwidths-given icg1 docutils" id="operatortable">
+<caption><span class="caption-text">Table 4: List of <span class="codename">FISH</span> Assignment Operators</span></caption>
+<colgroup>
+<col width="7%" />
+<col width="23%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Description</th>
+<th class="head">Types Supported</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>=</td>
+<td>Assignment</td>
+<td>All types, and intrinsic on left.</td>
+</tr>
+<tr class="row-odd"><td>+=</td>
+<td>Add and Assign</td>
+<td>As + binary operator.</td>
+</tr>
+<tr class="row-even"><td>-=</td>
+<td>Subtract and Assign</td>
+<td>As - binary operator.</td>
+</tr>
+<tr class="row-odd"><td>/=</td>
+<td>Divide and Assign</td>
+<td>As / binary operator.</td>
+</tr>
+<tr class="row-even"><td>*=</td>
+<td>Multiply and Assign</td>
+<td>As * binary operator.</td>
+</tr>
+</tbody>
+</table>
+<p>Binary operators are always applied in the order of precedence given.
+Arbitrary numbers of parenthesis may be used to make the order of evaluation explicit;
+expressions within parenthesis are evaluated before anything else, and inner parenthesis are evaluated first.
+As an example, <span class="codename">FISH</span> evaluates the variable <a class="reference internal" href="../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">xx</span></span></a> as <a class="reference internal" href="../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">133</span></span></a>:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">xx </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">6</span><span class="o">/</span><span class="m m-Double">3</span><span class="o">*</span><span class="m m-Double">4</span><span class="o">^</span><span class="m m-Double">3</span><span class="o">+</span><span class="m m-Double">5</span>
+</pre></div>
+</div>
+<p>The expression is equivalent to:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">xx </span><span class="p">=</span><span class="n"> </span><span class="p">(</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">6</span><span class="o">/</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> </span><span class="o">*</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">4</span><span class="o">^</span><span class="m m-Double">3</span><span class="p">)</span><span class="n"> </span><span class="p">)</span><span class="n"> </span><span class="o">+</span><span class="n"> </span><span class="m m-Double">5</span>
+</pre></div>
+</div>
+<p>If there is any doubt about the order in which arithmetic operators are applied, then parentheses should be
+used for clarification.</p>
+<p>If either of the two arguments in an arithmetic operation is of floating-point type, then the result will be floating-point.
+If <em>both</em> of the arguments are integers, then the result will be integer, except for the division operator which will always promote to float.
+Tensors are automatically promoted to matrices using the same rules.</p>
+<p>The division operator will always promote to float.</p>
+<p>The floor division operator is define as floor(i/j) - this means that -1//3 will return -1.</p>
+<p class="h2 rubric" id="typememberaccess">Member Access Operator</p>
+<p>The last operator available is the member access operator (<code class="docutils literal"><span class="pre">-&gt;</span></code>).  This operator is available to access components of vector, tensor, and structure types.</p>
+<p>The structure type allows the user to define their own access symbols, as the names of the structure members.</p>
+<p>The member access operator can be used on the left or right hand side of an assignment, as is a convenient way to access the individual components of a vector or a tensor. It may be used directly on a symbol or local value, or as part of an extended expression.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">local a </span><span class="p">=</span><span class="n"> vector</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span>
+<span class="n">local b </span><span class="p">=</span><span class="n"> a</span><span class="o">-&gt;</span><span class="n">x</span>
+<span class="n">a</span><span class="o">-&gt;</span><span class="n">y </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">4</span>
+<span class="n">gp</span><span class="p">.</span><span class="n">pos</span><span class="p">(</span><span class="n">pnt</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">x </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">3.0</span>
+<span class="n">local c </span><span class="p">=</span><span class="n"> zone</span><span class="p">.</span><span class="n">strain</span><span class="p">.</span><span class="n">rate</span><span class="p">(</span><span class="n">pnt</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">zz</span>
+</pre></div>
+</div>
+<table border="1" class="icg1 docutils" id="memberaccesstable">
+<caption><span class="caption-text">Table 5: List of member access operators</span></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Access</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Vector</td>
+<td><code class="docutils literal"><span class="pre">x</span></code>, <code class="docutils literal"><span class="pre">y</span></code>, <code class="docutils literal"><span class="pre">z</span></code></td>
+</tr>
+<tr class="row-odd"><td>Tensor</td>
+<td><code class="docutils literal"><span class="pre">xx</span></code>, <code class="docutils literal"><span class="pre">xy</span></code>, <code class="docutils literal"><span class="pre">xz</span></code>, <code class="docutils literal"><span class="pre">yy</span></code>, <code class="docutils literal"><span class="pre">yz</span></code>, <code class="docutils literal"><span class="pre">zz</span></code></td>
+</tr>
+<tr class="row-even"><td>Structure</td>
+<td>defined by user</td>
+</tr>
+</tbody>
+</table>
+<p>.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="fish.html" ><span class="codename">FISH</span> Scripting Reference</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="fish_languagerules.html" accesskey="U"><span class="codename">FISH</span> Rules and Usage</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="fish_functions.html"
+                           title="previous chapter"> Functions: Structure, Evaluation and Calling Scheme</a> |    
+       <a href="fish_inline.html"
+                           title="next chapter">Executing <span class="codename">FISH</span>:  Inline <span class="codename">FISH</span> or <span class="codename">FISH</span> Fragments</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Operators, Assignment, Conversions, and Member Access" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

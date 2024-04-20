@@ -1,0 +1,209 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The Editor Pane &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../search.html" />
+    <link rel="next" title="Editor Pane Toolbar" href="editortoolbar.html" />
+    <link rel="prev" title="Data File Handling" href="../datafilehandling.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="the-editor-pane">
+<span id="theeditorpane"></span><span id="editorpane"></span><span id="editoroverview"></span><h1>The <em>Editor</em> Pane</h1>
+<div class="enlarge figure align-right" id="id1">
+<a class="reference internal image-reference" href="../../../../../../../../_images/editorpane_udec.PNG"><img alt="editor pane image" src="../../../../../../../../_images/editorpane_udec.PNG" style="width: 181px;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: The <em>Editor</em> pane.  Click to enlarge in a separate window.</span></p>
+</div>
+<p>The <em>Editor</em> pane provides the ability to edit text-based project resources (data files, <span class="codename">FISH</span> files, etc.).  It is limited to the display of text and may be used with any text file. The main tools for text editing appear on the the <a class="reference internal" href="editortoolbar.html#editortoolbar"><span class="std std-ref">toolbar</span></a>, most of which also appear on the pane’s <a class="reference internal" href="../../plotting/views/plotpane.html#editor-rightclick"><span class="std std-ref">right-click menu</span></a>. User preferences and settings that affect the appearance of the <em>Editor</em> pane and the text appearing in it — including the syntax highlighting settings — may be set in the <span class="flag4">i</span> <a class="reference internal" href="../../configuration/options/options_editor.html#theeditoroptionspage"><span class="std std-ref">Editor</span></a> page of the <span class="flag4">i</span> <a class="reference internal" href="../../configuration/options/options.html#theoptionsdialog"><span class="std std-ref">Options</span></a> dialog; press the <em>Options</em> button ( <img alt="opts" src="../../../../../../../../_images/options_active.png" /> ) on the toolbar to access.</p>
+<p>The <em>Editor</em> pane provides features specifically designed to work with Itasca software data files, including: automatic syntax highlighting; collapsible <span class="codename">FISH</span> blocks, line numbering, and <a class="reference internal" href="../../commands/commandtools.html#commandtools"><span class="std std-ref">command-authoring assistance tools</span></a>.  Perhaps most importantly, command processing of a data file’s contents is available from within the pane via the “Execute/Stop” button ( <img alt="run" src="../../../../../../../../_images/execute_active.png" /> ) on the toolbar (and see also the “Run Selection” button ( <img alt="runselected" src="../../../../../../../../_images/runselection_normal.png" /> )) on the <a class="reference internal" href="editortoolbar.html#editortoolbar"><span class="std std-ref">toolbar</span></a>.</p>
+<p class="h2 rubric">Syntax Highlighting</p>
+<p>Syntax highlighting in the <em>Editor</em> pane is initially set to values that match the example listings that appear in this documentation.  Settings may be changed by the user by accessing the <span class="flag4">i</span> <a class="reference internal" href="../../configuration/options/options_editor.html#theeditoroptionspage"><span class="std std-ref">Editor</span></a> page in the <span class="flag4">i</span> <a class="reference internal" href="../../configuration/options/options.html#theoptionsdialog"><span class="std std-ref">Options</span></a> dialog.  A visual guide to the default settings is as follows.</p>
+<table border="1" class="colwidths-given blank docutils" id="id2">
+<caption><span class="caption-text">Table 1: Visual Guide to Syntax Highlighting for Commands and <span class="codename">FISH</span> in the Program and in Documentation Examples</span></caption>
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Type style/</strong> <br> <strong>character</strong></td>
+<td><strong>Used for</strong></td>
+</tr>
+<tr class="row-even"><td><span class="xtc">command</span></td>
+<td>first word in a command</td>
+</tr>
+<tr class="row-odd"><td><span class="xtk">keyword</span></td>
+<td>command keyword</td>
+</tr>
+<tr class="row-even"><td><span class="xtf">fishword</span></td>
+<td>a <span class="codename">FISH</span> function name or statement</td>
+</tr>
+<tr class="row-odd"><td><span class="xtv">fishvar</span></td>
+<td>a <span class="codename">FISH</span> variable</td>
+</tr>
+<tr class="row-even"><td><span class="xtn">flt</span> or <span class="xtn">int</span></td>
+<td>a number of float or integer type</td>
+</tr>
+<tr class="row-odd"><td><span class="xts">str</span> or <span class="xts">bool</span></td>
+<td>a string value or boolean value</td>
+</tr>
+<tr class="row-even"><td><span class="xtd">comment</span></td>
+<td>a comment</td>
+</tr>
+<tr class="row-odd"><td><span class="xtx">stop</span></td>
+<td>stop, pause, return, quit (stop words)</td>
+</tr>
+<tr class="row-even"><td><span class="xtg">solve</span></td>
+<td>solve, cycle (execute words)</td>
+</tr>
+<tr class="row-odd"><td><span class="xts">&amp;</span> or <span class="xts">…</span></td>
+<td>line continuation characters</td>
+</tr>
+</tbody>
+</table>
+<style>
+   span[class^="xt"] {
+      font-family: monospace;
+   }
+   span.xtc {
+      color: black;
+      font-weight: bold;
+      }
+   span.xtf {
+      color: #660099;
+      font-weight: bold;
+      }
+   span.xtn {
+      color: #0000ff;
+      }
+   span.xts {
+      color: #269900;
+      }
+   span.xtd {
+      color: #808080;
+      }
+   span.xtv {
+      color: #AA00FF;
+      }
+   span.xtx {
+      color: rgb(255,0,0);
+      }
+   span.xtg {
+      color: rgb(72,217,135);
+      }
+</style>
+</style><div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="editortoolbar.html">Editor Pane Toolbar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="editor_cp.html">Control Panel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inline_help.html">Inline Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keyboard.html">Keyboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="editorselection.html">Selection in an <em>Editor</em> Pane</a></li>
+<li class="toctree-l1"><a class="reference internal" href="editorlocaloptions.html">Editor Pane Local Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="storage.html">File Storage and the <em>Editor</em> Pane</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../datafiles.html" accesskey="U">Data Files</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../datafilehandling.html"
+                           title="previous chapter"> Data File Handling</a> |    
+       <a href="editortoolbar.html"
+                           title="next chapter"><em>Editor</em> Pane Toolbar</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?The Editor Pane" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

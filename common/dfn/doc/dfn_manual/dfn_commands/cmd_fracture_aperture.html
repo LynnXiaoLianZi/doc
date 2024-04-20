@@ -1,0 +1,199 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>fracture aperture command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="fracture attribute command" href="cmd_fracture_attribute.html" />
+    <link rel="prev" title="Commands" href="dfn_commands.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fracture-aperture-command">
+<h1><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">aperture</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="dfn command">
+<dt id="command:fracture.aperture">
+<span class="cmdname"><span class="pref">f</span><span class="pref">r</span><span class="pref">a</span><span class="pref">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">a</span><span class="pref">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="pref">r</span><span class="pref">a</span><span class="pref">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:fracture.aperture.constant" title="fracture aperture constant">constant</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.aperture.dfn" title="fracture aperture dfn">dfn</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.aperture.fish" title="fracture aperture fish">fish</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.aperture.gauss" title="fracture aperture gauss">gauss</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.aperture.limits" title="fracture aperture limits">limits</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.aperture.log-normal" title="fracture aperture log-normal">log-normal</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.aperture.power-law" title="fracture aperture power-law">power-law</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.aperture.uniform" title="fracture aperture uniform">uniform</a></p>
+</div>
+<p>Assign apertures to fractures. Apertures can be used during contact model assignment (with the
+<a class="reference internal" href="cmd_fracture_contact-model.html#command:fracture.contact-model" title="Assign contact models via fractures. The command only applies to |PFC|. In order&#013;&#010;for the contact"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">contact-model</span></code></a> command), for connectivity distance calculations (with the
+<a class="reference internal" href="cmd_fracture_connectivity.html#command:fracture.connectivity" title="Calculate fracture connectivity with a specified structure. The initial structure&#013;&#010;can either be a fracture or a geometry set. By default, integer connectivity&#013;&#010;levels are computed for each fracture (i.e., a connectivity level of  n &#013;&#010;means that the fracture is connected to the structure through  n  fracture&#013;&#010;intersections), and extras are assigned based on the distance. This behavior&#013;&#010;can be modified with the  aperture ,  cubic  and  distance &#013;&#010;keywords. If either no intersection set is specified"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">connectivity</span></code></a> command) and with the DFN range element.</p>
+<dl class="keyword">
+<dt id="kwd:fracture.aperture.constant">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">n</span><span class="null">s</span><span class="null">t</span><span class="null">a</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Constant aperture with <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a>&gt;0.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.aperture.dfn">
+<span class="cmdkey"><span class="pref">d</span><span class="null">f</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Limit aperture assignment to the DFN with provided name.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.aperture.fish">
+<span class="cmdkey"><span class="pref">f</span><span class="null">i</span><span class="null">s</span><span class="null">h</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">s</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../docproject/utilities/types.html#type:any" title="A catch-all for any ( a ) of the other types, excepting  sym , shown&#013;&#010;here. Multiple instances in a command are numbered ( a1   a2   a3 &#013;&#010;etc.).  This type is also indicated when a specific combination of types is&#013;&#010;acceptable (for instance, the common case where a string  s  or an integer&#013;&#010; i  may be supplied). When this is the case, the specific acceptable types&#013;&#010;are indicated in the explanatory text."><span class="varany"><span class="null">a</span><sub class="null">1</sub><span class="null">...a</span><sub class="null">n</sub><span class="null"></span></span></a></dt>
+<dd><p>Apertures are assigned via the user-defined <span class="codename">FISH</span> function <a class="reference internal" href="../../../../docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">s</span></span></a> with arguments
+<a class="reference internal" href="../../../../docproject/utilities/types.html#type:any" title="A catch-all for any ( a ) of the other types, excepting  sym , shown&#013;&#010;here. Multiple instances in a command are numbered ( a1   a2   a3 &#013;&#010;etc.).  This type is also indicated when a specific combination of types is&#013;&#010;acceptable (for instance, the common case where a string  s  or an integer&#013;&#010; i  may be supplied). When this is the case, the specific acceptable types&#013;&#010;are indicated in the explanatory text."><span class="null"></span></a>. This function is called for each fracture and must return a floating
+point value corresponding to the fracture aperture.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.aperture.gauss">
+<span class="cmdkey"><span class="pref">g</span><span class="null">a</span><span class="null">u</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fm</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fs</span><span class="null"> </span></span></a></dt>
+<dd><p>Draw apertures randomly from a Gaussian distribution with mean <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fm</span></span></a> and standard
+deviation <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fs</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.aperture.limits">
+<span class="cmdkey"><span class="pref">l</span><span class="pref">i</span><span class="null">m</span><span class="null">i</span><span class="null">t</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmin</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmax</span><span class="null"> </span></span></a></dt>
+<dd><p>Apertures fall within the range [<a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmin</span></span></a>, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmax</span></span></a>], where <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmax</span></span></a> is greater than
+or equal to <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmin</span></span></a>. By default, <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmin</span></span></a> = 0 and <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fmax</span></span></a> = +∞.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.aperture.log-normal">
+<span class="cmdkey"><span class="pref">l</span><span class="null">o</span><span class="null">g</span><span class="null">-</span><span class="pref">n</span><span class="null">o</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fm</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fs</span><span class="null"> </span></span></a></dt>
+<dd><p>Draw apertures randomly from a log-normal distribution with mean <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fm</span></span></a> and standard
+deviation <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">fs</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.aperture.power-law">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">w</span><span class="null">e</span><span class="null">r</span><span class="null">-</span><span class="pref">l</span><span class="null">a</span><span class="null">w</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Draw apertures randomly from a negative power-law distribution with exponent <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.aperture.uniform">
+<span class="cmdkey"><span class="pref">u</span><span class="null">n</span><span class="null">i</span><span class="null">f</span><span class="null">o</span><span class="null">r</span><span class="null">m</span><span class="null"> </span></span></dt>
+<dd><p>Draw apertures randomly from a uniform distribution within the given limits as defined by the
+<span class="cmdkey">limit</span> keyword.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p class="h2 rubric">Usage Example</p>
+<p>The following example illustrates how the <a class="reference internal" href="#command:fracture.aperture" title="Assign apertures to fractures. Apertures can be used during contact model assignment&#013;&#010;(with the"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">aperture</span></code></a> command can be used
+to assign apertures drawn from a number of distributions.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model random</span><span class="n"> </span><span class="m m-Double">10000</span>
+<span class="nb">model domain</span><span class="n"> extent </span><span class="o">-</span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">5</span><span class="n"> </span>
+<span class="c">;Generate fractures using the default template</span>
+<span class="nb">fracture generate</span><span class="n"> fracture</span><span class="o">-</span><span class="n">count </span><span class="m m-Double">1000</span>
+<span class="c">;Set the apertures</span>
+<span class="nb">fracture aperture</span><span class="n"> log</span><span class="o">-</span><span class="n">normal </span><span class="m m-Double">0.1</span><span class="n"> </span><span class="m m-Double">10</span><span class="n">                      </span>
+<span class="nb">program </span><span class="se">return</span><span class="n"> </span>
+</pre></div>
+</div>
+<p class="h3 rubric">See Also: <a class="reference internal" href="cmd_fracture_attribute.html#command:fracture.attribute" title="Modify fracture attributes. This command is a synonym for the  fracture.initialize &#013;&#010;command."><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">attribute</span></code></a> | <a class="reference internal" href="cmd_fracture_connectivity.html#command:fracture.connectivity" title="Calculate fracture connectivity with a specified structure. The initial structure&#013;&#010;can either be a fracture or a geometry set. By default, integer connectivity&#013;&#010;levels are computed for each fracture (i.e., a connectivity level of  n &#013;&#010;means that the fracture is connected to the structure through  n  fracture&#013;&#010;intersections), and extras are assigned based on the distance. This behavior&#013;&#010;can be modified with the  aperture ,  cubic  and  distance &#013;&#010;keywords. If either no intersection set is specified"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">connectivity</span></code></a> | <a class="reference internal" href="cmd_fracture_contact-model.html#command:fracture.contact-model" title="Assign contact models via fractures. The command only applies to |PFC|. In order&#013;&#010;for the contact"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">contact-model</span></code></a></p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../dfn.html" >Discrete Fracture Network (DFN)</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="dfn_commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="dfn_commands.html"
+                           title="previous chapter"> Commands</a> |    
+       <a href="cmd_fracture_attribute.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">attribute</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?fracture aperture command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

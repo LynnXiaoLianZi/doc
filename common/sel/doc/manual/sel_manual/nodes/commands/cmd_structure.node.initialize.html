@@ -1,0 +1,289 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>structure node initialize command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="structure-node-initialize-command">
+<h1><code class="docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">initialize</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="structurenode command">
+<dt id="command:structure.node.initialize">
+<span class="cmdname"><span class="null">s</span><span class="null">t</span><span class="null">r</span><span class="null">u</span><span class="null">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="null">n</span><span class="null">o</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">i</span><span class="null">n</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null">i</span><span class="null">z</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:structure.node.initialize.displacement" title="structure node initialize displacement">displacement</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.initialize.displacement-x" title="structure node initialize displacement-x">displacement-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.initialize.displacement-y" title="structure node initialize displacement-y">displacement-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.initialize.displacement-z" title="structure node initialize displacement-z">displacement-z</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.initialize.displacement-rotational" title="structure node initialize displacement-rotational">displacement-rotational</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.initialize.displacement-rotational-x" title="structure node initialize displacement-rotational-x">displacement-rotational-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.initialize.displacement-rotational-y" title="structure node initialize displacement-rotational-y">displacement-rotational-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.initialize.displacement-rotational-z" title="structure node initialize displacement-rotational-z">displacement-rotational-z</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.initialize.position" title="structure node initialize position">position</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.initialize.position-x" title="structure node initialize position-x">position-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.initialize.position-y" title="structure node initialize position-y">position-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.initialize.position-z" title="structure node initialize position-z">position-z</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.initialize.ratio-target" title="structure node initialize ratio-target">ratio-target</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.initialize.velocity" title="structure node initialize velocity">velocity</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.initialize.velocity-x" title="structure node initialize velocity-x">velocity-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.initialize.velocity-y" title="structure node initialize velocity-y">velocity-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.initialize.velocity-z" title="structure node initialize velocity-z">velocity-z</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.initialize.velocity-rotational" title="structure node initialize velocity-rotational">velocity-rotational</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.initialize.velocity-rotational-x" title="structure node initialize velocity-rotational-x">velocity-rotational-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.initialize.velocity-rotational-y" title="structure node initialize velocity-rotational-y">velocity-rotational-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.initialize.velocity-rotational-z" title="structure node initialize velocity-rotational-z">velocity-rotational-z</a></p>
+</div>
+<p>Initialize quantities on all structure nodes in the range.  Note that positions can only be specified in the global system.</p>
+<p>Be aware that in the structural element logic, node velocities and displacements are stored in the local system.  This means that changes to the local system can change the values in the global system.  This is particularly important because the node local system is not calculated for a given structural element system until the first cycle or step, until then the node system is the default, which corresponds to the global system.  When the first cycle command occurs, the node local system is adjusted and any values of velocity that have been assigned will likely change their direction in the global system.</p>
+<p>The best way to handle this is to emit a <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">cycle</span></code> <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">0</span></span></a> command before assigning velocities to nodes—this will cause the local node system to be updated.</p>
+<dl class="keyword">
+<dt id="kwd:structure.node.initialize.displacement">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="#nodeinitializeblock">[nodeinitializeblock]</a>></span></dt>
+<dd><p>translational displacement</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.initialize.displacement-x">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="#nodeinitializeblock">[nodeinitializeblock]</a>></span></dt>
+<dd><p>translational displacement (<span class="math">\(x\)</span>-component)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.initialize.displacement-y">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="#nodeinitializeblock">[nodeinitializeblock]</a>></span></dt>
+<dd><p>translational displacement (<span class="math">\(y\)</span>-component)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.initialize.displacement-z">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="#nodeinitializeblock">[nodeinitializeblock]</a>></span></dt>
+<dd><p>translational displacement (<span class="math">\(z\)</span>-component)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.initialize.displacement-rotational">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">r</span><span class="null">o</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="#nodeinitializeblock">[nodeinitializeblock]</a>></span></dt>
+<dd><p>rotational displacement</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.initialize.displacement-rotational-x">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">r</span><span class="null">o</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="#nodeinitializeblock">[nodeinitializeblock]</a>></span></dt>
+<dd><p>rotational displacement (<span class="math">\(x\)</span>-component)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.initialize.displacement-rotational-y">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">r</span><span class="null">o</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="#nodeinitializeblock">[nodeinitializeblock]</a>></span></dt>
+<dd><p>translational displacement (<span class="math">\(y\)</span>-component)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.initialize.displacement-rotational-z">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">r</span><span class="null">o</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="#nodeinitializeblock">[nodeinitializeblock]</a>></span></dt>
+<dd><p>translational displacement (<span class="math">\(z\)</span>-component)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.initialize.position">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="#nodeinitializeblock">[nodeinitializeblock]</a>></span></dt>
+<dd><p>position of node (global system).  This is used for positioning of a structural element grid; must be used after creating the node, but before executing any cycles. Any node that is moved into a zone (see the <a class="reference internal" href="../../links/commands/cmd_structure.link.list.html#command:structure.link.list" title="List values and information about link objects in the range."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">link</span> <span class="pre">list</span></code></a> command) will have its link deleted (if one is present) and will have a new link created with attachment conditions corresponding to the type of structural element using the node (see <a class="reference internal" href="../../formulation/formulation.html#sel-attachment-conditions"><span class="std std-ref">this table</span></a>). If more than one element type is using the node, then the attachment condition will correspond with the first element type in the following list: liner, geogrid, pile, cable, shell, and beam. Thus, if a node is being used by both a geogrid and a cable, then the attachment condition after moving this node will correspond with that of a geogrid.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.initialize.position-x">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="#nodeinitializeblock">[nodeinitializeblock]</a>></span></dt>
+<dd><p><span class="math">\(x\)</span>-coordinate of node (global system). See <span class="cmdkey">position</span> above.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.initialize.position-y">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="#nodeinitializeblock">[nodeinitializeblock]</a>></span></dt>
+<dd><p><span class="math">\(y\)</span>-coordinate of node (global system). See <span class="cmdkey">position</span> above.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.initialize.position-z">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="#nodeinitializeblock">[nodeinitializeblock]</a>></span></dt>
+<dd><p><span class="math">\(z\)</span>-coordinate of node (global system). See <span class="cmdkey">position</span> above.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.initialize.ratio-target">
+<span class="cmdkey"><span class="pref">r</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">-</span><span class="pref">t</span><span class="null">a</span><span class="null">r</span><span class="null">g</span><span class="null">e</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="#nodeinitializeblock">[nodeinitializeblock]</a>></span></dt>
+<dd><p>Sets the target local force ratio that is considered to be converged for mechanical calculations.  The default value is 1e-4.  A local force ratio of this value will result in a convergence value of 1.0 for the node.  See the <span class="cmdkey">convergence</span> keyword in the <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.solve.html#command:model.solve" title="Enable the automatic detection of the steady-state solution for mechanical&#013;&#010;problems. A calculation is performed until the limiting conditions, as defined&#013;&#010;by the following keywords, are reached. SOLVE force must be used for rigid block&#013;&#010;models. The SOLVE command does not monitor fluid flow. It is possible that mechanical&#013;&#010;equilibrium may be reached prior to fluid-flow equilibrium for steady-state&#013;&#010;flow. CYCLE ftime should be used for transient fluid flow."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">solve</span></code></a> command.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.initialize.velocity">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="#nodeinitializeblock">[nodeinitializeblock]</a>></span></dt>
+<dd><p>translational velocity</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.initialize.velocity-x">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="#nodeinitializeblock">[nodeinitializeblock]</a>></span></dt>
+<dd><p>translational velocity (<span class="math">\(x\)</span>-component)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.initialize.velocity-y">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="#nodeinitializeblock">[nodeinitializeblock]</a>></span></dt>
+<dd><p>translational velocity (<span class="math">\(y\)</span>-component)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.initialize.velocity-z">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="#nodeinitializeblock">[nodeinitializeblock]</a>></span></dt>
+<dd><p>translational velocity (<span class="math">\(z\)</span>-component)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.initialize.velocity-rotational">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">r</span><span class="null">o</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="#nodeinitializeblock">[nodeinitializeblock]</a>></span></dt>
+<dd><p>rotational velocity</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.initialize.velocity-rotational-x">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">r</span><span class="null">o</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="#nodeinitializeblock">[nodeinitializeblock]</a>></span></dt>
+<dd><p>rotational velocity (<span class="math">\(x\)</span>-component)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.initialize.velocity-rotational-y">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">r</span><span class="null">o</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="#nodeinitializeblock">[nodeinitializeblock]</a>></span></dt>
+<dd><p>rotational velocity (<span class="math">\(y\)</span>-component)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.initialize.velocity-rotational-z">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">r</span><span class="null">o</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="#nodeinitializeblock">[nodeinitializeblock]</a>></span></dt>
+<dd><p>rotational velocity (<span class="math">\(z\)</span>-component)</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><p class="h2 rubric" id="nodeinitializeblock"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">initialize</span></code> Keyword Block</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>The initialization values specified with the <a class="reference internal" href="#command:structure.node.initialize" title="Initialize quantities on all structure nodes in the range.  Note that positions&#013;&#010;can only be specified in the global system."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">initialize</span></code></a> command may be optionally modified with the keywords below.</dt>
+<dd><p class="first">They apply (except where noted with regard to the <span class="cmdkey">local</span> keyword), to all of the major keywords of the command: <a class="reference internal" href="#kwd:structure.node.initialize.displacement"><code class="docutils literal"><span class="fishcmd"><span class="pre">displacement</span></span></code></a>, <a class="reference internal" href="#kwd:structure.node.initialize.displacement-rotational"><code class="docutils literal"><span class="fishcmd"><span class="pre">displacement-rotational</span></span></code></a>, <a class="reference internal" href="#kwd:structure.node.initialize.displacement-rotational-x"><code class="docutils literal"><span class="fishcmd"><span class="pre">displacement-rotational-x</span></span></code></a>, <a class="reference internal" href="#kwd:structure.node.initialize.displacement-rotational-y"><code class="docutils literal"><span class="fishcmd"><span class="pre">displacement-rotational-y</span></span></code></a>, <a class="reference internal" href="#kwd:structure.node.initialize.displacement-rotational-z"><code class="docutils literal"><span class="fishcmd"><span class="pre">displacement-rotational-z</span></span></code></a>, <a class="reference internal" href="#kwd:structure.node.initialize.displacement-x"><code class="docutils literal"><span class="fishcmd"><span class="pre">displacement-x</span></span></code></a>, <a class="reference internal" href="#kwd:structure.node.initialize.displacement-y"><code class="docutils literal"><span class="fishcmd"><span class="pre">displacement-y</span></span></code></a>, <a class="reference internal" href="#kwd:structure.node.initialize.displacement-z"><code class="docutils literal"><span class="fishcmd"><span class="pre">displacement-z</span></span></code></a>, <a class="reference internal" href="#kwd:structure.node.initialize.position"><code class="docutils literal"><span class="fishcmd"><span class="pre">position</span></span></code></a>, <a class="reference internal" href="#kwd:structure.node.initialize.position-x"><code class="docutils literal"><span class="fishcmd"><span class="pre">position-x</span></span></code></a>, <a class="reference internal" href="#kwd:structure.node.initialize.position-y"><code class="docutils literal"><span class="fishcmd"><span class="pre">position-y</span></span></code></a>, <a class="reference internal" href="#kwd:structure.node.initialize.position-z"><code class="docutils literal"><span class="fishcmd"><span class="pre">position-z</span></span></code></a>, <a class="reference internal" href="#kwd:structure.node.initialize.ratio-target"><code class="docutils literal"><span class="fishcmd"><span class="pre">ratio-target</span></span></code></a>, <a class="reference internal" href="#kwd:structure.node.initialize.velocity"><code class="docutils literal"><span class="fishcmd"><span class="pre">velocity</span></span></code></a>, <a class="reference internal" href="#kwd:structure.node.initialize.velocity-rotational"><code class="docutils literal"><span class="fishcmd"><span class="pre">velocity-rotational</span></span></code></a>, <a class="reference internal" href="#kwd:structure.node.initialize.velocity-rotational-x"><code class="docutils literal"><span class="fishcmd"><span class="pre">velocity-rotational-x</span></span></code></a>, <a class="reference internal" href="#kwd:structure.node.initialize.velocity-rotational-y"><code class="docutils literal"><span class="fishcmd"><span class="pre">velocity-rotational-y</span></span></code></a>, <a class="reference internal" href="#kwd:structure.node.initialize.velocity-rotational-z"><code class="docutils literal"><span class="fishcmd"><span class="pre">velocity-rotational-z</span></span></code></a>, <a class="reference internal" href="#kwd:structure.node.initialize.velocity-x"><code class="docutils literal"><span class="fishcmd"><span class="pre">velocity-x</span></span></code></a>, <a class="reference internal" href="#kwd:structure.node.initialize.velocity-y"><code class="docutils literal"><span class="fishcmd"><span class="pre">velocity-y</span></span></code></a> and <a class="reference internal" href="#kwd:structure.node.initialize.velocity-z"><code class="docutils literal"><span class="fishcmd"><span class="pre">velocity-z</span></span></code></a>.</p>
+<blockquote class="last">
+<div><dl class="keyword">
+<dt id="kwd:add">
+<span class="cmdkey"><span class="pref">a</span><span class="null">d</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>the existing value of the parameter (of all nodes in the range) is set to its current value plus the given value.
+For example, one can add <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">0.1</span></span></a> to all node <span class="math">\(x\)</span>-displacements with the command <a class="reference internal" href="#command:structure.node.initialize" title="Initialize quantities on all structure nodes in the range.  Note that positions&#013;&#010;can only be specified in the global system."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">initialize</span></code></a> <span class="cmdkey">displacement-x</span> <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">0.1</span></span></a> <span class="cmdkey">add</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:multiply">
+<span class="cmdkey"><span class="pref">m</span><span class="null">u</span><span class="null">l</span><span class="null">t</span><span class="null">i</span><span class="null">p</span><span class="null">l</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>the existing value of the parameter (of all nodes in the range) is multiplied by the given value rather than being set to the given value.
+For example, one can multiply all node <span class="math">\(x\)</span>-displacements by a factor of <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">1.5</span></span></a> with the command <a class="reference internal" href="#kwd:structure.node.initialize.displacement-x" title="translational displacement (`x`\ -component)"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">initialize</span> <span class="pre">displacement-x</span></code></a> <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">1.5</span></span></a> <span class="cmdkey">multiply</span>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:local">
+<span class="cmdkey"><span class="pref">l</span><span class="null">o</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>specifying the supplied value will initialize the node in local coordinates. This keyword may not be used with position (<span class="cmdkey">position</span>, <span class="cmdkey">position-x</span>, etc.).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:gradient">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">d</span><span class="null">i</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>the value installed in each node in the range is <span class="math">\(val_f\)</span> = <span class="math">\(v\)</span> + <span class="math">\(xg_x\)</span> + <span class="math">\(yg_y\)</span> + <span class="math">\(zg_z\)</span>,
+where the <span class="cmdkey">gradient</span> keyword is given immediately after the the supplied value (<span class="math">\(val\)</span> here), and (<span class="math">\(x\)</span>, <span class="math">\(y\)</span>, <span class="math">\(z\)</span>) are the components supplied by <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span></span></a>,
+which specifies the reference position of the node.
+If the <span class="cmdkey">multiply</span> keyword is also present, then the given gradient is applied to the multiplier.</p>
+</dd></dl>
+
+</div></blockquote>
+</dd>
+</dl>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?structure node initialize command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

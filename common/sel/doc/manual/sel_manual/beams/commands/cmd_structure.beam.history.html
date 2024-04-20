@@ -1,0 +1,194 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>structure beam history command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="structure-beam-history-command">
+<h1><code class="docutils literal"><span class="pre">structure</span> <span class="pre">beam</span> <span class="pre">history</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="structurebeam command">
+<dt id="command:structure.beam.history">
+<span class="cmdname"><span class="pref">s</span><span class="pref">t</span><span class="pref">r</span><span class="null">u</span><span class="null">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">b</span><span class="null">e</span><span class="null">a</span><span class="null">m</span><span class="null"> </span></span><span class="cmdname"><span class="pref">h</span><span class="pref">i</span><span class="pref">s</span><span class="null">t</span><span class="null">o</span><span class="null">r</span><span class="null">y</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="pref">n</span><span class="null">a</span><span class="null">m</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a>></span><span class="null"> </span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:structure.beam.history.force" title="structure beam history force">force</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.beam.history.force-x" title="structure beam history force-x">force-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.beam.history.force-y" title="structure beam history force-y">force-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.beam.history.force-z" title="structure beam history force-z">force-z</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.beam.history.moment" title="structure beam history moment">moment</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.beam.history.moment-x" title="structure beam history moment-x">moment-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.beam.history.moment-y" title="structure beam history moment-y">moment-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.beam.history.moment-z" title="structure beam history moment-z">moment-z</a></p>
+</div>
+<p>Samples beam responses that include force and moment carried by the beam. The force and moment vectors are expressed in the element local coordinate system (see Figure 1.17 for sign convention). If a beam is created using the <a class="reference internal" href="cmd_structure.beam.create.html#command:structure.beam.create" title="Create a beam represented by one or more elements."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">beam</span> <span class="pre">create</span></code></a> command, then the nodes of each element so created will be ordered such that the overall beam direction goes from the first point to the second point (i.e., the nodal connectivity of each element will be ordered such that the direction from end-1 to end-2 corresponds with the direction from the first point to the second point).</p>
+<dl class="keyword">
+<dt id="kwd:structure.beam.history.force">
+<span class="cmdkey"><span class="pref">f</span><span class="null">o</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="#beamhistoryblock">[beamhistoryblock]</a></dt>
+<dd><p>request a history of beam force magnitude</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.beam.history.force-x">
+<span class="cmdkey"><span class="pref">f</span><span class="null">o</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="#beamhistoryblock">[beamhistoryblock]</a></dt>
+<dd><p>request a history of beam forces in the <span class="math">\(x\)</span>-direction</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.beam.history.force-y">
+<span class="cmdkey"><span class="pref">f</span><span class="null">o</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="#beamhistoryblock">[beamhistoryblock]</a></dt>
+<dd><p>request a history of beam forces in the <span class="math">\(y\)</span>-direction</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.beam.history.force-z">
+<span class="cmdkey"><span class="pref">f</span><span class="null">o</span><span class="null">r</span><span class="null">c</span><span class="null">e</span><span class="null">-</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="#beamhistoryblock">[beamhistoryblock]</a></dt>
+<dd><p>request a history of beam forces in the <span class="math">\(z\)</span>-direction</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.beam.history.moment">
+<span class="cmdkey"><span class="pref">m</span><span class="null">o</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="#beamhistoryblock">[beamhistoryblock]</a></dt>
+<dd><p>request a history of beam bending moment magnitude</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.beam.history.moment-x">
+<span class="cmdkey"><span class="pref">m</span><span class="null">o</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span><a class="reference internal" href="#beamhistoryblock">[beamhistoryblock]</a></dt>
+<dd><p>request a history of beam bending moment in the <span class="math">\(x\)</span>-direction</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.beam.history.moment-y">
+<span class="cmdkey"><span class="pref">m</span><span class="null">o</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span><a class="reference internal" href="#beamhistoryblock">[beamhistoryblock]</a></dt>
+<dd><p>request a history of beam bending moment in the <span class="math">\(y\)</span>-direction</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.beam.history.moment-z">
+<span class="cmdkey"><span class="pref">m</span><span class="null">o</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">z</span><span class="null"> </span></span><a class="reference internal" href="#beamhistoryblock">[beamhistoryblock]</a></dt>
+<dd><p>request a history of beam bending moment in the <span class="math">\(z\)</span>-direction</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><p class="h2 rubric" id="beamhistoryblock"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">beam</span> <span class="pre">history</span></code> Keyword Block</p>
+</div></blockquote>
+<p>Either the <span class="cmdkey">component-id</span> keyword or the <span class="cmdkey">position</span> keyword must be supplied. The <span class="cmdkey">end</span> keyword is optional. These keywords are supplied with the following keywords of <a class="reference internal" href="../../cables/commands/cmd_structure.cable.history.html#command:structure.cable.history" title="Sample cable responses.  Quantities for sampling include cable element force,&#013;&#010;stress and yield state, and shear coupling spring displacement, stress and slip&#013;&#010;state.  If a cable is created using the  structure.cable.create , then&#013;&#010;the nodes of each element so created will be ordered such that the overall cable&#013;&#010;direction goes from the begin point to the end point (i.e., the nodal connectivity&#013;&#010;of each element will be ordered such that the direction from end-1"><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">cable</span> <span class="pre">history</span></code></a>: <a class="reference internal" href="#kwd:structure.beam.history.force"><code class="docutils literal"><span class="fishcmd"><span class="pre">force</span></span></code></a>, <a class="reference internal" href="#kwd:structure.beam.history.force-x"><code class="docutils literal"><span class="fishcmd"><span class="pre">force-x</span></span></code></a>, <a class="reference internal" href="#kwd:structure.beam.history.force-y"><code class="docutils literal"><span class="fishcmd"><span class="pre">force-y</span></span></code></a>, <a class="reference internal" href="#kwd:structure.beam.history.force-z"><code class="docutils literal"><span class="fishcmd"><span class="pre">force-z</span></span></code></a>, <a class="reference internal" href="#kwd:structure.beam.history.moment"><code class="docutils literal"><span class="fishcmd"><span class="pre">moment</span></span></code></a>, <a class="reference internal" href="#kwd:structure.beam.history.moment-x"><code class="docutils literal"><span class="fishcmd"><span class="pre">moment-x</span></span></code></a>, <a class="reference internal" href="#kwd:structure.beam.history.moment-y"><code class="docutils literal"><span class="fishcmd"><span class="pre">moment-y</span></span></code></a> and <a class="reference internal" href="#kwd:structure.beam.history.moment-z"><code class="docutils literal"><span class="fishcmd"><span class="pre">moment-z</span></span></code></a>.</p>
+<blockquote>
+<div><dl class="keyword">
+<dt id="kwd:component-id">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">m</span><span class="null">p</span><span class="null">o</span><span class="null">n</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">-</span><span class="pref">i</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>the particular element is identified by the component ID number.  If this keyword is used, <span class="cmdkey">position</span> should not be used.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:end">
+<span class="cmdkey"><span class="pref">e</span><span class="null">n</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>the quantity will be sampled at end <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> (where <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> is <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">1</span></span></a> or <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">2</span></span></a>), which corresponds with the order in the nodal-connectivity list. The history is sampled at end <a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">1</span></span></a> (the default) if this keyword is not supplied.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:position">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span><span class="null"> </span></span></a></dt>
+<dd><p>the particular element is identified by (<a class="reference internal" href="../../../../../../docproject/utilities/types.html#type:vec" title="A vector ( v  or  v2  or  v3 ) expressed as a matrix with one&#013;&#010;row.   v2  and  v3  denote that a 2D or 3D vector, respectively, is&#013;&#010;required.  A plain &quot; v &quot; indicates that a vector of the same dimensionality&#013;&#010;as the code is required, that is, a 3D vector is required if the code is a 3D&#013;&#010;code, and a 2D vector is required if the code is a 2D code. In |flac3d|,  v"><span class="varvec"><span class="null">v</span></span></a>) coordinates (the nearest element is taken).  If this keyword is used, <span class="cmdkey">component-id</span> should not be used.</p>
+</dd></dl>
+
+</div></blockquote>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?structure beam history command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

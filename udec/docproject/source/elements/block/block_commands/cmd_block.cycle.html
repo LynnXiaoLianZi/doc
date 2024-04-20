@@ -1,0 +1,156 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block cycle command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block delete command" href="cmd_block.delete.html" />
+    <link rel="prev" title="block cut command" href="cmd_block.cut.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-cycle-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">cycle</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="block command">
+<dt id="command:block.cycle">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">c</span><span class="null">y</span><span class="null">c</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span></span>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.cycle.fluid-time" title="block cycle fluid-time">fluid-time</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.cycle.message" title="block cycle message">message</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.cycle.time" title="block cycle time">time</a></p>
+</div>
+<p>Executes <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> timesteps. (<a class="reference internal" href="#command:block.cycle" title="Executes  i  timesteps. ( block.cycle   0   is permitted as&#013;&#010;a check on data.) If the  &lt;Esc&gt;  key is pressed during execution, |udec|&#013;&#010;will return control to the user after the current cycle is completed. (Also&#013;&#010;see  block.solve .)"><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">cycle</span></code></a> <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">0</span></span></a>  is permitted as a check on data.) If the <code class="kbd docutils literal"><span class="pre">&lt;Esc&gt;</span></code> key is pressed during execution, <span class="codename">UDEC</span> will return control to the user after the current cycle is completed. (Also see <a class="reference internal" href="cmd_block.solve.html#command:block.solve" title="Enable the automatic detection of the steady-state solution for mechanical problems.&#013;&#010;A calculation is performed until the limiting conditions, as defined by the&#013;&#010;following keywords, are reached. SOLVE force must be used for rigid block models.&#013;&#010;The SOLVE command does not monitor fluid flow. It is possible that mechanical&#013;&#010;equilibrium may be reached prior to fluid-flow equilibrium for steady-state&#013;&#010;flow. CYCLE ftime should be used for transient fluid flow."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">solve</span></code></a>.)</p>
+<p>Alternatively, cycling can be controlled by specifying one of the following keywords.</p>
+<dl class="keyword">
+<dt id="kwd:block.cycle.fluid-time">
+<span class="cmdkey"><span class="pref">f</span><span class="null">l</span><span class="null">u</span><span class="null">i</span><span class="null">d</span><span class="null">-</span><span class="pref">t</span><span class="null">i</span><span class="null">m</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>If the fluid flow calculator is on, fluid steps are executed. <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> is the flow duration time. <a class="reference internal" href="#command:block.cycle" title="Executes  i  timesteps. ( block.cycle   0   is permitted as&#013;&#010;a check on data.) If the  &lt;Esc&gt;  key is pressed during execution, |udec|&#013;&#010;will return control to the user after the current cycle is completed. (Also&#013;&#010;see  block.solve .)"><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">cycle</span></code></a> <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> can also be used for a flow calculation, in which <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> is the number of flow steps.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ol class="last arabic simple">
+<li>The fluid timestep must be set by the user (see the <a class="reference internal" href="../block.fluid_commands/cmd_block.fluid.incompressible.html#kwd:block.fluid.incompressible.timestep" title="Fluid timestep is prescribed (required). If the optional  fratio  is given,&#013;&#010;the fluid timestep will be multiplied by this factor every flow step within&#013;&#010;each  model.cycle  command. At the beginning of every  model.cycle &#013;&#010;command, the timestep is restored to its initial value, and the process is reinitiated."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">fluid</span> <span class="pre">incompressible</span> <span class="pre">timestep</span></code></a> command).</li>
+<li>During each flow step, a number of mechanical steps will be executed (see <a class="reference internal" href="../block.fluid_commands/cmd_block.fluid.incompressible.html#kwd:block.fluid.incompressible.substep-mechanical" title="maximum number of mechanical relaxation steps performed within a fluid cycle&#013;&#010;(default  i   = 500)"><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">fluid</span> <span class="pre">incompressible</span> <span class="pre">substep-mechanical</span></code></a>).</li>
+<li>If the <code class="kbd docutils literal"><span class="pre">&lt;Esc&gt;</span></code> key is touched, the run is interrupted after the next fluid step is completed.</li>
+</ol>
+</div>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cycle.message">
+<span class="cmdkey"><span class="pref">m</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">a</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><p>Used to inhibit the cycle progress from being displyed on the screen (default = <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.cycle.time">
+<span class="cmdkey"><span class="pref">t</span><span class="null">i</span><span class="null">m</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> is mechanical time duration, in seconds, for this increment of cycling.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="block_commands.html" accesskey="U">Block Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_block.cut.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">cut</span></code> command</a> |    
+       <a href="cmd_block.delete.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">block</span> <span class="pre">delete</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block cycle command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

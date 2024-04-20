@@ -1,0 +1,559 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block structure cable command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block structure liner command" href="cmd_block.structure.liner.html" />
+    <link rel="prev" title="block structure beam command" href="cmd_block.structure.beam.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-structure-cable-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">structure</span> <span class="pre">cable</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="blockstructure command">
+<dt id="command:block.structure.cable">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">s</span><span class="null">t</span><span class="null">r</span><span class="null">u</span><span class="null">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="null">c</span><span class="null">a</span><span class="null">b</span><span class="null">l</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.structure.cable.change" title="block structure cable change">change</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.structure.cable.create" title="block structure cable create">create</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.structure.cable.delete" title="block structure cable delete">delete</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.structure.cable.fix-tension" title="block structure cable fix-tension">fix-tension</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.structure.cable.free-tension" title="block structure cable free-tension">free-tension</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.structure.cable.group" title="block structure cable group">group</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.structure.cable.list" title="block structure cable list">list</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.structure.cable.material-connect" title="block structure cable material-connect">material-connect</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.structure.cable.property" title="block structure cable property">property</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.structure.cable.tolerance-move-node" title="block structure cable tolerance-move-node">tolerance-move-node</a></p>
+</div>
+<p>Create, delete, and configure cable elements. The term cable is used loosely and this command may be used to represent any linear reinforcing structure where the shear resistance is provided only by the increased normal stress on the adjoning joints.  For shear resistance of the element itself (doweling), the rockbolt element should be used. The cable element typically includes the effects of the axial shear behavior of a grout annulus.</p>
+<p>For excavation problems, if the BEGIN coordinates are inside the excavation periphery, the first nodal point will moved to the excavation periphery. The END coordinates should always be located in the rock mass. Cables can only be used with deformable blocks, and the blocks must be zoned prior to defining the cable elements.  Pretensioning of the cable elements can be done using the fix-tension and free-tension keywords.</p>
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.change">
+<span class="cmdkey"><span class="pref">c</span><span class="null">h</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><p>This command is used to change the material property number assigned to a cable elements and nodes (grout).</p>
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.change.material-grout">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Change grout material property number for all cable nodes in the specified range to <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a>.  The material number <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> must be in the range 1-50.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.change.material-first-node">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">f</span><span class="null">i</span><span class="null">r</span><span class="null">s</span><span class="null">t</span><span class="null">-</span><span class="pref">n</span><span class="null">o</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Change the grout material number for first node of the cable in the specified range to <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a>.  The material number <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> must be in the range 1-50.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.change.material-last-node">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">l</span><span class="null">a</span><span class="null">s</span><span class="null">t</span><span class="null">-</span><span class="pref">n</span><span class="null">o</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Change the grout material number for last node of the cable in the specified range to <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a>.  The material number <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> must be in the range 1-50.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.change.material-steel">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">s</span><span class="null">t</span><span class="null">e</span><span class="null">e</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Change the steel material property number for all cable elements in the specified range to <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a>. The material number <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> must be in the range 1-50.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.create">
+<span class="cmdkey"><span class="pref">c</span><span class="null">r</span><span class="null">e</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><dl class="keyword">
+<dt id="kwd:block.structure.cable.create.begin">
+<span class="cmdkey"><span class="pref">b</span><span class="null">e</span><span class="null">g</span><span class="null">i</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the location of the first node of the cable. If the first node is inside an excavation, it will be moded to the excavation boundary.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.create.end">
+<span class="cmdkey"><span class="pref">e</span><span class="null">n</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set the location of the last node on the cable.  The last node must lie inside a block zone.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.create.connect">
+<span class="cmdkey"><span class="pref">c</span><span class="null">o</span><span class="null">n</span><span class="null">n</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>Shift the cable node end closest to a structural (beam or liner) element node to coincide with the beam node. The structural element nodes must be created before the cable nodes. The connection is not allowed to fail. The common, or shared, node will not appear in the list of cable nodes, but it will appear in the list of structural element nodes. The cable element list will show the common node ID number at one end of the cable element, and the normal cable node at the other. Beam and cable nodes are entirely separate entities. This is because the beam nodes are in contact with the surface of a block, whereas the cable nodes are connected to the model in the interior of a zone. All common nodes are therefore structural element nodes, rather than cable nodes. As a consequence, it is possible for the cable element information display to indicate identical node IDs at either end when this keyword is used.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.create.extend">
+<span class="cmdkey"><span class="pref">e</span><span class="null">x</span><span class="null">t</span><span class="null">e</span><span class="null">n</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Cause the end of the current cable to connect to the end node of an existing cable element.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.create.group">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Assign created cable elements to the group named <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.create.nodes">
+<span class="cmdkey"><span class="pref">n</span><span class="null">o</span><span class="null">d</span><span class="null">e</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>Specify the number of nodes in the cable.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.create.material-grout">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Assign the material property number <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> for grout.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.create.material-first-node">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">f</span><span class="null">i</span><span class="null">r</span><span class="null">s</span><span class="null">t</span><span class="null">-</span><span class="pref">n</span><span class="null">o</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Assign the material number for the first node of the cable element.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.create.material-last-node">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">l</span><span class="null">a</span><span class="null">s</span><span class="null">t</span><span class="null">-</span><span class="pref">n</span><span class="null">o</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Assign the material number for the last node of the cable element.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.create.material-steel">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">s</span><span class="null">t</span><span class="null">e</span><span class="null">e</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Assign the material property number for reinforcing (i.e., steel).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.create.segments">
+<span class="cmdkey"><span class="pref">s</span><span class="null">e</span><span class="null">g</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Specify the number of segements in the cable.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.delete">
+<span class="cmdkey"><span class="pref">d</span><span class="null">e</span><span class="null">l</span><span class="null">e</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><p>The optional delete keyword will remove all cable elements from the specified range. If no range is given, all cable elements will be deleted.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.fix-tension">
+<span class="cmdkey"><span class="pref">f</span><span class="null">i</span><span class="null">x</span><span class="null">-</span><span class="null">t</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><span class="cmdkey"><span class="null">:</span><span class="null">f</span><span class="null">l</span><span class="null">t</span><span class="null">:</span><span class="null">'</span><span class="null">f</span><span class="null">'</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><p>The fix tension will hold the specified axial force constant during cycling.  This is used to set a pre-tension force int he cable.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.free-tension">
+<span class="cmdkey"><span class="pref">f</span><span class="null">r</span><span class="null">e</span><span class="null">e</span><span class="null">-</span><span class="null">t</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><p>The free tension will release a fixed axial force to allow it to change.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.group">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Assign cable elements within the specified range to the group named <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.list">
+<span class="cmdkey"><span class="pref">l</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null"> </span></span><span class="cmdopt"><<span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span></span>></span><span class="null"> </span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><p>List information regarding cables.</p>
+<p>List information regarding cable elements. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>cable element index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>cable element segment id number</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>cable node id – first node</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>cable node id – second node</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>material number</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>cross-sectional area</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>axial force (tension is negative)</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td>length</td>
+</tr>
+<tr class="row-odd"><td>(9)</td>
+<td>axial strain (tension is negative)</td>
+</tr>
+<tr class="row-even"><td>(10)</td>
+<td>failure indicator for element:</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&nbsp;&nbsp;&nbsp;0 elastic</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&nbsp;&nbsp;&nbsp;1 at yield in tension</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&nbsp;&nbsp;&nbsp;2 elastic -  tension yield in past</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&nbsp;&nbsp;&nbsp;3 at yield in compression</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&nbsp;&nbsp;&nbsp;4 elastic -  compression yield in past</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&nbsp;&nbsp;&nbsp;5 failure in extensional strain</td>
+</tr>
+</tbody>
+</table>
+<p>List movement information regarding cable nodes. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>cable node index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>cable node id</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(x\)</span>-coordinate</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td><span class="math">\(y\)</span>-coordinate</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td><span class="math">\(x\)</span>-velocity</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td><span class="math">\(y\)</span>-velocity</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td><span class="math">\(x\)</span>-displacement</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td><span class="math">\(y\)</span>-displacement</td>
+</tr>
+<tr class="row-odd"><td>(9)</td>
+<td>material number</td>
+</tr>
+<tr class="row-even"><td>(10)</td>
+<td><span class="math">\(x\)</span>-force applied to node</td>
+</tr>
+<tr class="row-odd"><td>(11)</td>
+<td><span class="math">\(y\)</span>-force applied to node</td>
+</tr>
+<tr class="row-even"><td>(12)</td>
+<td>shear force in grout</td>
+</tr>
+<tr class="row-odd"><td>(13)</td>
+<td>node fixed in x if = 1; else 0</td>
+</tr>
+<tr class="row-even"><td>(14)</td>
+<td>node fixed in y if = 1; else 0</td>
+</tr>
+<tr class="row-odd"><td>(15)</td>
+<td>failure indicator for node:</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&nbsp;&nbsp;&nbsp;0 elastic</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&nbsp;&nbsp;&nbsp;1 yield</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&nbsp;&nbsp;&nbsp;2 elastic - yield in past</td>
+</tr>
+<tr class="row-odd"><td>(16)</td>
+<td>index of zone in which node is currently located</td>
+</tr>
+</tbody>
+</table>
+<p>List movement information regarding cable nodes. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>cable node index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>cable node id</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(x\)</span>-coordinate</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td><span class="math">\(y\)</span>-coordinate</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td><span class="math">\(x\)</span>-velocity</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td><span class="math">\(y\)</span>-velocity</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td><span class="math">\(x\)</span>-displacement</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td><span class="math">\(y\)</span>-displacement</td>
+</tr>
+</tbody>
+</table>
+<p>List stress and failure information regarding cable nodes. The column headings are:</p>
+<table border="1" class="colwidths-given blank w100 pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>cable node index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>cable node identification number</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>material number</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td><span class="math">\(x\)</span>-force applied to node</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td><span class="math">\(y\)</span>-force applied to node</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>shear force in grout</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>node fixed in x if = 1; else 0</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td>node fixed in y if = 1; else 0</td>
+</tr>
+<tr class="row-odd"><td>(9)</td>
+<td>failure indicator for node:</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&nbsp;&nbsp;&nbsp;0 elastic</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&nbsp;&nbsp;&nbsp;1 yield</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&nbsp;&nbsp;&nbsp;2 elastic - yield in past</td>
+</tr>
+<tr class="row-odd"><td>(160)</td>
+<td>index of zone in which node is currently located</td>
+</tr>
+</tbody>
+</table>
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.list.group">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null"> </span></span></dt>
+<dd><p>Display cable properties.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.list.property">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>Display cable properties.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.material-connect">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">c</span><span class="null">o</span><span class="null">n</span><span class="null">n</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Define material property number <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> for the structural interface node at the location of a connecting cable element.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.property">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><dl class="keyword">
+<dt id="kwd:block.structure.cable.property.cross-sectional-area">
+<span class="cmdkey"><span class="pref">c</span><span class="null">r</span><span class="null">o</span><span class="null">s</span><span class="null">s</span><span class="null">-</span><span class="pref">s</span><span class="null">e</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">a</span><span class="null">r</span><span class="null">e</span><span class="null">a</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set cross section area of cable.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.property.density">
+<span class="cmdkey"><span class="pref">d</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set mass density for cable reinforcing [mass/volume].</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.property.grout-stiffness">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">t</span><span class="null">-</span><span class="pref">s</span><span class="null">t</span><span class="null">i</span><span class="null">f</span><span class="null">f</span><span class="null">n</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set grout shear stiffness [force/unit cable length/displacement].</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.property.grout-strength">
+<span class="cmdkey"><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">t</span><span class="null">-</span><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">n</span><span class="null">g</span><span class="null">t</span><span class="null">h</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set grout shear strength [force/unit cable length].</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.property.rupture-tension-strain">
+<span class="cmdkey"><span class="pref">r</span><span class="null">u</span><span class="null">p</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null">-</span><span class="pref">t</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">a</span><span class="null">i</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set extensional failure strain (default = 10<sup>10</sup>).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.property.spacing">
+<span class="cmdkey"><span class="pref">s</span><span class="null">p</span><span class="null">a</span><span class="null">c</span><span class="null">i</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set spacing of cables in out-of-plane direction (default = 1.0).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.property.thermal-expansion">
+<span class="cmdkey"><span class="pref">t</span><span class="null">h</span><span class="null">e</span><span class="null">r</span><span class="null">m</span><span class="null">a</span><span class="null">l</span><span class="null">-</span><span class="pref">e</span><span class="null">x</span><span class="null">p</span><span class="null">a</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set thermal expansion coefficient for cable.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.property.yield-compression">
+<span class="cmdkey"><span class="pref">y</span><span class="null">i</span><span class="null">e</span><span class="null">l</span><span class="null">d</span><span class="null">-</span><span class="pref">c</span><span class="null">o</span><span class="null">m</span><span class="null">p</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set compressive yield force for cable reinforcing (use positive value) [force].</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.property.yield-tension">
+<span class="cmdkey"><span class="pref">y</span><span class="null">i</span><span class="null">e</span><span class="null">l</span><span class="null">d</span><span class="null">-</span><span class="pref">t</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set tensile yield force for cable reinforcing (use positive value) [force].</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.property.young">
+<span class="cmdkey"><span class="pref">y</span><span class="null">o</span><span class="null">u</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Set Young’s modulus for cable reinforcing [stress].</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The default values for cable properties (except as noted for <span class="cmdkey">rupture-tensions-strain</span> and <span class="cmdkey">spacing</span>) are zero.</p>
+</div>
+<dl class="keyword">
+<dt id="kwd:block.structure.cable.tolerance-move-node">
+<span class="cmdkey"><span class="pref">t</span><span class="null">o</span><span class="null">l</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null">-</span><span class="pref">m</span><span class="null">o</span><span class="null">v</span><span class="null">e</span><span class="null">-</span><span class="pref">n</span><span class="null">o</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Having a cable node placed on the edge of a block may cause problems in the calculation of the distributed forces if the node subsequently moves into a different block. To avoid this cable nodes are moved off of the block edges. The distance they are moved defaults to half of the corner-round-length. The <span class="cmdkey">tolerance-move-node</span> keyword  allows the user to modify the distance the node is moved. The command should be used prior to creating a cable.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../block_commands/block_commands.html" >Block Commands</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../block_commands/cmd_block.structure.html" accesskey="U"><span class="fishcmd">block structure</span> commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_block.structure.beam.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">structure</span> <span class="pre">beam</span></code> command</a> |    
+       <a href="cmd_block.structure.liner.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">block</span> <span class="pre">structure</span> <span class="pre">liner</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block structure cable command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

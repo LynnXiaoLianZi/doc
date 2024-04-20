@@ -1,0 +1,168 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Finding the Fast Fourier Transform Power Spectrum of a UDEC Table &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="finding-the-fast-fourier-transform-power-spectrum-of-a-udec-table">
+<span id="fastfourier"></span><h1>Finding the Fast Fourier Transform Power Spectrum of a <span class="codename">UDEC</span> Table</h1>
+<p>The <span class="codename">FISH</span> file “<code class="docutils literal"><span class="pre">fft.fis</span></code>” performs a fast Fourier transform on a table of data, resulting in a power spectrum that is output to another table. The input table is specified by the first argument, and the output table is specified by the second argument.</p>
+<p>There are several definitions for a power spectrum. The one used here is adapted from Press et al. (1992). The power spectrum is a set of <span class="math">\(N/2\)</span> real numbers defined as</p>
+<div class="math">
+\[ \begin{align}\begin{aligned} P_0 = {{1} \over {N^2}}\ *\ (\vert f_0 \vert)^2\\ P_k = {{1} \over {N^2}}\ *\ [ ( \vert f_k \vert )^2 + ( \vert f_{N- k} \vert )^2 ]\\P_{{{N} \over {2}}} = {{1} \over {N^2}}\ *\ ( \vert f_{{{N} \over {2}}} \vert )^2\end{aligned}\end{align} \]</div>
+<table border="1" class="colwidths-given blank docutils">
+<colgroup>
+<col width="13%" />
+<col width="7%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>where</td>
+<td><span class="math">\(N\)</span></td>
+<td>is half the number of points in the original data field;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><span class="math">\(P\)</span></td>
+<td>is the power spectrum output;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><span class="math">\(f\)</span></td>
+<td>is the result of the fast Fourier transform of the original data; and</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><span class="math">\(k\)</span></td>
+<td>varies from <span class="math">\(0\)</span> to <span class="math">\(N/2\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<p>Note that an array, <code class="docutils literal"><span class="pre">worka</span></code>, is used to manipulate the table data. The array dimension (<code class="docutils literal"><span class="pre">n_point</span></code>) is defined from two conditions: (1) to be greater than the number of elements in the input table; and (2) to be a power of 2. (The array dimension need not be declared manually.) The <code class="docutils literal"><span class="pre">fft</span></code> algorithm requires input data with a constant timestep. So, a timestep is calculated, and the data are interpolated from the table and stored in the array for processing.</p>
+<p>The following example verifies the <code class="docutils literal"><span class="pre">fft</span></code> <span class="codename">FISH</span> function. The history input is the sum of a sine wave at 1 Hz and an amplitude of 1, a cosine wave at 5 Hz and an amplitude of 2, and a sine wave at 10 Hz and an amplitude of 3. The combined history input is calculated by the <span class="codename">FISH</span> function <code class="docutils literal"><span class="pre">cr_tab</span></code>. The input is plotted in the first figure below. The power spectrum shown in second figure consists of three sharp peaks at 1, 5 and 10 Hz, with increasing peak values.</p>
+<p><em>Reference</em></p>
+<p>Press, W. H., et al. <span class="bi">Numerical Recipes in C</span>. Cambridge: Cambridge University Press (1992).</p>
+<p><strong>Data File:</strong> <code class="docutils literal"><span class="pre">fft.dat</span></code></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model title</span><span class="n"> </span><span class="s">&#39;Fast Fourier Transform&#39;</span>
+<span class="nb">fish define</span><span class="ni"> cr_tab</span><span class="p">(</span><span class="ni">num_point</span><span class="p">,</span><span class="ni">end_time</span><span class="p">,</span><span class="ni">per1</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> i </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> p2 </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">2.</span><span class="o">*</span><span class="k">math.pi</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> </span><span class="k">while</span><span class="ni"> i </span><span class="o">&lt;</span><span class="p">=</span><span class="ni"> num_point</span>
+<span class="ni">        </span><span class="k">local</span><span class="ni"> xx </span><span class="p">=</span><span class="ni"> end_time</span><span class="o">*</span><span class="ni">float</span><span class="p">(</span><span class="ni">i</span><span class="p">)</span><span class="o">/</span><span class="ni">float</span><span class="p">(</span><span class="ni">num_point</span><span class="p">)</span>
+<span class="ni">        i </span><span class="p">=</span><span class="ni"> i </span><span class="o">+</span><span class="ni"> </span><span class="m m-Double">1</span>
+<span class="ni">        </span><span class="k">local</span><span class="ni"> yy </span><span class="p">=</span><span class="ni"> </span><span class="k">math.sin</span><span class="p">(</span><span class="ni">xx</span><span class="o">*</span><span class="ni">p2</span><span class="o">/</span><span class="ni">per1</span><span class="p">)</span><span class="o">+</span><span class="m m-Double">2.</span><span class="o">*</span><span class="k">math.cos</span><span class="p">(</span><span class="m m-Double">5.</span><span class="o">*</span><span class="ni">xx</span><span class="o">*</span><span class="ni">p2</span><span class="o">/</span><span class="ni">per1</span><span class="p">)</span><span class="o">+</span><span class="m m-Double">3.</span><span class="o">*</span><span class="k">math.sin</span><span class="p">(</span><span class="m m-Double">10.</span><span class="o">*</span><span class="ni">xx</span><span class="o">*</span><span class="ni">p2</span><span class="o">/</span><span class="ni">per1</span><span class="p">)</span>
+<span class="ni">        </span><span class="k">table</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="ni">xx</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> yy</span>
+<span class="ni">    </span><span class="k">end_loop</span>
+<span class="nb">end</span>
+<span class="ni">@cr_tab</span><span class="p">(</span><span class="m m-Double">1024</span><span class="p">,</span><span class="m m-Double">12</span><span class="p">,</span><span class="m m-Double">1.0</span><span class="p">)</span>
+<span class="c">; ATTENTION: fft.fis uses a temporary set up to erase table</span>
+<span class="nb">program call</span><span class="n"> </span><span class="s">&#39;fft.fis&#39;</span><span class="n"> suppress</span>
+<span class="ni">@fftransform</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../../../../../_images/721F0001.png"><img alt="../../../../../_images/721F0001.png" src="../../../../../_images/721F0001.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Sum of three input waves</span></p>
+</div>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../../../../../_images/721F0002.png"><img alt="../../../../../_images/721F0002.png" src="../../../../../_images/721F0002.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Power spectrum; power versus frequency in Hz</span></p>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Finding the Fast Fourier Transform Power Spectrum of a UDEC Table" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,299 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Loop - EndLoop &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="Return" href="return.html" />
+    <link rel="prev" title="Lock" href="lock.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="loop-endloop">
+<span id="fish-statement-loopendloop"></span><h1>Loop - EndLoop</h1>
+<p>The four valid <span class="fishname">loop</span> constructions are:</p>
+<ul>
+<li><p class="first">Indexed Loop</p>
+<blockquote>
+<div><p><span class="fishname">loop</span> <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">&lt;local&gt; var (expr1, expr2, &lt;expr3&gt;)</span></span></a></p>
+<blockquote>
+<div><p>…</p>
+</div></blockquote>
+<p><span class="fishname">endloop</span></p>
+</div></blockquote>
+</li>
+<li><p class="first">While Loop</p>
+<blockquote>
+<div><p><span class="fishname">loop while</span> <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">exprtest</span></span></a></p>
+<blockquote>
+<div><p>…</p>
+</div></blockquote>
+<p><span class="fishname">endloop</span></p>
+</div></blockquote>
+</li>
+<li><p class="first">For Loop</p>
+<blockquote>
+<div><p><span class="fishname">loop for</span> (<a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">exprinit, exprtest, exprmodify)</span></span></a></p>
+<blockquote>
+<div><p>…</p>
+</div></blockquote>
+<p><span class="fishname">endloop</span></p>
+</div></blockquote>
+</li>
+<li><p class="first">ForEach Loop</p>
+<blockquote>
+<div><p><span class="fishname">loop foreach</span> <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">&lt;local&gt; var expr1</span></span></a></p>
+<blockquote>
+<div><p>…</p>
+</div></blockquote>
+<p><span class="fishname">endloop</span></p>
+</div></blockquote>
+</li>
+</ul>
+<p>The lines of <span class="codename">FISH</span> between <span class="fishname">loop</span> and <span class="fishname">endloop</span> are executed repeatedly until certain conditions are met.  Specific details of each <span class="fishname">loop</span> option are given below:</p>
+<p>Loops may be nested to any depth.</p>
+<div class="section" id="indexed-loop">
+<h2>Indexed Loop</h2>
+<blockquote>
+<div><p><span class="fishname">loop</span> <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">&lt;local&gt; var (expr1, expr2, &lt;expr3&gt;)</span></span></a></p>
+<blockquote>
+<div>…</div></blockquote>
+<p><span class="fishname">endloop</span></p>
+</div></blockquote>
+<p>In the first form, which uses a numeric counter, <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">var</span></span></a> is given the value of <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">expr1</span></span></a> initially, and is incremented by <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">expr3</span></span></a> at the end of each loop execution until it reaches a value greater than <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">expr2</span></span></a>.
+If <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">expr3</span></span></a> is not given, a value of <a class="reference internal" href="../../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">1</span></span></a> is used by default.</p>
+<p>The <span class="fishname">local</span> statement may optionally be used before <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">var</span></span></a> to create <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">var</span></span></a> as a variable local to the function.</p>
+<p>Note that <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">expr1</span></span></a>, <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">expr2</span></span></a>, and <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">expr3</span></span></a> (which may be arbitrary expressions) are evaluated at the start of the loop; redefinition of their component variables within the loop has no effect on the number of loop executions.</p>
+<p>Also note that the comparison of <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">var</span></span></a> with the result of <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">expr2</span></span></a> is done at the <em>end</em> of the loop, so the interior of the loop will <em>always</em> be executed at least once regardless of the values.</p>
+<p><a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">var</span></span></a> is a genaral <span class="codename">FISH</span> variable; it may be used in expressions within the loop (even in functions called from within the loop, if it is a global variable), and may even be redefined.  The increment of the value designated by <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">expr3</span></span></a> is done in terms of the general <span class="codename">FISH</span> <span class="fishname">+</span> operator, and the comparison with <span class="fishname">expr2</span> is done with the <span class="fishname">&lt;</span> operator.  Any type(s) compatibile with those operators may be used,although most commonly the type used is an integer or a real.</p>
+<p>The code snippet below demonstrates basic usage of this form to sum all integers below a specified value.</p>
+<blockquote>
+<div><div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">fish define</span><span class="ni"> sum</span><span class="p">(</span><span class="ni">n</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> s </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> </span><span class="k">local</span><span class="ni"> i </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="ni">n</span><span class="p">)</span>
+<span class="ni">        s </span><span class="o">+=</span><span class="ni"> i  </span>
+<span class="ni">    </span><span class="k">endloop</span>
+<span class="ni">    sum </span><span class="p">=</span><span class="ni"> s</span>
+<span class="nb">end</span>
+<span class="ni">[s </span><span class="p">=</span><span class="ni"> sum</span><span class="p">(</span><span class="m m-Double">10</span><span class="p">)</span><span class="ni">]</span>
+<span class="nb">fish list</span><span class="n"> </span><span class="ni">[s]</span>
+
+<span class="nb">fish define</span><span class="ni"> sum_even</span><span class="p">(</span><span class="ni">n</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> s </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> </span><span class="k">local</span><span class="ni"> i </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="ni">n</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">)</span>
+<span class="ni">        s </span><span class="o">+=</span><span class="ni"> i</span>
+<span class="ni">    </span><span class="k">endloop</span>
+<span class="ni">    sum_even </span><span class="p">=</span><span class="ni"> s</span>
+<span class="nb">end</span>
+<span class="ni">[s2 </span><span class="p">=</span><span class="ni"> sum_even</span><span class="p">(</span><span class="m m-Double">10</span><span class="p">)</span><span class="ni">]</span>
+<span class="nb">fish list</span><span class="n"> </span><span class="ni">[s2]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>With <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">n`=:lint:`10</span></span></a>, the end result of the functions is <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">s</span></span></a> =  <a class="reference internal" href="../../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">55</span></span></a> and <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">s2</span></span></a> = <a class="reference internal" href="../../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">30</span></span></a>.
+Note that the loop value may be an integer or a real, and by using a negative value for <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">expr3</span></span></a> it may go from a larger to a smaller value.</p>
+</div>
+<div class="section" id="while-loop">
+<h2>While Loop</h2>
+<blockquote>
+<div><p><span class="fishname">loop while</span> <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">exprtest</span></span></a></p>
+<blockquote>
+<div>…</div></blockquote>
+<p><span class="fishname">endloop</span></p>
+</div></blockquote>
+<p>In the second form of the <span class="fishname">loop</span> structure, the loop body is executed while the test expression evaluates to true; otherwise control passes to the next line after the <span class="fishname">endloop</span> statement.</p>
+<p>The expressions may involve floating-point variables as well as integers; the use of Boolean, strings and pointers is also permitted under the same conditions that apply to the <span class="fishname">if</span> statement.</p>
+<p>The code snippet below demonstrate basic usage of this form to sum all even integers below a specified value.</p>
+<blockquote>
+<div><div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">fish define</span><span class="ni"> sum_even</span><span class="p">(</span><span class="ni">n</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> s </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> i </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> </span><span class="k">while</span><span class="ni"> i </span><span class="o">&lt;</span><span class="p">=</span><span class="ni"> n</span>
+<span class="ni">        s </span><span class="o">+=</span><span class="ni"> i</span>
+<span class="ni">        i </span><span class="o">+=</span><span class="m m-Double">2</span>
+<span class="ni">    </span><span class="k">endloop</span>
+<span class="ni">    sum_even </span><span class="p">=</span><span class="ni"> s</span>
+<span class="nb">end</span>
+<span class="ni">[s2 </span><span class="p">=</span><span class="ni"> sum_even</span><span class="p">(</span><span class="m m-Double">10</span><span class="p">)</span><span class="ni">]</span>
+<span class="nb">fish list</span><span class="n"> </span><span class="ni">[s2]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>With <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">n</span></span></a> = <a class="reference internal" href="../../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">10</span></span></a>, the end result of the sum is <a class="reference internal" href="../../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">30</span></span></a>.</p>
+</div>
+<div class="section" id="for-loop">
+<h2>For Loop</h2>
+<blockquote>
+<div><p><span class="fishname">loop for</span> (<a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">exprinit, exprtest, exprmodify)</span></span></a></p>
+<blockquote>
+<div>…</div></blockquote>
+<p><span class="fishname">endloop</span></p>
+</div></blockquote>
+<p>The main function of the third form of the <span class="fishname">loop</span> structure is to repeat execution of the loop body while the <span class="fishname">test</span> expression is true, similar to the <span class="fishname">loop while</span> form.
+But, in addition, the <span class="fishname">loop for</span> construct provides specific locations to contain an <span class="fishname">initialize</span> field and a <span class="fishname">modify</span> field.
+So this loop is specially designed to perform a repetitive action with a counter which is initialized and modified on each iteration.
+It works in the following way.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Initialization is executed. Generally it is an initial value setting for a counter variable (which can be local or global). This is executed only once.</li>
+<li>Condition is checked. If it is true, the loop continues; otherwise, the loop ends and the loop body is not executed.</li>
+<li>Loop body is executed.</li>
+<li>Finally, whatever is specified in the <span class="fishname">modify</span> field is executed, and the loop goes back to step 2.</li>
+</ol>
+</div></blockquote>
+<p>The code snippet below demonstrate basic usage of this form to sum all odd integers below a specified value.</p>
+<blockquote>
+<div><div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">fish define</span><span class="ni"> sum_odd</span><span class="p">(</span><span class="ni">n</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> s</span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> </span><span class="k">for</span><span class="ni"> </span><span class="p">(</span><span class="k">local</span><span class="ni"> i</span><span class="p">=</span><span class="m m-Double">1</span><span class="p">,</span><span class="ni"> i </span><span class="o">&lt;</span><span class="p">=</span><span class="ni">n</span><span class="p">,</span><span class="ni"> i</span><span class="o">+=</span><span class="m m-Double">2</span><span class="p">)</span>
+<span class="ni">        s </span><span class="o">+=</span><span class="ni"> i  </span>
+<span class="ni">    </span><span class="k">endloop</span>
+<span class="ni">    sum_odd </span><span class="p">=</span><span class="ni"> s</span>
+<span class="nb">end</span>
+<span class="ni">[s_odd </span><span class="p">=</span><span class="ni"> sum_odd</span><span class="p">(</span><span class="m m-Double">10</span><span class="p">)</span><span class="ni">]</span>
+<span class="nb">fish list</span><span class="n"> </span><span class="ni">[s_odd]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>With <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">n</span></span></a> = <a class="reference internal" href="../../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">10</span></span></a>, the end result of the sum is <a class="reference internal" href="../../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">25</span></span></a>.</p>
+<p>The first three forms of the <span class="fishname">loop</span> statement may be contrasted.
+In the first, the test is done at the end of the loop (so there will be at least one pass through the loop); in the second and third, the test is done at the start of the loop (so the loop will be bypassed if the test is false initially).</p>
+</div>
+<div class="section" id="foreach-loop">
+<span id="fish-statement-loopforeach"></span><h2>ForEach Loop</h2>
+<blockquote>
+<div><p><span class="fishname">loop foreach</span> <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">&lt;local&gt; var expr1</span></span></a></p>
+<blockquote>
+<div>…</div></blockquote>
+<p><span class="fishname">endloop</span></p>
+</div></blockquote>
+<p>The fourth form of the <span class="fishname">loop</span> statement is a specialized syntax to allow iterating through all objects inside a given iterable object.
+In this case, <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">expr1</span></span></a> must evaluate to an iterable object, most commonly a pointer to a container or a list.
+For example, all scalars in the list of user-defined scalars are returned by the <span class="codename">FISH</span> intrinsic <a class="reference internal" href="../../../../../../kernel/doc/manual/data/fish/data.scalar_utilities/fish_data.scalar.list.html#function:data.scalar.list" title="Get the global scalar list. Use the  loop foreach &lt;fish_statement_loopendloop&gt; &#013;&#010;construct to iterate through the list."><code class="xref fish fish-func docutils literal"><span class="pre">data.scalar.list</span></code></a>.</p>
+<p>As with the first <span class="fishname">loop</span> form, <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">var</span></span></a> may be preceded by the <span class="fishname">local</span> statement to indicate that a local variable is to be created instead of a global one.
+<a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">var</span></span></a> will be assigned to each value in the iterable object consecutively.</p>
+<p>If the object being looped over is a pointer to a container, and <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">var</span></span></a> is deleted during processing of the <span class="fishname">loop</span>, the loop will continue normally as long as <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">var</span></span></a> is not referenced again within the same loop after deletion.
+If other items in the container are deleted (for example, if a function that deletes the contents of the container is called), then the loop might exit prematurely.</p>
+<blockquote>
+<div><div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">fish define</span><span class="ni"> scalar_location</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> </span><span class="k">foreach</span><span class="ni"> </span><span class="k">local</span><span class="ni"> pnt data</span><span class="p">.</span><span class="ni">scalar</span><span class="p">.</span><span class="ni">list</span>
+<span class="ni">        </span><span class="k">io.out</span><span class="p">(</span><span class="ni">data</span><span class="p">.</span><span class="ni">scalar</span><span class="p">.</span><span class="ni">pos</span><span class="p">(</span><span class="ni">pnt</span><span class="p">))</span>
+<span class="ni">    </span><span class="k">endloop</span>
+<span class="nb">end</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="hackthelink section" id="loop-control-statements">
+<h2>Loop Control Statements</h2>
+<p>Within the loop, the <code class="docutils literal"><span class="pre">exit</span> <span class="pre">loop</span></code> statement may be used to break out of the loop and continue processing after the <code class="docutils literal"><span class="pre">endloop</span></code> statement.</p>
+<p>In addition, the <code class="docutils literal"><span class="pre">continue</span></code> statement may be used to stop processing a current loop iteration and continue to the next iteration, without executing code that may lie between it and the <code class="docutils literal"><span class="pre">endloop</span></code> statement.</p>
+<style>
+.hackthelink a {
+   font-family: 'Consolas','Deja Vu Sans Mono','Bitstream Vera Sans Mono',monospace;
+   font-weight: bold;
+}
+</style></div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../fish.html" ><span class="codename">FISH</span> Scripting Reference</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../fish_statements.html" accesskey="U"><span class="codename">FISH</span> Statements</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="lock.html"
+                           title="previous chapter"> Lock</a> |    
+       <a href="return.html"
+                           title="next chapter">Return</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Loop - EndLoop" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,313 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Overview &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Commands" href="dfn_commands/dfn_commands.html" />
+    <link rel="prev" title="Discrete Fracture Network (DFN)" href="dfn.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../contents.html"><img id="cornerlogo" src="../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="overview">
+<span id="dfn-description"></span><h1>Overview</h1>
+<div class="section" id="base-model-components">
+<h2>Base Model Components</h2>
+<p>The base model components of the DFN logic are fractures and intersections. The following sections
+depict these objects in detail before a discussion of methods to create sets of fractures, termed
+DFNs.</p>
+<p class="h3 rubric">Fractures</p>
+<p>A fracture is modeled as a discrete, planar and finite sized element. By default in 3D, fractures
+are disk-shaped but can also be planar, convex polygons. In that case, vertex objects refer to the
+vertices of the planar, convex polygon. In 2D, fractures are modeled by line segments,
+and vertex objects refer to the line segment extremities. Deterministic fractures, with known sizes
+and orientations, are created with the <a class="reference internal" href="dfn_commands/cmd_fracture_create.html#command:fracture.create" title="Create a deterministic fracture."><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">create</span></code></a> command or with the
+<a class="reference internal" href="dfn_fish/dfn.fracture_utilities/fish_dfn.fracture.create.html#function:fracture.create" title="Create a fracture. The fracture is added to  dfn ."><code class="xref fish fish-func docutils literal"><span class="pre">fracture.create</span></code></a> <span class="codename">FISH</span> intrinsic. Fractures can exist only within the model domain (see the
+<a class="reference internal" href="../../../kernel/doc/manual/model/commands/cmd_model.domain.html#command:model.domain" title="Specify the DFN domain boundaries and conditions.  DFN fractures only exist&#013;&#010;within the domain extent."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">domain</span></code></a> command for further information). The figure below shows a collection of disk
+shaped fractures created with the <a class="reference internal" href="dfn_commands/cmd_fracture_create.html#command:fracture.create" title="Create a deterministic fracture."><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">create</span></code></a> command.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../../../../_images/fourFractures.png"><img alt="../../../../_images/fourFractures.png" src="../../../../_images/fourFractures.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Deterministic fractures.</span></p>
+</div>
+<p class="h3 rubric">Intersections</p>
+<p>An intersection object is the result of an intersection between a fracture and either a line,
+a planar polygon, a convex set of planar polygons or another fracture. Intersection objects are modeled
+by {a point in 2D; a segment or a collection of adjacent segments in 3D}. The figure below shows
+the intersections, computed via the <a class="reference internal" href="dfn_commands/cmd_fracture_intersections.compute.html#command:fracture.intersections.compute" title="Compute intersections. Intersections can exist between fractures, and between&#013;&#010;fractures"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">intersections</span> <span class="pre">compute</span></code></a> command, between the deterministic
+fractures shown above. Fracture intersections are grouped into intersection sets for ease of processing.
+For instance, one may determine the intersections between fractures and also the intersections between
+fractures and a model of a borehole; these may be stored in separate intersection sets for later
+processing.</p>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../../../../_images/fourFracturesIntersections.png"><img alt="../../../../_images/fourFracturesIntersections.png" src="../../../../_images/fourFracturesIntersections.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Intersections between deterministic fractures.</span></p>
+</div>
+</div>
+<div class="section" id="generating-stochastic-fracture-sets-or-dfns">
+<h2>Generating Stochastic Fracture Sets or DFNs</h2>
+<p>A DFN is a set of fractures. In the figures above, there is a single DFN that is composed of four
+user specified fractures. Multiple DFNs, or sets of fractures, can exist simultaneously,
+though any fracture can only belong to a single DFN. The figure below shows two DFNs composed of
+deterministic fractures, one composed of horizontal fractures and one composed of vertical fractures.
+Splitting fractures into separate DFNs may be useful for computations involving different sets of
+fractures with different characteristics (i.e., in this example, horizontal versus vertical fracture
+sets). Stochastic fractures are generated in separate DFNs, as described below.</p>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="../../../../_images/twoDFNs.png"><img alt="../../../../_images/twoDFNs.png" src="../../../../_images/twoDFNs.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 3: Two DFNs, or fracture sets, composed of horizontal and vertical fractures.</span></p>
+</div>
+<p class="h3 rubric">Stochastic Descriptions of Fractures - the Fracture Template</p>
+<p>It is often the case that, in a rock mass, one cannot directly determine the sizes, orientations and
+frequencies of the fractures pervading the rock mass. Instead, geological mapping and/or geophysical
+techniques are used to estimate the characteristics of the fractures. After inspecting field data, one
+may determine bounds on the fracture sizes, positions, and orientations. A fracture template holds
+these statistical parameters and is used to generate stochastic fractures with the <a class="reference internal" href="dfn_commands/cmd_fracture_generate.html#command:fracture.generate" title="Generate fractures from a statistical description. A model domain must be specified&#013;&#010;prior to"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">generate</span></code></a>
+command. Specifically, the fracture template contains a description of the size, position and orientation
+distributions of the fractures; it is created with the <a class="reference internal" href="dfn_commands/cmd_fracture_template.create.html#command:fracture.template.create" title="Create a fracture generation template. The name of the template is  s .&#013;&#010;A fracture generation"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">template</span> <span class="pre">create</span></code></a> command. Thus
+a fracture template is a stochastic representation of a set of fractures and can be used to generate
+any number of specific realizations of fractures.</p>
+<p class="h3 rubric">Stochastic Modeling Approach</p>
+<p>The modeling approach used to generate fractures is stochastic: the geometrical characteristics of
+fractures, usually obtained from field data, are constrained through independent statistical distributions
+(i.e., type of distribution and associated parameters) of their geometrical properties. This information
+is stored in a fracture template. The geometrical characteristics currently supported by fracture
+templates are the fracture size (diameter), orientation and position distribution. From one fracture
+template, any number of different realizations of fractures can be generated, depending on the random
+seed.</p>
+<p class="h4 rubric">Fracture Size Density Distribution</p>
+<p>The fracture size density distribution defines the number of fractures per unit of volume, <span class="math">\(n(l)\)</span>,
+whose size is in the range <span class="math">\([l; l+dl]\)</span>. It combines a fracture size probability distribution
+function and a density term. For a power law distribution, the relationship is</p>
+<div class="math">
+\[n(l)=\alpha \cdot l^{-a}\]</div>
+<p>where <span class="math">\(a\)</span> is the scaling exponent (since the power law exponent is always negative, equal to -<span class="math">\(a\)</span>,
+the scaling exponent is positive) and <span class="math">\(\alpha\)</span> is the density term of the model. The distribution is
+between <span class="math">\(l_{min}\)</span> and <span class="math">\(l_{max}\)</span>. These are the the lower and upper bounds of the fracture
+sizes, respectively. Note that since the distribution is not necessarily bounded toward its upper bound,
+<span class="math">\(l_{max}\)</span> can be infinite. <span class="math">\(a\)</span> precisely fixes, at any scale, the ratio between smaller
+and larger fracture sizes. Is it usually in the range <span class="math">\([3;4]\)</span>. When plotted on a log-log plot,
+<span class="math">\(n(l)\)</span> appears as a straight line (see <a href="#dfnpowerlaw">Figure  4</a>) whose apparent slope is -<span class="math">\(a\)</span>.</p>
+<div class="figure align-center" id="id4">
+<span id="dfnpowerlaw"></span><img alt="../../../../_images/powerlaw.png" src="../../../../_images/powerlaw.png" />
+<p class="caption"><span class="caption-text">Figure 4: Power-law distribution in a log-log diagram.</span></p>
+</div>
+<p>The power law model encompasses end member models, such as the model of constant size <span class="math">\(l_{min}\)</span> if
+<span class="math">\(a\rightarrow \infty\)</span>, or models with infinite fractures when <span class="math">\(a \leq 2\)</span>. When <span class="math">\(a\)</span>
+increases, the proportion of small fractures increases relative to large fractures (<a href="#dfnillustration">Figure  5</a>).</p>
+<div class="figure align-center" id="id5">
+<span id="dfnillustration"></span><img alt="../../../../_images/dfnillustration.png" src="../../../../_images/dfnillustration.png" />
+<p class="caption"><span class="caption-text">Figure 5: 2D outcrops from 3D DFNs generated within a cube of <span class="math">\(L=100\)</span> with <span class="math">\(l_{min}=1\)</span>, <span class="math">\(l_{max}=100\)</span> and <span class="math">\(d_m=1\)</span> (see <a href="#dfndensities">Table  1</a>) with, from left to right and from top to bottom, <span class="math">\(a=2\)</span>, <span class="math">\(a=3\)</span>, <span class="math">\(a=4\)</span> and <span class="math">\(a\rightarrow \infty\)</span>.</span></p>
+</div>
+<p>The term <span class="math">\(\alpha\)</span> fixes the total fracture density by range of fracture size. The total fracture density
+(see below) is additionally dependent on the range of fracture sizes considered. The total number of fractures
+with sizes in the range <span class="math">\([l; l+dl]\)</span>, in a volume of characteristic size <span class="math">\(L\)</span>, is then defined as
+<span class="math">\(N(l,L)\)</span> (e.g., <span class="math">\(N(l,L)=\alpha \cdot l^{-a}\cdot L^3\)</span>).</p>
+<p>If the domain is cubic, <span class="math">\(L\)</span> is simply the side of the cube. The number of fractures with sizes
+between <span class="math">\(l_1\)</span> and <span class="math">\(l_2\)</span> is given by</p>
+<div class="math">
+\[n(l_1 \leq l \leq l_2) = \int_{l_1}^{l_2} n(l) \cdot L^3 dl = \alpha \left( \frac{ l_2^{1-a}-l_1^{1-a}}{1-a} \cdot L^3 \right)\]</div>
+<p>The cumulative fracture size density distribution that defines the number of fractures whose size is
+larger than a given value <span class="math">\(C(l)\)</span> is defined by</p>
+<div class="math">
+\[C(l) = \int_l^\infty n(l') \cdot dl' = \alpha \left(\frac{l^{1-a}}{a-1}\right)\]</div>
+<p>One sees that if the scaling exponent is large enough (e.g., <span class="math">\(\geq 4\)</span>), a corresponding fracture
+population is dominated by the smallest fractures. In other words, <span class="math">\(l^{-a+1}\)</span> decreases quickly
+with <span class="math">\(l\)</span> if <span class="math">\(a\geq 4\)</span>. The power law model is not the only size distribution available
+in fracture templates. Gauss, uniform and bootstrapped (from file) distributions are also available.
+The user can also define a custom distribution with <span class="codename">FISH</span>.</p>
+<p class="h4 rubric">Densities</p>
+<p>The most common definition for the fracture density is related to the total surface (mass) of fracture
+per unit volume. In 3D, the fracture mass density is the total fracture surface area per unit volume
+(<span class="math">\(d_m\)</span> or <span class="math">\(P_{32}\)</span>).
+In 2D, it is the total fracture length per unit area (<span class="math">\(P_{21}\)</span>). In 1D, it is the fracture frequency
+(<span class="math">\(f\)</span> or <span class="math">\(P_{10}\)</span>): the number of fracture intercepts by unit length of the scanline. The fracture
+density may also be defined as a fracture center density: the number of fracture centers per unit volume
+(<span class="math">\(d_c\)</span> or <span class="math">\(P_{30}\)</span>). These definitions are shown in <a href="#dfndensities">Table  1</a>. In order to
+simplify modeling with the DFN module, the required density (i.e., input of the fracture generation) is
+defined from either the mass density, center density or the fracture frequency,
+each of them relying on estimates from a sample. For any given initial density, the spatial distribution of
+fracture positions arises from a Poisson process, leading to a uniformity of fracture positions throughout
+the volume.</p>
+<span id="dfndensities"></span><table border="1" class="icg3 docutils" id="id6">
+<caption><span class="caption-text">Table 1: DFN density definitions.</span></caption>
+<colgroup>
+<col width="16%" />
+<col width="17%" />
+<col width="22%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Unit</th>
+<th class="head">Meaning</th>
+<th class="head">Link to fracture size distribution</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>mass density
+(<span class="math">\(dm\)</span> or
+<span class="math">\(P_{32}\)</span>)</td>
+<td><span class="math">\(m^2/m^3\)</span></td>
+<td>Cumulated surface of fracture per
+unit volume</td>
+<td><span class="math">\(d_m(l_c)\cong \int_{l_c}^\infty n(l)\cdot l^2\cdot L^{-3}\cdot dl\)</span></td>
+</tr>
+<tr class="row-odd"><td>mass density on outcrop
+(<span class="math">\(P_{21}\)</span>)</td>
+<td><span class="math">\(m/m^2\)</span></td>
+<td>Cumulated length of fracture per
+unit surface</td>
+<td><span class="math">\(P_{21}(t_c)\cong \int_{t_c}^L n(t,L)\cdot\cdot L^{-2} dt\)</span>.
+<span class="math">\(t\)</span> is the fracture trace line observed on a 2D outcrop.</td>
+</tr>
+<tr class="row-even"><td>fracture frequency
+(<span class="math">\(f\)</span> or
+<span class="math">\(P_{10}\)</span>)</td>
+<td><span class="math">\(m^{-1}\)</span></td>
+<td>Number (<em>N</em>) of fractures per unit
+length</td>
+<td><span class="math">\(f(l_c)\propto K_{ori}\cdot d_m(lc)\)</span>.
+<span class="math">\(K_{ori}\)</span> depends on the respective orientation of the 1D scanline
+or borehole and the DFN orientation distribution. In the case of uniform
+orientation (no preferential direction), <span class="math">\(K_{ori}=0.5\)</span>.</td>
+</tr>
+<tr class="row-odd"><td>center density
+(<span class="math">\(d_c\)</span> or
+<span class="math">\(P_{30}\)</span>)</td>
+<td><span class="math">\(m^{-3}\)</span></td>
+<td>Number of fracture centers per
+unit volume</td>
+<td><span class="math">\(d_c(l_0)=\int_{l_0}^L n(l)\cdot L^{-3}\cdot dl\)</span></td>
+</tr>
+<tr class="row-even"><td>fracture spacing</td>
+<td><span class="math">\(m\)</span></td>
+<td>Inverse of fracture frequency
+average distance between fractures
+along a 1D line</td>
+<td><span class="math">\(\text{spacing}(l_c)=\frac{1}{f(l_c)}\)</span></td>
+</tr>
+<tr class="row-odd"><td>percolation parameter</td>
+<td><span class="math">\(m^3/m^3\)</span></td>
+<td>Cumulated excluded volume around
+fractures per unit volume</td>
+<td><span class="math">\(d_m(l_c)\cong \int_{l_c}^\infty n(l)\cdot l^3\cdot L^{-3}\cdot dl\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Fracture density is a scale-averaging property, meaning that fracture density estimates and associated
+distributions depend on the location and scale of the observation region. They can reflect local variability,
+when the observation scale tends to zero, or define bulk or macroscopic properties when the measurement scale tends
+to <span class="math">\(\infty\)</span>. The parameters <span class="math">\(a\)</span>, <span class="math">\(\alpha\)</span>, <span class="math">\(l_{min}\)</span>, <span class="math">\(l_{max}\)</span>, of the
+fracture size density distribution, fully define the fracture bulk density. However, field data of observed
+fracture densities are taken at finite size samples such as borehole sections, scanlines, or outcrop maps, and
+thus are related to their sample support. They potentially differ locally from the bulk
+fracture density. In addition, they are related to a limited range of fracture sizes, due to resolution
+effects at small sizes, and censoring and truncation at larger sizes.</p>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="dfn.html" accesskey="U">Discrete Fracture Network (DFN)</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="dfn.html"
+                           title="previous chapter"> Discrete Fracture Network (DFN)</a> |    
+       <a href="dfn_commands/dfn_commands.html"
+                           title="next chapter">Commands</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Overview" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

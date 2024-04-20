@@ -1,0 +1,231 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Strength Reduction Procedure in FLAC3D UDEC, and 3DEC &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="References" href="references.html" />
+    <link rel="prev" title="Computational Methods for Factor of Safety Calculation of Slopes" href="computationalmethods.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="hide sectionname docutils container">
+<span class="codename">FLAC3D</span> Theory and Background • Factor of Safety</div>
+<div class="section" id="strength-reduction-procedure-in-flac3d-udec-and-3dec">
+<span id="fos-strengthreduction"></span><h1>Strength Reduction Procedure in <span class="codename">FLAC3D</span> <span class="codename">UDEC</span>, and <span class="codename">3DEC</span></h1>
+<p>The strength reduction method can be applied to essentially any material failure model to evaluate a factor of safety based upon the reduction of a specified strength property or property group. The method has been used extensively in the context of Mohr-Coulomb material and, principally, the simultaneous reduction of cohesion and frictional strength. In addition to Mohr-Coulomb strength properties (assigned with <a class="reference internal" href="../../../../../../../udec/docproject/source/elements/block/block.zone_commands/cmd_block.zone.cmodel.html#kwd:block.zone.cmodel.assign.mohr-coulomb" title="Assign the Mohr-Coulomb plasticity model."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">cmodel</span> <span class="pre">assign</span> <span class="pre">mohr-coulomb</span></code></a>), the method is also applied automatically to ubiquitous-joint strength properties (assigned with <a class="reference internal" href="../../../../../../../udec/docproject/source/elements/block/block.zone_commands/cmd_block.zone.cmodel.html#kwd:block.zone.cmodel.assign.ubiquitous-joint" title="Assign the ubiquitous joint model."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">cmodel</span> <span class="pre">assign</span> <span class="pre">ubiquitous-joint</span></code></a>), and to Hoek-Brown strength properties (assigned with <a class="reference internal" href="../../../../../../../udec/docproject/source/elements/block/block.zone_commands/cmd_block.zone.cmodel.html#kwd:block.zone.cmodel.assign.hoek-brown" title="Assign the modified Hoek-Brown plasticity model."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">cmodel</span> <span class="pre">assign</span> <span class="pre">hoek-brown</span></code></a>) when the <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a> command is given.</p>
+<p>The strength reduction method can also be applied when <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a> is executed for interface cohesion and friction in <span class="codename">FLAC3D</span> (assigned via <code class="xref fish fish-cmd docutils literal"><span class="pre">zone</span> <span class="pre">interface</span> <span class="pre">node</span> <span class="pre">property</span></code>), or joint cohesion and friction in <span class="codename">UDEC</span> and|3dec| (assigned via <a class="reference internal" href="../../../../../../../udec/docproject/source/elements/block/block.contact_commands/cmd_block.contact.property.material.html#command:block.contact.property" title="Assign properties to material models for contacts. This command is used to define&#013;&#010;the material property arrays for contacts that have been assigned a constitutive&#013;&#010;model number and a material porperty number usine the  block.contact.change &#013;&#010;command. The first parameter must be the specification of the joint material&#013;&#010;number  i  (1-50). Unless otherwise stated, the default value for all properites&#013;&#010;is zero.  The properties for the contact models follow."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">property</span></code></a>).</p>
+<p>The procedure for implementing the strength reduction technique via the <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a> command is as follows.</p>
+<p>First, the code finds a “characteristic response time,” which is a representative number of steps (denoted by <span class="math">\(N_r\)</span>) that characterizes the response time of the system. <span class="math">\(N_r\)</span> is found by setting the material strength (for Mohr-Coulomb material, the cohesion and tensile strength) to a large value, making a large change to the internal stresses (by default, a perturbation factor of 2 is applied to the stress state), and finding how many steps are necessary for the system to return to equilibrium.</p>
+<p>A maximum limit of 50,000 is set for <span class="math">\(N_r\)</span> by default. If the model does not reach equilibrium within 50,000 steps, the run will stop and the factor-of-safety solution cannot be completed. If this happens, the user should review the parameters selected for the model. For example, if the user has selected structural support with a high value for Young’s modulus, this may affect the solution convergence time.</p>
+<p>It is also possible to set the value for <span class="math">\(N_r\)</span> manually by using the
+<span class="cmdkey">characteristic-steps</span> keyword to specify a value for <span class="math">\(N_r\)</span>. Alternatively, the
+initial perturbation to the internal stresses can be changed by specifying a different
+perturbation factor using the <span class="cmdkey">perturbation</span> keyword. Note that these manual controls
+should be used with caution.</p>
+<p>After <span class="math">\(N_r\)</span> is determined, for a given strength reduction factor, <span class="math">\(F\)</span>, <span class="math">\(N_r\)</span> steps are executed. If the unbalanced force ratio <a class="footnote-reference" href="#id2" id="id1">[1]</a> is less than 10<sup>-5</sup> after <span class="math">\(N_r\)</span> steps, then the system is in equilibrium. If the unbalanced force ratio is greater than 10<sup>-5</sup>, then another <span class="math">\(N_r\)</span> steps are executed, exiting the loop if the force ratio is less than 10<sup>-5</sup>. The value of force ratio, at the end of the current span of <span class="math">\(N_r\)</span> steps, is compared with the value of force ratio at the end of the previous <span class="math">\(N_r\)</span> steps. If the difference is less than 10%, the system is deemed to be in nonequilibrium, and the loop is exited with the new nonequilibrium, <span class="math">\(F\)</span>. If the above-mentioned difference is greater than 10%, blocks of <span class="math">\(N_r\)</span> steps are continued until: (1) the difference is less than 10%; or (2) 6 such blocks have been executed; or (3) the force ratio is less than 10<sup>-5</sup>. The justification for case (1) is that the mean force ratio is converging to a steady value that is greater than that corresponding to equilibrium; the system must therefore be in continuous motion.</p>
+<p>The following information is displayed during the solution process:</p>
+<ol class="arabic simple">
+<li>the operation currently being performed;</li>
+<li>the number of calculation steps completed to determine a given value of <span class="math">\(F\)</span>;</li>
+<li>twice the characteristic response time, <span class="math">\(N_r\)</span> (note that the change in unbalanced force ratio is first checked at two times <span class="math">\(N_r\)</span>);</li>
+<li>unbalanced force ratio;</li>
+<li>the number of completed solution stages (i.e., tests for equilibrium or nonequilibrium); and</li>
+<li>current bracketing values of <span class="math">\(F\)</span>.</li>
+</ol>
+<p>The factor of safety solution stops when the difference between the upper and lower bracket values becomes smaller than 0.005 times the mean value. (This resolution limit can be changed with <span class="cmdkey">resolution</span>, an optional keyword to the <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a> command.)</p>
+<p>The bracketing solution approach invoked with the <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a> command may perform a large number of (stable and unstable) solutions before determining a factor of safety. If an approximate range for the factor is known, then the number of solutions (and total solution time) can be reduced by specifying the starting bracket values. This can be done with <span class="cmdkey">bracket</span> <a class="reference internal" href="../../../../../utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">v1</span></span></a> <a class="reference internal" href="../../../../../utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">v2</span></span></a>, an optional phrase to the <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a> command. If the calculated factor falls outside the specified brackets, a warning message will be issued. It is also possible to test whether a specified factor is above or below the actual factor, by setting <span class="cmdkey">bracket</span> <a class="reference internal" href="../../../../../utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">v1</span></span></a> <a class="reference internal" href="../../../../../utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">v2</span></span></a>.</p>
+<p>The following conditions should be noted when using <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a>.</p>
+<ol class="arabic simple">
+<li>The model state must be saved before a <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a> calculation is performed.</li>
+<li>The initial stress state can either be at a zero stress state or at stress equilibrium for the <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a> calculation. If the model is at a zero stress state, only gravity loading is applied to determine <span class="math">\(N_r\)</span>.</li>
+<li>The factor of safety calculation is performed in small-strain calculation mode when <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a> is issued.</li>
+<li>If a factor of safety calculation is performed for a coupled fluid flow-mechanical model (with <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.configure.html#kwd:model.configure.fluid" title="Fluid-flow analysis"><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">configure</span> <span class="pre">fluid</span></code></a> specified), the fluid flow calculation will be turned off and fluid bulk modulus will be set to zero when <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a> is issued.</li>
+<li>The factor of safety calculation assumes nonassociated plastic flow with <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a>. The keyword <span class="cmdkey">associated</span> can be added for an associated plastic flow calculation.</li>
+</ol>
+<p>Three files are saved during the <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a> calculation: the initial-condition state, the latest stable factor of safety calculation, and the latest unstable factor of safety calculation. By default, the initial state is saved to a file named “FOS-Init.sav”, the stable state is saved to a file named “FOS-Stable.sav”, and the unstable state to a file named “FOS-Unstable.sav”. Each factor of safety calculation stage starts from the “FOS-Init.sav” state.</p>
+<p>A different file name can be specified for each of these three files (see the <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#kwd:model.factor-of-safety.filename" title="Sets the file name prefix used to identify save files created during the factor&#013;&#010;of safety calculation.  Three files will be created during the process.  For&#013;&#010;example, if the prefix given was  test , then the filenames  test-Init.f3sav ,&#013;&#010; test-Stable.f3sav , and  test-Unstable.f3sav  will be created.&#013;&#010; These files represent the *initial* state, the last *stable* state, and the&#013;&#010;last *unstable* state, respectively."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span> <span class="pre">filename</span></code></a> command).</p>
+<div class="section" id="strength-reduction-properties">
+<span id="fos-srm-properties"></span><h2>Strength Reduction Properties</h2>
+<p>The strength properties that can be reduced when using <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a> are described in the following sections.</p>
+<div class="section" id="mohr-coulomb-material">
+<span id="fos-mohr-coulomb-material"></span><h3>Mohr-Coulomb Material</h3>
+<p>If the <span class="xref std std-ref">Mohr-Coulomb model</span> failure criterion is prescribed, cohesion, <span class="math">\(c\)</span>, and friction angle, <span class="math">\(\phi\)</span>, are selected by default to be included in the safety factor calculation when executing <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a>. The reduction equations for these properties are</p>
+<div class="math" id="equation-eqfos-srm-mc-cohesion">
+<span class="eqno">(1)</span>\[c^{\rm trial}\ =\ {1 \over {F^{\rm trial}}}\ c\]</div>
+<div class="math" id="equation-eqfos-srm-mc-friction">
+<span class="eqno">(2)</span>\[\phi^{\rm trial}\ =\ \arctan\biggl({1 \over {F^{\rm trial}}}\tan\phi\biggr)\]</div>
+<p>with the <a class="reference internal" href="#fos-strengthreduction"><span class="std std-ref">strength reduction procedure</span></a>. These strengths can optionally be excluded from the <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a> calculation with the keyword phrase <span class="cmdkey">exclude cohesion</span> or <span class="cmdkey">exclude friction</span>.</p>
+<p>Tensile strength, <span class="math">\(\sigma^t\)</span>, can also be included with the optional phrase <span class="cmdkey">include tension</span>. The trial properties for tensile strength are calculated in a manner similar to that used for material friction and cohesion. The reduction equation for the tensile strength is</p>
+<div class="math" id="equation-eqfos-srm-mc-tension">
+<span class="eqno">(3)</span>\[\sigma^{t (trial)}\ =\ {1 \over {F^{trial}}}\ \sigma^t\]</div>
+</div>
+<div class="section" id="ubiquitous-joint-material">
+<h3>Ubiquitous-Joint Material</h3>
+<p>If the <span class="xref std std-ref">ubiquitous-joint model</span> is used, strength values for the intact material, <span class="math">\(c\)</span> and <span class="math">\(\phi\)</span>, and strength values for the ubiquitous joints, <span class="math">\(c_j\)</span> and <span class="math">\(\phi_j\)</span>, are included by default in the <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a> calculation. Tensile strengths, <span class="math">\(\sigma^t\)</span> and <span class="math">\(\sigma^t_j\)</span>, can also be selected for reduction by adding the keyword phrases <span class="cmdkey">include tension</span> and <span class="cmdkey">include joint-tension</span>, respectively. The reduction equations for the intact material are the same as Equations <a class="reference internal" href="#equation-eqfos-srm-mc-cohesion">(1)</a> through <a class="reference internal" href="#equation-eqfos-srm-mc-tension">(3)</a>, and for the ubiquitous joints are</p>
+<div class="math" id="equation-eqfos-srm-ubi-cohesion">
+<span class="eqno">(4)</span>\[c_j^{trial}\ =\ {1 \over {F^{trial}}}\ c_j\]</div>
+<div class="math" id="equation-eqfos-srm-ubi-friction">
+<span class="eqno">(5)</span>\[\phi_j^{trial}\ =\ \arctan\biggl({1 \over {F^{trial}}}\tan\phi_j\biggr)\]</div>
+<div class="math" id="equation-eqfos-srm-ubi-tension">
+<span class="eqno">(6)</span>\[\sigma_j^{t (trial)}\ =\ {1 \over {F^{trial}}}\ \sigma_j^t\]</div>
+<p>Ubiquitous-joint cohesion and friction can be excluded from the safety factor calculation
+with <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">include joint-cohesion</span></span></a> and <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">exclude joint-friction</span></span></a>, respectively.</p>
+</div>
+<div class="section" id="hoek-brown-material">
+<span id="fos-hoek-brown-material"></span><h3>Hoek-Brown Material</h3>
+<p>The <span class="xref std std-ref">Hoek-Brown model</span> supports factor of safety calculations with <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a>. Strength reduction is performed with respect to shear strength <span class="cmdkey">flag-fos</span> = <a class="reference internal" href="../../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">0</span></span></a>).</p>
+<p>Note that, although the softening/hardening capabilities of the Hoek-Brown model can be activated <em>before</em> the factor of safety calculation is performed, they should be disabled (by removing the table property assignment) during the strength reduction procedure because the value of the evolution parameter is then ill-defined.</p>
+<p><strong>Factor of Safety with respect to Shear Strength,</strong> <span class="math">\(\tau\)</span></p>
+<p>The Hoek-Brown criterion can be approximated locally by a Mohr-Coulomb criterion:</p>
+<div class="math" id="equation-eqfos-srm-mhoek-tau">
+<span class="eqno">(7)</span>\[\tau = \sigma^{\prime} \tan{\phi_c} + c_c\]</div>
+<p>where apparent cohesion and friction are given in terms of the local value of <span class="math">\(\sigma_3\)</span> by</p>
+<div class="math" id="equation-eqfos-srm-mhoek-friction">
+<span class="eqno">(8)</span>\[\phi_c\ =\ 2 \tan^{-1} \sqrt{N_{\phi_c}}\ -\ 90^\circ\]</div>
+<div class="math" id="equation-eqfos-srm-mhoek-cohesion">
+<span class="eqno">(9)</span>\[c_c\    =\ {\sigma^{ucs}_c \over {2\sqrt{N_{\phi_c}}}}\]</div>
+<p>where (for compressive stresses positive) if <span class="math">\(\sigma_3 \ge 0\)</span>:</p>
+<div class="math" id="equation-eqfos-srm-mhoek-nphic">
+<span class="eqno">(10)</span>\[N_{\phi_c}\ =\ 1 + am_b {\Bigl(m_b {\sigma_3 \over \sigma_{ci}} + s \Bigr)}^{a-1}\]</div>
+<div class="math" id="equation-eqfos-srm-mhoek-sigmacucs">
+<span class="eqno">(11)</span>\[\sigma^{ucs}_c  =\ \sigma_3 (1 - N_{\phi_c}) + \sigma_{ci}  {\Bigl(m_b {\sigma_3 \over \sigma_{ci}} + s \Bigr)}^a\]</div>
+<p>and, if <span class="math">\(\sigma_3 &lt; 0\)</span>:</p>
+<div class="math" id="equation-eqfos-srm-mhoek-nphic2">
+<span class="eqno">(12)</span>\[N_{\phi_c}\ =\ 1 + am_b (s)^{a-1}\]</div>
+<div class="math" id="equation-eqfos-srm-mhoek-sigmacucs2">
+<span class="eqno">(13)</span>\[\sigma^{ucs}_c  =\ \sigma_{ci}  (s)^a\]</div>
+<p>A pragmatic approach to evaluate a factor of safety for slopes (based on the strength reduction technique) is used, whereby local cohesion, <span class="math">\(c_c\)</span>, and friction coefficient, <span class="math">\(\tan{\phi}_c\)</span>, are divided by a factor until active slope failure is detected. The factor directly applies to the maximum allowable value of shear stress <span class="math">\(\tau_{max}\)</span> (see Equation <a class="reference internal" href="#equation-eqfos-srm-mhoek-tau">(7)</a>). The reduction factor at the verge of slope collapse is defined as the FOS based on the proposed (local strength reduction) technique.</p>
+<p>Although, in theory, it is possible to find a best fit to match the reduced envelope with a Hoek-Brown type equation (see, e.g., Hammah et al. 2005), this step is not required with this particular model implementation because the logic relies on the direct use of envelope tangent (there is no need to define a curve and then the tangent when the tangent is available in the first place—see above). Also, the proposed local strength reduction technique provides a means by which to quantify the shear stress allowance to collapse, as one would expect. In this case, the reduction factor does not apply directly on model parameters (there is no absolute reason why it should).</p>
+<p><strong>Factor of Safety with Respect to Unconfined Compression Strength,</strong> <span class="math">\(\sigma_{ci}\)</span></p>
+<p>The <span class="xref std std-ref">Hoek-Brown model</span> supports an alternative factor of safety calculation with <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a>; strength reduction is performed with respect to unconfined compression strength by setting <span class="cmdkey">flag-fos</span> = <a class="reference internal" href="../../../../../utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">1</span></span></a>. The intact unconfined compressive strength is reduced by a reduction factor until active failure is detected to allow comparison with stability charts for simple slopes obtained by Li et al. (2008), using limit analysis.</p>
+</div>
+<div class="section" id="interfaces-flac3d">
+<h3>Interfaces (<span class="codename">FLAC3D</span>)</h3>
+<p>Interface strengths can be included in the safety factor calculation by adding <span class="cmdkey">interface include</span> <a class="reference internal" href="../../../../../utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">propname</span></span></a> to <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a>. For the interface strength values <span class="math">\(c_i\)</span> and <span class="math">\(\phi_i\)</span>, the equations are</p>
+<div class="math" id="equation-eqfos-srm-interface-cohesion">
+<span class="eqno">(14)</span>\[c_i^{trial}\ =\ {1 \over {F^{trial}}}\ c_i\]</div>
+<div class="math" id="equation-eqfos-srm-interface-friction">
+<span class="eqno">(15)</span>\[\phi_i^{trial}\ =\ \arctan\biggl({1 \over {F^{trial}}}\tan\phi_i\biggr)\]</div>
+</div>
+<div class="section" id="coulomb-joints-3dec-udec">
+<h3>Coulomb Joints (<span class="codename">3DEC</span>, <span class="codename">UDEC</span>)</h3>
+<p>Joint strengths can be included in the safety-factor calculation by assigning Coulomb joint material with <span class="fishcmd">block contact jmodel assign mohr</span>. By default, joint cohesion and friction angle are included when <span class="fishcmd">model factor-of-safety</span> is issued. The strength reduction equations for these properties are</p>
+<div class="math">
+\[c_i^{trial}\ =\ {1 \over {F^{trial}}}\ c_i\]</div>
+<div class="math">
+\[\phi_i^{trial}\ =\ \arctan\biggl({1 \over {F^{trial}}}\tan\phi_i\biggr)\]</div>
+<p>Joint strength properties can be included or excluded with the keywords <span class="cmdkey">include/exclude cohesion</span>, <span class="cmdkey">friction</span>.</p>
+<p class="endnotesection rubric">Endnotes</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>The <em>unbalanced force</em> is the net force acting on a gridpoint. The ratio of this force to the mean absolute value of force exerted by each surrounding zone is the <em>unbalanced force ratio</em>. The limiting value for the unbalanced force ratio can be changed with the optional keyword <span class="cmdkey">ratio</span> to the <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a> command.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../methodology.html" >Modeling Methodology</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="factorofsafety.html" accesskey="U">Factor of Safety</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="computationalmethods.html"
+                           title="previous chapter"> Computational Methods for Factor of Safety Calculation of Slopes</a> |    
+       <a href="references.html"
+                           title="next chapter">References</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Strength Reduction Procedure in FLAC3D UDEC, and 3DEC" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

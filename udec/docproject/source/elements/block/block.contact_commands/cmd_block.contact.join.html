@@ -1,0 +1,146 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block contact join command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block contact join-stiffness-normal command" href="cmd_block.contact.join-jkn.html" />
+    <link rel="prev" title="block contact initialize command" href="cmd_block.contact.initialize.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-contact-join-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">join</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="blockcontact command">
+<dt id="command:block.contact.join">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">c</span><span class="null">o</span><span class="null">n</span><span class="null">t</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null"> </span></span><span class="cmdname"><span class="null">j</span><span class="null">o</span><span class="null">i</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.contact.join.by-block" title="block contact join by-block">by-block</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.contact.join.by-contact" title="block contact join by-contact">by-contact</a></p>
+</div>
+<p>The join command is used to prevent contstruction cuts that are made for geometric purposes from influencing the model results.  In zoned models where there are matching gridpoints between the blocks, the gridpoints are slaved together.  For rigid blocks or places where there are no matching gridpoints a special contact model with high stiffness and infinite strength is used.   For rigid block models that do not have any unjoined contacts the stiffness properties must be specified.  The stiffness properties may also be modified for zoned blocks models.</p>
+<p>The command can be used to join or unjoin contacts.  Joined contacts will be displayed with a constitutive model of 10. Contacts that are joined cannot slide or open. Contacts are joined for <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>; they are unjoined for <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a>.</p>
+<p>This command works best if used after all joints have been formed and the model has been zoned. Otherwise, the joining of the block edges may not be continuous.</p>
+<p>The stiffness properties of the special constitutive joined contact model are determined automatically for zoned blocks or for models with unjoined contacts. The normal stiffness is based on an average zone stiffness or the largest joint stiffness assigned in the model, (whichever is greater) multiplied by a factor (BLOCK CONTACT JOIN-RATIO). The default factor is 100. The shear stiffness is half the normal stiffness. The commands to modify the joined contact stiffness properties are <a class="reference internal" href="cmd_block.contact.join-jkn.html#command:block.contact.join-stiffness-normal" title="Set joint normal stiffness used for joined contacts (default is 100 times maximum&#013;&#010;stiffness of zones or other contacts)."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">join-stiffness-normal</span></code></a>, <a class="reference internal" href="cmd_block.contact.join-jks.html#command:block.contact.join-stiffness-shear" title="Set joint shear stiffness used for joined contacts (default is 50 times maximum&#013;&#010;stiffness of zones or other contacts)."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">join-stiffness-shear</span></code></a>, and <a class="reference internal" href="cmd_block.contact.join-ratio.html#command:block.contact.join-ratio" title="Set the multiplier used to calculate joined contact stiffnesses based on the&#013;&#010;maximum zone stiffness and the maximum contact stiffness (default is 100)."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">join-ratio</span></code></a>.</p>
+<p>There are two keywords that are used for the command.  The choice of the keyword depends on the intent of the range that is specified.</p>
+<dl class="keyword">
+<dt id="kwd:block.contact.join.by-block">
+<span class="cmdkey"><span class="pref">b</span><span class="null">y</span><span class="null">-</span><span class="pref">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span></dt>
+<dd><p>Joins or unjoins all contacts between blocks with centroids in the (optionally) specified range. The range is used to select the blocks.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.contact.join.by-contact">
+<span class="cmdkey"><span class="pref">b</span><span class="null">y</span><span class="null">-</span><span class="pref">c</span><span class="null">o</span><span class="null">n</span><span class="null">t</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>Joins or unjoins all contacts in the (optionally) specified range. The range is used to select the contacts.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../block_commands/block_commands.html" >Block Commands</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../block_commands/cmd_block.contact.html" accesskey="U"><span class="fishcmd">block contact</span> commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_block.contact.initialize.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">initialize</span></code> command</a> |    
+       <a href="cmd_block.contact.join-jkn.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">block</span> <span class="pre">contact</span> <span class="pre">join-stiffness-normal</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block contact join command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

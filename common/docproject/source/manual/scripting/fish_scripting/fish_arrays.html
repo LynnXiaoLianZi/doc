@@ -1,0 +1,182 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Arrays &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Reserved Names for Functions and Variables" href="fish_reservednames.html" />
+    <link rel="prev" title="Structures" href="fish_structures.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="arrays">
+<span id="fish-arraydesc"></span><h1>Arrays</h1>
+<p>Arrays are containers of <span class="codename">FISH</span> variables where the inserted items are assigned and retrieved via an integer index.
+Arrays may be multidimensional. See <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/fish_fish.html#fish-array"><span class="std std-ref">Array Utilities</span></a> for available methods.</p>
+<p>Arrays are less flexible and perform less well than <a class="reference internal" href="fish_list.html#fish-listdesc"><span class="std std-ref">Lists</span></a> or <a class="reference internal" href="fish_maps.html#fish-mapdesc"><span class="std std-ref">Maps</span></a>.
+If very large amounts of data needs to be stored in multiple dimensions then array types may be the optimal choice,
+otherwise we suggest arrays be replaced with <a class="reference internal" href="fish_list.html#fish-listdesc"><span class="std std-ref">Lists</span></a> whenever possible in older <span class="codename">FISH</span> code.</p>
+<p>Arrays may be created using the <code class="xref fish fish-func docutils literal"><span class="pre">array.create</span></code> library function.
+The number of arguments give to this function indicate the array dimension, and the value of those arguments indicate the size in that dimension.
+There is no limit to the number and size of the array dimensions, except memory capacity.</p>
+<p>Array objects can be destroyed with the <a class="reference internal" href="../../../../../fish/doc/fish_manual/fish_fish/array_utilities/fish_array.delete.html#function:array.delete" title="Delete an array. Any |FISH| symbols pointing to the array are set to null."><code class="xref fish fish-func docutils literal"><span class="pre">array.delete</span></code></a> intrinsic function.
+It is not necessary to do this, array objects that are not referred to by any fish value will be automatically destroyed and their memory recovered.</p>
+<p>Members of an array are <span class="codename">FISH</span> variables (except that there is no name associated with them),
+and are therefore governed by the same rules as symbol values. If a <span class="codename">FISH</span> symbol points to
+an array, array elements may be accessed by specifying an index in a parenthesis-enclosed
+list. For example:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">var1 </span><span class="p">=</span><span class="n"> abc</span><span class="p">(</span><span class="m m-Double">3</span><span class="p">,</span><span class="n"> nn </span><span class="o">+</span><span class="n"> </span><span class="m m-Double">3</span><span class="p">,</span><span class="n"> math</span><span class="p">.</span><span class="n">max</span><span class="p">(</span><span class="m m-Double">5</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">6</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>is a valid statement if <a class="reference internal" href="../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a> is currently pointing to a three-dimensional array. Arrays
+may appear on both sides of an assignment, and arrays may be used as indices of other arrays.</p>
+<p>Be aware that if <a class="reference internal" href="../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a> currently points to an array, the statement:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">abc </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">0</span>
+</pre></div>
+</div>
+<p>will cause <a class="reference internal" href="../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a> to become an integer whose value is zero.
+If no other symbol points to the array, all access to that array is lost and the array will be deleted automatically.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model random</span><span class="n"> </span><span class="m m-Double">10001</span>
+<span class="nb">fish define</span><span class="ni"> afill          </span><span class="c">; fill matrix with random numbers</span>
+<span class="ni">    </span><span class="c">;; Method one, using array.create and loops</span>
+<span class="ni">    var </span><span class="p">=</span><span class="ni"> </span><span class="k">array.create</span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> </span><span class="k">local</span><span class="ni"> m </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="k">array.size</span><span class="p">(</span><span class="ni">var</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">))</span>
+<span class="ni">        </span><span class="k">loop</span><span class="ni"> </span><span class="k">local</span><span class="ni"> n </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="k">array.size</span><span class="p">(</span><span class="ni">var</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">))</span>
+<span class="ni">            var</span><span class="p">(</span><span class="ni">m</span><span class="p">,</span><span class="ni">n</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="k">math.random.uniform</span>
+<span class="ni">        </span><span class="k">end_loop</span>
+<span class="ni">    </span><span class="k">end_loop</span>
+<span class="ni">    </span><span class="c">;; Method 2, using lists</span>
+<span class="ni">    var2 </span><span class="p">=</span><span class="ni"> </span><span class="k">array</span><span class="p">(</span><span class="k">math.random.uniform</span><span class="p">(</span><span class="m m-Double">4</span><span class="o">*</span><span class="m m-Double">3</span><span class="p">),</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span>
+<span class="nb">end</span>
+<span class="nb">fish define</span><span class="ni"> ashow</span><span class="p">(</span><span class="ni">v</span><span class="p">)</span><span class="ni">          </span><span class="c">; display contents of matrix</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> </span><span class="k">local</span><span class="ni"> m </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="k">array.size</span><span class="p">(</span><span class="ni">v</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">))</span>
+<span class="ni">        </span><span class="k">local</span><span class="ni"> hed </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;   &#39;</span>
+<span class="ni">        </span><span class="k">local</span><span class="ni"> msg </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;  &#39;</span><span class="o">+</span><span class="ni">string</span><span class="p">(</span><span class="ni">m</span><span class="p">)</span>
+<span class="ni">        </span><span class="k">loop</span><span class="ni"> </span><span class="k">local</span><span class="ni"> n </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="k">array.size</span><span class="p">(</span><span class="ni">v</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">))</span>
+<span class="ni">            hed </span><span class="p">=</span><span class="ni"> hed </span><span class="o">+</span><span class="ni"> </span><span class="s">&#39;               &#39;</span><span class="o">+</span><span class="ni">string</span><span class="p">(</span><span class="ni">n</span><span class="p">)</span>
+<span class="ni">            msg </span><span class="p">=</span><span class="ni"> msg </span><span class="o">+</span><span class="ni"> </span><span class="s">&#39;  &#39;</span><span class="o">+</span><span class="ni">string</span><span class="p">(</span><span class="ni">v</span><span class="p">(</span><span class="ni">m</span><span class="p">,</span><span class="ni">n</span><span class="p">),</span><span class="m m-Double">8</span><span class="p">,</span><span class="s">&#39; &#39;</span><span class="p">,</span><span class="m m-Double">8</span><span class="p">,</span><span class="s">&#39;e&#39;</span><span class="p">)</span>
+<span class="ni">        </span><span class="k">end_loop</span>
+<span class="ni">        </span><span class="k">if</span><span class="ni"> m </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1</span>
+<span class="ni">            </span><span class="k">io.out</span><span class="p">(</span><span class="ni">hed</span><span class="p">)</span>
+<span class="ni">        </span><span class="k">end_if</span>
+<span class="ni">        </span><span class="k">io.out</span><span class="p">(</span><span class="ni">msg</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">end_loop</span>
+<span class="nb">end</span>
+<span class="ni">[afill]</span>
+<span class="ni">[ashow</span><span class="p">(</span><span class="ni">var</span><span class="p">)</span><span class="ni">]</span>
+<span class="ni">[ashow</span><span class="p">(</span><span class="ni">var2</span><span class="p">)</span><span class="ni">]</span>
+</pre></div>
+</div>
+<p>Arrays can be compared against each other with <span class="fishname">==</span>, <span class="fishname">&lt;</span>, <span class="fishname">&gt;</span> etc.  If the structures are of the same type name then each member is compared in order.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Arrays are an iterable type.  This means you can use it as the target of a <span class="cmdkey">loop foreach</span> statement (see <a class="reference internal" href="statements/loopendloop.html#fish-statement-loopforeach"><span class="std std-ref">Loop ForEach</span></a> and can be split (see <a class="reference internal" href="fish_splitting.html#fish-splitting"><span class="std std-ref">Splitting</span></a>).  Each entry of the array is iterated with the left-most index changing first and the right-most index changing last.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>As with most aggregate types, when the value is listed it will simply indicate that it is of type Array, give the size, and an unique ID number assigned to it.  To see the contents of the array use the <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.list.html#kwd:fish.list.contents" title="For |FISH| values of an aggregate type (arrays, matrices, structures, maps,&#013;&#010;etc.) this will list the contents of the type in a structured way."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">list</span> <span class="pre">contents</span></code></a> command.  Be aware that for large multi-dimensional arrays this could be a considerable amount of data.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="fish.html" ><span class="codename">FISH</span> Scripting Reference</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="fish_languagerules.html" ><span class="codename">FISH</span> Rules and Usage</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="fish_datatypes.html" accesskey="U">Data Types</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="fish_structures.html"
+                           title="previous chapter"> Structures</a> |    
+       <a href="fish_reservednames.html"
+                           title="next chapter">Reserved Names for Functions and Variables</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Arrays" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

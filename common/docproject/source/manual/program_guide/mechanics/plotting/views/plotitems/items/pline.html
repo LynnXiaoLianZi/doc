@@ -1,0 +1,232 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Pline &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../../../search.html" />
+    <link rel="next" title="Reinforcement Plot Item" href="reinf.html" />
+    <link rel="prev" title="Moment" href="moment_thrust.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="pline">
+<span id="ui-pi-pline"></span><h1>Pline</h1>
+<p class="h3 rubric" id="pline-description">Description</p>
+<p>A bar plot of selected joint, zone, or gridpoint values along a line.
+This plot is displayed on top of any other geometric plot (it is not a chart plot).
+The data sampling is defined by the start, end and number attributes.
+The values plotted are taken fom the object nearest the points on the line.
+There is no averaging or projection to the sampling point location.</p>
+<p class="h3 rubric" id="pline-attributes">Attributes</p>
+<div class="docutils container" id="attributelist">
+<a class="reference internal" href="#pline-value-att"><span class="std std-ref">Value</span></a>
+<a class="reference internal" href="#pline-start-att"><span class="std std-ref">Start</span></a>
+<a class="reference internal" href="#pline-end-att"><span class="std std-ref">End</span></a>
+<a class="reference internal" href="#pline-number-att"><span class="std std-ref">Number</span></a>
+<a class="reference internal" href="#pline-marks-att"><span class="std std-ref">Marks</span></a>
+<a class="reference internal" href="#pline-legend-att"><span class="std std-ref">Legend</span></a></div>
+<p id="pline-value-att"><strong>Value</strong></p>
+<img alt="../../../../../../../../../../_images/slvalue.png" class="pi-attribute" src="../../../../../../../../../../_images/slvalue.png" />
+<p>Select which values are to be displayed in the chart.
+The options are listed in the table below.</p>
+<table border="1" class="colwidths-given icg1 docutils" id="plinevalueoptions">
+<caption><span class="caption-text">Table 1: Selection Options for Value</span></caption>
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Block (Zone)</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Displacement</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Displacement-X</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Displacement-Y</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Sig1</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Sig2</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Stress Normal</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Stress Shear</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Stress-XX</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Stress-XY</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Stress-YY</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Velocity</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Velocity-X</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Velocity-Y</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="pline-start-att"></span><p><strong>Start</strong></p>
+<img alt="start attribute" class="pi-attribute" src="../../../../../../../../../../_images/start.png" />
+<p>Specify the starting x y coordinates for the scanline.</p>
+<span class="target" id="pline-end-att"></span><p><strong>End</strong></p>
+<img alt="end attribute" class="pi-attribute" src="../../../../../../../../../../_images/slend.png" />
+<p>Specify the end x y coordinates for the scanline.</p>
+<span class="target" id="pline-number-att"></span><p><strong>Number</strong></p>
+<img alt="number attribute" class="pi-attribute" src="../../../../../../../../../../_images/slnumber.png" />
+<p>Specify the number of points along the line to sample.</p>
+<span class="target" id="pline-marks-att"></span><p><em>Marks</em></p>
+<img alt="marks" class="pi-attribute" src="../../../../../../../../../../_images/marks01.png" />
+<p>Controls appearance of axis marks.</p>
+<p id="pline-contourcolorlist-att"><strong>Contour</strong></p>
+<p>The attribute appearing in this position is a <em>Contour</em>, depending on the “Value” selection.  Refer to the standard  <a class="reference internal" href="attributes/std_contour.html#std-contour"><span class="std std-ref">contour</span></a> control description for details.</p>
+<p id="pline-line-att"><strong>Line</strong></p>
+<img alt="../../../../../../../../../../_images/line01.png" class="pi-attribute" src="../../../../../../../../../../_images/line01.png" />
+<p>Set line properties for the plot item. See the standard <a class="reference internal" href="attributes/std_line.html#std-line"><span class="std std-ref">line</span></a> control description for details.</p>
+<p><strong>Points</strong></p>
+<img alt="../../../../../../../../../../_images/pline_points.png" class="pi-attribute" src="../../../../../../../../../../_images/pline_points.png" />
+<p>Select to display markers at the location os the sampling points.</p>
+<p><strong>Mark</strong></p>
+<img alt="../../../../../../../../../../_images/pmark.png" class="pi-attribute" src="../../../../../../../../../../_images/pmark.png" />
+<p>If points is selected this tool allows you to select the marker style, size and color.</p>
+<span class="target" id="pline-legend-att"></span><p><strong>Legend</strong></p>
+<p>Set display of the item in the plot legend.  All plot items, at minimum, have a <em>Title</em> attribute.</p>
+<blockquote>
+<div><p><em>Legend</em>: Show (checked) all information about the plot item in the legend.</p>
+<blockquote>
+<div><p><em>Title</em>: Show (checked) the title of the plot item in the legend.  The “Alias:” field may be used to specify a custom title for the item.</p>
+<blockquote>
+<div><p><em>Size</em>:  Set the size of text in the legend.</p>
+<p><em>Font</em>: Set the font face used for the text.</p>
+<p><em>Style</em>: Set the text style (the options are normal, bold, italic, bold-italic).</p>
+<p><em>Color</em>: Set the text color.</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>Beneath <em>Title</em>, the <em>pline Chart</em> plot item also provides controls in <em>Legend</em> for <em>Series</em> and <em>Vs</em>. The sub-attributes of each are the same as those for <em>Title.</em></p>
+<style>
+   h1:after {
+      content: " Plot Item";
+   }
+</style></div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../../../plotting.html" >Plotting</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../plotitem_index.html" >Plot Items</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../plotitemsinudec.html" accesskey="U">Plot Items in <span class="codename">UDEC</span></a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="moment_thrust.html"
+                           title="previous chapter"> Moment</a> |    
+       <a href="reinf.html"
+                           title="next chapter">Reinforcement Plot Item</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Pline" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

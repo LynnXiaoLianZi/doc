@@ -1,0 +1,216 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Solving Creep Problems &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../search.html" />
+    <link rel="next" title="Input Instructions for Creep Modeling" href="../input/input.html" />
+    <link rel="prev" title="Description of Creep Constitutive Models" href="../description/description.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="solving-creep-problems">
+<span id="creepsolving"></span><h1>Solving Creep Problems</h1>
+<p>The major difference between creep and the other constitutive models is the concept of
+problem time in the simulation. For creep runs, the problem time and timestep represent real
+time, while for static analyses in the other constitutive models, the timestep is an artificial
+quantity, used only as a means of stepping to a steady-state condition. To use the creepmodels the command <a class="reference internal" href="../../../../../../../../udec/docproject/source/elements/block/block_commands/cmd_block.config.html#kwd:block.config.creep" title="Turn on creep analysis."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">config</span> <span class="pre">creep</span></code></a> must be used.</p>
+<div class="section" id="creep-timestep">
+<span id="creeptimestep"></span><h2>Creep Timestep</h2>
+<p>For time-dependent phenomena such as creep, <span class="codename">UDEC</span> allows the user to define a timestep. The
+default for this timestep is zero, in which case the program treats the material as linearly
+elastic (viscoelastic models) or elasto-plastic (viscoplastic models), as appropriate. (The
+command <a class="reference internal" href="../../../../../../../../udec/docproject/source/elements/block/block_commands/cmd_block.creep.html#command:block.creep" title="scoobydoo"><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">creep</span></code></a> <a class="reference internal" href="../../../../../../utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">off</span></span></a> can also be used to stop the creep calculations.)
+This can be used to attain equilibrium before starting a creep simulation. The constitutive laws
+for creep make use of the timestep in their equations, so timestep may affect the response.</p>
+<p>Although the user may set the timestep, it is not arbitrary. For a system to always be in
+quasi-static mechanical equilibrium (as in a creep simulation), the time-dependent stress
+changes produced by the constitutive law must not be large compared to the strain-dependent
+stress changes. Otherwise, out-of-balance forces will be large, and inertial effects (which are
+theoretically absent) may affect the solution.</p>
+<p>The creep processes are governed by the deviatoric stress state. An estimate for the maximum
+creep timestep for numerical accuracy can be expressed as the ratio of the material viscosity to
+the shear modulus,</p>
+<div class="math" id="equation-creepsolvingdtamxcr">
+<span class="eqno">(1)</span>\[\Delta t^{cr}_{max} = {\eta \over G}\]</div>
+<p>For a power-type creep model, the viscosity may be estimated as the ratio of the stress magnitude, <span class="math">\(\bar\sigma\)</span>, to the creep rate, <span class="math">\(\dot\epsilon_{cr}\)</span>. Using <span class="xref std std-ref">this equation</span> as in the <span class="xref std std-ref">power model</span>, the maximum creep timestep is</p>
+<div class="math" id="equation-creepsolvingdtamxcr2">
+<span class="eqno">(2)</span>\[\Delta t^{cr}_{max} = {\bar\sigma^{1-n} \over {A G}}\]</div>
+<p>For a WIPP-type model, the viscosity may be estimated as the ratio of <span class="math">\(\bar\sigma\)</span> to the
+secondary creep rate, <span class="math">\(\dot\epsilon_s\)</span>, and using <span class="xref std std-ref">this equation</span> as
+in the <span class="xref std std-ref">WIPP model</span>, the maximum creep timestep is</p>
+<div class="math" id="equation-creepsolvingdtamxcr3">
+<span class="eqno">(3)</span>\[\Delta t^{cr}_{max} = {e^{Q/RT} \over {G \ D \ \bar\sigma^{n-1}}}\]</div>
+<p>For a Burgers-type model, Equation <a class="reference internal" href="#equation-creepsolvingdtamxcr">(1)</a> must be interpreted as</p>
+<div class="math" id="equation-creepsolvingdtamxcr4">
+<span class="eqno">(4)</span>\[\Delta t_{\max }^{cr}=\min \left( {{\eta^K} \over {G^K}}, {{\eta^M} \over {G^M}} \right)\]</div>
+<p>where the superscripts <span class="math">\(.^K\)</span> and <span class="math">\(.^M\)</span> refer to Kelvin and Maxwell properties,
+respectively.</p>
+<p>The timestep limitation for creep compaction (e.g., <span class="xref std std-ref">WIPP-salt model</span>)
+involves the volumetric response of the system, and is estimated as the ratio of viscosity to
+bulk modulus. This viscosity may be expressed as the ratio of <span class="math">\(\bar\sigma\)</span> to the
+volumetric creep compaction rate, <span class="math">\(\dot\epsilon^c_v\)</span>. Using
+<span class="xref std std-ref">this equation</span> as in the <span class="xref std std-ref">WIPP-salt model</span>, the
+maximum creep timestep for creep compaction is</p>
+<div class="math" id="equation-creepsolvingdtamxcr5">
+<span class="eqno">(5)</span>\[\Delta t^{cr}_{max} = {\vert\sigma\vert \rho \over {K B_0 \left[e^{B_1 \vert\sigma\vert } - 1 \right] e^{B_2 \rho}}}\]</div>
+<p>It is recommended that a creep analysis begin with an initial creep timestep
+approximately two to three orders of magnitude smaller than <span class="math">\(\Delta t^{cr}_{max}\)</span>, as
+calculated from the appropriate formula above. By invoking <a class="reference internal" href="../../../../../../../kernel/doc/manual/model/commands/cmd_model.cycle.html#kwd:model.creep.timestep.automatic" title="If  on , the stable timestep is determined according to the timestep&#013;&#010;servo with"><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">creep</span> <span class="pre">timestep</span> <span class="pre">automatic</span></code></a> <a class="reference internal" href="../../../../../../utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a>, use can then be made of the <a class="reference internal" href="#automaticadjustmentofthecreeptimestep"><span class="std std-ref">automatic timestep adjustment</span></a>. As a rule, the maximum value for the timestep (<a class="reference internal" href="../../../../../../../kernel/doc/manual/model/commands/cmd_model.cycle.html#kwd:model.creep.timestep.maximum" title="The maximum timestep allowed.  The servo will not raise the timestep above this&#013;&#010;value."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">creep</span> <span class="pre">timestep</span> <span class="pre">maximum</span></code></a>) should not exceed the value derived for <span class="math">\(\Delta t^{cr}_{max}\)</span>. See <a class="reference internal" href="../verification/verification.html#creepverification"><span class="std std-ref">Verifications and Example Problems</span></a> for example applications.</p>
+<p>The stress magnitude, <span class="math">\(\bar\sigma\)</span>, used in the calculation for
+<span class="math">\(\Delta t^{cr}_{max}\)</span>, can be determined from the initial stress state before the creep
+process begins. <span class="math">\(\bar\sigma\)</span>, also known as the von Mises stress invariant, can be
+calculated from the <span class="codename">FISH</span> function. The maximum <span class="math">\(\bar\sigma\)</span> in the <span class="codename">FLAC3D</span> model should
+be used to calculate <span class="math">\(\Delta t^{cr}_{max}\)</span>.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="c">;  calculate maximum von Mises stress in pipe</span>
+<span class="nb">fish define</span><span class="ni"> mises</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> max </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0.0</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> </span><span class="k">foreach</span><span class="ni"> </span><span class="k">local</span><span class="ni"> elem </span><span class="k">struct.list</span>
+<span class="ni">        </span><span class="k">if</span><span class="ni"> </span><span class="k">struct.pos.y</span><span class="p">(</span><span class="ni">elem</span><span class="p">)</span><span class="ni"> </span><span class="o">&lt;</span><span class="ni"> </span><span class="m m-Double">2.0</span><span class="ni"> </span><span class="k">then</span>
+<span class="ni">            </span><span class="k">local</span><span class="ni"> j2  </span><span class="p">=</span><span class="ni"> </span><span class="k">tensor.j2</span><span class="p">(</span><span class="k">struct.shell.stress</span><span class="p">(</span><span class="ni">elem</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">))</span>
+<span class="ni">            </span><span class="k">local</span><span class="ni"> sr_vmstr  </span><span class="p">=</span><span class="ni"> </span><span class="k">math.sqrt</span><span class="p">(</span><span class="m m-Double">3.0</span><span class="o">*</span><span class="ni">j2</span><span class="p">)</span>
+<span class="ni">            max </span><span class="p">=</span><span class="ni"> </span><span class="k">math.max</span><span class="p">(</span><span class="ni">max</span><span class="p">,</span><span class="ni">sr_vmstr</span><span class="p">)</span>
+<span class="ni">        </span><span class="k">endif</span>
+<span class="ni">    </span><span class="k">endloop</span>
+<span class="ni">    mises </span><span class="p">=</span><span class="ni"> max</span>
+<span class="nb">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="automatic-adjustment-of-the-creep-timestep">
+<span id="automaticadjustmentofthecreeptimestep"></span><h2>Automatic Adjustment of the Creep Timestep</h2>
+<p>The timestep may be set by the user to a constant value, or controlled by <span class="codename">UDEC</span> to change
+automatically. If the timestep is changed automatically, it can be decreased whenever the
+maximum unbalanced force exceeds some threshold, and increased whenever it goes below some other
+level. The threshold is defined as the <em>ratio</em> of the maximum unbalanced force to the average
+gridpoint force.</p>
+<p>Typical out-of-balance force criteria for the problem being solved can be determined by
+observing the out-of-balance force that occurs near equilibrium in the initial stage of the
+problem when only elastic effects are present. In many cases, a good performance can be obtained
+by using a gradual increase or decrease of timestep (e.g., with the default ratios
+<span class="cmdkey">lower-multiplier</span> = 2.0 and <span class="cmdkey">upper-multiplier</span> = 0.50).</p>
+<p>In some cases, it may be preferable to avoid a continuous adjustment of the timestep, which may
+create “noise.” For this purpose, after a timestep change has occurred, there is a user-defined
+“latency period” (e.g., 100 steps) during which no further adjustments are made, allowing the
+system to settle. Normally, the timestep will start at a small value, to accommodate transients
+such as excavation, and then increase as the simulation proceeds. If a new transient is
+introduced, it may be desirable to reduce the timestep manually, and then let it increase again
+automatically.</p>
+<p>The <a class="reference internal" href="../../../../../../../../udec/docproject/source/elements/block/block.creep_commands/cmd_block.creep.timestep.html#command:block.creep.timestep" title="Sets the current creep timestep."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">creep</span> <span class="pre">timestep</span></code></a> command is used to set the timestep and the parameters required
+to allow timestep to change automatically. The keywords are listed in the command.</p>
+</div>
+<div class="section" id="temperature-dependency">
+<h2>Temperature Dependency</h2>
+<p>For the WIPP model, the creep rate is temperature-dependent. Temperatures may be supplied to the
+WIPP-type models in one of two ways: they may be specified as a property of the WIPP-type
+models; or they may be calculated using the thermal option of the code. With the first approach,
+temperatures are assigned with the <code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">gridpoint</span> <span class="pre">initial</span> <span class="pre">temperature</span></code> command and do not change during the
+calculation. In the second approach, the <code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">configure</span> <span class="pre">thermal</span></code> command must first be
+given and temperatures can be initialized with the <a class="reference internal" href="../../../../../../../../udec/docproject/source/elements/block/block.gridpoint_commands/cmd_block.gridpoint.initialize.html#kwd:block.gridpoint.initialize.temperature" title="Initialize gridpoint temperature."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">gridpoint</span> <span class="pre">initialize</span> <span class="pre">temperature</span></code></a>.
+In the latter case, temperatures can change during cycling. A temperature gradient may
+be specified with either approach.</p>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../models.html" >Constitutive Models</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../creep.html" accesskey="U">Creep Constitutive Models</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../description/description.html"
+                           title="previous chapter"> Description of Creep Constitutive Models</a> |    
+       <a href="../input/input.html"
+                           title="next chapter">Input Instructions for Creep Modeling</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Solving Creep Problems" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

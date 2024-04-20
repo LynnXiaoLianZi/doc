@@ -1,0 +1,314 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Free Vibration of a Cantilever Beam &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="hide sectionname docutils container">
+Examples • Verification Problems</div>
+<div class="section" id="free-vibration-of-a-cantilever-beam">
+<span id="free-vabration"></span><h1>Free Vibration of a Cantilever Beam</h1>
+<p class="h2 rubric">Problem Statement</p>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To view this project in <span class="codename">FLAC3D</span>, use the menu command <span class="menuselection">Help ‣ Examples…</span>.  Choose “Structure/Beam/FreeVibration” and select “FreeVibration.prj” to load.
+The <a class="reference internal" href="#freevibrationdata"><span class="std std-ref">main data file</span></a> is shown at the end of this example. The remaining data files can be found in the project.</p>
+</div>
+<p>A cantilever beam is placed vertically (See <a href="#freevibration-fig1">Figure  1</a>). At the beam top, the density is much bigger than elsewhere on the beam (<a href="#freevibration-fig1">Figure  1</a>a).
+A horizontal force <span class="math">\(P_0 = k U_0\)</span> is applied at the top mass centroid to ensure a static horizontal displacement of 0.001 at the beam top. The force is then released to let the beam vibrate. The model schematically shown in <a href="#freevibration-fig1">Figure  1</a>a can be simplified into <a href="#freevibration-fig1">Figure  1</a>b with a lumped mass <span class="math">\(m\)</span> at the beam top. It can be further idealized as a single degree-of-freedom vibration system shown in <a href="#freevibration-fig1">Figure  1</a>c, with a mass <span class="math">\(m\)</span> and a stiffness <span class="math">\(k=EI/L^3\)</span>. The damping coefficient <span class="math">\(c\)</span> will be assumed with various values.
+The <span class="codename">FLAC3D</span> model is based on <a href="#freevibration-fig1">Figure  1</a>a using beam elements,
+and the <span class="codename">FLAC3D</span> solution will be compared with the analytical solution based on <a href="#freevibration-fig1">Figure  1</a>c.</p>
+<div class="figure align-center" id="id1">
+<span id="freevibration-fig1"></span><a class="reference internal image-reference" href="../../../../../_images/freevibration-fig1.png"><img alt="../../../../../_images/freevibration-fig1.png" src="../../../../../_images/freevibration-fig1.png" style="width: 75%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Free vibration of the cantilever beam.</span></p>
+</div>
+<div class="pagebreak docutils container">
+break</div>
+<p>The geometry and material parameters are summarized as follows.</p>
+<table border="1" class="colwidths-given blank docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Input Parameters</strong>:</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(E\)</span></td>
+<td>2×10<sup>10</sup></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(I\)</span></td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(L\)</span></td>
+<td>10</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\rho\)</span></td>
+<td>7.60×10<sup>3</sup></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(A\)</span></td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(P_0\)</span></td>
+<td>6×10<sup>4</sup></td>
+</tr>
+<tr class="row-even"><td><strong>Derived Parameters</strong>:</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(m\)</span></td>
+<td>1.52×10<sup>4</sup></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(k\)</span></td>
+<td>6×10<sup>7</sup></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(U_0\)</span></td>
+<td>0.001</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(T_n\)</span></td>
+<td>0.1</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\omega_n\)</span></td>
+<td>20 <span class="math">\(\pi\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The governing differential equation of free vibration for a single degree system with damping is</p>
+<div class="math" id="equation-freevibration-sd">
+<span class="eqno">(1)</span>\[m \ddot{u} + c \dot{u} + k u = 0\]</div>
+<p>where <span class="math">\(u\)</span> is the displacement, <span class="math">\(m\)</span> is the mass, <span class="math">\(k\)</span> is the stiffness, and
+<span class="math">\(c\)</span> is the damping coefficient. The natural circular frequency is
+<span class="math">\(\omega_n = \sqrt{k/m}\)</span>, and the natural period is <span class="math">\(T_n = 2\pi/\omega_n\)</span>.</p>
+<p>The critical damping coefficient is defined as <span class="math">\(c_{cr} = 2m\omega_n = 2\sqrt{km}\)</span>,
+and the damping ratio is defined as <span class="math">\(\zeta = c/c_{cr}\)</span>.</p>
+<p>In this example, Rayleigh damping (<span class="math">\(c = \beta k + \alpha m\)</span>) is assumed. For
+simplicity, only mass-proportional Rayleigh damping (<span class="math">\(\beta = 0\)</span>) is considered here, so</p>
+<div class="math" id="equation-freevibration-calpha">
+<span class="eqno">(2)</span>\[\zeta = {{\alpha m} \over {c_{cr}}} = {{\alpha} \over 2} \sqrt{m \over k} = {{\alpha} \over {2\omega_n}} = {{\alpha T_n} \over {4\pi}}\]</div>
+<div class="pagebreak docutils container">
+break</div>
+<p>In this example, the initial condition at the dynamic stage is <span class="math">\(u(0) = U_0\)</span> and
+<span class="math">\(\dot{u}(0)=0\)</span>. With these initial conditions, the analytical solution (Argris 1991) can be summarized as</p>
+<ol class="arabic">
+<li><p class="first"><strong>No Damping</strong> &nbsp;&nbsp;(<span class="math">\(\zeta=0\)</span> or <span class="math">\(\alpha=0\)</span>):</p>
+<div class="math" id="equation-freevibration-analytical1">
+<span class="eqno">(3)</span>\[u(t) = U_0 \cos{(\omega_n t)}\]</div>
+</li>
+<li><p class="first"><strong>Under Damping</strong> &nbsp;&nbsp;(<span class="math">\(0 &lt; \zeta &lt; 1\)</span> or <span class="math">\(0 &lt; \alpha &lt; 2\omega_n = 4\pi/T_n\)</span>):</p>
+<div class="math" id="equation-freevibration-analytical2">
+<span class="eqno">(4)</span>\[u(t) = U_0 e^{-\zeta \omega_n t} \left[ \cos{(\omega_D t)} + {\zeta \over {\sqrt{1-\zeta^2}}} \sin{(\omega_D t)} \right]\]</div>
+<p>where <span class="math">\(\omega_D = \omega_n \sqrt{1-\zeta^2}\)</span>.</p>
+</li>
+<li><p class="first"><strong>Critical Damping</strong> &nbsp;&nbsp;(<span class="math">\(\zeta = 1\)</span> or <span class="math">\(\alpha = 2\omega_n = 4\pi/T_n\)</span>):</p>
+<div class="math" id="equation-freevibration-analytical3">
+<span class="eqno">(5)</span>\[u(t) = U_0 (1+\omega_n t) e^{-\omega_n t}\]</div>
+</li>
+<li><p class="first"><strong>Over Damping</strong> &nbsp;&nbsp;(<span class="math">\(\zeta &gt; 1\)</span> or <span class="math">\(\alpha &gt; 2\omega_n = 4\pi/T_n\)</span>):</p>
+<div class="math" id="equation-freevibration-analytical4">
+<span class="eqno">(6)</span>\[u(t) = {U_0 \over 2\sqrt{(\zeta^2-1)}} \left[ c_2 e^{-c_1 \omega_n t} - c_1 e^{-c_2 \omega_n t} \right]\]</div>
+<p>where <span class="math">\(c_1 = \zeta-\sqrt{\zeta^2-1}\)</span> and <span class="math">\(c_2 = \zeta+\sqrt{\zeta^2-1}\)</span>.</p>
+</li>
+</ol>
+<p>In the <span class="codename">FLAC3D</span> model, the beam is divided into 10 beam elements. A static horizontal force
+<span class="math">\(P_0\)</span> is applied at the centroid of the lumped mass. After equilibrium is reached, the static
+displacement should be <span class="math">\(U_0 = P_0/k = 0.001\)</span>. The force is then released to let the
+cantilever beam freely vibrate at four different damping ratios, <span class="math">\(\zeta\)</span> = 0%, 5%,
+100%, and 500%, or <span class="math">\(\alpha\)</span> = 0, <span class="math">\(2\pi\)</span>, <span class="math">\(40\pi\)</span>, and <span class="math">\(200\pi\)</span> (since
+<span class="math">\(T_n\)</span> = 0.1), to represent four cases, namely,  no-, under-, critical-, and
+over-damping.</p>
+<p>The <span class="codename">FLAC3D</span> solutions for all four cases are plotted in <a href="#freevibration-all">Figure  2</a>.
+Comparisons with the analytical solutions are plotted in <a href="#freevibration-no">Figure  3</a>
+through <a href="#freevibration-over">Figure  6</a>. In all cases a good fit is observed between the <span class="codename">FLAC3D</span> solution and the analytical solution.</p>
+<div class="figure align-center" id="id2">
+<span id="freevibration-all"></span><a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\FreeVibration\freevibration.png"><img alt="common\sel\test3d\VerificationProblems\FreeVibration\freevibration.png" src="common\sel\test3d\VerificationProblems\FreeVibration\freevibration.png" style="width: 82%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: <span class="codename">FLAC3D</span> solutions.</span></p>
+</div>
+<div class="figure align-center" id="id3">
+<span id="freevibration-no"></span><a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\FreeVibration\freevibration-no.png"><img alt="common\sel\test3d\VerificationProblems\FreeVibration\freevibration-no.png" src="common\sel\test3d\VerificationProblems\FreeVibration\freevibration-no.png" style="width: 82%;" /></a>
+<p class="caption"><span class="caption-text">Figure 3: <span class="codename">FLAC3D</span> and analytical solution—no-damping (<span class="math">\(\alpha\)</span> = 0 or <span class="math">\(\zeta\)</span> = 0%).</span></p>
+</div>
+<div class="figure align-center" id="id4">
+<span id="freevibration-under"></span><a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\FreeVibration\freevibration-under.png"><img alt="common\sel\test3d\VerificationProblems\FreeVibration\freevibration-under.png" src="common\sel\test3d\VerificationProblems\FreeVibration\freevibration-under.png" style="width: 82%;" /></a>
+<p class="caption"><span class="caption-text">Figure 4: <span class="codename">FLAC3D</span> and analytical solution—under-damping (<span class="math">\(\alpha\)</span> = 2 <span class="math">\(\pi\)</span> or <span class="math">\(\zeta\)</span> = 5%).</span></p>
+</div>
+<div class="figure align-center" id="id5">
+<span id="freevibration-critical"></span><a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\FreeVibration\freevibration-critical.png"><img alt="common\sel\test3d\VerificationProblems\FreeVibration\freevibration-critical.png" src="common\sel\test3d\VerificationProblems\FreeVibration\freevibration-critical.png" style="width: 82%;" /></a>
+<p class="caption"><span class="caption-text">Figure 5: <span class="codename">FLAC3D</span> and analytical solution—critical-damping (<span class="math">\(\alpha\)</span> = 40 <span class="math">\(\pi\)</span> or <span class="math">\(\zeta\)</span> = 100%).</span></p>
+</div>
+<div class="figure align-center" id="id6">
+<span id="freevibration-over"></span><a class="reference internal image-reference" href="common\sel\test3d\VerificationProblems\FreeVibration\freevibration-over.png"><img alt="common\sel\test3d\VerificationProblems\FreeVibration\freevibration-over.png" src="common\sel\test3d\VerificationProblems\FreeVibration\freevibration-over.png" style="width: 82%;" /></a>
+<p class="caption"><span class="caption-text">Figure 6: <span class="codename">FLAC3D</span> and analytical solution—over-damping (<span class="math">\(\alpha\)</span> = 200 <span class="math">\(\pi\)</span> or <span class="math">\(\zeta\)</span> = 500%).</span></p>
+</div>
+<p class="h2 rubric">Reference</p>
+<p>Argyris, J. &amp; Mlejnek, H.-P. <span class="bi">Dynamics of Structures</span>. North-Holland, Amsterdam (1991).</p>
+<p class="h2 rubric" id="freevibrationdata">Data File</p>
+<p><strong>FreeVibration.dat</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model large-strain</span><span class="n"> </span><span class="sx">off</span>
+<span class="nb">model configure</span><span class="n"> dynamic</span>
+<span class="nb">model dynamic</span><span class="n"> active </span><span class="sx">off</span>
+<span class="c">;</span>
+<span class="ni">[</span><span class="k">global</span><span class="ni"> L </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">10.0</span><span class="ni">]</span>
+<span class="ni">[</span><span class="k">global</span><span class="ni"> E </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">2.0e10</span><span class="ni">]</span>
+<span class="ni">[</span><span class="k">global</span><span class="ni"> I </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1.0</span><span class="ni">]</span>
+<span class="ni">[</span><span class="k">global</span><span class="ni"> A </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1.0</span><span class="ni">]</span>
+<span class="ni">[</span><span class="k">global</span><span class="ni"> k </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">3.0</span><span class="o">*</span><span class="ni">E</span><span class="o">*</span><span class="ni">I</span><span class="o">/</span><span class="p">(</span><span class="ni">L</span><span class="o">*</span><span class="ni">L</span><span class="o">*</span><span class="ni">L</span><span class="p">)</span><span class="ni">]</span>
+<span class="ni">[</span><span class="k">global</span><span class="ni"> T </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0.1</span><span class="ni">]</span>
+<span class="ni">[</span><span class="k">global</span><span class="ni"> m </span><span class="p">=</span><span class="ni"> T</span><span class="o">*</span><span class="ni">T</span><span class="o">/</span><span class="p">(</span><span class="m m-Double">4</span><span class="o">*</span><span class="k">math.pi</span><span class="o">*</span><span class="k">math.pi</span><span class="p">)</span><span class="o">*</span><span class="ni">k]</span>
+<span class="ni">[</span><span class="k">global</span><span class="ni"> r </span><span class="p">=</span><span class="ni"> m</span><span class="o">/</span><span class="ni">A</span><span class="o">/</span><span class="m m-Double">2.0</span><span class="ni">]</span>
+<span class="ni">[</span><span class="k">global</span><span class="ni"> c </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">4.0</span><span class="o">*</span><span class="k">math.pi</span><span class="o">/</span><span class="ni">T]</span>
+<span class="c">;</span>
+<span class="nb">structure beam create</span><span class="n"> by</span><span class="o">-</span><span class="n">line </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">11</span><span class="p">)</span><span class="n"> segments </span><span class="m m-Double">11</span><span class="n"> id </span><span class="m m-Double">1</span>
+<span class="nb">structure beam property</span><span class="n"> density </span><span class="ni">[</span><span class="m m-Double">0.001</span><span class="o">*</span><span class="ni">r]</span><span class="n"> young </span><span class="ni">[E]</span><span class="n"> poisson </span><span class="m m-Double">0.3</span>
+<span class="nb">structure beam property</span><span class="n"> density </span><span class="ni">[r]</span><span class="n"> range position</span><span class="o">-</span><span class="n">z </span><span class="m m-Double">9.0</span><span class="n"> </span><span class="m m-Double">11.0</span>
+<span class="nb">structure beam property</span><span class="n"> cross</span><span class="o">-</span><span class="n">sectional</span><span class="o">-</span><span class="n">area </span><span class="ni">[A]</span><span class="n"> moi</span><span class="o">-</span><span class="n">z </span><span class="ni">[I]</span><span class="n"> moi</span><span class="o">-</span><span class="n">y </span><span class="ni">[I]</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                        moi</span><span class="o">-</span><span class="n">polar </span><span class="m m-Double">0</span>
+<span class="nb">structure node fix</span><span class="n"> velocity range component</span><span class="o">-</span><span class="n">id </span><span class="m m-Double">1</span>
+<span class="nb">structure node fix</span><span class="n"> rotation range component</span><span class="o">-</span><span class="n">id </span><span class="m m-Double">1</span>
+<span class="nb">structure node apply</span><span class="n"> system global</span>
+<span class="nb">structure node apply</span><span class="n"> force </span><span class="ni">[</span><span class="m m-Double">0.001</span><span class="o">*</span><span class="ni">k]</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> range component</span><span class="o">-</span><span class="n">id </span><span class="m m-Double">11</span>
+<span class="nb">model </span><span class="ss">solve</span><span class="n"> ratio</span><span class="o">-</span><span class="n">local </span><span class="m m-Double">1e-6</span>
+<span class="nb">structure node apply</span><span class="n"> remove force</span>
+<span class="nb">model dynamic</span><span class="n"> active </span><span class="sx">on</span>
+<span class="nb">model dynamic</span><span class="n"> time</span><span class="o">-</span><span class="n">total </span><span class="m m-Double">0</span>
+<span class="nb">model dynamic</span><span class="n"> timestep fix </span><span class="m m-Double">1.5e-6</span>
+<span class="nb">model history</span><span class="n"> dynamic time</span><span class="o">-</span><span class="n">total</span>
+<span class="nb">struct node history</span><span class="n"> displacement</span><span class="o">-</span><span class="n">x component</span><span class="o">-</span><span class="n">id </span><span class="m m-Double">11</span>
+<span class="nb">struct node history</span><span class="n"> velocity</span><span class="o">-</span><span class="n">x component</span><span class="o">-</span><span class="n">id </span><span class="m m-Double">11</span>
+<span class="nb">history interval</span><span class="n"> </span><span class="m m-Double">50</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;dynamic0&#39;</span>
+
+<span class="c">;; No Damping</span>
+<span class="nb">model restore</span><span class="n"> </span><span class="s">&#39;dynamic0&#39;</span>
+<span class="nb">model </span><span class="ss">solve</span><span class="n"> time</span><span class="o">-</span><span class="n">total </span><span class="m m-Double">0.4</span>
+<span class="nb">history export</span><span class="n"> </span><span class="s">&#39;2&#39;</span><span class="n"> vs </span><span class="s">&#39;1&#39;</span><span class="n"> table </span><span class="s">&#39;1&#39;</span>
+<span class="nb">table</span><span class="n"> </span><span class="s">&#39;1&#39;</span><span class="n"> export </span><span class="s">&#39;NoDamping&#39;</span><span class="n"> truncate</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;NoDamping&#39;</span>
+
+<span class="c">;;; Under Damping</span>
+<span class="nb">model restore</span><span class="n"> </span><span class="s">&#39;dynamic0&#39;</span>
+<span class="ni">[alpha </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0.05</span><span class="o">*</span><span class="ni">c]</span>
+<span class="nb">structure dynamic</span><span class="n"> damping rayleigh </span><span class="m m-Double">0</span><span class="n"> </span><span class="ni">[alpha]</span>
+<span class="nb">model </span><span class="ss">solve</span><span class="n"> time</span><span class="o">-</span><span class="n">total </span><span class="m m-Double">0.4</span>
+<span class="nb">history export</span><span class="n"> </span><span class="s">&#39;2&#39;</span><span class="n"> vs </span><span class="s">&#39;1&#39;</span><span class="n"> table </span><span class="s">&#39;1&#39;</span>
+<span class="nb">table</span><span class="n"> </span><span class="s">&#39;1&#39;</span><span class="n"> export </span><span class="s">&#39;UnderDamping&#39;</span><span class="n"> truncate</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;UnderDamping&#39;</span>
+
+<span class="c">;; Critical Damping</span>
+<span class="nb">model restore</span><span class="n"> </span><span class="s">&#39;dynamic0&#39;</span>
+<span class="ni">[alpha </span><span class="p">=</span><span class="ni"> c]</span>
+<span class="nb">structure dynamic</span><span class="n"> damping rayleigh </span><span class="m m-Double">0</span><span class="n"> </span><span class="ni">[alpha]</span>
+<span class="nb">model </span><span class="ss">solve</span><span class="n"> time</span><span class="o">-</span><span class="n">total </span><span class="m m-Double">0.4</span>
+<span class="nb">history export</span><span class="n"> </span><span class="s">&#39;2&#39;</span><span class="n"> vs </span><span class="s">&#39;1&#39;</span><span class="n"> table </span><span class="s">&#39;1&#39;</span>
+<span class="nb">table</span><span class="n"> </span><span class="s">&#39;1&#39;</span><span class="n"> export </span><span class="s">&#39;CriticalDamping&#39;</span><span class="n"> truncate</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;CriticalDamping&#39;</span>
+
+<span class="c">;; Over Damping</span>
+<span class="nb">model restore</span><span class="n"> </span><span class="s">&#39;dynamic0&#39;</span>
+<span class="ni">[alpha </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">5.0</span><span class="o">*</span><span class="ni">c]</span>
+<span class="nb">structure dynamic</span><span class="n"> damping rayleigh </span><span class="m m-Double">0</span><span class="n"> </span><span class="ni">[alpha]</span>
+<span class="nb">model </span><span class="ss">solve</span><span class="n"> time</span><span class="o">-</span><span class="n">total </span><span class="m m-Double">0.4</span>
+<span class="nb">history export</span><span class="n"> </span><span class="s">&#39;2&#39;</span><span class="n"> vs </span><span class="s">&#39;1&#39;</span><span class="n"> table </span><span class="s">&#39;1&#39;</span>
+<span class="nb">table</span><span class="n"> </span><span class="s">&#39;1&#39;</span><span class="n"> export </span><span class="s">&#39;OverDamping&#39;</span><span class="n"> truncate</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;OverDamping&#39;</span>
+</pre></div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Free Vibration of a Cantilever Beam" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

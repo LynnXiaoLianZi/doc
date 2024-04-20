@@ -1,0 +1,245 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Gravity Settlement in a Coupled PFC-FLAC3D model &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="gravity-settlement-in-a-coupled-pfc-flac3d-model">
+<span id="settlecpl"></span><h1>Gravity Settlement in a Coupled <span class="codename">PFC</span>-<span class="codename">FLAC3D</span> model</h1>
+<p class="h2 rubric">Problem Statement</p>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To view this project in the program, use the menu command <span class="menuselection">Help ► Examples…</span>.  <span class="flag3">Choose “—————/ ————–” and select “——-.—- to load.</span>
+The main <a class="reference internal" href="#settlecpldatafiles"><span class="std std-ref">data file</span></a> used is shown at the end of this example. The remaining data files can be found in the project.</p>
+</div>
+<p>The following example illustrates gravity settlement in a vertical column using <span class="codename">PFC</span>-<span class="codename">FLAC3D</span> coupling. The bar is composed of particles bonded together on the top part of the system, and of zones on the bottom part. The bottom end is a fixed boundary. The <span class="codename">PFC</span> and <span class="codename">FLAC3D</span> regions overlap over a specified length, where they are coupled using the <a class="reference internal" href="../../../../../common/docproject/source/manual/coupling/schemes/ballzone/ballzone.html#ballzone"><span class="std std-ref">Ball-Zone coupling scheme</span></a>. Gravity is activated and the system is solved to equilibrium.</p>
+<p>The behavior of the coupled system is compared with a similar system composed of balls alone (<span class="codename">PFC</span>-only model), and a system composed of zones alone (<span class="codename">FLAC3D</span>-only model). The three systems are run side-by-side in the same model.</p>
+<p class="h2 rubric">Numerical Model</p>
+<p>The data file “<a class="reference internal" href="#settlecpldoc"><span class="std std-ref">settle_cpl.dat</span></a>” simulates gravity settlement in a column made up of a
+coupled <span class="codename">PFC</span>-<span class="codename">FLAC3D</span> system. The vertical displacement at the top of the system is shown in</p>
+<div class="figure" id="id1">
+<span id="p3d-verif-settlecpl-dispa"></span><a class="reference internal image-reference" href="wad/ballzone/test3d/verification_problems/Settle/p3d-verif-settlecpl-dispA.png"><img alt="wad/ballzone/test3d/verification_problems/Settle/p3d-verif-settlecpl-dispA.png" src="wad/ballzone/test3d/verification_problems/Settle/p3d-verif-settlecpl-dispA.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Displacement histories.</span></p>
+</div>
+<div class="figure" id="id2">
+<span id="p3d-verif-settlecpl-system"></span><a class="reference internal image-reference" href="wad/ballzone/test3d/verification_problems/Settle/p3d-verif-settlecpl-system.png"><img alt="wad/ballzone/test3d/verification_problems/Settle/p3d-verif-settlecpl-system.png" src="wad/ballzone/test3d/verification_problems/Settle/p3d-verif-settlecpl-system.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Displacement contours.</span></p>
+</div>
+<p class="h2 rubric" id="settlecpldatafiles">Data File</p>
+<p class="rubric" id="settlecpldoc"><strong>settle_cpl.dat</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model configure</span><span class="n"> dynamic</span>
+<span class="nb">model large-strain</span><span class="n"> </span><span class="sx">on</span>
+
+<span class="ni">[rho    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">2700.0</span><span class="ni"> ]</span>
+<span class="ni">[emod   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">75.0e9</span><span class="ni"> ]</span>
+<span class="ni">[nu     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0.25</span><span class="ni">]</span>
+<span class="ni">[mmod   </span><span class="p">=</span><span class="ni"> emod</span><span class="o">*</span><span class="p">(</span><span class="m m-Double">1</span><span class="o">-</span><span class="ni">nu</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="m m-Double">1</span><span class="o">+</span><span class="ni">nu</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="m m-Double">1</span><span class="o">-</span><span class="m m-Double">2.0</span><span class="o">*</span><span class="ni">nu</span><span class="p">))</span><span class="ni">]</span>
+
+<span class="ni">[l  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1.0</span><span class="ni">]</span>
+<span class="ni">[nb </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">5</span><span class="ni">]</span>
+
+<span class="ni">[rad  </span><span class="p">=</span><span class="ni"> l</span><span class="o">/</span><span class="p">(</span><span class="m m-Double">2.0</span><span class="o">*</span><span class="ni">nb</span><span class="p">)</span><span class="ni">]</span>
+<span class="ni">[rhob </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">6.0</span><span class="o">/</span><span class="k">math.pi</span><span class="o">*</span><span class="ni">rho]</span>
+
+<span class="ni">[nh   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">10</span><span class="ni">]</span>
+<span class="ni">[nw   </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">1</span><span class="ni">]</span>
+<span class="ni">[npfc </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">2</span><span class="ni">]</span>
+<span class="ni">[ncpl </span><span class="p">=</span><span class="ni">  </span><span class="m m-Double">3</span><span class="ni">]</span>
+<span class="ni">[h    </span><span class="p">=</span><span class="ni"> nh</span><span class="o">*</span><span class="ni">l]</span>
+<span class="ni">[nf3d </span><span class="p">=</span><span class="ni">  nh </span><span class="o">-</span><span class="ni"> </span><span class="p">(</span><span class="ni">npfc</span><span class="o">+</span><span class="ni">ncpl</span><span class="p">)</span><span class="ni">]</span>
+
+<span class="c">;[lsub  = nzh*hz]</span>
+<span class="ni">[hmin  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0.</span><span class="ni">]</span>
+<span class="ni">[hpfc </span><span class="p">=</span><span class="ni"> hmin </span><span class="o">+</span><span class="ni">  nf3d      </span><span class="o">*</span><span class="ni">l]</span>
+<span class="ni">[hf3d </span><span class="p">=</span><span class="ni"> hmin </span><span class="o">+</span><span class="ni"> </span><span class="p">(</span><span class="ni">nf3d</span><span class="o">+</span><span class="ni">ncpl</span><span class="p">)</span><span class="o">*</span><span class="ni">l]</span>
+<span class="ni">[nf </span><span class="p">=</span><span class="ni"> int</span><span class="p">(</span><span class="ni">hf3d</span><span class="o">/</span><span class="ni">l</span><span class="p">)</span><span class="ni">]</span>
+
+<span class="ni">[epsilon </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1.0e-3</span><span class="ni">]</span>
+
+<span class="nb">zone create</span><span class="n"> brick size  </span><span class="ni">[nw]</span><span class="n"> </span><span class="ni">[nw]</span><span class="n"> </span><span class="ni">[nf]</span><span class="n">  point </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0</span><span class="n">   </span><span class="m m-Double">0</span><span class="n">   </span><span class="ni">[hmin]</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                        point </span><span class="m m-Double">1</span><span class="n"> </span><span class="ni">[l]</span><span class="n"> </span><span class="m m-Double">0</span><span class="n">   </span><span class="ni">[hmin]</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                        point </span><span class="m m-Double">2</span><span class="n"> </span><span class="m m-Double">0</span><span class="n">   </span><span class="ni">[l]</span><span class="n"> </span><span class="ni">[hmin]</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                        point </span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">0</span><span class="n">   </span><span class="m m-Double">0</span><span class="n">   </span><span class="ni">[hf3d]</span>
+
+<span class="nb">zone create</span><span class="n"> brick size  </span><span class="ni">[nw]</span><span class="n"> </span><span class="ni">[nw]</span><span class="n"> </span><span class="ni">[nh]</span><span class="n">  point </span><span class="m m-Double">0</span><span class="n">  </span><span class="ni">[</span><span class="m m-Double">2.0</span><span class="o">*</span><span class="ni">l]</span><span class="n"> </span><span class="m m-Double">0.</span><span class="n">  </span><span class="ni">[hmin]</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                        point </span><span class="m m-Double">1</span><span class="n">  </span><span class="ni">[</span><span class="m m-Double">3.0</span><span class="o">*</span><span class="ni">l]</span><span class="n"> </span><span class="m m-Double">0.</span><span class="n">  </span><span class="ni">[hmin]</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                        point </span><span class="m m-Double">2</span><span class="n">  </span><span class="ni">[</span><span class="m m-Double">2.0</span><span class="o">*</span><span class="ni">l]</span><span class="n"> </span><span class="ni">[l]</span><span class="n"> </span><span class="ni">[hmin]</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                        point </span><span class="m m-Double">3</span><span class="n">  </span><span class="ni">[</span><span class="m m-Double">2.0</span><span class="o">*</span><span class="ni">l]</span><span class="n"> </span><span class="m m-Double">0.</span><span class="n">  </span><span class="ni">[h]</span>
+<span class="nb">zone cmodel</span><span class="n"> assign elastic</span>
+<span class="nb">zone property</span><span class="n"> young </span><span class="ni">[emod]</span><span class="n"> poisson </span><span class="ni">[nu]</span>
+<span class="nb">zone initialize</span><span class="n"> density </span><span class="ni">[rho]</span>
+<span class="nb">model </span><span class="ss">cycle</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="c">; to initialize gp masses</span>
+
+<span class="nb">model range</span><span class="n"> create </span><span class="s">&#39;bottom&#39;</span><span class="n"> position</span><span class="o">-</span><span class="n">z </span><span class="ni">[hmin</span><span class="o">-</span><span class="m m-Double">0.01</span><span class="o">*</span><span class="ni">l]</span><span class="n"> </span><span class="ni">[hmin</span><span class="o">+</span><span class="m m-Double">0.01</span><span class="o">*</span><span class="ni">l]</span>
+<span class="nb">zone face group</span><span class="n"> </span><span class="s">&#39;bottom&#39;</span><span class="n"> range named</span><span class="o">-</span><span class="n">range </span><span class="s">&#39;bottom&#39;</span>
+<span class="nb">zone gridpoint fix</span><span class="n"> velocity range named</span><span class="o">-</span><span class="n">range </span><span class="s">&#39;bottom&#39;</span>
+<span class="nb">zone gridpoint fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">x</span>
+<span class="nb">zone gridpoint fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">y</span>
+
+<span class="c">;</span>
+<span class="nb">model domain</span><span class="n"> extent </span><span class="ni">[</span><span class="o">-</span><span class="m m-Double">4.0</span><span class="o">*</span><span class="ni">l]</span><span class="n"> </span><span class="ni">[</span><span class="m m-Double">4.0</span><span class="o">*</span><span class="ni">l]</span><span class="n"> </span><span class="ni">[</span><span class="o">-</span><span class="m m-Double">2.0</span><span class="o">*</span><span class="ni">l]</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                    </span><span class="ni">[</span><span class="m m-Double">2.0</span><span class="o">*</span><span class="ni">l]</span><span class="n"> </span><span class="ni">[hmin</span><span class="o">-</span><span class="m m-Double">5.0</span><span class="o">*</span><span class="ni">rad]</span><span class="n"> </span><span class="ni">[h</span><span class="o">+</span><span class="m m-Double">5.0</span><span class="o">*</span><span class="ni">rad]</span>
+<span class="nb">ball generate</span><span class="n"> cubic radius </span><span class="ni">[rad]</span><span class="n"> box </span><span class="ni">[rad]</span><span class="n"> </span><span class="ni">[l</span><span class="o">-</span><span class="ni">rad]</span><span class="n"> </span><span class="ni">[rad]</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                     </span><span class="ni">[l</span><span class="o">-</span><span class="ni">rad]</span><span class="n">  </span><span class="ni">[hpfc</span><span class="o">+</span><span class="ni">rad]</span><span class="n"> </span><span class="ni">[h</span><span class="o">-</span><span class="ni">rad]</span>
+
+<span class="nb">ball generate</span><span class="n"> cubic radius </span><span class="ni">[rad]</span><span class="n"> box </span><span class="ni">[</span><span class="o">-</span><span class="m m-Double">2.0</span><span class="o">*</span><span class="ni">l</span><span class="o">+</span><span class="ni">rad]</span><span class="n"> </span><span class="ni">[</span><span class="o">-</span><span class="ni">l</span><span class="o">-</span><span class="ni">rad]</span><span class="n"> </span><span class="ni">[rad]</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                                     </span><span class="ni">[l</span><span class="o">-</span><span class="ni">rad]</span><span class="n">  </span><span class="ni">[hmin</span><span class="o">+</span><span class="ni">rad]</span><span class="n"> </span><span class="ni">[h</span><span class="o">-</span><span class="ni">rad]</span>
+<span class="nb">ball fix</span><span class="n"> velocity range position</span><span class="o">-</span><span class="n">z </span><span class="ni">[hmin]</span><span class="n"> </span><span class="ni">[hmin</span><span class="o">+</span><span class="m m-Double">2.0</span><span class="o">*</span><span class="ni">rad]</span>
+<span class="nb">ball fix</span><span class="n"> velocity</span><span class="o">-</span><span class="n">x velocity</span><span class="o">-</span><span class="n">y</span>
+
+<span class="nb">ball attribute</span><span class="n"> density </span><span class="ni">[rhob]</span>
+<span class="nb">contact cmat default</span><span class="n"> model linearpbond </span><span class="sx">...</span>
+<span class="n">                     method pb_deformability emod </span><span class="ni">[</span><span class="m m-Double">4.0</span><span class="o">/</span><span class="k">math.pi</span><span class="o">*</span><span class="ni">mmod]</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                     kratio </span><span class="m m-Double">1.0</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">                     property pb_ten </span><span class="m m-Double">1e20</span><span class="n"> pb_coh </span><span class="m m-Double">1e20</span>
+
+<span class="nb">model clean</span>
+<span class="nb">contact method</span><span class="n"> bond gap </span><span class="m m-Double">0.01</span>
+
+<span class="nb">model gravity</span><span class="n"> </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">9.81</span><span class="p">)</span>
+<span class="nb">zone dynamic</span><span class="n"> damping local </span><span class="m m-Double">0.1</span>
+<span class="nb">zone mechanical</span><span class="n"> damping local </span><span class="m m-Double">0.1</span>
+<span class="nb">ball attribute</span><span class="n"> damp </span><span class="m m-Double">0.1</span>
+
+<span class="n">ball</span><span class="o">-</span><span class="n">zone create</span>
+
+<span class="nb">fish define</span><span class="ni"> setMassFactors</span><span class="p">(</span><span class="ni">eps</span><span class="p">)</span>
+<span class="ni">  </span><span class="k">loop</span><span class="ni"> </span><span class="k">foreach</span><span class="ni"> </span><span class="k">local</span><span class="ni"> cb </span><span class="k">ball.zone.ball.list</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> b </span><span class="p">=</span><span class="ni"> </span><span class="k">ball.zone.ball.ball</span><span class="p">(</span><span class="ni">cb</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> bzpos </span><span class="p">=</span><span class="ni"> </span><span class="k">ball.pos.z</span><span class="p">(</span><span class="ni">b</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">ball.extra</span><span class="p">(</span><span class="ni">b</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="p">(</span><span class="m m-Double">1.0</span><span class="o">-</span><span class="m m-Double">2.0</span><span class="o">*</span><span class="ni">eps</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="ni">hpfc </span><span class="o">-</span><span class="ni"> bzpos</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="ni">hpfc</span><span class="o">-</span><span class="ni">hf3d</span><span class="p">)</span><span class="ni"> </span><span class="o">+</span><span class="ni"> eps</span>
+<span class="ni">    </span><span class="k">ball.zone.ball.mass.factor</span><span class="p">(</span><span class="ni">cb</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="k">ball.extra</span><span class="p">(</span><span class="ni">b</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span>
+<span class="ni">  </span><span class="k">endloop</span>
+<span class="ni">  </span><span class="k">loop</span><span class="ni"> </span><span class="k">foreach</span><span class="ni"> </span><span class="k">local</span><span class="ni"> cgp </span><span class="k">ball.zone.gp.list</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> gp     </span><span class="p">=</span><span class="ni"> </span><span class="k">ball.zone.gp.gp</span><span class="p">(</span><span class="ni">cgp</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">local</span><span class="ni"> gpzpos </span><span class="p">=</span><span class="ni"> </span><span class="k">gp.pos.z</span><span class="p">(</span><span class="ni">gp</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">gp.extra</span><span class="p">(</span><span class="ni">gp</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="p">(</span><span class="m m-Double">1.0</span><span class="o">-</span><span class="m m-Double">2.0</span><span class="o">*</span><span class="ni">eps</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="ni">hf3d </span><span class="o">-</span><span class="ni"> gpzpos</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="ni">hf3d </span><span class="o">-</span><span class="ni"> hpfc</span><span class="p">)</span><span class="ni"> </span><span class="o">+</span><span class="ni"> eps</span>
+<span class="ni">    </span><span class="k">ball.zone.gp.mass.factor</span><span class="p">(</span><span class="ni">cgp</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="k">gp.extra</span><span class="p">(</span><span class="ni">gp</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span>
+<span class="ni">  </span><span class="k">endloop</span>
+<span class="nb">end</span>
+<span class="ni">[setMassFactors</span><span class="p">(</span><span class="ni">epsilon</span><span class="p">)</span><span class="ni">]</span>
+
+<span class="nb">history interval</span><span class="n"> </span><span class="m m-Double">1</span>
+<span class="nb">model history</span><span class="n"> name </span><span class="s">&#39;1&#39;</span><span class="n"> mechanical time</span><span class="o">-</span><span class="n">total</span>
+<span class="nb">model history</span><span class="n"> name </span><span class="s">&#39;2&#39;</span><span class="n"> mechanical ratio</span><span class="o">-</span><span class="n">average</span>
+<span class="nb">zone history</span><span class="n"> name </span><span class="s">&#39;11&#39;</span><span class="n"> displacement</span><span class="o">-</span><span class="n">z position </span><span class="p">(</span><span class="ni">[</span><span class="m m-Double">2.0</span><span class="o">*</span><span class="ni">l]</span><span class="p">,</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="ni">[h]</span><span class="p">)</span>
+<span class="nb">ball history</span><span class="n"> name </span><span class="s">&#39;12&#39;</span><span class="n"> displacement</span><span class="o">-</span><span class="n">z position </span><span class="p">(</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="ni">[h]</span><span class="p">)</span>
+<span class="nb">ball history</span><span class="n"> name </span><span class="s">&#39;14&#39;</span><span class="n"> displacement</span><span class="o">-</span><span class="n">z position </span><span class="p">(</span><span class="ni">[</span><span class="o">-</span><span class="m m-Double">2.0</span><span class="o">*</span><span class="ni">l]</span><span class="p">,</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="ni">[h]</span><span class="p">)</span>
+
+<span class="nb">zone history</span><span class="n"> name </span><span class="s">&#39;21&#39;</span><span class="n"> displacement</span><span class="o">-</span><span class="n">z position </span><span class="p">(</span><span class="ni">[</span><span class="m m-Double">2.0</span><span class="o">*</span><span class="ni">l]</span><span class="p">,</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="ni">[hpfc]</span><span class="p">)</span>
+<span class="nb">ball history</span><span class="n"> name </span><span class="s">&#39;22&#39;</span><span class="n"> displacement</span><span class="o">-</span><span class="n">z position </span><span class="p">(</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="ni">[hpfc]</span><span class="p">)</span>
+<span class="nb">zone history</span><span class="n"> name </span><span class="s">&#39;23&#39;</span><span class="n"> displacement</span><span class="o">-</span><span class="n">z position </span><span class="p">(</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="ni">[hpfc]</span><span class="p">)</span>
+<span class="nb">ball history</span><span class="n"> name </span><span class="s">&#39;24&#39;</span><span class="n"> displacement</span><span class="o">-</span><span class="n">z position </span><span class="p">(</span><span class="ni">[</span><span class="o">-</span><span class="m m-Double">2.0</span><span class="o">*</span><span class="ni">l]</span><span class="p">,</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="ni">[hpfc]</span><span class="p">)</span>
+
+<span class="nb">zone history</span><span class="n"> name </span><span class="s">&#39;31&#39;</span><span class="n"> displacement</span><span class="o">-</span><span class="n">z position </span><span class="p">(</span><span class="ni">[</span><span class="m m-Double">2.0</span><span class="o">*</span><span class="ni">l]</span><span class="p">,</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="ni">[hf3d]</span><span class="p">)</span>
+<span class="nb">ball history</span><span class="n"> name </span><span class="s">&#39;32&#39;</span><span class="n"> displacement</span><span class="o">-</span><span class="n">z position </span><span class="p">(</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="ni">[hf3d]</span><span class="p">)</span>
+<span class="nb">zone history</span><span class="n"> name </span><span class="s">&#39;33&#39;</span><span class="n"> displacement</span><span class="o">-</span><span class="n">z position </span><span class="p">(</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="ni">[hf3d]</span><span class="p">)</span>
+<span class="nb">ball history</span><span class="n"> name </span><span class="s">&#39;34&#39;</span><span class="n"> displacement</span><span class="o">-</span><span class="n">z position </span><span class="p">(</span><span class="ni">[</span><span class="o">-</span><span class="m m-Double">2.0</span><span class="o">*</span><span class="ni">l]</span><span class="p">,</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="ni">[hf3d]</span><span class="p">)</span>
+
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;settle_cpl-ini&#39;</span>
+<span class="nb">model </span><span class="ss">solve</span><span class="n"> ratio</span><span class="o">-</span><span class="n">average </span><span class="m m-Double">5e-3</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;settle_cpl-final&#39;</span>
+<span class="nb">program </span><span class="se">return</span>
+</pre></div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Gravity Settlement in a Coupled PFC-FLAC3D model" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,192 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Commands &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="model calm command" href="cmd_model.calm.html" />
+    <link rel="prev" title="Model" href="../model.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="commands">
+<span id="model-commands"></span><h1>Commands</h1>
+<p>These commands examine or modify the general model state.  These are either settings that are saved/restored/reset along with the model, or general model controls that do not pertain to a specific module (like <code class="xref fish fish-cmd docutils literal"><span class="pre">zone</span></code>, <code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span></code> elements, or <code class="xref fish fish-cmd docutils literal"><span class="pre">ball</span></code>).</p>
+<p class="rubric">Model Commands</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="cmd_model.calm.html#model.calm" title="Calm the model. For mechanical processes, all linear and rotational velocities&#013;&#010;are set to 0 ."><span class="fishcmd">model calm</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_model.configure.html#model.configure" title="Configure an additional calculation mode. This command allows the user to specify&#013;&#010;that the model is using calculation modes that either require extra resources&#013;&#010;or are restricted by your license information. The  model.configure  command&#013;&#010;can be given at any stage of an analysis, but it must be given before the calculation&#013;&#010;mode ( model solve  or  model cycle ) can be invoked."><span class="fishcmd">model configure</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_model.cycle.html#model.creep" title="Set parameters for a creep material analysis.  Time-dependent creep material&#013;&#010;analysis is only available if  model configure creep  has been specified.  This&#013;&#010;is only available with the Creep model option — see  Creep Model Option   preceding&#013;&#010;should be a link  for details.  [CS: this is another common docs, many codes&#013;&#010;issue]"><span class="fishcmd">model creep</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_model.deterministic.html#model.deterministic" title="Set the deterministic mode. Deterministic mode is reset to the default setting&#013;&#010;whenever a  model new  command is given.  The optional  default  keyword is&#013;&#010;used to set the default setting to  b .  When  default  is not used then the&#013;&#010;current deterministic mode only is set.  On installation (that is, prior to&#013;&#010;any user change) the program’s default determinism setting is  on .  The default&#013;&#010;setting can also be changed by using “Determinism"><span class="fishcmd">model deterministic</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_model.display.html#model.display" title="Set information to display during cycling.  Along with the baseline information,&#013;&#010;additional information can be displayed during cycling using the keywords below.&#013;&#010; This information will be updated every step."><span class="fishcmd">model display</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_model.domain.html#model.domain" title="Specify the DFN domain boundaries and conditions.  DFN fractures only exist&#013;&#010;within the domain extent."><span class="fishcmd">model domain</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_model.energy.html#model.energy" title="Specify the energy tracking state. Currently only mechanical energies can be&#013;&#010;tracked."><span class="fishcmd">model energy</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_model.factor-of-safety.html#model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><span class="fishcmd">model factor-of-safety</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_model.gravity.html#model.gravity" title="Set the gravity. Gravity is set in units of acceleration.  Body force is calculated&#013;&#010;as the product of the gravity vector and the real mass of an object."><span class="fishcmd">model gravity</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_model.history.html#model.history" title="Create a history of a model quantity."><span class="fishcmd">model history</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_model.largestrain.html#model.large-strain" title="Sets the program to use the numerical formulation for large-strain deformation.&#013;&#010; The default is  on ."><span class="fishcmd">model large-strain</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_model.list.html#model.list" title="List a model related quantity. The following keywords apply:"><span class="fishcmd">model list</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_model.new.html#model.new" title="Clear model-state information. Model information is cleared, allowing one to&#013;&#010;begin a new problem. The optional  force  keyword suppresses the model reset&#013;&#010;confirmation dialog (which will normally appear if the model has changed since&#013;&#010;the last save when the  model.new  command is used)."><span class="fishcmd">model new</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_model.random.html#model.random" title="Set the seed for the random-number generator. By default  i  =  10,000 . The value&#013;&#010;specified should be of the same magnitude as the default value. If the model.random &#013;&#010;keyword is given after a  model new  command, identical models can be generated&#013;&#010;for multiple runs. The seed is not reset by the  model new  command."><span class="fishcmd">model random</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_model.restore.html#model.restore" title="Restore program-state information. The state information, resulting from a previous model&#013;&#010;save  command, is in the save file  s . If  s  does not contain a file extension,&#013;&#010;then the extension “.f3sav” is added. The path to the save file can be included as&#013;&#010;part of  s ."><span class="fishcmd">model restore</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_model.save.html#model.save" title="Save all model-state information. The file  s  is created and, if no extension&#013;&#010;is provided, the extension is set to “.sav”. This information includes any defined&#013;&#010; FISH  functions/variables, histories, tables, and other model components."><span class="fishcmd">model save</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_model.solve.html#model.solve" title="Enable the automatic detection of the steady-state solution for mechanical problems.&#013;&#010;A calculation is performed until the limiting conditions, as defined by the&#013;&#010;following keywords, are reached. SOLVE force must be used for rigid block models.&#013;&#010;The SOLVE command does not monitor fluid flow. It is possible that mechanical&#013;&#010;equilibrium may be reached prior to fluid-flow equilibrium for steady-state&#013;&#010;flow. CYCLE ftime should be used for transient fluid flow."><span class="fishcmd">model solve</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_model.step.html#model.step" title="Execute timesteps. The synonym  model cycle  may also be used.  This is the&#013;&#010;equivalent of calling  model solve  with the  cycles  keyword set to  i ."><span class="fishcmd">model step</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_model.title.html#model.title" title="Set the model title. The title may be displayed in plots and is stored in save&#013;&#010;files. The command  model list information  lists the current title."><span class="fishcmd">model title</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_model.update-interval.html#model.update-interval" title="Set the number of cycles taken between updating the existing plots in the user&#013;&#010;interface.  The default value is  100 ."><span class="fishcmd">model update-interval</span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.calm.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">calm</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.configure.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">configure</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.creep.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">creep</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.cycle.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">cycle</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.deterministic.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">deterministic</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.display.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">display</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.domain.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">domain</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.energy.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">energy</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.factor-of-safety.html"><span class="fishcmd">model factor-of-safety</span> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.gravity.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">gravity</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.history.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">history</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.largestrain.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">large-strain</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.list.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.new.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">new</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.orientation.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">orientation</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.random.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">random</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.restore.html"><span class="fishcmd">model restore</span> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.save.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">save</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.solve.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">solve</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.step.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">step</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.title.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">title</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_model.update-interval.html"><code class="docutils literal"><span class="pre">model</span> <span class="pre">update-interval</span></code> command</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../model.html" accesskey="U">Model</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../model.html"
+                           title="previous chapter"> Model</a> |    
+       <a href="cmd_model.calm.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">model</span> <span class="pre">calm</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Commands" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

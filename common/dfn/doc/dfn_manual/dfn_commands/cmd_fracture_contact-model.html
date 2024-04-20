@@ -1,0 +1,228 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>fracture contact-model command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="fracture copy command" href="cmd_fracture_copy.html" />
+    <link rel="prev" title="fracture connectivity command" href="cmd_fracture_connectivity.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fracture-contact-model-command">
+<h1><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">contact-model</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="dfn command">
+<dt id="command:fracture.contact-model">
+<span class="cmdname"><span class="pref">f</span><span class="pref">r</span><span class="pref">a</span><span class="pref">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">c</span><span class="null">o</span><span class="null">n</span><span class="null">t</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">-</span><span class="pref">m</span><span class="null">o</span><span class="null">d</span><span class="null">e</span><span class="null">l</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="pref">r</span><span class="pref">a</span><span class="pref">n</span><span class="null">g</span><span class="null">e</span></span></a><span class="cmdkey"><span class="null">o</span><span class="null">f</span><span class="null"> </span></span><span class="cmdkey"><span class="pref">d</span><span class="pref">f</span><span class="pref">n</span><span class="null">s</span></span>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:fracture.contact-model.activate" title="fracture contact-model activate">activate</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.contact-model.apply-groups" title="fracture contact-model apply-groups">apply-groups</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.contact-model.apply-properties" title="fracture contact-model apply-properties">apply-properties</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.contact-model.deactivate" title="fracture contact-model deactivate">deactivate</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.contact-model.distance" title="fracture contact-model distance">distance</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.contact-model.install" title="fracture contact-model install">install</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.contact-model.model" title="fracture contact-model model">model</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.contact-model.type" title="fracture contact-model type">type</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:fracture.contact-model.use-aperture" title="fracture contact-model use-aperture">use-aperture</a></p>
+</div>
+<p>Assign contact models via fractures. The command only applies to <span class="codename">PFC</span>. In order for the contact
+model specified with the <span class="cmdkey">model</span> keyword to use the fracture geometry, the contact model must
+have the property “dip” corresponding to the fracture dip (and “ddir” corresponding to the fracture
+dip direction, in 3D). The properties assigned to the fractures with the <a class="reference internal" href="cmd_fracture_property.html#command:fracture.property" title="Assign fracture surface properties. The value  a  is assigned to the surface&#013;&#010;property"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">property</span></code></a>
+command are supplied to the contact model. These properties are fixed, in the sense that they will
+not be inherited from the contacting pieces or previous contacts, and must be specified by the user
+directly to change their values. Use the contact-model inheritance logic to specify those
+contact-model properties not specified in the fractures.</p>
+<p>It is possible for multiple fractures to intersect a contact. In order to uniquely identify the
+appropriate contact model, a dominance hierarchy is imposed on the DFNs and fractures. If multiple
+fractures intersect a contact, the fractures from the DFN with the lowest dominance value are
+scrutinized. Of these fractures, the fracture with the lowest dominance value is identified as
+the appropriate fracture for contact model/property assignment. The DFN dominance is specified
+with the <a class="reference internal" href="cmd_fracture_create.html#command:fracture.create" title="Create a deterministic fracture."><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">create</span></code></a>, <a class="reference internal" href="cmd_fracture_generate.html#command:fracture.generate" title="Generate fractures from a statistical description. A model domain must be specified&#013;&#010;prior to"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">generate</span></code></a> and <a class="reference internal" href="cmd_fracture_import.html#command:fracture.import" title="Import fractures."><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">import</span></code></a> commands.</p>
+<p>The list of mechanical contact models is given in the <em>PFC Help</em>, in the <em>Contact Models</em> section. In the documentation for each contact model, a <em>Properties</em> table exists. These include: the <span class="xref std std-ref">linear</span>, <span class="xref std std-ref">linear contact bond</span>, <span class="xref std std-ref">linear parallel bond</span>, <span class="xref std std-ref">hertz</span>, <span class="xref std std-ref">hysteretic</span>, <span class="xref std std-ref">smooth joint</span>, and the <span class="xref std std-ref">flat joint</span> property tables.</p>
+<dl class="keyword">
+<dt id="kwd:fracture.contact-model.activate">
+<span class="cmdkey"><span class="pref">a</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">v</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Activate contact model assignment when new contacts that intersect a fracture in the specified range are created.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.contact-model.apply-groups">
+<span class="cmdkey"><span class="pref">a</span><span class="null">p</span><span class="null">p</span><span class="null">l</span><span class="null">y</span><span class="null">-</span><span class="pref">g</span><span class="null">r</span><span class="null">o</span><span class="null">u</span><span class="null">p</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><p>Assign fracture groups to contacts. By default <a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span></span></a> = false. This keyword only applies when installing contact models.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.contact-model.apply-properties">
+<span class="cmdkey"><span class="pref">a</span><span class="null">p</span><span class="null">p</span><span class="null">l</span><span class="null">y</span><span class="null">-</span><span class="pref">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">i</span><span class="null">e</span><span class="null">s</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><p>Apply properties to contact models that intersect a fracture in the specified range.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.contact-model.deactivate">
+<span class="cmdkey"><span class="pref">d</span><span class="pref">e</span><span class="null">a</span><span class="null">c</span><span class="null">t</span><span class="null">i</span><span class="null">v</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Deactivate contact model assignment when new contacts that intersect a fracture in the
+specified range are created. This applies to all previously activated instances, regardless of
+the supplied range.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.contact-model.distance">
+<span class="cmdkey"><span class="pref">d</span><span class="pref">i</span><span class="null">s</span><span class="null">t</span><span class="null">a</span><span class="null">n</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>The distance from the closest point on a fracture to the contact line within which to identify
+contacts for contact model assignment is set to <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a>. The default value is 0.0. The
+fracture apertures supersede <a class="reference internal" href="../../../../docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span></span></a> if the <span class="cmdkey">use-aperture</span> keyword is specified.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.contact-model.install">
+<span class="cmdkey"><span class="pref">i</span><span class="null">n</span><span class="null">s</span><span class="null">t</span><span class="null">a</span><span class="null">l</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>Install the specified contact model at all existing contacts that intersect a fracture in the
+range. New contacts that intersect fractures will not be automatically assigned the specified
+contact model unless the <span class="cmdkey">activate</span> keyword is also specified.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.contact-model.model">
+<span class="cmdkey"><span class="pref">m</span><span class="null">o</span><span class="null">d</span><span class="null">e</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Name the contact model to be used (e.g., linear, smoothjoint, etc.).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.contact-model.type">
+<span class="cmdkey"><span class="pref">t</span><span class="null">y</span><span class="null">p</span><span class="null">e</span><span class="null"> </span></span><a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span><span class="null"> </span></span></a></dt>
+<dd><p>Restrict the installation to contacts of type <a class="reference internal" href="../../../../docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">s</span></span></a>.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:fracture.contact-model.use-aperture">
+<span class="cmdkey"><span class="pref">u</span><span class="null">s</span><span class="null">e</span><span class="null">-</span><span class="pref">a</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Use the aperture of each fracture as the distance criteria to identify the contacts for contact
+model assignment. The apertures supersede the distance provided with the <span class="cmdkey">distance</span>
+keyword.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p class="h2 rubric">Usage Example</p>
+<p>The following example illustrates how the <a class="reference internal" href="#command:fracture.contact-model" title="Assign contact models via fractures. The command only applies to |PFC|. In order&#013;&#010;for the contact"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">contact-model</span></code></a> command can be used to install the
+<span class="xref std std-ref">smoothjoint</span> contact model in all contacts intersecting fractures. We first
+create a cubic assembly of balls and install a default contact model with the <code class="xref fish fish-cmd docutils literal"><span class="pre">cmat</span></code> command.
+Then, we generate fractures and assign the properties kn, ks and cohesion to each fracture. The smoothjoint contact model is assigned to each contact intersecting a fracture.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">program warning</span><span class="n"> </span><span class="sx">off</span>
+<span class="nb">model random</span><span class="n"> </span><span class="m m-Double">10001</span>
+<span class="nb">model domain</span><span class="n"> extent </span><span class="o">-</span><span class="m m-Double">5</span><span class="n"> </span><span class="m m-Double">5</span>
+<span class="n">cmat default model linearpbond property kn </span><span class="m m-Double">1e5</span>
+<span class="nb">ball generate</span><span class="n"> cubic</span>
+<span class="nb">ball attribute</span><span class="n"> density </span><span class="m m-Double">2500.0</span><span class="n"> damp </span><span class="m m-Double">0.7</span>
+<span class="c">; create contacts and assign the linearpbond contact model</span>
+<span class="n">clean</span>
+<span class="n">dfn generate nfrac </span><span class="m m-Double">1000</span>
+<span class="nb">fracture aperture</span><span class="n"> log</span><span class="o">-</span><span class="n">normal </span><span class="m m-Double">0.1</span><span class="n"> </span><span class="m m-Double">10</span>
+<span class="n">dfn property sj_kn </span><span class="m m-Double">1e5</span><span class="n"> sj_ks </span><span class="m m-Double">1e-4</span><span class="n"> sj_coh </span><span class="m m-Double">0</span>
+<span class="c">; install smoothjoint</span>
+<span class="nb">fracture contact-model</span><span class="n"> model smoothjoint install useaperture</span>
+<span class="nb">program </span><span class="se">return</span>
+</pre></div>
+</div>
+<p class="h3 rubric">See Also: <a class="reference internal" href="cmd_fracture_property.html#command:fracture.property" title="Assign fracture surface properties. The value  a  is assigned to the surface&#013;&#010;property"><code class="xref fish fish-cmd docutils literal"><span class="pre">fracture</span> <span class="pre">property</span></code></a></p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../dfn.html" >Discrete Fracture Network (DFN)</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="dfn_commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_fracture_connectivity.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">fracture</span> <span class="pre">connectivity</span></code> command</a> |    
+       <a href="cmd_fracture_copy.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">fracture</span> <span class="pre">copy</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?fracture contact-model command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,137 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Timestep &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Determinism" href="determinism.html" />
+    <link rel="prev" title="Underpinnings" href="formulation.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="timestep">
+<span id="frameworkcycling"></span><span id="thetimestep"></span><h1>Timestep</h1>
+<p>Itasca numerical modeling codes are calculation engines that use an explicit solution to Newton’s laws of motion.  The explicit solution is the backbone of the program, to which additions or optional permutations (implicit calculations for thermal solutions, dynamic multi-stepping for dynamic calculations, and so on) are added as needed.</p>
+<p>The model state is advanced in a forward march of calculation loops called <em>timesteps</em> (or simply <em>steps</em>).  Each loop is composed of a sequence of operations, termed the <em>cycle sequence</em>. From code to code, the exact operations forming that sequence varies — as is necessary for the job of that particular code. Each specific sequence is enumerated below.  But for all codes, the general pattern of the sequence may be visualized as follows.</p>
+<div class="figure align-center" id="id1">
+<img alt="../../../../../../_images/corecycle.svg" src="../../../../../../_images/corecycle.svg" /><p class="caption"><span class="caption-text">Figure 1: The timestep in Itasca software.</span></p>
+</div>
+<p>A step (or, frequently, “cycle”) is one iteration of the circuit above.  While equations of motion are performed, forces are fixed for all elements; while constitutive equations are solved, effects stemming from motion (strain rates) are fixed.  This works because the explicit solution scheme assumes that information cannot propagate a distance of more than one element in one timestep.  Therefore the length of the timestep depends on the material density, contact or zone stiffnesses and the element sizes.</p>
+<p class="h2 rubric">Starting and Stopping Cycling</p>
+<p>Setting this process in motion — cycling — occurs by issuing either a <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">cycle</span></code> or <a class="reference internal" href="../../../../../kernel/doc/manual/model/commands/cmd_model.solve.html#command:model.solve" title="Enable the automatic detection of the steady-state solution for mechanical&#013;&#010;problems. A calculation is performed until the limiting conditions, as defined&#013;&#010;by the following keywords, are reached. SOLVE force must be used for rigid block&#013;&#010;models. The SOLVE command does not monitor fluid flow. It is possible that mechanical&#013;&#010;equilibrium may be reached prior to fluid-flow equilibrium for steady-state&#013;&#010;flow. CYCLE ftime should be used for transient fluid flow."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">solve</span></code></a> command.  Cycling continues until one or more <em>solve limits</em> are reached. When using the <code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">cycle</span></code>
+command, the solve limit is a number of cycles that is specified in the command. Cycling terminates when that number is reached. When using the <a class="reference internal" href="../../../../../kernel/doc/manual/model/commands/cmd_model.solve.html#command:model.solve" title="Enable the automatic detection of the steady-state solution for mechanical&#013;&#010;problems. A calculation is performed until the limiting conditions, as defined&#013;&#010;by the following keywords, are reached. SOLVE force must be used for rigid block&#013;&#010;models. The SOLVE command does not monitor fluid flow. It is possible that mechanical&#013;&#010;equilibrium may be reached prior to fluid-flow equilibrium for steady-state&#013;&#010;flow. CYCLE ftime should be used for transient fluid flow."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">solve</span></code></a> command, on the other hand, multiple solve limits can be
+specified simultaneously. Cycling is terminated when at least one solve limit has been met. A number
+of solve limits are built into the program (see the <a class="reference internal" href="../../../../../kernel/doc/manual/model/commands/cmd_model.solve.html#command:model.solve" title="Enable the automatic detection of the steady-state solution for mechanical&#013;&#010;problems. A calculation is performed until the limiting conditions, as defined&#013;&#010;by the following keywords, are reached. SOLVE force must be used for rigid block&#013;&#010;models. The SOLVE command does not monitor fluid flow. It is possible that mechanical&#013;&#010;equilibrium may be reached prior to fluid-flow equilibrium for steady-state&#013;&#010;flow. CYCLE ftime should be used for transient fluid flow."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">solve</span></code></a> documentation for details). In addition,
+one or more <span class="codename">FISH</span> functions can be specified as solve limits, allowing for custom cycling
+termination criteria.</p>
+<div class="figure align-center" id="id2">
+<span id="fig-series-of-cycles-framework"></span><img alt="../../../../../../_images/series_of_cycles.svg" src="../../../../../../_images/series_of_cycles.svg" /><p class="caption"><span class="caption-text">Figure 2: Schematic of a series of cycles. Single calculation cycles are undertaken until one or more solve
+limits are met.</span></p>
+</div>
+<p>During the initialization phase, the model data structures are set up, variables used during cycling are reset, and the model state is checked for validity in the sense that cycling can commence. This might occur for a number of reasons (for instance, in <span class="codename">PFC</span>, cycling cannot occur if any balls or clumps have 0 mass as the results would be undefined; in <span class="codename">FLAC3D</span> cycling cannot occur if there are zones that have not been assigned a constitutive model, and so on). The operations that compose the cycle sequence (see below) are performed during each calculation cycle. After the completion of the calculation cycle, the solve limits are checked and, should one or more be met or exceeded, cycling terminates. If no solve limits are met, additional calculation cycles are performed. During the finalization phase, model elements are created/deleted and data structures requiring validation are updated to ensure that the model state is consistent prior to returning the interactive console to the user for further input.</p>
+<p>The user may manually terminate cycling from the toolbar or by pressing the <code class="kbd docutils literal"><span class="pre">Shift+Esc</span></code> key combination while cycling. If manual cycling termination is requested, the current calculation cycle is completed and the finalization stage is executed before returning control to the user.</p>
+<p class="h2 rubric" id="cycle-sequence">The Cycle Sequence</p>
+<p>The sequence of operations executed during each calculation cycle is termed the cycle sequence.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="formulation.html" accesskey="U">Underpinnings</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="formulation.html"
+                           title="previous chapter"> Underpinnings</a> |    
+       <a href="determinism.html"
+                           title="next chapter">Determinism</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Timestep" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

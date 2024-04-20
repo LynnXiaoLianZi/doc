@@ -1,0 +1,135 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>General Solution Procedure, Illustrated &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="2D vs. 3D Models" href="2dvs3dmodels.html" />
+    <link rel="prev" title="General Approach" href="generalapproach.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="general-solution-procedure-illustrated">
+<span id="generalsolutionillustrated"></span><h1>General Solution Procedure, Illustrated</h1>
+<p>In Itasca software, the modeling methodology described in <a class="reference internal" href="generalapproach.html#frameworkgeneralapproach"><span class="std std-ref">General Approach</span></a> is convenient because it represents the sequence of processes that occurs in the physical environment. The flow of that methodology is illustrated below.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../../../../../../_images/solutionprocedure.svg"><img alt="a general solution procedure for numerical modeling" src="../../../../../../_images/solutionprocedure.svg" width="60%" /></a>
+<p class="caption"><span class="caption-text">Figure 1: General solution procedure: the modeling methodology as a workflow within the software.</span></p>
+</div>
+<p><span class="flag3">figure attempts to generalize for ALL codes - so it varies from the version shown in either flac3d, pfc, udec, or 3dec docs</span></p>
+<p>The first step in the workflow, model setup, requires specifying up to four fundamental components of the problem:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>the model domain (if DFN’s are used);</li>
+<li>the core model as composed of fundamental model elements (an assembly of particles in <span class="codename">PFC</span>; a mesh of zones in <span class="codename">FLAC3D</span>; a shape composed of jointed blocks in <span class="codename">UDEC</span> and <span class="codename">3DEC</span>);</li>
+<li>contact and/or constitutive behavior and material properties; and,</li>
+<li>boundary and initial conditions</li>
+</ol>
+</div></blockquote>
+<p><span class="flag3">list above takes what had covered pfc only and attempts to add flac3d and 3dec to it – requires review!!</span></p>
+<p><span class="flag3">this page came from PFC land, so the next paragraph is too pfc specific.  It and the one following were once one paragraph. However, I’ve split them here and generalized the second paragraph to the point where it is descriptively accurate for all the codes.  So, what to do about the first one…</span></p>
+<p><span class="flag2">The model geometry is defined by the locations and size distribution of particles (|pfc|), the assembly of polygonal blocks (|udec| and |3dec|) or a zoned volume (|flac3d|). The contact behavior and/or material properties dictate the type of response the model will display upon disturbance (e.g., deformation response due to excavation). The choice of appropriate energy dissipation mechanisms is crucial at this stage.</span></p>
+<p>Boundary and initial conditions define the in-situ state (i.e., the condition before a change or disturbance in problem state is introduced). After these conditions are defined, the initial equilibrium state is calculated for the model. An alteration is then made (e.g., excavate material or change boundary conditions), and the resulting response of the model is calculated. The actual solution of the problem is different for Itasca programs than it is for conventional implicit-solution programs. Itasca codes all use an explicit time-marching method to solve the algebraic equations. The solution is reached after a series of computational steps. In each code, the number of steps required to reach a solution can be controlled automatically by the code or manually by the user. However, the user ultimately must determine whether the number of steps is sufficient to reach the solved state.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="methodology.html" accesskey="U">Modeling Methodology</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="generalapproach.html"
+                           title="previous chapter"> General Approach</a> |    
+       <a href="2dvs3dmodels.html"
+                           title="next chapter">2D vs. 3D Models</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?General Solution Procedure, Illustrated" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

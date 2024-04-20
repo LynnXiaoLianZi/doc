@@ -1,0 +1,215 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Plot Items Control Set &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="Plot Item Ranges" href="ranges.html" />
+    <link rel="prev" title="Transparency" href="../../mechanics/plotting/views/plotitems/items/attributes/std_transparency.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="plot-items-control-set">
+<span id="theplotitemscontrolset"></span><span id="plotitemscontrolset"></span><h1><em>Plot Items</em> Control Set</h1>
+<img alt="../../../../../../../_images/cs_plotitems_udec.png" class="align-right" src="../../../../../../../_images/cs_plotitems_udec.png" />
+<p>The <em>Plot Items</em> control set is a compound tool: its upper portion is a list of items in the plot. The lower portion is for display of the attributes of whatever item or sub-item is currently selected in the upper portion.</p>
+<p>Most plot items will each contain a set of “sub-items”, , such as Add Range Element.</p>
+<p>These are accessed and activated by using the expansion arrow ( <img alt="treeopn" src="../../../../../../../_images/treeopen.png" /> ) adjacent to the item’s name.  They are used to modify (usually to subset) the display of the item.</p>
+<p>The lower portion of the control set, under the label “Attributes”, contains all controls available for whatever item or sub-item is currently selected in the list above.  The controls are contextual to the object selected — changing the selected item on the list (which can also be done directly on the plot) changes the controls that appear in the “Attributes” section.  Attribute descriptions are provided with each plot item as listed in the <a class="reference internal" href="../../mechanics/plotting/views/plotitems/plotitem_index.html#plotitemsreference"><span class="std std-ref">Plot Items</span></a> section.</p>
+<p>The toolbar at the top of the set is used to add or remove items from the plot, apply filters to the plot items, copy and paste items or their sub-items, and to set <em>local options</em> for the current view. Setting global options for all views is possible with the options button on the <a class="reference internal" href="../../mechanics/plotting/views/viewtoolbar.html#theplotpanetoolbar"><span class="std std-ref">toolbar of the plot pane</span></a>.</p>
+<p class="h2 rubric" id="toolbar-buttons"><span id="theplotitemstoolbar"></span><span id="ui-viewpane-controlpanel-pilist-toolbar"></span>Toolbar Buttons</p>
+<table border="1" class="colwidths-given icg1 docutils" id="table-plotitemstoolbar">
+<caption><span class="caption-text">Table 1: Tools Available on the <em>Plot Items</em> Toolbar</span></caption>
+<colgroup>
+<col width="8%" />
+<col width="31%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Icon</th>
+<th class="head">Command</th>
+<th class="head">Description/Comment</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><img alt="addplotitem_active" src="../../../../../../../_images/addplotitem_active.png" /></td>
+<td>call <em>Build Plot</em></td>
+<td>Calls the <em>Build Plot</em> dialog</td>
+</tr>
+<tr class="row-odd"><td>▾</td>
+<td>Quick add</td>
+<td>Shows the user-defined list of plot items</td>
+</tr>
+<tr class="row-even"><td><img alt="addfilterelement_active" src="common/guilib/Icons/addfilterelement_active.png" /></td>
+<td>Add Range Element</td>
+<td>Calls the <em>Build Range</em> dialog</td>
+</tr>
+<tr class="row-odd"><td><img alt="delete_active" src="../../../../../../../_images/delete_active.png" /></td>
+<td>Delete</td>
+<td>Delete the current plot item</td>
+</tr>
+<tr class="row-even"><td><img alt="copy_active" src="../../../../../../../_images/copy_active.png" /></td>
+<td>Copy</td>
+<td>Copy the current selection</td>
+</tr>
+<tr class="row-odd"><td><img alt="paste_active" src="../../../../../../../_images/paste_active.png" /></td>
+<td>Paste</td>
+<td>Paste the copied selection</td>
+</tr>
+<tr class="row-even"><td><img alt="options_active" src="../../../../../../../_images/options_active.png" /></td>
+<td>Options</td>
+<td>Specify settings for the current plot</td>
+</tr>
+<tr class="row-odd"><td><img alt="help" src="../../../../../../../_images/help_get_on.png" /></td>
+<td>Help</td>
+<td>Open documentation to this topic</td>
+</tr>
+</tbody>
+</table>
+<p id="copyandpasteinplotitemscs"><em>Copy and Paste</em>  <br>  The copy ( <img alt="copy_active" src="../../../../../../../_images/copy_active.png" /> ) and paste ( <img alt="paste_active" src="../../../../../../../_images/paste_active.png" /> ) buttons can be used to copy an item in the upper portion of the control set.  A plot item, or one of its sub-items (cutting tool, clip box or range), may be copied. To copy, select the desired plot item or sub-item on the list, and press <img alt="copy_active" src="../../../../../../../_images/copy_active.png" /> or right-click and choose <span class="menuselection">copy</span>.  The copied item may be pasted according to the following set of constraints.</p>
+<ul class="simple">
+<li>To paste a copied plot item: Press the <img alt="paste_active" src="../../../../../../../_images/paste_active.png" /> button or right-click and choose “Paste” (this requires that the right-click <em>not</em> occur on an item in the list). A duplicate of the plot item and all its sub-items is created.</li>
+<li>To paste a copied sub-item: First, select the target of the paste operation. This may be either the name of another plot item or its <strong>like</strong> sub-item (for example, if the “range” of plot item A is copied, the “range” of plot item B may be selected as a target for pasting; if either the “cutting tool” or the “clip box” is selected, an attempt to paste the copied “range”will fail). Once a valid target is selected, either press the <img alt="paste_active" src="../../../../../../../_images/paste_active.png" /> button or right-click on the target and choose “Paste.” When sub-items are pasted, all their settings are transferred to the new plot item (overwriting old settings as necessary).</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Copy/paste operations according to the constraints described above can be done across plots.</p>
+</div>
+<p class="h2 rubric" id="plotitemscontrolset-controls">Plot Items List Controls</p>
+<p>In the upper portion of the control set, an item that contains sub-items can be expanded or closed to show the sub-items ( <img alt="treeopn" src="../../../../../../../_images/treeopen.png" /> or <img alt="treecls" src="../../../../../../../_images/treeclose.png" /> ); some items do not contain sub-items.</p>
+<p>For a plot item, <em>visibility</em> is toggled on and off with <img alt="vis_on" src="../../../../../../../_images/show_normal_16x16.png" /> and <img alt="vis_off" src="../../../../../../../_images/hide_normal_16x16.png" />.  On a sub-item, these buttons <em>activate</em> or <em>de-activate</em> the action of the sub-item.  By default, cutting tools and clip boxes are de-activated. Ranges are activated by default, but since they initially contain no range elements, their activation has no effect on the plot item.</p>
+<p>To distinguish it from the regular plot items, the label of the plot’s <em>Legend</em> is blue. The <em>Legend</em> cannot be deleted from the plot.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ranges.html">Range</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rangedialog.html">The <em>Build Range</em> Dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mechanics/plotting/views/rangeelementindex.html">Range Element Index</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="filterelements/filter_circle.html">Circle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filterelements/filter_ellipse.html">Ellipse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filterelements/filter_polygon.html">Polygon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filterelements/filter_xposition.html">X Position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filterelements/filter_yposition.html">Y Position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filterelements/filter_rectangle.html">Rectangle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filterelements/filter_angle.html">Angle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filterelements/filter_area.html">Area</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filterelements/filter_block_material.html">Block Material</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filterelements/filter_deformable.html">Deformable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filterelements/filter_displacement.html">Displacement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filterelements/filter_group.html">Group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filterelements/filter_id.html">ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filterelements/filter_idlist.html">ID List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filterelements/filter_index_list.html">Index List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filterelements/filter_joint_material.html">Joint Material</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filterelements/filter_joint_set.html">Jointset ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filterelements/filter_rigid.html">Rigid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filterelements/filter_velocity.html">Velocity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../mechanics/program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../../mechanics/plotting/plotting.html" accesskey="U">Plotting</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../../mechanics/plotting/views/plotitems/items/attributes/std_transparency.html"
+                           title="previous chapter"> Transparency</a> |    
+       <a href="ranges.html"
+                           title="next chapter">Plot Item Ranges</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Plot Items Control Set" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

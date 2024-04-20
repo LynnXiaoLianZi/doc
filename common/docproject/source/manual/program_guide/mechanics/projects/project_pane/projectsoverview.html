@@ -1,0 +1,201 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The Project Pane &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../search.html" />
+    <link rel="next" title="Project Pane Toolbar" href="projecttoolbar.html" />
+    <link rel="prev" title="How Projects Work" href="../howprojectswork.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="the-project-pane">
+<span id="theprojectpane"></span><h1>The Project Pane</h1>
+<p>The project pane is a tripartite list of three item types: data files
+( <img alt="d_" src="../../../../../../../../_images/data.png" /> ), saved model states ( <img alt="s_" src="../../../../../../../../_images/sav.png" /> SAV files ), and results files.</p>
+<div class="figure align-left" id="id3">
+<a class="reference internal image-reference" href="../../../../../../../../_images/projectpanemini.png"><img alt="project pane image" src="../../../../../../../../_images/projectpanemini.png" style="width: 181px;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: The <em>Project</em> pane.</span></p>
+</div>
+<table border="1" class="colwidths-given icg1 docutils" id="pp-legend">
+<caption><span class="caption-text">Table 1: Project Pane Legend</span></caption>
+<colgroup>
+<col width="17%" />
+<col width="33%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Icons</th>
+<th class="head">State</th>
+<th class="head">Explanation</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><img alt="d_" src="../../../../../../../../_images/data.png" /> <img alt="s_" src="../../../../../../../../_images/sav.png" /></td>
+<td>Open, Saved</td>
+<td>The item is saved and currently open in <span class="codename">UDEC</span>.</td>
+</tr>
+<tr class="row-odd"><td><img alt="d_u" src="../../../../../../../../_images/data_unsaved.png" /> <img alt="s_u" src="../../../../../../../../_images/sav_unsaved.png" /></td>
+<td>Open, Not Saved</td>
+<td>The item is open in <span class="codename">UDEC</span> and has been modified since it was last saved.</td>
+</tr>
+<tr class="row-even"><td><img alt="d_c" src="../../../../../../../../_images/data_closed.png" /> <img alt="s_c" src="../../../../../../../../_images/sav_closed.png" /></td>
+<td>Closed</td>
+<td>The item is closed (i.e., it is not open in any <span class="codename">UDEC</span> pane).</td>
+</tr>
+<tr class="row-odd"><td><img alt="d_b" src="../../../../../../../../_images/data_broken.png" /> <img alt="s_b" src="../../../../../../../../_images/sav_broken.png" /></td>
+<td>Missing</td>
+<td>The item is tracked by the project but cannot be found at the location stored by the project.<a class="footnote-reference" href="#id2" id="id1">[1]</a></td>
+</tr>
+</tbody>
+</table>
+<p>In addition to visualizing the contents of the project, the pane provides facilities for opening, closing, running or restoring project items — and for moving between the various panes containing these items.</p>
+<p class="h2 rubric" id="workingwithprojectpane">Working with the Pane</p>
+<p>Bear in mind that only one model state at a time may be open, thus making it the current model state. Consequently, all other model states in the <em>Saved States</em> group will be shown <em>Closed</em> or  <em>Missing</em>.</p>
+<p class="h3 rubric">Double Click an Item</p>
+<p><em>Closed data file</em> : open the data file.</p>
+<p><em>Open data file</em> : go to the pane containing the data file.</p>
+<p><em>Any model state (open or closed)</em> : restore the clicked model state and force a close of the current model state as needed (will open a warning dialog to prompt saving if the current state is not saved).</p>
+<p><em>Missing item</em> : produces an error dialog for that item; the error message will indicate the full path where the item was expected to be found.</p>
+<p class="h3 rubric">Right Click an Item</p>
+<p><em>Right-click a data file:</em> Provide a context menu with a list of commands:</p>
+<ul class="simple">
+<li>“Open in Editor” (only available if the file is closed)</li>
+<li>“Close in Editor” (only available if the file is open)</li>
+<li>“Remove from Project” (does not delete the file from the hard drive)</li>
+<li>“Call” (open the file in an <em>Editor</em> pane and run the commands within it)</li>
+<li>“Show in Windows Explorer” (automatically open the Windows file manager and navigate to the folder containing the file)</li>
+</ul>
+<p><em>Right-click a saved state:</em> Provide a context menu with a list of commands:</p>
+<ul class="simple">
+<li>“Restore” (only if the file is not the active model state)</li>
+<li>“Remove from Project” (does not delete the file from the hard drive)</li>
+<li>“Show in Explorer” (automatically open the Windows file manager and navigate to the folder containing the file)</li>
+</ul>
+<p class="h3 rubric">Hover over Item</p>
+<p>Hovering over an item will show a tool tip that displays the item’s location (full path) and state (open, closed, etc.).</p>
+<p class="h3 rubric">Group Sorting</p>
+<p>Click the column heading for each group (<em>Data Files</em>, <em>Saved States</em>, <em>Result Files</em>) to sort the listed items alphabetically in ascending or descending order (current sort order is indicated by the small arrow that appears at the top center of the title bar after sorting).  Repeat to reverse the direction of the sort.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">The keyboard command <code class="kbd docutils literal"><span class="pre">Ctrl+3</span></code> may be used at any time in any context to show the <em>Project</em> pane (note this key command <em>will not</em> hide the pane).</p>
+</div>
+<p class="endnotesection rubric">Endnote</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>This may indicate a broken linkage to the file path.  However, in the case of saved states, it may be that the saved state has not yet been created.  The program’s example projects, for instance, are shipped without their saved states and so will show them as “missing” in the <em>Project</em> pane (try <span class="menuselection">Help -&gt; Examples…</span>).</td></tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="projecttoolbar.html">Project Pane Toolbar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keyboard.html">Project-Related Keyboard Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects_cp.html">Control Panel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projectsdiscussed.html">Projects: Further Description</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../projects.html" accesskey="U">Projects</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../howprojectswork.html"
+                           title="previous chapter"> How Projects Work</a> |    
+       <a href="projecttoolbar.html"
+                           title="next chapter"><em>Project Pane</em> Toolbar</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?The Project Pane" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

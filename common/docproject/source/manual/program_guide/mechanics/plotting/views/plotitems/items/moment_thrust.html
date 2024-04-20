@@ -1,0 +1,235 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Moment &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../../../search.html" />
+    <link rel="next" title="Pline" href="pline.html" />
+    <link rel="prev" title="Joint" href="joint.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="moment">
+<span id="ui-pi-moment"></span><h1>Moment</h1>
+<p class="h3 rubric" id="moment-description">Description</p>
+<p>A 2D chart of moment thrust for beam elements in the model.  Safety factor outlines are displayed for a FoS of 1.0, 1.2, and 1.4.
+The chart also displays beam elements that have been marked as failed or intact.</p>
+<p class="h3 rubric" id="moment-attributes">Attributes</p>
+<div class="docutils container" id="attributelist">
+<a class="reference internal" href="#moment-type-att"><span class="std std-ref">Type</span></a>
+<a class="reference internal" href="#moment-property-att"><span class="std std-ref">Property Number</span></a>
+<a class="reference internal" href="#moment-x-axis-att"><span class="std std-ref">X-axis (and Y-Axis)</span></a>
+<a class="reference internal" href="#moment-title-att"><span class="std std-ref">Title</span></a>
+<a class="reference internal" href="#moment-labels-att"><span class="std std-ref">Labels</span></a>
+<a class="reference internal" href="#moment-marks-att"><span class="std std-ref">Marks</span></a>
+<a class="reference internal" href="#moment-chart-att"><span class="std std-ref">Chart</span></a>
+<a class="reference internal" href="#moment-legend-att"><span class="std std-ref">Legend</span></a></div>
+<p id="moment-type-att"><strong>Type</strong></p>
+<img alt="../../../../../../../../../../_images/value02.png" class="pi-attribute" src="../../../../../../../../../../_images/value02.png" />
+<p>Select which chart type to display.</p>
+<table border="1" class="colwidths-given icg1 docutils" id="momenttypeoptions">
+<caption><span class="caption-text">Table 1: Selection Options for Type</span></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Moment Thrust</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Moment Shear</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p id="moment-property-att"><strong>Property Number</strong></p>
+<img alt="../../../../../../../../../../_images/property_number.png" class="pi-attribute" src="../../../../../../../../../../_images/property_number.png" />
+<p>Specifies the property number of the structural element properties to be used to constuct the diagram.</p>
+<span class="target" id="moment-x-axis-att"></span><p><strong>X-Axis</strong> (and Y-Axis)</p>
+<img alt="x-axis" class="pi-attribute" src="../../../../../../../../../../_images/xaxishistory.png" />
+<p>Specify the scale and labeling of the axis (controls are the same for both <span class="math">\(x\)</span> and <span class="math">\(y\)</span> axes).</p>
+<blockquote>
+<div><p><em>X-Axis</em>: This is a container for the following attributes.</p>
+<blockquote>
+<div><p><em>Log</em>: Use (checked) a logarithmic scale for the axis.</p>
+<p><em>Minimum</em>: Specify the lowest value appearing on the axis. Check “Auto” to set the value automatically.</p>
+<p><em>Maximum</em>: Specify the highest value appearing on the axis.  Check “Auto” to set the value automatically.</p>
+<p><em>Inside</em>:  Draw a line (checked) at the origin perpendicular to the axis direction in the chart.</p>
+<p><em>Label</em>: Set the text used to identify the axis on the chart.</p>
+<p><em>Exponent</em>: Display (checked) the exponent with the axis label.  This is also a container for the following.</p>
+<blockquote>
+<div><em>Value</em>: Set the exponent automatically when “Auto” is checked.  When unchecked, the value can be set in the edit field (if set to 0, the axis label is removed).  Tick mark labels are adjusted accordingly.</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<span class="target" id="moment-title-att"></span><p><strong>Title</strong></p>
+<img alt="title" class="pi-attribute" src="../../../../../../../../../../_images/title01.png" />
+<p>Control the titling of the plot item.</p>
+<blockquote>
+<div><p><em>Title</em>: Show (checked) the chart title at the top of the chart. Set the chart title by entering text in the “Alias:” field. This attribute also contains the following.</p>
+<blockquote>
+<div><p><em>Size</em>:  Set the size of text in the title.</p>
+<p><em>Font</em>: Set the font face used for the text.</p>
+<p><em>Style</em>: Set the text style (the options are normal, bold, italic, bold-italic).</p>
+</div></blockquote>
+</div></blockquote>
+<span class="target" id="moment-labels-att"></span><p><strong>Labels</strong></p>
+<img alt="labels" class="pi-attribute" src="../../../../../../../../../../_images/labels01.png" />
+<p>Control the appearance of labels on the chart.</p>
+<blockquote>
+<div><p><em>Labels</em>: include (checked) axes labels in the chart.</p>
+<blockquote>
+<div><p><em>Size</em>: Set the size of text in the label.</p>
+<p><em>Font</em>: Set the font face used for the label text.</p>
+<p><em>Style</em>: Set the text style (the options are normal, bold, italic, bold-italic).</p>
+</div></blockquote>
+</div></blockquote>
+<span class="target" id="moment-marks-att"></span><p><strong>Marks</strong></p>
+<img alt="marks attributes" class="pi-attribute" src="../../../../../../../../../../_images/marks01.png" />
+<p>Control the appearance of axes tick labels on the chart.</p>
+<blockquote>
+<div><p><em>Marks</em>: include (checked) axes tick labels in the chart.</p>
+<blockquote>
+<div><p><em>Size</em>: Set the size of text in the tick label.</p>
+<p><em>Font</em>: Set the font face used for the tick label text.</p>
+<p><em>Style</em>: Set the text style (the options are normal, bold, italic, bold-italic).</p>
+</div></blockquote>
+</div></blockquote>
+<span class="target" id="moment-chart-att"></span><p><strong>Chart</strong></p>
+<img alt="marks attributes" class="pi-attribute" src="../../../../../../../../../../_images/chart.png" />
+<p>Set display options for the chart.</p>
+<blockquote>
+<div><p><em>Chart</em>: This is a container.</p>
+<blockquote>
+<div><p><em>Border</em>: Include (checked) the chart border.</p>
+<blockquote>
+<div><em>Line</em>: Set border line width and color.</div></blockquote>
+<p><em>Grid</em>: Include (checked) a chart grid at major tickmarks, and set color, line style, and width of the grid lines.</p>
+<p><em>Position</em>: Specifies the bottom and left positions, respectively, of the item’s bottom-left corner, as a percentage of the available rendering area.</p>
+<p>If these values are set such that, with the current <em>size</em> setting, the item would exceed the available rendering area, then the size will be automatically downwardly adjusted to fit.</p>
+<p><em>Size</em>: Specify <span class="math">\(x\)</span> and <span class="math">\(y\)</span> size, respectively, of the item, as a percentage of the available rendering area.  Also see the <em>position</em> attribute.</p>
+</div></blockquote>
+</div></blockquote>
+<span class="target" id="moment-legend-att"></span><p><strong>Legend</strong></p>
+<p>Set display of the item in the plot legend.  All plot items, at minimum, have a <em>Title</em> attribute.</p>
+<blockquote>
+<div><p><em>Legend</em>: Show (checked) all information about the plot item in the legend.</p>
+<blockquote>
+<div><p><em>Title</em>: Show (checked) the title of the plot item in the legend.  The “Alias:” field may be used to specify a custom title for the item.</p>
+<blockquote>
+<div><p><em>Size</em>:  Set the size of text in the legend.</p>
+<p><em>Font</em>: Set the font face used for the text.</p>
+<p><em>Style</em>: Set the text style (the options are normal, bold, italic, bold-italic).</p>
+<p><em>Color</em>: Set the text color.</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<style>
+   h1:after {
+      content: " Plot Item";
+   }
+</style></div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../../../plotting.html" >Plotting</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../plotitem_index.html" >Plot Items</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../plotitemsinudec.html" accesskey="U">Plot Items in <span class="codename">UDEC</span></a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="joint.html"
+                           title="previous chapter"> Joint</a> |    
+       <a href="pline.html"
+                           title="next chapter">Pline</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Moment" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

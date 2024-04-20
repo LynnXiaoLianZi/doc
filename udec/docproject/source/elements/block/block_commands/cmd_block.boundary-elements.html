@@ -1,0 +1,408 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>block boundary-elements command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="block cave command" href="cmd_block.cave.html" />
+    <link rel="prev" title="block apply command" href="cmd_block.apply.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="block-boundary-elements-command">
+<h1><code class="docutils literal"><span class="pre">block</span> <span class="pre">boundary-elements</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="block command">
+<dt id="command:block.boundary-elements">
+<span class="cmdname"><span class="null">b</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">k</span><span class="null"> </span></span><span class="cmdname"><span class="null">b</span><span class="null">o</span><span class="null">u</span><span class="null">n</span><span class="null">d</span><span class="null">a</span><span class="null">r</span><span class="null">y</span><span class="null">-</span><span class="null">e</span><span class="null">l</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null">s</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">b</span><span class="null"> </span></span></a></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:block.boundary-elements.fix" title="block boundary-elements fix">fix</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.boundary-elements.generate" title="block boundary-elements generate">generate</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.boundary-elements.halfspace" title="block boundary-elements halfspace">halfspace</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.boundary-elements.list" title="block boundary-elements list">list</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.boundary-elements.property" title="block boundary-elements property">property</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:block.boundary-elements.stiff" title="block boundary-elements stiff">stiff</a></p>
+</div>
+<p>Apply boundary-element conditions to the boundary domain (limit 300).  Boundary elements are <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:bool" title="A Boolean value ( b ), with six valid expressions:  on off true&#013;&#010;false yes no ."><span class="varbool"><span class="null">on</span></span></a> by default. <span class="flag3">is this true???</span></p>
+<p>It is recommended that the user apply the <code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">boundary-element</span></code> commands after the model comes to initial (i.e., consolidation) equilibrium under in-situ loading conditions.<a class="footnote-reference" href="#id3" id="id1">[1]</a> (Use the <a class="reference internal" href="../block.edge_commands/cmd_block.edge.apply.html#kwd:block.edge.apply.stress" title="Apply boundary constant stress parameters: ( sxxo , `sxyo`, and `syyo`)."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">edge</span> <span class="pre">apply</span> <span class="pre">stress</span></code></a>, for example, to apply boundary stresses initially.) The recommended order of the <code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">boundary-element</span></code> commands is as follows.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">block boundary-elements</span><span class="n"> generate</span>
+<span class="nb">block boundary-elements</span><span class="n"> halfspace</span>
+<span class="nb">block boundary-elements</span><span class="n"> material</span>
+<span class="nb">block boundary-elements</span><span class="n"> fix</span>
+<span class="nb">block boundary-elements</span><span class="n"> stiff</span>
+</pre></div>
+</div>
+<div class="admonition-note admonition">
+<p class="first admonition-title">note</p>
+<p class="last">Contacts at the boundary are assigned material properties according to the <code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">boundary-element</span> <span class="pre">property</span></code> command. Use the <a class="reference internal" href="cmd_block.change.html#command:block.change" title="Set or change block material characteristics. All blocks with centroids lying&#013;&#010;within the optional  range  have block material characteristics changed.&#013;&#010; If no range is specified, all blocks will have characteristics changed according&#013;&#010;to the keywords given below. To change joint characteristics, see  block.contact.change ;&#013;&#010;for cable characteristics, see  block.struct.cable.change ; for domain&#013;&#010;characteristics, see  block.domain.change .  See the  block.zone.cmodel ,&#013;&#010; block.contact.cmodel , commands for extended and user-defined"><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">change</span></code></a> command to set different material conditions at the boundary.</p>
+</div>
+<dl class="keyword">
+<dt id="kwd:block.boundary-elements.fix">
+<span class="cmdkey"><span class="pref">f</span><span class="null">i</span><span class="null">x</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f2</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f3</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f4</span><span class="null"> </span></span></a></dt>
+<dd><p>Fix a point (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f1</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f2</span></span></a>) in the <span class="math">\(x\)</span>-direction and a point (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f3</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f4</span></span></a>) in the <span class="math">\(y\)</span>-direction outside the model region (must precede the <span class="cmdkey">stiff</span> keyword).</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.boundary-elements.generate">
+<span class="cmdkey"><span class="pref">g</span><span class="null">e</span><span class="null">n</span><span class="null">e</span><span class="null">r</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../common/module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Generate a boundary-element domain along the outer boundary of a region described by range</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.boundary-elements.halfspace">
+<span class="cmdkey"><span class="pref">h</span><span class="null">a</span><span class="null">l</span><span class="null">f</span><span class="null">s</span><span class="null">p</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null"> </span></span></dt>
+<dd><p>Half-plane solution for boundary-element domain, assuming surface at <span class="math">\(y\)</span> = 0 (must precede the stiff keyword)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.boundary-elements.list">
+<span class="cmdkey"><span class="pref">l</span><span class="null">i</span><span class="null">s</span><span class="null">t</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>Print induced stress and displacements in boundary elements. The following keywords may be used to separate displacement and stress output.</p>
+<dl class="keyword">
+<dt id="kwd:block.boundary-elements.list.displacement">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null">l</span><span class="null">a</span><span class="null">c</span><span class="null">e</span><span class="null">m</span><span class="null">e</span><span class="null">n</span><span class="null">t</span><span class="null"> </span></span></dt>
+<dd><p>Displacement at boundary nodes. The column headings are as follows.</p>
+<table border="1" class="colwidths-given blank pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>boundary element node number</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td><span class="math">\(x\)</span>-coordinate of node</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(y\)</span>-coordinate of node</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td><span class="math">\(x\)</span>-displacement of node</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td><span class="math">\(y\)</span>-displacement of node</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td><span class="math">\(x\)</span>-direction traction at node</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td><span class="math">\(y\)</span>-direction traction at node</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.boundary-elements.list.stress">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>Stresses at boundary nodes. The column headings are as follows.</p>
+<table border="1" class="colwidths-given blank pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>boundary element node number</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td><span class="math">\(x\)</span>-coordinate of node</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td><span class="math">\(y\)</span>-coordinate of node</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>tangential stress component in element</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>normal stress component in element</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>shear stress component in element</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.boundary-elements.list.location">
+<span class="cmdkey"><span class="pref">l</span><span class="null">o</span><span class="null">c</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>Boundary element position information. The column headings are as follows.</p>
+<table border="1" class="colwidths-given blank pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>boundary corner index</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>associated block corner index</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>associated gridpoint index</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td><span class="math">\(x\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td><span class="math">\(y\)</span>-coordinate of boundary corner</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>associated boundary element node</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>second boundary element node</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td>boundary element load-distribution factor</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.boundary-elements.list.field">
+<span class="cmdkey"><span class="pref">f</span><span class="null">i</span><span class="null">e</span><span class="null">l</span><span class="null">d</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f1</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f2</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f3</span><span class="null"> </span></span></a><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f4</span><span class="null"> </span></span></a><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><p>List induced stress and displacements at :num:’n’ points along line between (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f1</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f2</span></span></a>)
+and (<a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f3</span></span></a>, <a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f4</span></span></a>) in boundary element domain. The following keywords may
+be used to separate displacement and stress output.</p>
+<dl class="keyword">
+<dt id="kwd:block.boundary-elements.list.field.disp">
+<span class="cmdkey"><span class="pref">d</span><span class="null">i</span><span class="null">s</span><span class="null">p</span><span class="null"> </span></span></dt>
+<dd><p>Displacements at interior boundary element domain points. The column headings are as follows:</p>
+</dd></dl>
+
+<table border="1" class="colwidths-given blank pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>interior point number</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>x-coordinate of point</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>y-coordinate of point</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>x-displacement of point</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>y-displacement of point</td>
+</tr>
+</tbody>
+</table>
+<dl class="keyword">
+<dt id="kwd:block.boundary-elements.list.field.stress">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">r</span><span class="null">e</span><span class="null">s</span><span class="null">s</span><span class="null"> </span></span></dt>
+<dd><p>Stresses at interior boundary element domain points. The column headings are as follows:</p>
+</dd></dl>
+
+<table border="1" class="colwidths-given blank pullup docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(1)</td>
+<td>interior point number</td>
+</tr>
+<tr class="row-even"><td>(2)</td>
+<td>x-coordinate of point</td>
+</tr>
+<tr class="row-odd"><td>(3)</td>
+<td>y-coordinate of point</td>
+</tr>
+<tr class="row-even"><td>(4)</td>
+<td>xx-stress component of point</td>
+</tr>
+<tr class="row-odd"><td>(5)</td>
+<td>xy-stress component of point</td>
+</tr>
+<tr class="row-even"><td>(6)</td>
+<td>yy-stress component of point</td>
+</tr>
+<tr class="row-odd"><td>(7)</td>
+<td>major principal stress of point</td>
+</tr>
+<tr class="row-even"><td>(8)</td>
+<td>minor principal stress of point</td>
+</tr>
+<tr class="row-odd"><td>(9)</td>
+<td>orientation of major principal stress from x-axis</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.boundary-elements.property">
+<span class="cmdkey"><span class="pref">p</span><span class="null">r</span><span class="null">o</span><span class="null">p</span><span class="null">e</span><span class="null">r</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span></dt>
+<dd><dl class="keyword">
+<dt id="kwd:block.boundary-elements.property.bulk">
+<span class="cmdkey"><span class="pref">b</span><span class="null">u</span><span class="null">l</span><span class="null">k</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Bulk modulus for for outside rock mass.<a class="footnote-reference" href="#id4" id="id2">[2]</a></p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.boundary-elements.property.density">
+<span class="cmdkey"><span class="pref">d</span><span class="null">e</span><span class="null">n</span><span class="null">s</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Density for outside rock mass.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.boundary-elements.property.material">
+<span class="cmdkey"><span class="pref">m</span><span class="null">a</span><span class="null">t</span><span class="null">e</span><span class="null">r</span><span class="null">i</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a></dt>
+<dd><p>Material property number to use for boundary-element properties.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.boundary-elements.property.poisson">
+<span class="cmdkey"><span class="pref">p</span><span class="null">o</span><span class="null">i</span><span class="null">s</span><span class="null">s</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Poisson’s ratio for outside rock mass.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.boundary-elements.property.shear">
+<span class="cmdkey"><span class="pref">s</span><span class="null">h</span><span class="null">e</span><span class="null">a</span><span class="null">r</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Shear modulus for outside rock mass.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.boundary-elements.property.young">
+<span class="cmdkey"><span class="pref">y</span><span class="null">o</span><span class="null">u</span><span class="null">n</span><span class="null">g</span><span class="null"> </span></span><a class="reference internal" href="../../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">f</span><span class="null"> </span></span></a></dt>
+<dd><p>Young’s modulus for outside rock mass.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:block.boundary-elements.stiff">
+<span class="cmdkey"><span class="pref">s</span><span class="null">t</span><span class="null">i</span><span class="null">f</span><span class="null">f</span><span class="null"> </span></span></dt>
+<dd><p>Automatically generate stiffness matrix.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p class="h2 rubric">Endnotes</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Warning: All model stresses <em>must</em> be specified in units of MPa for the boundary-element boundary. Boundary-elements can only be applied for the plane-strain condition (see Section 3.4.4.3 in the User’s Guide).</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Properties for boundary element domain (outside rock mass) are be specified by material number, bulk and shear modulus, or by Young’s modulus and Poisson’s ratio.</td></tr>
+</tbody>
+</table>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../udechome.html" ><em>UDEC</em></a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../udeccommandsandfish.html" ><span class="codename">UDEC</span> Commands and <span class="codename">FISH</span></a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../block.html" >Block</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="block_commands.html" accesskey="U">Block Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_block.apply.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">block</span> <span class="pre">apply</span></code> command</a> |    
+       <a href="cmd_block.cave.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">block</span> <span class="pre">cave</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?block boundary-elements command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

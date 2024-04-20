@@ -1,0 +1,170 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Plastic Model Group &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="Creep Constitutive Models" href="../creep/creep.html" />
+    <link rel="prev" title="Elastic Model Group" href="elasticmodel.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="hide sectionname docutils container">
+<span class="codename">FLAC3D</span> Theory and Background • Constitutive Models</div>
+<div class="section" id="plastic-model-group">
+<span id="plasticmodel"></span><h1>Plastic Model Group</h1>
+<p>All plastic models potentially involve some degree of permanent, path-dependent
+deformations (failure)—a consequence of the nonlinearity of the stress-strain relations.
+The different models are characterized by their yield function,
+hardening/softening functions, and flow rule. The yield functions for each model define the
+stress combination for which plastic flow takes place. These functions or criteria are
+represented by one or more limiting surfaces in a generalized stress space, with points
+below or on the surface being characterized by an incremental elastic or plastic behavior,
+respectively. The plastic flow formulation rests on basic assumptions from
+plasticity theory that the total strain increment may be decomposed into elastic and
+plastic parts, with only the elastic part contributing to the stress increment by means of
+an elastic law (see the discussion in <a class="reference internal" href="formulation.html#inc-eqs-of-pf"><span class="std std-ref">Incremental Equations of the Theory of Plastic Flow</span></a>). In addition, both plastic
+and elastic strain increments are taken to be coaxial with the current principal axes of
+the stresses (only valid if elastic strains are small compared to plastic strains during
+plastic flow). The flow rule specifies the direction of the plastic strain increment
+vector as that normal to the potential surface; it is called associated if the potential
+and yield functions coincide, and nonassociated otherwise. See Vermeer and de Borst (1984)
+for a more detailed discussion on the theory of plasticity.</p>
+<p>For the Drucker-Prager, Mohr-Coulomb, ubiquitous-joint, strain-hardening/softening, and
+bilinear-hardening/softening-ubiquitous-joint models, a shear yield function and a
+nonassociated shear flow rule are used. For the double-yield and CYSoil models, shear and
+volumetric yield functions, nonassociated shear flow and associated volumetric flow rules
+are included. The CHSoil model is a simplified version of the CYSoil model that provides
+built-in friction hardening and dilation hardening/softening laws, and does not include a
+volumetric cap. In addition, the failure envelope for each of the above models is
+characterized by a tensile yield function with associated flow rule.</p>
+<p>The modified Cam-clay model formulation rests on a combined shear and volumetric yield
+function and associated flow rule.</p>
+<p>The two types of Hoek-Brown model provide different formulations to represent
+yielding. The basic Hoek-Brown model using a nonlinear shear yield function and a
+plasticity flow rule that varies as a function of the stress level is referred to as the
+Hoek-Brown-PAC model. For the traditional Hoek-Brown model, plastic flow is handled in a
+manner similar to that in the Mohr-Coulomb model in which a dilation angle is specified.
+Also, a tensile yield function similar to that used with the Mohr-Coulomb model is
+included with the Hoek-Brown model.</p>
+<p>Note also that all plasticity models are formulated in terms of <em>effective</em> stresses, <em>not</em> total stresses.</p>
+<p>The plasticity models can produce localization (i.e., the development of families of
+discontinuities such as shear bands in a material that starts as a continuum). Note that
+localization is grid-dependent since there is no intrinsic length scale incorporated in
+the formulations. This is an important consideration when creating a grid for a
+plasticity analysis, and is discussed more fully in <a class="reference internal" href="../../methodology/localizationandpath.html#pathdependence"><span class="std std-ref">Localization, Physical Instability and Path-Dependence</span></a>.</p>
+<p>As discussed in <a class="reference internal" href="formulation.html#cms-implementation"><span class="std std-ref">Implementation</span></a>, in the numerical implementation of the models, an
+<em>elastic trial</em> (or “elastic guess”) for the stress increment is first computed
+from the total strain increment using the incremental form of Hooke’s law. The
+corresponding stresses are then evaluated. If they violate the yield criteria (i.e., the
+stress-point representation lies above the yield function in the generalized stress
+space), plastic deformations take place. In this case, only the elastic part of the strain
+increment can contribute to the stress increment; the latter is corrected by using the
+plastic flow rule to ensure that the stresses lie on the composite yield function. This
+section describes the yield and potential functions, flow rules, and stress corrections for
+the different plasticity models.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../models.html" accesskey="U">Constitutive Models</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="elasticmodel.html"
+                           title="previous chapter"> Elastic Model Group</a> |    
+       <a href="../creep/creep.html"
+                           title="next chapter">Creep Constitutive Models</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Plastic Model Group" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

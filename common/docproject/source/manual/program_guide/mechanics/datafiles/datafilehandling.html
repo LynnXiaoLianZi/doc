@@ -1,0 +1,165 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Data File Handling &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="The Editor Pane" href="editor_pane/editoroverview.html" />
+    <link rel="prev" title="How Data Files Work" href="datafilescommandprocessing.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="data-file-handling">
+<span id="datafilehandling"></span><h1>Data File Handling</h1>
+<p>The topics described here define operations performed on data files as <em>files</em>.  The process of writing a complete data file with commands is covered in the section on the <span class="flag4">i</span> <a class="reference internal" href="editor_pane/editoroverview.html#theeditorpane"><span class="std std-ref">Editor</span></a> pane — which is designed for that purpose.</p>
+<div class="section" id="create">
+<span id="datafilecreate"></span><h2>Create</h2>
+<p>Use the menu command <span class="menuselection">File ‣ Add New Data File</span> (or its keyboard shortcut, <code class="kbd docutils literal"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">N</span></code>).  This will open an <em>Add New Data File</em> dialog opened to the current project file’s folder.  Specify a file name and press the <em>Open</em> button in this dialog to open the newly created file in an <span class="flag4">i</span> <a class="reference internal" href="editor_pane/editoroverview.html#theeditorpane"><span class="std std-ref">Editor</span></a> pane.</p>
+</div>
+<div class="section" id="open-or-call">
+<span id="datafilecall"></span><span id="datafileopen"></span><h2>Open <em>or</em> Call</h2>
+<p class="h3 rubric">Files not in the Project</p>
+<p>Use the menu command <span class="menuselection">File ‣ Open into Project</span> (or its keyboard shortcut, <code class="kbd docutils literal"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">O</span></code>).  In the ensuing <span class="flag4">i</span> <a class="reference internal" href="../projects/openintoprojectdialog.html#theopenintoprojectdialog"><span class="std std-ref">Open Into Project</span></a> dialog, navigate to and select the desired file.  Use the option buttons at right to indicate whether the data file selected should be opened (simply loaded into an <em>Editor</em> pane) or called (loaded <em>and</em> executed).  If the dialog’s default “Determine by extension” option is used, the data file will be opened (not called).  Data files opened this way are added to the project.</p>
+<p class="h3 rubric">Files in the Project</p>
+<p>The method above will work for files already in the project.  However, a simpler method for opening data files within the project is to use the <span class="flag4">i</span> <a class="reference internal" href="../projects/project_pane/projectsoverview.html#theprojectpane"><span class="std std-ref">Project</span></a> pane. Double click the data file on the “Data Files” list to open; right-click and choose “Call” to open and execute.</p>
+<p>Also review the command <a class="reference internal" href="../../../../../../kernel/doc/manual/program/commands/cmd_program.call.html#command:program.call" title="Process the specified data file(s)."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">call</span></code></a>, which can be used to call a data file at the <em>Console</em>’s <a class="reference internal" href="../../../glossaryofterms.html#term-45"><span class="xref std std-term">command prompt</span></a>.</p>
+</div>
+<div class="section" id="rename">
+<span id="datafilerename"></span><h2>Rename</h2>
+<ul class="simple">
+<li>With the pane containing the data file active, use the menu command <span class="menuselection">File ‣ [filename] ‣ Rename</span>, ([filename] is the name of the file, which will be shown on the menu).</li>
+<li>If part of a tab set, right-click the tab for the file and pick <span class="menuselection">Rename</span> from the context menu.</li>
+</ul>
+<p>Renaming this way with either technique ensures that the file will remain connected to the project.  If renamed <em>outside</em> the program (for instance, in the system’s default file browser), the project’s link to the file will be broken.</p>
+</div>
+<div class="section" id="duplicate">
+<span id="datafileduplicate"></span><span id="datafilesaveas"></span><h2>Duplicate</h2>
+<ul class="simple">
+<li>With the pane containing the data file active, use the menu command <span class="menuselection">File ‣ [filename] ‣ SaveAs</span>, ([filename] is the name of the file, which will be shown on the menu).</li>
+</ul>
+</div>
+<div class="section" id="close">
+<span id="datafileclose"></span><h2>Close</h2>
+<ul class="simple">
+<li>With the pane containing the data file active, use the menu command <span class="menuselection">File ‣ [filename] ‣ Close</span>, ([filename] is the name of the file, which will be shown on the menu).</li>
+<li>If part of a tab set, right-click the tab for the file and pick <span class="menuselection">Close</span> from the context menu.</li>
+<li>In the project pane, right-click on the file in the “Data Files” list and pick <span class="menuselection">Close in Editor</span></li>
+<li>With the pane containing the data file active, press the “close” button ( || ) on the toolbar.</li>
+</ul>
+</div>
+<div class="section" id="print">
+<h2>Print</h2>
+<ul class="simple">
+<li>With the pane containing the data file active, use the menu command <span class="menuselection">File ‣ [filename] ‣ Print</span>, ([filename] is the name of the file, which will be shown on the menu).</li>
+</ul>
+</div>
+<div class="section" id="un-hide">
+<h2>Un-hide</h2>
+<ul class="simple">
+<li>Go to the <span class="menuselection"><span class="accelerator">D</span>ocuments</span> window and select the item (which will be <em>unchecked</em>) to show it.</li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="datafiles.html" accesskey="U">Data Files</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="datafilescommandprocessing.html"
+                           title="previous chapter"> How Data Files Work</a> |    
+       <a href="editor_pane/editoroverview.html"
+                           title="next chapter">The <em>Editor</em> Pane</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Data File Handling" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

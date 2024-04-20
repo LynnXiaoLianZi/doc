@@ -1,0 +1,168 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Commands &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="commands">
+<span id="sel-link-commands"></span><h1>Commands</h1>
+<p>Operations on structural element links.</p>
+<p>Links are how the structural element logic tracks interactions with surrounding objects.
+Links come in two types depending on what object they are interacting with. Currently the
+structural element logic supports node-&gt;node links and node-&gt;zone links, but more
+interaction types will be added in the future.</p>
+<p>Each link supports a different interaction in all six degrees-of-freedom—the coordinate
+system of a link is always the local coordinate system of the host node.</p>
+<p>Link properties and interaction details are by default supplied by the element they are
+connected to.</p>
+<p class="rubric">Link Commands</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.link.attach.html#structure.link.attach" title="Set attachment conditions for the specified link directions. The current attachment&#013;&#010;condition will be replaced by the condition specified here. Conditions are specified&#013;&#010;in keyword pairs, the first ( keyword ) being the degree-of-freedom and the&#013;&#010;second ([linkattachblock]) being the type of condition to use.  The following&#013;&#010;keywords are available to specify the degree-of-freedom:"><span class="fishcmd">structure link attach</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.link.create.html#structure.link.create" title="Creates new links on structure nodes in the range. If the node already has a&#013;&#010;link associated with it, this will be ignored. Existing links can be removed&#013;&#010;with the  structure link delete  command. If source and target ID numbers are&#013;&#010;not supplied, then the command will automatically look for valid targets on&#013;&#010;all potential new links in the range."><span class="fishcmd">structure link create</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.link.delete.html#structure.link.delete" title="Delete all links in the range."><span class="fishcmd">structure link delete</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.link.group.html#structure.link.group" title="Assign all links in the range to the group with the name  s . Use of the group&#013;&#010;logic is described in  group_manual . A link may only belong to one group in&#013;&#010;a given slot. Assigning an element to a new group in that slot will cause it&#013;&#010;to be removed from its current group assignment. The  structure link list  command&#013;&#010;lists the existing link group names."><span class="fishcmd">structure link group</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.link.hide.html#structure.link.hide" title="This commands hides or un-hides all links in the range. By default, commands&#013;&#010;that use a range filter will skip hidden objects. This can be overruled with&#013;&#010;the  use-hidden  keyword in the range specification."><span class="fishcmd">structure link hide</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.link.history.html#structure.link.history" title="Samples relative displacement or force from a single degree-of-freedom in a&#013;&#010;structural element link."><span class="fishcmd">structure link history</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.link.list.html#structure.link.list" title="List values and information about link objects in the range."><span class="fishcmd">structure link list</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.link.property.html#structure.link.property" title="List a property of a deformable force-displacement model in the link at the&#013;&#010;degree-of-freedom specified in  keyword .  A list of properties available to&#013;&#010;each link constitituve model is found in  Structural Element Link Properties ."><span class="fishcmd">structure link property</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.link.select.html#structure.link.select" title="This commands selects or de-selects all links in the range.  Selected objects&#013;&#010;can be specified in a range filter by using the  selected  keyword.  Objects&#013;&#010;that are  not  selected can be specified in a range filter by using the  deselected &#013;&#010;keyword."><span class="fishcmd">structure link select</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.link.slide.html#structure.link.slide" title="Set the large-strain sliding flag.  The flag will be set for all links within&#013;&#010;the specified range.   [DR: help to sort out what to do with next statement]&#013;&#010;See :flag2:-Linky!!!!!- for a discussion of large-strain sliding behavior."><span class="fishcmd">structure link slide</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.link.tolerance-contact.html#structure.link.tolerance-contact" title="Set the tolerance used when establishing node-to-zone links. A node is considered&#013;&#010;to be in a zone if it is within a distance   of the zone boundary, where δ equals&#013;&#010; f  times zone size (taken as the maximum  -,  -, or  -dimension of the zone&#013;&#010;bounding box). Nodes that are used by elements with their sliding flag on will&#013;&#010;utilize  structure link tolerance-slide  instead of  f  when attempting to update&#013;&#010;the zone interpolation point"><span class="fishcmd">structure link tolerance-contact</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.link.tolerance-node.html#structure.link.tolerance-node" title="Set the tolerance used when establishing node-to-node links. A node-to-node&#013;&#010;link can only be established if the distance between the two nodes is less than&#013;&#010; f . By default,  f  equals 1 × 10 -5 ."><span class="fishcmd">structure link tolerance-node</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.link.tolerance-slide.html#structure.link.tolerance-slide" title="Set the tolerance used when updating node-to-zone links in response to large-strain&#013;&#010;motion. A node is considered to be in a zone if it is within a distance :math`delta`&#013;&#010;of the zone boundary, where :math`delta` equals  f  times zone size (taken as&#013;&#010;the maximum  -,  -, or  -dimension of the zone bounding box).   By default,&#013;&#010; f  equals 1 × 10 -5 ."><span class="fishcmd">structure link tolerance-slide</span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.link.attach.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">link</span> <span class="pre">attach</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.link.create.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">link</span> <span class="pre">create</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.link.delete.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">link</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.link.group.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">link</span> <span class="pre">group</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.link.hide.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">link</span> <span class="pre">hide</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.link.history.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">link</span> <span class="pre">history</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.link.list.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">link</span>&#160; <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.link.property.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">link</span> <span class="pre">property</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.link.select.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">link</span>&#160; <span class="pre">select</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.link.slide.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">link</span> <span class="pre">slide</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.link.tolerance-contact.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">link</span> <span class="pre">tolerance-contact</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.link.tolerance-node.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">link</span> <span class="pre">tolerance-node</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.link.tolerance-slide.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">link</span> <span class="pre">slide-tolerance</span></code> command</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Commands" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

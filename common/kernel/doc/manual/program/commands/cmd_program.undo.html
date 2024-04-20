@@ -1,0 +1,143 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>program undo command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="program warning command" href="cmd_program.warning.html" />
+    <link rel="prev" title="program threads command" href="cmd_program.threads.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="program-undo-command">
+<span id="undo-command"></span><h1><code class="docutils literal"><span class="pre">program</span> <span class="pre">undo</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="program command">
+<dt id="command:program.undo">
+<span class="cmdname"><span class="pref">p</span><span class="pref">r</span><span class="pref">o</span><span class="pref">g</span><span class="null">r</span><span class="null">a</span><span class="null">m</span><span class="null"> </span></span><span class="cmdname"><span class="pref">u</span><span class="null">n</span><span class="null">d</span><span class="null">o</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span><span class="null"> </span></span></a>></span><span class="null"> </span></dt>
+<dd><p>Undo commands.</p>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As with all <span class="cmdkey">program</span> commands, use of the command word <span class="cmdkey">program</span> is optional; <span class="cmdkey">program undo</span> and <span class="cmdkey">undo</span> are both valid.</p>
+</div>
+<p><em>If possible</em>, this command undoes the last <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> lines of commands sent to the command processor. These could be commands typed at the command prompt or commands issued via the user interface. The undo operation is performed by “playing back” the record of interactive commands recorded since the last model reset or save state, <em>minus</em> the last <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> step(s). <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">i</span></span></a> is optional and defaults to <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:int" title="An integer ( i ), positive or negative. An integer *cannot* contain a&#013;&#010;decimal.  Multiple instances in a command are numbered ( i1   i2 &#013;&#010; i3  etc.)."><span class="varint"><span class="null">1</span></span></a> if omitted.</p>
+<p>A call to a data file is interpreted as a single line by <span class="cmdkey">undo</span> (that is, it is not “expanded” into its component commands for the purposes of <span class="cmdkey">undo</span>). During playback, commands that caused an error previously will not halt processing, though error reporting will still occur as before. <span class="flag3">[DR: review previous description; discuss with CS if improvement/correction is needed]</span></p>
+<p>If a model save file has been created from an allowed state, <span class="cmdkey">undo</span> will start by restoring that file by executing a <a class="reference internal" href="../../model/commands/cmd_model.restore.html#command:model.restore" title="Restore program-state information. The state information, resulting from a previous"><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">restore</span></code></a>.  You can therefore not undo past that point.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><span class="cmdkey">undo</span> is not always available.</p>
+<ul class="last simple">
+<li>Commands that were interrupted in an unsafe way will prevent the undo playback.</li>
+<li>You cannot undo past a <a class="reference internal" href="../../model/commands/cmd_model.restore.html#command:model.restore" title="Restore program-state information. The state information, resulting from a previous"><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">restore</span></code></a>.</li>
+<li>It is possible for <span class="cmdkey">undo</span> to fail or result in a different model state if the execution environment has changed.</li>
+<li>Save states created during states when the <a class="reference internal" href="../../model/commands/cmd_model.new.html#command:model.new" title="Clear model-state information. Model information is cleared, allowing one to&#013;&#010;begin a new"><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">new</span></code></a> command is not allowed (for example, while processing a <span class="codename">FISH</span> <a class="reference internal" href="../../../../../docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">command/end.command</span></span></a>) cannot be used as a starting point for an undo.</li>
+<li>Be aware that if you are using this command directly (by typing <span class="cmdkey">undo</span> at the command prompt), no check is made to see how long the playback will take.</li>
+</ul>
+</div>
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../program.html" >Program</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="commands.html" accesskey="U">Commands</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="cmd_program.threads.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">program</span> <span class="pre">threads</span></code> command</a> |    
+       <a href="cmd_program.warning.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">program</span> <span class="pre">warning</span></code> command</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?program undo command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

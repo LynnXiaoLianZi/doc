@@ -1,0 +1,310 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Shell-Type Structural Elements &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="shell-type-structural-elements">
+<span id="shelltype-structural-elements"></span><h1>Shell-Type Structural Elements</h1>
+<p>The shell-type structural elements include shell elements, geogrid elements, and liner elements. The mechanical behavior of these elements can be divided into the structural response of the shell material itself, and the way the element interacts with the grid. The structural response of the shell material is common to all shell-type elements, and is described in this section. Specific behaviors that differ for each element type are described in the section for that type.</p>
+<div class="section" id="mechanical-behavior">
+<span id="shell-type-mechanical-behavior"></span><h2>Mechanical Behavior</h2>
+<p>Each shell-type structural element (shell, geogrid, or liner) is defined by its geometric and material properties. A shell-type element is assumed to be a triangle of uniform thickness lying between three nodal points. An arbitrarily curved structural shell can be modeled as a faceted surface composed of a collection of shell-type elements. Each shell-type element behaves as an isotropic or anisotropic, linearly elastic material with no failure limit; however, one can introduce a plastic-hinge line (across which a discontinuity in rotation may develop) along the edges between shell-type elements, using the same double-node procedure as applied to beams (see <a class="reference internal" href="../../../../test3d/Shell/PlasticHinge/PlasticHinge.html#shellplastichinge"><span class="std std-ref">Plastic Hinge Formation in a Shell Structure</span></a>). Each shell-type element provides a different means of interacting with the grid (see <a class="reference internal" href="../shells/shells.html#shell-structural-elements"><span class="std std-ref">Shell Structural Elements</span></a>, <a class="reference internal" href="../geogrids/geogrids.html#geogrid-structural-elements"><span class="std std-ref">Geogrid Structural Elements</span></a>, and <a class="reference internal" href="../liners/liners.html#liner-structural-elements"><span class="std std-ref">Liner Structural Elements</span></a>). The structural response of the shell is controlled by the finite element assigned to the element. There are five finite elements available: 2 membrane elements, 1 plate-bending element and 2 shell elements. The general properties of these finite elements are described in <a class="reference internal" href="../formulation/formulation.html#struct-shell-finite-elements"><span class="std std-ref">Shell Finite Elements</span></a>. Because these are all thin-shell finite elements, shell-type elements are suitable for modeling thin-shell structures in which the displacements caused by transverse-shearing deformations can be neglected. Thick-shell structures should be modeled with zones.</p>
+<p>Each shell-type element has its own local coordinate system shown in <a href="#shell-type-coordinate-system">Figure  1</a>. This system is used to specify applied pressure loading. A separate material coordinate system is used to specify orthotropic material properties, and a surface coordinate system (providing a continuous description of the shell mid-surface spanning adjacent shell-type elements) is used to recover stresses — see <span class="xref std std-ref">Stresses in Shells</span>. The shell-type element coordinate system is defined by the locations of its three nodal points, labeled 1, 2 and 3 in <a href="#shell-type-coordinate-system">Figure  1</a>. The shell-type element coordinate system is defined such that</p>
+<ol class="arabic simple">
+<li>the shell-type element lies in the <span class="math">\(xy\)</span>-plane,</li>
+<li>the <span class="math">\(x\)</span>-axis is directed from node-1 to node-2, and</li>
+<li>the <span class="math">\(z\)</span>-axis is normal to the element plane and positive on the “outside” of the shell surface. (The two sides of each shell-type element are designated as <em>outside</em> and <em>inside</em>.)</li>
+</ol>
+<p>The shell-type element coordinate system cannot be modified.</p>
+<div class="figure align-center" id="id1">
+<span id="shell-type-coordinate-system"></span><img alt="../../../../../../_images/coordinate-system3.png" src="../../../../../../_images/coordinate-system3.png" />
+<p class="caption"><span class="caption-text">Figure 1: Shell-type element coordinate system and 18 degrees of freedom available to the shell finite elements</span></p>
+</div>
+</div>
+<div class="section" id="response-quantities">
+<span id="shell-type-response-quantities"></span><h2>Response Quantities</h2>
+<p>Stress quantities (which include stress resultants and stresses acting in the shell) can be recovered for all shell-type elements. The stress resultants are expressed in a surface coordinate system that provides a continuous description of the shell mid-surface spanning adjacent shell-type elements. The stresses are expressed in the global coordinate system. Stress quantities can only be recovered after a consistent surface coordinate system has been established (see <span class="xref std std-ref">Stress Recover Procedure</span>). The stress quantities can be accessed via <span class="codename">FISH</span>, and</p>
+<ol class="arabic simple">
+<li>printed with the <a class="reference internal" href="../shells/commands/cmd_structure.shell.list.html#kwd:structure.shell.list.stress" title="the stress state calculated with the  structure.shell.recover.stress  command.&#013;&#010;  If the  nodes  keyword is given, the values of these quantities are&#013;&#010;supplied at each node of the element, in addition to the value at the element&#013;&#010;centroid."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">shell</span> <span class="pre">list</span> <span class="pre">stress</span></code></a> or <a class="reference internal" href="../shells/commands/cmd_structure.shell.list.html#kwd:structure.shell.list.stress-principal" title="principal stresses calculated with the  structure.shell.recover.stress &#013;&#010;command. If the  nodes  keyword is given, the values of these quantities&#013;&#010;are supplied at each node of the element, in addition to the value at the element&#013;&#010;centroid."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">shell</span> <span class="pre">list</span> <span class="pre">stress-principal</span></code></a> commands, or the equivalent for <span class="cmdkey">geogrid</span> or <span class="cmdkey">liner</span> elements.,</li>
+<li>monitored with the <a class="reference internal" href="../shells/commands/cmd_structure.shell.history.html#command:structure.shell.history" title="Sample shell responses.  The nodes of a shell element will be ordered counter-clockwise&#013;&#010;with respect to the outside of the zone faces upon which the shell was created."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">shell</span> <span class="pre">history</span></code></a> command (or equivalent for <span class="cmdkey">geogrid</span> or <span class="cmdkey">liner</span> elements), and</li>
+<li>plotted with the Shell, Geogrid, or Liner plot items.</li>
+</ol>
+<p>Note that the stresses and stress-resultants calculated with the <a class="reference internal" href="../shells/commands/cmd_structure.shell.recover.html#command:structure.shell.recover" title="Stress-recovery for shell elements.  The stress-recovery procedure can be applied&#013;&#010;to all elements to compute both the stress resultants and the stresses acting&#013;&#010;at a specified depth. The range keyword identifies the patch of elements to&#013;&#010;which the command will apply. Note that the recovered quantities will depend&#013;&#010;upon the range of elements over which these quantities are being recovered,&#013;&#010;because nodal averaging only occurs for elements within this range."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">shell</span> <span class="pre">recover</span></code></a> (for example) command are the values stored in the element and available to <span class="codename">FISH</span>.
+By default, the Shell-type plot items calculate stress resultant quantities independently.
+It is possible to instruct the plot items to display the values calculated with the <a class="reference internal" href="../shells/commands/cmd_structure.shell.recover.html#command:structure.shell.recover" title="Stress-recovery for shell elements.  The stress-recovery procedure can be applied&#013;&#010;to all elements to compute both the stress resultants and the stresses acting&#013;&#010;at a specified depth. The range keyword identifies the patch of elements to&#013;&#010;which the command will apply. Note that the recovered quantities will depend&#013;&#010;upon the range of elements over which these quantities are being recovered,&#013;&#010;because nodal averaging only occurs for elements within this range."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">shell</span> <span class="pre">recover</span></code></a> command, in which case they will not be update until the next command is issued.</p>
+</div>
+<div class="section" id="properties">
+<span id="shell-type-properties"></span><h2>Properties</h2>
+<p>Each shell-type element possesses 4 properties:</p>
+<ol class="arabic">
+<li><p class="first"><span class="cmdkey">density</span>, mass density, <span class="math">\(\rho\)</span> (optional — needed if dynamic mode or gravity is active) [M/L<sup>3</sup>]</p>
+</li>
+<li><p class="first">Isotropic:</p>
+<blockquote>
+<div><p><span class="cmdkey">isotropic</span>, isotropic material properties: <span class="math">\(E\)</span> and <span class="math">\(\nu\)</span> where <span class="math">\(E\)</span> is Young’s modulus [F/L<sup>2</sup>] and <span class="math">\(\nu\)</span> is Poisson’s ratio.</p>
+</div></blockquote>
+<p>Orthotropic:</p>
+<blockquote>
+<div><p><span class="cmdkey">orthotropic-membrane</span>, orthotropic material properties, {<span class="math">\(c^{\prime}_{11}, c^{\prime}_{12}, c^{\prime}_{22}, c^{\prime}_{33}\)</span>} <span class="math">\([F/L^2]\)</span>  which defines the membrane material stiffness matrix <span class="math">\([{{\bf E}_m}^{\prime}]\)</span> in the material coordinate system.</p>
+<p><span class="cmdkey">orthotropic-bending</span>, orthotropic material properties, {<span class="math">\(c^{\prime}_{11}, c^{\prime}_{12}, c^{\prime}_{22}, c^{\prime}_{33}\)</span>} <span class="math">\([F/L^2]\)</span>  which defines the bending material stiffness matrix <span class="math">\([{{\bf E}_b}^{\prime}]\)</span> in the material coordinate system.</p>
+</div></blockquote>
+<p>Anisotropic:</p>
+<blockquote>
+<div><p><span class="cmdkey">anisotropic-membrane</span>, anisotropic membrane material properties, {<span class="math">\(c^{\prime}_{11}, c^{\prime}_{12}, c^{\prime}_{13}, c^{\prime}_{22}, c^{\prime}_{23}, c^{\prime}_{33}\)</span>} <span class="math">\([F/L^2]\)</span>, which defines the membrane material-stiffness matrix <span class="math">\([Eʹ_m]\)</span> in the material coordinate system.</p>
+<p><span class="cmdkey">anisotropic-bending</span>, anisotropic bending material properties, {<span class="math">\(c^{\prime}_{11}, c^{\prime}_{12}, c^{\prime}_{13}, c^{\prime}_{22}, c^{\prime}_{23}, c^{\prime}_{33}\)</span>} <span class="math">\([F/L^2]\)</span>, which defines the membrane bending-stiffness matrix <span class="math">\([Eʹ_b]\)</span>  in the material coordinate system.</p>
+</div></blockquote>
+</li>
+<li><p class="first"><span class="cmdkey">thermal-expansion</span>, thermal-expansion coefficient, <span class="math">\(\alpha_t\)</span> [1/T]</p>
+</li>
+<li><p class="first"><span class="cmdkey">thickness</span>, thickness, <span class="math">\(t\)</span> [L]</p>
+</li>
+</ol>
+<p>The material constitutive behavior may be isotropic, orthotropic or anisotropic; thus, one of property (2a) through (2g) must be specified. It is assumed that the material properties are homogeneous over the shell-type element (i.e., they do not vary with position) and that the shell thickness is constant. A description of the material properties follows.</p>
+<p>The shell-type elements model general shell behavior as a superposition of membrane and bending actions via the five 3-noded triangular finite elements described in <a class="reference internal" href="../formulation/formulation.html#struct-shell-finite-elements"><span class="std std-ref">Shell Finite Elements</span></a>. The material properties of the finite elements that model membrane and bending actions are described by the material-rigidity matrices</p>
+<div class="math" id="equation-material-rigidity-matrices-eq">
+<span class="eqno">(1)</span>\[\begin{split}\begin{split}
+   [{\bf D}_m] &amp;= \int_{-{t/2}}^{+{t/2}} [{\bf E}_m]dz = t[{\bf E}_m] \\
+   [{\bf D}_b] &amp;= \int_{-{t/2}}^{+{t/2}} [{\bf E}_b]z^2dz = {{t^3} \over {12}} [{\bf E}_b]
+\end{split}\end{split}\]</div>
+<p>respectively, where <span class="math">\(t\)</span> is the shell thickness and <span class="math">\([{\bf E}_m]\)</span> and <span class="math">\([{\bf E}_b]\)</span> are material-stiffness matrices that relate stresses to strains via the constitutive relations</p>
+<div class="math" id="equation-shell-constitutive-relations">
+<span class="eqno">(2)</span>\[ \begin{align}\begin{aligned}\begin{split}\begin{Bmatrix} \sigma_m \end{Bmatrix} =
+{\begin{Bmatrix} \sigma_x \\ \sigma_y \\ \tau_{xy} \end{Bmatrix}}_m =
+\begin{bmatrix} {\pmb E}_m \end{bmatrix} \begin{Bmatrix} {\pmb \varepsilon} \end{Bmatrix} =
+\begin{bmatrix} c^m_{11} &amp; c^m_{12} &amp; c^m_{13} \\ &amp; c^m_{22} &amp; c^m_{23} \\ sym. &amp; &amp; c^m_{33} \end{bmatrix} \begin{Bmatrix} \varepsilon_x \\ \varepsilon_y \\ \gamma_{xy} \end{Bmatrix}\end{split}\\\begin{split}\begin{Bmatrix} \sigma_b \end{Bmatrix} =
+{\begin{Bmatrix} \sigma_x \\ \sigma_y \\ \tau_{xy} \end{Bmatrix}}_b =
+\begin{bmatrix} {\pmb E}_b \end{bmatrix} \begin{Bmatrix} {\pmb \varepsilon} \end{Bmatrix} =
+\begin{bmatrix} c^b_{11} &amp; c^b_{12} &amp; c^b_{13} \\ &amp; c^b_{22} &amp; c^b_{23} \\ sym. &amp; &amp; c^b_{33} \end{bmatrix} \begin{Bmatrix} \varepsilon_x \\ \varepsilon_y \\ \gamma_{xy} \end{Bmatrix}\end{split}\end{aligned}\end{align} \]</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The material-rigidity matrices are used to form the finite element stiffness matrices (<span class="math">\([{\bf D}_m]\)</span> is used by the CST and CST hybrid finite elements, and <span class="math">\([{\bf D}_b]\)</span> is used by the DKT finite element) and to recover stress resultants. The stresses in <a class="reference internal" href="#equation-shell-constitutive-relations">(2)</a> are obtained from the stress resultants by</p>
+<div class="math">
+\[\begin{split}\begin{split}
+   \begin{Bmatrix} \sigma_m \end{Bmatrix} &amp;= \frac{1}{t} \begin{Bmatrix} N_x \\ N_y \\ N_{xy} \end{Bmatrix} \\
+   \begin{Bmatrix} \sigma_b \end{Bmatrix} &amp;= \frac{12}{t^3} \begin{Bmatrix} M_x \\ M_y \\ M_{xy} \end{Bmatrix} z
+\end{split}\end{split}\]</div>
+<p>In the following discussion, we use <span class="math">\([{\bf E}]\)</span> when referring to relations that apply to both <span class="math">\([{\bf E}_b]\)</span> and <span class="math">\([{\bf E}_m]\)</span>. For isotropic material properties, only <span class="math">\(E\)</span>, <span class="math">\(v\)</span> and <span class="math">\(t\)</span> must be specified. For orthotropic and anisotropic material properties, the material directions and <span class="math">\(t\)</span> must be specified. For most cases, <span class="math">\([{\bf E}_m] = [{\bf E}_b] = [{\bf E]}\)</span>; however, when modeling equivalent or transformed orthotropic shells (with elastic properties equal to the average properties of components of the original shell) and controlling the membrane and bending rigidities independently, it is necessary to set <span class="math">\([{\bf E}_m] \not= [{\bf E}_b]\)</span>.</p>
+<p class="h3 rubric">Isotropic Material Properties</p>
+<p>For the case of an isotropic shell, <span class="math">\([{\bf E}_m] = [{\bf E}_b] = [{\bf E}]\)</span>, and the six constants of <span class="math">\([{\bf E}]\)</span> are related to the two elastic constants of Young’s modulus, <span class="math">\(E\)</span>, and Poisson’s ratio, <span class="math">\(\nu\)</span>, by</p>
+<div class="math">
+\[\begin{split}\begin{split}
+   c_{11} &amp;= c_{22} = {E \over 1 - \nu^2}        \\
+   c_{33} &amp;= {E \over 2(1 + \nu)}                \\
+   c_{12} &amp;= \nu\left({E \over 1 - \nu^2}\right) \\
+   c_{13} &amp;= c_{23} = 0
+\end{split}\end{split}\]</div>
+<p>The <span class="math">\(c_{ij}\)</span> are invariant constants and retain the same values in any orthogonal coordinate system.</p>
+<p class="h3 rubric">Orthotropic and Anisotropic Material Properties</p>
+<p>Under the assumptions of linear elasticity, the general constitutive matrix of material stiffness coefficients is symmetric and can be expressed in terms of 21 independent elastic constants. An orthotropic material has three preferred directions of elastic symmetry, and its material-stiffness matrix can be expressed in terms of 9 independent elastic constants:</p>
+<div class="math" id="equation-material-stiffness-matrix-eq">
+<span class="eqno">(3)</span>\[\begin{split}\begin{Bmatrix} \sigma_{x^{\prime}} \\ \sigma_{y^{\prime}} \\ \sigma_{z^{\prime}} \\
+                \tau_{x^{\prime}y^{\prime}} \\ \tau_{x^{\prime}z^{\prime}} \\ \tau_{y^{\prime}z^{\prime}} \end{Bmatrix} =
+\begin{bmatrix} C^{\prime}_{11} &amp; C^{\prime}_{12} &amp; C^{\prime}_{13} &amp; 0               &amp; 0               &amp; 0               \\
+                                &amp; C^{\prime}_{22} &amp; C^{\prime}_{23} &amp; 0               &amp; 0               &amp; 0               \\
+                                &amp;                 &amp; C^{\prime}_{33} &amp; 0               &amp; 0               &amp; 0               \\
+                                &amp;                 &amp;                 &amp; C^{\prime}_{44} &amp; 0               &amp; 0               \\
+                                &amp; sym.            &amp;                 &amp;                 &amp; C^{\prime}_{55} &amp; 0               \\
+                                &amp;                 &amp;                 &amp;                 &amp; 0               &amp; C^{\prime}_{66} \end{bmatrix}
+\begin{Bmatrix} \varepsilon_{x^{\prime}} \\ \varepsilon_{y^{\prime}} \\ \varepsilon_{z^{\prime}}  \\
+                \gamma_{x^{\prime}y^{\prime}} \\ \gamma_{x^{\prime}z^{\prime}} \\ \gamma_{y^{\prime}z^{\prime}} \end{Bmatrix}\end{split}\]</div>
+<p>in which <span class="math">\(x^{\prime} y^{\prime} z^{\prime}\)</span> are the principal directions of orthotropy. This relation describes a three-dimensional orthotropic continuum. The relation can be restricted to describe an orthotropic shell by enforcing the Kirchhoff thin-plate conditions of plane stress (<span class="math">\(\sigma_{z^{\prime}} = 0\)</span>) and no transverse-shear strain (<span class="math">\(\gamma_{x^{\prime}z^{\prime}} = \gamma_{y^{\prime}z^{\prime}} = 0\)</span>), so that the material-stiffness matrix can be expressed in terms of 4 independent elastic constants:</p>
+<div class="math" id="equation-orthotropic-shell-eq">
+<span class="eqno">(4)</span>\[\begin{split}\begin{Bmatrix} \sigma^{\prime} \end{Bmatrix} =
+\begin{Bmatrix} \sigma_x^{\prime} \\ \sigma_y^{\prime} \\ \tau_{x^{\prime}y^{\prime}} \end{Bmatrix} =
+\begin{bmatrix} {\pmb E^{\prime}} \end{bmatrix} \begin{Bmatrix} {\pmb \varepsilon^{\prime}} \end{Bmatrix} =
+\begin{bmatrix} c^{\prime}_{11} &amp; c^{\prime}_{12} &amp; 0               \\
+                                &amp; c^{\prime}_{22} &amp; 0               \\
+                sym.            &amp;                 &amp; c^{\prime}_{33} \end{bmatrix}
+\begin{Bmatrix} \varepsilon_{x^{\prime}} \\ \varepsilon_{y^{\prime}} \\ \gamma_{x^{\prime}y^{\prime}} \end{Bmatrix}  \rm {(orthotropic\ shell)}\end{split}\]</div>
+<p>in which the shell mid-surface lies in the <span class="math">\(x^{\prime} y^{\prime}\)</span>-plane. The material-stiffness matrix expressed in the principal directions (denoted here by <span class="math">\([{\bf E^{\prime}}]\)</span>) has four independent constants that define an orthotropic material.</p>
+<p>The material-stiffness matrix of an anisotropic shell can be expressed in terms of 6 independent elastic constants:</p>
+<div class="math" id="equation-anisotropic-shell-eq">
+<span class="eqno">(5)</span>\[\begin{split}\begin{Bmatrix} \sigma^{\prime} \end{Bmatrix} =
+\begin{Bmatrix} \sigma_x^{\prime} \\ \sigma_y^{\prime} \\ \tau_{x^{\prime}y^{\prime}} \end{Bmatrix} =
+\begin{bmatrix} {\pmb E^{\prime}} \end{bmatrix} \begin{Bmatrix} {\pmb \varepsilon^{\prime}} \end{Bmatrix} =
+\begin{bmatrix} c^{\prime}_{11} &amp; c^{\prime}_{12} &amp; c^{\prime}_{13} \\
+                                &amp; c^{\prime}_{22} &amp; c^{\prime}_{23} \\
+                sym.            &amp;                 &amp; c^{\prime}_{33} \end{bmatrix}
+\begin{Bmatrix} \varepsilon_{x^{\prime}} \\ \varepsilon_{y^{\prime}} \\ \gamma_{x^{\prime}y^{\prime}} \end{Bmatrix} \rm {(anisotropic\ shell)}\end{split}\]</div>
+<p>in which the shell mid-surface lies in the <span class="math">\(x^{\prime} y^{\prime}\)</span>-plane. The material-stiffness matrix expressed in the material directions (denoted here by <span class="math">\([{\bf E^{\prime}}]\)</span>) has six independent constants that define an anisotropic shell.</p>
+<p>Consider a shell-type element with its local coordinate system, <span class="math">\(xyz\)</span>, rotated with respect to the <span class="math">\(x^{\prime}\)</span>-axis by an angle, <span class="math">\(\beta\)</span>, as shown in <a href="#shell-type-material-system">Figure  2</a>. The strain-transformation matrix, <span class="math">\(\begin{bmatrix}{\bf T_{\varepsilon}}\end{bmatrix}\)</span>, relates the strains in the two systems via</p>
+<div class="math" id="equation-strain-transformation-matrix">
+<span class="eqno">(6)</span>\[\begin{Bmatrix} {\pmb \varepsilon^{\prime}} \end{Bmatrix} = \begin{bmatrix} {\bf T_{\bf \varepsilon}} \end{bmatrix} \begin{Bmatrix} {\pmb \varepsilon} \end{Bmatrix}\]</div>
+<p><span class="math">\(\begin{bmatrix}{\bf T_{\varepsilon}}\end{bmatrix}\)</span> can be expressed in terms of <span class="math">\(\beta\)</span> as</p>
+<div class="math">
+\[\begin{split}\begin{bmatrix} {\bf T_{\varepsilon}} \end{bmatrix} =
+\begin{bmatrix} c^2 &amp; s^2 &amp; cs \\ s^2 &amp; c^2 &amp; -cs \\ -2cs &amp; 2cs &amp; c^2 - s^2 \end{bmatrix},
+\begin{matrix} c = {\rm cos} \beta \\ s = {\rm sin} \beta \end{matrix}\end{split}\]</div>
+<p>The stresses in the two systems are related via</p>
+<div class="math">
+\[\begin{Bmatrix} {\bf \sigma} \end{Bmatrix} =
+\begin{bmatrix} {\bf T_{\varepsilon}} \end{bmatrix}^T
+\begin{Bmatrix} {\bf \sigma^{\prime}} \end{Bmatrix}\]</div>
+<p>Substituting <a class="reference internal" href="#equation-orthotropic-shell-eq">(4)</a> or <a class="reference internal" href="#equation-anisotropic-shell-eq">(5)</a> and <a class="reference internal" href="#equation-strain-transformation-matrix">(6)</a> into the preceding yields</p>
+<div class="math">
+\[\begin{Bmatrix} {\bf \sigma} \end{Bmatrix} =
+\begin{bmatrix} {\bf T_{\varepsilon}} \end{bmatrix}^T
+\begin{bmatrix} {\bf E^{\prime}} \end{bmatrix}
+\begin{bmatrix} {\bf T_{\varepsilon}} \end{bmatrix}
+\begin{Bmatrix} {\bf \varepsilon} \end{Bmatrix}\]</div>
+<p>in which</p>
+<div class="math" id="equation-shell-global-stiffness-eq">
+<span class="eqno">(7)</span>\[\begin{bmatrix} {\bf E} \end{bmatrix} =
+\begin{bmatrix} {\bf T_{\varepsilon}} \end{bmatrix}^T
+\begin{bmatrix} {\bf E^{\prime}} \end{bmatrix}
+\begin{bmatrix} {\bf T_{\varepsilon}} \end{bmatrix}\]</div>
+<p>Thus we have, from <a class="reference internal" href="#equation-shell-global-stiffness-eq">(7)</a> and <a class="reference internal" href="#equation-material-rigidity-matrices-eq">(1)</a>, the expression</p>
+<div class="math">
+\[\begin{bmatrix} {\bf D}_m \end{bmatrix} =
+t \begin{bmatrix} {\bf T_{\varepsilon}} \end{bmatrix}^T
+\begin{bmatrix} {\bf E^{\prime}_m} \end{bmatrix}
+\begin{bmatrix} {\bf T_{\varepsilon}} \end{bmatrix}\]</div>
+<p>and</p>
+<div class="math">
+\[\begin{bmatrix} {\bf D}_b \end{bmatrix} =
+\frac{t^3}{12} \begin{bmatrix} {\bf T_{\varepsilon}} \end{bmatrix}^T
+\begin{bmatrix} {\bf E^{\prime}_b} \end{bmatrix}
+\begin{bmatrix} {\bf T_{\varepsilon}} \end{bmatrix}\]</div>
+<p>for the material-rigidity matrices of a shell in which the material directions are not aligned with the <span class="math">\(x\)</span> and <span class="math">\(y\)</span> axes. For an orthotropic shell, <span class="math">\([{\bf E^{\prime}}]\)</span> has two zero terms, but these terms will not, in general, be zero for <span class="math">\([{\bf E}]\)</span> when the principal directions of orthotropy are not aligned with the <span class="math">\(x\)</span> and <span class="math">\(y\)</span> axes.</p>
+<div class="figure align-center" id="id2">
+<span id="shell-type-material-system"></span><img alt="../../../../../../_images/material-system.png" src="../../../../../../_images/material-system.png" />
+<p class="caption"><span class="caption-text">Figure 2: Shell-type element coordinate system <span class="math">\(xyz\)</span> and material coordinate system <span class="math">\(x^{\prime}y^{\prime}z^{\prime}\)</span></span></p>
+</div>
+<p class="h3 rubric">Determination of Orthotropic Material Properties</p>
+<p>The material-stiffness matrix <span class="math">\([{{\bf E}_m}^{\prime}]\)</span> and <span class="math">\([{{\bf E}_b}^{\prime}]\)</span> can be expressed in terms of the elastic constants in <a class="reference internal" href="#equation-material-stiffness-matrix-eq">(3)</a> via</p>
+<div class="math">
+\[\begin{split}\begin{split}
+   c^{\prime}_{11} &amp;= C^{\prime}_{11} - {{C^{\prime}_{13} C^{\prime}_{13}} \over {C^{\prime}_{33}}}   \\
+   c^{\prime}_{22} &amp;= C^{\prime}_{22} - {{C^{\prime}_{23} C^{\prime}_{23}} \over {C^{\prime}_{33}}}   \\
+   c^{\prime}_{33} &amp;= C^{\prime}_{44}    \\
+   c^{\prime}_{12} &amp;= C^{\prime}_{12} - {{C^{\prime}_{13} C^{\prime}_{23}} \over {C^{\prime}_{33}}}
+\end{split}\end{split}\]</div>
+<p>They can also be expressed in terms of the effective Poisson’s ratios (<span class="math">\(\nu_{x^{\prime}}\)</span> and <span class="math">\(\nu_{y^{\prime}}\)</span>), effective moduli (<span class="math">\(E^{\prime}_{x^{\prime}}\)</span> and <span class="math">\(E^{\prime}_{y^{\prime}}\)</span>) and shear modulus (<span class="math">\(G\)</span>) for orthotropic plates (Ugural 1981, p. 141):</p>
+<div class="math" id="equation-material-stiffness-orthotropic-eq">
+<span id="eq-material-stiffness-orthotropic"></span><span class="eqno">(8)</span>\[\begin{split}\begin{split}
+   c^{\prime}_{11} &amp;= {{E^{\prime}_{x^{\prime}}} \over {1 - \nu_{x^{\prime}} \nu_{y^{\prime}}}} \\
+   c^{\prime}_{22} &amp;= {{E^{\prime}_{y^{\prime}}} \over {1 - \nu_{x^{\prime}} \nu_{y^{\prime}}}} \\
+   c^{\prime}_{33} &amp;= G  \\
+   c^{\prime}_{12} &amp;= {{E^{\prime}_{x^{\prime}} \nu_{y{\prime}}} \over {1 - \nu_{x^{\prime}} \nu_{y^{\prime}}}} = {{E^{\prime}_{y^{\prime}} \nu_{x{\prime}}} \over {1 - \nu_{x^{\prime}} \nu_{y^{\prime}}}}
+\end{split}\end{split}\]</div>
+<p>Ugural states that the orthotropic plate moduli and Poisson’s ratios are obtained by tension and shear tests, as in the case of isotropic materials.</p>
+<p>When it is not possible to determine the material stiffnesses experimentally, an equivalent or transformed orthotropic plate (with elastic properties equal to the average properties of components of the original plate), for which the membrane stiffnesses are approximated with the relations in <a class="reference internal" href="#equation-material-stiffness-orthotropic-eq">(8)</a>, and the bending stiffnesses are approximated with the following rigidities, can be used.</p>
+<div class="math">
+\[\begin{split}\begin{split}
+   {c^b_{11}}^\prime &amp;= {12 \over t^3} D_{x^{\prime}}           \\
+   {c^b_{22}}^\prime &amp;= {12 \over t^3} D_{y^{\prime}}           \\
+   {c^b_{33}}^\prime &amp;= {12 \over t^3} G_{x^{\prime}y^{\prime}} \\
+   {c^b_{12}}^\prime &amp;= {12 \over t^3} D_{x^{\prime}y^{\prime}}
+\end{split}\end{split}\]</div>
+<p><span class="math">\(D_{x^{\prime}}\)</span>, <span class="math">\(D_{y^{\prime}}\)</span>, <span class="math">\(D_{x^{\prime}y^{\prime}}\)</span> and <span class="math">\(G_{x^{\prime}y^{\prime}}\)</span> represent the flexural rigidities and the torsional rigidity of an orthotropic plate, respectively. Rigidities for some commonly encountered cases are given in <a href="#shell-type-rigidities">Figure  3</a>. These cases include a reinforced concrete slab with orthogonal steel bars, a plate reinforced by equidistant stiffeners, a plate reinforced by a set of equidistant ribs, and a corrugated plate.</p>
+<div class="figure" id="id3">
+<span id="shell-type-rigidities"></span><a class="reference internal image-reference" href="../../../../../../_images/rigidities.png"><img alt="click image to enlarge" src="../../../../../../_images/rigidities.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-text">Figure 3: Rigidities of various orthotropic plates (from Ugural 1981, Table 6.1, where <span class="math">\(H = 2G_{xy} + D_{xy}\)</span>)*</span></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">*Used with the permission of McGraw-Hill Publishing Company.</p>
+</div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Shell-Type Structural Elements" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

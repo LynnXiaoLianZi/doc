@@ -1,0 +1,445 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Commands &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="commands">
+<span id="structure-commands1"></span><h1>Commands</h1>
+<p>Commands that operate on structural elements. On this page:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1">structure commands</a></li>
+<li><a class="reference internal" href="#beam-commands">beam commands</a></li>
+<li><a class="reference internal" href="#cable-commands">cable commands</a></li>
+<li><a class="reference internal" href="#pile-commands">pile commands</a></li>
+<li><a class="reference internal" href="#shell-commands">shell commands</a></li>
+<li><a class="reference internal" href="#geogrid-commands">geogrid commands</a></li>
+<li><a class="reference internal" href="#liner-commands">liner commands</a></li>
+<li><a class="reference internal" href="#node-commands">node commands</a></li>
+<li><a class="reference internal" href="#link-commands">link commands</a></li>
+</ul>
+<p>Structural elements are explicit finite-element based objects formulated using shell and beam theory. As with zones, all element force-displacement calculations are incremental.</p>
+<p>Each individual element is connected to others via structural nodes. Interactions with other objects (primarily zones) are handled by structural links associated with the nodes.</p>
+<p>There are six types of structural elements supported—each specifies both a default internal behavior and a default link formulation.    There are three linear elements (<span class="cmdkey">beam</span>, <span class="cmdkey">cable</span>, and <span class="cmdkey">pile</span>) and three two-dimensional plate elements (<span class="cmdkey">shell</span>, <span class="cmdkey">liner</span>, and <span class="cmdkey">geogrid</span>).</p>
+<p>The structural element logic differs from other modules in how it handles <span class="cmdkey">id</span> numbers.  Within this module, <span class="cmdkey">id</span> numbers refer to <em>collections</em> of elements, identifying a given beam or cable structure that may be constructed of any number of individual elements.  Each element is identified by a <span class="cmdkey">component-id</span> number, which is unique to that element.  Nodes and links may be selected by <span class="cmdkey">id</span> number, which selects nodes that are attached to element collections with those numbers.  Nodes and links also have their own individual <span class="cmdkey">component-id</span> numbers.</p>
+<p>For more detail, please see <a class="reference internal" href="../formulation/formulation.html#sel-formulation"><span class="std std-ref">General Formulation of Structural-Element Logic</span></a>.</p>
+<p><span class="flag3">[CS: previous sentence had this following “see”: the detailed :flag2:-structural element formulation- section.   : check with DR that link supplied above is correct; also check whether that section is properly located (it could reasonably be moved adjacent to this topic)]</span></p>
+<p class="h2 rubric" id="id1"><span id="structure-commands"></span>Structural Commands</p>
+<p>Commands that affect the structural element logic in general.</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.damping.html#structure.damping" title="Set the structural element logic damping scheme. This command is depreciated.&#013;&#010;Use instead the command  structure mechanical damping  for static mode or  structure&#013;&#010;dynamic damping  for dynamic mode. The values of this setting can be printed&#013;&#010;using the  structure list information  command. The following keywords are available:"><span class="fishcmd">structure damping</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.dynamic.html#structure.dynamic.damping" title="Set the structural element logic damping scheme for dynamic analysis. The following&#013;&#010;keywords are available:"><span class="fishcmd">structure dynamic damping</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.list.html#structure.list.information" title="Lists general information about structural element settings.  This list includes&#013;&#010;the timestep safety factor, the mass scaling settings, the damping scheme in&#013;&#010;place, the link tolerances, the default large-strain sliding settings, the number&#013;&#010;of elements, nodes, and links, etc."><span class="fishcmd">structure list information</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.mechanical.html#structure.mechanical.damping" title="Set the structural element logic damping scheme for static analysis. The following&#013;&#010;keywords are available:"><span class="fishcmd">structure mechanical damping</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.ratio.html#structure.ratio" title="Please see  Reaching Equilibrium .  The ratio limit for mechanical calculations&#013;&#010;using the  model solve  command can be calculated in three ways, as defined&#013;&#010;by the following keywords:"><span class="fishcmd">structure ratio</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.results.html#structure.results" title="Controls if and what values are saved from zones in an exported results file.&#013;&#010;See the  model results export  command.  By default, zones values are  active .&#013;&#010;The values being exported by default are  forces ,  groups , and  displacements ."><span class="fishcmd">structure results</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.safety-factor.html#structure.safety-factor" title="Set the safety factor.  This is the factor by which the timestep necessary for&#013;&#010;solution stability of the structural element computations will be multiplied.&#013;&#010;The actual timestep used will be the minimum of the structural element timestep&#013;&#010;and the timesteps for the zones and other active modules (e.g., fluid, thermal&#013;&#010;or creep). In static mode, the final safety factor is one-half of  f ; in dynamic&#013;&#010;mode, the final safety factor is  f . By default,"><span class="fishcmd">structure safety-factor</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.scale-rotational-mass.html#structure.scale-rotational-mass" title="This value applies to dynamic analysis only. If set to off, then the rotational&#013;&#010;degree-of-freedom masses are computed using a sphere with a volume equal to&#013;&#010;that contributed by elements using the node. This is described as fully dynamic&#013;&#010;mode in  Mass Scaling . If set to on, then the rotational degree-of-freedom&#013;&#010;masses are scaled based on rotational stiffnesses. This is described as partially&#013;&#010;dynamic mode in the structural element section  Mass Scaling ."><span class="fishcmd">structure scale-rotational-mass</span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="h2 rubric" id="beam-commands"><code class="docutils literal"><span class="pre">beam</span></code> commands</p>
+<p>Commands that apply to beam elements.</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../beams/commands/cmd_structure.beam.apply.html#structure.beam.apply" title="Assign uniform applied distributed loads. Loads (force per unit length) are&#013;&#010;applied to all elements in the range. Positive loads act in the positive  -&#013;&#010;or  -directions ( f1  and  f2 , respectively) of the element system and maintain&#013;&#010;this orientation during large-strain motion. Point loads are applied at the&#013;&#010;nodes using the command  structure node apply ."><span class="fishcmd">structure beam apply</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../beams/commands/cmd_structure.beam.create.html#structure.beam.create" title="Create a beam represented by one or more elements."><span class="fishcmd">structure beam create</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../beams/commands/cmd_structure.beam.delete.html#structure.beam.delete" title="Delete all beam elements in the range.  Structure nodes and links that become&#013;&#010;disconnected from any element will automatically be deleted as well."><span class="fishcmd">structure beam delete</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../beams/commands/cmd_structure.beam.group.html#structure.beam.group" title="Assign all beam elements in the range to the group with the name  s . Use of&#013;&#010;the group logic is described in  group_manual . Any element may only belong&#013;&#010;to one group in a given slot. Assigning an element to a new group in that slot&#013;&#010;will cause it to be removed from its current group assignment. The  structure&#013;&#010;beam list group  command lists the existing element group names. The groups&#013;&#010;can be visualized with the"><span class="fishcmd">structure beam group</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../beams/commands/cmd_structure.beam.hide.html#structure.beam.hide" title="This commands hides or un-hides all beam elements in the range.  By default,&#013;&#010;commands that use a range filter will skip hidden objects.  This can be overruled&#013;&#010;with the  use-hidden  keyword in the range specification."><span class="fishcmd">structure beam hide</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../beams/commands/cmd_structure.beam.history.html#structure.beam.history" title="Samples beam responses that include force and moment carried by the beam. The&#013;&#010;force and moment vectors are expressed in the element local coordinate system&#013;&#010;(see Figure 1.17 for sign convention). If a beam is created using the  structure&#013;&#010;beam create  command, then the nodes of each element so created will be ordered&#013;&#010;such that the overall beam direction goes from the first point to the second&#013;&#010;point (i.e., the nodal connectivity of each element"><span class="fishcmd">structure beam history</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../beams/commands/cmd_structure.beam.import.html#structure.beam.import" title="Create beam elements from an outside source."><span class="fishcmd">structure beam import</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../beams/commands/cmd_structure.beam.initialize.html#structure.beam.initialize" title="Initializes quantities on the element."><span class="fishcmd">structure beam initialize</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../beams/commands/cmd_structure.beam.list.html#structure.beam.list" title="List information about beam elements."><span class="fishcmd">structure beam list</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../beams/commands/cmd_structure.beam.property.html#structure.beam.property" title="Assigns a property to elements in the range. The following properties are available."><span class="fishcmd">structure beam property</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../beams/commands/cmd_structure.beam.refine.html#structure.beam.refine" title="This command refines an existing element in the range by subdividing it into&#013;&#010; i  equal-size segments. The original structural element is deleted."><span class="fishcmd">structure beam refine</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../beams/commands/cmd_structure.beam.select.html#structure.beam.select" title="This command selects or de-selects all elements in the range.  Selected objects&#013;&#010;can be specified in a range filter by using the  selected  keyword.  Objects&#013;&#010;that are  not  selected can be specified in a range filter by using the  deselected &#013;&#010;keyword."><span class="fishcmd">structure beam select</span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="h2 rubric" id="cable-commands"><code class="docutils literal"><span class="pre">cable</span></code> commands</p>
+<p>Commands that apply to cable elements.</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../cables/commands/cmd_structure.cable.apply.html#structure.cable.apply" title="Applies conditions to cable elements in the range.  The following keywords and&#013;&#010;options are available:"><span class="fishcmd">structure cable apply</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../cables/commands/cmd_structure.cable.create.html#structure.cable.create" title="Create a cable, represented by one or more elements."><span class="fishcmd">structure cable create</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../cables/commands/cmd_structure.cable.delete.html#structure.cable.delete" title="Delete all cable elements in the range. Structure nodes and links that become&#013;&#010;disconnected from any element will automatically be deleted as well."><span class="fishcmd">structure cable delete</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../cables/commands/cmd_structure.cable.group.html#structure.cable.group" title="Assign all cable elements in the range to the group with the name  s . Use of&#013;&#010;the group logic is described in  group_manual . Any element may only belong&#013;&#010;to one group in a given slot. Assigning an element to a new group in that slot&#013;&#010;will cause it to be removed from its current group assignment. The command  structure&#013;&#010;cable list group`  lists the existing element group names. The groups can be&#013;&#010;visualized with the"><span class="fishcmd">structure cable group</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../cables/commands/cmd_structure.cable.hide.html#structure.cable.hide" title="This commands hides or un-hides all cable elements in the range.  By default,&#013;&#010;commands that use a range filter will skip hidden objects.  This can be overruled&#013;&#010;with the  use-hidden  keyword in the range specification."><span class="fishcmd">structure cable hide</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../cables/commands/cmd_structure.cable.history.html#structure.cable.history" title="Sample cable responses.  Quantities for sampling include cable element force,&#013;&#010;stress and yield state, and shear coupling spring displacement, stress and slip&#013;&#010;state.  If a cable is created using the  structure cable create , then the nodes&#013;&#010;of each element so created will be ordered such that the overall cable direction&#013;&#010;goes from the begin point to the end point (i.e., the nodal connectivity of&#013;&#010;each element will be ordered such that the direction"><span class="fishcmd">structure cable history</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../cables/commands/cmd_structure.cable.import.html#structure.cable.import" title="Create cable elements from an outside source."><span class="fishcmd">structure cable import</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../cables/commands/cmd_structure.cable.initialize.html#structure.cable.initialize" title="Initializes quantities on the element."><span class="fishcmd">structure cable initialize</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../cables/commands/cmd_structure.cable.list.html#structure.cable.list" title="List information about cables."><span class="fishcmd">structure cable list</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../cables/commands/cmd_structure.cable.property.html#structure.cable.property" title="Assigns a property to elements in the range. The following properties are available:"><span class="fishcmd">structure cable property</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../cables/commands/cmd_structure.cable.refine.html#structure.cable.refine" title="This command refines an existing element in the range by subdividing it into&#013;&#010; i  equal-size segments. The original structural element is deleted."><span class="fishcmd">structure cable refine</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../cables/commands/cmd_structure.cable.select.html#structure.cable.select" title="This commands selects or de-selects all elements in the range.  Selected objects&#013;&#010;can be specified in a range filter by using the  selected  keyword.  Objects&#013;&#010;that are  not  selected can be specified in a range filter by using the  deselected &#013;&#010;keyword."><span class="fishcmd">structure cable select</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../hybrid/commands/cmd_structure.hybrid.import.html#structure.hybrid.import" title="Create hybrid bolt elements from an outside source."><span class="fishcmd">structure hybrid import</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../hybrid/commands/cmd_structure.hybrid.list.html#structure.hybrid.list" title="Lists properties and responses of hybrid bolt elements in the range. If no keyword&#013;&#010;is given, the default output of the command is that associated with the information&#013;&#010;keyword."><span class="fishcmd">structure hybrid list</span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="h2 rubric" id="geogrid-commands"><code class="docutils literal"><span class="pre">geogrid</span></code> commands</p>
+<p>Commands that apply to geogrid elements.</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../geogrids/commands/cmd_structure.geogrid.apply.html#structure.geogrid.apply" title="Assign uniform applied pressure  f  to all geogrid elements in the range. Positive&#013;&#010;pressure acts in the positive  -direction of the element system and maintains&#013;&#010;this orientation during large-strain motion."><span class="fishcmd">structure geogrid apply</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../geogrids/commands/cmd_structure.geogrid.create.html#structure.geogrid.create" title="Create a geogrid. The four main keywords articulate four different techniques&#013;&#010;of creation: by creating a collection of elements from a group of zone faces&#013;&#010;( by-face ); by creating a single element from four existing nodes ( by-nodeids );&#013;&#010;from a specified quadrilateral ( by-quadrilateral ); or from a triangle ( by-triangle )."><span class="fishcmd">structure geogrid create</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../geogrids/commands/cmd_structure.geogrid.delete.html#structure.geogrid.delete" title="Delete all geogrid elements in the range. Structure nodes and links that become&#013;&#010;disconnected from any element will automatically be deleted as well."><span class="fishcmd">structure geogrid delete</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../geogrids/commands/cmd_structure.geogrid.group.html#structure.geogrid.group" title="Assign all geogrid elements in the range to the group with the name  s . Use&#013;&#010;of the group logic is described in  group_manual . Any element may only belong&#013;&#010;to one group in a given slot. Assigning an element to a new group in that slot&#013;&#010;will cause it to be removed from its current group assignment. The command  structure&#013;&#010;geogrid list group  command lists the existing element group names. The groups&#013;&#010;can be visualized with"><span class="fishcmd">structure geogrid group</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../geogrids/commands/cmd_structure.geogrid.hide.html#structure.geogrid.hide" title="This commands hides or un-hides all geogrid elements in the range.  By default,&#013;&#010;commands that use a range filter will skip hidden objects.  This can be overruled&#013;&#010;with the  use-hidden  keyword in the range specification."><span class="fishcmd">structure geogrid hide</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../geogrids/commands/cmd_structure.geogrid.history.html#structure.geogrid.history" title="Sample geogrid responses.  The nodes of an element will be ordered counterclockwise&#013;&#010;with respect to the outside of the zone faces upon which the geogrid was created."><span class="fishcmd">structure geogrid history</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../geogrids/commands/cmd_structure.geogrid.import.html#structure.geogrid.import" title="Create geogrid elements from an outside source."><span class="fishcmd">structure geogrid import</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../geogrids/commands/cmd_structure.geogrid.initialize.html#structure.geogrid.initialize" title="Initializes quantities on the element."><span class="fishcmd">structure geogrid initialize</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../geogrids/commands/cmd_structure.geogrid.list.html#structure.geogrid.list" title="List properties and response of each geogrid element in the range."><span class="fishcmd">structure geogrid list</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../geogrids/commands/cmd_structure.geogrid.property.html#structure.geogrid.property" title="Assigns a property to elements in the range.  The element can have isotropic,&#013;&#010;orthotropic, or anisotropic elastic material properties.  The following properties&#013;&#010;are available:"><span class="fishcmd">structure geogrid property</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../geogrids/commands/cmd_structure.geogrid.recover.html#structure.geogrid.recover" title="Stress-recovery for geogrid elements.  The stress-recovery procedure can be&#013;&#010;applied to all elements to compute both the stress resultants and the stresses&#013;&#010;acting at a specified depth. The range keyword identifies the patch of elements&#013;&#010;to which the command will apply. Note that the recovered quantities will depend&#013;&#010;upon the range of elements over which these quantities are being recovered,&#013;&#010;because nodal averaging only occurs for elements within this range."><span class="fishcmd">structure geogrid recover</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../geogrids/commands/cmd_structure.geogrid.refine.html#structure.geogrid.refine" title="This command refines elements in the range by subdividing them by a factor of&#013;&#010; i .  A triangular element refined by  i  = 2 will yield four triangular elements;&#013;&#010; i  = 3 would yield 16 triangular elements, etc. The original element is deleted."><span class="fishcmd">structure geogrid refine</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../geogrids/commands/cmd_structure.geogrid.select.html#structure.geogrid.select" title="This commands selects or de-selects all elements in the range.  Selected objects&#013;&#010;can be specified in a range filter by using the  selected  keyword.  Objects&#013;&#010;that are  not  selected can be specified in a range filter by using the  deselected &#013;&#010;keyword."><span class="fishcmd">structure geogrid select</span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="h2 rubric" id="liner-commands"><code class="docutils literal"><span class="pre">liner</span></code> commands</p>
+<p>Commands that apply to liner elements.</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../liners/commands/cmd_structure.liner.apply.html#structure.liner.apply" title="Assign uniform applied pressure  f  to all liner elements in the range. Positive&#013;&#010;pressure acts in the positive  -direction of the element system and maintains&#013;&#010;this orientation during large-strain motion."><span class="fishcmd">structure liner apply</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../liners/commands/cmd_structure.liner.create.html#structure.liner.create" title="Create a liner. There are four different techniques of creation: by creating&#013;&#010;a collection of elements from a group of zone faces ( by-zone-face  or  by-block-face );&#013;&#010;by creating a single element from four existing nodes ( by-nodeids ), from a&#013;&#010;specified quadrilateral ( by-quadrilateral ), or from a triangle ( by-triangle )."><span class="fishcmd">structure liner create</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../liners/commands/cmd_structure.liner.delete.html#structure.liner.delete" title="Delete all liner elements in the range. Structure nodes and links that become&#013;&#010;disconnected from any element will automatically be deleted as well."><span class="fishcmd">structure liner delete</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../liners/commands/cmd_structure.liner.gap-factor.html#structure.liner.gap-factor" title="Sets the gap factor used during large-strain sliding of liner elements. During&#013;&#010;large-strain sliding, if the gap that forms between a node used by a liner element&#013;&#010;and the zone to which it is attached becomes greater than  f  times the zone&#013;&#010;size (where zone size is the maximum  -,  -, or  -dimension of the zone bounding&#013;&#010;box), and the normal spring is in tension, then the simulation stops and an&#013;&#010;error message is displayed."><span class="fishcmd">structure liner gap-factor</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../liners/commands/cmd_structure.liner.group.html#structure.liner.group" title="Assign all liner elements in the range to the group with the name  s . Use of&#013;&#010;the group logic is described in  group_manual . Any element may only belong&#013;&#010;to one group in a given slot. Assigning an element to a new group in that slot&#013;&#010;will cause it to be removed from its current group assignment. The command  structure&#013;&#010;liner list group  command lists the existing element group names. The groups&#013;&#010;can be visualized with"><span class="fishcmd">structure liner group</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../liners/commands/cmd_structure.liner.hide.html#structure.liner.hide" title="This commands hides or un-hides all liner elements in the range.  By default,&#013;&#010;commands that use a range filter will skip hidden objects.  This can be overruled&#013;&#010;with the  use-hidden  keyword in the range specification."><span class="fishcmd">structure liner hide</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../liners/commands/cmd_structure.liner.history.html#structure.liner.history" title="Sample liner responses.  The nodes of an element will be ordered counterclockwise&#013;&#010;with respect to the outside of the zone faces upon which the liner was created."><span class="fishcmd">structure liner history</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../liners/commands/cmd_structure.liner.import.html#structure.liner.import" title="Create liner elements from an outside source."><span class="fishcmd">structure liner import</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../liners/commands/cmd_structure.liner.initialize.html#structure.liner.initialize" title="Initializes quantities on the element."><span class="fishcmd">structure liner initialize</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../liners/commands/cmd_structure.liner.list.html#structure.liner.list" title="List properties and responses of each liner element in the range."><span class="fishcmd">structure liner list</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../liners/commands/cmd_structure.liner.property.html#structure.liner.property" title="Assigns a property to elements in the range.  The element can have isotropic,&#013;&#010;orthotropic, or anisotropic elastic material properties.  Note that if the liner&#013;&#010;is embedded, then coupling spring properties must be entered separately on side&#013;&#010;2.  The following properties are available:"><span class="fishcmd">structure liner property</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../liners/commands/cmd_structure.liner.recover.html#structure.liner.recover" title="Stress recovery for liner elements.  The stress-recovery procedure can be applied&#013;&#010;to all elements to compute both the stress resultants and the stresses acting&#013;&#010;at a specified depth. The range keyword identifies the patch of elements to&#013;&#010;which the command will apply. Note that the recovered quantities will depend&#013;&#010;upon the range of elements over which these quantities are being recovered,&#013;&#010;because nodal averaging only occurs for elements within this range."><span class="fishcmd">structure liner recover</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../liners/commands/cmd_structure.liner.refine.html#structure.liner.refine" title="this command refines elements in the range by subdividing them by a factor of&#013;&#010; i .  A triangular element refined by  i  = 2 will yield four triangular elements;&#013;&#010; i  = 3 would yield 16 triangular elements, etc. The original element is deleted."><span class="fishcmd">structure liner refine</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../liners/commands/cmd_structure.liner.select.html#structure.liner.select" title="This commands selects or de-selects all elements in the range.  Selected objects&#013;&#010;can be specified in a range filter by using the  selected  keyword.  Objects&#013;&#010;that are  not  selected can be specified in a range filter by using the  deselected &#013;&#010;keyword."><span class="fishcmd">structure liner select</span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="h2 rubric" id="pile-commands"><code class="docutils literal"><span class="pre">pile</span></code> commands</p>
+<p>Commands that apply to pile elements.</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../piles/commands/cmd_structure.pile.apply.html#structure.pile.apply" title="Applies conditions to pile elements in the range.  The following keywords and&#013;&#010;options are available:"><span class="fishcmd">structure pile apply</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/commands/cmd_structure.pile.create.html#structure.pile.create" title="Create a pile represented by one or more elements."><span class="fishcmd">structure pile create</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/commands/cmd_structure.pile.delete.html#structure.pile.delete" title="Delete all pile elements in the range.  Structure nodes and links that become&#013;&#010;disconnected from any element will automatically be deleted as well."><span class="fishcmd">structure pile delete</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/commands/cmd_structure.pile.group.html#structure.pile.group" title="Assign all pile elements in the range to the group with the name  s . Use of&#013;&#010;the group logic is described in  group_manual . Any element may only belong&#013;&#010;to one group in a given slot. Assigning an element to a new group in that slot&#013;&#010;will cause it to be removed from its current group assignment. The  structure&#013;&#010;pile list group  command lists the existing element group names. The groups&#013;&#010;can be visualized with the"><span class="fishcmd">structure pile group</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/commands/cmd_structure.pile.hide.html#structure.pile.hide" title="This commands hides or un-hides all pile elements in the range.  By default,&#013;&#010;commands that use a range filter will skip hidden objects.  This can be overruled&#013;&#010;with the  use-hidden  keyword in the range specification."><span class="fishcmd">structure pile hide</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/commands/cmd_structure.pile.history.html#structure.pile.history" title="Sample pile responses.  Quantities for sampling include force and moment acting&#013;&#010;on the pile itself, and displacement, stress, and yield state in both the normal&#013;&#010;and shear coupling springs."><span class="fishcmd">structure pile history</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/commands/cmd_structure.pile.import.html#structure.pile.import" title="Create pile elements from an outside source."><span class="fishcmd">structure pile import</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/commands/cmd_structure.pile.initialize.html#structure.pile.initialize" title="Initializes quantities on the element."><span class="fishcmd">structure pile initialize</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/commands/cmd_structure.pile.list.html#structure.pile.list" title="List information about piles."><span class="fishcmd">structure pile list</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/commands/cmd_structure.pile.property.html#structure.pile.property" title="Assign the specified property to all elements in the range."><span class="fishcmd">structure pile property</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../piles/commands/cmd_structure.pile.refine.html#structure.pile.refine" title="this command refines an existing element in the range by subdividing it into&#013;&#010; i  equal-size segments. The original structural element is deleted."><span class="fishcmd">structure pile refine</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../piles/commands/cmd_structure.pile.select.html#structure.pile.select" title="This command selects or de-selects all elements in the range.  Selected objects&#013;&#010;can be specified in a range filter by using the  selected  keyword.  Objects&#013;&#010;that are  not  selected can be specified in a range filter by using the  deselected &#013;&#010;keyword."><span class="fishcmd">structure pile select</span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="h2 rubric" id="shell-commands"><code class="docutils literal"><span class="pre">shell</span></code> commands</p>
+<p>Commands that apply to shell elements.</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../shells/commands/cmd_structure.shell.apply.html#structure.shell.apply" title="Assign uniform applied pressure  f  to all shell elements in the range. Positive&#013;&#010;pressure acts in the positive  -direction of the element system and maintains&#013;&#010;this orientation during large-strain motion."><span class="fishcmd">structure shell apply</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../shells/commands/cmd_structure.shell.create.html#structure.shell.create" title="Create a shell. The four main keywords articulate four different techniques&#013;&#010;of creation: by creating a collection of elements from a group of zone faces&#013;&#010;( by-face ); by creating a single element from four existing nodes ( by-nodes );&#013;&#010;from a specified quadrilateral ( by-quadrilateral ); or from a triangle ( by-triangle )."><span class="fishcmd">structure shell create</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../shells/commands/cmd_structure.shell.delete.html#structure.shell.delete" title="Delete all shell elements in the range. Structure nodes and links that become&#013;&#010;disconnected from any element will automatically be deleted as well."><span class="fishcmd">structure shell delete</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../shells/commands/cmd_structure.shell.group.html#structure.shell.group" title="Assign all shell elements in the range to the group with the name  s . Use of&#013;&#010;the group logic is described in  group_manual . Any element may only belong&#013;&#010;to one group in a given slot. Assigning an element to a new group in that slot&#013;&#010;will cause it to be removed from its current group assignment. The command  structure&#013;&#010;shell list group  command lists the existing element group names. The groups&#013;&#010;can be visualized with"><span class="fishcmd">structure shell group</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../shells/commands/cmd_structure.shell.hide.html#structure.shell.hide" title="This command hides or un-hides all shell elements in the range.  By default,&#013;&#010;commands that use a range filter will skip hidden objects.  This can be overruled&#013;&#010;with the  use-hidden  keyword in the range specification."><span class="fishcmd">structure shell hide</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../shells/commands/cmd_structure.shell.history.html#structure.shell.history" title="Sample shell responses.  The nodes of a shell element will be ordered counter-clockwise&#013;&#010;with respect to the outside of the zone faces upon which the shell was created."><span class="fishcmd">structure shell history</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../shells/commands/cmd_structure.shell.import.html#structure.shell.import" title="Create shell elements from an outside source."><span class="fishcmd">structure shell import</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../shells/commands/cmd_structure.shell.initialize.html#structure.shell.initialize" title="Initializes quantities on the element."><span class="fishcmd">structure shell initialize</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../shells/commands/cmd_structure.shell.list.html#structure.shell.list" title="List properties and response of each shell element in the range."><span class="fishcmd">structure shell list</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../shells/commands/cmd_structure.shell.property.html#structure.shell.property" title="Assigns a property to elements in the range.  The element can have isotropic,&#013;&#010;orthotropic or anisotropic elastic material properties.  The following properties&#013;&#010;are available:"><span class="fishcmd">structure shell property</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../shells/commands/cmd_structure.shell.recover.html#structure.shell.recover" title="Stress-recovery for shell elements.  The stress-recovery procedure can be applied&#013;&#010;to all elements to compute both the stress resultants and the stresses acting&#013;&#010;at a specified depth. The range keyword identifies the patch of elements to&#013;&#010;which the command will apply. Note that the recovered quantities will depend&#013;&#010;upon the range of elements over which these quantities are being recovered,&#013;&#010;because nodal averaging only occurs for elements within this range."><span class="fishcmd">structure shell recover</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../shells/commands/cmd_structure.shell.refine.html#structure.shell.refine" title="This command refines elements in the range by subdividing them by a factor of&#013;&#010; i .  A triangular element refined by  i  = 2 will yield four triangular elements;&#013;&#010; i  = 3 would yield 16 triangular elements, etc. The original element is deleted."><span class="fishcmd">structure shell refine</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../shells/commands/cmd_structure.shell.select.html#structure.shell.select" title="This commands selects or de-selects all elements in the range.  Selected objects&#013;&#010;can be specified in a range filter by using the  selected  keyword.  Objects&#013;&#010;that are  not  selected can be specified in a range filter by using the  deselected &#013;&#010;keyword."><span class="fishcmd">structure shell select</span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="h2 rubric" id="node-commands"><code class="docutils literal"><span class="pre">node</span></code> commands</p>
+<p>Commands that apply to structural nodes elements.</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/commands/cmd_structure.node.apply.html#structure.node.apply" title="Set generalized point loads for all nodes in the range. Generalized point loads&#013;&#010;consist of an applied force and an applied moment. Pressure loading can be applied&#013;&#010;to shell surfaces using the commands  structure shell apply ,  structure geogrid&#013;&#010;apply , or  structure liner apply . Distributed loads can be applied to beam&#013;&#010;and pile surfaces using the command  structure beam apply  or  structure pile&#013;&#010;apply . The following keywords are available to define generalized point loads."><span class="fishcmd">structure node apply</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/commands/cmd_structure.node.create.html#structure.node.create" title="Create a structural node at location  v . Individually created nodes may be&#013;&#010;used to create elements using the  by-nodeids  command form (for example  structure&#013;&#010;beam create by-nodeids ). When other command forms are used (for instance,  by-line &#013;&#010;or  by-ray ), it is not necessary to separately create nodes when creating elements—they&#013;&#010;are created automatically as the element is created."><span class="fishcmd">structure node create</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/commands/cmd_structure.node.damping-local.html#structure.node.damping-local" title="Sets the local-damping factor to  f  for all nodes in the range (see the  structure&#013;&#010;damping  command). By default,  f  equals to 0.8."><span class="fishcmd">structure node damping-local</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/commands/cmd_structure.node.delete.html#structure.node.delete" title="Delete all nodes in the range.  FLAC3D  will not allow nodes that are connected&#013;&#010;to structural elements to be deleted."><span class="fishcmd">structure node delete</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/commands/cmd_structure.node.fix.html#structure.node.fix" title="Fix conditions for all nodes in the range, thereby preventing these values from&#013;&#010;changing. If any translational/rotational velocity component is fixed, then&#013;&#010;all three components of the translational/rotational velocity should also be&#013;&#010;specified in the local coordinate system via the  structure node initialize &#013;&#010;command. If a fixed displacement is required, the appropriate velocities should&#013;&#010;be initialized to zero. Degrees-of-freedom with a rigid attachment condition&#013;&#010;cannot be fixed; the rigid condition overrides the fix condition."><span class="fishcmd">structure node fix</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/commands/cmd_structure.node.free.html#structure.node.free" title="Free fixed conditions for all nodes in the range."><span class="fishcmd">structure node free</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/commands/cmd_structure.node.group.html#structure.node.group" title="Assign all nodes in the range to the group with the name  s1 . Use of the group&#013;&#010;logic is described in  group_manual . A node may only belong to one group in&#013;&#010;a given slot. Assigning a node to a new group in that slot will cause it to&#013;&#010;be removed from its current group assignment. The command  structure node list &#013;&#010;command lists the existing node group names."><span class="fishcmd">structure node group</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/commands/cmd_structure.node.hide.html#structure.node.hide" title="This command hides or un-hides all nodes in the range. By default, commands&#013;&#010;that use a range filter will skip hidden objects. This can be overruled with&#013;&#010;the  use-hidden  keyword in the range specification."><span class="fishcmd">structure node hide</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/commands/cmd_structure.node.history.html#structure.node.history" title="Samples nodal responses.  These include displacement, velocity, position, and&#013;&#010;out-of-balance force."><span class="fishcmd">structure node history</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/commands/cmd_structure.node.initialize.html#structure.node.initialize" title="Initialize quantities on all structure nodes in the range.  Note that positions&#013;&#010;can only be specified in the global system."><span class="fishcmd">structure node initialize</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/commands/cmd_structure.node.join.html#structure.node.join" title="This command creates node-to-node links on all nodes in the range by attempting&#013;&#010;to find another node in the range that is at the same position. If found, and&#013;&#010;if the node does not already possess a node-to-node link, then any existing&#013;&#010;link is deleted and a new node-to-node link is created.  The new link is rigidly&#013;&#010;attached in all six degrees-of-freedom to the target node."><span class="fishcmd">structure node join</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/commands/cmd_structure.node.list.html#structure.node.list" title="Show information about structural element nodes in the range."><span class="fishcmd">structure node list</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../nodes/commands/cmd_structure.node.select.html#structure.node.select" title="This commands selects or de-selects all structural nodes in the range.  Selected&#013;&#010;objects can be specified in a range filter by using the  selected  keyword.&#013;&#010; Objects that are  not  selected can be specified in a range filter by using&#013;&#010;the  deselected  keyword."><span class="fishcmd">structure node select</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../nodes/commands/cmd_structure.node.system-local.html#structure.node.system-local" title="Set the orientation of the node-local system for all nodes in the range."><span class="fishcmd">structure node system-local</span></a></td>
+</tr>
+</tbody>
+</table>
+<p class="h2 rubric" id="link-commands"><code class="docutils literal"><span class="pre">link</span></code> commands</p>
+<p>Commands that apply to structural links elements.</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../links/commands/cmd_structure.link.attach.html#structure.link.attach" title="Set attachment conditions for the specified link directions. The current attachment&#013;&#010;condition will be replaced by the condition specified here. Conditions are specified&#013;&#010;in keyword pairs, the first ( keyword ) being the degree-of-freedom and the&#013;&#010;second ([linkattachblock]) being the type of condition to use.  The following&#013;&#010;keywords are available to specify the degree-of-freedom:"><span class="fishcmd">structure link attach</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../links/commands/cmd_structure.link.create.html#structure.link.create" title="Creates new links on structure nodes in the range. If the node already has a&#013;&#010;link associated with it, this will be ignored. Existing links can be removed&#013;&#010;with the  structure link delete  command. If source and target ID numbers are&#013;&#010;not supplied, then the command will automatically look for valid targets on&#013;&#010;all potential new links in the range."><span class="fishcmd">structure link create</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../links/commands/cmd_structure.link.delete.html#structure.link.delete" title="Delete all links in the range."><span class="fishcmd">structure link delete</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../links/commands/cmd_structure.link.group.html#structure.link.group" title="Assign all links in the range to the group with the name  s . Use of the group&#013;&#010;logic is described in  group_manual . A link may only belong to one group in&#013;&#010;a given slot. Assigning an element to a new group in that slot will cause it&#013;&#010;to be removed from its current group assignment. The  structure link list  command&#013;&#010;lists the existing link group names."><span class="fishcmd">structure link group</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../links/commands/cmd_structure.link.hide.html#structure.link.hide" title="This commands hides or un-hides all links in the range. By default, commands&#013;&#010;that use a range filter will skip hidden objects. This can be overruled with&#013;&#010;the  use-hidden  keyword in the range specification."><span class="fishcmd">structure link hide</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../links/commands/cmd_structure.link.history.html#structure.link.history" title="Samples relative displacement or force from a single degree-of-freedom in a&#013;&#010;structural element link."><span class="fishcmd">structure link history</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../links/commands/cmd_structure.link.list.html#structure.link.list" title="List values and information about link objects in the range."><span class="fishcmd">structure link list</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../links/commands/cmd_structure.link.property.html#structure.link.property" title="List a property of a deformable force-displacement model in the link at the&#013;&#010;degree-of-freedom specified in  keyword .  A list of properties available to&#013;&#010;each link constitituve model is found in  Structural Element Link Properties ."><span class="fishcmd">structure link property</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../links/commands/cmd_structure.link.select.html#structure.link.select" title="This commands selects or de-selects all links in the range.  Selected objects&#013;&#010;can be specified in a range filter by using the  selected  keyword.  Objects&#013;&#010;that are  not  selected can be specified in a range filter by using the  deselected &#013;&#010;keyword."><span class="fishcmd">structure link select</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../links/commands/cmd_structure.link.slide.html#structure.link.slide" title="Set the large-strain sliding flag.  The flag will be set for all links within&#013;&#010;the specified range.   [DR: help to sort out what to do with next statement]&#013;&#010;See :flag2:-Linky!!!!!- for a discussion of large-strain sliding behavior."><span class="fishcmd">structure link slide</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../links/commands/cmd_structure.link.tolerance-contact.html#structure.link.tolerance-contact" title="Set the tolerance used when establishing node-to-zone links. A node is considered&#013;&#010;to be in a zone if it is within a distance   of the zone boundary, where δ equals&#013;&#010; f  times zone size (taken as the maximum  -,  -, or  -dimension of the zone&#013;&#010;bounding box). Nodes that are used by elements with their sliding flag on will&#013;&#010;utilize  structure link tolerance-slide  instead of  f  when attempting to update&#013;&#010;the zone interpolation point"><span class="fishcmd">structure link tolerance-contact</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../links/commands/cmd_structure.link.tolerance-node.html#structure.link.tolerance-node" title="Set the tolerance used when establishing node-to-node links. A node-to-node&#013;&#010;link can only be established if the distance between the two nodes is less than&#013;&#010; f . By default,  f  equals 1 × 10 -5 ."><span class="fishcmd">structure link tolerance-node</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../links/commands/cmd_structure.link.tolerance-slide.html#structure.link.tolerance-slide" title="Set the tolerance used when updating node-to-zone links in response to large-strain&#013;&#010;motion. A node is considered to be in a zone if it is within a distance :math`delta`&#013;&#010;of the zone boundary, where :math`delta` equals  f  times zone size (taken as&#013;&#010;the maximum  -,  -, or  -dimension of the zone bounding box).   By default,&#013;&#010; f  equals 1 × 10 -5 ."><span class="fishcmd">structure link tolerance-slide</span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.damping.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">damping</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.dynamic.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">dynamic</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.list.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.mechanical.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">mechanical</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.ratio.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">ratio</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.results.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">results</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.safety-factor.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">safety-factor</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.scale-rotational-mass.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">scale-rotational-mass</span></code> command</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Commands" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,134 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Lines &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Data Types" href="fish_datatypes.html" />
+    <link rel="prev" title="FISH Rules and Usage" href="fish_languagerules.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="lines">
+<span id="fish-lines"></span><h1>Lines</h1>
+<p><span class="codename">FISH</span> programs can be embedded in a <span class="codename">UDEC</span> data file, or may be entered directly into the console. Lines following the word <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.define.html#command:fish.define" title="Define a new |FISH| function.   The function will be named  s , and must&#013;&#010;be a valid symbol name.  Tokens following are assumed to be arguments that the&#013;&#010;function will take.  Please see  fish_scripting .  [CS: this needs&#013;&#010;'common-izing  for use with PFC] and the ref-basicclifishtutorial.`"><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">define</span></code></a> are taken to be statements of a <span class="codename">FISH</span> function. The function stops when the statement <span class="cmdkey">end</span> is encountered. A valid line of <span class="codename">FISH</span> code must take one of the following forms:</p>
+<ol class="arabic simple">
+<li>The line starts with a statement, such as <span class="fishname">if</span>, <span class="fishname">loop</span>, etc. (see the <a class="reference internal" href="fish_statements.html#fish-statements"><span class="std std-ref">FISH statements</span></a>).</li>
+<li>The line contains one or more names of built-in or user-defined <span class="codename">FISH</span> functions, separated by spaces (for example,
+<span class="fishname">fun_1 fun_2 fun_3</span>).</li>
+<li>The line consists of an assignment statement (i.e., the expression on the right of the = sign is evaluated, and the value
+is given to the variable or function name on the left of the = sign).</li>
+<li>The line consists of a <span class="codename">UDEC</span> command, provided that the line is embedded in a section of <span class="codename">FISH</span> code delimited by
+<a class="reference internal" href="statements/commandendcommand.html#fish-statement-commandendcommand"><span class="std std-ref">command - endcommand</span></a>.</li>
+<li>The line is blank or starts with a semicolon.</li>
+</ol>
+<p><span class="codename">FISH</span> variables and statements must be spelled out in full: they cannot be truncated, unlike <span class="codename">UDEC</span> commands.</p>
+<p><span class="codename">FISH</span> built-in library functions may use abbreviations if the name contains a ‘.’ and the result is unambiguous.</p>
+<p>Continuation lines are allowed with the <span class="varstring"><span class="null">...</span></span> control statement at the end of the line.</p>
+<p><span class="codename">FISH</span> is “case-insensitive” at all times. Spaces are significant (unlike in FORTRAN) and serve to separate variables, keywords, etc.; no embedded blanks are allowed in variable or function names. Extra spaces may be used to improve readability (for example, by indenting loops and conditional clauses).</p>
+<p>Any characters following a semicolon ( ; ) are ignored; comments may be embedded in a <span class="codename">FISH</span> program by preceding them with a semicolon. Blank lines may be embedded in a <span class="codename">FISH</span> program.</p>
+<p class="h2 rubric">Inline <span class="codename">FISH</span></p>
+<p>In addition to the typical insertion of <span class="codename">FISH</span> via <a class="reference internal" href="../../../../../kernel/doc/manual/fish/commands/cmd_fish.define.html#command:fish.define" title="Define a new |FISH| function.   The function will be named  s , and must&#013;&#010;be a valid symbol name.  Tokens following are assumed to be arguments that the&#013;&#010;function will take.  Please see  fish_scripting .  [CS: this needs&#013;&#010;'common-izing  for use with PFC] and the ref-basicclifishtutorial.`"><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">define</span></code></a>, valid <span class="codename">FISH</span> statements may be included as their own lines as <span class="codename">FISH</span> fragments or <em>within</em> a command using the inline <span class="codename">FISH</span> facility.  Anything found inside square brackets ( [ ] ) is interpreted in-place and immediately evaluated.  This can be an efficient and preferable mechanism for simple, shorthand <span class="codename">FISH</span> operations. See <a class="reference internal" href="fish_inline.html#fish-inline"><span class="std std-ref">Executing FISH:  Inline FISH or FISH Fragments</span></a> for further information.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="fish.html" ><span class="codename">FISH</span> Scripting Reference</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="fish_languagerules.html" accesskey="U"><span class="codename">FISH</span> Rules and Usage</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="fish_languagerules.html"
+                           title="previous chapter"> <span class="codename">FISH</span> Rules and Usage</a> |    
+       <a href="fish_datatypes.html"
+                           title="next chapter">Data Types</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Lines" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

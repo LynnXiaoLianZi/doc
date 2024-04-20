@@ -1,0 +1,245 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Joint &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../../../search.html" />
+    <link rel="next" title="Moment" href="moment_thrust.html" />
+    <link rel="prev" title="Fluid Far Field" href="fluid_far_field.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="joint">
+<span id="ui-pi-joints"></span><h1>Joint</h1>
+<p class="h3 rubric" id="joint-description">Description</p>
+<p>Show joint information by label or value. The first few attributes of this plot item are <a class="reference internal" href="../plotitemsinudec.html#descendfromcolorbypattern"><span class="std std-ref">contingent on the first attribute</span></a> (<em>Color By</em>).</p>
+<p class="h3 rubric" id="joint-attributes">Attributes</p>
+<div class="docutils container" id="attributelist">
+<a class="reference internal" href="#joint-colorby-att"><span class="std std-ref">Color-By</span></a>
+<a class="reference internal" href="#joint-label-att"><span class="std std-ref">Joint Label/Value</span></a>
+<a class="reference internal" href="#joint-colorlistorcontour-att"><span class="std std-ref">Color-List/Contour</span></a>
+<a class="reference internal" href="#joint-line-att"><span class="std std-ref">Line</span></a>
+<a class="reference internal" href="#joint-scale-att"><span class="std std-ref">Scale</span></a>
+<a class="reference internal" href="#joint-joined-att"><span class="std std-ref">Joined</span></a>
+<a class="reference internal" href="#joint-normals-att"><span class="std std-ref">Normals</span></a>
+<a class="reference internal" href="#joint-thick-att"><span class="std std-ref">Thick</span></a>
+<a class="reference internal" href="#joint-index-att"><span class="std std-ref">Contact Index</span></a>
+<a class="reference internal" href="#joint-open-att"><span class="std std-ref">Show Open</span></a>
+<a class="reference internal" href="#joint-map-att"><span class="std std-ref">Map</span></a>
+<a class="reference internal" href="#joint-legend-att"><span class="std std-ref">Legend</span></a></div>
+<p id="joint-colorby-att"><strong>Color By</strong></p>
+<img alt="../../../../../../../../../../_images/colorby_labelorcontour.png" class="pi-attribute" src="../../../../../../../../../../_images/colorby_labelorcontour.png" />
+<p>Set either a “label” or a “contour” to be colored on the plot item.</p>
+<p id="joint-label-att"><strong>Label/Value</strong></p>
+<img alt="../../../../../../../../../../_images/labelorvalueselect.png" class="pi-attribute" src="../../../../../../../../../../_images/labelorvalueselect.png" />
+<p>Specify which label or value (as determined by the previous setting) to display in the plot item. The options for both are shown on the following table.  Some options will require additional, dynamically-provided attributes in order to complete the selection; these are indicated with notations on the table.</p>
+<blockquote>
+<div><table border="1" class="colwidths-given icg1 docutils" id="jointlabelvalueoptions">
+<caption><span class="caption-text">Table 1: Selection Options for Label/Value</span></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Label</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Constitutive</td>
+<td>Aperture</td>
+</tr>
+<tr class="row-odd"><td>Contact Extraᵉ</td>
+<td>Closure</td>
+</tr>
+<tr class="row-even"><td>Contact Groupˢ</td>
+<td>Contact Extraᵉ</td>
+</tr>
+<tr class="row-odd"><td>Direction</td>
+<td>Factor Of Safety</td>
+</tr>
+<tr class="row-even"><td>Fracture</td>
+<td>Flow Rate</td>
+</tr>
+<tr class="row-odd"><td>Joint Set</td>
+<td>Flow Velocity</td>
+</tr>
+<tr class="row-even"><td>Joint Type</td>
+<td>MAperture</td>
+</tr>
+<tr class="row-odd"><td>Material</td>
+<td>Normal Displacement</td>
+</tr>
+<tr class="row-even"><td>Model</td>
+<td>Normal Force</td>
+</tr>
+<tr class="row-odd"><td>Open</td>
+<td>Normal Stress</td>
+</tr>
+<tr class="row-even"><td>Propertyᵖ</td>
+<td>Pressure</td>
+</tr>
+<tr class="row-odd"><td>State</td>
+<td>Separation</td>
+</tr>
+<tr class="row-even"><td>Uniform</td>
+<td>Shear Displacement</td>
+</tr>
+<tr class="row-odd"><td>Shear Force</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Shear Stress</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Stress-Ratio</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="colwidths-given blank docutils" id="jointlabelvalueoptionskey">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key:</td>
+</tr>
+<tr class="row-even"><td>ᵉAn “Extra” attribute follows</td>
+</tr>
+<tr class="row-odd"><td>ᵖA “Property” attribute follows</td>
+</tr>
+<tr class="row-even"><td>ˢA “Slot” attribute follows</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p id="joint-line-att"><strong>Line</strong></p>
+<img alt="line attribute" class="pi-attribute" src="../../../../../../../../../../_images/line01.png" />
+<p>Select line type, color and thickness for joint traces.</p>
+<p id="joint-colorlistorcontour-att"><strong>Color-List/Contour</strong></p>
+<p>The attribute appearing in this position is either a <em>Color-List</em> or a <em>Contour</em>, depending on the “Color By” selection.  Refer to the standard <a class="reference internal" href="attributes/std_colorlist.html#std-colorlist"><span class="std std-ref">color-list</span></a> control description and the standard <a class="reference internal" href="attributes/std_contour.html#std-contour"><span class="std std-ref">contour</span></a> control description for details.</p>
+<span class="target" id="joint-scale-att"></span><p><strong>Scale</strong></p>
+<img alt="../../../../../../../../../../_images/scale021.png" class="pi-attribute" src="../../../../../../../../../../_images/scale021.png" />
+<p>Size the plot item.</p>
+<blockquote>
+<div><em>Scale</em>: Automatically (checked) scale the plot item.  The <em>Target</em> field specifies the target scaling (as a percentage of screen size).  If unchecked, the edit field may be used to manually scale the item.</div></blockquote>
+<p id="joint-joined-att"><strong>Joined</strong></p>
+<img alt="joined attribute" class="pi-attribute" src="../../../../../../../../../../_images/joined.png" />
+<p>Select whether to display joints that are joined.</p>
+<p id="joint-normals-att"><strong>Normals</strong></p>
+<img alt="normals attribute" class="pi-attribute" src="../../../../../../../../../../_images/normals.png" />
+<p>Selecting normals will display lines indicating the contact normal vectors.</p>
+<p id="joint-thick-att"><strong>Thick</strong></p>
+<img alt="thick attribute" class="pi-attribute" src="../../../../../../../../../../_images/thick.png" />
+<p>Selecting this will plot the joint traces in a line thickness proportional to the selected value.</p>
+<p id="joint-index-att"><strong>Contact_index</strong></p>
+<img alt="index attribute" class="pi-attribute" src="../../../../../../../../../../_images/contact_index.png" />
+<p>Selecting this will display the contact index numbers on the plot.  This may be very slow for models with a large number of contacts.</p>
+<p id="joint-open-att"><strong>Show Open</strong></p>
+<img alt="open attribute" class="pi-attribute" src="../../../../../../../../../../_images/show_open.png" />
+<p>Selecting this will limit the plor to only display joints that have contact with zero normal forces.</p>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../../../plotting.html" >Plotting</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="../plotitem_index.html" >Plot Items</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="../plotitemsinudec.html" accesskey="U">Plot Items in <span class="codename">UDEC</span></a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="fluid_far_field.html"
+                           title="previous chapter"> Fluid Far Field</a> |    
+       <a href="moment_thrust.html"
+                           title="next chapter">Moment</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Joint" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

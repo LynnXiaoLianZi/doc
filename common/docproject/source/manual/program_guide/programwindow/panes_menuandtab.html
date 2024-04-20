@@ -1,0 +1,157 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Pane Menu and Tab Menu &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Toolbar" href="toolbar.html" />
+    <link rel="prev" title="Showing and Opening" href="panes_showingopening.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="pane-menu-and-tab-menu">
+<span id="panesmenuandtab"></span><h1>Pane Menu and Tab Menu</h1>
+<p>The pane menu ( <img alt="pmen" class="foo" src="../../../../../../_images/menu_white_16x8.png" /> ) facilitates operation of panes independently of the main window  — particularly in the case when the pane is currently <a class="reference internal" href="panes_floatingdocking.html#panesfloatinganddocking"><span class="std std-ref">floated</span></a>.</p>
+<p class="h2 rubric">Pane Menu, Docked</p>
+<p>When docked, the pane menu for all pane types is the same.</p>
+<div class="figure" id="id1">
+<a class="reference internal image-reference" href="../../../../../../_images/docked_panemenu.png"><img alt="../../../../../../_images/docked_panemenu.png" src="../../../../../../_images/docked_panemenu.png" style="width: 135.3px; height: 88.44px;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: The pane menu for a docked pane.</span></p>
+</div>
+<ul class="simple">
+<li><span class="menuselection">Show Toolbar/Hide Toolbar</span>: the first menu option is a toggle that will cause a copy of the main toolbar to be shown/hidden within the pane, just below the title bar (the text of the option changes to reflect the choice opposite the current display state of the toolbar).</li>
+<li><span class="menuselection">Float Maximized/Dock</span>: the option in this position is a toggle between automatically floating and maximizing the pane (if currently docked) or docking the pane to its original position (if currently floated).</li>
+<li><span class="menuselection">Dock on Drag</span>: this is a toggle option which, when set “off” (unchecked), causes the pane to not be dock-able — meaning any move from a docked position will cause it to float, and re-docking it from a floated state becomes impossible.</li>
+</ul>
+<p class="h2 rubric">Pane Menu, Floated</p>
+<p>The situation becomes more complicated and variable when a pane is floated.</p>
+<div class="figure" id="id2">
+<a class="reference internal image-reference" href="../../../../../../_images/floated_panemenu.png"><img alt="../../../../../../_images/floated_panemenu.png" src="../../../../../../_images/floated_panemenu.png" style="width: 382.8px; height: 173.58px;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: The pane menu for a floated <span class="flag4">i</span> <a class="reference internal" href="../mechanics/commands/console_pane/consolepane.html#theconsolepane"><span class="std std-ref">Console</span></a> pane.</span></p>
+</div>
+<p>In the illustrative image, the first three options are the same as those described above, though in this case the context or current settings have each toggle in the opposite state as in the image for the docked pane.  The mouse is about to select “Hide Toolbar” — which, as is seen in the fragment of the pane itself that is visible, is currently being shown.  The next option, “Dock”, is also consonant with the current pane settings.  And the “Dock on Drag” option has been set off, which means that only by choosing the “Dock” option can the pane be re-docked.</p>
+<ul class="simple">
+<li><span class="menuselection">Show/Hide Control Panel</span>: toggle setting the <em>Control Panel</em> to be displayed/hidden within the floated pane.</li>
+</ul>
+<p>When shown within the floated pane, the <em>Control Panel</em>’s constituent control sets may be specified via the pane menu (in the image above, for instance, the item “FISH Global Symbols”).  This can also be achieved from the “Show or hide control sets” button ( <img alt="tset" src="../../../../../../_images/togglecontrolset_inactive.png" /> ) on the pane’s toolbar — which will behave identically as it does <a class="reference internal" href="toolbar.html#controlpaneltools"><span class="std std-ref">when on the main toolbar</span></a> (the button is not seen in the image above because it is positioned under the opened pane menu).  However, display of control sets from that button is impossible <em>if</em> the toolbar is <em>not</em> being shown in the pane, in which case the only method to show/hide control sets in the <em>Control Panel</em> is the pane menu.  The control sets listed on the menu will be contextual to the type of pane that is floated.</p>
+<p class="h2 rubric">Tab Menu</p>
+<p>When a pane is <a class="reference internal" href="panes_stacking.html#panesstacking"><span class="std std-ref">stacked</span></a> in a tabbed set, right-clicking on the tab of a pane will open a menu of options as well.  The exact list of items on the menu will depend on the type of pane it is.  All possible options are listed below, with notation for which pane types will provide that option.</p>
+<ul class="simple">
+<li><span class="menuselection">Hide</span>: hide the current pane.  This is available for all pane types.</li>
+<li><span class="menuselection">Close</span>: close the current pane.  This is available for all types <a class="reference internal" href="panes_hidingclosing.html#listofclosurestates"><span class="std std-ref">that can be closed</span></a>.</li>
+<li><span class="menuselection">Float</span>: float the current pane.  Available for all pane types.</li>
+<li><span class="menuselection">Rename</span>: this option will open a simple dialog that allows the current pane to be renamed, if the pane is a <em>View</em> pane containing a plot.  If the pane is an <em>Edit</em> pane containing a data file, a <span class="menuselection">File ‣ Save</span> dialog is opened that allows renaming/relocating the current data file.  This option is only available for <em>View</em> and <em>Editor</em> panes.</li>
+</ul>
+<style>
+img.foo {
+   background-color: blue;
+   padding: .25em;
+   background-color: #3d6cc4;
+   border-radius: 4px;
+}
+</style></div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../mechanics/program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../mechanics/configuration/configuration.html" >Program Layout, Configuration, Tools</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="programwindow.html" >The Program Window</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="panes.html" accesskey="U">Panes</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="panes_showingopening.html"
+                           title="previous chapter"> Showing and Opening</a> |    
+       <a href="toolbar.html"
+                           title="next chapter">Toolbar</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Pane Menu and Tab Menu" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

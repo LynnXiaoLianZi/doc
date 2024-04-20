@@ -1,0 +1,208 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Hiding and Closing &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Showing and Opening" href="panes_showingopening.html" />
+    <link rel="prev" title="Floating and Docking" href="panes_floatingdocking.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="hiding-and-closing">
+<span id="paneshidingclosing"></span><h1>Hiding and Closing</h1>
+<p>Panes are hidden or closed exclusively from the controls on their title bars (panes are only <em>opened</em>, not closed, from the <span class="menuselection"><span class="accelerator">D</span>ocuments</span> and <span class="menuselection"><span class="accelerator">P</span>anes</span> menus).  The possible closure states of a pane are determined by the buttons presented on the title bar.  These are as follows.</p>
+<blockquote>
+<div><p><img alt="pclose" class="foo" src="../../../../../../_images/destroy_titlebar_white.png" /> closes the window</p>
+<p><img alt="phide" class="foo" src="../../../../../../_images/minimize_white_16x8.png" /> hides the window</p>
+</div></blockquote>
+<p>If a button is not present on a pane’s title bar, the operation it represents is not possible for that pane.</p>
+<p class="h2 rubric" id="closurestates">Hiding vs. Closing</p>
+<p>A hidden pane is present but not visible.  Whatever operations it performs and resources it requires are active while hidden.  By contrast, a closed pane is not just not visible, it is not extant (and thus is not consuming computer resources). If (in)visibility alone is the only concern, the distinction is not significant.  However, there are cases where, even hidden, activity within some panes — such as the <span class="flag4">i</span> <a class="reference internal" href="../mechanics/savedstates/staterecord_pane/staterecordoverview.html#thestaterecordpane"><span class="std std-ref">State Record</span></a> pane, for instance —  is intensive enough that it can impact speed of calculations, in which case <em>closing</em> the window, rather than <em>hiding</em> it, may be advisable.</p>
+<table border="1" class="colwidths-given blank docutils" id="listofclosurestates">
+<caption><span class="caption-text">Table 1: Available Closure States for Each Pane Type</span></caption>
+<colgroup>
+<col width="67%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pane</th>
+<th class="head">Close</th>
+<th class="head">Hide</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><em>Console</em></td>
+<td>&#160;</td>
+<td>x</td>
+</tr>
+<tr class="row-odd"><td><em>Project</em></td>
+<td>&#160;</td>
+<td>x</td>
+</tr>
+<tr class="row-even"><td><em>State Record</em></td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr class="row-odd"><td><em>Extrusion</em>*</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr class="row-even"><td><em>Building Blocks</em>*</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr class="row-odd"><td><em>Model</em>*</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr class="row-even"><td><em>IPython Console</em></td>
+<td>&#160;</td>
+<td>x</td>
+</tr>
+<tr class="row-odd"><td><em>View</em></td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr class="row-even"><td><em>Editor</em></td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr class="row-odd"><td><em>Listing</em></td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>*Available in <span class="codename">FLAC3D</span> only.</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Keep in mind that plots, unlike data files, have <em>no separate existence</em> from the project.  They are stored in the <a class="reference internal" href="../../glossaryofterms.html#term-project-file"><span class="xref std std-term">project file</span></a>.  Thus, <em>closing</em> the <span class="flag4">i</span> <a class="reference internal" href="../mechanics/plotting/views/plotpane.html#theviewpane"><span class="std std-ref">View</span></a> pane that contains a plot permanently deletes the plot — there is no mechanism to restore or reopen it.</p>
+</div>
+<style>
+img.foo {
+   background-color: blue;
+   padding: .25em;
+   background-color: #3d6cc4;
+   border-radius: 4px;
+}
+table td:last-child {
+ text-align: center;
+}
+table td:nth-child(2) {
+ text-align: center;
+}
+</style></div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../mechanics/program_mechanics.html" >Program Mechanics</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../mechanics/configuration/configuration.html" >Program Layout, Configuration, Tools</a> &#187;</li>
+       <li class="nav-item nav-item-4"><a href="programwindow.html" >The Program Window</a> &#187;</li>
+       <li class="nav-item nav-item-5"><a href="panes.html" accesskey="U">Panes</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="panes_floatingdocking.html"
+                           title="previous chapter"> Floating and Docking</a> |    
+       <a href="panes_showingopening.html"
+                           title="next chapter">Showing and Opening</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Hiding and Closing" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

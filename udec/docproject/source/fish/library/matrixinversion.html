@@ -1,0 +1,178 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Matrix Inversion via LU-Decomposition &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="matrix-inversion-via-lu-decomposition">
+<span id="matrixinversion"></span><h1>Matrix Inversion via LU-Decomposition</h1>
+<p>A pair of <span class="codename">FISH</span> functions (<code class="docutils literal"><span class="pre">ludcmp</span></code> and <code class="docutils literal"><span class="pre">lubksb</span></code>) can be used to solve the system of equations</p>
+<div class="math">
+\[Ax = b\]</div>
+<p>where <span class="math">\(A\)</span> is a given square matrix of size n, b is a given vector of size <span class="math">\(n\)</span>, and <span class="math">\(x\)</span> is the desired solution vector of size n. The <span class="codename">FISH</span> function <code class="docutils literal"><span class="pre">ludcmp</span></code> performs an LU-decomposition on the matrix <span class="math">\(A\)</span>. The <span class="codename">FISH</span> function <code class="docutils literal"><span class="pre">lubksb</span></code> performs the back-substitution operation to produce the solution vector <span class="math">\(x\)</span>. Both of these functions implement the algorithm described in Press et al. (1986).</p>
+<p>An example problem demonstrating the use of the two FISH functions is provided in the data file below. The size of the matrix is passed as an argument to <code class="docutils literal"><span class="pre">make_random_data</span></code>.</p>
+<p><em>Reference</em></p>
+<p>Press, W. H., et al. <span class="bi">Numerical Recipes: The Art of Scientific Computing (FORTRAN Version)</span>. Cambridge: Cambridge University Press (1986).</p>
+<p><strong>Data File:</strong> <code class="docutils literal"><span class="pre">luda.dat</span></code></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="c">; Test LU-decomposition FISH functions on random matrices.</span>
+<span class="c">;</span>
+<span class="nb">model title</span><span class="n"> </span><span class="s">&#39;LU decomposition&#39;</span>
+<span class="nb">model new</span>
+<span class="nb">fish define</span><span class="ni"> luda_setup</span>
+<span class="ni">  lu_nn </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">8</span><span class="ni"> </span><span class="c">; define dimensions of matrices</span>
+<span class="nb">end</span>
+<span class="c">;</span>
+<span class="ni">@luda_setup</span>
+<span class="c">;</span>
+<span class="nb">fish define</span><span class="ni"> make_random_data</span>
+<span class="ni">  </span><span class="k">array</span><span class="ni"> aa</span><span class="p">(</span><span class="ni">lu_nn</span><span class="p">,</span><span class="ni">lu_nn</span><span class="p">)</span><span class="ni"> indx</span><span class="p">(</span><span class="ni">lu_nn</span><span class="p">)</span><span class="ni"> bb</span><span class="p">(</span><span class="ni">lu_nn</span><span class="p">)</span><span class="ni"> </span><span class="c">; needed by LUDA functions</span>
+<span class="ni">  </span><span class="k">array</span><span class="ni"> xx</span><span class="p">(</span><span class="ni">lu_nn</span><span class="p">)</span><span class="ni">                             </span><span class="c">; just used locally</span>
+<span class="c">;--- fill aa for test</span>
+<span class="ni">  </span><span class="k">loop</span><span class="ni"> i </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="ni">lu_nn</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> j </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="ni">lu_nn</span><span class="p">)</span>
+<span class="ni">      aa</span><span class="p">(</span><span class="ni">i</span><span class="p">,</span><span class="ni">j</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="k">math.random.uniform</span>
+<span class="ni">    </span><span class="k">end_loop</span>
+<span class="ni">  </span><span class="k">end_loop</span>
+<span class="c">;--- set &quot;unkowns&quot;</span>
+<span class="ni">  </span><span class="k">loop</span><span class="ni"> i </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="ni">lu_nn</span><span class="p">)</span>
+<span class="ni">    xx</span><span class="p">(</span><span class="ni">i</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> float</span><span class="p">(</span><span class="ni">i</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">table.x</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="ni">i</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> float</span><span class="p">(</span><span class="ni">i</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">table.y</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="ni">i</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> xx</span><span class="p">(</span><span class="ni">i</span><span class="p">)</span>
+<span class="ni">  </span><span class="k">end_loop</span>
+<span class="c">;--- multiply by matrix to get r.h.s.</span>
+<span class="ni">  </span><span class="k">loop</span><span class="ni"> i </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="ni">lu_nn</span><span class="p">)</span>
+<span class="ni">    sum </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0.0</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> j </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="ni">lu_nn</span><span class="p">)</span>
+<span class="ni">      sum </span><span class="p">=</span><span class="ni"> sum </span><span class="o">+</span><span class="ni"> aa</span><span class="p">(</span><span class="ni">i</span><span class="p">,</span><span class="ni">j</span><span class="p">)</span><span class="ni"> </span><span class="o">*</span><span class="ni"> xx</span><span class="p">(</span><span class="ni">j</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">end_loop</span>
+<span class="ni">    bb</span><span class="p">(</span><span class="ni">i</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> sum</span>
+<span class="ni">    ii </span><span class="p">=</span><span class="ni"> </span><span class="k">io.out</span><span class="p">(</span><span class="s">&#39; b(&#39;</span><span class="o">+</span><span class="ni">string</span><span class="p">(</span><span class="ni">i</span><span class="p">)</span><span class="o">+</span><span class="s">&#39;) = &#39;</span><span class="o">+</span><span class="ni">string</span><span class="p">(</span><span class="ni">sum</span><span class="p">))</span>
+<span class="ni">  </span><span class="k">end_loop</span>
+<span class="nb">end</span>
+<span class="c">;--- look at results ---</span>
+<span class="nb">fish define</span><span class="ni"> look</span>
+<span class="ni">  </span><span class="k">loop</span><span class="ni"> i </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="ni">lu_nn</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">table.x</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="ni">i</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> float</span><span class="p">(</span><span class="ni">i</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">table.y</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="ni">i</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> bb</span><span class="p">(</span><span class="ni">i</span><span class="p">)</span>
+<span class="ni">    ii </span><span class="p">=</span><span class="ni"> </span><span class="k">io.out</span><span class="p">(</span><span class="s">&#39; x(&#39;</span><span class="o">+</span><span class="ni">string</span><span class="p">(</span><span class="ni">i</span><span class="p">)</span><span class="o">+</span><span class="s">&#39;) = &#39;</span><span class="o">+</span><span class="ni">string</span><span class="p">(</span><span class="ni">bb</span><span class="p">(</span><span class="ni">i</span><span class="p">)))</span>
+<span class="ni">  </span><span class="k">end_loop</span>
+<span class="nb">end</span>
+<span class="c">;</span>
+<span class="nb">program call</span><span class="n"> </span><span class="s">&#39;luda.fis&#39;</span>
+<span class="c">;</span>
+<span class="nb">program log</span><span class="n"> </span><span class="sx">on</span>
+<span class="ni">@make_random_data</span><span class="n"> </span><span class="c">; Right-hand-sides ...</span>
+<span class="ni">@ludcmp</span>
+<span class="ni">@lubksb</span>
+<span class="ni">@look</span><span class="n"> </span><span class="c">; Following list should correspond to original vector of pos-x values</span>
+<span class="c">; ===================================================================</span>
+<span class="n">table </span><span class="m m-Double">1</span><span class="n"> label </span><span class="s">&#39;Set values&#39;</span>
+<span class="n">table </span><span class="m m-Double">2</span><span class="n"> label </span><span class="s">&#39;Calculated values&#39;</span>
+<span class="nb">program log</span><span class="n"> </span><span class="sx">off</span>
+<span class="c">;pl hold tab 1 lin 2 cross</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../../../../../_images/716F0001.png"><img alt="../../../../../_images/716F0001.png" src="../../../../../_images/716F0001.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Comparison of “unknowns”</span></p>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Matrix Inversion via LU-Decomposition" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

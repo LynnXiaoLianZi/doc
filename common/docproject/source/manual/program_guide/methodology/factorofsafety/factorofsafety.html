@@ -1,0 +1,150 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Factor of Safety &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="Factor of Safety Defined" href="factorofsafetyindex.html" />
+    <link rel="prev" title="Localization, Physical Instability, and Path-Dependence" href="../localizationandpath.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="hide sectionname docutils container">
+<span class="codename">FLAC3D</span> Theory and Background • Factor of Safety</div>
+<div class="section" id="factor-of-safety">
+<span id="factorofsafety"></span><h1>Factor of Safety</h1>
+<p class="h2 rubric">Introduction</p>
+<p>This section describes the factor-of-safety calculation that can be used for stability analyses in <span class="codename">FLAC3D</span>, <span class="codename">UDEC</span>, and <span class="codename">3DEC</span>. This calculation is based upon the <a class="reference internal" href="computationalmethods.html#fos-strengthreductiontechnique"><span class="std std-ref">strength reduction method</span></a> to determine a factor of safety. The strength reduction method is an increasingly popular numerical method to evaluate factor of safety in geomechanics (e.g., see Dawson and Roth 1999, and Griffiths and Lane 1999). Although the method has been used extensively in the context of Mohr-Coulomb material, there are a few references available in the literature that extend the approach to nonlinear failure criteria in general (i.e., Dawson et al. 2000, Shukha and Baker 2003, Hammah et al. 2005, and Fu and Liao 2009). An overview of factor of safety and the strength reduction technique is given in the next section (<a class="reference internal" href="factorofsafetyindex.html#fos-index"><span class="std std-ref">Factor of Safety</span></a>).</p>
+<p>The strength reduction method can be applied to calculate the safety factor for a variety of different above-ground and underground structures (e.g., slopes, retaining walls, tunnels, etc.). In this section, the focus is on the factor of safety of slopes because this is the most common practical application of the method. In the section of <a class="reference internal" href="computationalmethods.html#fos-computationalmethods"><span class="std std-ref">computational methods for Factor of Safety</span></a>, the strength reduction method is described and compared to other computational methods (i.e., limit analysis and the limit equilibrium technique) commonly used to determine a safety factor for slopes.</p>
+<p>The <a class="reference internal" href="strengthreduction.html#fos-strengthreduction"><span class="std std-ref">strength reduction procedure</span></a> can be conducted manually in <span class="codename">FLAC3D</span>, <span class="codename">UDEC</span>, and <span class="codename">3DEC</span> by reducing selected strength properties until failure occurs. The method can also be performed automatically by issuing the <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a> command.</p>
+<p>In <span class="codename">FLAC3D</span>, <span class="codename">UDEC</span>, and <span class="codename">3DEC</span> strength properties for Mohr-Coulomb, ubiquitous-joint, and Hoek-Brown material models may be assigned with the commands <code class="xref fish fish-cmd docutils literal"><span class="pre">zone</span> <span class="pre">cmodel</span> <span class="pre">assign</span></code>, <a class="reference internal" href="../../../../../../../udec/docproject/source/elements/block/block.zone_commands/cmd_block.zone.cmodel.html#kwd:block.zone.cmodel.assign" title="This command assigns a constitutive model and/or one or more properties with&#013;&#010;all zones (of deformable blocks) that have centroids in the given range. The&#013;&#010;advantage of assigning models and properties with the BLOCK ZONE CMODEL ASSIGN&#013;&#010;command is that each zone has its own local properties.  This is reffered to&#013;&#010;as the ZONE property method (see  block.change.model  command for the BLOCK&#013;&#010;property method)."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">cmodel</span> <span class="pre">assign</span></code></a>, respectively.  They also can be applied to strength properties for interfaces (<span class="codename">FLAC3D</span>) or joints (<span class="codename">3DEC</span>). The properties affected by <a class="reference internal" href="../../../../../../kernel/doc/manual/model/commands/cmd_model.factor-of-safety.html#command:model.factor-of-safety" title="Set factor of safety analysis parameters.  See the section ref-factorofsafety-&#013;&#010;for a complete description. The following keywords apply."><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">factor-of-safety</span></code></a> are described <a class="reference internal" href="strengthreduction.html#fos-srm-properties"><span class="std std-ref">Strength Reduction Properties</span></a>.</p>
+<p>In <span class="codename">FLAC3D</span> and <span class="codename">UDEC</span> the velocity magnitude of each grid point after each factor of safety test is stored in the model state and made available for a factor of safety contour.  The limiting velocity used to determine the stable area for each factor of safety may be determined after the solution by experimentation. See the <span class="xref std std-ref">foscontours</span> example.</p>
+<p>Example factor of safety calculations based upon the strength reduction technique are also provided in this section, for both <span class="codename">3DEC</span> and <span class="codename">FLAC3D</span>. These examples include comparisons to solutions from limit analysis and the limit equilibrium technique. The examples are described and data files are listed in the <span class="xref std std-ref">fos_example</span> section.</p>
+<p class="h2 rubric">Section Outline</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="factorofsafetyindex.html">Factor of Safety Defined</a></li>
+<li class="toctree-l1"><a class="reference internal" href="computationalmethods.html">Computational Methods for Factor of Safety Calculation of Slopes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="computationalmethods.html#strength-reduction-technique">Strength Reduction Technique</a></li>
+<li class="toctree-l2"><a class="reference internal" href="computationalmethods.html#limit-analysis">Limit Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="computationalmethods.html#limit-equilibrium">Limit Equilibrium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="computationalmethods.html#relation-of-strength-reduction-method-to-limit-equilibrium-and-limit-analysis">Relation of Strength Reduction Method to Limit Equilibrium and Limit Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="strengthreduction.html">Strength Reduction Procedure in <span class="codename">FLAC3D</span> <span class="codename">UDEC</span>, and <span class="codename">3DEC</span></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="strengthreduction.html#strength-reduction-properties">Strength Reduction Properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strengthreduction.html#mohr-coulomb-material">Mohr-Coulomb Material</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strengthreduction.html#ubiquitous-joint-material">Ubiquitous-Joint Material</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strengthreduction.html#hoek-brown-material">Hoek-Brown Material</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strengthreduction.html#interfaces-flac3d">Interfaces (<span class="codename">FLAC3D</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strengthreduction.html#coulomb-joints-3dec-udec">Coulomb Joints (<span class="codename">3DEC</span>, <span class="codename">UDEC</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../methodology.html" accesskey="U">Modeling Methodology</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../localizationandpath.html"
+                           title="previous chapter"> Localization, Physical Instability, and Path-Dependence</a> |    
+       <a href="factorofsafetyindex.html"
+                           title="next chapter">Factor of Safety Defined</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Factor of Safety" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

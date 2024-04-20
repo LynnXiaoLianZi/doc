@@ -1,0 +1,217 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FISH Functions &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fish-functions">
+<span id="sel-link-fish"></span><h1><span class="codename">FISH</span> Functions</h1>
+<p><span class="codename">FISH</span> functions operating on structural links. The type specifiers used in the <span class="codename">FISH</span> function signatures are given in the <a class="reference internal" href="../../../../../../docproject/source/manual/scripting/fish_scripting/fish_types.html#fish-variabletypes"><span class="std std-ref">FISH Type Index</span></a> section.</p>
+<p class="rubric" id="sellink-functions">Structural Link Functions</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.attach.html#struct.link.attach" title="Get the attached condition used by the link in degree-of-freedom  idof  (from&#013;&#010; 1  to  6 )."><span class="fishcmd">struct.link.attach</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.delete.html#struct.link.delete" title="Delete the structural link.   The return value is ignored."><span class="fishcmd">struct.link.delete</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.extra.html#struct.link.extra" title="Get/set the  FISH  parameter value stored at index  i  of the extra array associated&#013;&#010;with the structural link."><span class="fishcmd">struct.link.extra</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.find.html#struct.link.find" title="Get the link with internally assigned component-ID number  i ."><span class="fishcmd">struct.link.find</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.head.html#struct.link.head" title="Get the first zone in the list of all structural links in the model. This function&#013;&#010;should be considered deprecated; it is provided mostly for backwards compatibility&#013;&#010;with old data files. Instead, see the  fish_statement_loopforeach  statement&#013;&#010;and the  zone.list  function. See also the  zone.next  function."><span class="fishcmd">struct.link.head</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.id.html#struct.link.id" title="Get the structural link ID number. This is defined as the ID number of the first&#013;&#010;element connected to the link host node and is not to be confused with the component-ID&#013;&#010;number."><span class="fishcmd">struct.link.id</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.id.component.html#struct.link.id.component" title="Get the structural link component-ID number.   This is a unique value assigned&#013;&#010;internally at creation, not to be confused with the ID number."><span class="fishcmd">struct.link.id.component</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.list.html#struct.link.list" title="Get a pointer to the container of all structural links in the model."><span class="fishcmd">struct.link.list</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.maxid.html#struct.link.maxid" title="Get the maximum component-ID number assigned to any structural link in this&#013;&#010;model.  The next link created will be assigned this value plus one."><span class="fishcmd">struct.link.maxid</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.html#struct.link.model" title="Get the name of the 1-D force-displacement model used in degree-of-freedom  idof .&#013;&#010; If the link attached condition is free or rigid, then this function will return&#013;&#010;an empty string (see the  struct.link.attach  function).  The currently available&#013;&#010;models are  linear ,  normal-yield ,  shear-yield , and  pile-yield ."><span class="fishcmd">struct.link.model</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.area.html#struct.link.model.area" title="Get/set the area associated with the force-displacement model. This is either&#013;&#010;returned as a 6x1 matrix or as a single value representing the area in degrees-of-freedom&#013;&#010; idof  if provided."><span class="fishcmd">struct.link.model.area</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.compression.html#struct.link.model.compression" title="Get/set the compressive yield force associated with the force-displacement model.&#013;&#010; Returns or assigns a 6x1 matrix representing the values in all degrees-of-freedom,&#013;&#010;or if the optional  idof  argument is specified, a single value in that degree-of-freedom."><span class="fishcmd">struct.link.model.compression</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.disp.html#struct.link.model.disp" title="Get the relative displacement between the node and the target used by each 1-D&#013;&#010;force-displacement model. Will return a 6x1 matrix with the values in all six&#013;&#010;degrees-of-freedom, or if the optional  idof  argument is provided, the value&#013;&#010;in one specific degree-of-freedom."><span class="fishcmd">struct.link.model.disp</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.force.html#struct.link.model.force" title="Get the current force in each 1-D force-displacement model.  Will return a 6x1&#013;&#010;matrix with the values in all six degrees-of-freedom, or if the optional  idof &#013;&#010;argument is provided, the value in one specific degree-of-freedom."><span class="fishcmd">struct.link.model.force</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.gap.html#struct.link.model.gap" title="Get/set the flag indicating whether gap calculations are active in the 1-D force-displacement&#013;&#010;model used in degree-of-freedom  idof .    See the  struct.link.model.gap.neg &#013;&#010;and  struct.link.model.gap.pos  functions."><span class="fishcmd">struct.link.model.gap</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.gap.neg.html#struct.link.model.gap.neg" title="Get/set the negative (compressive) gap component of each 1-D force-displacement&#013;&#010;model.  Will return a 6x1 matrix with the values in all six degrees-of-freedom,&#013;&#010;or if the optional  idof  argument is provided, the value in one specific degree-of-freedom."><span class="fishcmd">struct.link.model.gap.neg</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.gap.pos.html#struct.link.model.gap.pos" title="Get the positive (tensile) gap component of each 1-D force-displacement model.&#013;&#010; Will return a 6x1 matrix with the values in all six degrees-of-freedom, or&#013;&#010;if the optional  idof  argument is provided, the value in one specific degree-of-freedom."><span class="fishcmd">struct.link.model.gap.pos</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.prop.html#struct.link.model.prop" title="Get/set a property of the deformable model in degree-of-freedom  idof  in the&#013;&#010;structural elemenet link  p ."><span class="fishcmd">struct.link.model.prop</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="null">,</span><span class="null">INT</span><span class="null">,</span><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.stiffness.html#struct.link.model.stiffness" title="Get/set the stiffness used by each 1-D force-displacement model.  Will return&#013;&#010;a 6x1 matrix with the values in all six degrees-of-freedom, or if the optional&#013;&#010; idof  argument is provided, the value in one specific degree-of-freedom."><span class="fishcmd">struct.link.model.stiffness</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.tension.html#struct.link.model.tension" title="Get/set the tensile yield force associated with the force-displacement model.&#013;&#010;Returns or assigns a 1x6 matrix representing the values in all degrees-of-freedom,&#013;&#010;or if the optional  idof  argument is specified, a single value in that degree-of-freedom."><span class="fishcmd">struct.link.model.tension</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.yield.html#struct.link.model.yield" title="Get the yield state indicator in the 1-D force displacement model in degree-of-freedom&#013;&#010; idof . This is returned as an integer where  0  = never yielded,  1  = yielding&#013;&#010;now, and  2  = yielded in past."><span class="fishcmd">struct.link.model.yield</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.next.html#struct.link.next" title="Get the next link after  p  in the list of all structural links in the model.&#013;&#010; Will return  null  if no more links follow.  This function should be considered&#013;&#010;deprecated; it is provided mostly for backwards compatibility with old data&#013;&#010;files.  Instead, see the  fish_statement_loopforeach  statement and the  struct.link.list &#013;&#010;function.  See also the  struct.link.head  function."><span class="fishcmd">struct.link.next</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.node.html#struct.link.node" title="Get a pointer to the node hosting the structural link."><span class="fishcmd">struct.link.node</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.num.html#struct.link.num" title="Get the total number of structural links in the model."><span class="fishcmd">struct.link.num</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.side.html#struct.link.side" title="Get the side number of the link.  This may be a value from  1  to  16 ."><span class="fishcmd">struct.link.side</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.slide.html#struct.link.slide" title="Get/set the  large-strain sliding   DR: previous wants to be a link to… where? &#013;&#010;flag for the link.  This function only applies to node-to-zone links; it has&#013;&#010;no meaning for node-to-node links."><span class="fishcmd">struct.link.slide</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.slide.tol.html#struct.link.slide.tol" title="Get/set the  large-strain sliding   DR: previous wants to be a link to… where? &#013;&#010;tolerance for the link.  This function only applies to node-to-zone links; it&#013;&#010;has no meaning for node-to-node links."><span class="fishcmd">struct.link.slide.tol</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.target.html#struct.link.target" title="Get the ID (or component-ID) of the target.  For a node-to-node link, this will&#013;&#010;the node component-ID number.  For a node-to-zone link, this will be the zone&#013;&#010;ID number."><span class="fishcmd">struct.link.target</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.type.html#struct.link.type" title="Get the name of the link target type.  A node-to-node link will return  Structure&#013;&#010;Node .   A node-to-zone link will return  Zone ."><span class="fishcmd">struct.link.type</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.typeid.html#struct.link.typeid" title="Get an identifier that uniquely determines the type of object.   This function&#013;&#010;will return‭ 1283546109, indicating a general structural link."><span class="fishcmd">struct.link.typeid</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.used.by.html#struct.link.used.by" title="Get the name of the type of structural element with which this link is associated.&#013;&#010;This only applies to node-to-zone links, otherwise the return is a null string.&#013;&#010;The type string will be one of  beam ,  cable ,  pile ,  shell ,  geogrid ,&#013;&#010;or  liner . If the attach conditions and models assigned to the link are not&#013;&#010;compatible with those elements (generally because they have been changed), then&#013;&#010;a null string is returned."><span class="fishcmd">struct.link.used.by</span><span class="fishparamlist"><big>(</big><span class="null">STRUCT_LINK_PNT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.attach.html"><code class="docutils literal"><span class="pre">struct.link.attach</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.delete.html"><code class="docutils literal"><span class="pre">struct.link.delete</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.extra.html"><code class="docutils literal"><span class="pre">struct.link.extra</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.find.html"><code class="docutils literal"><span class="pre">struct.link.find</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.group.html"><code class="docutils literal"><span class="pre">struc.link.group</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.group.remove.html"><code class="docutils literal"><span class="pre">struc.link.group.remove</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.head.html"><code class="docutils literal"><span class="pre">struct.link.head</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.id.html"><code class="docutils literal"><span class="pre">struct.link.id</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.id.component.html"><code class="docutils literal"><span class="pre">struct.link.id.component</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.isgroup.html"><code class="docutils literal"><span class="pre">struc.link.group.remove</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.list.html"><code class="docutils literal"><span class="pre">struct.link.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.maxid.html"><code class="docutils literal"><span class="pre">struct.link.maxid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.html"><code class="docutils literal"><span class="pre">struct.link.model</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.area.html"><code class="docutils literal"><span class="pre">struct.link.model.area</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.compression.html"><code class="docutils literal"><span class="pre">struct.link.model.compression</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.disp.html"><code class="docutils literal"><span class="pre">struct.link.model.disp</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.force.html"><code class="docutils literal"><span class="pre">struct.link.model.force</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.gap.html"><code class="docutils literal"><span class="pre">struct.link.model.gap</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.gap.neg.html"><code class="docutils literal"><span class="pre">struct.link.model.gap.neg</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.gap.pos.html"><code class="docutils literal"><span class="pre">struct.link.model.gap.pos</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.prop.html"><code class="docutils literal"><span class="pre">struct.link.model.prop</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.stiffness.html"><code class="docutils literal"><span class="pre">struct.link.model.stiffness</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.tension.html"><code class="docutils literal"><span class="pre">struct.link.model.tension</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.model.yield.html"><code class="docutils literal"><span class="pre">struct.link.model.yield</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.next.html"><code class="docutils literal"><span class="pre">struct.link.next</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.node.html"><code class="docutils literal"><span class="pre">struct.link.node</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.num.html"><code class="docutils literal"><span class="pre">struct.link.num</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.side.html"><code class="docutils literal"><span class="pre">struct.link.side</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.slide.html"><code class="docutils literal"><span class="pre">struct.link.slide</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.slide.tol.html"><code class="docutils literal"><span class="pre">struct.link.slide.tol</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.target.html"><code class="docutils literal"><span class="pre">struct.link.target</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.type.html"><code class="docutils literal"><span class="pre">struct.link.type</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.typeid.html"><code class="docutils literal"><span class="pre">struct.link.typeid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sel.link_intrinsics/fish_sel.link.used.by.html"><code class="docutils literal"><span class="pre">struct.link.used.by</span></code></a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?FISH Functions" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

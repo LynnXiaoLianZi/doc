@@ -1,0 +1,146 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Servo Control &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="servo-control">
+<span id="servocontrol"></span><h1>Servo Control</h1>
+<p>A servo-control function is used to minimize the influence of inertial effects on the response of the model. The <span class="codename">FISH</span> file “SERVO.FIS” shows how the applied vertical velocities can be adjusted as a function of the maximum unbalanced force in the model. By preventing the unbalanced force from getting too high (i.e., controlling the inertial effects), the user has better control over model behavior.</p>
+<p>The control is specified by setting the upper limit for unbalanced force, <code class="docutils literal"><span class="pre">high_unbal</span></code>, and lower limit, <code class="docutils literal"><span class="pre">low_unbal</span></code>, with the FISH SET command. The loading velocity is also controlled by specifying an upper limit (<code class="docutils literal"><span class="pre">high_vel</span></code>). A command is not issued for this function because it is automatically invoked at every calculation step through the WHILE_STEPPING <span class="codename">FISH</span> statement.</p>
+<p>This function is demonstrated for the problem of a triaxial compression test of a strain-softening material (data file “<code class="docutils literal"><span class="pre">servo.dat</span></code>”). The stress-strain response of the specimen indicates a weakening of the material after the peak strength is reached. The servo control of the applied velocity allows for an analysis with minimal inertial effects.</p>
+<p>Note that <span class="codename">FISH</span> functions are built into the data file to calculate the average vertical stress, <code class="docutils literal"><span class="pre">sigmav</span></code>, and average vertical strain, <code class="docutils literal"><span class="pre">ev</span></code>, in order to generate the stress-strain plot shown in the first figure below.</p>
+<p>The servo-control function will need to be modified for different types of loading.</p>
+<p><strong>Data File:</strong> <code class="docutils literal"><span class="pre">servo.dat</span></code></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">model title</span><span class="n"> </span><span class="s">&#39;3D Stress&#39;</span>
+<span class="nb">block create</span><span class="n"> polygon </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">20</span><span class="n"> </span><span class="m m-Double">20</span><span class="n"> </span><span class="m m-Double">20</span><span class="n"> </span><span class="m m-Double">20</span><span class="n"> </span><span class="m m-Double">0</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">3</span><span class="n"> </span><span class="m m-Double">20</span><span class="n"> </span><span class="m m-Double">3</span>
+<span class="nb">block zone gen</span><span class="n"> quad </span><span class="m m-Double">4</span>
+<span class="nb">block gridpoint apply</span><span class="n"> velocity</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0.0</span><span class="n"> range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">20</span><span class="n"> position</span><span class="o">-</span><span class="n">y </span><span class="o">-</span><span class="m m-Double">.1</span><span class="n"> </span><span class="m m-Double">.1</span>
+<span class="nb">block insitu</span><span class="n">  stress</span><span class="o">-</span><span class="n">ZZ </span><span class="o">-</span><span class="m m-Double">3e4</span>
+<span class="nb">block property</span><span class="n"> material </span><span class="m m-Double">1</span><span class="n"> density </span><span class="m m-Double">1000</span><span class="n"> bulk </span><span class="m m-Double">2e8</span><span class="n"> shear </span><span class="m m-Double">1e8</span>
+<span class="nb">block contact property</span><span class="n"> material </span><span class="m m-Double">1</span><span class="n"> stiffness</span><span class="o">-</span><span class="n">normal </span><span class="m m-Double">1.33e7</span><span class="n"> stiffness</span><span class="o">-</span><span class="n">shear </span><span class="m m-Double">1.33e7</span><span class="n"> friction </span><span class="m m-Double">30.0</span>
+<span class="nb">model gravity</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">10</span>
+<span class="nb">block mechanical</span><span class="n"> damping global</span>
+<span class="nb">block cycle</span><span class="n"> </span><span class="m m-Double">100</span>
+<span class="c">;</span>
+<span class="nb">program call</span><span class="n"> </span><span class="s">&#39;ps3d.fis&#39;</span>
+<span class="c">;</span>
+<span class="ni">@ps3d</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;ps3d.sav&#39;</span>
+<span class="c">;plot hold boun z_extra inv fill alias &#39;major principal stress&#39;</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../../../../../_images/737F0001.png"><img alt="../../../../../_images/737F0001.png" src="../../../../../_images/737F0001.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Axial stress versus axial strain for a triaxial test with strainsoftening material with controlled velocity</span></p>
+</div>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../../../../../_images/737F0002.png"><img alt="../../../../../_images/737F0002.png" src="../../../../../_images/737F0002.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Unbalanced force history for a triaxial test with strain-softening material with controlled velocity</span></p>
+</div>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="../../../../../_images/737F0003.png"><img alt="../../../../../_images/737F0003.png" src="../../../../../_images/737F0003.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Figure 3: Vertical velocity history for a triaxial test with strain-softening material with controlled velocity</span></p>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Servo Control" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

@@ -1,0 +1,561 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FISH Functions &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="dfn.contact.list" href="dfn_utilities/fish_dfn.contact.list.html" />
+    <link rel="prev" title="fracture verify-file command" href="../dfn_commands/cmd_fracture_verify-file.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="fish-functions">
+<span id="dfn-fish"></span><h1><span class="codename">FISH</span> Functions</h1>
+<p>The type specifiers used in the <span class="codename">FISH</span> function signatures are given in the “<a class="reference internal" href="../../../../docproject/source/manual/scripting/fish_scripting/fish_types.html#fish-variabletypes"><span class="std std-ref">FISH Type Index</span></a>” section.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#dfn-utilities"><span class="std std-ref">DFN Utilities</span></a></li>
+<li><a class="reference internal" href="#dfn-template-utilities"><span class="std std-ref">Fracture Template Utilities</span></a></li>
+<li><a class="reference internal" href="#dfn-fracture-utilities"><span class="std std-ref">Fracture Fracture Utilities</span></a></li>
+<li><a class="reference internal" href="#dfn-vertex-utilities"><span class="std std-ref">Fracture Vertex Utilities</span></a></li>
+<li><a class="reference internal" href="#dfn-setinter-utilities"><span class="std std-ref">Fracture Intersection Set Utilities</span></a></li>
+<li><a class="reference internal" href="#dfn-inter-utilities"><span class="std std-ref">Fracture Intersection Utilities</span></a></li>
+</ul>
+<div class="section" id="dfn-functions">
+<span id="dfn-utilities"></span><h2><code class="docutils literal"><span class="pre">dfn</span></code> functions</h2>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dfn_utilities/fish_dfn.contact.list.html"><code class="docutils literal"><span class="pre">dfn.contact.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_utilities/fish_dfn.contact.list.all.html"><code class="docutils literal"><span class="pre">dfn.contact.list.all</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_utilities/fish_dfn.contactmap.html"><code class="docutils literal"><span class="pre">dfn.contactmap</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_utilities/fish_dfn.contactmap.all.html"><code class="docutils literal"><span class="pre">dfn.contactmap.all</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_utilities/fish_dfn.create.html"><code class="docutils literal"><span class="pre">dfn.create</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_utilities/fish_dfn.delete.html"><code class="docutils literal"><span class="pre">dfn.delete</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_utilities/fish_dfn.dominance.html"><code class="docutils literal"><span class="pre">dfn.dominance</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_utilities/fish_dfn.extra.html"><code class="docutils literal"><span class="pre">dfn.extra</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_utilities/fish_dfn.find.html"><code class="docutils literal"><span class="pre">dfn.find</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_utilities/fish_dfn.fracturelist.html"><code class="docutils literal"><span class="pre">dfn.fracturelist</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_utilities/fish_dfn.fracturenum.html"><code class="docutils literal"><span class="pre">dfn.fracturenum</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_utilities/fish_dfn.group.html"><code class="docutils literal"><span class="pre">dfn.group</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_utilities/fish_dfn.group.remove.html"><code class="docutils literal"><span class="pre">dfn.group.remove</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_utilities/fish_dfn.id.html"><code class="docutils literal"><span class="pre">dfn.id</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_utilities/fish_dfn.isgroup.html"><code class="docutils literal"><span class="pre">dfn.isgroup</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_utilities/fish_dfn.list.html"><code class="docutils literal"><span class="pre">dfn.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_utilities/fish_dfn.maxid.html"><code class="docutils literal"><span class="pre">dfn.maxid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_utilities/fish_dfn.name.html"><code class="docutils literal"><span class="pre">dfn.name</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_utilities/fish_dfn.num.html"><code class="docutils literal"><span class="pre">dfn.num</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_utilities/fish_dfn.template.html"><code class="docutils literal"><span class="pre">dfn.template</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn_utilities/fish_dfn.typeid.html"><code class="docutils literal"><span class="pre">dfn.typeid</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="dfn_utilities/fish_dfn.contact.list.html#dfn.contact.list" title="Get a list of active contacts associated with a DFN."><span class="fishcmd">dfn.contact.list</span><span class="fishparamlist"><big>(</big><span class="null">D_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn_utilities/fish_dfn.contact.list.all.html#dfn.contact.list.all" title="Get all contacts associated with a DFN. Inactive contacts are included."><span class="fishcmd">dfn.contact.list.all</span><span class="fishparamlist"><big>(</big><span class="null">D_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn_utilities/fish_dfn.contactmap.html#dfn.contactmap" title="Get active contacts associated with a DFN."><span class="fishcmd">dfn.contactmap</span><span class="fishparamlist"><big>(</big><span class="null">D_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn_utilities/fish_dfn.contactmap.all.html#dfn.contactmap.all" title="Get all contacts associated with a DFN. Inactive contacts are included."><span class="fishcmd">dfn.contactmap.all</span><span class="fishparamlist"><big>(</big><span class="null">D_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn_utilities/fish_dfn.create.html#dfn.create" title="Create a DFN. The DFN is empty, and its dominance value is set to the next available&#013;&#010;dominance (see the  fracture contact-model  command and the  dfn.dominance &#013;&#010; FISH  intrinsic for further details regarding the DFN dominance). If no  id &#013;&#010;or  s  is specified, then the next available ID is chosen and the name is set&#013;&#010;to  dfnXX , where  XX  is the ID."><span class="fishcmd">dfn.create</span><span class="fishparamlist"><big>(</big><span class="cmdopt"><<span class="null">INT</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">STR</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn_utilities/fish_dfn.delete.html#dfn.delete" title="Delete a DFN. All fractures and corresponding intersections are deleted."><span class="fishcmd">dfn.delete</span><span class="fishparamlist"><big>(</big><span class="null">D_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn_utilities/fish_dfn.dominance.html#dfn.dominance" title="Get/set the DFN dominance. See the  fracture contact-model  command for further&#013;&#010;details."><span class="fishcmd">dfn.dominance</span><span class="fishparamlist"><big>(</big><span class="null">D_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn_utilities/fish_dfn.extra.html#dfn.extra" title="Get/set a DFN extra variable."><span class="fishcmd">dfn.extra</span><span class="fishparamlist"><big>(</big><span class="null">D_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn_utilities/fish_dfn.find.html#dfn.find" title="Find a DFN."><span class="fishcmd">dfn.find</span><span class="fishparamlist"><big>(</big><span class="null">INT/STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn_utilities/fish_dfn.fracturelist.html#dfn.fracturelist" title="Get the fracture list of the DFN. Use the  loop foreach  construct to iterate&#013;&#010;through the list."><span class="fishcmd">dfn.fracturelist</span><span class="fishparamlist"><big>(</big><span class="null">D_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn_utilities/fish_dfn.fracturenum.html#dfn.fracturenum" title="Get the number of fractures."><span class="fishcmd">dfn.fracturenum</span><span class="fishparamlist"><big>(</big><span class="null">D_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn_utilities/fish_dfn.id.html#dfn.id" title="Get the DFN ID."><span class="fishcmd">dfn.id</span><span class="fishparamlist"><big>(</big><span class="null">D_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn_utilities/fish_dfn.list.html#dfn.list" title="Get the global DFN list. Use the  loop foreach  construct to iterate through&#013;&#010;the list."><span class="fishcmd">dfn.list</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn_utilities/fish_dfn.maxid.html#dfn.maxid" title="Get the maximum DFN ID."><span class="fishcmd">dfn.maxid</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn_utilities/fish_dfn.name.html#dfn.name" title="Get the DFN name."><span class="fishcmd">dfn.name</span><span class="fishparamlist"><big>(</big><span class="null">D_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn_utilities/fish_dfn.num.html#dfn.num" title="Get the number of DFNs."><span class="fishcmd">dfn.num</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn_utilities/fish_dfn.template.html#dfn.template" title="Get the fracture template. This is the template used to generate this DFN. If&#013;&#010;any fractures have been modified after generation, the return value will be&#013;&#010; 0 ."><span class="fishcmd">dfn.template</span><span class="fishparamlist"><big>(</big><span class="null">D_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn_utilities/fish_dfn.typeid.html#dfn.typeid" title="Get the DFN type number. The type ID can be used to uniquely identify DFN  FISH &#013;&#010;pointers and distinguish them from any other type of  FISH  pointer."><span class="fishcmd">dfn.typeid</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="dfn-template-functions">
+<span id="dfn-template-utilities"></span><h2><code class="docutils literal"><span class="pre">dfn.template</span></code> functions</h2>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.ddirmax.html"><code class="docutils literal"><span class="pre">fracture.template.ddirmax</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.ddirmin.html"><code class="docutils literal"><span class="pre">fracture.template.ddirmin</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.dipmax.html"><code class="docutils literal"><span class="pre">fracture.template.dipmax</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.dipmin.html"><code class="docutils literal"><span class="pre">fracture.template.dipmin</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.find.html"><code class="docutils literal"><span class="pre">fracture.template.find</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.id.html"><code class="docutils literal"><span class="pre">fracture.template.id</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.list.html"><code class="docutils literal"><span class="pre">fracture.template.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.maxid.html"><code class="docutils literal"><span class="pre">fracture.template.maxid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.name.html"><code class="docutils literal"><span class="pre">fracture.template.name</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.norientparam.html"><code class="docutils literal"><span class="pre">fracture.template.norientparam</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.nposparam.html"><code class="docutils literal"><span class="pre">fracture.template.nposparam</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.nsizeparam.html"><code class="docutils literal"><span class="pre">fracture.template.nsizeparam</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.num.html"><code class="docutils literal"><span class="pre">fracture.template.num</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.orientparam.html"><code class="docutils literal"><span class="pre">fracture.template.orientparam</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.orienttype.html"><code class="docutils literal"><span class="pre">fracture.template.orienttype</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.posparam.html"><code class="docutils literal"><span class="pre">fracture.template.posparam</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.postype.html"><code class="docutils literal"><span class="pre">fracture.template.postype</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.sizemax.html"><code class="docutils literal"><span class="pre">fracture.template.sizemax</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.sizemin.html"><code class="docutils literal"><span class="pre">fracture.template.sizemin</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.sizeparam.html"><code class="docutils literal"><span class="pre">fracture.template.sizeparam</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.sizetype.html"><code class="docutils literal"><span class="pre">fracture.template.sizetype</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.typeid.html"><code class="docutils literal"><span class="pre">fracture.template.typeid</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.ddirmax.html#fracture.template.ddirmax" title="Get/set the maximum dip direction."><span class="fishcmd">fracture.template.ddirmax</span><span class="fishparamlist"><big>(</big><span class="null">DT_PNT</span><big>)</big></span></a><span class="cmdextra">(<span class="cmdextraparam">3D only</span>)</span></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.ddirmin.html#fracture.template.ddirmin" title="Get/set the minimum dip direction."><span class="fishcmd">fracture.template.ddirmin</span><span class="fishparamlist"><big>(</big><span class="null">DT_PNT</span><big>)</big></span></a><span class="cmdextra">(<span class="cmdextraparam">3D only</span>)</span></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.dipmax.html#fracture.template.dipmax" title="Get/set the maximum dip."><span class="fishcmd">fracture.template.dipmax</span><span class="fishparamlist"><big>(</big><span class="null">DT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.dipmin.html#fracture.template.dipmin" title="Get/set the minimum dip."><span class="fishcmd">fracture.template.dipmin</span><span class="fishparamlist"><big>(</big><span class="null">DT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.find.html#fracture.template.find" title="Find a DFN template."><span class="fishcmd">fracture.template.find</span><span class="fishparamlist"><big>(</big><span class="null">INT/STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.id.html#fracture.template.id" title="Get the DFN template ID."><span class="fishcmd">fracture.template.id</span><span class="fishparamlist"><big>(</big><span class="null">DT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.list.html#fracture.template.list" title="Get the DFN template list. Use the  loop foreach  construct to iterate through&#013;&#010;the list."><span class="fishcmd">fracture.template.list</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.maxid.html#fracture.template.maxid" title="Get the maximum DFN template ID."><span class="fishcmd">fracture.template.maxid</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.name.html#fracture.template.name" title="Get the DFN template name."><span class="fishcmd">fracture.template.name</span><span class="fishparamlist"><big>(</big><span class="null">DT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.norientparam.html#fracture.template.norientparam" title="Get the number of orientation parameters. The parameters can be set with the&#013;&#010; fracture.template.orientparam  intrinsic. See the  fracture template create &#013;&#010;command for further details."><span class="fishcmd">fracture.template.norientparam</span><span class="fishparamlist"><big>(</big><span class="null">DT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.nposparam.html#fracture.template.nposparam" title="Get the number of position parameters. The parameters can be set with the  fracture.template.posparam &#013;&#010;intrinsic. See the  fracture template create  command for further details."><span class="fishcmd">fracture.template.nposparam</span><span class="fishparamlist"><big>(</big><span class="null">DT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.nsizeparam.html#fracture.template.nsizeparam" title="Get the number of size parameters. The parameters can be set with the  fracture.template.sizeparam &#013;&#010;intrinsic. See the  fracture template create  command for further details."><span class="fishcmd">fracture.template.nsizeparam</span><span class="fishparamlist"><big>(</big><span class="null">DT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.num.html#fracture.template.num" title="Get the number of DFN templates."><span class="fishcmd">fracture.template.num</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.orientparam.html#fracture.template.orientparam" title="Get/set an orientation parameter. The number of parameters can be assessed with&#013;&#010;the  fracture.template.norientparam  intrinsic. See the  fracture template create &#013;&#010;command for further details."><span class="fishcmd">fracture.template.orientparam</span><span class="fishparamlist"><big>(</big><span class="null">DT_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.orienttype.html#fracture.template.orienttype" title="Get/set the DFN template orientation type name. Acceptable values are  uniform ,&#013;&#010; gauss ,  powerlaw ,  bootstrapped ,  fish ,  fisher  (3D only), and  dips &#013;&#010;(3D only). See the  fracture template create  command for further details."><span class="fishcmd">fracture.template.orienttype</span><span class="fishparamlist"><big>(</big><span class="null">DT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.posparam.html#fracture.template.posparam" title="Get/set a position parameter. The number of parameters can be assessed with&#013;&#010;the  fracture.template.nposparam  intrinsic. See the  fracture template create &#013;&#010;command for further details."><span class="fishcmd">fracture.template.posparam</span><span class="fishparamlist"><big>(</big><span class="null">DT_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.postype.html#fracture.template.postype" title="Get/set the DFN template position type name. Acceptable values are  uniform ,&#013;&#010; gauss ,  bootstrapped , and  fish . See the  fracture template create  command&#013;&#010;for further details."><span class="fishcmd">fracture.template.postype</span><span class="fishparamlist"><big>(</big><span class="null">DT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.sizemax.html#fracture.template.sizemax" title="Get/set the maximum size. The fracture size is defined as the {fracture length&#013;&#010;in 2D; disk diameter in 3D}."><span class="fishcmd">fracture.template.sizemax</span><span class="fishparamlist"><big>(</big><span class="null">DT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.sizemin.html#fracture.template.sizemin" title="Get/set the minimum size. The fracture size is defined as the {fracture length&#013;&#010;in 2D; disk diameter in 3D}."><span class="fishcmd">fracture.template.sizemin</span><span class="fishparamlist"><big>(</big><span class="null">DT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.sizeparam.html#fracture.template.sizeparam" title="Get/set a size parameter. The number of parameters can be assessed with the&#013;&#010; fracture.template.nsizeparam  intrinsic. See the  fracture template create &#013;&#010;command for further details."><span class="fishcmd">fracture.template.sizeparam</span><span class="fishparamlist"><big>(</big><span class="null">DT_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.sizetype.html#fracture.template.sizetype" title="Get/set the DFN template size type name. Acceptable values are  uniform ,  gauss ,&#013;&#010; powerlaw ,  bootstrapped , and  fish . See the  fracture template create  command&#013;&#010;for further details."><span class="fishcmd">fracture.template.sizetype</span><span class="fishparamlist"><big>(</big><span class="null">DT_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.template_utilities/fish_dfn.template.typeid.html#fracture.template.typeid" title="Get the DFN template type number. The type ID can be used to uniquely identify&#013;&#010;DFN template  FISH  pointers and distinguish them from any other type of  FISH &#013;&#010;pointer."><span class="fishcmd">fracture.template.typeid</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="fracture-functions">
+<span id="dfn-fracture-utilities"></span><h2><code class="docutils literal"><span class="pre">fracture</span></code> functions</h2>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.aperture.html"><code class="docutils literal"><span class="pre">fracture.aperture</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.area.html"><code class="docutils literal"><span class="pre">fracture.area</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.centerdensity.html"><code class="docutils literal"><span class="pre">fracture.centerdensity</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.contact.list.html"><code class="docutils literal"><span class="pre">fracture.contact.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.contact.list.all.html"><code class="docutils literal"><span class="pre">fracture.contact.list.all</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.contactmap.html"><code class="docutils literal"><span class="pre">fracture.contactmap</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.contactmap.all.html"><code class="docutils literal"><span class="pre">fracture.contactmap.all</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.copy.html"><code class="docutils literal"><span class="pre">fracture.copy</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.create.html"><code class="docutils literal"><span class="pre">fracture.create</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.ddir.html"><code class="docutils literal"><span class="pre">fracture.ddir</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.decimate.html"><code class="docutils literal"><span class="pre">fracture.decimate</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.delete.html"><code class="docutils literal"><span class="pre">fracture.delete</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.density.html"><code class="docutils literal"><span class="pre">fracture.density</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.dfn.html"><code class="docutils literal"><span class="pre">fracture.dfn</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.diameter.html"><code class="docutils literal"><span class="pre">fracture.diameter</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.dip.html"><code class="docutils literal"><span class="pre">fracture.dip</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.extra.html"><code class="docutils literal"><span class="pre">fracture.extra</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.find.html"><code class="docutils literal"><span class="pre">fracture.find</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.genpos.html"><code class="docutils literal"><span class="pre">fracture.genpos</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.gensize.html"><code class="docutils literal"><span class="pre">fracture.gensize</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.geomp10.html"><code class="docutils literal"><span class="pre">fracture.geomp10</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.geomp20.html"><code class="docutils literal"><span class="pre">fracture.geomp20</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.geomp21.html"><code class="docutils literal"><span class="pre">fracture.geomp21</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.geomtrace.html"><code class="docutils literal"><span class="pre">fracture.geomtrace</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.gintersect.html"><code class="docutils literal"><span class="pre">fracture.gintersect</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.group.html"><code class="docutils literal"><span class="pre">fracture.group</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.group.remove.html"><code class="docutils literal"><span class="pre">fracture.group.remove</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.id.html"><code class="docutils literal"><span class="pre">fracture.id</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.inbox.html"><code class="docutils literal"><span class="pre">fracture.inbox</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.interarray.html"><code class="docutils literal"><span class="pre">fracture.interarray</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.intersect.html"><code class="docutils literal"><span class="pre">fracture.intersect</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.isdisk.html"><code class="docutils literal"><span class="pre">fracture.isdisk</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.isgroup.html"><code class="docutils literal"><span class="pre">fracture.isgroup</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.isprop.html"><code class="docutils literal"><span class="pre">fracture.isprop</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.len.html"><code class="docutils literal"><span class="pre">fracture.len</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.list.html"><code class="docutils literal"><span class="pre">fracture.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.maxid.html"><code class="docutils literal"><span class="pre">fracture.maxid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.near.html"><code class="docutils literal"><span class="pre">fracture.near</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.normal.html"><code class="docutils literal"><span class="pre">fracture.normal</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.num.html"><code class="docutils literal"><span class="pre">fracture.num</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.p10.html"><code class="docutils literal"><span class="pre">fracture.p10</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.percolation.html"><code class="docutils literal"><span class="pre">fracture.percolation</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.pointnear.html"><code class="docutils literal"><span class="pre">fracture.pointnear</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.pos.html"><code class="docutils literal"><span class="pre">fracture.pos</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.prop.html"><code class="docutils literal"><span class="pre">fracture.prop</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.typeid.html"><code class="docutils literal"><span class="pre">fracture.typeid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.vertexarray.html"><code class="docutils literal"><span class="pre">fracture.vertexarray</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.vertexlist.html"><code class="docutils literal"><span class="pre">fracture.vertexlist</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.aperture.html#fracture.aperture" title="Get/set the fracture aperture."><span class="fishcmd">fracture.aperture</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.area.html#fracture.area" title="Get/set the fracture area."><span class="fishcmd">fracture.area</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><big>)</big></span></a><span class="cmdextra">(<span class="cmdextraparam">3D only</span>)</span></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.centerdensity.html#fracture.centerdensity" title="Get the fracture center density. The fracture center density is defined as the&#013;&#010;{P20 value in 2D; P30 value in 3D} as measured in the specified region. {P20&#013;&#010;in 2D; P30 in 3D} is the number of fracture centers in the specified region per&#013;&#010;unit area (volume). If  dfn  is not given the calculation is undertaken over&#013;&#010;all fractures of all DFNs."><span class="fishcmd">fracture.centerdensity</span><span class="fishparamlist"><big>(</big><span class="cmdopt"><<span class="null">VEC</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">VEC</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">D_PNT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.contact.list.html#fracture.contact.list" title="Get active contacts associated with a fracture.  Iterate over a  FISH  list&#013;&#010;using the  loop foreach  construct."><span class="fishcmd">fracture.contact.list</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.contact.list.all.html#fracture.contact.list.all" title="Get all contacts associated with a fracture. Inactive contacts are included.&#013;&#010;Iterate over a  FISH  list using the  loop foreach  construct."><span class="fishcmd">fracture.contact.list.all</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.contactmap.html#fracture.contactmap" title="Get active contacts associated with a fracture.  Iterate over a  FISH  map using&#013;&#010;the  loop foreach  construct."><span class="fishcmd">fracture.contactmap</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.contactmap.all.html#fracture.contactmap.all" title="Get all contacts associated with a fracture. Inactive contacts are included.&#013;&#010;Iterate over a  FISH  map using the  loop foreach  construct."><span class="fishcmd">fracture.contactmap.all</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.copy.html#fracture.copy" title="Copy a fracture."><span class="fishcmd">fracture.copy</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">D_PNT</span><span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.create.html#fracture.create" title="Create a fracture. The fracture is added to  dfn ."><span class="fishcmd">fracture.create</span><span class="fishparamlist"><big>(</big><span class="null">D_PNT</span><span class="null">,</span><span class="null">ARR_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.ddir.html#fracture.ddir" title="Get/set the fracture dip direction."><span class="fishcmd">fracture.ddir</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><big>)</big></span></a><span class="cmdextra">(<span class="cmdextraparam">3D only</span>)</span></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.decimate.html#fracture.decimate" title="Get a list of fracture vertex positions. If a disk shaped fracture then the&#013;&#010;last argument (default 20) is used to decimate the disk shape. Iterate over&#013;&#010;a  FISH  list using the  loop foreach  construct."><span class="fishcmd">fracture.decimate</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.delete.html#fracture.delete" title="Delete a fracture. All intersections that refer to this fracture are also deleted."><span class="fishcmd">fracture.delete</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.density.html#fracture.density" title="Get the fracture mass density. The fracture mass density is defined as the {P21&#013;&#010;value in 2D; P32 value in 3D} as measured in the specified region. {P21 in 2D;&#013;&#010;P32 in 3D} is the cumulated fracture length (surface) in the specified region&#013;&#010;per unit area (volume). If  dfn  is not given the calculation is undertaken&#013;&#010;over all fractures of all DFNs."><span class="fishcmd">fracture.density</span><span class="fishparamlist"><big>(</big><span class="cmdopt"><<span class="null">VEC</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">VEC</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">D_PNT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.dfn.html#fracture.dfn" title="Get the fracture’s DFN."><span class="fishcmd">fracture.dfn</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.diameter.html#fracture.diameter" title="Get/set the fracture diameter."><span class="fishcmd">fracture.diameter</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><big>)</big></span></a><span class="cmdextra">(<span class="cmdextraparam">3D only</span>)</span></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.dip.html#fracture.dip" title="Get/set the fracture dip."><span class="fishcmd">fracture.dip</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.extra.html#fracture.extra" title="Get/set a fracture extra variable."><span class="fishcmd">fracture.extra</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">INT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.find.html#fracture.find" title="Find a fracture."><span class="fishcmd">fracture.find</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.genpos.html#fracture.genpos" title="Get the fracture generation position."><span class="fishcmd">fracture.genpos</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.gensize.html#fracture.gensize" title="Get the fracture generation {length in 2D; diameter in 3D}. This corresponds&#013;&#010;with the fracture size prior to clipping at the tolerance extent."><span class="fishcmd">fracture.gensize</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.geomp10.html#fracture.geomp10" title="Get the P10 of edges. The P10 (i.e., the number of fracture intersections with&#013;&#010;a transect per unit length) of each edge in the geometry set  gset  is calculated,&#013;&#010;and the average over all edges is returned. If  dfn  is not given the calculation&#013;&#010;is undertaken over all fractures of all DFNs."><span class="fishcmd">fracture.geomp10</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">D_PNT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.geomp20.html#fracture.geomp20" title="Get the P20 of polygons. The P20 is the number of fracture intersections with&#013;&#010;the geometry polygons per unit area of the geometry polygons. If  dfn  is not&#013;&#010;given the calculation is undertaken over all fractures of all DFNs."><span class="fishcmd">fracture.geomp20</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">D_PNT</span>></span><big>)</big></span></a><span class="cmdextra">(<span class="cmdextraparam">3D only</span>)</span></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.geomp21.html#fracture.geomp21" title="Get the P21 of polygons. The P21 is the cumulative sum of intersection lengths&#013;&#010;with the geometry polygons per unit area of the geometry polygons. If  dfn &#013;&#010;is not given the calculation is undertaken over all fractures of all DFNs."><span class="fishcmd">fracture.geomp21</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">D_PNT</span>></span><big>)</big></span></a><span class="cmdextra">(<span class="cmdextraparam">3D only</span>)</span></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.geomtrace.html#fracture.geomtrace" title="Get polygon average trace length. This length corresponds to the total length&#013;&#010;of fracture intersections with the geometry polygons divided by the number of&#013;&#010;polygons. If  dfn  is not given the calculation is undertaken over all fractures&#013;&#010;of all DFNs."><span class="fishcmd">fracture.geomtrace</span><span class="fishparamlist"><big>(</big><span class="null">GSET_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">D_PNT</span>></span><big>)</big></span></a><span class="cmdextra">(<span class="cmdextraparam">3D only</span>)</span></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.gintersect.html#fracture.gintersect" title="Get the fracture/geometry intersection status."><span class="fishcmd">fracture.gintersect</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><span class="null">,</span><span class="null">GSET_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.id.html#fracture.id" title="Get the fracture ID."><span class="fishcmd">fracture.id</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.inbox.html#fracture.inbox" title="Get fractures intersecting or contained within a box. If  dfn  is not given&#013;&#010;the calculation is undertaken over all fractures of all DFNs. Iterate over a&#013;&#010; FISH  array using the  loop  and  array.size  constructs."><span class="fishcmd">fracture.inbox</span><span class="fishparamlist"><big>(</big><span class="null">VEC</span><span class="null">,</span><span class="null">VEC</span><span class="cmdopt"><<span class="null">,</span><span class="null">D_PNT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.interarray.html#fracture.interarray" title="Get an array of fracture intersections.  Iterate over a  FISH  array using the&#013;&#010; loop  and  array.size  constructs."><span class="fishcmd">fracture.interarray</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><span class="cmdopt"><<span class="null">,</span><span class="null">D_PNT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.intersect.html#fracture.intersect" title="Get the fracture/fracture intersection status."><span class="fishcmd">fracture.intersect</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><span class="null">,</span><span class="null">FR_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.isdisk.html#fracture.isdisk" title="Get the fracture disk status."><span class="fishcmd">fracture.isdisk</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><big>)</big></span></a><span class="cmdextra">(<span class="cmdextraparam">3D only</span>)</span></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.isprop.html#fracture.isprop" title="Query the existence of a property."><span class="fishcmd">fracture.isprop</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><span class="null">,</span><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.len.html#fracture.len" title="Get/set the fracture length."><span class="fishcmd">fracture.len</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><big>)</big></span></a><span class="cmdextra">(<span class="cmdextraparam">2D only</span>)</span></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.list.html#fracture.list" title="Get the global fracture list. Use the  loop foreach  construct to iterate through&#013;&#010;the list."><span class="fishcmd">fracture.list</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.maxid.html#fracture.maxid" title="Get the maximum fracture ID."><span class="fishcmd">fracture.maxid</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.near.html#fracture.near" title="Find the closest fracture to a point. If  frad  is specified, then the search&#013;&#010;radius is limited. If  dfn  is not given the calculation is undertaken over&#013;&#010;all fractures of all DFNs."><span class="fishcmd">fracture.near</span><span class="fishparamlist"><big>(</big><span class="null">VEC</span><span class="cmdopt"><<span class="null">,</span><span class="null">FLT</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">D_PNT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.normal.html#fracture.normal" title="Get/set the fracture normal."><span class="fishcmd">fracture.normal</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.num.html#fracture.num" title="Get the total number of fractures."><span class="fishcmd">fracture.num</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.p10.html#fracture.p10" title="Get the P10 along a transect. The P10 is the number of fracture intersections&#013;&#010;with a transect per unit length. If  dfn  is not given then the P10 is calculated&#013;&#010;over all fractures of all DFNs."><span class="fishcmd">fracture.p10</span><span class="fishparamlist"><big>(</big><span class="null">VEC</span><span class="null">,</span><span class="null">VEC</span><span class="cmdopt"><<span class="null">,</span><span class="null">D_PNT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.percolation.html#fracture.percolation" title="Get the fracture percolation. The fracture percolation is defined in 2D and&#013;&#010;3D, as measured in the specified region. In 2D,   is the sum of the squared&#013;&#010;fracture lengths per unit volume. In 3D,   is the sum of  per unit volume, where&#013;&#010;  is the fracture area. If  dfn  is not given the calculation is undertaken&#013;&#010;over all fractures of all DFNs."><span class="fishcmd">fracture.percolation</span><span class="fishparamlist"><big>(</big><span class="cmdopt"><<span class="null">VEC</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">VEC</span>></span><span class="cmdopt"><<span class="null">,</span><span class="null">D_PNT</span>></span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.pointnear.html#fracture.pointnear" title="Get the closest point on a fracture."><span class="fishcmd">fracture.pointnear</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><span class="null">,</span><span class="null">VEC</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.pos.html#fracture.pos" title="Get/set the fracture position."><span class="fishcmd">fracture.pos</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.prop.html#fracture.prop" title="Get/set a fracture property."><span class="fishcmd">fracture.prop</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><span class="null">,</span><span class="null">STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.typeid.html#fracture.typeid" title="Get the fracture type number. The type ID can be used to uniquely identify fracture&#013;&#010; FISH  pointers and distinguish them from any other type of  FISH  pointer."><span class="fishcmd">fracture.typeid</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.vertexarray.html#fracture.vertexarray" title="Get an array of fracture vertices. Iterate over a  FISH  array using the  loop &#013;&#010;and  array.size  constructs."><span class="fishcmd">fracture.vertexarray</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.fracture_utilities/fish_dfn.fracture.vertexlist.html#fracture.vertexlist" title="Get a list of fracture vertices. Iterate over a  FISH  list using the  loop&#013;&#010;foreach  construct."><span class="fishcmd">fracture.vertexlist</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><big>)</big></span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="fracture-intersection-functions">
+<span id="dfn-inter-utilities"></span><h2><code class="docutils literal"><span class="pre">fracture.intersection</span></code> functions</h2>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.end1.html"><code class="docutils literal"><span class="pre">fracture.intersect.end1</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.end2.html"><code class="docutils literal"><span class="pre">fracture.intersect.end2</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.find.html"><code class="docutils literal"><span class="pre">fracture.intersect.find</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.len.html"><code class="docutils literal"><span class="pre">fracture.intersect.len</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.list.html"><code class="docutils literal"><span class="pre">fracture.intersect.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.maxid.html"><code class="docutils literal"><span class="pre">fracture.intersect.maxid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.npolylinept.html"><code class="docutils literal"><span class="pre">fracture.intersect.npolylinept</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.num.html"><code class="docutils literal"><span class="pre">fracture.intersect.num</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.polylinept.html"><code class="docutils literal"><span class="pre">fracture.intersect.polylinept</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.pos1.html"><code class="docutils literal"><span class="pre">fracture.intersect.pos1</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.pos2.html"><code class="docutils literal"><span class="pre">fracture.intersect.pos2</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.set.html"><code class="docutils literal"><span class="pre">fracture.intersect.set</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.typeid.html"><code class="docutils literal"><span class="pre">fracture.intersect.typeid</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.end1.html#fracture.intersect.end1" title="Get the first fracture in an intersection."><span class="fishcmd">fracture.intersect.end1</span><span class="fishparamlist"><big>(</big><span class="null">FI_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.end2.html#fracture.intersect.end2" title="Get the second intersecting object. If the intersection is with a geometry object,&#013;&#010;then a geometry set pointer is returned."><span class="fishcmd">fracture.intersect.end2</span><span class="fishparamlist"><big>(</big><span class="null">FI_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.find.html#fracture.intersect.find" title="Find a fracture intersection."><span class="fishcmd">fracture.intersect.find</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.len.html#fracture.intersect.len" title="Get the intersection length."><span class="fishcmd">fracture.intersect.len</span><span class="fishparamlist"><big>(</big><span class="null">FI_PNT</span><big>)</big></span></a><span class="cmdextra">(<span class="cmdextraparam">3D only</span>)</span></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.list.html#fracture.intersect.list" title="Get the fracture intersection list. Use the  loop foreach  construct to iterate&#013;&#010;through the list."><span class="fishcmd">fracture.intersect.list</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.maxid.html#fracture.intersect.maxid" title="Get the maximum fracture intersection ID."><span class="fishcmd">fracture.intersect.maxid</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.npolylinept.html#fracture.intersect.npolylinept" title="Get the number of polyline points in an intersection. Polyline intersections&#013;&#010;may result when intersections between fractures and geometry sets are delineated.&#013;&#010;See the  fracture intersections compute  command for further details."><span class="fishcmd">fracture.intersect.npolylinept</span><span class="fishparamlist"><big>(</big><span class="null">FI_PNT</span><big>)</big></span></a><span class="cmdextra">(<span class="cmdextraparam">3D only</span>)</span></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.num.html#fracture.intersect.num" title="Get the number of fracture intersections."><span class="fishcmd">fracture.intersect.num</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.polylinept.html#fracture.intersect.polylinept" title="Get the position of polyline point  in  in an intersection. Polyline intersections&#013;&#010;may result when intersections between fractures and geometry sets are delineated.&#013;&#010;See the  fracture intersections compute  command for further details."><span class="fishcmd">fracture.intersect.polylinept</span><span class="fishparamlist"><big>(</big><span class="null">FI_PNT</span><span class="null">,</span><span class="null">INT</span><big>)</big></span></a><span class="cmdextra">(<span class="cmdextraparam">3D only</span>)</span></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.pos1.html#fracture.intersect.pos1" title="Get the first fracture intersection end position."><span class="fishcmd">fracture.intersect.pos1</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.pos2.html#fracture.intersect.pos2" title="Get the second fracture intersection end position."><span class="fishcmd">fracture.intersect.pos2</span><span class="fishparamlist"><big>(</big><span class="null">FR_PNT</span><big>)</big></span></a><span class="cmdextra">(<span class="cmdextraparam">3D only</span>)</span></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.set.html#fracture.intersect.set" title="Get the intersection set."><span class="fishcmd">fracture.intersect.set</span><span class="fishparamlist"><big>(</big><span class="null">FI_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.inter_utilities/fish_dfn.inter.typeid.html#fracture.intersect.typeid" title="Get the fracture intersection type number. The type ID can be used to uniquely&#013;&#010;identify fracture intersection  FISH  pointers and distinguish them from any&#013;&#010;other type of  FISH  pointer."><span class="fishcmd">fracture.intersect.typeid</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="fracture-intersection-set-functions">
+<span id="dfn-setinter-utilities"></span><h2><code class="docutils literal"><span class="pre">fracture.intersection.set</span></code> functions</h2>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.delete.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.delete</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.find.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.find</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.id.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.id</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.interlist.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.interlist</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.internum.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.internum</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.list.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.maxid.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.maxid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.name.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.name</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.num.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.num</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.path.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.path</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.typeid.html"><code class="docutils literal"><span class="pre">fracture.intersect.set.typeid</span></code></a></li>
+</ul>
+</div>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.delete.html#fracture.intersect.set.delete" title="Delete a fracture intersection set. All intersections in this set are deleted."><span class="fishcmd">fracture.intersect.set.delete</span><span class="fishparamlist"><big>(</big><span class="null">FIS_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.find.html#fracture.intersect.set.find" title="Find a fracture intersection set."><span class="fishcmd">fracture.intersect.set.find</span><span class="fishparamlist"><big>(</big><span class="null">INT/STR</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.id.html#fracture.intersect.set.id" title="Get the fracture intersection set ID."><span class="fishcmd">fracture.intersect.set.id</span><span class="fishparamlist"><big>(</big><span class="null">FIS_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.interlist.html#fracture.intersect.set.interlist" title="Get the fracture intersection list. Use the  loop foreach  construct to iterate&#013;&#010;through the list."><span class="fishcmd">fracture.intersect.set.interlist</span><span class="fishparamlist"><big>(</big><span class="null">FIS_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.internum.html#fracture.intersect.set.internum" title="Get the number of intersections in the set."><span class="fishcmd">fracture.intersect.set.internum</span><span class="fishparamlist"><big>(</big><span class="null">FIS_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.list.html#fracture.intersect.set.list" title="Get the fracture intersection set list. Use the  loop foreach  construct to&#013;&#010;iterate through the list."><span class="fishcmd">fracture.intersect.set.list</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.maxid.html#fracture.intersect.set.maxid" title="Get the maximum fracture intersection set ID."><span class="fishcmd">fracture.intersect.set.maxid</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.name.html#fracture.intersect.set.name" title="Get the fracture intersection set name."><span class="fishcmd">fracture.intersect.set.name</span><span class="fishparamlist"><big>(</big><span class="null">FIS_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.num.html#fracture.intersect.set.num" title="Get the number of fracture intersection sets."><span class="fishcmd">fracture.intersect.set.num</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.path.html#fracture.intersect.set.path" title="Get the path between fractures. The fractures connecting  frac1  to  frac2 &#013;&#010;are held in the array. Iterate over a  FISH  array using the  loop  and  array.size &#013;&#010;constructs."><span class="fishcmd">fracture.intersect.set.path</span><span class="fishparamlist"><big>(</big><span class="null">FIS_PNT</span><span class="null">,</span><span class="null">FR_PNT</span><span class="null">,</span><span class="null">FR_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.setinter_utilities/fish_dfn.setinter.typeid.html#fracture.intersect.set.typeid" title="Get the fracture intersection set type number. The type ID can be used to uniquely&#013;&#010;identify fracture intersection set  FISH  pointers and distinguish them from&#013;&#010;any other type of  FISH  pointer."><span class="fishcmd">fracture.intersect.set.typeid</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="fracture-vertex-functions">
+<span id="dfn-vertex-utilities"></span><h2><code class="docutils literal"><span class="pre">fracture.vertex</span></code> functions</h2>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="dfn.vertex_utilities/fish_dfn.vertex.find.html#fracture.vertex.find" title="Find a fracture vertex."><span class="fishcmd">fracture.vertex.find</span><span class="fishparamlist"><big>(</big><span class="null">INT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.vertex_utilities/fish_dfn.vertex.list.html#fracture.vertex.list" title="Get the fracture vertex list. Use the  loop foreach  construct to iterate through&#013;&#010;the list."><span class="fishcmd">fracture.vertex.list</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.vertex_utilities/fish_dfn.vertex.maxid.html#fracture.vertex.maxid" title="Get the maximum fracture vertex ID."><span class="fishcmd">fracture.vertex.maxid</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.vertex_utilities/fish_dfn.vertex.num.html#fracture.vertex.num" title="Get the number of fracture vertices."><span class="fishcmd">fracture.vertex.num</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="dfn.vertex_utilities/fish_dfn.vertex.pos.html#fracture.vertex.pos" title="Get the fracture vertex position."><span class="fishcmd">fracture.vertex.pos</span><span class="fishparamlist"><big>(</big><span class="null">FV_PNT</span><big>)</big></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="dfn.vertex_utilities/fish_dfn.vertex.typeid.html#fracture.vertex.typeid" title="Get the fracture vertex type number. The type ID can be used to uniquely identify&#013;&#010;fracture vertex  FISH  pointers and distinguish them from any other type of&#013;&#010; FISH  pointer."><span class="fishcmd">fracture.vertex.typeid</span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dfn.vertex_utilities/fish_dfn.vertex.find.html"><code class="docutils literal"><span class="pre">fracture.vertex.find</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.vertex_utilities/fish_dfn.vertex.list.html"><code class="docutils literal"><span class="pre">fracture.vertex.list</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.vertex_utilities/fish_dfn.vertex.maxid.html"><code class="docutils literal"><span class="pre">fracture.vertex.maxid</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.vertex_utilities/fish_dfn.vertex.num.html"><code class="docutils literal"><span class="pre">fracture.vertex.num</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.vertex_utilities/fish_dfn.vertex.pos.html"><code class="docutils literal"><span class="pre">fracture.vertex.pos</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dfn.vertex_utilities/fish_dfn.vertex.typeid.html"><code class="docutils literal"><span class="pre">fracture.vertex.typeid</span></code></a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../docproject/source/manual/program_guide/program_guide.html" >Program Guide</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../../../../docproject/source/manual/program_guide/general_components.html" >Common Model Objects</a> &#187;</li>
+       <li class="nav-item nav-item-3"><a href="../dfn.html" accesskey="U">Discrete Fracture Network (DFN)</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../dfn_commands/cmd_fracture_verify-file.html"
+                           title="previous chapter"> <code class="docutils literal"><span class="pre">fracture</span> <span class="pre">verify-file</span></code> command</a> |    
+       <a href="dfn_utilities/fish_dfn.contact.list.html"
+                           title="next chapter"><code class="docutils literal"><span class="pre">dfn.contact.list</span></code></a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?FISH Functions" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

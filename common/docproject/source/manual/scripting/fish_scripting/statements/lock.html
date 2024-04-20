@@ -1,0 +1,170 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Lock &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="Loop - EndLoop" href="loopendloop.html" />
+    <link rel="prev" title="Local" href="local.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="lock">
+<span id="fish-statement-lock"></span><h1>Lock</h1>
+<p><span class="fishname">lock</span> <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">name</span></span></a> = &lt;expression&gt;</p>
+<p>The <span class="fishname">lock</span> keyword can only be used from a <span class="codename">FISH</span> operator, it cannot be used in a normal <span class="codename">FISH</span> function.
+Inside a <span class="codename">FISH</span> operator, this statement locks a global symbol and allows it to be written to from a general expression in a way that is both thread safe and deterministic.</p>
+<p>The first token following the <span class="fishname">lock</span> statement must be the name of a global symbol.</p>
+<p>There are only four available valid forms of syntax after the global symbol name.  They are:</p>
+<blockquote>
+<div><ul>
+<li><p class="first"><span class="fishname">lock</span> <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">name</span></span></a> = <a class="reference internal" href="../../../../../../fish/doc/fish_manual/fish_fish/math_utilities/fish_math.max.html#function:math.max" title="Get the maximum. Any number of arguments can be given, of any type.  Arguments"><code class="xref fish fish-func docutils literal"><span class="pre">math.max</span></code></a> (<a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">name</span></span></a> ,&lt;expression&gt;)</p>
+<blockquote>
+<div><p>This finds the maximum value and assigns it to the symbol.  Only two arguments may be given to <a class="reference internal" href="../../../../../../fish/doc/fish_manual/fish_fish/math_utilities/fish_math.max.html#function:math.max" title="Get the maximum. Any number of arguments can be given, of any type.  Arguments"><code class="xref fish fish-func docutils literal"><span class="pre">math.max</span></code></a>.</p>
+</div></blockquote>
+</li>
+<li><p class="first"><span class="fishname">lock</span> <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">name</span></span></a> = <a class="reference internal" href="../../../../../../fish/doc/fish_manual/fish_fish/math_utilities/fish_math.min.html#function:math.min" title="Get the minimum. Any number of arguments can be given."><code class="xref fish fish-func docutils literal"><span class="pre">math.min</span></code></a> (<a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">name</span></span></a> ,&lt;expression&gt;)</p>
+<blockquote>
+<div><p>This finds the minimum value and assigns it to the symbol.   Only two arguments may be given to <a class="reference internal" href="../../../../../../fish/doc/fish_manual/fish_fish/math_utilities/fish_math.max.html#function:math.max" title="Get the maximum. Any number of arguments can be given, of any type.  Arguments"><code class="xref fish fish-func docutils literal"><span class="pre">math.max</span></code></a>.</p>
+</div></blockquote>
+</li>
+<li><p class="first"><span class="fishname">lock</span> <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">name</span></span></a> = &lt;expression&gt;</p>
+<blockquote>
+<div><p>This simply sets the value of the symbol.  The code guarantees that the last call in the order of the splitting that caused multi-thread execution will be the one that takes precedence.</p>
+</div></blockquote>
+</li>
+<li><p class="first"><span class="fishname">lock</span> <a class="reference internal" href="../../../../../utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">name</span></span></a> += &lt;expression&gt;</p>
+<blockquote>
+<div><p>This accumulates a value in the symbol.  The symbol value must be of either integer or real type, and the expression must result in a value of those two types as well.</p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<p>There are a few rules governing the use of a <span class="fishname">lock</span> statement:</p>
+<blockquote>
+<div><ul class="simple">
+<li>A given symbol can only be used in a <span class="fishname">lock</span> statment of <em>one</em> of those four types in a given operator.   More than one <span class="fishname">lock</span> statement of the same type on the same symbol may be used.</li>
+<li>A symbol cannot be the target of a <span class="fishname">lock</span> statment if it has been read from by any preceding code.</li>
+</ul>
+</div></blockquote>
+<p>The following are examples of using a <span class="fishname">lock</span> statement to safely write to a global <span class="codename">FISH</span> symbol from an operator:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">lock maxval </span><span class="p">=</span><span class="n"> math</span><span class="p">.</span><span class="n">max</span><span class="p">(</span><span class="n">maxval</span><span class="p">,</span><span class="n">thisval</span><span class="p">)</span>
+<span class="n">lock myval </span><span class="p">=</span><span class="n"> a</span><span class="o">*</span><span class="n">b</span><span class="o">*</span><span class="n">c</span>
+</pre></div>
+</div>
+<p>It is worth noting that a common desire is to associate some other value with the maximum value obtained.  For example if you want find the <span class="codename">FLAC3D</span> grid point corresponding to maximum displacement.  In this case you may use the lock sym = math.max(sym,val) syntax but use a structure as the symbol.  Structures are compared by comparing each member in order.  So make a structure whose first value is a real (displacement magnitude) and whose second is a grid point pointer.  The following <span class="codename">FLAC3D</span> example demonstrates:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">fish struct mystruct</span><span class="p">(</span><span class="n">disp</span><span class="p">,</span><span class="n">gp</span><span class="p">)</span>
+
+<span class="ni">[</span><span class="k">global</span><span class="ni"> maxgp </span><span class="p">=</span><span class="ni"> struct mystruct</span><span class="p">(</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="k">null</span><span class="p">)</span><span class="ni">]</span>
+
+<span class="nb">fish operator</span><span class="n"> findmax</span><span class="p">(</span><span class="n">gp</span><span class="p">)</span>
+<span class="n">    local dispmag </span><span class="p">=</span><span class="n"> math</span><span class="p">.</span><span class="n">mag</span><span class="p">(</span><span class="n">gp</span><span class="p">.</span><span class="n">disp</span><span class="p">(</span><span class="n">gp</span><span class="p">))</span>
+<span class="n">    lock maxgp </span><span class="p">=</span><span class="n"> math</span><span class="p">.</span><span class="n">max</span><span class="p">(</span><span class="n">maxgp</span><span class="p">,</span><span class="n">struct mystruct</span><span class="p">(</span><span class="n">dispmag</span><span class="p">,</span><span class="n">gp</span><span class="p">))</span>
+<span class="nb">end</span>
+<span class="ni">[findmax</span><span class="p">(::</span><span class="k">gp.list</span><span class="p">)</span><span class="ni">]</span>
+<span class="nb">fish list</span><span class="n"> contents </span><span class="ni">[maxgp]</span>
+</pre></div>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../fish.html" ><span class="codename">FISH</span> Scripting Reference</a> &#187;</li>
+       <li class="nav-item nav-item-2"><a href="../fish_statements.html" accesskey="U"><span class="codename">FISH</span> Statements</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="local.html"
+                           title="previous chapter"> Local</a> |    
+       <a href="loopendloop.html"
+                           title="next chapter">Loop - EndLoop</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Lock" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

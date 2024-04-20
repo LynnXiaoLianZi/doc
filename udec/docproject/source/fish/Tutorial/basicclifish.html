@@ -1,0 +1,1042 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial: Working with FISH &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="UDEC FISH Data Program Guide" href="../Program Guide/program_guide.html" />
+    <link rel="prev" title="FISH Type Index" href="../../../../../common/docproject/source/manual/scripting/fish_scripting/fish_types.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../contents.html"><img id="cornerlogo" src="../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="hide sectionname docutils container">
+<span class="codename">UDEC</span> Modeling • Tutorials</div>
+<div class="section" id="tutorial-working-with-fish">
+<span id="basicclifishtutorial"></span><h1>Tutorial: Working with <span class="codename">FISH</span></h1>
+<p>This section is intended for people who have run <span class="codename">UDEC</span> (at least for simple problems) but have not used the <span class="codename">FISH</span> language—no programming experience is assumed. To get the maximum benefit from the examples given here, you should try them out with <span class="codename">UDEC</span> running interactively. The short programs may be typed directly into the command line, accessed via the <a class="reference internal" href="../../../../../common/docproject/source/manual/program_guide/mechanics/commands/console_pane/consolepane.html#theconsolepane"><span class="std std-ref">console</span></a> pane. After running an example, give the <span class="codename">UDEC</span> command <a class="reference internal" href="../../../../../common/kernel/doc/manual/model/commands/cmd_model.new.html#command:model.new" title="Clear model-state information. Model information is cleared, allowing one to&#013;&#010;begin a new"><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">new</span></code></a>, to “wipe the slate clean,” ready for the next example. Alternatively, the more lengthy <span class="codename">FISH</span> functions may be typed into data files using the the built-in <a class="reference internal" href="../../../../../common/docproject/source/manual/program_guide/mechanics/datafiles/editor_pane/editoroverview.html#editoroverview"><span class="std std-ref">editor</span></a>; these can be executed directly in the editor or <a class="reference internal" href="../../../../../common/kernel/doc/manual/program/commands/cmd_program.call.html#command:program.call" title="Process the specified data file(s)."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">call</span></code></a> in the console.</p>
+<p>Type the lines in the example below at the <span class="codename">UDEC</span>’s <a class="reference internal" href="../../../../../common/docproject/source/manual/glossaryofterms.html#term-45"><span class="xref std std-term">command prompt</span></a>, pressing <code class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></code> at the end of each line.</p>
+<div class="section" id="defining-a-fish-function">
+<h2>Defining a <span class="codename">FISH</span> Function</h2>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">fish def</span><span class="ni"> abc</span>
+<span class="ni">  abc </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">22</span><span class="ni"> </span><span class="o">*</span><span class="ni"> </span><span class="m m-Double">3</span><span class="ni"> </span><span class="o">+</span><span class="ni"> </span><span class="m m-Double">5</span>
+<span class="nb">end</span>
+</pre></div>
+</div>
+<div class="aside admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We will use <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">purple courier boldface</span></span></a> to identify user-defined <span class="codename">FISH</span> functions and declared variables; <span class="codename">FISH</span> statements are similar, but <span class="fishname">bold and darker</span>.</p>
+</div>
+<p>Note that the command prompt changes to <code class="kbd docutils literal"><span class="pre">Def&gt;</span></code> after the first line has been typed in; it changes back to the usual prompt when the <span class="fishname">end</span> statement is entered. This change in prompt lets you know whether you are using  commands or if you are defining a <span class="codename">FISH</span> function. All lines following the <a class="reference internal" href="../../../../../common/kernel/doc/manual/fish/commands/cmd_fish.define.html#command:fish.define" title="Define a new |FISH| function.   The function will be named  s , and must&#013;&#010;be a valid symbol name.  Tokens following are assumed to be arguments that the&#013;&#010;function will take.  Please see  fish_scripting .  [CS: this needs&#013;&#010;'common-izing  for use with PFC] and the ref-basicclifishtutorial.`"><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">define</span></code></a> statement are taken as part of the definition of a <span class="codename">FISH</span> function (until the <span class="fishname">end</span> <a class="reference internal" href="../../../../../common/docproject/source/manual/scripting/fish_scripting/statements/defineend.html#fish-statement-defineend"><span class="std std-ref">statement</span></a> is entered). However, if you type in a line that contains an error (e.g., you type the <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">=</span></span></a> sign on an empty line), then you will get the <code class="kbd docutils literal"><span class="pre">udec&gt;</span></code> prompt again with an error message. In this case, one must redefine the <span class="codename">FISH</span> function again from scratch, starting with the <a class="reference internal" href="../../../../../common/kernel/doc/manual/fish/commands/cmd_fish.define.html#command:fish.define" title="Define a new |FISH| function.   The function will be named  s , and must&#013;&#010;be a valid symbol name.  Tokens following are assumed to be arguments that the&#013;&#010;function will take.  Please see  fish_scripting .  [CS: this needs&#013;&#010;'common-izing  for use with PFC] and the ref-basicclifishtutorial.`"><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">define</span></code></a> statement. Because it is very easy to make mistakes, <span class="codename">FISH</span> functions are often typed into data files using the built-in editor. These can either be executed directly from the editor or can be executed via the <a class="reference internal" href="../../../../../common/kernel/doc/manual/program/commands/cmd_program.call.html#command:program.call" title="Process the specified data file(s)."><code class="xref fish fish-cmd docutils literal"><span class="pre">program</span> <span class="pre">call</span></code></a> command just like a <span class="codename">UDEC</span> data file not containing <span class="codename">FISH</span>. We will describe this process later; for now, we’ll continue to work from the command line. Assuming that you typed in the preceding lines without error, and that you now see the <code class="kbd docutils literal"><span class="pre">udec&gt;</span></code> prompt, you can “execute” the function named <span class="fishname">fname</span> defined in the example above by typing the line</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="p">@</span><span class="n">abc</span>
+</pre></div>
+</div>
+<p>This line causes the arithmetic operations defined in the function to be executed. This is an “assignment statement.” If an equal sign is present, the expression on the right-hand side of the equal sign is evaluated and given to the variable on the left-hand side. Note that arithmetic operations follow the usual conventions: addition, subtraction, multiplication and division are done with the signs <strong>+</strong>, <strong>-</strong>, <strong>*</strong>, and <strong>/</strong>, respectively. The sign <strong>^</strong> denotes “raised to the power of.”</p>
+<p>The actions above create two objects: a function object that can be called at the user’s discretion, and a variable called <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a>, where <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a> = 71 after the function has been executed. One can see <span class="fishname">abc</span> <span class="codename">FISH</span> function in the <a class="reference internal" href="../../../../../common/docproject/source/manual/program_guide/programwindow/controlpanel/fishglobals.html#fishglobals"><span class="std std-ref">global symbols</span></a> control set. In addition, one can print the value of <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a> to the command line by invoking an inline <span class="codename">FISH</span> expression via square brackets:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="ni">[abc]</span>
+</pre></div>
+</div>
+<p>The message</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="m m-Double">71</span><span class="n"> </span><span class="p">(</span><span class="n">integer</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>will appear on the command prompt. The function <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a> can also be executed with the inline <span class="codename">FISH</span> syntax as outlined below. Once the symbol <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a> is defined, we can now refer to it in many ways using <span class="codename">UDEC</span> commands. A <span class="codename">FISH</span> function can have any name, but in order for a value to be returned by the function, the function name should be identical to a value name updated inside the function, as outlined below.</p>
+</div>
+<div class="section" id="variables">
+<h2>Variables</h2>
+<p>We now type a slightly different program (using the <a class="reference internal" href="../../../../../common/kernel/doc/manual/model/commands/cmd_model.new.html#command:model.new" title="Clear model-state information. Model information is cleared, allowing one to&#013;&#010;begin a new"><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">new</span></code></a> command to erase the old  function and reset the model state).</p>
+<p><strong>Using a variable</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">fish def</span><span class="ni"> abc</span>
+<span class="ni">  hh </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">22</span>
+<span class="ni">  abc </span><span class="p">=</span><span class="ni"> hh </span><span class="o">*</span><span class="ni"> </span><span class="m m-Double">3</span><span class="ni"> </span><span class="o">+</span><span class="ni"> </span><span class="m m-Double">5</span>
+<span class="nb">end</span>
+</pre></div>
+</div>
+<p>Here we introduce a “variable,” <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">hh</span></span></a>, which is given the value of 22 and then used in the next line. If we execute this function via inline <span class="codename">FISH</span> (i.e., [<a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a>]), then exactly the same output as in the previous case appears. However, we now have two <span class="codename">FISH</span> symbols. The two symbols both have values, but one (<a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a>) is known as a “function,” and the other (<a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">hh</span></span></a>) as a variable. The distinction is as follows:</p>
+<blockquote>
+<div><em>When a</em> <span class="codename">FISH</span> <em>symbol name is mentioned, the associated function is executed if the symbol corresponds to a function. However, if the symbol is not a function name, then the current value of the symbol is used.</em></div></blockquote>
+<p>The mechanism of naming a <span class="codename">FISH</span> function to be identical to a variable set inside the function allows one to provide a return value from the execution of the <span class="codename">FISH</span> function. This mechanism is frequently used, especially when <span class="codename">FISH</span> histories (using the <a class="reference internal" href="../../../../../common/kernel/doc/manual/fish/commands/cmd_fish.history.html#command:fish.history" title="Create a history of the |fish| variable  sym .  A  name  can be assigned&#013;&#010;for later reference.  If not assigned, a name will be generated automatically&#013;&#010;based on the internally assigned ID number.  The value of the history will be&#013;&#010;taken at the history interval, the return value is assumed to be a number."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">history</span></code></a> command) are needed.</p>
+<p>The following experiment may help to clarify the distinction between variables and functions. Before doing the experiment, note that inline <span class="codename">FISH</span> can be used to set the value of any user-defined <span class="codename">FISH</span> symbol, independent of the <span class="codename">FISH</span> function in which the symbol was introduced. Now type the following lines without giving the <a class="reference internal" href="../../../../../common/kernel/doc/manual/model/commands/cmd_model.new.html#command:model.new" title="Clear model-state information. Model information is cleared, allowing one to&#013;&#010;begin a new"><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">new</span></code></a> command, since we want to keep our previously entered program in memory:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="ni">[abc</span><span class="p">=</span><span class="m m-Double">0</span><span class="ni">]</span>
+<span class="ni">[hh</span><span class="p">=</span><span class="m m-Double">0</span><span class="ni">]</span>
+<span class="ni">[hh]</span>
+<span class="ni">[abc]</span>
+<span class="ni">[hh]</span>
+</pre></div>
+</div>
+<p>The values of <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a> and <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">hh</span></span></a> are set to 0 in the first two lines. The function <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a> is not executed, as the first line is an assignment operation. Note that <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a> still refers to the same <span class="codename">FISH</span> function even though its value has been modified. <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a> will always refer to the defined <span class="codename">FISH</span> function unless it is redefined with the <a class="reference internal" href="../../../../../common/kernel/doc/manual/fish/commands/cmd_fish.define.html#command:fish.define" title="Define a new |FISH| function.   The function will be named  s , and must&#013;&#010;be a valid symbol name.  Tokens following are assumed to be arguments that the&#013;&#010;function will take.  Please see  fish_scripting .  [CS: this needs&#013;&#010;'common-izing  for use with PFC] and the ref-basicclifishtutorial.`"><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">define</span></code></a> command. Following the two assignment operations, the value of <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">hh</span></span></a> is printed. The line [<a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a>] executes the <span class="codename">FISH</span> function and prints the updated value corresponding to that execution on the command line. The function is executed, as <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a> refers to a function and the value of <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a> is not being assigned. Thus the value of <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a> has been changed along with the value of <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">hh</span></span></a>, as the last line demonstrates.</p>
+<p>Though we highly recommend using the inline <span class="codename">FISH</span> syntax to manipulate <span class="codename">FISH</span> variables, an alternate syntax to achieve the same effect is given below:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">fish set abc</span><span class="p">=</span><span class="m m-Double">0</span><span class="n"> </span><span class="ni">@hh</span><span class="p">=</span><span class="m m-Double">0</span>
+<span class="nb">fish list</span><span class="n"> </span><span class="ni">@hh</span>
+<span class="nb">fish list</span><span class="n"> </span><span class="ni">@abc</span>
+<span class="nb">fish list</span><span class="n"> </span><span class="ni">@hh</span>
+</pre></div>
+</div>
+<p>In this case, the second <a class="reference internal" href="../../../../../common/kernel/doc/manual/fish/commands/cmd_fish.list.html#command:fish.list" title="List |fish|-related quantities. By default all |fish| symbols are listed. Alternatively&#013;&#010;a specific |fish| symbol  s  can be listed."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">list</span></code></a> command causes <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a> to be executed, as <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a> is the name of a function, causing the values of both <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">hh</span></span></a> and <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a> to be updated.</p>
+<p>As a test of your understanding, type in the slightly modified sequence shown in the next example and figure out why the displayed answers are different.</p>
+<p><strong>Test your understanding of function and variable names</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">fish def</span><span class="ni"> abc</span>
+<span class="ni">  abc </span><span class="p">=</span><span class="ni"> hh </span><span class="o">*</span><span class="ni"> </span><span class="m m-Double">3</span><span class="ni"> </span><span class="o">+</span><span class="ni"> </span><span class="m m-Double">5</span>
+<span class="nb">end</span>
+<span class="n">fish set hh</span><span class="p">=</span><span class="m m-Double">22</span>
+<span class="nb">fish list</span><span class="n"> </span><span class="ni">@abc</span>
+<span class="n">fish set abc</span><span class="p">=</span><span class="m m-Double">0</span><span class="n"> </span><span class="ni">@hh</span><span class="p">=</span><span class="m m-Double">0</span>
+<span class="nb">fish list</span><span class="n"> </span><span class="ni">@hh</span>
+<span class="nb">fish list</span><span class="n"> </span><span class="ni">@abc</span>
+<span class="nb">fish list</span><span class="n"> </span><span class="ni">@hh</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-fish-for-custom-calculations">
+<h2>Using <span class="codename">FISH</span> for Custom Calculations</h2>
+<p>The following example shows how the stress in a zone can be stored as a history for later inspection.</p>
+<p><strong>Capturing the history of a</strong> <span class="codename">FISH</span> <strong>variable</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">block create</span><span class="n"> polygon </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">10</span><span class="n"> </span><span class="m m-Double">10</span><span class="n"> </span><span class="m m-Double">10</span><span class="n"> </span><span class="m m-Double">10</span><span class="n"> </span><span class="m m-Double">0</span>
+<span class="nb">block zone gen</span><span class="n"> edge </span><span class="m m-Double">10</span>
+<span class="nb">block property</span><span class="n"> material </span><span class="m m-Double">1</span><span class="n"> density </span><span class="m m-Double">1000</span><span class="n"> bulk </span><span class="m m-Double">1e9</span><span class="n"> shear </span><span class="m m-Double">0.7e9</span>
+<span class="nb">block gridpoint apply</span><span class="n"> velocity</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0.0</span><span class="n"> range position</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">10</span><span class="n"> position</span><span class="o">-</span><span class="n">y </span><span class="o">-</span><span class="m m-Double">.1</span><span class="n"> </span><span class="m m-Double">.1</span>
+<span class="nb">model gravity</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">10</span>
+<span class="c">;</span>
+<span class="nb">fish define</span><span class="ni"> stress_y</span>
+<span class="ni">  zoneIdx </span><span class="p">=</span><span class="ni"> </span><span class="k">block.zone</span><span class="p">(</span><span class="k">block.head</span><span class="p">)</span>
+<span class="ni">  stress_y </span><span class="p">=</span><span class="ni"> </span><span class="k">block.zone.stress.yy</span><span class="p">(</span><span class="ni">zoneIdx</span><span class="p">)</span>
+<span class="nb">end</span>
+<span class="c">;</span>
+<span class="nb">fish history</span><span class="n"> stress_y</span>
+<span class="nb">block cycle</span><span class="n"> </span><span class="m m-Double">200</span>
+</pre></div>
+</div>
+<p>The <span class="codename">FISH</span> zone variable <a class="reference internal" href="../../elements/block/block.zone_fish/fish_block.zone.stress.yy.html#function:block.zone.stress.yy" title="Get/set the  yy -stress of a zone."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.stress.yy</span></code></a> is an example of a zone quantity that is available within a <span class="codename">FISH</span> program and is termed a <span class="codename">FISH</span> intrinsic; see <a class="reference internal" href="../../elements/block/block_fish/fish_block.zone_intrinsics.html#fish-blockzoneintrinsics"><span class="std std-ref">Zone Functions</span></a> for a complete list of the zone-related intrinsics. Often times, <span class="codename">FISH</span> intrinsics are predefined model quantities but, in other cases, they define more complex model operations.</p>
+<p>In the example, the <span class="codename">FISH</span> intrinsic <a class="reference internal" href="../../elements/block/block.zone_fish/fish_block.zone.stress.yy.html#function:block.zone.stress.yy" title="Get/set the  yy -stress of a zone."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.stress.yy</span></code></a> provides the <a href="#id5"><span class="problematic" id="id6">|y|</span></a>-component of the zone stress; each instance of <a class="reference internal" href="../../elements/block/block.zone_fish/fish_block.zone.stress.yy.html#function:block.zone.stress.yy" title="Get/set the  yy -stress of a zone."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.stress.yy</span></code></a> must be followed by a zone index. The index is found with the function <span class="fishname">block.zone(block_head)</span>, which uses the <span class="codename">FISH</span> block intrinsic <a class="reference internal" href="../../elements/block/block.block_fish/fish_block.head.html#function:block.head" title="Get the index to the first block in the list of blocks."><code class="xref fish fish-func docutils literal"><span class="pre">block.head</span></code></a> to find the index of the first block and then the index of the first zone in the block. By creating a history, the <span class="codename">FISH</span> function <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">stress_y</span></span></a> is executed when histories are updated during cycling (see the <a class="reference internal" href="../../../../../common/kernel/doc/manual/history_manual/history_commands/cmd_history.interval.html#command:history.interval" title="Specifies the history-sampling interval."><code class="xref fish fish-cmd docutils literal"><span class="pre">history</span> <span class="pre">interval</span></code></a> command to change the history update frequency). Since the value of <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">stress_y</span></span></a> is updated in the function (i.e., the function name and update variable name are the same), the history contains updated values each time it is called. At the end of the run, one can simply plot the history of <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">stress_y</span></span></a> (history 1) just like a predefined <span class="codename">UDEC</span> history. Similarly, we may use <span class="codename">FISH</span> functions to post-process or output the computed history for further analysis.</p>
+<p>In addition to the above-mentioned <span class="codename">FISH</span> intrinsics for zones, there are a plethora of intrinsics available for use in <span class="codename">FISH</span>. All block-specific intrinsics are indexed <a class="reference internal" href="../../elements/block/block_fish/block_fish.html#block-fish"><span class="std std-ref">here</span></a> and the specific structural element intrinsics are given <a class="reference internal" href="../../elements/block/block_fish/fish_block.structure.html#blockstructurefish"><span class="std std-ref">here</span></a>. A catalog of general intrinsics is given <a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/fish_fish.html#fish-fish"><span class="std std-ref">here</span></a>. Using <span class="cmdkey">math</span>, for instance, enables things like sines and cosines to be calculated from within a <span class="codename">FISH</span> function. The list below samples some of the functions available from the set of <span class="cmdkey">math</span> intrinsics.</p>
+<table border="1" class="colwidths-given icg4 docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/math_utilities/fish_math.abs.html#function:math.abs" title="Get the absolute value of a number or a vector.       In the case of a vector&#013;&#010;the absolute value operation is performed on each component separately."><code class="xref fish fish-func docutils literal"><span class="pre">math.abs</span></code></a>(<a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n</span></span></a>)</td>
+<td>absolute value of <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n</span></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/math_utilities/fish_math.cos.html#function:math.cos" title="Get the cosine. The argument is in radians."><code class="xref fish fish-func docutils literal"><span class="pre">math.cos</span></code></a>(<a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n</span></span></a>)</td>
+<td>cosine of <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n</span></span></a> (<a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n</span></span></a> is in radians)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/math_utilities/fish_math.log.html#function:math.log" title="Get the base 10 logarithm."><code class="xref fish fish-func docutils literal"><span class="pre">math.log</span></code></a>(<a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n</span></span></a>)</td>
+<td>base-ten logarithm of <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n</span></span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/math_utilities/fish_math.max.html#function:math.max" title="Get the maximum. Any number of arguments can be given, of any type.  Arguments"><code class="xref fish fish-func docutils literal"><span class="pre">math.max</span></code></a>(<a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n1</span></span></a>, <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n2</span></span></a>)</td>
+<td>returns maximum of <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n1</span></span></a>, <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n2</span></span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/math_utilities/fish_math.sqrt.html#function:math.sqrt" title="Get the square root."><code class="xref fish fish-func docutils literal"><span class="pre">math.sqrt</span></code></a>(<a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n</span></span></a>)</td>
+<td>square root of <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:flt" title="A real number ( f ), positive or negative. It may be written in scientific&#013;&#010;e notation. Multiple instances in a command are numbered ( f1   f2 &#013;&#010; f3  etc.)."><span class="varfloat"><span class="null">n</span></span></a></td>
+</tr>
+</tbody>
+</table>
+<p>A more complex example using a number of intrinsics will be presented later, but now we must discuss one more way a <span class="codename">UDEC</span> data file can make use of user-defined <span class="codename">FISH</span> names:</p>
+<blockquote>
+<div><em>Wherever a value is expected in a</em> <span class="codename">UDEC</span> <em>command, you may substitute the name of a</em> <span class="codename">FISH</span> <em>variable or function using inline</em> <span class="codename">FISH</span> <em>notation ([]) or prefixed by &#64;.</em></div></blockquote>
+<p>This simple statement is the key to a very powerful feature of <span class="codename">FISH</span> that allows such things as ranges, applied stresses, properties, etc., to be computed in a <span class="codename">FISH</span> function and used in <span class="codename">UDEC</span> commands in symbolic form. Hence, parameter changes can be made very easily, without the need to change many numbers in an input file.</p>
+<p>As an example, let us assume that we know the Young’s modulus and Poisson’s ratio of a material. If the user wishes to use the bulk and shear moduli, these may be derived with a <span class="codename">FISH</span> function, using the equations below:</p>
+<div class="math">
+\[G={E\over2(1+\nu)}\]</div>
+<div class="math">
+\[K={E\over3(1-2\nu)}\]</div>
+<p>Coding these equations into a <span class="codename">FISH</span> function (called <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">derive</span></span></a>) can then be done as shown in this example:</p>
+<p id="ex-calcbulkandshear"><span class="codename">FISH</span> <strong>functions to calculate bulk and shear moduli</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">fish def</span><span class="ni"> derive</span><span class="p">(</span><span class="ni">y_mod</span><span class="p">,</span><span class="ni">p_ratio</span><span class="p">)</span>
+<span class="ni">  s_mod </span><span class="p">=</span><span class="ni"> y_mod </span><span class="o">/</span><span class="ni"> </span><span class="p">(</span><span class="m m-Double">2.0</span><span class="ni"> </span><span class="o">*</span><span class="ni"> </span><span class="p">(</span><span class="m m-Double">1.0</span><span class="ni"> </span><span class="o">+</span><span class="ni"> p_ratio</span><span class="p">))</span>
+<span class="ni">  b_mod </span><span class="p">=</span><span class="ni"> y_mod </span><span class="o">/</span><span class="ni"> </span><span class="p">(</span><span class="m m-Double">3.0</span><span class="ni"> </span><span class="o">*</span><span class="ni"> </span><span class="p">(</span><span class="m m-Double">1.0</span><span class="ni"> </span><span class="o">-</span><span class="ni"> </span><span class="m m-Double">2.0</span><span class="ni"> </span><span class="o">*</span><span class="ni"> p_ratio</span><span class="p">))</span>
+<span class="nb">end</span>
+
+<span class="ni">[derive</span><span class="p">(</span><span class="m m-Double">5e8</span><span class="p">,</span><span class="m m-Double">0.25</span><span class="p">)</span><span class="ni">]</span>
+<span class="ni">[b_mod]</span>
+<span class="ni">[s_mod]</span>
+</pre></div>
+</div>
+<p>Note that we execute the function <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">derive</span></span></a> by giving its name with arguments inside parenthesis. In this case the arguments, the Young’s modulus and Poisson’s ratio, respectively, are used as temporary variables to compute the bulk and shear moduli; as a result, they do not appear as <span class="codename">FISH</span> variables after <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">derive</span></span></a> has been executed. The computed values of the bulk and shear moduli (<a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">b_mod</span></span></a> and <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">s_mod</span></span></a>, respectively) can subsequently be used, in symbolic form, in <span class="codename">UDEC</span> commands as shown in the following example:</p>
+<p><strong>Using symbolic variables in</strong> <span class="codename">UDEC</span> <strong>input</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">block create</span><span class="n"> polygon </span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="n">  </span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">10</span><span class="n">  </span><span class="m m-Double">10</span><span class="p">,</span><span class="m m-Double">10</span><span class="n">  </span><span class="m m-Double">10</span><span class="p">,</span><span class="m m-Double">0</span>
+<span class="nb">block zone gen</span><span class="n"> edge </span><span class="m m-Double">10</span>
+<span class="nb">block zone cmodel</span><span class="n"> assign elastic</span>
+<span class="nb">block zone property</span><span class="n"> bulk </span><span class="ni">[b_mod]</span><span class="n"> shear </span><span class="ni">[s_mod]</span>
+<span class="nb">block zone list</span><span class="n"> property bulk</span>
+<span class="nb">block zone list</span><span class="n"> property shear</span>
+</pre></div>
+</div>
+<p>The result of these operations can be checked by listing <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">bulk</span></span></a> and <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">shear</span></span></a> in the usual way (e.g., using the <a class="reference internal" href="../../elements/block/block.zone_commands/cmd_block.zone.list.html#kwd:block.zone.list.property" title="List values of specified zone property."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">list</span> <span class="pre">property</span></code></a> command).</p>
+</div>
+<div class="section" id="fish-rules-syntax-and-statements-illustrated">
+<h2><span class="codename">FISH</span> Rules, Syntax, and Statements, Illustrated</h2>
+<p>There is great flexibility in choosing names for <span class="codename">FISH</span> variables and functions. The underscore character ( _ ) may be included in a name. Names must begin with an alphabetical letter (i.e., cannot be a number or a special character) and must not contain any of the arithmetic operators (+, -, /, *, or ^). A chosen name cannot be the same as the name of one of the built-in <span class="codename">FISH</span> intrinsics. <span class="codename">FISH</span> variable names are not case sensitive, so that <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">aVariable</span></span></a> and <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">AVARiable</span></span></a> are the same variable.</p>
+<p>In addition to inspecting <span class="codename">FISH</span> variable/function names in the <a class="reference internal" href="../../../../../common/docproject/source/manual/program_guide/programwindow/controlpanel/fishglobals.html#fishglobals"><span class="std std-ref">global symbols</span></a> control set, one can also obtain a list of all current variables and functions using the <a class="reference internal" href="../../../../../common/kernel/doc/manual/fish/commands/cmd_fish.list.html#command:fish.list" title="List |fish|-related quantities. By default all |fish| symbols are listed. Alternatively&#013;&#010;a specific |fish| symbol  s  can be listed."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">list</span></code></a> command. A printout of all current values, sorted alphabetically by name, is produced as a result of this command.</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">fish list</span>
+</pre></div>
+</div>
+<p>We now examine ways decisions can be made, and repeated operations done, via <span class="codename">FISH</span> programming. The following <span class="codename">FISH</span> statements allow specified sections of a program to be repeated many times:</p>
+<p><span class="fishname">loop</span> <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">var</span></span></a> (<a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:any" title="A catch-all for any ( a ) of the other types, excepting  sym , shown&#013;&#010;here. Multiple instances in a command are numbered ( a1   a2   a3 &#013;&#010;etc.).  This type is also indicated when a specific combination of types is&#013;&#010;acceptable (for instance, the common case where a string  s  or an integer&#013;&#010; i  may be supplied). When this is the case, the specific acceptable types&#013;&#010;are indicated in the explanatory text."><span class="varany"><span class="null">a1</span></span></a>, <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:any" title="A catch-all for any ( a ) of the other types, excepting  sym , shown&#013;&#010;here. Multiple instances in a command are numbered ( a1   a2   a3 &#013;&#010;etc.).  This type is also indicated when a specific combination of types is&#013;&#010;acceptable (for instance, the common case where a string  s  or an integer&#013;&#010; i  may be supplied). When this is the case, the specific acceptable types&#013;&#010;are indicated in the explanatory text."><span class="varany"><span class="null">a2</span></span></a>)</p>
+<p><span class="fishname">endloop</span></p>
+<p>The words <span class="fishname">loop</span> and <span class="fishname">endloop</span> are <span class="codename">FISH</span> <a class="reference internal" href="../../../../../common/docproject/source/manual/scripting/fish_scripting/fish_statements.html#fish-statements"><span class="std std-ref">statements</span></a>, the symbol <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">var</span></span></a> stands for the loop variable, and <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:any" title="A catch-all for any ( a ) of the other types, excepting  sym , shown&#013;&#010;here. Multiple instances in a command are numbered ( a1   a2   a3 &#013;&#010;etc.).  This type is also indicated when a specific combination of types is&#013;&#010;acceptable (for instance, the common case where a string  s  or an integer&#013;&#010; i  may be supplied). When this is the case, the specific acceptable types&#013;&#010;are indicated in the explanatory text."><span class="varany"><span class="null">a1</span></span></a>, <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:any" title="A catch-all for any ( a ) of the other types, excepting  sym , shown&#013;&#010;here. Multiple instances in a command are numbered ( a1   a2   a3 &#013;&#010;etc.).  This type is also indicated when a specific combination of types is&#013;&#010;acceptable (for instance, the common case where a string  s  or an integer&#013;&#010; i  may be supplied). When this is the case, the specific acceptable types&#013;&#010;are indicated in the explanatory text."><span class="varany"><span class="null">a2</span></span></a> stand for expressions (or single variables) that bound the loop. The next example shows the use of a loop (or repeated sequence) to produce the sum and product of the first ten integers:</p>
+<p><strong>Controlled loop in</strong> <span class="codename">FISH</span></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">fish def</span><span class="ni"> xxx</span>
+<span class="ni">  sum  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0</span>
+<span class="ni">  prod </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1</span>
+<span class="ni">  </span><span class="k">loop</span><span class="ni"> n </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">10</span><span class="p">)</span>
+<span class="ni">    sum  </span><span class="p">=</span><span class="ni"> sum </span><span class="o">+</span><span class="ni"> n</span>
+<span class="ni">    prod </span><span class="p">=</span><span class="ni"> prod </span><span class="o">*</span><span class="ni"> n</span>
+<span class="ni">  </span><span class="k">end_loop</span>
+<span class="nb">end</span>
+<span class="ni">@xxx</span>
+<span class="nb">fish list</span><span class="n"> </span><span class="ni">@sum</span>
+<span class="nb">fish list</span><span class="n"> </span><span class="ni">@prod</span>
+</pre></div>
+</div>
+<p>In this case, the loop variable <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">n</span></span></a> is given successive values from 1 to 10, and the statements inside the loop (between the <span class="fishname">loop</span> and <span class="fishname">endloop</span> statements) are executed for each value. As mentioned, variable names or an arithmetic expression could be substituted for the numbers 1 or 10. Note that the <span class="fishname">exit</span> statement can be used to break out of a <span class="codename">FISH</span> loop and the <span class="fishname">continue</span> statement can be used to skip the remaining instructions in the loop, moving to the next sequence of the loop.</p>
+<p>It is important to note that this formulation of looping is different from a for loop in most high-level programming languages. For instance, one cannot easily control the ending condition (i.e., loop from 1 to 10 excluding 10) or the incrementing mechanism (i.e., loop from 1 to 10 by twos or loop backward). A standard for loop is also available in <span class="codename">FISH</span> to provide for additional loop control.</p>
+<p><strong>Traditional for loop in</strong> <span class="codename">FISH</span></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">fish def</span><span class="ni"> xxx</span>
+<span class="ni">  sum  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0</span>
+<span class="ni">  prod </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1</span>
+<span class="ni">  </span><span class="k">loop</span><span class="ni"> </span><span class="k">for</span><span class="ni"> </span><span class="p">(</span><span class="ni">n </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1</span><span class="p">,</span><span class="ni"> n</span><span class="o">&lt;</span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">10</span><span class="p">,</span><span class="ni"> n </span><span class="p">=</span><span class="ni"> n</span><span class="o">+</span><span class="m m-Double">1</span><span class="p">)</span>
+<span class="ni">    sum  </span><span class="p">=</span><span class="ni"> sum </span><span class="o">+</span><span class="ni"> n</span>
+<span class="ni">    prod </span><span class="p">=</span><span class="ni"> prod </span><span class="o">*</span><span class="ni"> n</span>
+<span class="ni">    </span><span class="k">io.out</span><span class="p">(</span><span class="s">&#39;The sum is &#39;</span><span class="ni"> </span><span class="o">+</span><span class="ni"> string</span><span class="p">(</span><span class="ni">sum</span><span class="p">)</span><span class="ni"> </span><span class="o">+</span><span class="ni">  </span><span class="sx">...</span>
+<span class="ni">           </span><span class="s">&#39; and the product is &#39;</span><span class="ni"> </span><span class="o">+</span><span class="ni"> string</span><span class="p">(</span><span class="ni">prod</span><span class="p">))</span>
+<span class="ni">  </span><span class="k">end_loop</span>
+<span class="nb">end</span>
+<span class="ni">@xxx</span>
+</pre></div>
+</div>
+<p>Besides standard looping as depicted above, one can easily loop over sets of model objects (i.e., zones, gridpoints, structural element nodes, etc.) using the <span class="fishname">loop while</span> construct. A practical use of the <span class="fishname">loop while</span> construct is to install a nonlinear initial distribution of elastic moduli in a <span class="codename">UDEC</span> grid. Suppose that the Young’s modulus at a site is given by this equation:</p>
+<div class="math">
+\[E=E_\circ+c\sqrt{y}\]</div>
+<p>where <a href="#id7"><span class="problematic" id="id8">|y|</span></a> is the depth below surface, and <span class="tri">c</span> and <span class="tri">E</span><sub>∘</sub> are constants. We write a <span class="codename">FISH</span> function to install appropriate values of bulk and shear modulus in the grid, as in this example:</p>
+<p><strong>Applying a nonlinear initial distribution of moduli</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="c">;</span>
+<span class="nb">block tolerance</span><span class="n"> corner</span><span class="o">-</span><span class="n">round</span><span class="o">-</span><span class="n">length </span><span class="m m-Double">0.1</span>
+<span class="nb">block create</span><span class="n"> polygon </span><span class="m m-Double">0</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">30</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">30</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">30</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">30</span>
+<span class="nb">block cut</span><span class="n"> joint</span><span class="o">-</span><span class="n">set angle </span><span class="m m-Double">36</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> trace </span><span class="m m-Double">50</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> gap </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> spac </span><span class="m m-Double">8</span><span class="n"> </span><span class="m m-Double">0</span>
+<span class="nb">block cut</span><span class="n"> joint</span><span class="o">-</span><span class="n">set angle </span><span class="o">-</span><span class="m m-Double">58</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> trace </span><span class="m m-Double">50</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> gap </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> spac </span><span class="m m-Double">12</span><span class="n"> </span><span class="m m-Double">0</span>
+<span class="nb">block zone gen</span><span class="n"> edge </span><span class="m m-Double">1</span>
+<span class="nb">block zone cmodel</span><span class="n"> assign mohr</span><span class="o">-</span><span class="n">c</span>
+<span class="c">;</span>
+<span class="nb">fish define</span><span class="ni"> install</span>
+<span class="ni">  </span><span class="c">; smoothness is the elevation tolerance on changing moduli</span>
+<span class="ni">  bi </span><span class="p">=</span><span class="ni"> </span><span class="k">block.head</span>
+<span class="ni">  </span><span class="k">loop</span><span class="ni"> </span><span class="k">while</span><span class="ni"> bi # </span><span class="m m-Double">0</span>
+<span class="ni">    zi </span><span class="p">=</span><span class="ni"> </span><span class="k">block.zone</span><span class="p">(</span><span class="ni">bi</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> </span><span class="k">while</span><span class="ni"> zi # </span><span class="m m-Double">0</span>
+<span class="ni">      z_depth </span><span class="p">=</span><span class="ni"> float</span><span class="p">(</span><span class="ni">int</span><span class="p">(</span><span class="o">-</span><span class="k">block.zone.pos.y</span><span class="p">(</span><span class="ni">zi</span><span class="p">)</span><span class="o">/</span><span class="ni">smoothness</span><span class="p">))</span>
+<span class="ni">      y_mod </span><span class="p">=</span><span class="ni"> y_zero </span><span class="o">+</span><span class="ni"> cc </span><span class="o">*</span><span class="ni"> </span><span class="k">math.sqrt</span><span class="p">(</span><span class="ni">z_depth</span><span class="p">)</span>
+<span class="ni">      _shear </span><span class="p">=</span><span class="ni"> y_mod </span><span class="o">/</span><span class="ni"> </span><span class="p">(</span><span class="m m-Double">2.0</span><span class="o">*</span><span class="p">(</span><span class="m m-Double">1.0</span><span class="o">+</span><span class="ni">p_ratio</span><span class="p">))</span>
+<span class="ni">      _bulk  </span><span class="p">=</span><span class="ni"> y_mod </span><span class="o">/</span><span class="ni"> </span><span class="p">(</span><span class="m m-Double">3.0</span><span class="o">*</span><span class="p">(</span><span class="m m-Double">1.0</span><span class="o">-</span><span class="m m-Double">2.0</span><span class="o">*</span><span class="ni">p_ratio</span><span class="p">))</span>
+<span class="ni">      </span><span class="k">block.zone.prop</span><span class="p">(</span><span class="ni">zi</span><span class="p">,</span><span class="s">&#39;bulk&#39;</span><span class="p">)</span><span class="ni">  </span><span class="p">=</span><span class="ni"> _bulk</span>
+<span class="ni">      </span><span class="k">block.zone.prop</span><span class="p">(</span><span class="ni">zi</span><span class="p">,</span><span class="s">&#39;shear&#39;</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> _shear</span>
+<span class="ni">      zi </span><span class="p">=</span><span class="ni"> </span><span class="k">block.zone.next</span><span class="p">(</span><span class="ni">zi</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">end_loop</span>
+<span class="ni">    bi </span><span class="p">=</span><span class="ni"> </span><span class="k">block.next</span><span class="p">(</span><span class="ni">bi</span><span class="p">)</span>
+<span class="ni">  </span><span class="k">endloop</span>
+<span class="nb">end</span>
+<span class="c">;</span>
+<span class="n">fish set p_ratio</span><span class="p">=</span><span class="m m-Double">0.25</span><span class="n"> </span><span class="ni">@y_zero</span><span class="p">=</span><span class="m m-Double">1e7</span><span class="n"> </span><span class="ni">@cc</span><span class="p">=</span><span class="m m-Double">1e8</span><span class="n"> </span><span class="ni">@smoothness</span><span class="p">=</span><span class="m m-Double">6.0</span>
+<span class="nb">block zone property</span><span class="n"> density </span><span class="m m-Double">2000</span>
+<span class="nb">block zone property</span><span class="n"> bulk </span><span class="m m-Double">1e8</span>
+<span class="nb">block domain</span><span class="n"> property material </span><span class="m m-Double">1</span><span class="n"> capillary</span><span class="o">-</span><span class="n">gamma </span><span class="m m-Double">1e7</span>
+<span class="ni">@install</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;ex4_09.sav&#39;</span>
+</pre></div>
+</div>
+<p>Again, you can verify correct operation of the function by printing or plotting shear and bulk moduli.</p>
+<p>In the function <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">install</span></span></a>, the looping takes place over all blocks in the global list of blocks, while the inner loop scans over all zones in each block. Inside the loop, the <a href="#id9"><span class="problematic" id="id10">|y|</span></a>-coordinate of each zone centroid is used to calculate the Young’s modulus, given in the equation above. We assume that the datum (or ground surface reference point) is at <a href="#id11"><span class="problematic" id="id12">|y|</span></a> = 0. The variables <code class="xref fish fish-func docutils literal"><span class="pre">bl.zone.pos.y</span></code>(<a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">index</span></span></a>) and <a class="reference internal" href="../../elements/block/block.zone_fish/fish_block.zone.property.html#function:block.zone.prop" title="Get/set a named property for a zone.  This is valid for any models assigned&#013;&#010;using the  block.zone.property  or  block.zone.cmodel.assign  command.&#013;&#010;(For density and Biot’s constant, use specific functions.)"><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.prop</span></code></a>(<a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">index</span></span></a>, <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">'young'</span></span></a>) are <em>zone</em> intrinsics. Here, we set properties directly from within a <span class="codename">FISH</span> function, rather than with a <a class="reference internal" href="../../elements/block/block.zone_commands/cmd_block.zone.property.html#command:block.zone.property" title="Assign values to one or more properties of zones of deformable blocks within&#013;&#010;the given range.  The advantage of assigning models and properties with this&#013;&#010;command is that each zone has its own local properties."><code class="xref fish fish-cmd docutils literal"><span class="pre">block</span> <span class="pre">zone</span> <span class="pre">property</span></code></a> command.  Note that the looping here assumes that the end of the list in each case is a zero index.  This will be true for most list of objects.  However, there are some lists that are circular (such as block.boundary).  In these cases, the loop must test to see if the original starting point has been found again.</p>
+<p>Having seen several examples of <span class="codename">FISH</span> functions, let’s briefly examine the question of <span class="codename">FISH</span> syntax and style. A complete <span class="codename">FISH</span> statement occupies one line. However, a line may be typed across two or more lines as long as each line but the ultimate is terminated with the continuation character ( … ).  Use of temporary variables as hinge points to concatenate lengthy formulas can also be handy.  The following example shows how this can be done:</p>
+<p><strong>Splitting lines</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">fish def</span><span class="ni"> long_sum  </span><span class="c">;example of a sum of many things</span>
+<span class="ni">  </span><span class="k">local</span><span class="ni"> temp1 </span><span class="p">=</span><span class="ni"> v1 </span><span class="o">+</span><span class="ni"> v2 </span><span class="o">+</span><span class="ni"> v3 </span><span class="o">+</span><span class="ni"> v4 </span><span class="o">+</span><span class="ni"> v5 </span><span class="o">+</span><span class="ni"> v6 </span><span class="o">+</span><span class="ni"> v7 </span><span class="o">+</span><span class="ni"> v8 </span><span class="o">+</span><span class="ni"> v9 </span><span class="o">+</span><span class="ni"> v1</span><span class="m m-Double">0</span>
+<span class="ni">  long_sum </span><span class="p">=</span><span class="ni"> temp1 </span><span class="o">+</span><span class="ni"> v1</span><span class="m m-Double">1</span><span class="ni"> </span><span class="o">+</span><span class="ni"> v1</span><span class="m m-Double">2</span><span class="ni"> </span><span class="o">+</span><span class="ni"> v1</span><span class="m m-Double">3</span><span class="ni"> </span><span class="o">+</span><span class="ni"> v1</span><span class="m m-Double">4</span><span class="ni"> </span><span class="o">+</span><span class="ni"> v1</span><span class="m m-Double">5</span>
+<span class="nb">end</span>
+</pre></div>
+</div>
+<p>In this case, the sum of fifteen variables is split into two parts. The <span class="fishname">local</span> designation for <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">temp</span></span></a> means that it is used just during the execution of <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">long_sum</span></span></a> and discarded afterward. By default, <span class="codename">FISH</span> variables are <span class="fishname">global</span>, meaning that they stick around in memory space until a <a class="reference internal" href="../../../../../common/kernel/doc/manual/model/commands/cmd_model.new.html#command:model.new" title="Clear model-state information. Model information is cleared, allowing one to&#013;&#010;begin a new"><code class="xref fish fish-cmd docutils literal"><span class="pre">model</span> <span class="pre">new</span></code></a> command is given. One can specify a variable as global with the <span class="fishname">global</span> statement. It is good practice, and may be more efficient, to designate all <span class="codename">FISH</span> variables that will not be used by other functions or commands as <span class="fishname">local</span>. For instance, one can make a loop using a local variable as follows:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">loop local n</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Also note the use of the semicolon after the definition of <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">long_sum</span></span></a>; this indicates a comment. Any characters that follow a semicolon are ignored by the <span class="codename">FISH</span> compiler, but they <em>are</em> echoed to the log file. It is good programming practice to annotate programs with informative comments. Some of the programs have been shown with <em>indentation</em> (i.e., space inserted at the beginning of some lines to denote a related group of statements). Any number of space characters may be inserted (optionally) between variable names and arithmetic operations to make the program more readable. Again, it is good programming practice to include indentation to indicate things like loops, conditional clauses, and so on. Spaces in <span class="codename">FISH</span> are “significant” in the sense that space characters may not be inserted into a variable or function name.</p>
+<p>One other topic that should be addressed now is that of variable <em>type</em>. You may have noticed, when printing out variables from the various program examples, that numbers are either printed without decimal points or in “E-format” (i.e., as a number with an exponent denoted by “E”). At any instant in time, a <span class="codename">FISH</span> variable or function name is classified as one of various (and growing) types: <em>array</em>, <em>Boolean</em>, <em>integer</em>, <em>matrix</em>, <em>pointer</em>, <em>real</em>, <em>string</em>, <em>structure</em>, <em>tensor</em>, <em>2D vector</em>, or <em>3D vector</em>. These types may change dynamically, depending on context, but the casual user should not normally have to worry about the type of a variable, since it is set automatically. Consider the following example:</p>
+<p><strong>Variable types</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">fish def</span><span class="ni"> types</span>
+<span class="ni">  v1 </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">2</span>
+<span class="ni">  v2 </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">3.4</span>
+<span class="ni">  v3 </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;Have a nice day&#39;</span>
+<span class="ni">  v4 </span><span class="p">=</span><span class="ni"> aa </span><span class="o">*</span><span class="ni"> bb</span>
+<span class="ni">  v5 </span><span class="p">=</span><span class="ni"> cc </span><span class="o">+</span><span class="ni"> </span><span class="s">&#39;, old chap&#39;</span>
+<span class="ni">  v6 </span><span class="p">=</span><span class="ni"> vector</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">)</span>
+<span class="ni">  v7 </span><span class="p">=</span><span class="ni"> matrix</span><span class="p">(</span><span class="ni">vector</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">))</span>
+<span class="ni">  v8 </span><span class="p">=</span><span class="ni"> </span><span class="sx">true</span>
+<span class="nb">end</span>
+<span class="ni">@types</span>
+<span class="nb">fish list</span>
+</pre></div>
+</div>
+<p>The resulting screen display looks like this:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">           Name    Value</span>
+<span class="n">           </span><span class="o">-------</span><span class="n"> </span><span class="o">--------------------</span>
+<span class="p">(</span><span class="n">function</span><span class="p">)</span><span class="n"> types </span><span class="m m-Double">0</span><span class="n"> </span><span class="p">(</span><span class="n">integer</span><span class="p">)</span>
+<span class="n">           v1    </span><span class="m m-Double">2</span><span class="n"> </span><span class="p">(</span><span class="n">integer</span><span class="p">)</span>
+<span class="n">           v2    </span><span class="m m-Double">3.400000000000000e+00</span><span class="n"> </span><span class="p">(</span><span class="n">real</span><span class="p">)</span>
+<span class="n">           v3    </span><span class="s">&#39;Have a nice day&#39;</span><span class="n"> </span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+<span class="n">           v4    </span><span class="m m-Double">6.800000000000000e+00</span><span class="n"> </span><span class="p">(</span><span class="n">real</span><span class="p">)</span>
+<span class="n">           v5    </span><span class="s">&#39;Have a nice day, old chap&#39;</span><span class="n"> </span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+<span class="n">           v6    </span><span class="p">(</span><span class="m m-Double">1.000000000000000e+00</span><span class="p">,</span><span class="m m-Double">2.000000000000000e+00</span><span class="p">)</span><span class="n"> </span><span class="p">(</span><span class="n">vector2</span><span class="p">)</span>
+<span class="n">           v7    </span><span class="m m-Double">3</span><span class="n"> x </span><span class="m m-Double">1</span><span class="n"> </span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+<span class="n">           v8    </span><span class="sx">true</span><span class="n"> </span><span class="p">(</span><span class="n">boolean</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The variables <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">v1</span></span></a>, <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">v2</span></span></a>, and <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">v3</span></span></a> are converted to <em>integer</em>, <em>float</em> (or real), and <em>string</em>, respectively, corresponding to the numbers (or strings) that were assigned to them. Integers are exact numbers (without decimal points) but are of limited range; floating-point numbers have limited precision (about 15 decimal places), but are of much greater range; string variables are arbitrary sequences of characters; and <em>indexes</em> are used to address <span class="codename">UDEC</span> model components or other internal <span class="codename">UDEC</span> objects. There are various rules for conversion between the types. For example, <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">v4</span></span></a> becomes a floating-point number, because it is set to the product of a floating-point number and an integer; the variable <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">v5</span></span></a> becomes a string because it is the sum (concatenation) of two strings.</p>
+<p>There is another language element in <span class="codename">FISH</span> that is commonly used: the <span class="fishname">if then else</span> statement. The following three statements allow decisions to be made within a <span class="codename">FISH</span> program:</p>
+<p><span class="fishname">if</span>  <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:any" title="A catch-all for any ( a ) of the other types, excepting  sym , shown&#013;&#010;here. Multiple instances in a command are numbered ( a1   a2   a3 &#013;&#010;etc.).  This type is also indicated when a specific combination of types is&#013;&#010;acceptable (for instance, the common case where a string  s  or an integer&#013;&#010; i  may be supplied). When this is the case, the specific acceptable types&#013;&#010;are indicated in the explanatory text."><span class="varany"><span class="null">a1</span></span></a> <span class="cmdkey">test</span> <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:any" title="A catch-all for any ( a ) of the other types, excepting  sym , shown&#013;&#010;here. Multiple instances in a command are numbered ( a1   a2   a3 &#013;&#010;etc.).  This type is also indicated when a specific combination of types is&#013;&#010;acceptable (for instance, the common case where a string  s  or an integer&#013;&#010; i  may be supplied). When this is the case, the specific acceptable types&#013;&#010;are indicated in the explanatory text."><span class="varany"><span class="null">a2</span></span></a> <span class="fishname">then</span></p>
+<p><span class="fishname">else</span></p>
+<p><span class="fishname">endif</span></p>
+<p>These statements allow conditional execution of <span class="codename">FISH</span> function segments; <span class="fishname">else</span> and <span class="fishname">then</span> are optional. The item <span class="cmdkey">test</span> consists of one of the following symbols or symbol pairs:</p>
+<table border="1" class="icg4 docutils">
+<colgroup>
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>=</td>
+<td>&#160;</td>
+<td>#</td>
+<td>&#160;</td>
+<td>&gt;</td>
+<td>&#160;</td>
+<td>&lt;</td>
+<td>&#160;</td>
+<td>&gt;=</td>
+<td>&#160;</td>
+<td>&lt;=</td>
+</tr>
+</tbody>
+</table>
+<p>The meanings are standard except for <code class="docutils literal"><span class="pre">#</span></code>, which means “not equal.” The items <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">expr1</span></span></a> and <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">expr2</span></span></a> are any valid expressions or single variables. If the test is true, then the statements immediately following <span class="fishname">if</span> are executed until <span class="fishname">else</span> or <span class="fishname">endif</span> is encountered. If the test is false, the statements between <span class="fishname">else</span> and <span class="fishname">endif</span> are executed if the <span class="fishname">else</span> statement exists; otherwise, the program jumps to the first line after <span class="fishname">endif</span>. The action of these statements is illustrated in the next example:</p>
+<p><strong>Action of the</strong> <span class="fishname">if else endif</span> <strong>construct</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">fish def</span><span class="ni"> abc</span><span class="p">(</span><span class="ni">xx</span><span class="p">)</span>
+<span class="ni">  </span><span class="k">if</span><span class="ni"> xx </span><span class="o">&gt;</span><span class="ni"> </span><span class="m m-Double">0</span><span class="ni"> </span><span class="k">then</span>
+<span class="ni">    abc </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">33</span>
+<span class="ni">  </span><span class="k">else</span>
+<span class="ni">    abc </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">11</span>
+<span class="ni">  </span><span class="k">end_if</span>
+<span class="nb">end</span>
+<span class="ni">[abc</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni">]</span>
+<span class="ni">[abc</span><span class="p">(</span><span class="o">-</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni">]</span>
+</pre></div>
+</div>
+<p>The displayed value of <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a> in this example depends on the argument provided to <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">abc</span></span></a> when it is executed. You should experiment with different test symbols (e.g., replace &gt; with &lt;).</p>
+<p>Until now, our <span class="codename">FISH</span> functions have been invoked from <span class="codename">UDEC</span>, either by using the square brackets [] of inline <span class="codename">FISH</span>, by giving the function name prepended with the the <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">&#64;</span></span></a> character, or by using the <a class="reference internal" href="../../../../../common/kernel/doc/manual/fish/commands/cmd_fish.list.html#command:fish.list" title="List |fish|-related quantities. By default all |fish| symbols are listed. Alternatively&#013;&#010;a specific |fish| symbol  s  can be listed."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">list</span></code></a> command. It is also possible to do the reverse, to give <span class="codename">UDEC</span> commands from within <span class="codename">FISH</span> functions. Most valid <span class="codename">UDEC</span> commands can be embedded between the following <span class="codename">FISH</span> statements:</p>
+<p><span class="fishname">command</span></p>
+<p><span class="fishname">endcommand</span></p>
+<p>There are two main reasons for eliciting <span class="codename">UDEC</span> commands from a <span class="codename">FISH</span> program. First, it is possible to use a <span class="codename">FISH</span> function to perform operations that are not possible using the predefined <span class="codename">FISH</span> intrinsics mentioned above. Second, we can control a complete <span class="codename">UDEC</span> run with <span class="codename">FISH</span>. As an illustration of the first use of the <span class="fishname">command endcommand</span> <a class="reference internal" href="../../../../../common/docproject/source/manual/scripting/fish_scripting/statements/commandendcommand.html#fish-statement-commandendcommand"><span class="std std-ref">statement</span></a>, we can write a <span class="codename">FISH</span> function to install a number of cable elements at different depths in a material. The number of cables and number of segments are provided as arguments to the function. When many cable elements are required, it becomes tedious to type many separate <a class="reference internal" href="../../../../../common/sel/doc/manual/sel_manual/cables/commands/cmd_structure.cable.create.html#command:structure.cable.create" title="Create a cable, represented by one or more elements."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">cable</span> <span class="pre">create</span></code></a> commands, each with different grid values. However, with <span class="codename">FISH</span>, we can elicit <span class="codename">UDEC</span> commands from within a loop and assign the location of the cable ends automatically during the loop, as illustrated in this example:</p>
+<p><strong>Automated placing of cable elements</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="c">;</span>
+<span class="nb">fish define</span><span class="ni"> setup</span>
+<span class="c">; Create vars for later use</span>
+<span class="ni">  xCentre </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0.0</span><span class="ni">         </span><span class="c">; x-coord of tunnel centre</span>
+<span class="ni">  yCentre </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0.0</span><span class="ni">         </span><span class="c">; y-coord of tunnel centre</span>
+<span class="ni">  theta1  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">10.0</span><span class="ni">        </span><span class="c">; starting angle for cables</span>
+<span class="ni">  theta2  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">160.0</span><span class="ni">       </span><span class="c">; ending angle for cables</span>
+<span class="ni">                        </span><span class="c">; (don&#39;t wrap back on theta1)</span>
+<span class="ni">  radius1 </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">8.0</span><span class="ni">         </span><span class="c">; radius of tunnel</span>
+<span class="ni">  radius2 </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">16.0</span><span class="ni">        </span><span class="c">; ending radius for remote end of cables</span>
+<span class="nb">end</span>
+<span class="c">;</span>
+<span class="nb">fish define</span><span class="ni"> place_cables</span><span class="p">(</span><span class="ni">nCables</span><span class="p">)</span>
+<span class="ni">  </span><span class="c">; This example places cable elements along a given arc of tunnel.</span>
+<span class="ni">  </span><span class="c">; number of cables</span>
+<span class="ni">  </span><span class="c">; calculate angle increment between successive cables</span>
+<span class="ni">  theta1 </span><span class="p">=</span><span class="ni"> </span><span class="k">math.degrad</span><span class="ni"> </span><span class="o">*</span><span class="ni"> theta1</span>
+<span class="ni">  theta2 </span><span class="p">=</span><span class="ni"> </span><span class="k">math.degrad</span><span class="ni"> </span><span class="o">*</span><span class="ni"> theta2</span>
+<span class="ni">  _angInc </span><span class="p">=</span><span class="ni"> </span><span class="p">(</span><span class="ni">theta2 </span><span class="o">-</span><span class="ni"> theta1</span><span class="p">)</span><span class="ni"> </span><span class="o">/</span><span class="ni"> float</span><span class="p">(</span><span class="ni">nCables </span><span class="o">-</span><span class="ni"> </span><span class="m m-Double">1</span><span class="p">)</span>
+<span class="ni">  _ang </span><span class="p">=</span><span class="ni"> theta1</span>
+
+<span class="ni">  </span><span class="c">; get endpoint coordinates</span>
+<span class="ni">  </span><span class="k">loop</span><span class="ni"> ii </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="ni"> nCables</span><span class="p">)</span>
+<span class="ni">    _x1 </span><span class="p">=</span><span class="ni"> radius1 </span><span class="o">*</span><span class="ni"> </span><span class="k">math.cos</span><span class="p">(</span><span class="ni">_ang</span><span class="p">)</span><span class="ni"> </span><span class="o">+</span><span class="ni"> xCentre</span>
+<span class="ni">    _y1 </span><span class="p">=</span><span class="ni"> radius1 </span><span class="o">*</span><span class="ni"> </span><span class="k">math.sin</span><span class="p">(</span><span class="ni">_ang</span><span class="p">)</span><span class="ni"> </span><span class="o">+</span><span class="ni"> yCentre</span>
+<span class="ni">    _x2 </span><span class="p">=</span><span class="ni"> radius2 </span><span class="o">*</span><span class="ni"> </span><span class="k">math.cos</span><span class="p">(</span><span class="ni">_ang</span><span class="p">)</span><span class="ni"> </span><span class="o">+</span><span class="ni"> xCentre</span>
+<span class="ni">    _y2 </span><span class="p">=</span><span class="ni"> radius2 </span><span class="o">*</span><span class="ni"> </span><span class="k">math.sin</span><span class="p">(</span><span class="ni">_ang</span><span class="p">)</span><span class="ni"> </span><span class="o">+</span><span class="ni"> yCentre</span>
+
+<span class="ni">    </span><span class="c">; place the cable</span>
+<span class="k">    command</span>
+<span class="nb">      block structure</span><span class="n"> cable create begin </span><span class="ni">@_x1</span><span class="n"> </span><span class="ni">@_y1</span><span class="n"> end </span><span class="ni">@_x2</span><span class="n"> </span><span class="ni">@_y2</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">        segments </span><span class="m m-Double">5</span><span class="n"> material</span><span class="o">-</span><span class="n">steel </span><span class="m m-Double">2</span><span class="n"> material</span><span class="o">-</span><span class="n">grout </span><span class="m m-Double">3</span>
+<span class="k">    endcommand</span>
+<span class="ni">    _ang </span><span class="p">=</span><span class="ni"> _ang </span><span class="o">+</span><span class="ni"> _angInc</span>
+
+<span class="ni">  </span><span class="k">endloop</span>
+
+<span class="nb">end</span>
+<span class="c">;</span>
+<span class="ni">@setup</span>
+<span class="c">;</span>
+<span class="nb">block create</span><span class="n"> polygon </span><span class="o">-</span><span class="m m-Double">25.0</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">25.0</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">25.0</span><span class="n"> </span><span class="m m-Double">25.0</span><span class="n"> </span><span class="m m-Double">25.0</span><span class="n"> </span><span class="m m-Double">25.0</span><span class="n"> </span><span class="m m-Double">25.0</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">25.0</span>
+<span class="nb">block cut</span><span class="n"> split begin </span><span class="m m-Double">0.0</span><span class="n"> </span><span class="o">-</span><span class="m m-Double">25.0</span><span class="n"> end </span><span class="m m-Double">0.0</span><span class="n"> </span><span class="m m-Double">25.0</span>
+<span class="nb">block cut</span><span class="n"> split begin </span><span class="o">-</span><span class="m m-Double">25.0</span><span class="n"> </span><span class="m m-Double">0.0</span><span class="n"> end </span><span class="m m-Double">25.0</span><span class="n"> </span><span class="m m-Double">0.0</span>
+<span class="nb">block cut</span><span class="n"> tunnel </span><span class="m m-Double">0.0</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">0.0</span><span class="p">,</span><span class="n"> </span><span class="ni">@radius1</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">16</span>
+<span class="nb">block zone gen</span><span class="n"> edge </span><span class="m m-Double">10</span>
+<span class="c">;</span>
+<span class="nb">block delete</span><span class="n"> range annulus center </span><span class="m m-Double">0.0</span><span class="p">,</span><span class="n"> </span><span class="m m-Double">0.0</span><span class="n"> rad  </span><span class="m m-Double">0</span><span class="n">  </span><span class="m m-Double">8</span>
+<span class="c">;</span>
+<span class="ni">@place_cables</span><span class="p">(</span><span class="m m-Double">15</span><span class="p">)</span>
+<span class="nb">model save</span><span class="n"> </span><span class="s">&#39;ex4_13.sav&#39;</span>
+</pre></div>
+</div>
+<p>After entering these statements, you should list and plot the cable data to verify that cables have been created, and that they are located at the appropriate positions in the grid.</p>
+</div>
+<div class="section" id="arrays-and-maps">
+<h2>Arrays and Maps</h2>
+<p>It is often the case that one would like to store a list of objects that they will loop over in the future. These may be computed values from zones, for instance, or specific gridpoint pointers themselves. <span class="codename">FISH</span> has two containers to use in these circumstances, termed <span class="xref std std-ref">arrays</span> and <span class="xref std std-ref">maps</span>.</p>
+<p>An array holds a list of <span class="codename">FISH</span> variables of any type that can be looped over or accessed by the integer index of the element of the array. Arrays can be multidimensional and do not resize dynamically. The simple example below shows how one can create an array of integers and then sum the values.</p>
+<p><strong>Array example</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">fish define</span><span class="ni"> array_operation</span>
+<span class="ni">    </span><span class="c">;create and populate an array with products of 2</span>
+<span class="ni">    arr </span><span class="p">=</span><span class="ni"> </span><span class="k">array.create</span><span class="p">(</span><span class="m m-Double">10</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> </span><span class="k">local</span><span class="ni"> n</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">10</span><span class="p">)</span>
+<span class="ni">        arr[n]</span><span class="n"> </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">2</span><span class="o">*</span><span class="n">n</span>
+<span class="n">    end_loop</span>
+<span class="n">      </span>
+<span class="n">    </span><span class="c">;compute the sum and product of elements in the array</span>
+<span class="n">    sum </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">0</span>
+<span class="n">    prod </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">1</span>
+<span class="n">    local i </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">1</span>
+<span class="n">    loop while </span><span class="p">(</span><span class="n">i </span><span class="o">&lt;</span><span class="p">=</span><span class="n"> array</span><span class="p">.</span><span class="n">size</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">))</span>
+<span class="n">        sum </span><span class="p">=</span><span class="n"> sum </span><span class="o">+</span><span class="n"> arr</span><span class="ni">[i]</span>
+<span class="n">        prod </span><span class="p">=</span><span class="n"> prod </span><span class="o">*</span><span class="n"> arr</span><span class="ni">[i]</span>
+<span class="n">        i </span><span class="p">=</span><span class="n"> i </span><span class="o">+</span><span class="n"> </span><span class="m m-Double">1</span>
+<span class="n">    end_loop</span>
+<span class="n">    io</span><span class="p">.</span><span class="n">out</span><span class="p">(</span><span class="s">&#39;The sum is &#39;</span><span class="n"> </span><span class="o">+</span><span class="n"> string</span><span class="p">(</span><span class="n">sum</span><span class="p">)</span><span class="n"> </span><span class="o">+</span><span class="n"> </span><span class="sx">...</span>
+<span class="n">           </span><span class="s">&#39; and the product is &#39;</span><span class="n"> </span><span class="o">+</span><span class="n"> string</span><span class="p">(</span><span class="n">prod</span><span class="p">))</span>
+<span class="nb">end</span>
+<span class="ni">@array_operation</span>
+</pre></div>
+</div>
+<p>In this example, an array is created and filled with numbers. The <span class="fishname">loop while</span> construct is used to loop over the array entries and the sum and product are computed and output.</p>
+<p>A map, on the other hand, is an associative container, meaning that one can access the members of a map by an integer or string used to insert a value in the map. Maps can dynamically be resized and added to one another (appending maps together), and are the preferred constructs for storing lists of <span class="codename">FISH</span> variables for later access.</p>
+<p><strong>Map example</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">fish define</span><span class="ni"> map_operation</span>
+<span class="ni">    </span><span class="c">;create and populate a map with products of 2</span>
+<span class="ni">    my_map </span><span class="p">=</span><span class="ni"> map</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">2</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> </span><span class="k">local</span><span class="ni"> n</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">,</span><span class="m m-Double">10</span><span class="p">)</span>
+<span class="ni">        </span><span class="k">map.add</span><span class="p">(</span><span class="ni">my_map</span><span class="p">,</span><span class="ni">n</span><span class="p">,</span><span class="m m-Double">2</span><span class="o">*</span><span class="ni">n</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">end_loop</span>
+<span class="ni">      </span>
+<span class="ni">    </span><span class="c">;compute the sum and product of elements in the map</span>
+<span class="ni">    sum </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0</span>
+<span class="ni">    prod </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> </span><span class="k">foreach</span><span class="ni"> n my_map</span>
+<span class="ni">        sum </span><span class="p">=</span><span class="ni"> sum </span><span class="o">+</span><span class="ni"> n</span>
+<span class="ni">        prod </span><span class="p">=</span><span class="ni"> prod </span><span class="o">*</span><span class="ni"> n</span>
+<span class="ni">    </span><span class="k">end_loop</span>
+<span class="ni">    </span><span class="k">io.out</span><span class="p">(</span><span class="s">&#39;The sum is &#39;</span><span class="ni"> </span><span class="o">+</span><span class="ni"> string</span><span class="p">(</span><span class="ni">sum</span><span class="p">)</span><span class="ni"> </span><span class="o">+</span><span class="ni"> </span><span class="sx">...</span>
+<span class="ni">           </span><span class="s">&#39; and the product is &#39;</span><span class="ni"> </span><span class="o">+</span><span class="ni"> string</span><span class="p">(</span><span class="ni">prod</span><span class="p">))</span>
+<span class="nb">end</span>
+<span class="ni">@map_operation</span>
+</pre></div>
+</div>
+<p>Unlike with arrays, maps can be looped through using the <span class="fishname">loop foreach</span> construct. In this case, <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">n</span></span></a> is the value held in each map entry, not the integer name of the object in the map. Likewise, instead of using integers to insert objects into the map, one could use strings such as <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">first</span></span></a>, <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:str" title="A string ( s ) of alphanumeric characters. Multiple instances in a command&#013;&#010;are numbered ( s1   s2   s3  etc.).  See  fish_stringdesc &#013;&#010;for more information."><span class="varstring"><span class="null">second</span></span></a>, etc. This allows one to easily and efficiently store and access <span class="codename">FISH</span> variables by a user-defined name.</p>
+</div>
+<div class="section" id="formated-output">
+<h2>Formated Output</h2>
+<p>Sometimes it is need to produce output of values that are not available in the provided list commands.  <span class="codename">FISH</span> can be used to produce output in a user controlled format.  The <span class="codename">FISH</span> function <a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/fish_fish.html#fish-string"><span class="std std-ref">string</span></a></p>
+<p><strong>Using FISH to list contents of an array in a formated list</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">project new</span>
+<span class="nb">model new</span>
+<span class="nb">fish def</span><span class="ni"> afill          </span><span class="c">; fill matrix with random numbers</span>
+<span class="ni">  </span><span class="k">array</span><span class="ni"> var</span><span class="p">(</span><span class="m m-Double">4</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span>
+<span class="ni">  </span><span class="k">loop</span><span class="ni"> m </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> n </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span>
+<span class="ni">      var</span><span class="p">(</span><span class="ni">m</span><span class="p">,</span><span class="ni">n</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="k">math.random.uniform</span>
+<span class="ni">    </span><span class="k">end_loop</span>
+<span class="ni">  </span><span class="k">end_loop</span>
+<span class="nb">end</span>
+<span class="nb">fish def</span><span class="ni"> ashow          </span><span class="c">; display contents of matrix</span>
+<span class="ni">  </span><span class="k">loop</span><span class="ni"> m </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">)</span>
+<span class="ni">    hed </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;   &#39;</span>
+<span class="ni">    msg </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;  &#39;</span><span class="o">+</span><span class="ni">string</span><span class="p">(</span><span class="ni">m</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> n </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span>
+<span class="ni">      hed </span><span class="p">=</span><span class="ni"> hed </span><span class="o">+</span><span class="ni"> </span><span class="s">&#39;             &#39;</span><span class="o">+</span><span class="ni">string</span><span class="p">(</span><span class="ni">n</span><span class="p">)</span>
+<span class="ni">      msg </span><span class="p">=</span><span class="ni"> msg </span><span class="o">+</span><span class="ni"> </span><span class="s">&#39;  &#39;</span><span class="o">+</span><span class="ni">string</span><span class="p">(</span><span class="ni">var</span><span class="p">(</span><span class="ni">m</span><span class="p">,</span><span class="ni">n</span><span class="p">),</span><span class="m m-Double">12</span><span class="p">,</span><span class="s">&#39; &#39;</span><span class="p">,</span><span class="m m-Double">4</span><span class="p">,</span><span class="s">&#39;e&#39;</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">end_loop</span>
+<span class="ni">    </span><span class="k">if</span><span class="ni"> m </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1</span>
+<span class="ni">      dum </span><span class="p">=</span><span class="ni"> </span><span class="k">io.out</span><span class="p">(</span><span class="ni">hed</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">end_if</span>
+<span class="ni">    dum </span><span class="p">=</span><span class="ni"> </span><span class="k">io.out</span><span class="p">(</span><span class="ni">msg</span><span class="p">)</span>
+<span class="ni">  </span><span class="k">end_loop</span>
+<span class="nb">end</span>
+<span class="ni">@afill</span>
+<span class="ni">@ashow</span>
+</pre></div>
+</div>
+<p>Upon execution, the output is</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="n">             </span><span class="m m-Double">1</span><span class="n">            </span><span class="m m-Double">2</span><span class="n">            </span><span class="m m-Double">3</span>
+<span class="m m-Double">1</span><span class="n">  </span><span class="m m-Double">5.7713E-001</span><span class="n">  </span><span class="m m-Double">6.2307E-001</span><span class="n">  </span><span class="m m-Double">7.6974E-001</span>
+<span class="m m-Double">2</span><span class="n">  </span><span class="m m-Double">8.3807E-001</span><span class="n">  </span><span class="m m-Double">3.3640E-001</span><span class="n">  </span><span class="m m-Double">8.5697E-001</span>
+<span class="m m-Double">3</span><span class="n">  </span><span class="m m-Double">6.3214E-001</span><span class="n">  </span><span class="m m-Double">5.4165E-002</span><span class="n">  </span><span class="m m-Double">1.8227E-001</span>
+<span class="m m-Double">4</span><span class="n">  </span><span class="m m-Double">8.5974E-001</span><span class="n">  </span><span class="m m-Double">9.2797E-001</span><span class="n">  </span><span class="m m-Double">9.6332E-001</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="calling-fish-functions-in-response-to-an-event">
+<h2>Calling FISH functions in response to an event</h2>
+<p><span class="codename">FISH</span> functions may be called from several places in the <span class="codename">UDEC</span> program while it is executing. The <a class="reference internal" href="../../../../../common/kernel/doc/manual/fish/commands/cmd_fish.callback.html#command:fish.callback" title="Add/remove functions to be executed in response to callback events."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">callback</span></code></a>
+is used to manage registering <span class="codename">FISH</span> functions with specific callback events.</p>
+<p>Attaching a <span class="codename">FISH</span> function to a callback event causes the <span class="codename">FISH</span> function to be executed by <span class="codename">UDEC</span> in response to a specific event.</p>
+<p>One can list the set of <span class="codename">FISH</span> functions registered with callback events via the <a class="reference internal" href="../../../../../common/kernel/doc/manual/fish/commands/cmd_fish.list.html#kwd:fish.list.callbacks" title="List the |fish| functions that have been added to be executed as callbacks (i.e.,&#013;&#010;with the  fish.callback  command)."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">list</span> <span class="pre">callbacks</span></code></a> command.</p>
+<p>The <a class="reference internal" href="../../../../../common/kernel/doc/manual/fish/commands/cmd_fish.callback.html#command:fish.callback" title="Add/remove functions to be executed in response to callback events."><code class="xref fish fish-cmd docutils literal"><span class="pre">fish</span> <span class="pre">callback</span></code></a> command can be given with the <span class="cmdkey">remove</span> keyword to un-register <span class="codename">FISH</span> functions. For example:</p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">fish callback</span><span class="n"> </span><span class="m m-Double">1</span><span class="n"> remove xxx</span>
+</pre></div>
+</div>
+<p>removes the association between function <a class="reference internal" href="../../../../../common/docproject/utilities/types.html#type:sym" title="A |FISH| symbol ( name ) — where  name  is the name of either a |FISH|&#013;&#010;variable or a |FISH| function."><span class="varfishsym"><span class="null">xxx</span></span></a> and event 1.</p>
+<p>Note that the <span class="xref std std-ref">whilestepping</span> expression inside a <span class="codename">FISH</span> function automatically
+inserts the <span class="codename">FISH</span> function into the cycle sequence at
+event 1 (start of cycling).</p>
+<p>The following data file illustrates the use of a fishcall. Two blocks are moved toward each
+other at a relatively high velocity. When the blocks touch, the applied velocity is removed; this
+prevents a contact overlap error from occurring. The <span class="codename">FISH</span> function <span class="math">\(stop loading\)</span> is invoked
+with a fishcall that is triggered when a contact is created, and sets the block velocities to zero.</p>
+<p><strong>Example of a FISH callback*</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">program call</span><span class="n"> </span><span class="s">&#39;fishcall.fis&#39;</span>
+<span class="nb">block tolerance</span><span class="n"> corner</span><span class="o">-</span><span class="n">round</span><span class="o">-</span><span class="n">length </span><span class="m m-Double">0.001</span>
+<span class="nb">block create</span><span class="n"> polygon </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">0.05</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">0.1</span><span class="p">)</span><span class="n">  </span><span class="p">(</span><span class="o">-</span><span class="m m-Double">0.05</span><span class="p">,</span><span class="m m-Double">0.1</span><span class="p">)</span><span class="n">  </span><span class="p">(</span><span class="m m-Double">0.25</span><span class="p">,</span><span class="m m-Double">0.1</span><span class="p">)</span><span class="n">  </span><span class="p">(</span><span class="m m-Double">0.25</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">0.1</span><span class="p">)</span>
+<span class="nb">block cut</span><span class="n"> crack </span><span class="o">-</span><span class="m m-Double">1</span><span class="n"> </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">1</span><span class="n"> </span><span class="m m-Double">0</span>
+<span class="nb">block cut</span><span class="n"> crack  </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0.1</span><span class="n">  </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0</span>
+<span class="nb">block cut</span><span class="n"> crack  </span><span class="m m-Double">0.2</span><span class="n"> </span><span class="m m-Double">0.1</span><span class="n">  </span><span class="m m-Double">0.2</span><span class="n"> </span><span class="m m-Double">0</span>
+<span class="nb">block cut</span><span class="n"> crack  </span><span class="m m-Double">0.1</span><span class="n"> </span><span class="m m-Double">0.1</span><span class="n">  </span><span class="m m-Double">0.1</span><span class="n"> </span><span class="m m-Double">0</span>
+<span class="nb">block cut</span><span class="n"> crack  </span><span class="m m-Double">0.105</span><span class="n"> </span><span class="m m-Double">0.1</span><span class="n"> </span><span class="m m-Double">0.105</span><span class="n"> </span><span class="m m-Double">0</span>
+<span class="nb">block del</span><span class="n">  range pos</span><span class="o">-</span><span class="n">x </span><span class="o">-</span><span class="m m-Double">0.05</span><span class="n"> </span><span class="m m-Double">0</span><span class="n">   pos</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0.1</span>
+<span class="nb">block del</span><span class="n">  range pos</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0.2</span><span class="n"> </span><span class="m m-Double">0.25</span><span class="n">  pos</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0.1</span>
+<span class="nb">block del</span><span class="n">  range pos</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0.1</span><span class="n"> </span><span class="m m-Double">0.105</span><span class="n"> pos</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0.1</span>
+<span class="c">;</span>
+<span class="nb">block zone gen</span><span class="n"> quad </span><span class="m m-Double">0.4</span><span class="n">  </span><span class="m m-Double">0.11</span><span class="n"> range pos</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">1</span><span class="n"> pos</span><span class="o">-</span><span class="n">y </span><span class="o">-</span><span class="m m-Double">1</span><span class="n"> </span><span class="m m-Double">0</span>
+<span class="nb">block zone gen</span><span class="n"> quad </span><span class="m m-Double">0.07</span><span class="n"> </span><span class="m m-Double">0.11</span><span class="n"> range pos</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">1</span><span class="n"> pos</span><span class="o">-</span><span class="n">y  </span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">1</span>
+<span class="c">;</span>
+<span class="nb">block prop</span><span class="n">  mat</span><span class="p">=</span><span class="m m-Double">1</span><span class="n">   d</span><span class="p">=</span><span class="m m-Double">2.60e-3</span><span class="n">  k</span><span class="p">=</span><span class="m m-Double">45000</span><span class="n">    g</span><span class="p">=</span><span class="m m-Double">30000</span>
+<span class="nb">block contact prop</span><span class="n"> mat</span><span class="p">=</span><span class="m m-Double">1</span><span class="n">   stiffness</span><span class="o">-</span><span class="n">normal</span><span class="p">=</span><span class="m m-Double">40000</span><span class="n">  </span><span class="sx">...</span>
+<span class="n">  stiffness</span><span class="o">-</span><span class="n">shear</span><span class="p">=</span><span class="m m-Double">40000</span><span class="n"> friction</span><span class="p">=</span><span class="m m-Double">30</span>
+<span class="c">;</span>
+<span class="nb">block contact cmodel</span><span class="n"> assign area</span>
+<span class="nb">block contact cmodel</span><span class="n"> default area</span>
+<span class="nb">block contact property</span><span class="n"> stiffness</span><span class="o">-</span><span class="n">normal</span><span class="p">=</span><span class="m m-Double">40000</span><span class="n">  </span><span class="sx">...</span>
+<span class="n">  stiffness</span><span class="o">-</span><span class="n">shear</span><span class="p">=</span><span class="m m-Double">40000</span><span class="n"> friction</span><span class="p">=</span><span class="m m-Double">30</span>
+<span class="c">;</span>
+<span class="n">bl grid app  velocity</span><span class="o">-</span><span class="n">x</span><span class="p">=</span><span class="m m-Double">0</span><span class="n">  range pos</span><span class="o">-</span><span class="n">x </span><span class="o">-</span><span class="m m-Double">0.06</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">0.04</span><span class="n"> pos</span><span class="o">-</span><span class="n">y </span><span class="o">-</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span>
+<span class="n">bl grid app  velocity</span><span class="o">-</span><span class="n">x</span><span class="p">=</span><span class="m m-Double">0</span><span class="n">  range pos</span><span class="o">-</span><span class="n">x  </span><span class="m m-Double">0.24</span><span class="p">,</span><span class="m m-Double">0.26</span><span class="n">  pos</span><span class="o">-</span><span class="n">y </span><span class="o">-</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span>
+<span class="n">bl grid app  velocity</span><span class="o">-</span><span class="n">y</span><span class="p">=</span><span class="m m-Double">0</span><span class="n">  range pos</span><span class="o">-</span><span class="n">x    </span><span class="o">-</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span><span class="n">     pos</span><span class="o">-</span><span class="n">y </span><span class="o">-</span><span class="m m-Double">0.11</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">0.09</span>
+<span class="n">bl edg app stress </span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">10</span><span class="p">)</span><span class="n"> range  pos</span><span class="o">-</span><span class="n">x </span><span class="o">-</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span><span class="n">  pos</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0.09</span><span class="p">,</span><span class="m m-Double">0.11</span>
+<span class="c">;</span>
+<span class="nb">block mech</span><span class="n"> hist solve</span><span class="o">-</span><span class="n">rat</span>
+<span class="nb">model display</span><span class="n"> hist </span><span class="m m-Double">1</span>
+<span class="n">bloc solve</span>
+<span class="c">;</span>
+<span class="c">; apply shear load by imposing x-velocity on top blocks</span>
+<span class="n">bl grid app  velocity</span><span class="o">-</span><span class="n">x</span><span class="p">=</span><span class="m m-Double">0.1</span><span class="n">  range pos</span><span class="o">-</span><span class="n">x </span><span class="o">-</span><span class="m m-Double">.01</span><span class="p">,</span><span class="m m-Double">.101</span><span class="n"> pos</span><span class="o">-</span><span class="n">y </span><span class="o">-</span><span class="m m-Double">.01</span><span class="p">,</span><span class="m m-Double">.11</span>
+<span class="n">bl grid app velocity</span><span class="o">-</span><span class="n">x </span><span class="p">=</span><span class="o">-</span><span class="m m-Double">0.1</span><span class="n"> range pos</span><span class="o">-</span><span class="n">x </span><span class="m m-Double">.104</span><span class="p">,</span><span class="m m-Double">.21</span><span class="n">  pos</span><span class="o">-</span><span class="n">y </span><span class="o">-</span><span class="m m-Double">.01</span><span class="p">,</span><span class="m m-Double">.11</span>
+<span class="nb">fish def</span><span class="ni"> stop_loading</span><span class="p">(</span><span class="ni">contact</span><span class="p">)</span>
+<span class="ni">   ii</span><span class="p">=</span><span class="k">io.out</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">)</span>
+<span class="ni">   ii</span><span class="p">=</span><span class="k">io.out</span><span class="p">(</span><span class="s">&#39; Contact created! &#39;</span><span class="o">+</span><span class="ni">string</span><span class="p">(</span><span class="ni">contact</span><span class="p">))</span>
+<span class="k">   command</span>
+<span class="n">      bou velocity</span><span class="o">-</span><span class="n">x</span><span class="p">=</span><span class="m m-Double">0.0</span><span class="n">  range atblock </span><span class="m m-Double">.025</span><span class="n"> </span><span class="m m-Double">.05</span>
+<span class="n">      bou velocity</span><span class="o">-</span><span class="n">x</span><span class="p">=</span><span class="m m-Double">0.0</span><span class="n">  range atblock </span><span class="m m-Double">.150</span><span class="n"> </span><span class="m m-Double">.05</span>
+<span class="n">      joint  stiffness</span><span class="o">-</span><span class="n">normal</span><span class="p">=</span><span class="m m-Double">40000</span><span class="n">  stiffness</span><span class="o">-</span><span class="n">shear</span><span class="p">=</span><span class="m m-Double">40000</span><span class="n"> friction</span><span class="p">=</span><span class="m m-Double">30</span>
+<span class="k">   endcommand</span>
+<span class="nb">end</span>
+
+<span class="nb">fish def</span><span class="ni"> test_stepping</span>
+<span class="ni">  </span><span class="k">if</span><span class="ni"> </span><span class="k">global.cycle</span><span class="ni"> % </span><span class="m m-Double">1000</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0</span>
+<span class="ni">    </span><span class="k">io.out</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">io.out</span><span class="p">(</span><span class="s">&#39;step: &#39;</span><span class="o">+</span><span class="ni">string</span><span class="p">(</span><span class="k">global.cycle</span><span class="p">))</span>
+<span class="ni">  </span><span class="k">endif</span>
+<span class="nb">end</span>
+
+<span class="nb">fish callback</span><span class="n"> </span><span class="ni">[FC_CONT_CREATE]</span><span class="n"> stop_loading </span>
+<span class="nb">fish callback</span><span class="n"> </span><span class="ni">[FC_CYC_MOT]</span><span class="n"> test_stepping</span>
+
+<span class="nb">block gridpoint history</span><span class="n"> vel</span><span class="o">-</span><span class="n">x  </span><span class="m m-Double">0.1</span><span class="p">,</span><span class="m m-Double">0.1</span>
+<span class="nb">block gridpoint history</span><span class="n"> disp</span><span class="o">-</span><span class="n">x  </span><span class="m m-Double">0.2</span><span class="p">,</span><span class="m m-Double">0.1</span>
+<span class="nb">block cycle</span><span class="n"> </span><span class="m m-Double">10000</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="determining-failure-states-of-zones">
+<h2>Determining Failure States of Zones</h2>
+<p>The program stores a state variable using bitwise values that can be used to represent distinct
+failure states. Some of the states that are used by constitutive models in UDEC are:</p>
+<table border="1" class="colwidths-given icg4 docutils" id="id1">
+<caption><span class="caption-text">Table 3: Failure states</span></caption>
+<colgroup>
+<col width="80%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">State</th>
+<th class="head">State Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Failure in shear now</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>Failure in tension now</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>Failure in shear in the past</td>
+<td>4</td>
+</tr>
+<tr class="row-odd"><td>Failure in tension in the past</td>
+<td>8</td>
+</tr>
+<tr class="row-even"><td>Failure in joint shear now</td>
+<td>16</td>
+</tr>
+<tr class="row-odd"><td>Failure in joint tension now</td>
+<td>32</td>
+</tr>
+<tr class="row-even"><td>Failure in joint shear in the past</td>
+<td>64</td>
+</tr>
+<tr class="row-odd"><td>Failure in joint tension in the past</td>
+<td>128</td>
+</tr>
+<tr class="row-even"><td>Failure in volume now</td>
+<td>256</td>
+</tr>
+<tr class="row-odd"><td>Failure in volume in the past</td>
+<td>512</td>
+</tr>
+</tbody>
+</table>
+<p>The numbers listed above are given symbolic FISH names in file <span class="math">\(STATES.FIS,\)</span> the contents
+of which are listed below. The symbolic names should be used instead of actual numbers,
+so that assignments can be changed in the future without the need to change existing FISH functions.</p>
+<p><strong>File `states.fis` which is used to assign fish variables to state values</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">fish define</span><span class="ni"> _States</span>
+<span class="ni">shearnow          </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1</span><span class="ni">        </span><span class="c">; 1</span>
+<span class="ni">tensionnow        </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">2</span><span class="ni">        </span><span class="c">; 2</span>
+<span class="ni">shearpast         </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">4</span><span class="ni">        </span><span class="c">; 3</span>
+<span class="ni">tensionpast       </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">8</span><span class="ni">        </span><span class="c">; 4</span>
+<span class="ni">jointshearnow     </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">16</span><span class="ni">       </span><span class="c">; 5</span>
+<span class="ni">jointtensionnow   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">32</span><span class="ni">       </span><span class="c">; 6</span>
+<span class="ni">jointshearpast    </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">64</span><span class="ni">       </span><span class="c">; 7</span>
+<span class="ni">jointtensionpast  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">128</span><span class="ni">      </span><span class="c">; 8</span>
+<span class="ni">volumenow         </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">256</span><span class="ni">      </span><span class="c">; 9</span>
+<span class="ni">volumepast        </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">512</span><span class="ni">      </span><span class="c">; 10</span>
+<span class="c">;</span>
+<span class="c">; Quick reference</span>
+<span class="c">;         Model                      States used</span>
+<span class="c">;        ------                      -----------</span>
+<span class="c">;      </span>
+<span class="c">;      Burger-Mohr                     1 - 4</span>
+<span class="c">;      Cap-Yield                       1 - 4</span>
+<span class="c">;      Cap-Yield-Simplified            1 - 4</span>
+<span class="c">;      Double-Yield                    1 - 4, 9 - 10</span>
+<span class="c">;      Drucker-Prager                  1 - 4</span>
+<span class="c">;      Hoek-Brown                      1 , 3</span>
+<span class="c">;      Hoek-Brown-PAC                  1 , 3</span>
+<span class="c">;      Modified-Cam-Clay               1 , 3</span>
+<span class="c">;      Mohr-Coulomb                    1 - 4</span>
+<span class="c">;      Power-Mohr                      1 - 4</span>
+<span class="c">;      Softening-Ubiquitous            1 - 8</span>
+<span class="c">;      Strain-Hardening                1 - 4</span>
+<span class="c">;      Wipp-Drucker                    1 - 4</span>
+<span class="c">;      Ubiquitous-Joint                1 - 8</span>
+<span class="c">;      Wipp-Salt                       1 - 4</span>
+<span class="c">;</span>
+<span class="nb">end</span>
+<span class="c">;</span>
+<span class="ni">@_States</span>
+</pre></div>
+</div>
+<p>The data file below illustrates the process of determining failure state of zones in a model
+using the <span class="codename">FISH</span> function <a class="reference internal" href="../../elements/block/block.zone_fish/fish_block.zone.state.html#function:block.zone.state" title="Get/set the zone plasticity state indicator.  The state indicator is the sum&#013;&#010;of the current conditions (bitwise operation) as more than one may apply."><code class="xref fish fish-func docutils literal"><span class="pre">block.zone.state</span></code></a>.</p>
+<p><strong>Example of listing state values of zones</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">model new</span>
+<span class="nb">program log</span><span class="o">-</span><span class="n">file </span><span class="p">=</span><span class="n"> </span><span class="s">&#39;myfile.log&#39;</span>
+<span class="nb">program log</span><span class="n"> </span><span class="sx">on</span>
+<span class="nb">block tolerance</span><span class="n"> corner</span><span class="o">-</span><span class="n">round</span><span class="o">-</span><span class="n">length </span><span class="m m-Double">.01</span>
+<span class="nb">block create</span><span class="n"> polygon </span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">0</span><span class="n"> </span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">1</span><span class="n"> </span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span><span class="n"> </span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">0</span>
+<span class="nb">block zone gen</span><span class="n"> edge </span><span class="m m-Double">1</span>
+<span class="c">;</span>
+<span class="nb">block change</span><span class="n"> model </span><span class="m m-Double">3</span>
+<span class="nb">block property</span><span class="n"> mat </span><span class="m m-Double">1</span><span class="n"> bulk </span><span class="m m-Double">2e6</span><span class="n"> shea </span><span class="m m-Double">2e3</span><span class="n"> coh </span><span class="m m-Double">2e4</span><span class="n"> ten </span><span class="m m-Double">2e3</span><span class="n"> dens </span><span class="m m-Double">2000</span>
+<span class="nb">block contact prop</span><span class="n"> mat </span><span class="p">=</span><span class="n"> </span><span class="m m-Double">1</span><span class="n"> stiffness</span><span class="o">-</span><span class="n">normal </span><span class="m m-Double">1e3</span><span class="n"> stiffness</span><span class="o">-</span><span class="n">shear </span><span class="m m-Double">1e3</span>
+<span class="nb">block mechanical</span><span class="n"> gravity </span><span class="m m-Double">0</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">10</span>
+<span class="c">;</span>
+<span class="n">bl edg app stress </span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">9</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">3e2</span><span class="n"> range pos</span><span class="o">-</span><span class="n">x  </span><span class="o">-</span><span class="m m-Double">.1</span><span class="n"> </span><span class="m m-Double">1.1</span><span class="n"> pos</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0.9</span><span class="n"> </span><span class="m m-Double">1.1</span>
+<span class="n">bl grid app vel</span><span class="o">-</span><span class="n">y </span><span class="m m-Double">0</span><span class="n"> range pos</span><span class="o">-</span><span class="n">x  </span><span class="o">-</span><span class="m m-Double">.1</span><span class="n"> </span><span class="m m-Double">1.1</span><span class="n"> pos</span><span class="o">-</span><span class="n">y </span><span class="o">-</span><span class="m m-Double">.1</span><span class="n"> </span><span class="m m-Double">.1</span>
+<span class="c">;</span>
+<span class="nb">block cycle</span><span class="n"> </span><span class="m m-Double">100</span>
+<span class="c">;</span>
+<span class="nb">program call</span><span class="n"> </span><span class="s">&#39;states.fis&#39;</span><span class="n">  </span><span class="c">; failure states defined as fish variables</span>
+<span class="nb">fish def</span><span class="ni"> _querystate</span>
+<span class="ni">  </span><span class="c">;</span>
+<span class="ni">  iab </span><span class="p">=</span><span class="ni"> </span><span class="k">block.head</span>
+<span class="ni">  </span><span class="k">loop</span><span class="ni"> </span><span class="k">while</span><span class="ni"> iab # </span><span class="m m-Double">0</span>
+<span class="ni">    iaz </span><span class="p">=</span><span class="ni"> bl</span><span class="p">.</span><span class="ni">zone</span><span class="p">(</span><span class="ni">iab</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">loop</span><span class="ni"> </span><span class="k">while</span><span class="ni"> iaz # </span><span class="m m-Double">0</span>
+<span class="ni">      i_mess </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;zone &#39;</span><span class="o">+</span><span class="ni">string</span><span class="p">(</span><span class="ni">iaz</span><span class="p">)</span>
+<span class="ni">      curr_state </span><span class="p">=</span><span class="ni"> bl</span><span class="p">.</span><span class="k">zone.state</span><span class="p">(</span><span class="ni">iaz</span><span class="p">)</span>
+<span class="ni">      </span><span class="k">if</span><span class="ni"> </span><span class="k">math.and</span><span class="p">(</span><span class="ni">curr_state</span><span class="p">,</span><span class="ni"> shearnow</span><span class="p">)</span><span class="ni"> # </span><span class="m m-Double">0</span><span class="ni"> </span><span class="k">then</span>
+<span class="ni">        i_mess </span><span class="p">=</span><span class="ni"> i_mess</span><span class="o">+</span><span class="s">&#39; shear&#39;</span>
+<span class="ni">      </span><span class="k">else</span>
+<span class="ni">        </span><span class="k">if</span><span class="ni"> </span><span class="k">math.and</span><span class="p">(</span><span class="ni">curr_state</span><span class="p">,</span><span class="ni"> shearpast</span><span class="p">)</span><span class="ni"> # </span><span class="m m-Double">0</span><span class="ni"> </span><span class="k">then</span>
+<span class="ni">          i_mess </span><span class="p">=</span><span class="ni"> i_mess</span><span class="o">+</span><span class="s">&#39; shear_past&#39;</span>
+<span class="ni">        </span><span class="k">endif</span>
+<span class="ni">      </span><span class="k">endif</span>
+<span class="ni">      </span><span class="k">if</span><span class="ni"> </span><span class="k">math.and</span><span class="p">(</span><span class="ni">curr_state</span><span class="p">,</span><span class="ni"> tensionnow</span><span class="p">)</span><span class="ni"> # </span><span class="m m-Double">0</span><span class="ni"> </span><span class="k">then</span>
+<span class="ni">        i_mess </span><span class="p">=</span><span class="ni"> i_mess</span><span class="o">+</span><span class="s">&#39; tension&#39;</span>
+<span class="ni">      </span><span class="k">else</span>
+<span class="ni">        </span><span class="k">if</span><span class="ni"> </span><span class="k">math.and</span><span class="p">(</span><span class="ni">curr_state</span><span class="p">,</span><span class="ni"> tensionpast</span><span class="p">)</span><span class="ni"> # </span><span class="m m-Double">0</span><span class="ni"> </span><span class="k">then</span>
+<span class="ni">          i_mess </span><span class="p">=</span><span class="ni"> i_mess</span><span class="o">+</span><span class="s">&#39; tension_past&#39;</span>
+<span class="ni">        </span><span class="k">endif</span>
+<span class="ni">      </span><span class="k">endif</span>
+<span class="ni">      </span><span class="k">if</span><span class="ni"> </span><span class="k">math.and</span><span class="p">(</span><span class="ni">curr_state</span><span class="p">,</span><span class="ni"> jointshearnow</span><span class="p">)</span><span class="ni"> # </span><span class="m m-Double">0</span><span class="ni"> </span><span class="k">then</span>
+<span class="ni">        i_mess </span><span class="p">=</span><span class="ni"> i_mess</span><span class="o">+</span><span class="s">&#39; joint_shear&#39;</span>
+<span class="ni">      </span><span class="k">else</span>
+<span class="ni">        </span><span class="k">if</span><span class="ni"> </span><span class="k">math.and</span><span class="p">(</span><span class="ni">curr_state</span><span class="p">,</span><span class="ni"> jointshearpast</span><span class="p">)</span><span class="ni"> # </span><span class="m m-Double">0</span><span class="ni"> </span><span class="k">then</span>
+<span class="ni">          i_mess </span><span class="p">=</span><span class="ni"> i_mess</span><span class="o">+</span><span class="s">&#39; joint_shear_past&#39;</span>
+<span class="ni">        </span><span class="k">endif</span>
+<span class="ni">      </span><span class="k">endif</span>
+<span class="ni">      </span><span class="k">if</span><span class="ni"> </span><span class="k">math.and</span><span class="p">(</span><span class="ni">curr_state</span><span class="p">,</span><span class="ni"> jointtensionnow</span><span class="p">)</span><span class="ni"> # </span><span class="m m-Double">0</span><span class="ni"> </span><span class="k">then</span>
+<span class="ni">        i_mess </span><span class="p">=</span><span class="ni"> i_mess</span><span class="o">+</span><span class="s">&#39; joint_tension&#39;</span>
+<span class="ni">      </span><span class="k">else</span>
+<span class="ni">        </span><span class="k">if</span><span class="ni"> </span><span class="k">math.and</span><span class="p">(</span><span class="ni">curr_state</span><span class="p">,</span><span class="ni"> jointtensionpast</span><span class="p">)</span><span class="ni"> # </span><span class="m m-Double">0</span><span class="ni"> </span><span class="k">then</span>
+<span class="ni">          i_mess </span><span class="p">=</span><span class="ni"> i_mess</span><span class="o">+</span><span class="s">&#39; joint_tension_past&#39;</span>
+<span class="ni">        </span><span class="k">endif</span>
+<span class="ni">      </span><span class="k">endif</span>
+<span class="ni">      </span><span class="k">if</span><span class="ni"> </span><span class="k">math.and</span><span class="p">(</span><span class="ni">curr_state</span><span class="p">,</span><span class="ni"> volumenow</span><span class="p">)</span><span class="ni"> # </span><span class="m m-Double">0</span><span class="ni"> </span><span class="k">then</span>
+<span class="ni">        i_mess </span><span class="p">=</span><span class="ni"> i_mess</span><span class="o">+</span><span class="s">&#39; volume&#39;</span>
+<span class="ni">      </span><span class="k">else</span>
+<span class="ni">        </span><span class="k">if</span><span class="ni"> </span><span class="k">math.and</span><span class="p">(</span><span class="ni">curr_state</span><span class="p">,</span><span class="ni"> volumepast</span><span class="p">)</span><span class="ni"> # </span><span class="m m-Double">0</span><span class="ni"> </span><span class="k">then</span>
+<span class="ni">          i_mess </span><span class="p">=</span><span class="ni"> i_mess</span><span class="o">+</span><span class="s">&#39; volume_past&#39;</span>
+<span class="ni">        </span><span class="k">endif</span>
+<span class="ni">      </span><span class="k">endif</span>
+<span class="ni">      ii </span><span class="p">=</span><span class="ni"> </span><span class="k">io.out</span><span class="p">(</span><span class="ni">i_mess</span><span class="p">)</span>
+<span class="ni">      iaz </span><span class="p">=</span><span class="ni"> bl</span><span class="p">.</span><span class="k">zone.next</span><span class="p">(</span><span class="ni">iaz</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">endloop</span>
+<span class="ni">    iab </span><span class="p">=</span><span class="ni"> bl</span><span class="p">.</span><span class="ni">next</span><span class="p">(</span><span class="ni">iab</span><span class="p">)</span>
+<span class="ni">  </span><span class="k">endloop</span>
+<span class="ni">END</span>
+<span class="ni">@_querystate</span>
+<span class="ni">program log </span><span class="sx">off</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fish-file-routines">
+<h2>FISH File Routines</h2>
+<p>The set of <span class="codename">FISH</span> functions described in this section allow data to be written to, and read from, a file. There are three modes: an “ASCII” mode that allows a <span class="codename">FISH</span> program to exchange data with other programs, and a “FISH” mode that allows data to be passed between FISH functions and binary mode. In <span class="codename">FISH</span> and binary mode, the data are written in binary, without loss of precision; numbers written out in ASCII form may lose precision when read back into a <span class="codename">FISH</span> program. In FISH mode, the value of the FISH variable, not the name of the variable, is written to the file.</p>
+<table border="1" class="icg4 docutils" id="id2">
+<caption><span class="caption-text">Table 4: FISH File Functions</span></caption>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/fish_fish.html#fish-file"><span class="std std-ref">file.close</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/fish_fish.html#fish-file"><span class="std std-ref">file.open</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/fish_fish.html#fish-file"><span class="std std-ref">file.open.pointer</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/fish_fish.html#fish-file"><span class="std std-ref">file.open.pos</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/fish_fish.html#fish-file"><span class="std std-ref">file.read</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/fish_fish.html#fish-file"><span class="std std-ref">file.write</span></a></td>
+</tr>
+</tbody>
+</table>
+<p>The following <span class="codename">FISH</span> intrinsic functions do not perform file operations, but can be used to extract items from ASCII data that are derived from a file.</p>
+<table border="1" class="docutils" id="id3">
+<caption><span class="caption-text">Table 5: String functions to Parse Input from Files</span></caption>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/fish_fish.html#fish-string"><span class="std std-ref">string.char</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/fish_fish.html#fish-string"><span class="std std-ref">string.len</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/fish_fish.html#fish-string"><span class="std std-ref">string.sub</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/fish_fish.html#fish-string"><span class="std std-ref">string.token</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/fish_fish.html#fish-string"><span class="std std-ref">string.token.type</span></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>The following example demonstrates the use of the FISH file functions</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">fish def</span><span class="ni"> setup</span>
+<span class="ni">  a_size </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">20</span>
+<span class="ni">  IO_READ  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0</span>
+<span class="ni">  IO_WRITE </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1</span>
+<span class="ni">  IO_FISH  </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">0</span>
+<span class="ni">  IO_ASCII </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1</span>
+<span class="ni">  filename </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;junk.dat&#39;</span>
+<span class="nb">end</span>
+<span class="ni">@setup</span>
+<span class="c">;</span>
+<span class="nb">fish def</span><span class="ni"> io</span>
+<span class="ni">  </span><span class="k">array</span><span class="ni"> aa</span><span class="p">(</span><span class="ni">a_size</span><span class="p">)</span><span class="ni"> bb</span><span class="p">(</span><span class="ni">a_size</span><span class="p">)</span>
+<span class="c">;</span>
+<span class="ni">  </span><span class="c">; ASCII I/O TEST ------------------</span>
+<span class="ni">  status </span><span class="p">=</span><span class="ni"> </span><span class="k">file.open</span><span class="p">(</span><span class="ni">filename</span><span class="p">,</span><span class="ni"> IO_WRITE</span><span class="p">,</span><span class="ni"> IO_ASCII</span><span class="p">)</span>
+<span class="ni">  aa</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni">  </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;Line 1 ... Fred&#39;</span>
+<span class="ni">  aa</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">)</span><span class="ni">  </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;Line 2 ... Joe&#39;</span>
+<span class="ni">  aa</span><span class="p">(</span><span class="m m-Double">3</span><span class="p">)</span><span class="ni">  </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;Line 3 ... Roger&#39;</span>
+<span class="ni">  status </span><span class="p">=</span><span class="ni"> </span><span class="k">file.write</span><span class="p">(</span><span class="ni">aa</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span>
+<span class="ni">  status </span><span class="p">=</span><span class="ni"> </span><span class="k">file.close</span>
+<span class="ni">  status </span><span class="p">=</span><span class="ni"> </span><span class="k">file.open</span><span class="p">(</span><span class="ni">filename</span><span class="p">,</span><span class="ni"> IO_READ</span><span class="p">,</span><span class="ni"> IO_ASCII</span><span class="p">)</span>
+<span class="ni">  status </span><span class="p">=</span><span class="ni"> </span><span class="k">file.read</span><span class="p">(</span><span class="ni">bb</span><span class="p">,</span><span class="ni"> a_size</span><span class="p">)</span>
+<span class="ni">  </span><span class="k">if</span><span class="ni"> status # </span><span class="m m-Double">3</span><span class="ni"> </span><span class="k">then</span>
+<span class="ni">    oo </span><span class="p">=</span><span class="ni"> out</span><span class="p">(</span><span class="s">&#39; Bad number of lines&#39;</span><span class="p">)</span>
+<span class="ni">  </span><span class="k">endif</span>
+<span class="ni">  status </span><span class="p">=</span><span class="ni"> </span><span class="k">file.close</span>
+<span class="c">;</span>
+<span class="ni">  </span><span class="c">; now check results...</span>
+<span class="ni">  </span><span class="k">loop</span><span class="ni"> n </span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">if</span><span class="ni"> </span><span class="k">string.token</span><span class="p">(</span><span class="ni">bb</span><span class="p">(</span><span class="ni">n</span><span class="p">),</span><span class="ni"> </span><span class="m m-Double">2</span><span class="p">)</span><span class="ni"> # n </span><span class="k">then</span>
+<span class="ni">      oo </span><span class="p">=</span><span class="ni"> </span><span class="k">io.out</span><span class="p">(</span><span class="s">&#39; Bad 2nd item in loop &#39;</span><span class="ni"> </span><span class="o">+</span><span class="ni"> string</span><span class="p">(</span><span class="ni">n</span><span class="p">))</span>
+<span class="ni">      </span><span class="k">exit</span>
+<span class="ni">    </span><span class="k">endif</span>
+<span class="ni">  </span><span class="k">endloop</span>
+<span class="c">;</span>
+<span class="ni">  </span><span class="k">if</span><span class="ni"> </span><span class="k">string.token.type</span><span class="p">(</span><span class="ni">bb</span><span class="p">(</span><span class="m m-Double">3</span><span class="p">),</span><span class="ni"> </span><span class="m m-Double">4</span><span class="p">)</span><span class="ni"> # </span><span class="m m-Double">3</span><span class="ni"> </span><span class="k">then</span>
+<span class="ni">    oo </span><span class="p">=</span><span class="ni"> </span><span class="k">io.out</span><span class="p">(</span><span class="s">&#39; Not a string&#39;</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">exit</span>
+<span class="ni">  </span><span class="k">endif</span>
+<span class="c">;</span>
+<span class="ni">  </span><span class="c">; FISH I/O TEST -----------------</span>
+<span class="ni">  status </span><span class="p">=</span><span class="ni"> </span><span class="k">file.open</span><span class="p">(</span><span class="ni">filename</span><span class="p">,</span><span class="ni"> IO_WRITE</span><span class="p">,</span><span class="ni"> IO_FISH</span><span class="p">)</span>
+<span class="ni">  funny_int   </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1234567</span>
+<span class="ni">  funny_float </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1.2345e6</span>
+<span class="ni">  aa</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni">  </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;---&gt; All tests passed OK&#39;</span>
+<span class="ni">  aa</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">)</span><span class="ni">  </span><span class="p">=</span><span class="ni"> funny_int</span>
+<span class="ni">  aa</span><span class="p">(</span><span class="m m-Double">3</span><span class="p">)</span><span class="ni">  </span><span class="p">=</span><span class="ni"> funny_float</span>
+<span class="c">;</span>
+<span class="ni">  status </span><span class="p">=</span><span class="ni"> </span><span class="k">file.write</span><span class="p">(</span><span class="ni">aa</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">)</span>
+<span class="ni">  status </span><span class="p">=</span><span class="ni"> </span><span class="k">file.close</span>
+<span class="ni">  status </span><span class="p">=</span><span class="ni"> </span><span class="k">file.open</span><span class="p">(</span><span class="ni">filename</span><span class="p">,</span><span class="ni"> IO_READ</span><span class="p">,</span><span class="ni"> IO_FISH</span><span class="p">)</span>
+<span class="ni">  status </span><span class="p">=</span><span class="ni"> </span><span class="k">file.read</span><span class="p">(</span><span class="ni">bb</span><span class="p">,</span><span class="ni"> </span><span class="m m-Double">3</span><span class="p">)</span>
+<span class="ni">  status </span><span class="p">=</span><span class="ni"> </span><span class="k">file.close</span>
+<span class="c">;</span>
+<span class="ni">  </span><span class="c">; now check results...</span>
+<span class="ni">  </span><span class="k">if</span><span class="ni"> type</span><span class="p">(</span><span class="ni">bb</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">))</span><span class="ni"> # </span><span class="m m-Double">3</span><span class="ni"> </span><span class="k">then</span>
+<span class="ni">    oo </span><span class="p">=</span><span class="ni"> </span><span class="k">io.out</span><span class="p">(</span><span class="s">&#39; Bad FISH string read/write&#39;</span><span class="p">)</span>
+<span class="ni">      </span><span class="k">exit</span>
+<span class="ni">    </span><span class="k">endif</span>
+<span class="ni">  </span><span class="k">if</span><span class="ni"> bb</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">)</span><span class="ni"> # funny_int </span><span class="k">then</span>
+<span class="ni">    oo </span><span class="p">=</span><span class="ni"> </span><span class="k">io.out</span><span class="p">(</span><span class="s">&#39; Bad FISH integer read/write&#39;</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">exit</span>
+<span class="ni">  </span><span class="k">endif</span>
+<span class="ni">  </span><span class="k">if</span><span class="ni"> bb</span><span class="p">(</span><span class="m m-Double">3</span><span class="p">)</span><span class="ni"> # funny_float </span><span class="k">then</span>
+<span class="ni">    oo </span><span class="p">=</span><span class="ni"> </span><span class="k">io.out</span><span class="p">(</span><span class="s">&#39; Bad FISH float read/write&#39;</span><span class="p">)</span>
+<span class="ni">    </span><span class="k">exit</span>
+<span class="ni">  </span><span class="k">endif</span>
+<span class="ni">  oo </span><span class="p">=</span><span class="ni"> </span><span class="k">io.out</span><span class="p">(</span><span class="ni">bb</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">))</span><span class="ni"> </span><span class="c">; (should be a good message)</span>
+<span class="k">  command</span>
+<span class="n">    sys </span><span class="s">&#39;del junk.dat&#39;</span>
+<span class="k">  endcommand</span>
+<span class="nb">end</span>
+<span class="c">;</span>
+<span class="ni">@io</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="directly-communicating-with-other-programs">
+<h2>Directly Communicating with Other Programs</h2>
+<p>FISH contains the option to allow data to be exchanged between two or more Itasca codes running
+as separate processes, using socket connections (as used for TCP/IP transmission over the Internet).  It is possible to pass data between two or more instances of the same code (e.g., two instances of UDEC), but the main use is anticipated to be coupling of dissimilar codes such as UDEC and PFC2D. The data contained in FISH arrays may be passed in either direction between two codes. The data are transmitted in binary with no loss of precision. Up to six data channels may be open at any one time; these may exist between two codes, or may connect several codes simultaneously. The following FISH intrinsics are provided.</p>
+<table border="1" class="docutils" id="id4">
+<caption><span class="caption-text">Table 6: FISH Functions for Socket Communication</span></caption>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/fish_fish.html#fish-socket"><span class="std std-ref">socket.close</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/fish_fish.html#fish-socket"><span class="std std-ref">socket.create</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/fish_fish.html#fish-socket"><span class="std std-ref">socket.delete</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/fish_fish.html#fish-socket"><span class="std std-ref">socket.open</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/fish_fish.html#fish-socket"><span class="std std-ref">socket.read</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/fish_fish.html#fish-socket"><span class="std std-ref">socket.read.array</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/fish_fish.html#fish-socket"><span class="std std-ref">socket.write</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../../../../../common/fish/doc/fish_manual/fish_fish/fish_fish.html#fish-socket"><span class="std std-ref">socket.write.array</span></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>The following example demonstrates the server side of the Communication</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">fish def</span><span class="ni"> serve</span>
+<span class="ni">  </span><span class="k">array</span><span class="ni"> arr</span><span class="p">(</span><span class="m m-Double">3</span><span class="p">)</span>
+<span class="ni">  arr</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">1234</span>
+<span class="ni">  arr</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="m m-Double">57.89</span>
+<span class="ni">  arr</span><span class="p">(</span><span class="m m-Double">3</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;hello from the server&#39;</span>
+<span class="ni">  oo </span><span class="p">=</span><span class="ni"> </span><span class="k">socket.open</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span>
+<span class="ni">  oo </span><span class="p">=</span><span class="ni"> </span><span class="k">socket.write</span><span class="p">(</span><span class="ni">arr</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span>
+<span class="ni">  oo </span><span class="p">=</span><span class="ni"> </span><span class="k">socket.read</span><span class="p">(</span><span class="ni">arr</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span>
+<span class="ni">  oo </span><span class="p">=</span><span class="ni"> </span><span class="k">socket.close</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">)</span>
+<span class="ni">  oo </span><span class="p">=</span><span class="ni"> </span><span class="k">io.out</span><span class="p">(</span><span class="ni">arr</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">))</span>
+<span class="nb">end</span>
+<span class="ni">@serve</span>
+</pre></div>
+</div>
+<p><strong>The following example demonstrates the client side of the Communication</strong></p>
+<div class="highlight-fish"><div class="highlight"><pre><span></span><span class="nb">fish def</span><span class="ni"> client</span>
+<span class="ni">  </span><span class="k">array</span><span class="ni"> arr</span><span class="p">(</span><span class="m m-Double">3</span><span class="p">)</span>
+<span class="ni">  oo </span><span class="p">=</span><span class="ni"> </span><span class="k">socket.open</span><span class="p">(</span><span class="m m-Double">0</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span>
+<span class="ni">  oo </span><span class="p">=</span><span class="ni"> </span><span class="k">socket.read</span><span class="p">(</span><span class="ni">arr</span><span class="p">,</span><span class="m m-Double">3</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span>
+<span class="ni">  oo </span><span class="p">=</span><span class="ni"> </span><span class="k">io.out</span><span class="p">(</span><span class="s">&#39; Received values ... &#39;</span><span class="p">)</span>
+<span class="ni">  oo </span><span class="p">=</span><span class="ni"> </span><span class="k">io.out</span><span class="p">(</span><span class="s">&#39;   &#39;</span><span class="o">+</span><span class="ni">string</span><span class="p">(</span><span class="ni">arr</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">)))</span>
+<span class="ni">  oo </span><span class="p">=</span><span class="ni"> </span><span class="k">io.out</span><span class="p">(</span><span class="s">&#39;   &#39;</span><span class="o">+</span><span class="ni">string</span><span class="p">(</span><span class="ni">arr</span><span class="p">(</span><span class="m m-Double">2</span><span class="p">)))</span>
+<span class="ni">  oo </span><span class="p">=</span><span class="ni"> </span><span class="k">io.out</span><span class="p">(</span><span class="s">&#39;   &#39;</span><span class="o">+</span><span class="ni">string</span><span class="p">(</span><span class="ni">arr</span><span class="p">(</span><span class="m m-Double">3</span><span class="p">)))</span>
+<span class="ni">  arr</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">)</span><span class="ni"> </span><span class="p">=</span><span class="ni"> </span><span class="s">&#39;greetings from the client&#39;</span>
+<span class="ni">  oo </span><span class="p">=</span><span class="ni"> </span><span class="k">socket.write</span><span class="p">(</span><span class="ni">arr</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">,</span><span class="m m-Double">1</span><span class="p">)</span>
+<span class="ni">  oo </span><span class="p">=</span><span class="ni"> </span><span class="k">socket.close</span><span class="p">(</span><span class="m m-Double">1</span><span class="p">)</span>
+<span class="nb">end</span>
+<span class="c">;   Received values should be...</span>
+<span class="c">;     1234</span>
+<span class="c">;     5.7890E+01</span>
+<span class="c">;     hello from the server</span>
+<span class="ni">@client</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="further-information">
+<h2>Further Information</h2>
+<p>We have now covered some aspects of the <span class="codename">FISH</span> language and how it interacts with <span class="codename">UDEC</span>. A complete guide to the language, including language rules, statements, intrinsic functions, and examples, is provided in the <a class="reference internal" href="../../../../../common/docproject/source/manual/scripting/fish_scripting/fish.html#fish-scripting"><span class="std std-ref">FISH Scripting Reference</span></a> section of this <em>Help</em> file.</p>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li>
+       <li class="nav-item nav-item-1"><a href="../../../../../common/docproject/source/manual/scripting/fish_scripting/fish.html" accesskey="U"><span class="codename">FISH</span> Scripting Reference</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       &#8656;<a href="../../../../../common/docproject/source/manual/scripting/fish_scripting/fish_types.html"
+                           title="previous chapter"> <span class="codename">FISH</span> Type Index</a> |    
+       <a href="../Program Guide/program_guide.html"
+                           title="next chapter">UDEC FISH Data Program Guide</a> &#8658;
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Tutorial: Working with FISH" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../common/docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

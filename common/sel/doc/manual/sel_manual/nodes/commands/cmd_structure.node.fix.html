@@ -1,0 +1,173 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>structure node fix command &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="structure-node-fix-command">
+<h1><code class="docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">fix</span></code> command</h1>
+<p class="h2 rubric">Syntax</p>
+<dl class="structurenode command">
+<dt id="command:structure.node.fix">
+<span class="cmdname"><span class="pref">s</span><span class="pref">t</span><span class="pref">r</span><span class="null">u</span><span class="null">c</span><span class="null">t</span><span class="null">u</span><span class="null">r</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">n</span><span class="null">o</span><span class="null">d</span><span class="null">e</span><span class="null"> </span></span><span class="cmdname"><span class="pref">f</span><span class="pref">i</span><span class="null">x</span><span class="null"> </span></span><span class="cmdkey"><span class="null">k</span><span class="null">e</span><span class="null">y</span><span class="null">w</span><span class="null">o</span><span class="null">r</span><span class="null">d</span><span class="null"> </span></span><span class="cmdkey"><span class="null">.</span><span class="null">.</span><span class="null">.</span><span class="null"> </span></span><span class="cmdopt"><<a class="reference internal" href="../../../../../../module/doc/manual/range_manual/range_commands/rangephrasereference.html" title="range"><span class="token"><span class="null">r</span><span class="null">a</span><span class="null">n</span><span class="null">g</span><span class="null">e</span></span></a>></span><span class="null"> </span></dt>
+<dd><div class="admonition-primary-keywords admonition">
+<p class="first admonition-title">Primary keywords:</p>
+<p class="last"><a class="reference internal" href="#kwd:structure.node.fix.rotation" title="structure node fix rotation">rotation</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.fix.rotation-x" title="structure node fix rotation-x">rotation-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.fix.rotation-y" title="structure node fix rotation-y">rotation-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.fix.rotation-z" title="structure node fix rotation-z">rotation-z</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.fix.system-local" title="structure node fix system-local">system-local</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.fix.velocity" title="structure node fix velocity">velocity</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.fix.velocity-x" title="structure node fix velocity-x">velocity-x</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.fix.velocity-y" title="structure node fix velocity-y">velocity-y</a>&nbsp;&nbsp;&nbsp; <a class="reference internal" href="#kwd:structure.node.fix.velocity-z" title="structure node fix velocity-z">velocity-z</a></p>
+</div>
+<p>Fix conditions for all nodes in the range, thereby preventing these values from changing. If any translational/rotational velocity component is fixed, then all three components of the translational/rotational velocity should also be specified in the local coordinate system via the <a class="reference internal" href="cmd_structure.node.initialize.html#command:structure.node.initialize" title="Initialize quantities on all structure nodes in the range.  Note that positions&#013;&#010;can only be specified in the global system."><code class="xref fish fish-cmd docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">initialize</span></code></a> command. If a fixed displacement is required, the appropriate velocities should be initialized to zero. Degrees-of-freedom with a rigid attachment condition cannot be fixed; the rigid condition overrides the fix condition.</p>
+<dl class="keyword">
+<dt id="kwd:structure.node.fix.rotation">
+<span class="cmdkey"><span class="pref">r</span><span class="null">o</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null"> </span></span></dt>
+<dd><p>rotational velocity in all three degrees-of-freedom (node local system)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.fix.rotation-x">
+<span class="cmdkey"><span class="pref">r</span><span class="null">o</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span></dt>
+<dd><p>rotational velocity about <span class="math">\(x\)</span>-axis (node-local system)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.fix.rotation-y">
+<span class="cmdkey"><span class="pref">r</span><span class="null">o</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span></dt>
+<dd><p>rotational velocity about <span class="math">\(y\)</span>-axis (node-local system)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.fix.rotation-z">
+<span class="cmdkey"><span class="pref">r</span><span class="null">o</span><span class="null">t</span><span class="null">a</span><span class="null">t</span><span class="null">i</span><span class="null">o</span><span class="null">n</span><span class="null">-</span><span class="pref">z</span><span class="null"> </span></span></dt>
+<dd><p>rotational velocity about <span class="math">\(z\)</span>-axis (node-local system)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.fix.system-local">
+<span class="cmdkey"><span class="pref">s</span><span class="null">y</span><span class="null">s</span><span class="null">t</span><span class="null">e</span><span class="null">m</span><span class="null">-</span><span class="pref">l</span><span class="null">o</span><span class="null">c</span><span class="null">a</span><span class="null">l</span><span class="null"> </span></span></dt>
+<dd><p>inhibits automatic updating of the node-local system based on the elements that use the node. The default behavior is free.</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.fix.velocity">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null"> </span></span></dt>
+<dd><p>translational velocity in all three degrees-of-freedom (node local system)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.fix.velocity-x">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">x</span><span class="null"> </span></span></dt>
+<dd><p>translational velocity in <span class="math">\(x\)</span>-direction (node-local system)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.fix.velocity-y">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">y</span><span class="null"> </span></span></dt>
+<dd><p>translational velocity in <span class="math">\(y\)</span>-direction (node-local system)</p>
+</dd></dl>
+
+<dl class="keyword">
+<dt id="kwd:structure.node.fix.velocity-z">
+<span class="cmdkey"><span class="pref">v</span><span class="null">e</span><span class="null">l</span><span class="null">o</span><span class="null">c</span><span class="null">i</span><span class="null">t</span><span class="null">y</span><span class="null">-</span><span class="pref">z</span><span class="null"> </span></span></dt>
+<dd><p>translational velocity in <span class="math">\(z\)</span>-direction (node-local system)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?structure node fix command" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>

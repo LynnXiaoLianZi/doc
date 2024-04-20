@@ -1,0 +1,164 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Commands &#8212; UDEC 7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../../../_static/itasca.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css"/>
+    
+    <!-- icg: hide sidebar on load as needed -->
+    <script type="text/javascript">
+    (function () {
+    if (window.innerWidth <= 720){
+       document.write('<link rel="stylesheet" href="../../../../../../../_static/icg_shutsidebar.css" type="text/css" />')
+       }
+    }());
+    </script>
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../../../',
+        VERSION:     '7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../../../_static/MathJax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ICG15-ICN-UDEC.ico"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:normal,bold,bolditalic,italic" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:normal,bold,bolditalic,italic" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:normal,bold" rel="stylesheet"> 
+  </head>
+  <body>
+<div id = "main">
+   <div id="maintop">
+   <a id="cornerlink" href="../../../../../../../contents.html"><img id="cornerlogo" src="../../../../../../../_static/udec32.png" alt="Logo"/>&nbsp;&nbsp;<span class="codename" id="cornercodename"></span></a>
+
+<div id="searchbox" role="search">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <div><input type="text" id="sb" name="q" /></div>
+      <!--<div><input type="submit" value="Go" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+   </div>
+   
+   <div id="maincontent">
+   <div id="mainbody" role="main">
+   
+  <div class="section" id="commands">
+<span id="sel-node-commands"></span><h1>Commands</h1>
+<p>Operations on structural element nodes.</p>
+<p>Nodes are locations where elements interact, and where forces, masses are lumped for equations of motion.  All six element types share the same node list.    Unlike <span class="codename">FLAC3D</span> gridpoints, nodes track six degrees-of-freedom (three rotational ones in addition to three translational).</p>
+<p class="rubric">Node Commands</p>
+<table border="1" class="comfishtable docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.node.apply.html#structure.node.apply" title="Set generalized point loads for all nodes in the range. Generalized point loads&#013;&#010;consist of an applied force and an applied moment. Pressure loading can be applied&#013;&#010;to shell surfaces using the commands  structure shell apply ,  structure geogrid&#013;&#010;apply , or  structure liner apply . Distributed loads can be applied to beam&#013;&#010;and pile surfaces using the command  structure beam apply  or  structure pile&#013;&#010;apply . The following keywords are available to define generalized point loads."><span class="fishcmd">structure node apply</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.node.create.html#structure.node.create" title="Create a structural node at location  v . Individually created nodes may be&#013;&#010;used to create elements using the  by-nodeids  command form (for example  structure&#013;&#010;beam create by-nodeids ). When other command forms are used (for instance,  by-line &#013;&#010;or  by-ray ), it is not necessary to separately create nodes when creating elements—they&#013;&#010;are created automatically as the element is created."><span class="fishcmd">structure node create</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.node.damping-local.html#structure.node.damping-local" title="Sets the local-damping factor to  f  for all nodes in the range (see the  structure&#013;&#010;damping  command). By default,  f  equals to 0.8."><span class="fishcmd">structure node damping-local</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.node.delete.html#structure.node.delete" title="Delete all nodes in the range.  FLAC3D  will not allow nodes that are connected&#013;&#010;to structural elements to be deleted."><span class="fishcmd">structure node delete</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.node.fix.html#structure.node.fix" title="Fix conditions for all nodes in the range, thereby preventing these values from&#013;&#010;changing. If any translational/rotational velocity component is fixed, then&#013;&#010;all three components of the translational/rotational velocity should also be&#013;&#010;specified in the local coordinate system via the  structure node initialize &#013;&#010;command. If a fixed displacement is required, the appropriate velocities should&#013;&#010;be initialized to zero. Degrees-of-freedom with a rigid attachment condition&#013;&#010;cannot be fixed; the rigid condition overrides the fix condition."><span class="fishcmd">structure node fix</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.node.free.html#structure.node.free" title="Free fixed conditions for all nodes in the range."><span class="fishcmd">structure node free</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.node.group.html#structure.node.group" title="Assign all nodes in the range to the group with the name  s1 . Use of the group&#013;&#010;logic is described in  group_manual . A node may only belong to one group in&#013;&#010;a given slot. Assigning a node to a new group in that slot will cause it to&#013;&#010;be removed from its current group assignment. The command  structure node list &#013;&#010;command lists the existing node group names."><span class="fishcmd">structure node group</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.node.hide.html#structure.node.hide" title="This command hides or un-hides all nodes in the range. By default, commands&#013;&#010;that use a range filter will skip hidden objects. This can be overruled with&#013;&#010;the  use-hidden  keyword in the range specification."><span class="fishcmd">structure node hide</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.node.history.html#structure.node.history" title="Samples nodal responses.  These include displacement, velocity, position, and&#013;&#010;out-of-balance force."><span class="fishcmd">structure node history</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.node.initialize.html#structure.node.initialize" title="Initialize quantities on all structure nodes in the range.  Note that positions&#013;&#010;can only be specified in the global system."><span class="fishcmd">structure node initialize</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.node.join.html#structure.node.join" title="This command creates node-to-node links on all nodes in the range by attempting&#013;&#010;to find another node in the range that is at the same position. If found, and&#013;&#010;if the node does not already possess a node-to-node link, then any existing&#013;&#010;link is deleted and a new node-to-node link is created.  The new link is rigidly&#013;&#010;attached in all six degrees-of-freedom to the target node."><span class="fishcmd">structure node join</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.node.list.html#structure.node.list" title="Show information about structural element nodes in the range."><span class="fishcmd">structure node list</span></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="cmd_structure.node.select.html#structure.node.select" title="This commands selects or de-selects all structural nodes in the range.  Selected&#013;&#010;objects can be specified in a range filter by using the  selected  keyword.&#013;&#010; Objects that are  not  selected can be specified in a range filter by using&#013;&#010;the  deselected  keyword."><span class="fishcmd">structure node select</span></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="cmd_structure.node.system-local.html#structure.node.system-local" title="Set the orientation of the node-local system for all nodes in the range."><span class="fishcmd">structure node system-local</span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper hide compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.node.apply.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">apply</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.node.create.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">create</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.node.damping-local.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">damping-local</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.node.delete.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">delete</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.node.fix.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">fix</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.node.free.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">free</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.node.group.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">group</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.node.hide.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">hide</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.node.history.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">history</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.node.initialize.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">initialize</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.node.join.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">join</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.node.list.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">list</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.node.select.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">select</span></code> command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_structure.node.system-local.html"><code class="docutils literal"><span class="pre">structure</span> <span class="pre">node</span> <span class="pre">system-local</span></code> command</a></li>
+</ul>
+</div>
+</div>
+
+
+   </div>
+   <div id="navbutton">&#8644;</div>
+   <!-- <div id="navbutton">&#9776;</div>
+        <div id="totopbutton">&#8657;</div> -->
+      <div id="mainbottom1">
+      
+   <span class="prevnext">
+   <ul>
+     <li class="nav-item nav-item-0"><a href="../../../../../../../contents.html">UDEC 7.0 documentation</a> &#187;</li> 
+   </ul>
+   </span>
+      <br><br>
+       <span class="prevnext">
+       </span>
+      </div>
+      <div id="mainbottom2">
+      <table style="width: 100%; text-align: center; margin-top: -0.5em;" class="blank"><tr>
+      <td><a class="internal reference" href ="http://www.itascacg.com/docs/helpfeedback/feedback2.php?UDEC 7.0?Commands" target="_blank" id="wth"> Was this helpful? ...</a></td>
+      <td><a id="codeid" href="https://www.itascacg.com/software/udec">UDEC</a>
+         <a href="../../../../../../docproject/utilities/icgsphinxhelp/icgsphinxhelp.html" id="docdoor">&copy;</a>  2018, 
+      <a href="https://www.itascacg.com">Itasca</a></td>
+      <td>
+         Updated: Mar 15, 2024
+      </td>
+      </tr>
+      </table>
+      </div>
+
+   </div>
+</div> 
+   <div id="mySidenav" class="sidenav">
+     <iframe src="../../../../../../../navtree.html" id="toctobj2" frameborder="0"></iframe>
+   </div>
+
+
+
+  <script src="../../../../../../../_static/icgscripts.js" ></script>
+  </body>
+</html>
